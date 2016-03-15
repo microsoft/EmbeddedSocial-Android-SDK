@@ -1,0 +1,104 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+apply plugin: 'com.android.application'
+
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '22.0.1'
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.microsoft.socialplus"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode computeVersionCode()
+        versionName computeVersionName()
+    }
+
+    signingConfigs {
+        develop.initWith(signingConfigs.debug)
+        develop {
+            storeFile file("debug.keystore")
+        }
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.develop
+        }
+
+        debug {
+            versionNameSuffix "d"
+            signingConfig signingConfigs.develop
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File((File) outputFolder, "SocialPlus_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
+        }
+    }
+    dexOptions {
+        incremental false
+    }
+}
+
+retrolambda {
+    jvmArgs '-noverify'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    releaseCompile project(path: ':sdk', configuration: 'releaseStandalone')
+    debugCompile project(path: ':sdk', configuration: 'debugStandalone')
+}
+
+def getBuildNumber() {
+    System.env.BUILD_NUMBER == null ? '0' : System.env.BUILD_NUMBER
+}
+
+def computeVersionName() {
+    return "${buildVersion}.${getBuildNumber()}"
+}
+
+def computeVersionCode() {
+    return buildVersionCode.toInteger()
+}
+
+ext {
+    outputFolder = new File((File) project.getProjectDir(), "apk")
+}
+
+def clearOutputFolder() {
+    File[] files = outputFolder.listFiles()
+    if (files != null) {
+        for (File file : files) {
+            file.delete()
+        }
+    }
+}
+
+clearOutputFolder()

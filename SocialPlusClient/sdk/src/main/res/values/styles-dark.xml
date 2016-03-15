@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="ResourceName"
+	>
+
+	<style name="SocialPlusSdkAppTheme.Dark.Base" parent="Theme.AppCompat.NoActionBar">
+		<item name="sp_buttonBackground">?attr/actionBarItemBackground</item>
+		<item name="colorButtonNormal">#FF4CAF50</item>
+		<item name="android:windowBackground">@color/sp_window_background_dark</item>
+		<item name="colorControlNormal">@color/sp_text_hint_dark</item>
+		<item name="android:editTextStyle">@style/SocialPlusSdkEditTextStyle</item>
+		<item name="textAppearanceLargePopupMenu">@style/SocialPlusSdkMenuTextStyle.Dark</item>
+		<item name="searchViewStyle">@style/SocialPlusSdkSearchViewStyle</item>
+		<item name="sp_navigationItemStyle">@style/SocialPlusSdkNavigationItem</item>
+		<item name="sp_tabIndicatorBackground">@drawable/sp_toolbar_background</item>
+		<item name="sp_tabIndicatorTextColorActive">@color/sp_tab_text_active</item>
+		<item name="sp_tabIndicatorTextColorNotActive">@color/sp_tab_text_not_active</item>
+		<item name="sp_listIndicator">@drawable/sp_list</item>
+		<item name="sp_galleryIndicator">@drawable/sp_gallery</item>
+		<item name="sp_cardBackground">#303030</item>
+		<item name="sp_contentBackground">#303030</item>
+		<item name="sp_topicFeedBackground">#404040</item>
+		<item name="sp_galleryItemBackground">?attr/sp_cardBackground</item>
+		<item name="sp_topicCoverBackground">#353535</item>
+		<item name="sp_contextMenuIcon">@drawable/sp_ic_more_dark</item>
+		<item name="sp_userNoPhotoIcon">@drawable/sp_user_no_pic_white</item>
+		<item name="sp_toolbarStyle">@style/SocialPlusSdkToolbarStyleDark</item>
+		<item name="sp_photoPlaceholder">@drawable/sp_photo_placeholder_dark</item>
+		<item name="sp_textColorPrimary">@color/sp_text_primary_dark</item>
+		<item name="sp_textColorSecondary">@color/sp_text_secondary_dark</item>
+		<item name="sp_textColorHint">@color/sp_text_hint_dark</item>
+		<item name="sp_uploadingItemColor">@color/sp_teal_500</item>
+		<item name="sp_dividerColor">@color/sp_text_hint_dark</item>
+		<item name="sp_cursorDrawable">@drawable/sp_cursor_dark</item>
+		<item name="sp_largeLogo">@drawable/sp_logo_white</item>
+		<item name="colorAccent">?attr/colorButtonNormal</item>
+		<item name="sp_tabsBottomLineColor">@android:color/transparent</item>
+	</style>
+
+	<style name="SocialPlusSdkAppTheme.Dark" parent="SocialPlusSdkAppTheme.Dark.Base">
+		<item name="sp_navigationItemBackground">?attr/sp_buttonBackground</item>
+	</style>
+
+	<style name="SocialPlusSdkToolbarStyleDark">
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+		<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="titleTextAppearance">@style/SocialPlusSdkTextAppearance.Widget.Toolbar.Title.Dark</item>
+		<item name="android:background">@drawable/sp_toolbar_background</item>
+		<item name="textAppearanceLargePopupMenu">@style/SocialPlusSdkMenuTextStyle.Dark</item>
+	</style>
+
+	<style name="SocialPlusSdkTextAppearance.Widget.Toolbar.Title.Dark" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textStyle">normal</item>
+		<item name="android:textSize">20dp</item>
+		<item name="android:textColor">@color/sp_white</item>
+	</style>
+
+	<style name="SocialPlusSdkMenuTextStyle.Dark" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+		<item name="android:textColor">@color/sp_white</item>
+	</style>
+
+</resources>

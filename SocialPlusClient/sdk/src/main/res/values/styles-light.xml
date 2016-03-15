@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="ResourceName"
+	>
+
+	<style name="SocialPlusSdkAppTheme.LightBase" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="sp_buttonBackground">?attr/actionBarItemBackground</item>
+		<item name="colorButtonNormal">@color/sp_button_color_light</item>
+		<item name="android:windowBackground">@color/sp_window_background_light</item>
+		<item name="colorControlNormal">#42000000</item>
+		<item name="android:editTextStyle">@style/SocialPlusSdkEditTextStyle</item>
+		<item name="textAppearanceLargePopupMenu">@style/SocialPlusSdkMenuTextStyle.Light</item>
+		<item name="searchViewStyle">@style/SocialPlusSdkSearchViewStyle</item>
+		<item name="sp_navigationItemStyle">@style/SocialPlusSdkNavigationItem</item>
+		<item name="sp_tabIndicatorBackground">@drawable/sp_toolbar_background</item>
+		<item name="sp_tabIndicatorTextColorActive">@color/sp_tab_text_active</item>
+		<item name="sp_tabIndicatorTextColorNotActive">@color/sp_tab_text_not_active</item>
+		<item name="sp_listIndicator">@drawable/sp_list</item>
+		<item name="sp_galleryIndicator">@drawable/sp_gallery</item>
+		<item name="sp_cardBackground">@color/sp_default_card_background</item>
+		<item name="sp_contentBackground">@color/sp_white</item>
+		<item name="sp_topicFeedBackground">@color/sp_feed_background_light</item>
+		<item name="sp_galleryItemBackground">@color/sp_placeholder</item>
+		<item name="sp_topicCoverBackground">@color/sp_image_holder</item>
+		<item name="sp_contextMenuIcon">@drawable/sp_ic_more_light</item>
+		<item name="sp_userNoPhotoIcon">@drawable/sp_user_no_pic_black</item>
+		<item name="sp_toolbarStyle">@style/SocialPlusSdkToolbarStyleLight</item>
+		<item name="sp_photoPlaceholder">@drawable/sp_photo_placeholder_light</item>
+		<item name="sp_textColorPrimary">@color/sp_text_primary_light</item>
+		<item name="sp_textColorSecondary">@color/sp_text_secondary_light</item>
+		<item name="sp_textColorHint">@color/sp_text_hint_light</item>
+		<item name="sp_uploadingItemColor">@color/sp_lightblue_50</item>
+		<item name="sp_dividerColor">@color/sp_text_hint_light</item>
+		<item name="sp_cursorDrawable">@drawable/sp_cursor_light</item>
+		<item name="sp_largeLogo">@drawable/sp_logo</item>
+		<item name="sp_tabsBottomLineColor">?android:attr/colorForeground</item>
+	</style>
+
+	<style name="SocialPlusSdkAppTheme.Light" parent="SocialPlusSdkAppTheme.LightBase">
+		<item name="sp_navigationItemBackground">?attr/sp_buttonBackground</item>
+	</style>
+
+	<style name="SocialPlusSdkAppTheme.Light.Search">
+		<item name="sp_tabIndicatorBackground">@color/sp_white</item>
+		<item name="sp_tabIndicatorTextColorActive">#212121</item>
+		<item name="sp_tabIndicatorTextColorNotActive">#bdbdbd</item>
+		<item name="android:colorForeground">#42000000</item>
+		<item name="sp_listIndicator">@drawable/sp_list_dark</item>
+		<item name="sp_galleryIndicator">@drawable/sp_gallery_dark</item>
+		<item name="sp_toolbarStyle">@style/SocialPlusSdkToolbarStyleLightSearch</item>
+	</style>
+
+	<style name="SocialPlusSdkToolbarStyleLight">
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="titleTextAppearance">@style/SocialPlusSdkTextAppearance.Widget.Toolbar.Title.Light</item>
+		<item name="android:background">@drawable/sp_toolbar_background</item>
+	</style>
+
+	<style name="SocialPlusSdkToolbarStyleLightSearch">
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="android:background">@color/sp_white</item>
+		<item name="titleTextAppearance">@style/SocialPlusSdkTextAppearance.Widget.Toolbar.Title.Light</item>
+	</style>
+
+	<style name="SocialPlusSdkTextAppearance.Widget.Toolbar.Title.Light" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textStyle">normal</item>
+		<item name="android:textSize">20dp</item>
+		<item name="android:textColor">@color/sp_white</item>
+	</style>
+
+	<style name="SocialPlusSdkMenuTextStyle.Light" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+		<item name="android:textColor">@color/sp_menu_item_color</item>
+	</style>
+
+</resources>

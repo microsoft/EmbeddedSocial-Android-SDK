@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/sp_toolbar"
+		style="?attr/sp_toolbarStyle"
+		android:background="@color/sp_toolbar_background"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="?attr/actionBarSize"
+		/>
+
+	<FrameLayout
+		android:id="@+id/sp_content"
+		android:layout_width="match_parent"
+		android:layout_height="0px"
+		android:layout_weight="1"
+		android:background="?attr/sp_contentBackground"
+		/>
+
+	<FrameLayout
+		android:id="@+id/sp_bottomBar"
+		android:background="?attr/sp_contentBackground"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		tools:ignore="MissingPrefix"
+		>
+
+		<View
+			style="@style/SocialPlusSdkDivider"
+			android:layout_gravity="top"/>
+
+		<Button
+			android:id="@+id/sp_doneButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/sp_menu_done"
+			android:layout_gravity="right"
+			style="@style/SocialPlusSdkBottomButton"
+			/>
+
+	</FrameLayout>
+
+</LinearLayout>

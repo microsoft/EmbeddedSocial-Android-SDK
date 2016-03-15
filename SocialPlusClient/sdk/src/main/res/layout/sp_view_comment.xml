@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+	   android:layout_width="match_parent"
+	   android:layout_height="match_parent"
+	>
+
+	<TextView
+		android:id="@+id/sp_commentText"
+		style="@style/SocialPlusSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/sp_profileImage"
+		android:paddingBottom="4dp"
+		android:layout_marginRight="@dimen/sp_padding_large"
+		android:layout_toRightOf="@id/sp_leftBorder"
+		/>
+
+	<FrameLayout
+		android:id="@+id/sp_contentButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignBottom="@id/sp_commentText"
+		android:layout_alignLeft="@id/sp_commentText"
+		android:layout_below="@id/sp_userHeaderButton"
+		android:clickable="true"
+		android:foreground="?attr/sp_buttonBackground"
+		/>
+
+	<include
+		layout="@layout/sp_view_comment_buttons"/>
+
+</merge>

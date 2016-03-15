@@ -1,0 +1,12 @@
+.gradle
+*.html
+/local.properties
+/.idea
+.DS_Store
+/build
+/LiveSdk/build
+/LiveSdk/gen
+/app/build
+/app/gen
+/app/src/main/gen
+/sdk/aar

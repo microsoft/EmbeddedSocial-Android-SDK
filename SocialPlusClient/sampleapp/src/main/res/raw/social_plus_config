@@ -1,0 +1,29 @@
+{
+	"version" : "1",
+	"application" : {
+		"appHandle" : "e60ec707-c673-407c-90db-44dc7b3db334",
+		"appToken" : "FGjUISeDe1DePoJaooq6g+gZvKqyyjS3|000000004413B70D",
+		"numberOfCommentsToShow" : 20,
+		"numberOfRepliesToShow" : 20
+	},
+	"socialNetworks" : {
+		"facebook" : {
+			"loginEnabled" : "true",
+			"clientId" : "552285811539105"
+		},
+		"google" : {
+			"loginEnabled" : "true",
+			"clientId" : "819956646351-s7hr2g1s4r8d4io4drjkn66a6d8rhqag.apps.googleusercontent.com"
+		},
+		"microsoft" : {
+			"loginEnabled" : "true",
+			"clientId" : "000000004413B70D"
+		},
+		"twitter" : {
+			"loginEnabled" : "true"
+		}
+	},
+	"theme" : {
+		"accentColor" : "FF4CAF50"
+	}
+}

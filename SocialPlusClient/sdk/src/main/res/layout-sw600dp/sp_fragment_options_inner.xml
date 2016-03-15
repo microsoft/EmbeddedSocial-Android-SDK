@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="?attr/sp_topicFeedBackground"
+	android:fillViewport="false"
+	>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="@dimen/sp_padding_options_horizontal"
+		android:paddingRight="@dimen/sp_padding_options_horizontal"
+		android:paddingTop="@dimen/sp_padding_large"
+		>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/sp_padding_base"
+			app:cardBackgroundColor="?attr/sp_cardBackground"
+			>
+
+			<TableLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				android:stretchColumns="*"
+				>
+
+				<TableRow>
+
+					<TextView
+						style="@style/SocialPlusSdkOptionsHeader"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/sp_applications_header"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_applications"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_muted_apps"
+						/>
+
+					<View
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						/>
+
+				</TableRow>
+
+			</TableLayout>
+
+		</android.support.v7.widget.CardView>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/sp_padding_base"
+			android:layout_marginTop="@dimen/sp_padding_large"
+			app:cardBackgroundColor="?attr/sp_cardBackground"
+			>
+
+			<TableLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				android:stretchColumns="*"
+				>
+
+				<TableRow>
+
+					<TextView
+						style="@style/SocialPlusSdkOptionsHeader"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/sp_header_follow"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_findFacebookFriends"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_find_friends_facebook"
+						/>
+
+					<TextView
+						android:id="@+id/sp_findMicrosoftContacts"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_find_friends_microsoft"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<View
+						style="@style/SocialPlusSdkDivider.Tablet"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						/>
+
+					<View
+						style="@style/SocialPlusSdkDivider.Tablet"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_findGooglePlusFriends"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_find_friends_google_plus"
+						/>
+
+					<TextView
+						android:id="@+id/sp_findFriendsFromOtherApps"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_find_friends_other_apps"
+						/>
+
+				</TableRow>
+
+			</TableLayout>
+
+		</android.support.v7.widget.CardView>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/sp_padding_base"
+			android:layout_marginTop="@dimen/sp_padding_large"
+			app:cardBackgroundColor="?attr/sp_cardBackground"
+			>
+
+			<TableLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				android:stretchColumns="*"
+				>
+
+				<TableRow>
+
+					<TextView
+						style="@style/SocialPlusSdkOptionsHeader"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/sp_account_header"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_linkedAccounts"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_linked_accounts"
+						/>
+
+					<TextView
+						android:id="@+id/sp_deleteSearchHistory"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_delete_search_history"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<View
+						style="@style/SocialPlusSdkDivider.Tablet"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						/>
+
+					<View
+						style="@style/SocialPlusSdkDivider.Tablet"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_signOut"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_sign_out"
+						/>
+
+					<TextView
+						android:id="@+id/sp_deleteAccount"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_delete_account"
+						/>
+
+				</TableRow>
+
+			</TableLayout>
+
+		</android.support.v7.widget.CardView>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/sp_padding_base"
+			android:layout_marginTop="@dimen/sp_padding_large"
+			app:cardBackgroundColor="?attr/sp_cardBackground"
+			>
+
+			<TableLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:paddingLeft="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				android:stretchColumns="*"
+				>
+
+				<TableRow>
+
+					<TextView
+						style="@style/SocialPlusSdkOptionsHeader"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/sp_header_about"
+						/>
+
+				</TableRow>
+
+				<TableRow>
+
+					<TextView
+						android:id="@+id/sp_privacyPolicy"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_privacy_policy"
+						/>
+
+					<TextView
+						android:id="@+id/sp_terms"
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginLeft="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="@string/sp_button_terms_and_conditions"
+						/>
+
+				</TableRow>
+
+			</TableLayout>
+
+		</android.support.v7.widget.CardView>
+
+		<android.support.v7.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/sp_padding_large"
+			android:layout_marginLeft="@dimen/sp_padding_base"
+			android:layout_marginTop="@dimen/sp_padding_large"
+			app:cardBackgroundColor="?attr/sp_cardBackground"
+			>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingLeft="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				>
+
+				<TextView
+					style="@style/SocialPlusSdkOptionsHeader"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="Feed layout"
+					/>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					>
+
+					<TextView
+						style="@style/SocialPlusSdkOptionsItem"
+						android:layout_marginRight="@dimen/sp_padding_base"
+						android:layout_weight="1"
+						android:text="Use staggered grid layout manager"
+						/>
+
+					<android.support.v7.widget.SwitchCompat
+						android:id="@+id/sp_layoutSwitch"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						/>
+				</LinearLayout>
+			</LinearLayout>
+
+		</android.support.v7.widget.CardView>
+
+	</LinearLayout>
+
+</ScrollView>

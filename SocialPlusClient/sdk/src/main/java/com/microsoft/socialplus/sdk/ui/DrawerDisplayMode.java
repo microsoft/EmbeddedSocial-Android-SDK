@@ -1,0 +1,15 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+package com.microsoft.socialplus.sdk.ui;
+
+/**
+ * Defines display mode of drawer menu.
+ */
+public enum DrawerDisplayMode {
+	TABS,
+	SWITCHER
+}

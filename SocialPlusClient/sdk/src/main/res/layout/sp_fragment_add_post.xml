@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<ScrollView
+		android:id="@+id/sp_editPostLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?attr/sp_buttonBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:padding="@dimen/sp_padding_large"
+				>
+
+				<de.hdodenhof.circleimageview.CircleImageView
+					android:id="@+id/sp_profileImage"
+					android:layout_width="@dimen/sp_user_icon_size"
+					android:layout_height="@dimen/sp_user_icon_size"
+					android:background="?attr/sp_photoPlaceholder"
+					app:border_width="0px"
+					/>
+
+				<TextView
+					android:id="@+id/sp_username"
+					style="@style/SocialPlusSdkTextSubhead"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="@dimen/sp_padding_large"
+					android:singleLine="true"
+					/>
+
+			</LinearLayout>
+
+			<FrameLayout
+				android:id="@+id/sp_addPhotoButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:foreground="?attr/sp_buttonBackground"
+				>
+
+				<TextView
+					android:id="@+id/sp_imageMessage"
+					style="@style/SocialPlusSdkTextAddPhotoCaption"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/sp_add_post_photo_height"
+					android:layout_gravity="center"
+					/>
+
+				<ImageView
+					android:id="@+id/sp_postImage"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:focusable="true"
+					android:focusableInTouchMode="true"
+					/>
+
+			</FrameLayout>
+
+			<com.microsoft.socialplus.ui.view.TextInput
+				android:id="@+id/sp_titleLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/sp_padding_large"
+				android:layout_marginRight="@dimen/sp_padding_large"
+				android:layout_marginTop="@dimen/sp_padding_large"
+				>
+
+				<EditText
+					style="@style/SocialPlusSdkEditTextStyle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/sp_hint_title"
+					android:inputType="text|textCapSentences"
+					android:textStyle="bold"
+					/>
+
+			</com.microsoft.socialplus.ui.view.TextInput>
+
+			<com.microsoft.socialplus.ui.view.TextInput
+				android:id="@+id/sp_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/sp_padding_large"
+				android:layout_marginRight="@dimen/sp_padding_large"
+				app:errorEnabled="false"
+				>
+
+				<EditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/sp_hint_description"
+					android:inputType="textMultiLine|textCapSentences"
+					/>
+
+			</com.microsoft.socialplus.ui.view.TextInput>
+
+		</LinearLayout>
+	</ScrollView>
+
+	<include layout="@layout/sp_progressbar"/>
+</FrameLayout>
+

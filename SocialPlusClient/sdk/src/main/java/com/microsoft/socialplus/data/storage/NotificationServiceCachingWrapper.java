@@ -1,0 +1,152 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+package com.microsoft.socialplus.data.storage;
+
+import android.content.Context;
+import android.text.TextUtils;
+
+import com.microsoft.autorest.models.CountResponse;
+import com.microsoft.socialplus.data.Preferences;
+import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchRequestWrapper;
+import com.microsoft.socialplus.server.INotificationService;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.notification.GetNotificationCountRequest;
+import com.microsoft.socialplus.server.model.notification.GetNotificationFeedRequest;
+import com.microsoft.socialplus.server.model.notification.GetNotificationFeedResponse;
+import com.microsoft.socialplus.server.model.notification.RegisterPushNotificationRequest;
+import com.microsoft.socialplus.server.model.notification.UnRegisterPushNotificationRequest;
+import com.microsoft.socialplus.server.model.notification.UpdateNotificationStatusRequest;
+import com.microsoft.socialplus.server.model.view.ActivityView;
+import com.microsoft.socialplus.service.ServiceAction;
+import com.microsoft.socialplus.service.WorkerService;
+
+import java.sql.SQLException;
+
+import retrofit2.Response;
+
+/**
+ * Provides transparent cache implementation of top of {@linkplain INotificationService}.
+ */
+public class NotificationServiceCachingWrapper implements INotificationService {
+
+	private final GetNotificationFeedWrapper notificationFeedWrapper = new GetNotificationFeedWrapper();
+	private final Context context;
+	private final ActivityCache activityCache;
+	private final INotificationService wrappedService;
+
+	/**
+	 * Creates an instance.
+	 * @param context           valid context
+	 * @param wrappedService    the service to wrap
+	 */
+	public NotificationServiceCachingWrapper(Context context, INotificationService wrappedService) {
+		this.context = context;
+		this.activityCache = new ActivityCache(context);
+		this.wrappedService = wrappedService;
+	}
+
+	@Override
+	public CountResponse getNotificationCount(GetNotificationCountRequest request)
+		throws NetworkRequestException {
+
+		return wrappedService.getNotificationCount(request);
+	}
+
+	@Override
+	public GetNotificationFeedResponse getNotificationFeed(GetNotificationFeedRequest request)
+		throws NetworkRequestException {
+
+		return notificationFeedWrapper.getResponse(request);
+	}
+
+	@Override
+	public Response registerPushNotification(RegisterPushNotificationRequest request)
+		throws NetworkRequestException {
+
+		return wrappedService.registerPushNotification(request);
+	}
+
+	@Override
+	public Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
+		throws NetworkRequestException {
+
+		return wrappedService.unregisterPushNotification(request);
+	}
+
+	@Override
+	public Response updateNotificationStatus(UpdateNotificationStatusRequest request)
+		throws NetworkRequestException {
+
+		return wrappedService.updateNotificationStatus(request);
+	}
+
+	private class GetNotificationFeedWrapper
+		extends AbstractBatchRequestWrapper<GetNotificationFeedRequest, GetNotificationFeedResponse> {
+
+		@Override
+		protected GetNotificationFeedResponse getCachedResponse(GetNotificationFeedRequest request)
+			throws SQLException {
+
+			return activityCache.getNotificationFeedResponse();
+		}
+
+		@Override
+		protected GetNotificationFeedResponse getNetworkResponse(GetNotificationFeedRequest request)
+			throws NetworkRequestException {
+
+			GetNotificationFeedResponse response = wrappedService.getNotificationFeed(request);
+
+			for (ActivityView activityView : response.getData()) {
+				activityView.setUnread(activityCache.isActivityUnread(activityView.getHandle()));
+			}
+
+			if (isFirstDataRequest(request)) {
+				updateLastActivityHandle(response);
+				Preferences.getInstance().resetNotificationCount();
+			}
+
+			return response;
+		}
+
+		private void updateLastActivityHandle(GetNotificationFeedResponse response) {
+			String deliveredActivityHandle = response.getDeliveredActivityHandle();
+			String latestHandle;
+
+			if (!response.getData().isEmpty()) {
+				String firstItemHandle = response.getData().get(0).getHandle();
+
+				if (!TextUtils.isEmpty(response.getDeliveredActivityHandle())) {
+					latestHandle = firstItemHandle.compareTo(deliveredActivityHandle) < 0
+						? firstItemHandle : deliveredActivityHandle;
+				} else {
+					latestHandle = firstItemHandle;
+				}
+			} else {
+				latestHandle = deliveredActivityHandle;
+			}
+
+			if (activityCache.storeLastActivityHandle(latestHandle)) {
+				launchSync();
+			}
+		}
+
+		@Override
+		protected void storeResponse(GetNotificationFeedRequest request, GetNotificationFeedResponse response)
+			throws SQLException {
+
+			activityCache.storeActivityFeed(
+				ActivityCache.ActivityFeedType.NOTIFICATIONS,
+				response.getData(),
+				isFirstDataRequest(request)
+			);
+		}
+	}
+
+	private void launchSync() {
+		WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+	}
+}

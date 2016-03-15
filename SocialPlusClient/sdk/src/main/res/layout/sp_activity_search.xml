@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<android.support.v4.widget.DrawerLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/sp_drawerLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		>
+
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/sp_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:minHeight="?attr/actionBarSize"
+			style="?attr/sp_toolbarStyle"
+			>
+
+			<android.support.v7.widget.SearchView
+				android:id="@+id/sp_searchView"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				/>
+
+		</android.support.v7.widget.Toolbar>
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<FrameLayout
+				android:id="@+id/sp_content"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:descendantFocusability="beforeDescendants"
+				android:focusableInTouchMode="true"
+				android:foreground="?android:windowContentOverlay"
+				/>
+
+			<View style="@style/SocialPlusSdkDivider"/>
+
+			<View
+				android:id="@+id/sp_transparentCover"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				/>
+
+		</FrameLayout>
+
+	</LinearLayout>
+
+	<FrameLayout
+		android:id="@+id/sp_navigationLayout"
+		android:layout_width="@dimen/sp_drawer_width"
+		android:layout_height="match_parent"
+		android:layout_gravity="start"
+		android:background="@color/sp_drawer_background"/>
+
+</android.support.v4.widget.DrawerLayout>

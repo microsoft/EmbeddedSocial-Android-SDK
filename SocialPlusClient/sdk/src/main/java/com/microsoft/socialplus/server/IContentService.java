@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+package com.microsoft.socialplus.server;
+
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.FeedUserRequest;
+import com.microsoft.socialplus.server.model.UsersListResponse;
+import com.microsoft.socialplus.server.model.content.comments.AddCommentRequest;
+import com.microsoft.socialplus.server.model.content.comments.AddCommentResponse;
+import com.microsoft.socialplus.server.model.content.comments.GetCommentFeedRequest;
+import com.microsoft.socialplus.server.model.content.comments.GetCommentFeedResponse;
+import com.microsoft.socialplus.server.model.content.comments.GetCommentRequest;
+import com.microsoft.socialplus.server.model.content.comments.GetCommentResponse;
+import com.microsoft.socialplus.server.model.content.comments.RemoveCommentRequest;
+import com.microsoft.socialplus.server.model.content.replies.AddReplyRequest;
+import com.microsoft.socialplus.server.model.content.replies.AddReplyResponse;
+import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedRequest;
+import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedResponse;
+import com.microsoft.socialplus.server.model.content.replies.GetReplyRequest;
+import com.microsoft.socialplus.server.model.content.replies.GetReplyResponse;
+import com.microsoft.socialplus.server.model.content.replies.RemoveReplyRequest;
+import com.microsoft.socialplus.server.model.content.topics.AddTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.AddTopicResponse;
+import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
+import com.microsoft.socialplus.server.model.content.topics.GetTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.GetTopicResponse;
+import com.microsoft.socialplus.server.model.content.topics.HideTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.RemoveTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
+import com.microsoft.socialplus.server.model.content.topics.UpdateTopicRequest;
+import com.microsoft.socialplus.server.model.like.AddLikeRequest;
+import com.microsoft.socialplus.server.model.like.GetLikeFeedRequest;
+import com.microsoft.socialplus.server.model.like.RemoveLikeRequest;
+import com.microsoft.socialplus.server.model.pin.AddPinRequest;
+import com.microsoft.socialplus.server.model.pin.GetPinFeedRequest;
+import com.microsoft.socialplus.server.model.pin.RemovePinRequest;
+
+import retrofit2.Response;
+
+/**
+ * Interface for working with content: topics, replies, comments, images, pins, likes
+ */
+public interface IContentService {
+
+	// CONTENT
+
+	AddCommentResponse addComment(AddCommentRequest request)
+			throws NetworkRequestException;
+
+	AddReplyResponse addReply(AddReplyRequest request)
+			throws NetworkRequestException;
+
+	AddTopicResponse addTopic(AddTopicRequest request)
+			throws NetworkRequestException;
+
+	GetCommentResponse getComment(GetCommentRequest request)
+			throws NetworkRequestException;
+
+	GetCommentFeedResponse getCommentFeed(GetCommentFeedRequest request)
+			throws NetworkRequestException;
+
+	GetReplyResponse getReply(GetReplyRequest request)
+			throws NetworkRequestException;
+
+	GetReplyFeedResponse getReplyFeed(GetReplyFeedRequest request)
+			throws NetworkRequestException;
+
+	GetTopicResponse getTopic(GetTopicRequest request)
+			throws NetworkRequestException;
+
+	TopicsListResponse getTopicFeed(GetTopicFeedRequest request)
+			throws NetworkRequestException;
+
+	Response removeComment(RemoveCommentRequest request)
+			throws NetworkRequestException;
+
+	Response removeReply(RemoveReplyRequest request)
+			throws NetworkRequestException;
+
+	Response removeTopic(RemoveTopicRequest request)
+			throws NetworkRequestException;
+
+	Response updateTopic(UpdateTopicRequest request)
+			throws NetworkRequestException;
+
+	// LIKE
+
+	Response addLike(AddLikeRequest request)
+			throws NetworkRequestException;
+
+	UsersListResponse getLikeFeed(GetLikeFeedRequest request)
+			throws NetworkRequestException;
+
+	Response removeLike(RemoveLikeRequest request)
+			throws NetworkRequestException;
+
+	// PIN
+
+	Response addPin(AddPinRequest request)
+			throws NetworkRequestException;
+
+	TopicsListResponse getPinFeed(GetPinFeedRequest request)
+			throws NetworkRequestException;
+
+	Response removePin(RemovePinRequest request)
+			throws NetworkRequestException;
+
+	Response hideTopic(HideTopicRequest request) throws NetworkRequestException;
+}

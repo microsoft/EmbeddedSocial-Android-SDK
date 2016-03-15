@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.squareup.picasso.test">
+
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="22" />
+
+    <application>
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+                     android:targetPackage="com.squareup.picasso.test"
+                     android:handleProfiling="false"
+                     android:functionalTest="false"
+                     android:label="Tests for com.squareup.picasso.test"/>
+</manifest>

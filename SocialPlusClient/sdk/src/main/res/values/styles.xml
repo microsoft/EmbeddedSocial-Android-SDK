@@ -1,0 +1,257 @@
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="ResourceName"
+	>
+
+	<style name="SocialPlusSdkAppTheme.Stub" parent="Theme.AppCompat.NoActionBar">
+		<item name="android:windowActionBar">false</item>
+		<item name="android:windowNoTitle">true</item>
+	</style>
+
+	<style name="SocialPlusSdkThemeOverlayBaseFragment">
+		<item name="sp_listItemBackground">?attr/sp_buttonBackground</item>
+	</style>
+
+	<style name="SocialPlusSdkThemeOverlayContentFragment">
+		<item name="sp_recyclerViewBackground">?attr/sp_contentBackground</item>
+		<item name="sp_baseContentLayout">@layout/sp_content_view</item>
+		<item name="sp_baseContentViewId">@id/sp_recyclerView</item>
+	</style>
+
+	<style name="SocialPlusSdkThemeOverlayFeed">
+		<item name="sp_recyclerViewBackground">?attr/sp_topicFeedBackground</item>
+	</style>
+
+	<style name="SocialPlusSdkThemeOverlayTopic"/>
+
+	<style name="SocialPlusSdkNavigationItem">
+		<item name="android:minHeight">48dp</item>
+		<item name="android:background">?attr/sp_navigationItemBackground</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:paddingLeft">@dimen/sp_navigation_hor_padding</item>
+		<item name="android:paddingRight">@dimen/sp_navigation_hor_padding</item>
+	</style>
+
+	<style name="SocialPlusSdkToolbarStyleImage">
+		<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="android:background">@android:color/transparent</item>
+	</style>
+
+	<style name="SocialPlusSdkSearchViewStyle" parent="Widget.AppCompat.SearchView">
+		<item name="queryBackground">@null</item>
+		<item name="submitBackground">@null</item>
+		<item name="searchHintIcon">@null</item>
+		<item name="defaultQueryHint">@string/abc_search_hint</item>
+		<item name="searchIcon">@null</item>
+		<item name="layout">@layout/abc_search_view</item>
+		<item name="closeIcon">@drawable/abc_ic_clear_mtrl_alpha</item>
+		<item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>
+		<item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>
+		<item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
+		<item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line</item>
+	</style>
+
+	<!-- TODO: made light and dark variants -->
+	<style name="SocialPlusSdkEditTextStyle" parent="Base.Widget.AppCompat.EditText">
+		<item name="android:textColor">?attr/sp_textColorPrimary</item>
+		<item name="android:textColorHint">?attr/sp_textColorHint</item>
+		<item name="android:cursorVisible">true</item>
+		<item name="android:textCursorDrawable">?attr/sp_cursorDrawable</item>
+	</style>
+
+	<style name="SocialPlusSdkButton" parent="SocialPlusSdkTextCaption.Green">
+		<item name="android:gravity">center</item>
+		<item name="android:background">?attr/sp_buttonBackground</item>
+		<item name="android:paddingBottom">12dp</item>
+		<item name="android:paddingTop">12dp</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:paddingRight">10dp</item>
+	</style>
+
+	<style name="SocialPlusSdkButton.Large">
+		<item name="android:textSize">16dp</item>
+		<item name="android:textStyle">normal</item>
+	</style>
+
+	<style name="SocialPlusSdkBoundedButton" parent="SocialPlusSdkTextCaption.Green">
+		<item name="android:gravity">center</item>
+		<item name="android:minWidth">82dp</item>
+		<item name="android:minHeight">32dp</item>
+		<item name="android:layout_marginLeft">10dp</item>
+	</style>
+
+	<style name="SocialPlusSdkBoundedButton.Small">
+		<item name="android:minHeight">22dp</item>
+	</style>
+
+	<style name="SocialPlusSdkBoundedButton.Green">
+		<item name="android:background">@drawable/sp_button_green</item>
+		<item name="android:textColor">@color/sp_button_text_green</item>
+	</style>
+
+	<style name="SocialPlusSdkBoundedButton.Completed">
+		<item name="android:background">@drawable/sp_button_green_completed</item>
+		<item name="android:textColor">@color/sp_button_completed_text</item>
+	</style>
+
+	<style name="SocialPlusSdkTextHead">
+		<item name="android:textColor">?attr/sp_textColorPrimary</item>
+		<item name="android:textSize">@dimen/sp_text_head</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<style name="SocialPlusSdkTextSubhead">
+		<item name="android:textSize">@dimen/sp_text_subhead</item>
+		<item name="android:textColor">?attr/sp_textColorPrimary</item>
+	</style>
+
+	<style name="SocialPlusSdkTextSubhead.Green">
+		<item name="android:textSize">@dimen/sp_text_body2</item>
+		<item name="android:textColor">@color/sp_text_green</item>
+	</style>
+
+	<style name="SocialPlusSdkTextBody2">
+		<item name="android:textSize">@dimen/sp_text_body2</item>
+		<item name="android:textColor">?attr/sp_textColorSecondary</item>
+	</style>
+
+	<style name="SocialPlusSdkTextCaption">
+		<item name="android:textSize">@dimen/sp_text_caption</item>
+		<item name="android:textColor">?attr/sp_textColorSecondary</item>
+	</style>
+
+	<style name="SocialPlusSdkTextCaption.Green">
+		<item name="android:textColor">@color/sp_text_green</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:paddingLeft">@dimen/sp_padding_base</item>
+		<item name="android:paddingRight">@dimen/sp_padding_base</item>
+	</style>
+
+	<style name="SocialPlusSdkCardViewStyle">
+		<item name="android:layout_marginBottom">@dimen/sp_padding_card_vertical</item>
+		<item name="android:layout_marginLeft">@dimen/sp_padding_card_horizontal</item>
+		<item name="android:layout_marginRight">@dimen/sp_padding_card_horizontal</item>
+		<item name="android:layout_marginTop">@dimen/sp_padding_card_vertical</item>
+		<item name="cardCornerRadius">1dp</item>
+		<item name="cardElevation">@dimen/sp_card_shadow_size</item>
+		<item name="cardBackgroundColor">?attr/sp_cardBackground</item>
+	</style>
+
+	<style name="SocialPlusSdkGreenTextStyle">
+		<item name="android:textColor">@color/sp_text_green</item>
+		<item name="android:textSize">16dp</item>
+	</style>
+
+	<style name="SocialPlusSdkTabsStyle">
+		<item name="android:colorForeground">?attr/sp_tabsBottomLineColor</item>
+	</style>
+
+	<style name="SocialPlusSdkSecondaryTextStyle">
+		<item name="android:textColor">?attr/sp_textColorHint</item>
+		<item name="android:textSize">16dp</item>
+	</style>
+
+	<style name="SocialPlusSdkContentErrorMessage">
+		<item name="android:textColor">?attr/sp_textColorSecondary</item>
+		<item name="android:textSize">14dp</item>
+		<item name="android:padding">16dp</item>
+	</style>
+
+	<style name="SocialPlusSdkSignInButton">
+		<item name="android:textSize">14dp</item>
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:layout_marginLeft">0px</item>
+		<item name="android:layout_marginRight">0px</item>
+		<item name="android:layout_marginTop">2dp</item>
+		<item name="android:layout_marginBottom">2dp</item>
+		<item name="android:minHeight">40dp</item>
+		<item name="android:gravity">center_vertical|left</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:drawablePadding">16dp</item>
+	</style>
+
+	<style name="SocialPlusSdkFacebook" parent="SocialPlusSdkAppTheme.Light">
+		<item name="colorButtonNormal">#3b5997</item>
+	</style>
+
+	<style name="SocialPlusSdkTwitter" parent="SocialPlusSdkAppTheme.Light">
+		<item name="colorButtonNormal">#55aecc</item>
+	</style>
+
+	<style name="SocialPlusSdkMicrosoft" parent="SocialPlusSdkAppTheme.Light">
+		<item name="colorButtonNormal">#00aeef</item>
+	</style>
+
+	<style name="SocialPlusSdkGoogle" parent="SocialPlusSdkAppTheme.Light">
+		<item name="colorButtonNormal">#dc4b39</item>
+	</style>
+
+	<style name="SocialPlusSdkDivider">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1px</item>
+		<item name="android:background">?attr/sp_dividerColor</item>
+	</style>
+
+	<style name="SocialPlusSdkDivider.Tablet">
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_weight">1</item>
+	</style>
+
+	<style name="SocialPlusSdkOptionsItem">
+		<item name="android:singleLine">true</item>
+		<item name="android:layout_width">0dp</item>
+		<item name="android:background">?attr/sp_listItemBackground</item>
+		<item name="android:layout_height">58dp</item>
+		<item name="android:textSize">16dp</item>
+		<item name="android:textColor">?attr/sp_textColorSecondary</item>
+		<item name="android:gravity">center_vertical</item>
+	</style>
+
+	<style name="SocialPlusSdkOptionsItem.Phone">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:paddingRight">@dimen/sp_profile_margin_text</item>
+		<item name="android:paddingLeft">@dimen/sp_profile_margin_text</item>
+	</style>
+
+	<style name="SocialPlusSdkOptionsHeader" parent="SocialPlusSdkGreenTextStyle">
+		<item name="android:textColor">@color/sp_text_green</item>
+		<item name="android:textSize">14dp</item>
+		<item name="android:layout_marginRight">@dimen/sp_profile_margin_text</item>
+		<item name="android:layout_marginTop">@dimen/sp_profile_row_margin</item>
+		<item name="android:layout_marginBottom">@dimen/sp_padding_base</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<style name="SocialPlusSdkOptionsHeader.Phone">
+		<item name="android:layout_marginLeft">@dimen/sp_profile_margin_text</item>
+	</style>
+
+	<style name="SocialPlusSdkBottomButton" parent="Widget.AppCompat.Button.Borderless">
+		<item name="android:textColor">@color/sp_text_green</item>
+	</style>
+
+	<style name="SocialPlusSdkSignInButtonsLayout">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="SocialPlusSdkDivider.List">
+		<item name="android:visibility">gone</item>
+	</style>
+
+	<style name="SocialPlusSdkTextAddPhotoCaption">
+		<item name="android:background">?attr/sp_topicCoverBackground</item>
+		<item name="android:gravity">center</item>
+		<item name="android:textColor">?attr/sp_textColorPrimary</item>
+		<item name="android:textSize">@dimen/sp_text_subhead</item>
+	</style>
+
+</resources>
