@@ -4,11 +4,8 @@
 .idea
 .DS_Store
 build/
+gen/
 /picasso
 /LiveSdk
-/app/build
-/app/gen
-/app/src/main/gen
-/sdk/aar
 *.iml
 local.properties
