@@ -6,17 +6,21 @@
 
 package com.microsoft.socialplus.data.storage;
 
-import com.microsoft.socialplus.data.storage.request.wrapper.relationship.FollowFeedRequestWrapper;
-import com.microsoft.socialplus.data.storage.request.wrapper.relationship.UserFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.BlockedUserFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.FollowerFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.FollowingFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.PendingUserFeedRequestWrapper;
 import com.microsoft.socialplus.server.IRelationshipService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.BlockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
-import com.microsoft.socialplus.server.model.relationship.GetFollowFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.UnblockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.UnfollowUserRequest;
@@ -28,10 +32,10 @@ import retrofit2.Response;
  */
 public class RelationshipServiceCachingWrapper implements IRelationshipService {
 
-	private final UserFeedRequestWrapper blockedUsersWrapper;
-	private final UserFeedRequestWrapper pendingUsersWrapper;
-	private final FollowFeedRequestWrapper userFollowerFeedWrapper;
-	private final FollowFeedRequestWrapper userFollowingWrapper;
+	private final BlockedUserFeedRequestWrapper blockedUsersWrapper;
+	private final PendingUserFeedRequestWrapper pendingUsersWrapper;
+	private final FollowerFeedRequestWrapper userFollowerFeedWrapper;
+	private final FollowingFeedRequestWrapper userFollowingWrapper;
 
 	private final IRelationshipService wrappedService;
 
@@ -43,22 +47,22 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	public RelationshipServiceCachingWrapper(IRelationshipService wrappedService) {
 		this.wrappedService = wrappedService;
 		UserCache userCache = new UserCache();
-		userFollowingWrapper = new FollowFeedRequestWrapper(
+		userFollowingWrapper = new FollowingFeedRequestWrapper(
 			wrappedService::getUserFollowingFeed,
 			userCache,
 			UserCache.UserFeedType.FOLLOWING
 		);
-		userFollowerFeedWrapper = new FollowFeedRequestWrapper(
+		userFollowerFeedWrapper = new FollowerFeedRequestWrapper(
 			wrappedService::getUserFollowerFeed,
 			userCache,
 			UserCache.UserFeedType.FOLLOWER
 		);
-		blockedUsersWrapper = new UserFeedRequestWrapper(
+		blockedUsersWrapper = new BlockedUserFeedRequestWrapper(
 			wrappedService::getUserBlockedFeed,
 			userCache,
 			UserCache.UserFeedType.BLOCKED
 		);
-		pendingUsersWrapper = new UserFeedRequestWrapper(
+		pendingUsersWrapper = new PendingUserFeedRequestWrapper(
 			wrappedService::getUserPendingFeed,
 			userCache,
 			UserCache.UserFeedType.PENDING
@@ -81,22 +85,22 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	}
 
 	@Override
-	public UsersListResponse getUserBlockedFeed(FeedUserRequest request) throws NetworkRequestException {
+	public UsersListResponse getUserBlockedFeed(GetBlockedUsersRequest request) throws NetworkRequestException {
 		return blockedUsersWrapper.getResponse(request);
 	}
 
 	@Override
-	public UsersListResponse getUserFollowerFeed(GetFollowFeedRequest request) throws NetworkRequestException {
+	public UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request) throws NetworkRequestException {
 		return userFollowerFeedWrapper.getResponse(request);
 	}
 
 	@Override
-	public UsersListResponse getUserFollowingFeed(GetFollowFeedRequest request) throws NetworkRequestException {
+	public UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request) throws NetworkRequestException {
 		return userFollowingWrapper.getResponse(request);
 	}
 
 	@Override
-	public UsersListResponse getUserPendingFeed(FeedUserRequest request) throws NetworkRequestException {
+	public UsersListResponse getUserPendingFeed(GetPendingUsersRequest request) throws NetworkRequestException {
 		return pendingUsersWrapper.getResponse(request);
 	}
 

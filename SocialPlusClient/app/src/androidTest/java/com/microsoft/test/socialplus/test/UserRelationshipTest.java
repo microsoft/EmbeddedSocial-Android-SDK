@@ -9,7 +9,6 @@ package com.microsoft.test.socialplus.test;
 import com.microsoft.autorest.models.Visibility;
 import com.microsoft.socialplus.server.IRelationshipService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
@@ -17,7 +16,10 @@ import com.microsoft.socialplus.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.BlockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
-import com.microsoft.socialplus.server.model.relationship.GetFollowFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.UnblockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.UnfollowUserRequest;
@@ -50,14 +52,14 @@ public class UserRelationshipTest extends BaseRestServicesTest {
 
 				delay();
 
-				GetFollowFeedRequest getFollowerFeedRequest = new GetFollowFeedRequest(getSecondUser().getUserHandle());
+				GetFollowerFeedRequest getFollowerFeedRequest = new GetFollowerFeedRequest(getSecondUser().getUserHandle());
 				UsersListResponse userFollowerFeedResponse
 						= relationshipService.getUserFollowerFeed(prepareUserRequest(getFollowerFeedRequest, getSecondUser()));
 				List<UserCompactView> followers = userFollowerFeedResponse.getData();
 				assertNotNull(followers);
 				assertTrue(followers.size() == 1);
 				assertEquals(getFirstUser().getUserHandle(), userFollowerFeedResponse.getData().get(0).getHandle());
-				GetFollowFeedRequest getFollowingFeedRequest = new GetFollowFeedRequest(getFirstUser().getUserHandle());
+				GetFollowingFeedRequest getFollowingFeedRequest = new GetFollowingFeedRequest(getFirstUser().getUserHandle());
 				UsersListResponse userFollowingFeedResponse
 						= relationshipService.getUserFollowingFeed(prepareUserRequest(getFollowingFeedRequest, getFirstUser()));
 				List<UserCompactView> following = userFollowingFeedResponse.getData();
@@ -84,14 +86,14 @@ public class UserRelationshipTest extends BaseRestServicesTest {
 
 				delay();
 
-				GetFollowFeedRequest getFollowerFeedRequest = new GetFollowFeedRequest(getSecondUser().getUserHandle());
+				GetFollowerFeedRequest getFollowerFeedRequest = new GetFollowerFeedRequest(getSecondUser().getUserHandle());
 				UsersListResponse userFollowerFeedResponse
 						= relationshipService.getUserFollowerFeed(prepareUserRequest(getFollowerFeedRequest, getSecondUser()));
 
 				assertNotNull(userFollowerFeedResponse.getData());
 				assertTrue(userFollowerFeedResponse.getData().size() == 0);
 
-				GetFollowFeedRequest getFollowingFeedRequest = new GetFollowFeedRequest(getFirstUser().getUserHandle());
+				GetFollowingFeedRequest getFollowingFeedRequest = new GetFollowingFeedRequest(getFirstUser().getUserHandle());
 				UsersListResponse userFollowingFeedResponse
 						= relationshipService.getUserFollowingFeed(prepareUserRequest(getFollowingFeedRequest, getFirstUser()));
 
@@ -113,7 +115,7 @@ public class UserRelationshipTest extends BaseRestServicesTest {
 
 				delay();
 
-				FeedUserRequest getBlockFeedRequest = new FeedUserRequest();
+				GetBlockedUsersRequest getBlockFeedRequest = new GetBlockedUsersRequest();
 				UsersListResponse userBlockedFeedResponse
 						= relationshipService.getUserBlockedFeed(prepareUserRequest(getBlockFeedRequest, getFirstUser()));
 				assertNotNull(userBlockedFeedResponse.getData());
@@ -145,7 +147,7 @@ public class UserRelationshipTest extends BaseRestServicesTest {
 
 				delay();
 
-				FeedUserRequest getPendingFeedRequest = new FeedUserRequest();
+				GetPendingUsersRequest getPendingFeedRequest = new GetPendingUsersRequest();
 				UsersListResponse userPendingFeedResponse
 						= relationshipService.getUserPendingFeed(prepareUserRequest(getPendingFeedRequest, getSecondUser()));
 				List<UserCompactView> users = userPendingFeedResponse.getData();
@@ -166,8 +168,8 @@ public class UserRelationshipTest extends BaseRestServicesTest {
 
 				delay();
 
-				GetFollowFeedRequest getFollowerFeedRequest = new GetFollowFeedRequest(getSecondUser().getUserHandle());
-				GetFollowFeedRequest getFollowingFeedRequest = new GetFollowFeedRequest(getFirstUser().getUserHandle());
+				GetFollowerFeedRequest getFollowerFeedRequest = new GetFollowerFeedRequest(getSecondUser().getUserHandle());
+				GetFollowingFeedRequest getFollowingFeedRequest = new GetFollowingFeedRequest(getFirstUser().getUserHandle());
 
 				UsersListResponse userFollowerFeed
 						= relationshipService.getUserFollowerFeed(prepareUserRequest(getFollowerFeedRequest, getFirstUser()));

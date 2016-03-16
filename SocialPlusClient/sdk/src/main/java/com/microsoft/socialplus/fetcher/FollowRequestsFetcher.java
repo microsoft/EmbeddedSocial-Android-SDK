@@ -14,6 +14,7 @@ import com.microsoft.socialplus.fetcher.base.RequestType;
 import com.microsoft.socialplus.server.IRelationshipService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
+import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
 
 import java.util.List;
@@ -23,11 +24,11 @@ import java.util.List;
  */
 class FollowRequestsFetcher extends Fetcher<FollowRequest> {
 
-	private final BatchDataRequestExecutor<UserCompactView, FeedUserRequest> requestExecutor;
+	private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
 
 	public FollowRequestsFetcher() {
 		IRelationshipService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getRelationshipService();
-		requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, FeedUserRequest::new);
+		requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
 	}
 
 	@Override

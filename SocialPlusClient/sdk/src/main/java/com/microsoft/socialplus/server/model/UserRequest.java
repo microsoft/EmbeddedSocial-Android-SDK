@@ -6,8 +6,16 @@
 
 package com.microsoft.socialplus.server.model;
 
+import com.microsoft.autorest.MyBlockedUsersOperations;
+import com.microsoft.autorest.MyBlockedUsersOperationsImpl;
+import com.microsoft.autorest.MyFollowersOperations;
+import com.microsoft.autorest.MyFollowersOperationsImpl;
+import com.microsoft.autorest.MyFollowingOperations;
+import com.microsoft.autorest.MyFollowingOperationsImpl;
 import com.microsoft.autorest.MyNotificationsOperations;
 import com.microsoft.autorest.MyNotificationsOperationsImpl;
+import com.microsoft.autorest.MyPendingUsersOperations;
+import com.microsoft.autorest.MyPendingUsersOperationsImpl;
 import com.microsoft.autorest.MyPinsOperations;
 import com.microsoft.autorest.MyPinsOperationsImpl;
 import com.microsoft.autorest.MyPushRegistrationsOperations;
@@ -28,6 +36,12 @@ public class UserRequest extends BaseRequest {
 	protected static final MyPushRegistrationsOperations PUSH_REGISTRATION;
 	protected static final SessionsOperations SESSION;
 	protected static final MyPinsOperations PINS;
+	protected static final MyBlockedUsersOperations BLOCKED;
+	protected static final MyPendingUsersOperations PENDING;
+	protected static final MyFollowersOperations FOLLOWERS;
+	protected static final MyFollowingOperations FOLLOWING;
+
+
 
 	static {
 		USERS = new UsersOperationsImpl(RETROFIT, CLIENT);
@@ -35,6 +49,10 @@ public class UserRequest extends BaseRequest {
 		PUSH_REGISTRATION = new MyPushRegistrationsOperationsImpl(RETROFIT, CLIENT);
 		SESSION = new SessionsOperationsImpl(RETROFIT, CLIENT);
 		PINS = new MyPinsOperationsImpl(RETROFIT, CLIENT);
+		BLOCKED = new MyBlockedUsersOperationsImpl(RETROFIT, CLIENT);
+		PENDING = new MyPendingUsersOperationsImpl(RETROFIT, CLIENT);
+		FOLLOWERS = new MyFollowersOperationsImpl(RETROFIT, CLIENT);
+		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
 	}
 
 	//TODO: init all fields

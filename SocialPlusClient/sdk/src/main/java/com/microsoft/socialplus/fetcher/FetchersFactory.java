@@ -31,7 +31,9 @@ import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.socialplus.server.model.like.GetLikeFeedRequest;
 import com.microsoft.socialplus.server.model.pin.GetPinFeedRequest;
-import com.microsoft.socialplus.server.model.relationship.GetFollowFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.search.SearchRequest;
 import com.microsoft.socialplus.server.model.view.ActivityView;
 import com.microsoft.socialplus.server.model.view.ActivityViewAssertion;
@@ -64,15 +66,15 @@ public final class FetchersFactory {
 	}
 
 	public static Fetcher<UserCompactView> createFollowersFetcher(String userHandle) {
-		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserFollowerFeed, () -> new GetFollowFeedRequest(userHandle));
+		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserFollowerFeed, () -> new GetFollowerFeedRequest(userHandle));
 	}
 
 	public static Fetcher<UserCompactView> createFollowingFetcher(String userHandle) {
-		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserFollowingFeed, () -> new GetFollowFeedRequest(userHandle));
+		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserFollowingFeed, () -> new GetFollowingFeedRequest(userHandle));
 	}
 
 	public static Fetcher<UserCompactView> createBlockedUsersFetcher() {
-		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserBlockedFeed);
+		return createBatchFetcher(RELATIONSHIP_SERVICE::getUserBlockedFeed, () -> new GetBlockedUsersRequest());
 	}
 
 	public static Fetcher<Object> createCommentFeedFetcher(String topicHandle, TopicView topicView) {

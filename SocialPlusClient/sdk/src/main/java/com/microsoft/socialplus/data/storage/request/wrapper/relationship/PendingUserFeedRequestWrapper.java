@@ -8,19 +8,19 @@ package com.microsoft.socialplus.data.storage.request.wrapper.relationship;
 
 import com.microsoft.socialplus.data.storage.UserCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
+import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 
 import java.sql.SQLException;
 
-public class UserFeedRequestWrapper
-	extends AbstractBatchNetworkMethodWrapper<FeedUserRequest, UsersListResponse> {
+public class PendingUserFeedRequestWrapper
+	extends AbstractBatchNetworkMethodWrapper<GetPendingUsersRequest, UsersListResponse> {
 
 	protected final UserCache userCache;
 	protected final UserCache.UserFeedType feedType;
 
-	public UserFeedRequestWrapper(
-		INetworkMethod<FeedUserRequest, UsersListResponse> networkMethod,
+	public PendingUserFeedRequestWrapper(
+		INetworkMethod<GetPendingUsersRequest, UsersListResponse> networkMethod,
 		UserCache userCache,
 		UserCache.UserFeedType feedType) {
 
@@ -30,14 +30,14 @@ public class UserFeedRequestWrapper
 	}
 
 	@Override
-	protected void storeResponse(FeedUserRequest batchUserRequest,
+	protected void storeResponse(GetPendingUsersRequest batchUserRequest,
 	                             UsersListResponse usersListResponse) throws SQLException {
 
 		userCache.storeUserFeed(batchUserRequest, feedType, usersListResponse);
 	}
 
 	@Override
-	protected UsersListResponse getCachedResponse(FeedUserRequest batchUserRequest)
+	protected UsersListResponse getCachedResponse(GetPendingUsersRequest batchUserRequest)
 		throws SQLException {
 
 		return userCache.getResponse(feedType);

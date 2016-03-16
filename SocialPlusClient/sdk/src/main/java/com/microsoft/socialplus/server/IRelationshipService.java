@@ -7,13 +7,15 @@
 package com.microsoft.socialplus.server;
 
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.BlockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserRequest;
 import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
-import com.microsoft.socialplus.server.model.relationship.GetFollowFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.UnblockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.UnfollowUserRequest;
@@ -34,16 +36,16 @@ public interface IRelationshipService {
 	FollowUserResponse followUser(FollowUserRequest request)
 			throws NetworkRequestException;
 
-	UsersListResponse getUserBlockedFeed(FeedUserRequest request)
+	UsersListResponse getUserBlockedFeed(GetBlockedUsersRequest request)
 			throws NetworkRequestException;
 
-	UsersListResponse getUserFollowerFeed(GetFollowFeedRequest request)
+	UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request)
 			throws NetworkRequestException;
 
-	UsersListResponse getUserFollowingFeed(GetFollowFeedRequest request)
+	UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request)
 			throws NetworkRequestException;
 
-	UsersListResponse getUserPendingFeed(FeedUserRequest request)
+	UsersListResponse getUserPendingFeed(GetPendingUsersRequest request)
 			throws NetworkRequestException;
 
 	Response rejectUser(RejectFollowRequest request)
