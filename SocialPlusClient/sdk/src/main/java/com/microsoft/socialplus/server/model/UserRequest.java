@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.server.model;
 
+import com.microsoft.autorest.HashtagsOperations;
+import com.microsoft.autorest.HashtagsOperationsImpl;
 import com.microsoft.autorest.MyBlockedUsersOperations;
 import com.microsoft.autorest.MyBlockedUsersOperationsImpl;
 import com.microsoft.autorest.MyFollowersOperations;
@@ -40,8 +42,7 @@ public class UserRequest extends BaseRequest {
 	protected static final MyPendingUsersOperations PENDING;
 	protected static final MyFollowersOperations FOLLOWERS;
 	protected static final MyFollowingOperations FOLLOWING;
-
-
+	protected static final HashtagsOperations HASHTAGS;
 
 	static {
 		USERS = new UsersOperationsImpl(RETROFIT, CLIENT);
@@ -53,6 +54,7 @@ public class UserRequest extends BaseRequest {
 		PENDING = new MyPendingUsersOperationsImpl(RETROFIT, CLIENT);
 		FOLLOWERS = new MyFollowersOperationsImpl(RETROFIT, CLIENT);
 		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
+		HASHTAGS = new HashtagsOperationsImpl(RETROFIT, CLIENT);
 	}
 
 	//TODO: init all fields

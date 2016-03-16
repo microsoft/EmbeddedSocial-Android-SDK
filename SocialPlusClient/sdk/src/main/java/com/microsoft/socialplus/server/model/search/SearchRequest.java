@@ -6,14 +6,17 @@
 
 package com.microsoft.socialplus.server.model.search;
 
+import com.microsoft.autorest.SearchOperations;
+import com.microsoft.autorest.SearchOperationsImpl;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 public class SearchRequest extends FeedUserRequest {
 
-	private final String query;
+	protected static final SearchOperations SEARCH = new SearchOperationsImpl(RETROFIT, CLIENT);
 
-	public SearchRequest(String query) {
+	protected final String query;
+
+	protected SearchRequest(String query) {
 		this.query = query;
 	}
-
 }

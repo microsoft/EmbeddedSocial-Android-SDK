@@ -23,8 +23,9 @@ import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.ISearchService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.search.GetAutocompletedHashtagsRequest;
 import com.microsoft.socialplus.server.model.search.SearchRequest;
-import com.microsoft.socialplus.server.model.search.SearchTopicsAutocompleteResponse;
+import com.microsoft.socialplus.server.model.search.AutocompletedHashtagsResponse;
 
 import java.util.List;
 
@@ -99,7 +100,8 @@ public abstract class AbstractSocialPlusSearchSuggestionProvider extends Content
 			.getSearchService();
 		MatrixCursor cursor = null;
 		try {
-			SearchTopicsAutocompleteResponse response = searchService.searchTopicsAutocomplete(new SearchRequest(suggestionRequest));
+			AutocompletedHashtagsResponse response =
+					searchService.searchHashtagsAutocomplete(new GetAutocompletedHashtagsRequest(suggestionRequest));
 			cursor = new MatrixCursor(cursorColumns);
 			List<String> suggestions = response.getData();
 			for (int i = 0; i < suggestions.size(); i++) {

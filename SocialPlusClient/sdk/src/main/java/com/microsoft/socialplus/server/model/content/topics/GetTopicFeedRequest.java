@@ -59,27 +59,19 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 				serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken);
 				break;
 			default: // Based on popularity
-				serviceResponse = getPopularTopics(cursor, limit);
+				serviceResponse = getPopularTopics(getIntCursor(), limit);
 		}
 		return new TopicsListResponse(serviceResponse.getBody());
 	}
 
-	private ServiceResponse<FeedResponseTopicView> getPopularTopics(String cursor, int limit)
+	private ServiceResponse<FeedResponseTopicView> getPopularTopics(int cursor, int limit)
 			throws ServiceException, IOException {
-		int intCursor = 0;
-		try {
-			intCursor = Integer.parseInt(cursor);
-		} catch (NumberFormatException e) {
-			// TODO
-			e.printStackTrace();
-		}
-
 		if (topicFeedType == TopicFeedType.USER_POPULAR) {
 			// {userHandle}/topics/popular
-			return USER_TOPICS.getPopularTopics(query, intCursor, limit, appKey, bearerToken);
+			return USER_TOPICS.getPopularTopics(query, cursor, limit, appKey, bearerToken);
 		} else {
 			String timeRange = getTimeRange();
-			return TOPICS.getPopularTopics(timeRange, intCursor, limit, appKey, bearerToken);
+			return TOPICS.getPopularTopics(timeRange, cursor, limit, appKey, bearerToken);
 		}
 	}
 

@@ -27,14 +27,16 @@ import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.model.BaseRequest;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.ListResponse;
-import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.socialplus.server.model.like.GetLikeFeedRequest;
 import com.microsoft.socialplus.server.model.pin.GetPinFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
-import com.microsoft.socialplus.server.model.search.SearchRequest;
+import com.microsoft.socialplus.server.model.search.GetPopularUsersRequest;
+import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsRequest;
+import com.microsoft.socialplus.server.model.search.SearchTopicsRequest;
+import com.microsoft.socialplus.server.model.search.SearchUsersRequest;
 import com.microsoft.socialplus.server.model.view.ActivityView;
 import com.microsoft.socialplus.server.model.view.ActivityViewAssertion;
 import com.microsoft.socialplus.server.model.view.CommentView;
@@ -86,7 +88,7 @@ public final class FetchersFactory {
 	}
 
 	public static Fetcher<String> createTrendingHashtagsFetcher() {
-		return createFetcher(SEARCH_SERVICE::getTrendingHashtags, UserRequest::new);
+		return createFetcher(SEARCH_SERVICE::getTrendingHashtags, GetTrendingHashtagsRequest::new);
 	}
 
 	public static Fetcher<UserCompactView> createLikeFeedFetcher(String contentHandle, ContentType contentType) {
@@ -122,15 +124,15 @@ public final class FetchersFactory {
 	}
 
 	public static Fetcher<UserCompactView> createPopularUsersFetcher() {
-		return createBatchFetcher(SEARCH_SERVICE::getPopularUsers);
+		return createBatchFetcher(SEARCH_SERVICE::getPopularUsers, () -> new GetPopularUsersRequest());
 	}
 
 	public static Fetcher<UserCompactView> createSearchUsersFetcher(String query) {
-		return createBatchFetcher(SEARCH_SERVICE::searchUsers, () -> new SearchRequest(query));
+		return createBatchFetcher(SEARCH_SERVICE::searchUsers, () -> new SearchUsersRequest(query));
 	}
 
 	public static Fetcher<TopicView> createSearchTopicsFetcher(String query) {
-		return createBatchFetcher(SEARCH_SERVICE::searchTopics, () -> new SearchRequest(query));
+		return createBatchFetcher(SEARCH_SERVICE::searchTopics, () -> new SearchTopicsRequest(query));
 	}
 
 	public static Fetcher<UserCompactView> createFriendlistFetcher(IdentityProvider identityProvider, AuthorizationRequest authorizationRequest) {

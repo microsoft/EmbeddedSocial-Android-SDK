@@ -9,14 +9,16 @@ package com.microsoft.socialplus.data.storage;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractRequestWrapper;
 import com.microsoft.socialplus.server.ISearchService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
-import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
 import com.microsoft.socialplus.server.model.discover.FindUsersWithThirdPartyAccountsRequest;
+import com.microsoft.socialplus.server.model.search.GetAutocompletedHashtagsRequest;
+import com.microsoft.socialplus.server.model.search.GetPopularUsersRequest;
+import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsRequest;
 import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsResponse;
-import com.microsoft.socialplus.server.model.search.SearchRequest;
-import com.microsoft.socialplus.server.model.search.SearchTopicsAutocompleteResponse;
+import com.microsoft.socialplus.server.model.search.AutocompletedHashtagsResponse;
+import com.microsoft.socialplus.server.model.search.SearchTopicsRequest;
+import com.microsoft.socialplus.server.model.search.SearchUsersRequest;
 
 import java.sql.SQLException;
 
@@ -46,54 +48,55 @@ public class SearchServiceCachingWrapper implements ISearchService {
 	}
 
 	@Override
-	public GetTrendingHashtagsResponse getTrendingHashtags(UserRequest request)
+	public GetTrendingHashtagsResponse getTrendingHashtags(GetTrendingHashtagsRequest request)
 		throws NetworkRequestException {
 
 		return hashtagsRequestWrapper.getResponse(request);
 	}
 
 	@Override
-	public TopicsListResponse searchTopics(SearchRequest request)
+	public TopicsListResponse searchTopics(SearchTopicsRequest request)
 		throws NetworkRequestException {
 
 		return wrappedService.searchTopics(request);
 	}
 
 	@Override
-	public SearchTopicsAutocompleteResponse searchTopicsAutocomplete(SearchRequest request)
+	public AutocompletedHashtagsResponse searchHashtagsAutocomplete(GetAutocompletedHashtagsRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.searchTopicsAutocomplete(request);
+		return wrappedService.searchHashtagsAutocomplete(request);
 	}
 
 	@Override
-	public UsersListResponse searchUsers(SearchRequest request) throws NetworkRequestException {
+	public UsersListResponse searchUsers(SearchUsersRequest request) throws NetworkRequestException {
 		return wrappedService.searchUsers(request);
 	}
 
 	@Override
-	public UsersListResponse getPopularUsers(FeedUserRequest request) throws NetworkRequestException {
+	public UsersListResponse getPopularUsers(GetPopularUsersRequest request) throws NetworkRequestException {
 		return wrappedService.getPopularUsers(request);
 	}
 
-	private class TrendingHashtagsRequestWrapper extends AbstractRequestWrapper<UserRequest, GetTrendingHashtagsResponse> {
+	private class TrendingHashtagsRequestWrapper extends
+			AbstractRequestWrapper<GetTrendingHashtagsRequest, GetTrendingHashtagsResponse> {
 
 		@Override
-		protected GetTrendingHashtagsResponse getNetworkResponse(UserRequest request)
+		protected GetTrendingHashtagsResponse getNetworkResponse(GetTrendingHashtagsRequest request)
 			throws NetworkRequestException {
 
 			return wrappedService.getTrendingHashtags(request);
 		}
 
 		@Override
-		protected void storeResponse(UserRequest request, GetTrendingHashtagsResponse response)
+		protected void storeResponse(GetTrendingHashtagsRequest request, GetTrendingHashtagsResponse response)
 			throws SQLException {
 
 			searchHistory.storeTrendingHashtags(response.getData());
 		}
 
 		@Override
-		protected GetTrendingHashtagsResponse getCachedResponse(UserRequest request)
+		protected GetTrendingHashtagsResponse getCachedResponse(GetTrendingHashtagsRequest request)
 			throws SQLException {
 
 			return new GetTrendingHashtagsResponse(searchHistory.getTrendingHashtags());

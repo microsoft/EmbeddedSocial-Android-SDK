@@ -29,4 +29,13 @@ public class FeedUserRequest extends UserRequest {
 		this.cursor = continuationKey;
 	}
 
+	protected int getIntCursor() {
+		int cursor = 0;
+		try {
+			cursor = Integer.parseInt(getCursor());
+		} catch (NumberFormatException e){
+			e.printStackTrace();
+		}
+		return cursor;
+	}
 }

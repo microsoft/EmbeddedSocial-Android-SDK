@@ -10,9 +10,13 @@ import com.microsoft.socialplus.server.model.ListResponse;
 
 import java.util.List;
 
-public class SearchTopicsAutocompleteResponse implements ListResponse<String> {
+public class AutocompletedHashtagsResponse implements ListResponse<String> {
 
 	private List<String> suggestions;
+
+	public AutocompletedHashtagsResponse(List<String> suggestions) {
+		this.suggestions = suggestions;
+	}
 
 	@Override
 	public List<String> getData() {
