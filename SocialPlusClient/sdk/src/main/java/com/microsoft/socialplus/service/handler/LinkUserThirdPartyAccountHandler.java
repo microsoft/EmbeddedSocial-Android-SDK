@@ -16,6 +16,7 @@ import com.microsoft.socialplus.event.LinkUserThirdPartyAccountEvent;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.account.LinkThirdPartyRequest;
 import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
@@ -31,7 +32,7 @@ public class LinkUserThirdPartyAccountHandler implements IServiceIntentHandler<S
 		final SocialNetworkAccount account = intent.getExtras().getParcelable(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
 
 		IAccountService service = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
-		SignInWithThirdPartyRequest linkUserThirdPartyAccountRequest = new SignInWithThirdPartyRequest(
+		LinkThirdPartyRequest linkUserThirdPartyAccountRequest = new LinkThirdPartyRequest(
 				account.getAccountType(),
 				account.getThirdPartyAccessToken());
 

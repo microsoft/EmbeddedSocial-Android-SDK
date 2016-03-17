@@ -14,6 +14,8 @@ import com.microsoft.autorest.MyFollowersOperations;
 import com.microsoft.autorest.MyFollowersOperationsImpl;
 import com.microsoft.autorest.MyFollowingOperations;
 import com.microsoft.autorest.MyFollowingOperationsImpl;
+import com.microsoft.autorest.MyLinkedAccountsOperations;
+import com.microsoft.autorest.MyLinkedAccountsOperationsImpl;
 import com.microsoft.autorest.MyNotificationsOperations;
 import com.microsoft.autorest.MyNotificationsOperationsImpl;
 import com.microsoft.autorest.MyPendingUsersOperations;
@@ -43,6 +45,7 @@ public class UserRequest extends BaseRequest {
 	protected static final MyFollowersOperations FOLLOWERS;
 	protected static final MyFollowingOperations FOLLOWING;
 	protected static final HashtagsOperations HASHTAGS;
+	protected static final MyLinkedAccountsOperations LINKED_ACCOUNTS;
 
 	static {
 		USERS = new UsersOperationsImpl(RETROFIT, CLIENT);
@@ -55,6 +58,7 @@ public class UserRequest extends BaseRequest {
 		FOLLOWERS = new MyFollowersOperationsImpl(RETROFIT, CLIENT);
 		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
 		HASHTAGS = new HashtagsOperationsImpl(RETROFIT, CLIENT);
+		LINKED_ACCOUNTS = new MyLinkedAccountsOperationsImpl(RETROFIT, CLIENT);
 	}
 
 	//TODO: init all fields

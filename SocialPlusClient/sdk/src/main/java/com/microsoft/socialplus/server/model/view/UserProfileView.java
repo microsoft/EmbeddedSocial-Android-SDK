@@ -10,6 +10,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.autorest.models.FollowerStatus;
 import com.microsoft.autorest.models.FollowingStatus;
+import com.microsoft.autorest.models.Visibility;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.UniqueItem;
 
@@ -46,13 +47,13 @@ public class UserProfileView implements UniqueItem {
 	private boolean isPrivate;
 
 	@DatabaseField
-	private int totalTopics;
+	private long totalTopics;
 
 	@DatabaseField
-	private int totalFollowers;
+	private long totalFollowers;
 
 	@DatabaseField
-	private int totalFollowings;
+	private long totalFollowings;
 
 	@DatabaseField(columnName = DbSchemas.UserProfile.FOLLOWER_STATUS)
 	private String followerStatus;
@@ -64,6 +65,22 @@ public class UserProfileView implements UniqueItem {
 	 * For ORM.
 	 */
 	UserProfileView() {
+	}
+
+	public UserProfileView(com.microsoft.autorest.models.UserProfileView view) {
+		userHandle = view.getUserHandle();
+//		username =
+		firstName = view.getFirstName();
+		lastName = view.getLastName();
+		userPhotoUrl = view.getPhotoUrl();
+		bio = view.getBio();
+//		website =
+		isPrivate = view.getVisibility() == Visibility.PRIVATE;
+		totalTopics = view.getTotalTopics();
+		totalFollowers = view.getTotalFollowers();
+		totalFollowings = view.getTotalFollowing();
+		followerStatus = view.getFollowerStatus().toValue();
+		followingStatus = view.getFollowingStatus().toValue();
 	}
 
 	public String getHandle() {
@@ -103,15 +120,15 @@ public class UserProfileView implements UniqueItem {
 		return isPrivate;
 	}
 
-	public int getTotalTopics() {
+	public long getTotalTopics() {
 		return totalTopics;
 	}
 
-	public int getTotalFollowers() {
+	public long getTotalFollowers() {
 		return totalFollowers;
 	}
 
-	public int getTotalFollowings() {
+	public long getTotalFollowings() {
 		return totalFollowings;
 	}
 

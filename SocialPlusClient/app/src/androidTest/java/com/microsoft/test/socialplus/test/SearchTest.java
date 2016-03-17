@@ -11,8 +11,11 @@ import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
+import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsRequest;
 import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsResponse;
 import com.microsoft.socialplus.server.model.search.SearchRequest;
+import com.microsoft.socialplus.server.model.search.SearchTopicsRequest;
+import com.microsoft.socialplus.server.model.search.SearchUsersRequest;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
 import com.microsoft.test.socialplus.TestConstants;
@@ -32,7 +35,7 @@ public class SearchTest extends BaseRestServicesTest {
 	public void testTrendingHashtags() throws Exception {
 		AuthenticationResponse authenticationResponse = createRandomUser();
 		GetTrendingHashtagsResponse trendingHashtagsResponse
-			= searchService.getTrendingHashtags(prepareUserRequest(new UserRequest(), authenticationResponse));
+			= searchService.getTrendingHashtags(prepareUserRequest(new GetTrendingHashtagsRequest(), authenticationResponse));
 		List<String> hashtags = trendingHashtagsResponse.getData();
 		assertNotNull(hashtags);
 	}
@@ -44,7 +47,7 @@ public class SearchTest extends BaseRestServicesTest {
 			TestConstants.HASHTAG);
 		delay();
 		try {
-			SearchRequest searchTopicsRequest = new SearchRequest(TestConstants.HASHTAG);
+			SearchTopicsRequest searchTopicsRequest = new SearchTopicsRequest(TestConstants.HASHTAG);
 			TopicsListResponse searchTopicsResponse
 				= searchService.searchTopics(prepareUserRequest(searchTopicsRequest, authenticationResponse));
 			List<TopicView> topics = searchTopicsResponse.getData();
@@ -61,7 +64,7 @@ public class SearchTest extends BaseRestServicesTest {
 
 	public void testSearchUsers() throws Exception {
 		AuthenticationResponse authenticationResponse = createRandomUser();
-		SearchRequest searchUsersRequest = new SearchRequest(TestConstants.NAME);
+		SearchUsersRequest searchUsersRequest = new SearchUsersRequest(TestConstants.NAME);
 		UsersListResponse searchUsersResponse
 			= searchService.searchUsers(prepareUserRequest(searchUsersRequest, authenticationResponse));
 		List<UserCompactView> users = searchUsersResponse.getData();

@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.autorest.models.FollowerStatus;
-import com.microsoft.autorest.models.FollowingStatus;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.data.model.AccountData;
@@ -92,8 +91,10 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		} else {
 			viewHolder.bio.setVisibility(View.VISIBLE);
 		}
-		int followersCount = account.getFollowersCount();
-		viewHolder.followers.setText(resources.getQuantityString(R.plurals.sp_button_followers, followersCount, followersCount));
+		long followersCount = account.getFollowersCount();
+		// convert the followers count to a reasonable int for getQualityString (assumes count >= 0)
+		int intFollowersCount = followersCount > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int)followersCount;
+		viewHolder.followers.setText(resources.getQuantityString(R.plurals.sp_button_followers, intFollowersCount, followersCount));
 		viewHolder.following.setText(context.getString(R.string.sp_button_following, account.getFollowingCount()));
 		boolean canReadFollowers = isCurrentUser || account.arePostsReadable();
 		viewHolder.followers.setEnabled(canReadFollowers);

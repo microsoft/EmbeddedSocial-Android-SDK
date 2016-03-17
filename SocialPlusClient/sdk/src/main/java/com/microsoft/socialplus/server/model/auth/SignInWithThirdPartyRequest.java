@@ -32,6 +32,8 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 		request = new PostSessionRequest();
 		request.setIdentityProvider(identityProvider);
 		request.setAccessToken(thirdPartyAccessToken);
+		//TODO
+		//request.setRequestToken(requestToken);
 		request.setInstanceId(instanceID);
 		request.setCreateUser(false);
 	}

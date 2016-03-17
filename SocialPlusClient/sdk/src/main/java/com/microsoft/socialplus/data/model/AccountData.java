@@ -32,8 +32,8 @@ public class AccountData implements Parcelable {
 	private String bio;
 	private String thirdPartyAccountHandle;
 	private String thirdPartyAccessToken;
-	private int followersCount;
-	private int followingCount;
+	private long followersCount;
+	private long followingCount;
 	private boolean isPrivate;
 	private FollowerStatus followedStatus = FollowerStatus.NONE;
 
@@ -69,8 +69,8 @@ public class AccountData implements Parcelable {
 		this.bio = in.readString();
 		this.thirdPartyAccountHandle = in.readString();
 		this.thirdPartyAccessToken = in.readString();
-		this.followersCount = in.readInt();
-		this.followingCount = in.readInt();
+		this.followersCount = in.readLong();
+		this.followingCount = in.readLong();
 		this.isPrivate = in.readByte() != 0;
 		FollowerStatus status = FollowerStatus.fromValue(in.readString());
 		this.followedStatus = status != null ? status : FollowerStatus.NONE;
@@ -167,19 +167,19 @@ public class AccountData implements Parcelable {
 		this.thirdPartyAccessToken = thirdPartyAccessToken;
 	}
 
-	public int getFollowersCount() {
+	public long getFollowersCount() {
 		return followersCount;
 	}
 
-	public void setFollowersCount(int followersCount) {
+	public void setFollowersCount(long followersCount) {
 		this.followersCount = followersCount;
 	}
 
-	public int getFollowingCount() {
+	public long getFollowingCount() {
 		return followingCount;
 	}
 
-	public void setFollowingCount(int followingCount) {
+	public void setFollowingCount(long followingCount) {
 		this.followingCount = followingCount;
 	}
 
@@ -237,8 +237,8 @@ public class AccountData implements Parcelable {
 		dest.writeString(this.bio);
 		dest.writeString(this.thirdPartyAccountHandle);
 		dest.writeString(this.thirdPartyAccessToken);
-		dest.writeInt(this.followersCount);
-		dest.writeInt(this.followingCount);
+		dest.writeLong(this.followersCount);
+		dest.writeLong(this.followingCount);
 		dest.writeByte(isPrivate ? (byte) 1 : (byte) 0);
 		dest.writeString((this.followedStatus == null ? FollowerStatus.NONE : this.followedStatus).toValue());
 	}

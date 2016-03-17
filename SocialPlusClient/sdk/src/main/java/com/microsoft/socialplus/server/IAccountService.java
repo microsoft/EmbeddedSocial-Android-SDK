@@ -15,6 +15,7 @@ import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserProfileResponse;
 import com.microsoft.socialplus.server.model.account.GetUserRequest;
 import com.microsoft.socialplus.server.model.account.GetUserResponse;
+import com.microsoft.socialplus.server.model.account.LinkThirdPartyRequest;
 import com.microsoft.socialplus.server.model.account.UnlinkUserThirdPartyAccountRequest;
 import com.microsoft.socialplus.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.socialplus.server.model.account.UpdateUserPublicAccountInfoRequest;
@@ -46,10 +47,10 @@ public interface IAccountService {
 	GetUserProfileResponse getUserProfile(GetUserProfileRequest request)
 			throws NetworkRequestException;
 
-	UserPasswordResponse linkUserThirdPartyAccount(SignInWithThirdPartyRequest request)
+	Response linkUserThirdPartyAccount(LinkThirdPartyRequest request)
 			throws NetworkRequestException;
 
-	UserPasswordResponse unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request)
+	Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request)
 			throws NetworkRequestException;
 
 	Response updateUserPhoto(UpdateUserPhotoRequest request)

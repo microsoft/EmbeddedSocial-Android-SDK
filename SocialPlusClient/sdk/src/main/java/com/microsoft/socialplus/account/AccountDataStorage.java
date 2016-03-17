@@ -45,8 +45,8 @@ final class AccountDataStorage {
 				.putString(LAST_NAME, accountData.getLastName())
 				.putString(USERNAME, accountData.getUsername())
 				.putString(BIO, accountData.getBio())
-				.putInt(FOLLOWERS_COUNT, accountData.getFollowersCount())
-				.putInt(FOLLOWING_COUNT, accountData.getFollowingCount())
+				.putLong(FOLLOWERS_COUNT, accountData.getFollowersCount())
+				.putLong(FOLLOWING_COUNT, accountData.getFollowingCount())
 				.putBoolean(PRIVATE, accountData.isPrivate())
 				.putString(IDENTITY_PROVIDER, accountData.getIdentityProvider().toValue())
 				.putString(PHOTO_URL, accountData.getUserPhotoUrl())
@@ -64,8 +64,8 @@ final class AccountDataStorage {
 		accountData.setLastName(prefs.getString(LAST_NAME, ""));
 		accountData.setUsername(prefs.getString(USERNAME, ""));
 		accountData.setBio(prefs.getString(BIO, ""));
-		accountData.setFollowersCount(prefs.getInt(FOLLOWERS_COUNT, 0));
-		accountData.setFollowingCount(prefs.getInt(FOLLOWING_COUNT, 0));
+		accountData.setFollowersCount(prefs.getLong(FOLLOWERS_COUNT, 0));
+		accountData.setFollowingCount(prefs.getLong(FOLLOWING_COUNT, 0));
 		accountData.setIsPrivate(prefs.getBoolean(PRIVATE, false));
 		accountData.setIdentityProvider(IdentityProvider.fromValue(prefs.getString(IDENTITY_PROVIDER, "")));
 		accountData.setUserPhotoUrl(prefs.getString(PHOTO_URL, ""));
