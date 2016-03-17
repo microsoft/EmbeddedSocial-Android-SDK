@@ -10,6 +10,7 @@ import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserProfileResponse;
@@ -41,7 +42,7 @@ public interface IAccountService {
 	GetUserResponse getUser(GetUserRequest request)
 			throws NetworkRequestException;
 
-	GetUserAccountResponse getUserAccount(UserRequest request)
+	GetUserAccountResponse getUserAccount(GetUserAccountRequest request)
 			throws NetworkRequestException;
 
 	GetUserProfileResponse getUserProfile(GetUserProfileRequest request)

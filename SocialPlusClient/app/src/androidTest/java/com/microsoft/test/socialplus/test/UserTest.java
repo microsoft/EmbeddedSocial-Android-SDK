@@ -16,6 +16,7 @@ import com.microsoft.socialplus.server.IReportService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.ResourceAlreadyExistsException;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserProfileResponse;
@@ -67,14 +68,14 @@ public class UserTest extends BaseRestServicesTest {
 
 	public void testGetUserAccount() throws Exception {
 		AuthenticationResponse authenticationResponse = createRandomUser();
-		UserRequest userRequest = prepareUserRequest(new UserRequest(), authenticationResponse);
+		GetUserAccountRequest userRequest = prepareUserRequest(new GetUserAccountRequest(), authenticationResponse);
 		GetUserAccountResponse userAccount = accountService.getUserAccount(userRequest);
 		UserAccountView user = userAccount.getUser();
 		assertNotNull("user data is null", user);
 		assertEquals(user.getHandle(), authenticationResponse.getUserHandle());
 		assertNotNull("user first name is empty", user.getFirstName());
 		assertNotNull("user last name is empty", user.getLastName());
-		assertNotNull("user email is empty", user.getEmail());
+//		assertNotNull("user email is empty", user.getEmail()); //TODO email is unused
 		assertNotNull("username is empty", user.getUsername());
 	}
 

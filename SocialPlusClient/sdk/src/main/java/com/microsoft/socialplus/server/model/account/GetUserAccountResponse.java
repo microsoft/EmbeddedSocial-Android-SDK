@@ -6,7 +6,11 @@
 
 package com.microsoft.socialplus.server.model.account;
 
+import com.microsoft.autorest.models.LinkedAccountView;
+import com.microsoft.autorest.models.UserProfileView;
 import com.microsoft.socialplus.server.model.view.UserAccountView;
+
+import java.util.List;
 
 /**
  *

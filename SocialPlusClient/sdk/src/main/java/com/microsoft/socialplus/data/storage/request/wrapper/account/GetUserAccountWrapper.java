@@ -9,15 +9,16 @@ package com.microsoft.socialplus.data.storage.request.wrapper.account;
 import com.microsoft.socialplus.data.storage.UserCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 
 import java.sql.SQLException;
 
-public class GetUserAccountWrapper extends AbstractNetworkMethodWrapper<UserRequest, GetUserAccountResponse> {
+public class GetUserAccountWrapper extends AbstractNetworkMethodWrapper<GetUserAccountRequest, GetUserAccountResponse> {
 
 	private final UserCache userCache;
 
-	public GetUserAccountWrapper(INetworkMethod<UserRequest, GetUserAccountResponse> networkMethod,
+	public GetUserAccountWrapper(INetworkMethod<GetUserAccountRequest, GetUserAccountResponse> networkMethod,
 	                             UserCache userCache) {
 
 		super(networkMethod);
@@ -25,14 +26,14 @@ public class GetUserAccountWrapper extends AbstractNetworkMethodWrapper<UserRequ
 	}
 
 	@Override
-	protected void storeResponse(UserRequest request, GetUserAccountResponse response)
+	protected void storeResponse(GetUserAccountRequest request, GetUserAccountResponse response)
 		throws SQLException {
 
 		userCache.storeUserAccount(response.getUser());
 	}
 
 	@Override
-	protected GetUserAccountResponse getCachedResponse(UserRequest request)
+	protected GetUserAccountResponse getCachedResponse(GetUserAccountRequest request)
 		throws SQLException {
 
 		return new GetUserAccountResponse(userCache.getUserAccount(request.getUserHandle()));

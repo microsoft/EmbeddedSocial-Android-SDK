@@ -8,9 +8,11 @@ package com.microsoft.socialplus.server.model.view;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.microsoft.autorest.models.*;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.UniqueItem;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -65,6 +67,30 @@ public class UserAccountView implements UniqueItem {
 	 * For ORM.
 	 */
 	UserAccountView() {  }
+
+	public UserAccountView(com.microsoft.autorest.models.UserProfileView profileView,
+						   List<LinkedAccountView> linkedAccounts) {
+		userHandle = profileView.getUserHandle();
+//		username = //TODO remove unused fields
+		firstName = profileView.getUserHandle();
+		lastName = profileView.getLastName();
+		userPhotoUrl = profileView.getPhotoUrl();
+		bio = profileView.getBio();
+//		userWebsite;
+		isPrivate = profileView.getVisibility() == Visibility.PRIVATE;
+//		email;
+//		phoneNumber;
+//		gender;
+//		birthday;
+//		hasPassword;
+
+		thirdPartyAccounts = new ArrayList<>();
+		for (LinkedAccountView linkedAccount : linkedAccounts) {
+			IdentityProvider provider = linkedAccount.getIdentityProvider();
+			thirdPartyAccounts.add(
+					new ThirdPartyAccountView(provider.name(), linkedAccount.getAccountId(), provider));
+		}
+	}
 
 	@Override
 	public String getHandle() {

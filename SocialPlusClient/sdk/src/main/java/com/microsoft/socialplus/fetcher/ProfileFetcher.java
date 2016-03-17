@@ -16,6 +16,7 @@ import com.microsoft.socialplus.fetcher.base.RequestType;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserRequest;
@@ -71,7 +72,7 @@ class ProfileFetcher extends Fetcher<AccountData> {
 	}
 
 	private UserAccountView getUserAccount(IAccountService accountService, RequestType requestType) throws NetworkRequestException {
-		GetUserRequest userRequest = new GetUserRequest(userHandle);
+		GetUserAccountRequest userRequest = new GetUserAccountRequest();
 		if (requestType == RequestType.SYNC_WITH_CACHE) {
 			userRequest.forceCacheUsage();
 		}

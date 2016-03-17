@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.server.model.account;
 
+import com.microsoft.autorest.models.UserProfileView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
 
 /**
@@ -17,6 +18,10 @@ public class GetUserResponse {
 
 	public GetUserResponse(UserCompactView user) {
 		this.user = user;
+	}
+
+	public GetUserResponse(UserProfileView view) {
+		user = new UserCompactView(view);
 	}
 
 	public UserCompactView getUser() {

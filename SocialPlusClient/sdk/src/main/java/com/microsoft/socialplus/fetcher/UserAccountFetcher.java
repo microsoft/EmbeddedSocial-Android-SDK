@@ -13,6 +13,7 @@ import com.microsoft.socialplus.fetcher.base.Fetcher;
 import com.microsoft.socialplus.fetcher.base.RequestType;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserRequest;
 import com.microsoft.socialplus.server.model.view.UserAccountView;
@@ -28,7 +29,7 @@ public class UserAccountFetcher extends Fetcher<UserAccountView> {
 	protected List<UserAccountView> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
 		UserAccountView userAccount;
 		IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
-		GetUserRequest userRequest = new GetUserRequest(Preferences.getInstance().getUserHandle());
+		GetUserAccountRequest userRequest = new GetUserAccountRequest();
 		if (requestType == RequestType.SYNC_WITH_CACHE) {
 			userRequest.forceCacheUsage();
 		}

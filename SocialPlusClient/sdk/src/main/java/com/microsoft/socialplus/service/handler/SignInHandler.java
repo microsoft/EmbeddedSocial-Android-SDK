@@ -19,6 +19,7 @@ import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
@@ -68,8 +69,7 @@ public class SignInHandler extends ActionHandler {
 		throws NetworkRequestException {
 
 		String userHandle = response.getUserHandle();
-		UserRequest getUserRequest = new UserRequest();
-		getUserRequest.setUserHandle(userHandle);
+		GetUserAccountRequest getUserRequest = new GetUserAccountRequest();
 		GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
 		AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
 		if (!action.isCompleted()) {
