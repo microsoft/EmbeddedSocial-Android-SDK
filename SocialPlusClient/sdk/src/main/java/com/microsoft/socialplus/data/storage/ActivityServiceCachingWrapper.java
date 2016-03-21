@@ -25,10 +25,8 @@ public class ActivityServiceCachingWrapper implements IActivityService {
 		= new FollowingActivityFeedWrapper();
 
 	private final ActivityCache activityCache;
-	private final IActivityService wrappedService;
 
-	public ActivityServiceCachingWrapper(IActivityService wrappedService, Context context) {
-		this.wrappedService = wrappedService;
+	public ActivityServiceCachingWrapper(Context context) {
 		this.activityCache = new ActivityCache(context);
 	}
 
@@ -43,7 +41,7 @@ public class ActivityServiceCachingWrapper implements IActivityService {
 		protected ActivityFeedResponse getNetworkResponse(ActivityFeedRequest request)
 			throws NetworkRequestException {
 
-			return wrappedService.getFollowingActivityFeed(request);
+			return request.send();
 		}
 
 		@Override

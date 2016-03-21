@@ -66,52 +66,48 @@ public class ContentServiceCachingWrapper implements IContentService {
 	private final ReplyRequestWrapper replyRequestWrapper;
 	private final CommentRequestWrapper commentRequestWrapper;
 
-	private final IContentService wrappedService;
-
 	/**
 	 * Creates an instance.
-	 * @param wrappedService    content service to wrap
 	 */
-	public ContentServiceCachingWrapper(Context context, IContentService wrappedService) {
-		this.wrappedService = wrappedService;
+	public ContentServiceCachingWrapper(Context context) {
 		TopicCache topicCache = new TopicCache();
 		PostStorage postStorage = new PostStorage(context);
-		commentRequestWrapper = new CommentRequestWrapper(wrappedService::getComment, topicCache);
-		replyRequestWrapper = new ReplyRequestWrapper(wrappedService::getReply, topicCache);
-		topicFeedRequestWrapper = new TopicFeedRequestWrapper(wrappedService::getTopicFeed,
+		commentRequestWrapper = new CommentRequestWrapper(this::getComment, topicCache);
+		replyRequestWrapper = new ReplyRequestWrapper(this::getReply, topicCache);
+		topicFeedRequestWrapper = new TopicFeedRequestWrapper(this::getTopicFeed,
 			postStorage, topicCache);
-		topicRequestWrapper = new TopicRequestWrapper(wrappedService::getTopic, topicCache);
-		likeFeedRequestWrapper = new LikeFeedRequestWrapper(wrappedService::getLikeFeed, new UserCache());
-		pinRequestWrapper = new PinFeedRequestWrapper(wrappedService::getPinFeed, topicCache);
-		commentFeedRequestWrapper = new CommentFeedRequestWrapper(wrappedService::getCommentFeed,
+		topicRequestWrapper = new TopicRequestWrapper(this::getTopic, topicCache);
+		likeFeedRequestWrapper = new LikeFeedRequestWrapper(this::getLikeFeed, new UserCache());
+		pinRequestWrapper = new PinFeedRequestWrapper(this::getPinFeed, topicCache);
+		commentFeedRequestWrapper = new CommentFeedRequestWrapper(this::getCommentFeed,
 			topicCache, context);
-		replyFeedRequestWrapper = new ReplyFeedRequestWrapper(wrappedService::getReplyFeed,
+		replyFeedRequestWrapper = new ReplyFeedRequestWrapper(this::getReplyFeed,
 			topicCache, context);
 	}
 
 	@Override
 	public AddCommentResponse addComment(AddCommentRequest request) throws NetworkRequestException {
-		return wrappedService.addComment(request);
+		return request.send();
 	}
 
 	@Override
 	public Response addLike(AddLikeRequest request) throws NetworkRequestException {
-		return wrappedService.addLike(request);
+		return request.send();
 	}
 
 	@Override
 	public Response addPin(AddPinRequest request) throws NetworkRequestException {
-		return wrappedService.addPin(request);
+		return request.send();
 	}
 
 	@Override
 	public AddReplyResponse addReply(AddReplyRequest request) throws NetworkRequestException {
-		return wrappedService.addReply(request);
+		return request.send();
 	}
 
 	@Override
 	public AddTopicResponse addTopic(AddTopicRequest request) throws NetworkRequestException {
-		return wrappedService.addTopic(request);
+		return request.send();
 	}
 
 	@Override
@@ -156,36 +152,36 @@ public class ContentServiceCachingWrapper implements IContentService {
 
 	@Override
 	public Response removeComment(RemoveCommentRequest request) throws NetworkRequestException {
-		return wrappedService.removeComment(request);
+		return request.send();
 	}
 
 	@Override
 	public Response removeLike(RemoveLikeRequest request) throws NetworkRequestException {
-		return wrappedService.removeLike(request);
+		return request.send();
 	}
 
 	@Override
 	public Response removePin(RemovePinRequest request) throws NetworkRequestException {
-		return wrappedService.removePin(request);
+		return request.send();
 	}
 
 	@Override
 	public Response hideTopic(HideTopicRequest request) throws NetworkRequestException {
-		return wrappedService.hideTopic(request);
+		return request.send();
 	}
 
 	@Override
 	public Response removeReply(RemoveReplyRequest request) throws NetworkRequestException {
-		return wrappedService.removeReply(request);
+		return request.send();
 	}
 
 	@Override
 	public Response removeTopic(RemoveTopicRequest request) throws NetworkRequestException {
-		return wrappedService.removeTopic(request);
+		return request.send();
 	}
 
 	@Override
 	public Response updateTopic(UpdateTopicRequest request) throws NetworkRequestException {
-		return wrappedService.updateTopic(request);
+		return request.send();
 	}
 }

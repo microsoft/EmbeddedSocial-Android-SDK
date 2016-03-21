@@ -36,24 +36,21 @@ public class NotificationServiceCachingWrapper implements INotificationService {
 	private final GetNotificationFeedWrapper notificationFeedWrapper = new GetNotificationFeedWrapper();
 	private final Context context;
 	private final ActivityCache activityCache;
-	private final INotificationService wrappedService;
 
 	/**
 	 * Creates an instance.
 	 * @param context           valid context
-	 * @param wrappedService    the service to wrap
 	 */
-	public NotificationServiceCachingWrapper(Context context, INotificationService wrappedService) {
+	public NotificationServiceCachingWrapper(Context context) {
 		this.context = context;
 		this.activityCache = new ActivityCache(context);
-		this.wrappedService = wrappedService;
 	}
 
 	@Override
 	public CountResponse getNotificationCount(GetNotificationCountRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.getNotificationCount(request);
+		return request.send();
 	}
 
 	@Override
@@ -67,21 +64,21 @@ public class NotificationServiceCachingWrapper implements INotificationService {
 	public Response registerPushNotification(RegisterPushNotificationRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.registerPushNotification(request);
+		return request.send();
 	}
 
 	@Override
 	public Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.unregisterPushNotification(request);
+		return request.send();
 	}
 
 	@Override
 	public Response updateNotificationStatus(UpdateNotificationStatusRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.updateNotificationStatus(request);
+		return request.send();
 	}
 
 	private class GetNotificationFeedWrapper
@@ -98,7 +95,7 @@ public class NotificationServiceCachingWrapper implements INotificationService {
 		protected GetNotificationFeedResponse getNetworkResponse(GetNotificationFeedRequest request)
 			throws NetworkRequestException {
 
-			GetNotificationFeedResponse response = wrappedService.getNotificationFeed(request);
+			GetNotificationFeedResponse response = request.send();
 
 			for (ActivityView activityView : response.getData()) {
 				activityView.setUnread(activityCache.isActivityUnread(activityView.getHandle()));

@@ -29,22 +29,12 @@ public class SearchServiceCachingWrapper implements ISearchService {
 
 	private final TrendingHashtagsRequestWrapper hashtagsRequestWrapper = new TrendingHashtagsRequestWrapper();
 	private final SearchHistory searchHistory = new SearchHistory();
-	private final ISearchService wrappedService;
-
-	/**
-	 * Creates an instance.
-	 *
-	 * @param wrappedService the service to wrap
-	 */
-	public SearchServiceCachingWrapper(ISearchService wrappedService) {
-		this.wrappedService = wrappedService;
-	}
 
 	@Override
 	public UsersListResponse findUsersWithThirdPartyAccounts(FindUsersWithThirdPartyAccountsRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.findUsersWithThirdPartyAccounts(request);
+		return request.send();
 	}
 
 	@Override
@@ -58,24 +48,24 @@ public class SearchServiceCachingWrapper implements ISearchService {
 	public TopicsListResponse searchTopics(SearchTopicsRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.searchTopics(request);
+		return request.send();
 	}
 
 	@Override
 	public AutocompletedHashtagsResponse searchHashtagsAutocomplete(GetAutocompletedHashtagsRequest request)
 		throws NetworkRequestException {
 
-		return wrappedService.searchHashtagsAutocomplete(request);
+		return request.send();
 	}
 
 	@Override
 	public UsersListResponse searchUsers(SearchUsersRequest request) throws NetworkRequestException {
-		return wrappedService.searchUsers(request);
+		return request.send();
 	}
 
 	@Override
 	public UsersListResponse getPopularUsers(GetPopularUsersRequest request) throws NetworkRequestException {
-		return wrappedService.getPopularUsers(request);
+		return request.send();
 	}
 
 	private class TrendingHashtagsRequestWrapper extends
@@ -85,7 +75,7 @@ public class SearchServiceCachingWrapper implements ISearchService {
 		protected GetTrendingHashtagsResponse getNetworkResponse(GetTrendingHashtagsRequest request)
 			throws NetworkRequestException {
 
-			return wrappedService.getTrendingHashtags(request);
+			return request.send();
 		}
 
 		@Override

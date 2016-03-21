@@ -37,33 +37,29 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	private final FollowerFeedRequestWrapper userFollowerFeedWrapper;
 	private final FollowingFeedRequestWrapper userFollowingWrapper;
 
-	private final IRelationshipService wrappedService;
 
 	/**
 	 * Creates an instance.
-	 *
-	 * @param wrappedService service to wrap
 	 */
-	public RelationshipServiceCachingWrapper(IRelationshipService wrappedService) {
-		this.wrappedService = wrappedService;
+	public RelationshipServiceCachingWrapper() {
 		UserCache userCache = new UserCache();
 		userFollowingWrapper = new FollowingFeedRequestWrapper(
-			wrappedService::getUserFollowingFeed,
+			this::getUserFollowingFeed,
 			userCache,
 			UserCache.UserFeedType.FOLLOWING
 		);
 		userFollowerFeedWrapper = new FollowerFeedRequestWrapper(
-			wrappedService::getUserFollowerFeed,
+			this::getUserFollowerFeed,
 			userCache,
 			UserCache.UserFeedType.FOLLOWER
 		);
 		blockedUsersWrapper = new BlockedUserFeedRequestWrapper(
-			wrappedService::getUserBlockedFeed,
+			this::getUserBlockedFeed,
 			userCache,
 			UserCache.UserFeedType.BLOCKED
 		);
 		pendingUsersWrapper = new PendingUserFeedRequestWrapper(
-			wrappedService::getUserPendingFeed,
+			this::getUserPendingFeed,
 			userCache,
 			UserCache.UserFeedType.PENDING
 		);
@@ -71,17 +67,17 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 
 	@Override
 	public Response acceptUser(AcceptFollowRequest request) throws NetworkRequestException {
-		return wrappedService.acceptUser(request);
+		return request.send();
 	}
 
 	@Override
 	public Response blockUser(BlockUserRequest request) throws NetworkRequestException {
-		return wrappedService.blockUser(request);
+		return request.send();
 	}
 
 	@Override
 	public FollowUserResponse followUser(FollowUserRequest request) throws NetworkRequestException {
-		return wrappedService.followUser(request);
+		return request.send();
 	}
 
 	@Override
@@ -106,16 +102,16 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 
 	@Override
 	public Response rejectUser(RejectFollowRequest request) throws NetworkRequestException {
-		return wrappedService.rejectUser(request);
+		return request.send();
 	}
 
 	@Override
 	public Response unblockUser(UnblockUserRequest request) throws NetworkRequestException {
-		return wrappedService.unblockUser(request);
+		return request.send();
 	}
 
 	@Override
 	public Response unfollowUser(UnfollowUserRequest request) throws NetworkRequestException {
-		return wrappedService.unfollowUser(request);
+		return request.send();
 	}
 }

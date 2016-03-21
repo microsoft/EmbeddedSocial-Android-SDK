@@ -39,24 +39,22 @@ public class AccountServiceCachingWrapper implements IAccountService {
 	private final GetUserWrapper getUserWrapper;
 	private final GetUserProfileWrapper getUserProfileWrapper;
 	private final GetUserAccountWrapper getUserAccountWrapper;
-	private final IAccountService wrappedService;
 
-	public AccountServiceCachingWrapper(IAccountService wrappedService) {
-		this.wrappedService = wrappedService;
+	public AccountServiceCachingWrapper() {
 		UserCache userCache = new UserCache();
-		getUserWrapper = new GetUserWrapper(wrappedService::getUser, userCache);
-		getUserProfileWrapper = new GetUserProfileWrapper(wrappedService::getUserProfile, userCache);
-		getUserAccountWrapper = new GetUserAccountWrapper(wrappedService::getUserAccount, userCache);
+		getUserWrapper = new GetUserWrapper(this::getUser, userCache);
+		getUserProfileWrapper = new GetUserProfileWrapper(this::getUserProfile, userCache);
+		getUserAccountWrapper = new GetUserAccountWrapper(this::getUserAccount, userCache);
 	}
 
 	@Override
 	public AuthenticationResponse createUser(CreateUserRequest request) throws NetworkRequestException {
-		return wrappedService.createUser(request);
+		return request.send();
 	}
 
 	@Override
 	public Response deleteUser(DeleteUserRequest request) throws NetworkRequestException {
-		return wrappedService.deleteUser(request);
+		return request.send();
 	}
 
 	@Override
@@ -76,26 +74,26 @@ public class AccountServiceCachingWrapper implements IAccountService {
 
 	@Override
 	public Response linkUserThirdPartyAccount(LinkThirdPartyRequest request) throws NetworkRequestException {
-		return wrappedService.linkUserThirdPartyAccount(request);
+		return request.send();
 	}
 
 	@Override
 	public Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request) throws NetworkRequestException {
-		return wrappedService.unlinkUserThirdPartyAccount(request);
+		return request.send();
 	}
 
 	@Override
 	public Response updateUserPhoto(UpdateUserPhotoRequest request) throws NetworkRequestException {
-		return wrappedService.updateUserPhoto(request);
+		return request.send();
 	}
 
 	@Override
 	public Response updateUserPublicAccountInfo(UpdateUserPublicAccountInfoRequest request) throws NetworkRequestException {
-		return wrappedService.updateUserPublicAccountInfo(request);
+		return request.send();
 	}
 
 	@Override
 	public Response updateUserVisibility(UpdateUserVisibilityRequest request) throws NetworkRequestException {
-		return wrappedService.updateUserVisibility(request);
+		return request.send();
 	}
 }

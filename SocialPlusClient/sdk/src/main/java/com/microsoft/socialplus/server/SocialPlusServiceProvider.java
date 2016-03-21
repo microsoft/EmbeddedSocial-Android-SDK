@@ -14,6 +14,7 @@ import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.storage.AccountServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.ActivityServiceCachingWrapper;
+import com.microsoft.socialplus.data.storage.AuthenticationServiceWrapper;
 import com.microsoft.socialplus.data.storage.ContentServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.NotificationServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.RelationshipServiceCachingWrapper;
@@ -95,21 +96,14 @@ public final class SocialPlusServiceProvider {
 //			.setLog(logger)
 //			.build();
 
-		accountService = new AccountServiceCachingWrapper(retrofit.create(IAccountService.class));
-		activityService = new ActivityServiceCachingWrapper(
-				retrofit.create(IActivityService.class),
-			context
-		);
-		authenticationService = retrofit.create(IAuthenticationService.class);
-		contentService = new ContentServiceCachingWrapper(context, retrofit.create(IContentService.class));
-		notificationService = new NotificationServiceCachingWrapper(
-			context,
-				retrofit.create(INotificationService.class)
-		);
-		relationshipService = new RelationshipServiceCachingWrapper(
-				retrofit.create(IRelationshipService.class));
+		accountService = new AccountServiceCachingWrapper();
+		activityService = new ActivityServiceCachingWrapper(context);
+		authenticationService = new AuthenticationServiceWrapper();
+		contentService = new ContentServiceCachingWrapper(context);
+		notificationService = new NotificationServiceCachingWrapper(context);
+		relationshipService = new RelationshipServiceCachingWrapper();
 		reportService = retrofit.create(IReportService.class);
-		searchService = new SearchServiceCachingWrapper(retrofit.create(ISearchService.class));
+		searchService = new SearchServiceCachingWrapper();
 
 //		RestAdapter imageRestAdapter = new RestAdapter.Builder()
 //			.setClient(okClient)
