@@ -18,7 +18,6 @@ import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
@@ -66,7 +65,7 @@ public class SignInHandler extends ActionHandler {
 	}
 
 	private void handleSuccessfulResult(Action action, AuthenticationResponse response)
-		throws NetworkRequestException {
+			throws NetworkRequestException {
 
 		String userHandle = response.getUserHandle();
 		GetUserAccountRequest getUserRequest = new GetUserAccountRequest();
