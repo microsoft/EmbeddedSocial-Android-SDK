@@ -44,7 +44,7 @@ public class ThirdPartyAccountView {
 	}
 
 	public IdentityProvider getIdentityProvider() {
-		return IdentityProvider.valueOf(identityProvider);
+		return IdentityProvider.fromValue(identityProvider);
 	}
 
 	public String getAccountHandle() {

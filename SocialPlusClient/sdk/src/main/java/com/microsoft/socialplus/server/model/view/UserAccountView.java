@@ -72,7 +72,7 @@ public class UserAccountView implements UniqueItem {
 						   List<LinkedAccountView> linkedAccounts) {
 		userHandle = profileView.getUserHandle();
 //		username = //TODO remove unused fields
-		firstName = profileView.getUserHandle();
+		firstName = profileView.getFirstName();
 		lastName = profileView.getLastName();
 		userPhotoUrl = profileView.getPhotoUrl();
 		bio = profileView.getBio();
