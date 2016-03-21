@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.account;
 import com.microsoft.autorest.models.UserProfileView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -35,9 +36,14 @@ public class GetUserProfileRequest extends UserRequest {
 	}
 
 	@Override
-	public GetUserProfileResponse send() throws ServiceException, IOException {
-		ServiceResponse<UserProfileView> serviceResponse =
-				USERS.getUser(queryUserHandle, appKey, bearerToken);
+	public GetUserProfileResponse send() throws NetworkRequestException {
+		ServiceResponse<UserProfileView> serviceResponse;
+		try {
+		serviceResponse = USERS.getUser(queryUserHandle, appKey, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
 		return new GetUserProfileResponse(serviceResponse.getBody());
 	}
 }

@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.activity;
 import com.microsoft.autorest.models.FeedResponseActivityView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 import java.io.IOException;
@@ -16,9 +17,15 @@ import java.io.IOException;
 public class ActivityFeedRequest extends FeedUserRequest {
 
     @Override
-    public ActivityFeedResponse send() throws ServiceException, IOException {
-        ServiceResponse<FeedResponseActivityView> serviceResponse =
-                FOLLOWING.getActivities(bearerToken, getCursor(), getBatchSize());
+    public ActivityFeedResponse send() throws NetworkRequestException {
+        ServiceResponse<FeedResponseActivityView> serviceResponse;
+        try {
+            serviceResponse = FOLLOWING.getActivities(bearerToken, getCursor(), getBatchSize());
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return new ActivityFeedResponse(serviceResponse.getBody());
     }
 }

@@ -30,9 +30,11 @@ import com.microsoft.autorest.TopicsOperations;
 import com.microsoft.autorest.TopicsOperationsImpl;
 import com.microsoft.autorest.models.PlatformType;
 import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.RequestInfoProvider;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -114,9 +116,13 @@ public class BaseRequest {
 	 * @throws ServiceException
 	 * @throws IOException
 	 */
-	public <Response> Response send() throws ServiceException, IOException {
+	public <Response> Response send() throws NetworkRequestException {
 		// Fails if specific request does not override
 		throw new UnsupportedOperationException();
+	}
+
+	protected void checkResponseCode(ServiceResponse serviceResponse) {
+		// TODO implement
 	}
 
 	public void forceCacheUsage() {

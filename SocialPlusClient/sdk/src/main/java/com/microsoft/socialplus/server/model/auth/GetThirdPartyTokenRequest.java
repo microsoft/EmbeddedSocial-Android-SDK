@@ -12,6 +12,7 @@ import com.microsoft.autorest.models.GetRequestTokenResponse;
 import com.microsoft.autorest.models.IdentityProvider;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -28,9 +29,15 @@ public class GetThirdPartyTokenRequest extends UserRequest {
 	}
 
 	@Override
-	public ThirdPartyTokenResponse send() throws ServiceException, IOException {
-		ServiceResponse<GetRequestTokenResponse> serviceResponse =
-				REQUEST_TOKENS.getRequestToken(identityProvider, appKey, bearerToken);
+	public ThirdPartyTokenResponse send() throws NetworkRequestException {
+		ServiceResponse<GetRequestTokenResponse> serviceResponse;
+		try {
+			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, appKey, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new ThirdPartyTokenResponse(serviceResponse.getBody());
 	}
 }

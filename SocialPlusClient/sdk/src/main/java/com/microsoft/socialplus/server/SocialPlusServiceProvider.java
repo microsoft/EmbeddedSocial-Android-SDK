@@ -60,7 +60,7 @@ public final class SocialPlusServiceProvider {
 
 	static {
 		HTTP_CLIENT = new OkHttpClient();
-		HTTP_CLIENT.setConnectionPool(new ConnectionPool(0, 1000));
+		HTTP_CLIENT.setConnectionPool(new ConnectionPool(0, 1000)); // TODO check this is the correct value
 		HTTP_CLIENT.setRetryOnConnectionFailure(false);
 		HTTP_CLIENT.setConnectTimeout(DEFAULT_CONNECT_TIMEOUT, TimeUnit.SECONDS);
 		HTTP_CLIENT.setReadTimeout(DEFAULT_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);

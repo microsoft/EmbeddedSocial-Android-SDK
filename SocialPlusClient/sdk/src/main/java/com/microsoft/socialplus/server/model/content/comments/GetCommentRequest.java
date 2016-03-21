@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.content.comments;
 import com.microsoft.autorest.models.CommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -19,9 +20,15 @@ public class GetCommentRequest extends GenericCommentRequest {
 	}
 
 	@Override
-	public GetCommentResponse send() throws ServiceException, IOException {
-		ServiceResponse<CommentView> serviceResponse =
-				COMMENTS.getComment(commentHandle, bearerToken);
+	public GetCommentResponse send() throws NetworkRequestException {
+		ServiceResponse<CommentView> serviceResponse;
+		try {
+			serviceResponse = COMMENTS.getComment(commentHandle, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new GetCommentResponse(new com.microsoft.socialplus.server.model.view.CommentView(serviceResponse.getBody()));
 	}
 }

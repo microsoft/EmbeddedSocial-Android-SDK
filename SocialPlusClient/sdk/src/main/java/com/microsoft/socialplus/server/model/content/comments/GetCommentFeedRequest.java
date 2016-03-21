@@ -10,6 +10,7 @@ import com.microsoft.autorest.models.FeedResponseCommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.data.model.CommentFeedType;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 import java.io.IOException;
@@ -33,9 +34,14 @@ public final class GetCommentFeedRequest extends FeedUserRequest {
 	}
 
 	@Override
-	public GetCommentFeedResponse send() throws ServiceException, IOException {
-		ServiceResponse<FeedResponseCommentView> serviceResponse =
-				TOPIC_COMMENTS.getTopicComments(topicHandle, bearerToken, getCursor(), getBatchSize());
+	public GetCommentFeedResponse send() throws NetworkRequestException {
+		ServiceResponse<FeedResponseCommentView> serviceResponse;
+		try {
+			serviceResponse = TOPIC_COMMENTS.getTopicComments(topicHandle, bearerToken, getCursor(), getBatchSize());
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
 		return new GetCommentFeedResponse(serviceResponse.getBody());
 	}
 }

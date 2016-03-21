@@ -10,6 +10,7 @@ import com.microsoft.autorest.models.PostReplyRequest;
 import com.microsoft.autorest.models.PostReplyResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -27,9 +28,15 @@ public class AddReplyRequest extends UserRequest {
 	}
 
 	@Override
-	public AddReplyResponse send() throws ServiceException, IOException {
-		ServiceResponse<PostReplyResponse> serviceResponse =
-				COMMENT_REPLIES.postReply(commentHandle, request, bearerToken);
+	public AddReplyResponse send() throws NetworkRequestException {
+		ServiceResponse<PostReplyResponse> serviceResponse;
+		try {
+			serviceResponse = COMMENT_REPLIES.postReply(commentHandle, request, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new AddReplyResponse(serviceResponse.getBody().getReplyHandle());
 	}
 }

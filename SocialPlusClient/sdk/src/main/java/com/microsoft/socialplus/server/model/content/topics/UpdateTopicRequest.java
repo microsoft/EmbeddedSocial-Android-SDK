@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.content.topics;
 import com.microsoft.autorest.models.PutTopicRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -27,9 +28,15 @@ public class UpdateTopicRequest extends GenericTopicRequest {
 	}
 
 	@Override
-	public Response send() throws ServiceException, IOException {
-		ServiceResponse<Object> serviceResponse =
-				TOPICS.putTopic(topicHandle, request, bearerToken);
+	public Response send() throws NetworkRequestException {
+		ServiceResponse<Object> serviceResponse;
+		try {
+			serviceResponse = TOPICS.putTopic(topicHandle, request, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return serviceResponse.getResponse();
 	}
 }

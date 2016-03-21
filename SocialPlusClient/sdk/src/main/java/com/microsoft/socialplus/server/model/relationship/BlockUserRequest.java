@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.relationship;
 import com.microsoft.autorest.models.PostBlockedUserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -21,10 +22,17 @@ public class BlockUserRequest extends UserRelationshipRequest {
     }
 
     @Override
-    public Response send() throws ServiceException, IOException {
+    public Response send() throws NetworkRequestException {
         PostBlockedUserRequest request = new PostBlockedUserRequest();
         request.setUserHandle(relationshipUserHandle);
-        ServiceResponse<Object> serviceResponse = BLOCKED.postBlockedUser(request, bearerToken);
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = BLOCKED.postBlockedUser(request, bearerToken);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return serviceResponse.getResponse();
     }
 }

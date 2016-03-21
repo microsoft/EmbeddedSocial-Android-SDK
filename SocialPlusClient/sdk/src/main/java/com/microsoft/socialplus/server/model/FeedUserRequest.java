@@ -30,12 +30,17 @@ public class FeedUserRequest extends UserRequest {
 	}
 
 	protected int getIntCursor() {
-		int cursor = 0;
+		if (cursor == null) {
+			// there is no cursor yet
+			return 0;
+		}
+
+		int intCursor = 0;
 		try {
-			cursor = Integer.parseInt(getCursor());
+			intCursor = Integer.parseInt(getCursor());
 		} catch (NumberFormatException e){
 			e.printStackTrace();
 		}
-		return cursor;
+		return intCursor;
 	}
 }

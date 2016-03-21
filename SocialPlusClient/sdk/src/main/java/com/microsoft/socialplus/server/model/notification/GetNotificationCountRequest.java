@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.notification;
 import com.microsoft.autorest.models.CountResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -16,9 +17,15 @@ import java.io.IOException;
 public class GetNotificationCountRequest extends UserRequest {
 
     @Override
-    public CountResponse send() throws ServiceException, IOException {
-        ServiceResponse<CountResponse> serviceResponse =
-                NOTIFICATIONS.getNotificationsCount(bearerToken);
+    public CountResponse send() throws NetworkRequestException {
+        ServiceResponse<CountResponse> serviceResponse;
+        try {
+            serviceResponse = NOTIFICATIONS.getNotificationsCount(bearerToken);
+        } catch (ServiceException |IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return serviceResponse.getBody();
     }
 }

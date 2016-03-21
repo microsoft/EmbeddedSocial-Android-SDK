@@ -12,6 +12,7 @@ import com.microsoft.autorest.models.PostTopicResponse;
 import com.microsoft.autorest.models.PublisherType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -25,9 +26,15 @@ public final class AddTopicRequest extends UserRequest {
 	}
 
 	@Override
-	public AddTopicResponse send() throws ServiceException, IOException {
-		ServiceResponse<PostTopicResponse> serviceResponse =
-				TOPICS.postTopic(body, bearerToken);
+	public AddTopicResponse send() throws NetworkRequestException {
+		ServiceResponse<PostTopicResponse> serviceResponse;
+		try {
+			serviceResponse = TOPICS.postTopic(body, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new AddTopicResponse(serviceResponse.getBody().getTopicHandle());
 	}
 

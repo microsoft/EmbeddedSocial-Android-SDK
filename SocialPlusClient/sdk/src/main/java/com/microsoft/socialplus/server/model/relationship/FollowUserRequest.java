@@ -11,6 +11,7 @@ import com.microsoft.autorest.models.PostBlockedUserRequest;
 import com.microsoft.autorest.models.PostFollowingRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -23,10 +24,17 @@ public class FollowUserRequest extends UserRelationshipRequest {
     }
 
     @Override
-    public FollowUserResponse send() throws ServiceException, IOException {
+    public FollowUserResponse send() throws NetworkRequestException {
         PostFollowingRequest request = new PostFollowingRequest();
         request.setUserHandle(relationshipUserHandle);
-        ServiceResponse<Object> serviceResponse = FOLLOWING.postFollowing(request, bearerToken);
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = FOLLOWING.postFollowing(request, bearerToken);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return new FollowUserResponse(FollowingStatus.FOLLOW); // TODO fix this logic
     }
 }

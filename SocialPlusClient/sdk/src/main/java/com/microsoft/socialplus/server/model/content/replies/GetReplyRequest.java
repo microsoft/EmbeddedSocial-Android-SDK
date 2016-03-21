@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.content.replies;
 import com.microsoft.autorest.models.ReplyView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -18,9 +19,15 @@ public class GetReplyRequest extends GenericReplyRequest {
 	}
 
 	@Override
-	public GetReplyResponse send() throws ServiceException, IOException {
-		ServiceResponse<ReplyView> serviceResponse =
-				REPLIES.getReply(replyHandle, bearerToken);
+	public GetReplyResponse send() throws NetworkRequestException {
+		ServiceResponse<ReplyView> serviceResponse;
+		try {
+			serviceResponse = REPLIES.getReply(replyHandle, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new GetReplyResponse(
 				new com.microsoft.socialplus.server.model.view.ReplyView(serviceResponse.getBody()));
 	}

@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.account;
 import com.microsoft.autorest.models.IdentityProvider;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -24,9 +25,14 @@ public class UnlinkUserThirdPartyAccountRequest extends UserRequest {
 	}
 
 	@Override
-	public Response send() throws ServiceException, IOException {
-		ServiceResponse<Object> serviceResponse =
-				LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider.toValue(), bearerToken);
+	public Response send() throws NetworkRequestException {
+		ServiceResponse<Object> serviceResponse;
+		try {
+			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider.toValue(), bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
 		return serviceResponse.getResponse();
 	}
 }

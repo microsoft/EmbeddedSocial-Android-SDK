@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.account;
 import com.microsoft.autorest.models.PutUserInfoRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -30,8 +31,14 @@ public class UpdateUserPublicAccountInfoRequest extends UserRequest {
 	}
 
 	@Override
-	public Response send() throws ServiceException, IOException {
-		ServiceResponse<Object> serviceResponse = USERS.putUserInfo(request, bearerToken);
+	public Response send() throws NetworkRequestException {
+		ServiceResponse<Object> serviceResponse;
+		try {
+			serviceResponse = USERS.putUserInfo(request, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
 		return serviceResponse.getResponse();
 	}
 }

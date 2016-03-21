@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.content.replies;
 import com.microsoft.autorest.models.FeedResponseReplyView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 import java.io.IOException;
@@ -26,9 +27,15 @@ public class GetReplyFeedRequest extends FeedUserRequest {
 	}
 
 	@Override
-	public GetReplyFeedResponse send() throws ServiceException, IOException {
-		ServiceResponse<FeedResponseReplyView> serviceResponse =
-				COMMENT_REPLIES.getReplies(commentHandle, bearerToken, getCursor(), getBatchSize());
+	public GetReplyFeedResponse send() throws NetworkRequestException {
+		ServiceResponse<FeedResponseReplyView> serviceResponse;
+		try {
+			serviceResponse = COMMENT_REPLIES.getReplies(commentHandle, bearerToken, getCursor(), getBatchSize());
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new GetReplyFeedResponse(serviceResponse.getBody());
 	}
 }

@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.notification;
 import com.microsoft.autorest.models.FeedResponseActivityView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 import java.io.IOException;
@@ -16,9 +17,15 @@ import java.io.IOException;
 public class GetNotificationFeedRequest extends FeedUserRequest {
 
     @Override
-    public GetNotificationFeedResponse send() throws ServiceException, IOException {
-        ServiceResponse<FeedResponseActivityView> serviceResponse =
-                NOTIFICATIONS.getNotifications(bearerToken, getCursor(), getBatchSize());
+    public GetNotificationFeedResponse send() throws NetworkRequestException {
+        ServiceResponse<FeedResponseActivityView> serviceResponse;
+        try {
+            serviceResponse = NOTIFICATIONS.getNotifications(bearerToken, getCursor(), getBatchSize());
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return new GetNotificationFeedResponse(serviceResponse.getBody());
     }
 }

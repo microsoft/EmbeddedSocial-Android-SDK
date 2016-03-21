@@ -10,6 +10,7 @@ import com.microsoft.autorest.models.ContentType;
 import com.microsoft.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 
@@ -36,26 +37,32 @@ public class GetLikeFeedRequest extends FeedUserRequest {
 		return contentType;
 	}
 
-	public UsersListResponse send() throws ServiceException, IOException {
+	public UsersListResponse send() throws NetworkRequestException {
 		ServiceResponse<FeedResponseUserCompactView> serviceResponse;
 		String cursor = getCursor();
 		int batchSize = getBatchSize();
-		switch (contentType) {
-			case TOPIC:
-				serviceResponse = TOPIC_LIKES.getLikes(contentHandle, cursor,
-						batchSize, appKey, bearerToken);
-				break;
-			case COMMENT:
-				serviceResponse = COMMENT_LIKES.getLikes(contentHandle, cursor,
-						batchSize, appKey, bearerToken);
-				break;
-			case REPLY:
-				serviceResponse = REPLY_LIKES.getLikes(contentHandle, cursor,
-						batchSize, appKey, bearerToken);
-				break;
-			default:
-				throw new IllegalStateException("Unknown type for like");
+		try {
+			switch (contentType) {
+				case TOPIC:
+					serviceResponse = TOPIC_LIKES.getLikes(contentHandle, cursor,
+							batchSize, appKey, bearerToken);
+					break;
+				case COMMENT:
+					serviceResponse = COMMENT_LIKES.getLikes(contentHandle, cursor,
+							batchSize, appKey, bearerToken);
+					break;
+				case REPLY:
+					serviceResponse = REPLY_LIKES.getLikes(contentHandle, cursor,
+							batchSize, appKey, bearerToken);
+					break;
+				default:
+					throw new IllegalStateException("Unknown type for like");
+			}
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
 		}
+		checkResponseCode(serviceResponse);
+
 		return new UsersListResponse(serviceResponse.getBody());
 	}
 }

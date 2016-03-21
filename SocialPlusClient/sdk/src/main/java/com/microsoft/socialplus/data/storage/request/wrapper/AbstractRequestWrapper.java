@@ -78,11 +78,10 @@ public abstract class AbstractRequestWrapper<Request extends BaseRequest, Respon
 				response = request.send();
 				onNetworkResponseReceived(request, response);
 				storeResponseSafely(request, response);
-			} catch (ServiceException|IOException e) {
+			} catch (NetworkRequestException e) {
 				DebugLog.logException(e);
 				if (!isFirstDataRequest(request)) {
-					// TODO figure out how to populate this exception
-					throw new NetworkRequestException();
+					throw e;
 				}
 				try {
 					response = getCachedResponse(request);

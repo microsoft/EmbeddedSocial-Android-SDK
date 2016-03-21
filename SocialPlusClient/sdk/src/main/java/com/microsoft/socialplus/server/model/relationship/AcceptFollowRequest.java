@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.relationship;
 import com.microsoft.autorest.models.PostFollowerRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -21,10 +22,17 @@ public class AcceptFollowRequest extends UserRelationshipRequest {
     }
 
     @Override
-    public Response send() throws ServiceException, IOException {
+    public Response send() throws NetworkRequestException {
         PostFollowerRequest request = new PostFollowerRequest();
         request.setUserHandle(relationshipUserHandle);
-        ServiceResponse<Object> serviceResponse = FOLLOWERS.postFollower(request, bearerToken);
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = FOLLOWERS.postFollower(request, bearerToken);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return serviceResponse.getResponse();
     }
 }

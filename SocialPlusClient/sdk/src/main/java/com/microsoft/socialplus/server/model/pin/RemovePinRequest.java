@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.pin;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.utils.ObjectUtils;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -21,8 +22,15 @@ public class RemovePinRequest extends GenericPinRequest {
     }
 
     @Override
-    public Response send() throws ServiceException, IOException {
-        ServiceResponse<Object> serviceResponse = PINS.deletePin(topicHandle, bearerToken);
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = PINS.deletePin(topicHandle, bearerToken);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return serviceResponse.getResponse();
     }
 }

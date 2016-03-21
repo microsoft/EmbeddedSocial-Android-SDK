@@ -17,6 +17,7 @@ import com.microsoft.autorest.models.PostReportRequest;
 import com.microsoft.autorest.models.Reason;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -50,21 +51,27 @@ public class ReportContentRequest extends UserRequest {
 	}
 
 	@Override
-	public Response send() throws ServiceException, IOException {
+	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
-		switch (contentType) {
-			case TOPIC:
-				serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, bearerToken);
-				break;
-			case COMMENT:
-				serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, bearerToken);
-				break;
-			case REPLY:
-				serviceResponse = REPLY_REPORT.postReport(contentHandle, request, bearerToken);
-				break;
-			default:
-				throw new IllegalStateException("Unknown type for like");
+		try {
+			switch (contentType) {
+				case TOPIC:
+					serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, bearerToken);
+					break;
+				case COMMENT:
+					serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, bearerToken);
+					break;
+				case REPLY:
+					serviceResponse = REPLY_REPORT.postReport(contentHandle, request, bearerToken);
+					break;
+				default:
+					throw new IllegalStateException("Unknown type for like");
+			}
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
 		}
+		checkResponseCode(serviceResponse);
+
 		return serviceResponse.getResponse();
 	}
 }

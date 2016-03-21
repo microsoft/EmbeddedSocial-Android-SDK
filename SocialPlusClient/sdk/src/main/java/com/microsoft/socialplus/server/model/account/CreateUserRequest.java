@@ -13,6 +13,7 @@ import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.Options;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 
@@ -29,8 +30,15 @@ public final class CreateUserRequest extends UserRequest {
 	}
 
 	@Override
-	public AuthenticationResponse send() throws ServiceException, IOException {
-		ServiceResponse<PostUserResponse> serviceResponse = USERS.postUser(body, appKey, bearerToken);
+	public AuthenticationResponse send() throws NetworkRequestException {
+		ServiceResponse<PostUserResponse> serviceResponse;
+		try {
+			serviceResponse = USERS.postUser(body, appKey, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new AuthenticationResponse(serviceResponse.getBody());
 	}
 

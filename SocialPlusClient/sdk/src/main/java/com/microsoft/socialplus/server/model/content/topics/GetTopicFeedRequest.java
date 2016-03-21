@@ -13,6 +13,7 @@ import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.utils.EnumUtils;
 import com.microsoft.socialplus.data.model.TopicFeedType;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 import java.io.IOException;
@@ -42,25 +43,30 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 	}
 
 	@Override
-	public TopicsListResponse send() throws ServiceException, IOException {
+	public TopicsListResponse send() throws NetworkRequestException {
 		ServiceResponse<FeedResponseTopicView> serviceResponse;
 		String cursor = getCursor();
 		int limit = getBatchSize();
-		switch (topicFeedType) {
-			case USER_RECENT:
-				// {userHandle}/topics
-				serviceResponse = USER_TOPICS.getTopics(query, cursor, limit, appKey, bearerToken);
-				break;
-			case FOLLOWING_RECENT:
-				// users/me/following/topics
-				serviceResponse = FOLLOWING.getTopics(bearerToken, cursor, limit);
-				break;
-			case EVERYONE_RECENT:
-				serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken);
-				break;
-			default: // Based on popularity
-				serviceResponse = getPopularTopics(getIntCursor(), limit);
+		try {
+			switch (topicFeedType) {
+				case USER_RECENT:
+					// {userHandle}/topics
+					serviceResponse = USER_TOPICS.getTopics(query, cursor, limit, appKey, bearerToken);
+					break;
+				case FOLLOWING_RECENT:
+					// users/me/following/topics
+					serviceResponse = FOLLOWING.getTopics(bearerToken, cursor, limit);
+					break;
+				case EVERYONE_RECENT:
+					serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken);
+					break;
+				default: // Based on popularity
+					serviceResponse = getPopularTopics(getIntCursor(), limit);
+			}
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
 		}
+		checkResponseCode(serviceResponse);
 		return new TopicsListResponse(serviceResponse.getBody());
 	}
 

@@ -8,6 +8,7 @@ package com.microsoft.socialplus.server.model.relationship;
 
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
 
@@ -20,9 +21,15 @@ public class RejectFollowRequest extends UserRelationshipRequest {
     }
 
     @Override
-    public Response send() throws ServiceException, IOException {
-        ServiceResponse<Object> serviceResponse =
-                PENDING.deletePendingUser(relationshipUserHandle, bearerToken);
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = PENDING.deletePendingUser(relationshipUserHandle, bearerToken);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+
         return serviceResponse.getResponse();
     }
 }

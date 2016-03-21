@@ -11,6 +11,7 @@ import com.microsoft.autorest.models.PostCommentRequest;
 import com.microsoft.autorest.models.PostCommentResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -34,8 +35,15 @@ public class AddCommentRequest extends UserRequest {
 	}
 
 	@Override
-	public AddCommentResponse send() throws ServiceException, IOException {
-		ServiceResponse<PostCommentResponse> serviceResponse =
-				TOPIC_COMMENTS.postComment(topicHandle, request, bearerToken);
+	public AddCommentResponse send() throws NetworkRequestException {
+		ServiceResponse<PostCommentResponse> serviceResponse;
+		try {
+			serviceResponse = TOPIC_COMMENTS.postComment(topicHandle, request, bearerToken);
+		} catch (ServiceException|IOException e) {
+			throw new NetworkRequestException(e.getMessage());
+		}
+		checkResponseCode(serviceResponse);
+
 		return new AddCommentResponse(serviceResponse.getBody().getCommentHandle());
-	}}
+	}
+}
