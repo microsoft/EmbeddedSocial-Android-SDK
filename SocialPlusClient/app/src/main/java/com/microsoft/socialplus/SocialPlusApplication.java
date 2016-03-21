@@ -7,7 +7,9 @@
 package com.microsoft.socialplus;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.StrictMode;
+import android.support.multidex.MultiDex;
 
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.sdk.SocialPlus;
@@ -45,5 +47,9 @@ public class SocialPlusApplication extends Application implements UncaughtExcept
 		DEFAULT_EXCEPTION_HANDLER.uncaughtException(thread, ex);
 	}
 
-
+	@Override
+	protected void attachBaseContext(Context base) {
+		super.attachBaseContext(base);
+		MultiDex.install(this);
+	}
 }
