@@ -43,7 +43,7 @@ public class ReportContentSyncAdapter extends AbstractAutoCleanupSyncAdapter<Rep
 		throws NetworkRequestException {
 
 		ReportContentRequest request = new ReportContentRequest(
-			ContentType.valueOf(item.getContentType()),
+			ContentType.fromValue(item.getContentType()),
 			item.getContentHandle(),
 			item.getReason()
 		);

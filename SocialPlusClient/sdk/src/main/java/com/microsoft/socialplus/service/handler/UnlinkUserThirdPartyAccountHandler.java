@@ -26,7 +26,7 @@ import com.microsoft.socialplus.service.ServiceAction;
 public class UnlinkUserThirdPartyAccountHandler implements IServiceIntentHandler<ServiceAction> {
 	@Override
 	public void handleIntent(ServiceAction action, Intent intent) {
-		final IdentityProvider accountType = IdentityProvider.valueOf(intent.getExtras().getString(IntentExtras.IDENTITY_PROVIDER));
+		final IdentityProvider accountType = IdentityProvider.fromValue(intent.getExtras().getString(IntentExtras.IDENTITY_PROVIDER));
 
 		IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
 		UnlinkUserThirdPartyAccountRequest unlinkUserThirdPartyAccountRequest

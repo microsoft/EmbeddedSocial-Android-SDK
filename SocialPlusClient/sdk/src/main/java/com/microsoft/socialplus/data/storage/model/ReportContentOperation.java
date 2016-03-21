@@ -77,7 +77,7 @@ public class ReportContentOperation {
 	}
 
 	public Reason getReason() {
-		return Reason.valueOf(reason);
+		return Reason.fromValue(reason);
 	}
 
 	public boolean isForUser() {

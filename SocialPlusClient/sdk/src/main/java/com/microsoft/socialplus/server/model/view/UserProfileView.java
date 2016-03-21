@@ -133,10 +133,10 @@ public class UserProfileView implements UniqueItem {
 	}
 
 	public FollowerStatus getFollowerStatus() {
-		return FollowerStatus.valueOf(followerStatus);
+		return FollowerStatus.fromValue(followerStatus);
 	}
 
 	public FollowingStatus getFollowingStatus() {
-		return FollowingStatus.valueOf(followingStatus);
+		return FollowingStatus.fromValue(followingStatus);
 	}
 }
