@@ -87,10 +87,11 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 						QuantityStringUtils.convertLongToInt(totalLikes),
 						totalLikes));
 
+		long totalComments = topic.getTotalComments();
 		postCommentsCountButton.setText(
 				postCommentsCountButton.getResources().getQuantityString(R.plurals.sp_topic_comments_pattern,
-						topic.getTotalComments(),
-						topic.getTotalComments()));
+						QuantityStringUtils.convertLongToInt(totalComments),
+						totalComments));
 
 		postLikesCountButton.setTag(R.id.sp_keyHandle, topic.getHandle());
 		postCommentsCountButton.setTag(R.id.sp_keyTopic, topic);

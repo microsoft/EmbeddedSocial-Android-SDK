@@ -72,7 +72,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	private long totalLikes;
 
 	@DatabaseField(columnName = DbSchemas.Topics.TOTAL_COMMENTS)
-	private int totalComments;
+	private long totalComments;
 
 	@DatabaseField(columnName = DbSchemas.Topics.LIKE_STATUS)
 	private boolean likeStatus;
@@ -152,11 +152,11 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		this.totalLikes = totalLikes;
 	}
 
-	public int getTotalComments() {
+	public long getTotalComments() {
 		return totalComments;
 	}
 
-	public void setTotalComments(int totalComments) {
+	public void setTotalComments(long totalComments) {
 		this.totalComments = totalComments;
 	}
 
@@ -205,7 +205,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		out.writeString(topicDeepLink);
 		out.writeLong(createdTime);
 		out.writeLong(totalLikes);
-		out.writeInt(totalComments);
+		out.writeLong(totalComments);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
 		out.writeByte((byte) (pinStatus ? 1 : 0));
 		out.writeInt(local ? 1 : 0);
@@ -226,7 +226,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicDeepLink = in.readString();
 		createdTime = in.readLong();
 		totalLikes = in.readLong();
-		totalComments = in.readInt();
+		totalComments = in.readLong();
 		likeStatus = in.readByte() == 1;
 		pinStatus = in.readByte() == 1;
 		local = in.readInt() != 0;
@@ -325,7 +325,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicDeepLink = view.getDeepLink();
 		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = view.getTotalLikes();
-		totalComments = (int)view.getTotalComments(); //TODO make safe
+		totalComments = view.getTotalComments();
 		likeStatus = view.getLiked();
 		pinStatus = view.getPinned();
 		local = false; //TODO
@@ -413,7 +413,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 			return this;
 		}
 
-		public Builder setTotalComments(int totalComments) {
+		public Builder setTotalComments(long totalComments) {
 			topic.setTotalComments(totalComments);
 			return this;
 		}
