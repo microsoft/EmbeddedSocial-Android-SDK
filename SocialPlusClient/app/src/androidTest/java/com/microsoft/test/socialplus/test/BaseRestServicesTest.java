@@ -11,8 +11,6 @@ import android.test.ApplicationTestCase;
 import com.microsoft.autorest.models.PublisherType;
 import com.microsoft.socialplus.SocialPlusApplication;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.data.model.AccountType;
-import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;

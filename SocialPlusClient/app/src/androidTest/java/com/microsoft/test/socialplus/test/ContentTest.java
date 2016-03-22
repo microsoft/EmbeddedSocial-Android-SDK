@@ -14,7 +14,6 @@ import com.microsoft.socialplus.data.model.TopicFeedType;
 import com.microsoft.socialplus.server.IContentService;
 import com.microsoft.socialplus.server.IReportService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentRequest;
