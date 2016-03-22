@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.CommentView;
+import com.microsoft.socialplus.ui.adapter.QuantityStringUtils;
 import com.microsoft.socialplus.ui.theme.ThemeAttributes;
 import com.microsoft.socialplus.ui.util.ButtonStyleHelper;
 
@@ -63,10 +64,11 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 
 		commentText.setText(comment.getCommentText());
 
+		long totalLikes = comment.getTotalLikes();
 		commentLikesCountButton.setText(
 			commentLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
-					comment.getTotalLikes(),
-					comment.getTotalLikes()));
+					QuantityStringUtils.convertLongToInt(totalLikes),
+					totalLikes));
 
 		commentRepliesCountButton.setText(
 			commentLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_replies_pattern,
@@ -113,10 +115,11 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		contextMenuButton.setTag(R.id.sp_keyComment, comment);
 		commentText.setText(comment.getCommentText());
 
+		long totalLikes = comment.getTotalLikes();
 		commentLikesCountButton.setText(
 				commentLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
-						comment.getTotalLikes(),
-						comment.getTotalLikes()));
+						QuantityStringUtils.convertLongToInt(totalLikes),
+						totalLikes));
 		commentLikesCountButton.setTag(R.id.sp_keyHandle, comment.getHandle());
 
 		commentRepliesCountButton.setVisibility(View.GONE);

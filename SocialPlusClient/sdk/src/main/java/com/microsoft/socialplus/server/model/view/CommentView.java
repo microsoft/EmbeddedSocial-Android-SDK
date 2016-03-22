@@ -46,7 +46,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Comments.TOTAL_LIKES)
-	private int totalLikes;
+	private long totalLikes;
 
 	@DatabaseField(columnName = DbSchemas.Comments.TOTAL_REPLIES)
 	private int totalReplies;
@@ -122,7 +122,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		commentBlobType = in.readInt();
 		commentBlobUrl = in.readString();
 		createdTime = in.readLong();
-		totalLikes = in.readInt();
+		totalLikes = in.readLong();
 		totalReplies = in.readInt();
 		likeStatus = in.readByte() == 1;
 		local = in.readByte() == 1;
@@ -137,7 +137,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		commentBlobType = view.getBlobType().ordinal();
 		commentBlobUrl = view.getBlobUrl();
 		createdTime = view.getCreatedTime().getMillis();
-		totalLikes = (int)view.getTotalLikes(); //TODO make safe
+		totalLikes = view.getTotalLikes();
 		totalReplies = (int)view.getTotalReplies(); //TODO make safe
 		likeStatus = view.getLiked();
 		local = false; //TODO
@@ -149,11 +149,11 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
-	public int getTotalLikes() {
+	public long getTotalLikes() {
 		return totalLikes;
 	}
 
-	public void setTotalLikes(int totalLikes) {
+	public void setTotalLikes(long totalLikes) {
 		this.totalLikes = totalLikes;
 	}
 
@@ -191,7 +191,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		out.writeInt(commentBlobType);
 		out.writeString(commentBlobUrl);
 		out.writeLong(createdTime);
-		out.writeInt(totalLikes);
+		out.writeLong(totalLikes);
 		out.writeInt(totalReplies);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
 		out.writeByte((byte) (local ? 1 : 0));

@@ -38,7 +38,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Replies.TOTAL_LIKES)
-	private int totalLikes;
+	private long totalLikes;
 
 	@DatabaseField(columnName = DbSchemas.Replies.LIKE_STATUS)
 	private boolean likeStatus;
@@ -65,7 +65,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		user = in.readParcelable(UserCompactView.class.getClassLoader());
 		replyText = in.readString();
 		createdTime = in.readLong();
-		totalLikes = in.readInt();
+		totalLikes = in.readLong();
 		likeStatus = in.readByte() == 1;
 		local = in.readByte() == 1;
 	}
@@ -76,7 +76,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		user = new UserCompactView(view.getUser());
 		replyText = view.getText();
 		createdTime = view.getCreatedTime().getMillis();
-		totalLikes = (int)view.getTotalLikes(); // TODO fix types
+		totalLikes = view.getTotalLikes();
 		likeStatus = view.getLiked();
 		local = false;// TODO
 	}
@@ -120,11 +120,11 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
-	public int getTotalLikes() {
+	public long getTotalLikes() {
 		return totalLikes;
 	}
 
-	public void setTotalLikes(int totalLikes) {
+	public void setTotalLikes(long totalLikes) {
 		this.totalLikes = totalLikes;
 	}
 
@@ -148,7 +148,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		out.writeParcelable(user, flag);
 		out.writeString(replyText);
 		out.writeLong(createdTime);
-		out.writeInt(totalLikes);
+		out.writeLong(totalLikes);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
 		out.writeByte((byte) (local ? 1 : 0));
 	}

@@ -69,7 +69,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Topics.TOTAL_LIKES)
-	private int totalLikes;
+	private long totalLikes;
 
 	@DatabaseField(columnName = DbSchemas.Topics.TOTAL_COMMENTS)
 	private int totalComments;
@@ -144,11 +144,11 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
-	public int getTotalLikes() {
+	public long getTotalLikes() {
 		return totalLikes;
 	}
 
-	public void setTotalLikes(int totalLikes) {
+	public void setTotalLikes(long totalLikes) {
 		this.totalLikes = totalLikes;
 	}
 
@@ -204,7 +204,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		out.writeString(topicBlobUrl);
 		out.writeString(topicDeepLink);
 		out.writeLong(createdTime);
-		out.writeInt(totalLikes);
+		out.writeLong(totalLikes);
 		out.writeInt(totalComments);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
 		out.writeByte((byte) (pinStatus ? 1 : 0));
@@ -225,7 +225,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobUrl = in.readString();
 		topicDeepLink = in.readString();
 		createdTime = in.readLong();
-		totalLikes = in.readInt();
+		totalLikes = in.readLong();
 		totalComments = in.readInt();
 		likeStatus = in.readByte() == 1;
 		pinStatus = in.readByte() == 1;
@@ -324,7 +324,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobUrl = view.getBlobUrl();
 		topicDeepLink = view.getDeepLink();
 		createdTime = view.getCreatedTime().getMillis();
-		totalLikes = (int)view.getTotalLikes(); //TODO make safe
+		totalLikes = view.getTotalLikes();
 		totalComments = (int)view.getTotalComments(); //TODO make safe
 		likeStatus = view.getLiked();
 		pinStatus = view.getPinned();
@@ -418,7 +418,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 			return this;
 		}
 
-		public Builder setTotalLikes(int totalLikes) {
+		public Builder setTotalLikes(long totalLikes) {
 			topic.setTotalLikes(totalLikes);
 			return this;
 		}

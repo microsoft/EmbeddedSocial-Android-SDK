@@ -20,6 +20,7 @@ import com.microsoft.socialplus.image.CoverLoader;
 import com.microsoft.socialplus.image.ImageViewContentLoader;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.TopicView;
+import com.microsoft.socialplus.ui.adapter.QuantityStringUtils;
 import com.microsoft.socialplus.ui.theme.ThemeAttributes;
 import com.microsoft.socialplus.ui.util.ButtonStyleHelper;
 import com.microsoft.socialplus.ui.util.ContentUpdateHelper;
@@ -80,10 +81,11 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 
 		initLocalTopic(topic);
 
+		long totalLikes = topic.getTotalLikes();
 		postLikesCountButton.setText(
 				postLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
-						topic.getTotalLikes(),
-						topic.getTotalLikes()));
+						QuantityStringUtils.convertLongToInt(totalLikes),
+						totalLikes));
 
 		postCommentsCountButton.setText(
 				postCommentsCountButton.getResources().getQuantityString(R.plurals.sp_topic_comments_pattern,

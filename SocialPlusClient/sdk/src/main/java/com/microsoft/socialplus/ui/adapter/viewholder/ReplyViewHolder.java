@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.ReplyView;
+import com.microsoft.socialplus.ui.adapter.QuantityStringUtils;
 import com.microsoft.socialplus.ui.theme.ThemeAttributes;
 import com.microsoft.socialplus.ui.util.ButtonStyleHelper;
 
@@ -62,10 +63,11 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 		int actionViewsVisibility = reply.isLocal() ? View.INVISIBLE : View.VISIBLE;
 		replyText.setText(reply.getReplyText());
 
+		long totalLikes = reply.getTotalLikes();
 		replyLikesCountButton.setText(
 				replyLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
-						reply.getTotalLikes(),
-						reply.getTotalLikes()));
+						QuantityStringUtils.convertLongToInt(totalLikes),
+						totalLikes));
 		replyLikesCountButton.setTag(R.id.sp_keyHandle, reply.getHandle());
 		replyLikesCountButton.setVisibility(actionViewsVisibility);
 		replyLikesCountButton.setOnClickListener(
@@ -93,10 +95,11 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 
 		replyText.setText(reply.getReplyText());
 
+		long totalLikes = reply.getTotalLikes();
 		replyLikesCountButton.setText(
 				replyLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
-						reply.getTotalLikes(),
-						reply.getTotalLikes()));
+						QuantityStringUtils.convertLongToInt(totalLikes),
+						totalLikes));
 
 		dividerLayoutBottom.setVisibility(View.GONE);
 		likeButton.setVisibility(View.GONE);
