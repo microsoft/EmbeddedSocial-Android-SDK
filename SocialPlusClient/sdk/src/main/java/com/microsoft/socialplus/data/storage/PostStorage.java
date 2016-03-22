@@ -379,7 +379,7 @@ public class PostStorage {
 			.setPublisherType(PublisherType.USER.ordinal())
 			.setTopicTitle(postData.getTitle())
 			.setTopicText(postData.getDescription())
-			.setElapsedTime(System.currentTimeMillis())
+			.setCreatedTime(System.currentTimeMillis())
 			.setLocal(true)
 			.setLocalPostId(postData.getId())
 			.setTopicHandle(TopicView.LOCAL_TOPIC_HANDLE_PREFIX + postData.hashCode())

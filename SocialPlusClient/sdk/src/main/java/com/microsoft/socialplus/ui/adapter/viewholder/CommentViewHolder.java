@@ -59,7 +59,7 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		if (comment == null) {
 			return;
 		}
-		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedTime());
+		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
 
 		commentText.setText(comment.getCommentText());
 
@@ -109,7 +109,7 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		if (comment == null) {
 			return;
 		}
-		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedTime());
+		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
 		contextMenuButton.setTag(R.id.sp_keyComment, comment);
 		commentText.setText(comment.getCommentText());
 

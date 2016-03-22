@@ -490,8 +490,8 @@ public class TopicCache {
 	 * A comparator for timed items.
 	 */
 	private static final Comparator<? super TimedItem> TIMED_ITEM_COMPARATOR = (left, right) -> {
-		long leftTime = left.getElapsedTime();
-		long rightTime = right.getElapsedTime();
+		long leftTime = left.getElapsedSeconds();
+		long rightTime = right.getElapsedSeconds();
 
 		if (leftTime == rightTime) {
 			return 0;

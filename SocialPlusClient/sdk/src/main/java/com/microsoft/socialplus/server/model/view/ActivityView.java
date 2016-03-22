@@ -16,6 +16,7 @@ import com.microsoft.socialplus.data.model.ActivityType;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
+import com.microsoft.socialplus.ui.util.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +60,7 @@ public class ActivityView implements UniqueItem, TimedItem {
 	private AppCompactView app;
 
 	@DatabaseField
-	private long elapsedTime;
+	private long createdTime;
 
 	@DatabaseField
 	private boolean unread;
@@ -82,7 +83,7 @@ public class ActivityView implements UniqueItem, TimedItem {
 		actedOnContentBlobUrl = actedOnContent.getBlobUrl();
 		actedOnUser = new UserCompactView(view.getActedOnUser());
 		app = new AppCompactView(view.getApp());
-		elapsedTime = System.currentTimeMillis() - view.getCreatedTime().getMillis();
+		createdTime = view.getCreatedTime().getMillis();
 		unread = view.getUnread();
 	}
 
@@ -148,8 +149,8 @@ public class ActivityView implements UniqueItem, TimedItem {
 	}
 
 	@Override
-	public long getElapsedTime() {
-		return elapsedTime;
+	public long getElapsedSeconds() {
+		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
 	public void setActorUsers(List<UserCompactView> actors) {

@@ -16,6 +16,7 @@ import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
+import com.microsoft.socialplus.ui.util.TimeUtils;
 
 /**
  *
@@ -42,7 +43,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	private String commentBlobUrl;
 
 	@DatabaseField(columnName = DbSchemas.Comments.ELAPSED_TIME)
-	private long elapsedTime;
+	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Comments.TOTAL_LIKES)
 	private int totalLikes;
@@ -107,7 +108,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		this.commentText = contentText;
 		this.commentBlobType = 0;
 		this.commentBlobUrl = null;
-		this.elapsedTime = 0;
+		this.createdTime = 0;
 		this.totalLikes = 0;
 		this.totalReplies = 0;
 		this.likeStatus = false;
@@ -120,7 +121,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		commentText = in.readString();
 		commentBlobType = in.readInt();
 		commentBlobUrl = in.readString();
-		elapsedTime = in.readLong();
+		createdTime = in.readLong();
 		totalLikes = in.readInt();
 		totalReplies = in.readInt();
 		likeStatus = in.readByte() == 1;
@@ -135,7 +136,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		commentText = view.getText();
 		commentBlobType = view.getBlobType().ordinal();
 		commentBlobUrl = view.getBlobUrl();
-		elapsedTime = System.currentTimeMillis() - view.getCreatedTime().getMillis();
+		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = (int)view.getTotalLikes(); //TODO make safe
 		totalReplies = (int)view.getTotalReplies(); //TODO make safe
 		likeStatus = view.getLiked();
@@ -144,8 +145,8 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	}
 
 	@Override
-	public long getElapsedTime() {
-		return elapsedTime;
+	public long getElapsedSeconds() {
+		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
 	public int getTotalLikes() {
@@ -189,7 +190,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		out.writeString(commentText);
 		out.writeInt(commentBlobType);
 		out.writeString(commentBlobUrl);
-		out.writeLong(elapsedTime);
+		out.writeLong(createdTime);
 		out.writeInt(totalLikes);
 		out.writeInt(totalReplies);
 		out.writeByte((byte) (likeStatus ? 1 : 0));

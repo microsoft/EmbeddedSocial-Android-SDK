@@ -15,6 +15,9 @@ import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
+import com.microsoft.socialplus.ui.util.TimeUtils;
+
+import org.joda.time.DateTime;
 
 @DatabaseTable(tableName = DbSchemas.Replies.TABLE_NAME)
 public class ReplyView implements Parcelable, UniqueItem, TimedItem {
@@ -32,7 +35,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 	private String replyText;
 
 	@DatabaseField
-	private long elapsedTime;
+	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Replies.TOTAL_LIKES)
 	private int totalLikes;
@@ -51,7 +54,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		this.commentHandle = commentHandle;
 		this.user = UserAccount.getInstance().generateCompactUserView();
 		this.replyText = replyText;
-		this.elapsedTime = 0;
+		this.createdTime = 0;
 		this.totalLikes = 0;
 		this.likeStatus = false;
 	}
@@ -61,7 +64,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		commentHandle = in.readString();
 		user = in.readParcelable(UserCompactView.class.getClassLoader());
 		replyText = in.readString();
-		elapsedTime = in.readLong();
+		createdTime = in.readLong();
 		totalLikes = in.readInt();
 		likeStatus = in.readByte() == 1;
 		local = in.readByte() == 1;
@@ -72,7 +75,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		commentHandle = view.getCommentHandle();
 		user = new UserCompactView(view.getUser());
 		replyText = view.getText();
-		elapsedTime = System.currentTimeMillis() - view.getCreatedTime().getMillis();
+		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = (int)view.getTotalLikes(); // TODO fix types
 		likeStatus = view.getLiked();
 		local = false;// TODO
@@ -113,8 +116,8 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 	}
 
 	@Override
-	public long getElapsedTime() {
-		return elapsedTime;
+	public long getElapsedSeconds() {
+		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
 	public int getTotalLikes() {
@@ -144,7 +147,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		out.writeString(commentHandle);
 		out.writeParcelable(user, flag);
 		out.writeString(replyText);
-		out.writeLong(elapsedTime);
+		out.writeLong(createdTime);
 		out.writeInt(totalLikes);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
 		out.writeByte((byte) (local ? 1 : 0));

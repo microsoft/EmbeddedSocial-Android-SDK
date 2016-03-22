@@ -13,13 +13,15 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.autorest.models.BlobType;
 import com.microsoft.autorest.models.PublisherType;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.utils.EnumUtils;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.image.ImageLocation;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
+import com.microsoft.socialplus.ui.util.TimeUtils;
+
+import org.joda.time.DateTime;
 
 @DatabaseTable(tableName = DbSchemas.Topics.TABLE_NAME)
 public class TopicView implements Parcelable, UniqueItem, TimedItem {
@@ -64,7 +66,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	private String topicDeepLink;
 
 	@DatabaseField(columnName = DbSchemas.Topics.ELAPSED_TIME)
-	private long elapsedTime;
+	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Topics.TOTAL_LIKES)
 	private int totalLikes;
@@ -138,8 +140,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	}
 
 	@Override
-	public long getElapsedTime() {
-		return elapsedTime;
+	public long getElapsedSeconds() {
+		return TimeUtils.elapsedSeconds(createdTime);
 	}
 
 	public int getTotalLikes() {
@@ -201,7 +203,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		out.writeInt(topicBlobType);
 		out.writeString(topicBlobUrl);
 		out.writeString(topicDeepLink);
-		out.writeLong(elapsedTime);
+		out.writeLong(createdTime);
 		out.writeInt(totalLikes);
 		out.writeInt(totalComments);
 		out.writeByte((byte) (likeStatus ? 1 : 0));
@@ -222,7 +224,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobType = in.readInt();
 		topicBlobUrl = in.readString();
 		topicDeepLink = in.readString();
-		elapsedTime = in.readLong();
+		createdTime = in.readLong();
 		totalLikes = in.readInt();
 		totalComments = in.readInt();
 		likeStatus = in.readByte() == 1;
@@ -235,8 +237,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		this.app = app;
 	}
 
-	private void setElapsedTime(long elapsedTime) {
-		this.elapsedTime = elapsedTime;
+	private void setCreatedTime(long createdTime) {
+		this.createdTime = createdTime;
 	}
 
 	private void setLocal(boolean local) {
@@ -321,7 +323,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobType = view.getBlobType().ordinal();
 		topicBlobUrl = view.getBlobUrl();
 		topicDeepLink = view.getDeepLink();
-		elapsedTime = System.currentTimeMillis() - view.getCreatedTime().getMillis();
+		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = (int)view.getTotalLikes(); //TODO make safe
 		totalComments = (int)view.getTotalComments(); //TODO make safe
 		likeStatus = view.getLiked();
@@ -346,8 +348,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 			return this;
 		}
 
-		public Builder setElapsedTime(long elapsedTime) {
-			topic.setElapsedTime(elapsedTime);
+		public Builder setCreatedTime(long createdTime) {
+			topic.setCreatedTime(createdTime);
 			return this;
 		}
 

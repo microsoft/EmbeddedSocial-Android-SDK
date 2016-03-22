@@ -55,7 +55,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 
 	protected void renderUserHeader(TopicView topic) {
 		setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
-		setTime(topic.getElapsedTime());
+		setTime(topic.getElapsedSeconds());
 		setProfileImage(topic.getUser().getUserPhotoUrl());
 
 		contextMenuButton.setTag(R.id.sp_keyTopic, topic);
@@ -69,7 +69,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	protected void renderUserHeader(ReplyView reply) {
 		UserCompactView user = reply.getUser();
 		setName(user.getFirstName(), user.getLastName());
-		setTime(reply.getElapsedTime());
+		setTime(reply.getElapsedSeconds());
 		setProfileImage(user.getUserPhotoUrl());
 
 		contextMenuButton.setTag(R.id.sp_keyHandle, reply.getHandle());
@@ -105,8 +105,8 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 		profileName.setText(String.format("%s %s", firstName, lastName));
 	}
 
-	private void setTime(long elapsedTime) {
-		this.elapsedTime.setText(TimeUtils.timeToText(this.elapsedTime.getResources(), elapsedTime));
+	private void setTime(long elapsedSeconds) {
+		this.elapsedTime.setText(TimeUtils.secondsToText(this.elapsedTime.getResources(), elapsedSeconds));
 	}
 
 	private void setProfileImage(String photoUrl) {

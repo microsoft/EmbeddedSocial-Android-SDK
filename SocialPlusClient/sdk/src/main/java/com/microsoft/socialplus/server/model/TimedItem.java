@@ -12,8 +12,8 @@ package com.microsoft.socialplus.server.model;
 public interface TimedItem {
 
 	/**
-	 * Gets time elapsed since entity creation.
+	 * Gets time elapsed since entity creation in seconds.
 	 * @return  elapsed time.
 	 */
-	long getElapsedTime();
+	long getElapsedSeconds();
 }

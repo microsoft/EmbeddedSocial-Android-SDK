@@ -70,7 +70,7 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 	private void renderCommonInfo(ActivityView item, ViewHolder holder) {
 		Resources resources = holder.getResources();
 
-		holder.timestamp.setText(TimeUtils.timeToText(resources, item.getElapsedTime()));
+		holder.timestamp.setText(TimeUtils.secondsToText(resources, item.getElapsedSeconds()));
 
 		holder.itemView.setOnClickListener(new OnActivityItemClickListener(item));
 

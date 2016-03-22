@@ -10,6 +10,8 @@ import android.content.res.Resources;
 
 import com.microsoft.socialplus.sdk.R;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Helper class to convert time to text
  */
@@ -22,12 +24,21 @@ public class TimeUtils {
 	private TimeUtils() {
 	}
 
-	public static String timeToText(Resources resources, long elapsedTime) {
-		if (elapsedTime < MINUTE_IN_SECONDS) {
-			return resources.getString(R.string.sp_elapsed_time_seconds_pattern, elapsedTime);
+	/**
+	 * Returns the number of seconds from the creation time of this item
+	 * @param createdTime time of creation in millis
+	 * @return time since creation in seconds
+	 */
+	public static long elapsedSeconds(long createdTime) {
+		return TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - createdTime);
+	}
+
+	public static String secondsToText(Resources resources, long elapsedSeconds) {
+		if (elapsedSeconds < MINUTE_IN_SECONDS) {
+			return resources.getString(R.string.sp_elapsed_time_seconds_pattern, elapsedSeconds);
 		}
 
-		long minutes = elapsedTime / MINUTE_IN_SECONDS;
+		long minutes = elapsedSeconds / MINUTE_IN_SECONDS;
 		if (minutes < HOUR_IN_MINUTES) {
 			return resources.getString(R.string.sp_elapsed_time_minutes_pattern, minutes);
 		}
