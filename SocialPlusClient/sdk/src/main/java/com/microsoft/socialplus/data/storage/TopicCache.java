@@ -451,7 +451,7 @@ public class TopicCache {
 			CommentView comment = commentDao.queryForId(commentHandle);
 			if (comment != null) {
 				commentDao.refresh(comment);
-				int replies = comment.getTotalReplies();
+				long replies = comment.getTotalReplies();
 				if (replies > 0) {
 					comment.setTotalReplies(replies - 1);
 					commentDao.update(comment);

@@ -70,10 +70,11 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 					QuantityStringUtils.convertLongToInt(totalLikes),
 					totalLikes));
 
+		long totalReplies = comment.getTotalReplies();
 		commentRepliesCountButton.setText(
 			commentLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_replies_pattern,
-				comment.getTotalReplies(),
-				comment.getTotalReplies()));
+					QuantityStringUtils.convertLongToInt(totalReplies),
+					totalReplies));
 
 		likeButton.setTag(R.id.sp_keyHandle, comment.getHandle());
 		likeButton.setTag(R.id.sp_keyIsAdd, !comment.isLikeStatus());
