@@ -8,7 +8,7 @@ package com.microsoft.socialplus.server.model.view;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.autorest.models.*;
+import com.microsoft.socialplus.autorest.models.*;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.UniqueItem;
 
@@ -68,7 +68,7 @@ public class UserAccountView implements UniqueItem {
 	 */
 	UserAccountView() {  }
 
-	public UserAccountView(com.microsoft.autorest.models.UserProfileView profileView,
+	public UserAccountView(com.microsoft.socialplus.autorest.models.UserProfileView profileView,
 						   List<LinkedAccountView> linkedAccounts) {
 		userHandle = profileView.getUserHandle();
 //		username = //TODO remove unused fields

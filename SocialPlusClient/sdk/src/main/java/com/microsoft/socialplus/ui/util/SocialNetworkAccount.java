@@ -9,7 +9,7 @@ package com.microsoft.socialplus.ui.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 
 /**
  * Model for social network data

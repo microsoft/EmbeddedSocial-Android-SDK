@@ -21,7 +21,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.base.utils.thread.ThreadUtils;
 import com.microsoft.socialplus.sdk.R;

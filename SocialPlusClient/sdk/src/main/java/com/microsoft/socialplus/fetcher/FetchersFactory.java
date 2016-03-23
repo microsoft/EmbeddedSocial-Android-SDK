@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.fetcher;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.function.Producer;
 import com.microsoft.socialplus.data.model.AccountData;

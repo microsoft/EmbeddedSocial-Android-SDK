@@ -6,10 +6,10 @@
 
 package com.microsoft.socialplus.server.model.content.topics;
 
-import com.microsoft.autorest.models.BlobType;
-import com.microsoft.autorest.models.PostTopicRequest;
-import com.microsoft.autorest.models.PostTopicResponse;
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.PostTopicRequest;
+import com.microsoft.socialplus.autorest.models.PostTopicResponse;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

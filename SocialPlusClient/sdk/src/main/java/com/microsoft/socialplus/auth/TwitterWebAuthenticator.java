@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.sdk.R;

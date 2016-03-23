@@ -12,9 +12,9 @@ import android.support.annotation.Nullable;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
-import com.microsoft.autorest.models.BlobType;
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.expression.Template;

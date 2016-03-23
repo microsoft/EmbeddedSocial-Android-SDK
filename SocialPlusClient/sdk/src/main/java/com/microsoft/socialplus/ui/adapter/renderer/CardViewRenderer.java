@@ -12,7 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.event.click.OpenTopicEvent;
 import com.microsoft.socialplus.sdk.R;

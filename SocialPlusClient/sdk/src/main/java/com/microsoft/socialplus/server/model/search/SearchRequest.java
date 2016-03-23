@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.server.model.search;
 
-import com.microsoft.autorest.SearchOperations;
-import com.microsoft.autorest.SearchOperationsImpl;
+import com.microsoft.socialplus.autorest.SearchOperations;
+import com.microsoft.socialplus.autorest.SearchOperationsImpl;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 
 public class SearchRequest extends FeedUserRequest {

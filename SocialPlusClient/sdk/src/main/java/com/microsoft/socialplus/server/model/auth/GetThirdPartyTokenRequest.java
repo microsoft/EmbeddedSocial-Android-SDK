@@ -6,10 +6,10 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.autorest.RequestTokensOperations;
-import com.microsoft.autorest.RequestTokensOperationsImpl;
-import com.microsoft.autorest.models.GetRequestTokenResponse;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.RequestTokensOperations;
+import com.microsoft.socialplus.autorest.RequestTokensOperationsImpl;
+import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -22,10 +22,10 @@ public class GetThirdPartyTokenRequest extends UserRequest {
 	private static final RequestTokensOperations REQUEST_TOKENS
 			= new RequestTokensOperationsImpl(RETROFIT, CLIENT);
 
-	private String identityProvider;
+	private IdentityProvider identityProvider;
 
 	public GetThirdPartyTokenRequest(IdentityProvider identityProvider) {
-		this.identityProvider = identityProvider.toValue();
+		this.identityProvider = identityProvider;
 	}
 
 	@Override

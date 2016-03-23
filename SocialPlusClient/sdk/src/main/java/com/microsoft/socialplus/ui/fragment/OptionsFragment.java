@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.EnumUtils;

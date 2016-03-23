@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.microsoft.autorest.models.FollowerStatus;
-import com.microsoft.autorest.models.FollowingStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowingStatus;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.data.model.AccountData;

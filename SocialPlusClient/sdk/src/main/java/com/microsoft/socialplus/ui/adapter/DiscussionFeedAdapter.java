@@ -12,7 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.data.model.DiscussionItem;
 import com.microsoft.socialplus.fetcher.base.FetchableAdapter;
 import com.microsoft.socialplus.fetcher.base.Fetcher;

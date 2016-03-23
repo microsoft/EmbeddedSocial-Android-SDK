@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.server.model.like;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.FeedResponseUserCompactView;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

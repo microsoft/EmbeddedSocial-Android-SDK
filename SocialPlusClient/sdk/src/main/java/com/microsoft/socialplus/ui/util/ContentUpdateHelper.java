@@ -23,7 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;

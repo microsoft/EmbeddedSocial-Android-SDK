@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.fetcher.FetchersFactory;
 import com.microsoft.socialplus.fetcher.base.Fetcher;
 import com.microsoft.socialplus.sdk.R;

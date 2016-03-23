@@ -10,7 +10,7 @@ import android.text.TextUtils;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 
 import java.io.Serializable;

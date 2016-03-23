@@ -16,7 +16,7 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.auth.SocialNetworkTokenHolder;
 import com.microsoft.socialplus.auth.SocialNetworkTokens;
 import com.microsoft.socialplus.social.exception.NotAuthorizedToSocialNetworkException;

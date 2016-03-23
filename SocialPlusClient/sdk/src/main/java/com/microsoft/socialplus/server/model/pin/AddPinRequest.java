@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.pin;
 
-import com.microsoft.autorest.models.PostPinRequest;
+import com.microsoft.socialplus.autorest.models.PostPinRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.utils.ObjectUtils;

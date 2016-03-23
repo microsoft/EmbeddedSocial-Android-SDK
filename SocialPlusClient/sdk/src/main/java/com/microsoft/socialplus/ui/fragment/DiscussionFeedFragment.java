@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.event.EventBus;

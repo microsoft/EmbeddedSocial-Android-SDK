@@ -9,7 +9,7 @@ package com.microsoft.socialplus.ui.util.menu;
 import android.content.Context;
 import android.view.MenuItem;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.ReplyView;
 import com.microsoft.socialplus.ui.util.ContentUpdateHelper;

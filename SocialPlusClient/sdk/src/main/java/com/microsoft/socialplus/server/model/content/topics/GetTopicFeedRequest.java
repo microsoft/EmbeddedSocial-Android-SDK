@@ -6,12 +6,12 @@
 
 package com.microsoft.socialplus.server.model.content.topics;
 
-import com.microsoft.autorest.UserTopicsOperations;
-import com.microsoft.autorest.UserTopicsOperationsImpl;
-import com.microsoft.autorest.models.FeedResponseTopicView;
+import com.microsoft.socialplus.autorest.UserTopicsOperations;
+import com.microsoft.socialplus.autorest.UserTopicsOperationsImpl;
+import com.microsoft.socialplus.autorest.models.FeedResponseTopicView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.base.utils.EnumUtils;
+import com.microsoft.socialplus.autorest.models.TimeRange;
 import com.microsoft.socialplus.data.model.TopicFeedType;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
@@ -76,21 +76,21 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 			// {userHandle}/topics/popular
 			return USER_TOPICS.getPopularTopics(query, cursor, limit, appKey, bearerToken);
 		} else {
-			String timeRange = getTimeRange();
+			TimeRange timeRange = getTimeRange();
 			return TOPICS.getPopularTopics(timeRange, cursor, limit, appKey, bearerToken);
 		}
 	}
 
-	private String getTimeRange() {
+	private TimeRange getTimeRange() {
 		switch (topicFeedType) {
 			case EVERYONE_POPULAR_THIS_MONTH:
-				return "ThisMonth";
+				return TimeRange.THISMONTH;
 			case EVERYONE_POPULAR_THIS_WEEK:
-				return "ThisWeek";
+				return TimeRange.THISWEEK;
 			case EVERYONE_POPULAR_TODAY:
-				return "Today";
+				return TimeRange.TODAY;
 			default: // all time
-				return "AllTime";
+				return TimeRange.ALLTIME;
 		}
 	}
 

@@ -70,7 +70,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		local = in.readByte() == 1;
 	}
 
-	public ReplyView(com.microsoft.autorest.models.ReplyView view) {
+	public ReplyView(com.microsoft.socialplus.autorest.models.ReplyView view) {
 		replyHandle = view.getReplyHandle();
 		commentHandle = view.getCommentHandle();
 		user = new UserCompactView(view.getUser());

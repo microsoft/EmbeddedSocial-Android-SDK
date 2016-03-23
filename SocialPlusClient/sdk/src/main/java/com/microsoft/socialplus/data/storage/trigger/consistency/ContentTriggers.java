@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.data.storage.trigger.consistency;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.base.expression.Template;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.data.storage.trigger.ISqlTrigger;

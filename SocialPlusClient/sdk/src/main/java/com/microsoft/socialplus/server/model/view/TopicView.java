@@ -11,8 +11,8 @@ import android.os.Parcelable;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.autorest.models.BlobType;
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.utils.EnumUtils;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.storage.DbSchemas;
@@ -65,7 +65,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	@DatabaseField
 	private String topicDeepLink;
 
-	@DatabaseField(columnName = DbSchemas.Topics.ELAPSED_TIME)
+	@DatabaseField(columnName = DbSchemas.Topics.CREATED_TIME)
 	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Topics.TOTAL_LIKES)
@@ -311,7 +311,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		}
 	};
 
-	public TopicView(com.microsoft.autorest.models.TopicView view) {
+	public TopicView(com.microsoft.socialplus.autorest.models.TopicView view) {
 		topicHandle = view.getTopicHandle();
 		//topicType = in.readInt(); // TODO
 		publisherType = view.getPublisherType().ordinal();

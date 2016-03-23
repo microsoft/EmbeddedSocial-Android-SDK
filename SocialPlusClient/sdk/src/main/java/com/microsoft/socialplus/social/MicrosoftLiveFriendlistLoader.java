@@ -7,7 +7,7 @@
 package com.microsoft.socialplus.social;
 
 import com.google.gson.Gson;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.live.LiveConnectClient;
 import com.microsoft.live.LiveConnectSession;
 import com.microsoft.live.LiveOperation;

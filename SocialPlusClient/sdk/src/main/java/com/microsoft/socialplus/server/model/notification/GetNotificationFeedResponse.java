@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.notification;
 
-import com.microsoft.autorest.models.FeedResponseActivityView;
+import com.microsoft.socialplus.autorest.models.FeedResponseActivityView;
 import com.microsoft.socialplus.server.model.FeedUserResponse;
 import com.microsoft.socialplus.server.model.ListResponse;
 import com.microsoft.socialplus.server.model.view.ActivityView;
@@ -29,7 +29,7 @@ public class GetNotificationFeedResponse extends FeedUserResponse implements Lis
 
 	public GetNotificationFeedResponse (FeedResponseActivityView response) {
 		activities = new ArrayList<>();
-		for (com.microsoft.autorest.models.ActivityView view : response.getData()) {
+		for (com.microsoft.socialplus.autorest.models.ActivityView view : response.getData()) {
 			activities.add(new ActivityView(view));
 		}
 		this.deliveredActivityHandle = "";

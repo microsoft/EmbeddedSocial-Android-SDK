@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.fetcher;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.fetcher.base.DataState;
 import com.microsoft.socialplus.fetcher.base.Fetcher;
 import com.microsoft.socialplus.fetcher.base.RequestType;

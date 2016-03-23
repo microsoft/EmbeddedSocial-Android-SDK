@@ -9,8 +9,8 @@ package com.microsoft.socialplus.data.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.microsoft.autorest.models.FollowerStatus;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.image.ImageLocation;
 import com.microsoft.socialplus.server.model.view.ThirdPartyAccountView;
 import com.microsoft.socialplus.server.model.view.UserAccountView;

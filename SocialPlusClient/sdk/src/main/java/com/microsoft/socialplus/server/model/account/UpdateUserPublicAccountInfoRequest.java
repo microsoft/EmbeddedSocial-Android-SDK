@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.account;
 
-import com.microsoft.autorest.models.PutUserInfoRequest;
+import com.microsoft.socialplus.autorest.models.PutUserInfoRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

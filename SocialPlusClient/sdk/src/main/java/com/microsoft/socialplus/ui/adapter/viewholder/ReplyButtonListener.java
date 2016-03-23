@@ -11,8 +11,8 @@ import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.view.View;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.ReplyView;
 import com.microsoft.socialplus.service.IntentExtras;

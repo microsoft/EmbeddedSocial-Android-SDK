@@ -16,7 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.utils.BitmapUtils.SizeSpec;
 import com.microsoft.socialplus.base.utils.ObjectUtils;
 import com.microsoft.socialplus.data.storage.PostStorage;

@@ -10,7 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.ui.activity.LikesActivity;

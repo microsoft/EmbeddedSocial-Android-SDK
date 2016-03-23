@@ -9,8 +9,7 @@ package com.microsoft.socialplus.account;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.microsoft.autorest.models.IdentityProvider;
-import com.microsoft.socialplus.base.utils.EnumUtils;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.data.model.AccountData;
 
 /**

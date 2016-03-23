@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.autorest.models.PostSessionResponse;
+import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

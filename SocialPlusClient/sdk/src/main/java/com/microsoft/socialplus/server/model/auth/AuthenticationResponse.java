@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.autorest.models.PostSessionResponse;
-import com.microsoft.autorest.models.PostUserResponse;
+import com.microsoft.socialplus.autorest.models.PostSessionResponse;
+import com.microsoft.socialplus.autorest.models.PostUserResponse;
 
 public class AuthenticationResponse {
 

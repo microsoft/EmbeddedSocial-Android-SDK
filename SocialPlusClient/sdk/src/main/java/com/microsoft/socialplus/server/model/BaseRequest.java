@@ -8,27 +8,28 @@ package com.microsoft.socialplus.server.model;
 
 import android.text.TextUtils;
 
-import com.microsoft.autorest.CommentLikesOperations;
-import com.microsoft.autorest.CommentLikesOperationsImpl;
-import com.microsoft.autorest.CommentRepliesOperations;
-import com.microsoft.autorest.CommentRepliesOperationsImpl;
-import com.microsoft.autorest.CommentsOperations;
-import com.microsoft.autorest.CommentsOperationsImpl;
-import com.microsoft.autorest.MyFollowingOperations;
-import com.microsoft.autorest.MyFollowingOperationsImpl;
-import com.microsoft.autorest.RepliesOperations;
-import com.microsoft.autorest.RepliesOperationsImpl;
-import com.microsoft.autorest.ReplyLikesOperations;
-import com.microsoft.autorest.ReplyLikesOperationsImpl;
-import com.microsoft.autorest.SocialPlusClient;
-import com.microsoft.autorest.SocialPlusClientImpl;
-import com.microsoft.autorest.TopicCommentsOperations;
-import com.microsoft.autorest.TopicCommentsOperationsImpl;
-import com.microsoft.autorest.TopicLikesOperations;
-import com.microsoft.autorest.TopicLikesOperationsImpl;
-import com.microsoft.autorest.TopicsOperations;
-import com.microsoft.autorest.TopicsOperationsImpl;
-import com.microsoft.autorest.models.PlatformType;
+import com.microsoft.socialplus.autorest.CommentLikesOperations;
+import com.microsoft.socialplus.autorest.CommentLikesOperationsImpl;
+import com.microsoft.socialplus.autorest.CommentRepliesOperations;
+import com.microsoft.socialplus.autorest.CommentRepliesOperationsImpl;
+import com.microsoft.socialplus.autorest.CommentsOperations;
+import com.microsoft.socialplus.autorest.CommentsOperationsImpl;
+import com.microsoft.socialplus.autorest.MyFollowingOperations;
+import com.microsoft.socialplus.autorest.MyFollowingOperationsImpl;
+import com.microsoft.socialplus.autorest.RepliesOperations;
+import com.microsoft.socialplus.autorest.RepliesOperationsImpl;
+import com.microsoft.socialplus.autorest.ReplyLikesOperations;
+import com.microsoft.socialplus.autorest.ReplyLikesOperationsImpl;
+import com.microsoft.socialplus.autorest.SocialPlusClient;
+import com.microsoft.socialplus.autorest.SocialPlusClientImpl;
+import com.microsoft.socialplus.autorest.TopicCommentsOperations;
+import com.microsoft.socialplus.autorest.TopicCommentsOperationsImpl;
+import com.microsoft.socialplus.autorest.TopicLikesOperations;
+import com.microsoft.socialplus.autorest.TopicLikesOperationsImpl;
+import com.microsoft.socialplus.autorest.TopicsOperations;
+import com.microsoft.socialplus.autorest.TopicsOperationsImpl;
+import com.microsoft.socialplus.autorest.models.Platform;
+import com.microsoft.socialplus.autorest.models.PlatformType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
@@ -78,7 +79,7 @@ public class BaseRequest {
 
 	//TODO: init all fields
 	private final String instanceHandle;
-	protected final String platform = PlatformType.ANDROID.toValue();
+	protected final Platform platform = Platform.ANDROID;
 	private String location;
 	private final long time = System.currentTimeMillis();
 	private final long sequenceId = System.currentTimeMillis();

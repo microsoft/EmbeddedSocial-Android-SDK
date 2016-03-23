@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.autorest.models.GetRequestTokenResponse;
+import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
 
 public class ThirdPartyTokenResponse {
 

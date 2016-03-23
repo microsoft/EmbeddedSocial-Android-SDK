@@ -10,7 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.TopicView;

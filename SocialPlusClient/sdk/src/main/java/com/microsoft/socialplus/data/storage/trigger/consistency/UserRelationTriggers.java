@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.data.storage.trigger.consistency;
 
-import com.microsoft.autorest.models.FollowerStatus;
-import com.microsoft.autorest.models.FollowingStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowingStatus;
 import com.microsoft.socialplus.base.expression.Template;
 import com.microsoft.socialplus.data.model.TopicFeedType;
 import com.microsoft.socialplus.data.storage.DbSchemas;

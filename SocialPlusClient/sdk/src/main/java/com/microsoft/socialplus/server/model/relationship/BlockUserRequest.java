@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.relationship;
 
-import com.microsoft.autorest.models.PostBlockedUserRequest;
+import com.microsoft.socialplus.autorest.models.PostBlockedUserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

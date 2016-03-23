@@ -6,8 +6,8 @@
 
 package com.microsoft.test.socialplus.test;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.CommentFeedType;
 import com.microsoft.socialplus.data.model.TopicFeedType;

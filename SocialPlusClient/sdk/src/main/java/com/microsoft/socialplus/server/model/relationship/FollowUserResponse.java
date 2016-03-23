@@ -6,8 +6,7 @@
 
 package com.microsoft.socialplus.server.model.relationship;
 
-import com.microsoft.autorest.models.FollowingStatus;
-import com.microsoft.socialplus.base.utils.EnumUtils;
+import com.microsoft.socialplus.autorest.models.FollowingStatus;
 
 public class FollowUserResponse {
 

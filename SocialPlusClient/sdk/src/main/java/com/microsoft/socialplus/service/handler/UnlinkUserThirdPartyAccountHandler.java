@@ -8,7 +8,7 @@ package com.microsoft.socialplus.service.handler;
 
 import android.content.Intent;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.base.service.IServiceIntentHandler;

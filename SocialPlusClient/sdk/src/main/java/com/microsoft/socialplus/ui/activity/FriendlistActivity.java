@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.utils.EnumUtils;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.service.IntentExtras;

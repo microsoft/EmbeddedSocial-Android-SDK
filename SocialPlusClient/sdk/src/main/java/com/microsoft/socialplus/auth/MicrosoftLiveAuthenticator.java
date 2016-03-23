@@ -10,7 +10,7 @@ import android.content.Context;
 import android.os.ConditionVariable;
 import android.support.v4.app.Fragment;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.live.LiveAuthClient;
 import com.microsoft.live.LiveAuthException;
 import com.microsoft.live.LiveAuthListener;

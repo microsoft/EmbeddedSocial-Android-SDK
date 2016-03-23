@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.social;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 
 /**
  * Provides access to social network friend loaders.

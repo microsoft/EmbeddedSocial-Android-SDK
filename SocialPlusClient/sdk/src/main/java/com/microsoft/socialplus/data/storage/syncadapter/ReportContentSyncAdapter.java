@@ -7,7 +7,7 @@
 package com.microsoft.socialplus.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.data.storage.model.ReportContentOperation;
 import com.microsoft.socialplus.server.IReportService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

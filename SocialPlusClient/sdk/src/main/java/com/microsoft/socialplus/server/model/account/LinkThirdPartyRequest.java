@@ -1,7 +1,7 @@
 package com.microsoft.socialplus.server.model.account;
 
-import com.microsoft.autorest.models.IdentityProvider;
-import com.microsoft.autorest.models.PostLinkedAccountRequest;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.PostLinkedAccountRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

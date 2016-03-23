@@ -6,10 +6,10 @@
 
 package com.microsoft.socialplus.server.model.report;
 
-import com.microsoft.autorest.UserReportsOperations;
-import com.microsoft.autorest.UserReportsOperationsImpl;
-import com.microsoft.autorest.models.PostReportRequest;
-import com.microsoft.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.UserReportsOperations;
+import com.microsoft.socialplus.autorest.UserReportsOperationsImpl;
+import com.microsoft.socialplus.autorest.models.PostReportRequest;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

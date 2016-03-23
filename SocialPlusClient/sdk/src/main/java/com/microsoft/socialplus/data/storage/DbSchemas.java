@@ -34,7 +34,7 @@ public final class DbSchemas {
 
 		public static final String TABLE_NAME = "topics";
 		public static final String USER = "user";
-		public static final String ELAPSED_TIME = "elapsedTime";
+		public static final String CREATED_TIME = "createdTime";
 		public static final String TOPIC_HANDLE = "topicHandle";
 		public static final String LIKE_STATUS = "likeStatus";
 		public static final String PIN_STATUS = "pinStatus";
@@ -85,7 +85,7 @@ public final class DbSchemas {
 		public static final String TABLE_NAME = "comments";
 		public static final String COMMENT_HANDLE = "commentHandle";
 		public static final String TOPIC_HANDLE = "topicHandle";
-		public static final String ELAPSED_TIME = "elapsedTime";
+		public static final String CREATED_TIME = "createdTime";
 		public static final String TOTAL_LIKES = "totalLikes";
 		public static final String TOTAL_REPLIES = "totalReplies";
 		public static final String LIKE_STATUS = "likeStatus";

@@ -6,7 +6,7 @@
 
 package com.microsoft.test.socialplus.test;
 
-import com.microsoft.autorest.models.Visibility;
+import com.microsoft.socialplus.autorest.models.Visibility;
 import com.microsoft.socialplus.server.IRelationshipService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UsersListResponse;

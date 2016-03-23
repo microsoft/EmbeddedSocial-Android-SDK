@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.account;
 
-import com.microsoft.autorest.models.UserProfileView;
+import com.microsoft.socialplus.autorest.models.UserProfileView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
 
 /**

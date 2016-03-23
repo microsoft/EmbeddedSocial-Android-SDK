@@ -8,7 +8,7 @@ package com.microsoft.socialplus.pending;
 
 import android.content.Context;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.data.storage.UserActionProxy;
 
 /**

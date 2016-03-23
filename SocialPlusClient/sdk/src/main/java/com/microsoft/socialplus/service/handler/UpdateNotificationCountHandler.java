@@ -8,7 +8,7 @@ package com.microsoft.socialplus.service.handler;
 
 import android.content.Intent;
 
-import com.microsoft.autorest.models.CountResponse;
+import com.microsoft.socialplus.autorest.models.CountResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.service.IServiceIntentHandler;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;

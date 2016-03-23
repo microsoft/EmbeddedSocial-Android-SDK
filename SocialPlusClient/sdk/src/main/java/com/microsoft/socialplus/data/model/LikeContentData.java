@@ -8,7 +8,7 @@ package com.microsoft.socialplus.data.model;
 
 import android.os.Parcel;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 
 /**
  * Encapsulates data for like content.

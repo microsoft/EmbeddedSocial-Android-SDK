@@ -6,8 +6,8 @@
 
 package com.microsoft.socialplus.server.model.content.replies;
 
-import com.microsoft.autorest.models.PostReplyRequest;
-import com.microsoft.autorest.models.PostReplyResponse;
+import com.microsoft.socialplus.autorest.models.PostReplyRequest;
+import com.microsoft.socialplus.autorest.models.PostReplyResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

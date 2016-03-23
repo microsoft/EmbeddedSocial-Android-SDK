@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.content.comments;
 
-import com.microsoft.autorest.models.CommentView;
+import com.microsoft.socialplus.autorest.models.CommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

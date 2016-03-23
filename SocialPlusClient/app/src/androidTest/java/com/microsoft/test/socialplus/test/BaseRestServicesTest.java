@@ -8,7 +8,7 @@ package com.microsoft.test.socialplus.test;
 
 import android.test.ApplicationTestCase;
 
-import com.microsoft.autorest.models.PublisherType;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.SocialPlusApplication;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;

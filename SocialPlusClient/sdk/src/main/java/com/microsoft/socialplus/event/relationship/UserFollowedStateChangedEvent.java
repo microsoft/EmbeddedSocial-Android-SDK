@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.event.relationship;
 
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.base.event.HandlingThread;
 import com.microsoft.socialplus.base.event.ThreadType;
 import com.microsoft.socialplus.event.BaseUserEvent;

@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.notification;
 
-import com.microsoft.autorest.models.PutNotificationsStatusRequest;
+import com.microsoft.socialplus.autorest.models.PutNotificationsStatusRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

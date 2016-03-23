@@ -7,7 +7,7 @@
 package com.microsoft.socialplus.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.CommentFeedType;

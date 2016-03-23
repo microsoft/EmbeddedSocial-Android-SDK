@@ -7,7 +7,7 @@
 package com.microsoft.socialplus.social;
 
 import com.google.gson.Gson;
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.auth.SocialNetworkTokenHolder;
 import com.microsoft.socialplus.auth.SocialNetworkTokens;
 import com.microsoft.socialplus.social.exception.InvalidCredentialsException;

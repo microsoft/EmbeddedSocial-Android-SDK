@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 
 import com.facebook.login.LoginManager;
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.actions.Action;
 import com.microsoft.socialplus.actions.ActionsLauncher;
 import com.microsoft.socialplus.actions.OngoingActions;

@@ -9,7 +9,7 @@ package com.microsoft.socialplus.auth;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.IDisposable;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.sdk.R;

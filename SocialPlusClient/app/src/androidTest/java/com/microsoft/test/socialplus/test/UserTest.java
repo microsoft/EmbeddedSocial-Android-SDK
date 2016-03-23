@@ -8,14 +8,13 @@ package com.microsoft.test.socialplus.test;
 
 import android.text.TextUtils;
 
-import com.microsoft.autorest.models.Reason;
-import com.microsoft.autorest.models.Visibility;
+import com.microsoft.socialplus.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.models.Visibility;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.IReportService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.ResourceAlreadyExistsException;
-import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;

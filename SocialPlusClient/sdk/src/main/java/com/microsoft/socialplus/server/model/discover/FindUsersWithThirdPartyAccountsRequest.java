@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.discover;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 
 import com.microsoft.socialplus.server.model.UserRequest;
 

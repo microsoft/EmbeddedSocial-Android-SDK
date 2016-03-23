@@ -9,7 +9,7 @@ package com.microsoft.socialplus.ui.adapter.renderer;
 import android.content.Context;
 import android.view.View;
 
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.UserCompactView;

@@ -9,7 +9,7 @@ package com.microsoft.socialplus.data.storage;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.microsoft.autorest.models.CountResponse;
+import com.microsoft.socialplus.autorest.models.CountResponse;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchRequestWrapper;
 import com.microsoft.socialplus.server.INotificationService;

@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.microsoft.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.ActivityType;

@@ -17,7 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.data.model.AccountData;

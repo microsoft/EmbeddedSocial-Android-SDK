@@ -10,7 +10,7 @@ import android.content.Context;
 import android.support.v7.widget.PopupMenu;
 import android.view.View;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.event.EventBus;

@@ -9,7 +9,7 @@ package com.microsoft.socialplus.ui.util.menu;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 
-import com.microsoft.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.sdk.R;
 
 /**

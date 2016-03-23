@@ -6,15 +6,15 @@
 
 package com.microsoft.socialplus.server.model.report;
 
-import com.microsoft.autorest.CommentReportsOperations;
-import com.microsoft.autorest.CommentReportsOperationsImpl;
-import com.microsoft.autorest.ReplyReportsOperations;
-import com.microsoft.autorest.ReplyReportsOperationsImpl;
-import com.microsoft.autorest.TopicReportsOperations;
-import com.microsoft.autorest.TopicReportsOperationsImpl;
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.PostReportRequest;
-import com.microsoft.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.CommentReportsOperations;
+import com.microsoft.socialplus.autorest.CommentReportsOperationsImpl;
+import com.microsoft.socialplus.autorest.ReplyReportsOperations;
+import com.microsoft.socialplus.autorest.ReplyReportsOperationsImpl;
+import com.microsoft.socialplus.autorest.TopicReportsOperations;
+import com.microsoft.socialplus.autorest.TopicReportsOperationsImpl;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.PostReportRequest;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

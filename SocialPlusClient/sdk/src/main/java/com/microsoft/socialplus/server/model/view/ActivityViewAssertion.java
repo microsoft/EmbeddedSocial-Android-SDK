@@ -8,7 +8,7 @@ package com.microsoft.socialplus.server.model.view;
 
 import android.text.TextUtils;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.base.function.Predicate;
 import com.microsoft.socialplus.data.model.ActivityType;
 

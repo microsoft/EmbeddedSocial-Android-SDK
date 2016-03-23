@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.account;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -28,7 +28,7 @@ public class UnlinkUserThirdPartyAccountRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider.toValue(), bearerToken);
+			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider, bearerToken);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

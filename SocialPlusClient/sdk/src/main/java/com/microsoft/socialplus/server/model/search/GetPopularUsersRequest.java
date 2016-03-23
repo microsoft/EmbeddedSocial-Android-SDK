@@ -1,6 +1,6 @@
 package com.microsoft.socialplus.server.model.search;
 
-import com.microsoft.autorest.models.FeedResponseUserProfileView;
+import com.microsoft.socialplus.autorest.models.FeedResponseUserProfileView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

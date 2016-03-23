@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.event;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.event.AbstractEvent;
 import com.microsoft.socialplus.base.event.HandlingThread;
 import com.microsoft.socialplus.base.event.ThreadType;

@@ -13,8 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.event.dialog.OnPositiveButtonClickedEvent;
 import com.microsoft.socialplus.sdk.R;

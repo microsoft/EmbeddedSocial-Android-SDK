@@ -6,9 +6,9 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.autorest.models.IdentityProvider;
-import com.microsoft.autorest.models.PostSessionRequest;
-import com.microsoft.autorest.models.PostSessionResponse;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.PostSessionRequest;
+import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;

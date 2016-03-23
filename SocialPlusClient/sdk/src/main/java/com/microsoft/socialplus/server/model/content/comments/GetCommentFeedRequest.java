@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.content.comments;
 
-import com.microsoft.autorest.models.FeedResponseCommentView;
+import com.microsoft.socialplus.autorest.models.FeedResponseCommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.data.model.CommentFeedType;

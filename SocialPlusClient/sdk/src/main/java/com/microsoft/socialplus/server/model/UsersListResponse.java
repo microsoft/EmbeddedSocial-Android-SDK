@@ -6,9 +6,9 @@
 
 package com.microsoft.socialplus.server.model;
 
-import com.microsoft.autorest.models.FeedResponseUserCompactView;
-import com.microsoft.autorest.models.FeedResponseUserProfileView;
-import com.microsoft.autorest.models.UserProfileView;
+import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
+import com.microsoft.socialplus.autorest.models.FeedResponseUserProfileView;
+import com.microsoft.socialplus.autorest.models.UserProfileView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class UsersListResponse extends FeedUserResponse implements ListResponse<
 
 	public UsersListResponse(FeedResponseUserCompactView feed) {
 		users = new ArrayList<>();
-		for (com.microsoft.autorest.models.UserCompactView feedView : feed.getData()) {
+		for (com.microsoft.socialplus.autorest.models.UserCompactView feedView : feed.getData()) {
 			users.add(new UserCompactView(feedView));
 		}
 	}

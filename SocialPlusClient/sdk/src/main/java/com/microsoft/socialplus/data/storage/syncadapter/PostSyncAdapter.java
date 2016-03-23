@@ -9,7 +9,7 @@ package com.microsoft.socialplus.data.storage.syncadapter;
 import android.text.TextUtils;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;

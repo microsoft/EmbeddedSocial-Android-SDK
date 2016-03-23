@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.content.comments;
 
-import com.microsoft.autorest.models.FeedResponseCommentView;
+import com.microsoft.socialplus.autorest.models.FeedResponseCommentView;
 import com.microsoft.socialplus.server.model.FeedUserResponse;
 import com.microsoft.socialplus.server.model.ListResponse;
 import com.microsoft.socialplus.server.model.view.CommentView;
@@ -24,7 +24,7 @@ public class GetCommentFeedResponse extends FeedUserResponse implements ListResp
 
 	public GetCommentFeedResponse(FeedResponseCommentView response) {
 		comments = new ArrayList<>();
-		for (com.microsoft.autorest.models.CommentView comment : response.getData()) {
+		for (com.microsoft.socialplus.autorest.models.CommentView comment : response.getData()) {
 			comments.add(new CommentView(comment));
 		}
 	}

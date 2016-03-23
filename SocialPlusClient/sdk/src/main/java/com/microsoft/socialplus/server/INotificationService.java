@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server;
 
-import com.microsoft.autorest.models.CountResponse;
+import com.microsoft.socialplus.autorest.models.CountResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.notification.GetNotificationCountRequest;

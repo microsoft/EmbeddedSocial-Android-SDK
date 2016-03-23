@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.server.model.like;
 
-import com.microsoft.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 public class GenericLikeRequest extends UserRequest {

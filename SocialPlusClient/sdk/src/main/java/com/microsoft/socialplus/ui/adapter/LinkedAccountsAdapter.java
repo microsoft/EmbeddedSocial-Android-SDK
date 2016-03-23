@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.fetcher.base.FetchableAdapter;
 import com.microsoft.socialplus.fetcher.base.Fetcher;
 import com.microsoft.socialplus.sdk.R;

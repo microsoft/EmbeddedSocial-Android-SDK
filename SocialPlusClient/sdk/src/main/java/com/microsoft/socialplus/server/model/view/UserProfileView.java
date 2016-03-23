@@ -8,9 +8,9 @@ package com.microsoft.socialplus.server.model.view;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.autorest.models.FollowerStatus;
-import com.microsoft.autorest.models.FollowingStatus;
-import com.microsoft.autorest.models.Visibility;
+import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.socialplus.autorest.models.FollowingStatus;
+import com.microsoft.socialplus.autorest.models.Visibility;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.UniqueItem;
 
@@ -67,7 +67,7 @@ public class UserProfileView implements UniqueItem {
 	UserProfileView() {
 	}
 
-	public UserProfileView(com.microsoft.autorest.models.UserProfileView view) {
+	public UserProfileView(com.microsoft.socialplus.autorest.models.UserProfileView view) {
 		userHandle = view.getUserHandle();
 //		username =
 		firstName = view.getFirstName();

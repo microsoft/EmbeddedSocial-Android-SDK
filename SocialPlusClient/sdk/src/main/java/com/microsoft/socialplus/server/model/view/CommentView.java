@@ -42,7 +42,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	@DatabaseField
 	private String commentBlobUrl;
 
-	@DatabaseField(columnName = DbSchemas.Comments.ELAPSED_TIME)
+	@DatabaseField(columnName = DbSchemas.Comments.CREATED_TIME)
 	private long createdTime;
 
 	@DatabaseField(columnName = DbSchemas.Comments.TOTAL_LIKES)
@@ -129,7 +129,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		offlineId = in.readInt();
 	}
 
-	public CommentView(com.microsoft.autorest.models.CommentView view) {
+	public CommentView(com.microsoft.socialplus.autorest.models.CommentView view) {
 		commentHandle = view.getCommentHandle();
 		topicHandle = view.getTopicHandle();
 		user = new UserCompactView(view.getUser());

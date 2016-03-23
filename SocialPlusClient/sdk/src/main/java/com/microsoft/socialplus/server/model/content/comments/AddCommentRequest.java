@@ -6,9 +6,9 @@
 
 package com.microsoft.socialplus.server.model.content.comments;
 
-import com.microsoft.autorest.models.BlobType;
-import com.microsoft.autorest.models.PostCommentRequest;
-import com.microsoft.autorest.models.PostCommentResponse;
+import com.microsoft.socialplus.autorest.models.BlobType;
+import com.microsoft.socialplus.autorest.models.PostCommentRequest;
+import com.microsoft.socialplus.autorest.models.PostCommentResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;

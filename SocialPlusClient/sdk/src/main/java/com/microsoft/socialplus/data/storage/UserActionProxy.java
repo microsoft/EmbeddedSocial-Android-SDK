@@ -8,8 +8,8 @@ package com.microsoft.socialplus.data.storage;
 
 import android.content.Context;
 
-import com.microsoft.autorest.models.ContentType;
-import com.microsoft.autorest.models.Reason;
+import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.event.AbstractEvent;
 import com.microsoft.socialplus.base.event.EventBus;

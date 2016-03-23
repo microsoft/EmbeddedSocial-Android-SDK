@@ -84,7 +84,7 @@ public class AppCompactView implements Parcelable, UniqueItem {
 		appStoreLink = in.readString();
 	}
 
-	public AppCompactView(com.microsoft.autorest.models.AppCompactView view) {
+	public AppCompactView(com.microsoft.socialplus.autorest.models.AppCompactView view) {
 		appHandle = view.getAppHandle();
 		appName = view.getName();
 		appIconUrl = view.getIconUrl();

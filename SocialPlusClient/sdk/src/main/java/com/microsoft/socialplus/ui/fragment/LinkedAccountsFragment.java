@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.microsoft.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.auth.AbstractAuthenticator;
 import com.microsoft.socialplus.auth.FacebookAuthenticator;
 import com.microsoft.socialplus.auth.GoogleWebAuthenticator;

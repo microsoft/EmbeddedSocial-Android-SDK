@@ -11,7 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.microsoft.autorest.models.Visibility;
+import com.microsoft.socialplus.autorest.models.Visibility;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.actions.Action;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
