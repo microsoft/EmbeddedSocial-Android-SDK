@@ -12,7 +12,7 @@ import com.microsoft.socialplus.server.model.image.TypedImage;
 
 public interface IImageService {
 
-	String addImage(AddImageRequest request, TypedImage image)
+	String addImage(AddImageRequest request)
 			throws NetworkRequestException;
 
 }

@@ -21,9 +21,9 @@ import com.microsoft.socialplus.auth.SocialNetworkTokenHolder;
 import com.microsoft.socialplus.auth.SocialNetworkTokens;
 import com.microsoft.socialplus.social.exception.NotAuthorizedToSocialNetworkException;
 import com.microsoft.socialplus.social.exception.SocialNetworkException;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;

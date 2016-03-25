@@ -16,13 +16,14 @@ import com.microsoft.socialplus.data.storage.AccountServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.ActivityServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.AuthenticationServiceWrapper;
 import com.microsoft.socialplus.data.storage.ContentServiceCachingWrapper;
+import com.microsoft.socialplus.data.storage.ImageServiceWrapper;
 import com.microsoft.socialplus.data.storage.NotificationServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.RelationshipServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.SearchServiceCachingWrapper;
 import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.squareup.okhttp.ConnectionPool;
-import com.squareup.okhttp.OkHttpClient;
+import okhttp3.ConnectionPool;
+import okhttp3.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
 
@@ -61,11 +62,11 @@ public final class SocialPlusServiceProvider {
 
 	static {
 		HTTP_CLIENT = new OkHttpClient();
-		HTTP_CLIENT.setConnectionPool(new ConnectionPool(0, 1000)); // TODO check this is the correct value
-		HTTP_CLIENT.setRetryOnConnectionFailure(false);
-		HTTP_CLIENT.setConnectTimeout(DEFAULT_CONNECT_TIMEOUT, TimeUnit.SECONDS);
-		HTTP_CLIENT.setReadTimeout(DEFAULT_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
-		HTTP_CLIENT.setWriteTimeout(DEFAULT_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
+//		HTTP_CLIENT.setConnectionPool(new ConnectionPool(0, 1000)); // TODO check this is the correct value
+//		HTTP_CLIENT.setRetryOnConnectionFailure(false);
+//		HTTP_CLIENT.setConnectTimeout(DEFAULT_CONNECT_TIMEOUT, TimeUnit.SECONDS);
+//		HTTP_CLIENT.setReadTimeout(DEFAULT_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
+//		HTTP_CLIENT.setWriteTimeout(DEFAULT_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
 	}
 
 	public static OkHttpClient getHttpClient() {
@@ -113,7 +114,7 @@ public final class SocialPlusServiceProvider {
 //			.setLogLevel(RestAdapter.LogLevel.HEADERS_AND_ARGS)
 //			.setLog(logger)
 //			.build();
-		imageService = retrofit.create(IImageService.class);
+		imageService = new ImageServiceWrapper();
 	}
 
 	public IAccountService getAccountService() {

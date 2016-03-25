@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.autorest.models.Visibility;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.actions.Action;
@@ -18,7 +19,6 @@ import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.model.AccountDataDifference;
-import com.microsoft.socialplus.data.model.ImageType;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.ImageUploader;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
@@ -83,7 +83,7 @@ public class UpdateAccountHandler extends ActionHandler {
 	private void updatePhotoIfNeeded(AccountDataDifference difference, AccountData accountData) throws IOException, NetworkRequestException {
 		if (difference.isPhotoUriChanged()) {
 			Uri photoUri = difference.getPhotoUri();
-			String photoUrl = photoUri != null ? ImageUploader.uploadImage(context, photoUri, ImageType.USER_PROFILE) : null;
+			String photoUrl = photoUri != null ? ImageUploader.uploadImage(context, photoUri, ImageType.USERPHOTO) : null;
 			server.updateUserPhoto(new UpdateUserPhotoRequest(photoUrl));
 			accountData.setUserPhotoUrl(photoUrl);
 		}

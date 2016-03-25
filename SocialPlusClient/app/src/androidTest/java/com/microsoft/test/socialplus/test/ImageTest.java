@@ -12,15 +12,15 @@ import android.net.Uri;
 import android.webkit.URLUtil;
 
 import com.microsoft.socialplus.R;
+import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.data.model.ImageType;
 import com.microsoft.socialplus.server.ImageUploader;
 
 public class ImageTest extends BaseRestServicesTest {
 
 	public void testAddImage() throws Exception{
 		Uri uri = resourceToUri(getContext(), R.drawable.sp_logo);
-		String imageUri = ImageUploader.uploadImage(getContext(), uri, ImageType.USER_PROFILE);
+		String imageUri = ImageUploader.uploadImage(getContext(), uri, ImageType.USERPHOTO);
 		DebugLog.i(imageUri);
 		assertTrue("URI is not valid", URLUtil.isValidUrl(imageUri));
 	}

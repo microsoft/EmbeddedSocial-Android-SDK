@@ -11,10 +11,10 @@ import android.text.TextUtils;
 import com.j256.ormlite.dao.Dao;
 import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.AddPostData;
-import com.microsoft.socialplus.data.model.ImageType;
 import com.microsoft.socialplus.data.model.TopicFeedType;
 import com.microsoft.socialplus.data.storage.DatabaseHelper;
 import com.microsoft.socialplus.data.storage.PostStorage;
@@ -75,7 +75,7 @@ public class PostSyncAdapter implements ISynchronizable {
 		try {
 			String imagePath = postData.getImagePath();
 			if (!TextUtils.isEmpty(imagePath)) {
-				String imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.TOPIC_CONTENT);
+				String imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.CONTENTBLOB);
 				requestBuilder.setTopicBlobType(BlobType.IMAGE);
 				requestBuilder.setTopicBlobHandle(imageUrl);
 			}

@@ -12,13 +12,14 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 
+import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
-import com.microsoft.socialplus.data.model.ImageType;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.image.AddImageRequest;
 import com.microsoft.socialplus.server.model.image.TypedImage;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -70,7 +71,7 @@ public class ImageUploader {
 
 		IImageService imageService
 				= GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getImageService();
-		AddImageRequest addImageRequest = new AddImageRequest(imageType);
-		return imageService.addImage(addImageRequest, new TypedImage(image));
+		AddImageRequest addImageRequest = new AddImageRequest(image, imageType);
+		return imageService.addImage(addImageRequest);
 	}
 }

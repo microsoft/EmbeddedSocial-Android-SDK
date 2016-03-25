@@ -8,6 +8,8 @@ package com.microsoft.socialplus.server.model;
 
 import com.microsoft.socialplus.autorest.HashtagsOperations;
 import com.microsoft.socialplus.autorest.HashtagsOperationsImpl;
+import com.microsoft.socialplus.autorest.ImagesOperations;
+import com.microsoft.socialplus.autorest.ImagesOperationsImpl;
 import com.microsoft.socialplus.autorest.MyBlockedUsersOperations;
 import com.microsoft.socialplus.autorest.MyBlockedUsersOperationsImpl;
 import com.microsoft.socialplus.autorest.MyFollowersOperations;
@@ -46,6 +48,7 @@ public class UserRequest extends BaseRequest {
 	protected static final MyFollowingOperations FOLLOWING;
 	protected static final HashtagsOperations HASHTAGS;
 	protected static final MyLinkedAccountsOperations LINKED_ACCOUNTS;
+	protected static final ImagesOperations IMAGES;
 
 	static {
 		USERS = new UsersOperationsImpl(RETROFIT, CLIENT);
@@ -59,6 +62,7 @@ public class UserRequest extends BaseRequest {
 		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
 		HASHTAGS = new HashtagsOperationsImpl(RETROFIT, CLIENT);
 		LINKED_ACCOUNTS = new MyLinkedAccountsOperationsImpl(RETROFIT, CLIENT);
+		IMAGES = new ImagesOperationsImpl(RETROFIT, CLIENT);
 	}
 
 	//TODO: init all fields

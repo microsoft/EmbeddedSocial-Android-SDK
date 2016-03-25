@@ -40,6 +40,8 @@ import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import java.io.IOException;
 import java.util.Locale;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -61,9 +63,15 @@ public class BaseRequest {
 	protected static final ReplyLikesOperations REPLY_LIKES;
 
 	static {
+		HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+		logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+		OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+		httpClient.addInterceptor(logging);
+
 		RETROFIT = new Retrofit.Builder()
 				.baseUrl(SocialPlus.API_URL)
 				.addConverterFactory(GsonConverterFactory.create())
+				.client(httpClient.build())
 				.build();
 		CLIENT = new SocialPlusClientImpl();
 		TOPICS = new TopicsOperationsImpl(RETROFIT, CLIENT);

@@ -8,7 +8,7 @@ package com.microsoft.socialplus.image;
 
 import android.text.TextUtils;
 
-import com.microsoft.socialplus.data.model.ImageType;
+import com.microsoft.socialplus.autorest.models.ImageType;
 
 /**
  * Image url bound to it's size.
@@ -29,11 +29,11 @@ public abstract class ImageLocation {
 	public abstract String getUrl(int availableWidth);
 
 	public static ImageLocation createTopicImageLocation(String url) {
-		return createImageLocation(ImageType.TOPIC_CONTENT, url);
+		return createImageLocation(ImageType.CONTENTBLOB, url);
 	}
 
 	public static ImageLocation createUserPhotoImageLocation(String url) {
-		return createImageLocation(ImageType.USER_PROFILE, url);
+		return createImageLocation(ImageType.USERPHOTO, url);
 	}
 
 	public static ImageLocation createLocalImageLocation(String fileUrl) {
@@ -104,10 +104,10 @@ public abstract class ImageLocation {
 		private ServerImageLocationImpl(ImageType imageType, String originalUrl) {
 			super(originalUrl);
 			switch (imageType) {
-				case TOPIC_CONTENT:
+				case CONTENTBLOB:
 					sizeVariants = TOPIC_SIZE_VARIANTS;
 					break;
-				case USER_PROFILE:
+				case USERPHOTO:
 					sizeVariants = USER_SIZE_VARIANTS;
 					break;
 				default:
