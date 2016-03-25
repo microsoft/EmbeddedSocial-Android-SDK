@@ -17,10 +17,8 @@ import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.image.AddImageRequest;
-import com.microsoft.socialplus.server.model.image.TypedImage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
