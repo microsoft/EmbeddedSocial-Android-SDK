@@ -251,9 +251,9 @@ public final class SocialPlus {
     }
 
 
-    public static final String APP_KEY = "15babbd6-d0bf-4134-a4a9-c206798900c3";
+    public static final String APP_KEY = "418fd70f-b956-499f-a1b7-85de5ab305af";
     public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0UEoyb2Q3SGlDciIsImFwcCI6IjE1YmFiYmQ2LWQwYmYtNDEzNC1hNGE5LWMyMDY3OTg5MDBjMyIsImV4cCI6MTQ3MjYwNTQ5MH0.o0YbElPTJrBHfRlE_RmrR1FXFR5PxdeAAsRw7kJfvW3DNqId7hm2r3sL_NQPVfDIAxzy0k3pWPkC5rmsYXuwpEi6BZYgmCFIrt-8CyM-dq-VkBgwfyLYXpe6aVD5dF4njD__bxeAcKKa6UyMM1Y73vqyATmyaJzbvk64l1RUW4P_2a0MEIxYZLPMFuVtwSLwzlqqJ0mCl6iiyTPvF68Stz2hWpOQ8iv5MFP7UuHn4YKXxQHajgfxC1NgMcoPDI32OCIOP69Yp2gvNAC7pOZYs_NhNcjZ8EOR-b7VXvcWCfn8msVthSxiPcopQwmTXCLKuXNDZyyzAdbljwBSbxpMnw";
-    public static final String API_URL = "http://sp-dev-restapi.cloudapp.net/";
+    public static final String API_URL = "http://sp-ppe.cloudapp.net/";
 
     /**
      * Starts an activity to view a comment feed for a given topic
