@@ -43,7 +43,8 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 	public AuthenticationResponse send() throws NetworkRequestException {
 		ServiceResponse<PostSessionResponse> serviceResponse;
 		try {
-			serviceResponse = SESSION.postSession(request, appKey, bearerToken);
+			// TODO replace third parameter with bearerToken once auth fixed
+			serviceResponse = SESSION.postSession(request, appKey, /*bearerToken*/ null);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
