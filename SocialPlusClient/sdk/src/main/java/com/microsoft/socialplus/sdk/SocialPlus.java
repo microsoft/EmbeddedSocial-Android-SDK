@@ -251,9 +251,9 @@ public final class SocialPlus {
     }
 
 
-    public static final String APP_KEY = "15babbd6-d0bf-4134-a4a9-c206798900c3";
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0UEoyb2Q3SGlDciIsImFwcCI6IjE1YmFiYmQ2LWQwYmYtNDEzNC1hNGE5LWMyMDY3OTg5MDBjMyIsImV4cCI6MTQ3MjYwNTQ5MH0.o0YbElPTJrBHfRlE_RmrR1FXFR5PxdeAAsRw7kJfvW3DNqId7hm2r3sL_NQPVfDIAxzy0k3pWPkC5rmsYXuwpEi6BZYgmCFIrt-8CyM-dq-VkBgwfyLYXpe6aVD5dF4njD__bxeAcKKa6UyMM1Y73vqyATmyaJzbvk64l1RUW4P_2a0MEIxYZLPMFuVtwSLwzlqqJ0mCl6iiyTPvF68Stz2hWpOQ8iv5MFP7UuHn4YKXxQHajgfxC1NgMcoPDI32OCIOP69Yp2gvNAC7pOZYs_NhNcjZ8EOR-b7VXvcWCfn8msVthSxiPcopQwmTXCLKuXNDZyyzAdbljwBSbxpMnw";
-    public static final String API_URL = "http://sp-dev-restapi.cloudapp.net/";
+    public static final String APP_KEY = "418fd70f-b956-499f-a1b7-85de5ab305af";
+    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0TkRPbTZrMWtDeiIsImFwcCI6IjQxOGZkNzBmLWI5NTYtNDk5Zi1hMWI3LTg1ZGU1YWIzMDVhZiIsImV4cCI6MTQ3NTM1NzYwMX0.a2AM4iBeFoRmD4oG237Rnyd45ruOV8zBKHj6dnUdS2isi1_mUeTIN_Cu4Qc_YQkatUqYmidLIj9qPfCZPy6RtwePHL7gfGr4ArfZAclLsSbIzyXyx8f_g6gT0GVvPQbqR1MXU3hf86FIm-R4vzVvjfojTmzgCc92c-5FRI5n8NN2eRH1oh_XiV9BnRgHj_yxUK71DScY0751fKGksXOaThSyY5nrhrqz5cvXaWud7ZacMaIMJZIp8jsaUqhEHSAFMuMClCaN0e2qH3fLvLjf6tOL_xltmkiWn7YpTw9burZvebPTn00nNHZ3Q0CvmGcc1f5kUb1J2fcpE65wjLq7cA";
+    public static final String API_URL = "http://sp-ppe.cloudapp.net/";
 
     /**
      * Starts an activity to view a comment feed for a given topic
