@@ -77,8 +77,8 @@ public class UserRequest extends BaseRequest {
 	public UserRequest() {
 		userSessionSignature = "OK";
 		userHandle = Preferences.getInstance().getUserHandle();
+		bearerToken = Preferences.getInstance().getBearerToken();
 		appHandle = GlobalObjectRegistry.getObject(Options.class).getAppHandle();
-		bearerToken = SocialPlus.BEARER_TOKEN;
 	}
 
 	public String getUserHandle() {
@@ -91,5 +91,9 @@ public class UserRequest extends BaseRequest {
 
 	public void setUserSessionSignature(String userSessionSignature) {
 		this.userSessionSignature = userSessionSignature;
+	}
+
+	public void setBearerToken(String bearerToken) {
+		this.bearerToken = bearerToken;
 	}
 }

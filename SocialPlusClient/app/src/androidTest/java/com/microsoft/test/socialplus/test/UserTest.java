@@ -51,7 +51,7 @@ public class UserTest extends BaseRestServicesTest {
 		try {
 			AuthenticationResponse response = createRandomUser();
 			assertFalse("user handle is empty in response", TextUtils.isEmpty(response.getUserHandle()));
-			assertFalse("session token signature is empty", TextUtils.isEmpty(response.getSessionTokenSignature()));
+			assertFalse("session token signature is empty", TextUtils.isEmpty(response.getSessionToken()));
 
 			deleteUser(response);
 		} catch (ResourceAlreadyExistsException e) {

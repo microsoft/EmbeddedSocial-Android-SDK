@@ -47,7 +47,8 @@ public abstract class BaseRestServicesTest extends ApplicationTestCase<SocialPlu
 										   AuthenticationResponse response) {
 
 		userRequest.setUserHandle(response.getUserHandle());
-		userRequest.setUserSessionSignature(response.getSessionTokenSignature());
+		userRequest.setUserSessionSignature(response.getSessionToken());
+		userRequest.setBearerToken("Bearer " + response.getSessionToken());
 		return userRequest;
 	}
 

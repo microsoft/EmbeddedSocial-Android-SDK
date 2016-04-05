@@ -63,11 +63,12 @@ public class UserAccount {
 	/**
 	 * Called on sign-in process completed.
 	 * @param newUserHandle current user's handle
+	 * @param sessionToken current user's sessionToken
 	 * @param newAccountDetails current user's account details
 	 */
-	public void onSignedIn(String newUserHandle, AccountData newAccountDetails) {
+	public void onSignedIn(String newUserHandle, String sessionToken, AccountData newAccountDetails) {
 		GlobalObjectRegistry.getObject(DatabaseHelper.class).clearData();
-		setNewAccountData(newUserHandle, newAccountDetails);
+		setNewAccountData(newUserHandle, sessionToken, newAccountDetails);
 		PendingAction postponedAction = Preferences.getInstance().getPendingAction();
 		if (postponedAction != null) {
 			postponedAction.execute(context);
@@ -75,11 +76,12 @@ public class UserAccount {
 		Preferences.getInstance().clearPendingAction();
 	}
 
-	private void setNewAccountData(String newUserHandle, AccountData newAccountDetails) {
+	private void setNewAccountData(String newUserHandle, String sessionToken, AccountData newAccountDetails) {
 		userHandle = newUserHandle;
 		accountDetails = newAccountDetails;
 		AccountDataStorage.store(context, newAccountDetails);
 		Preferences.getInstance().setUserHandle(newUserHandle);
+		Preferences.getInstance().setBearerToken(sessionToken);
 		EventBus.post(new UserSignedInEvent());
 	}
 
@@ -118,6 +120,7 @@ public class UserAccount {
 		ActionsLauncher.signOut(context);
 		AccountDataStorage.clear(context);
 		Preferences.getInstance().setUserHandle(null);
+		Preferences.getInstance().setBearerToken(null);
 		Preferences.getInstance().resetNotificationCount();
 		accountDetails = null;
 		userHandle = null;

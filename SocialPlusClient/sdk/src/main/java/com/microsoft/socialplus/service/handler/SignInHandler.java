@@ -68,11 +68,12 @@ public class SignInHandler extends ActionHandler {
 			throws NetworkRequestException {
 
 		String userHandle = response.getUserHandle();
-		GetUserAccountRequest getUserRequest = new GetUserAccountRequest();
+		String sessionToken = "Bearer " + response.getSessionToken();
+		GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
 		GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
 		AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
 		if (!action.isCompleted()) {
-			UserAccount.getInstance().onSignedIn(userHandle, accountData);
+			UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData);
 			WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
 		}
 	}

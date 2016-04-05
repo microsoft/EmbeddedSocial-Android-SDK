@@ -48,6 +48,12 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
+
+		if (!request.getCreateUser() && serviceResponse.getResponse().code() == 404) {
+			request.setCreateUser(true);
+			return send();
+		}
+
 		checkResponseCode(serviceResponse);
 
 		return new AuthenticationResponse(serviceResponse.getBody());

@@ -13,6 +13,12 @@ import java.util.List;
 
 public class GetUserAccountRequest extends UserRequest {
 
+    public GetUserAccountRequest() {}
+
+    public GetUserAccountRequest(String bearerToken) {
+        this.bearerToken = bearerToken;
+    }
+
     @Override
     public GetUserAccountResponse send() throws NetworkRequestException {
         ServiceResponse<UserProfileView> myProfileResponse;

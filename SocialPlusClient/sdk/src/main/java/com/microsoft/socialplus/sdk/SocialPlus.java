@@ -252,7 +252,6 @@ public final class SocialPlus {
 
 
     public static final String APP_KEY = "418fd70f-b956-499f-a1b7-85de5ab305af";
-    public static final String BEARER_TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0TkRPbTZrMWtDeiIsImFwcCI6IjQxOGZkNzBmLWI5NTYtNDk5Zi1hMWI3LTg1ZGU1YWIzMDVhZiIsImV4cCI6MTQ3NTM1NzYwMX0.a2AM4iBeFoRmD4oG237Rnyd45ruOV8zBKHj6dnUdS2isi1_mUeTIN_Cu4Qc_YQkatUqYmidLIj9qPfCZPy6RtwePHL7gfGr4ArfZAclLsSbIzyXyx8f_g6gT0GVvPQbqR1MXU3hf86FIm-R4vzVvjfojTmzgCc92c-5FRI5n8NN2eRH1oh_XiV9BnRgHj_yxUK71DScY0751fKGksXOaThSyY5nrhrqz5cvXaWud7ZacMaIMJZIp8jsaUqhEHSAFMuMClCaN0e2qH3fLvLjf6tOL_xltmkiWn7YpTw9burZvebPTn00nNHZ3Q0CvmGcc1f5kUb1J2fcpE65wjLq7cA";
     public static final String API_URL = "http://sp-ppe.cloudapp.net/";
 
     /**
