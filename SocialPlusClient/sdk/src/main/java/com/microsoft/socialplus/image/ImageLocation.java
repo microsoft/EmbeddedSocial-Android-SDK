@@ -44,7 +44,7 @@ public abstract class ImageLocation {
 		if (TextUtils.isEmpty(url)) {
 			return null;
 		} else {
-			return new ServerImageLocationImpl(imageType, url);
+			return new ServerImageLocationImpl(url);
 		}
 	}
 
@@ -80,39 +80,17 @@ public abstract class ImageLocation {
 	 * Image location implementation for a server image.
 	 */
 	private static final class ServerImageLocationImpl extends ImageLocation {
-
-		private static final SizeVariant[] USER_SIZE_VARIANTS = {
-			new SizeVariant(25, "u"),
-			new SizeVariant(50, "v"),
-			new SizeVariant(100, "w"),
-			new SizeVariant(250, "x"),
-			new SizeVariant(500, "y"),
-			new SizeVariant(1000, "z")
+		private static final SizeVariant[] sizeVariants = {
+			new SizeVariant(25, "d"),
+			new SizeVariant(50, "h"),
+			new SizeVariant(100, "l"),
+			new SizeVariant(250, "p"),
+			new SizeVariant(500, "t"),
+			new SizeVariant(1000, "x")
 		};
 
-		private static final SizeVariant[] TOPIC_SIZE_VARIANTS = {
-			new SizeVariant(25, "t"),
-			new SizeVariant(50, "s"),
-			new SizeVariant(100, "m"),
-			new SizeVariant(250, "l"),
-			new SizeVariant(500, "h"),
-			new SizeVariant(TOPIC_SIZE_MAX, "g")
-		};
-
-		private final SizeVariant[] sizeVariants;
-
-		private ServerImageLocationImpl(ImageType imageType, String originalUrl) {
+		private ServerImageLocationImpl(String originalUrl) {
 			super(originalUrl);
-			switch (imageType) {
-				case CONTENTBLOB:
-					sizeVariants = TOPIC_SIZE_VARIANTS;
-					break;
-				case USERPHOTO:
-					sizeVariants = USER_SIZE_VARIANTS;
-					break;
-				default:
-					throw new IllegalArgumentException("Unknown imageType");
-			}
 		}
 
 		public String getUrl(int availableWidth) {
