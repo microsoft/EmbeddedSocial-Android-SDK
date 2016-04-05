@@ -20,8 +20,6 @@ import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import java.io.IOException;
 
 public final class CreateUserRequest extends UserRequest {
-	//TODO Fix constant value
-	private final String socialPlusAppToken = GlobalObjectRegistry.getObject(Options.class).getAppToken();
 
 	private PostUserRequest body;
 

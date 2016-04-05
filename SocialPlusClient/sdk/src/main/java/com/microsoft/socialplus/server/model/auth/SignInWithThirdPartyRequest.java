@@ -11,8 +11,6 @@ import com.microsoft.socialplus.autorest.models.PostSessionRequest;
 import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.base.GlobalObjectRegistry;
-import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
@@ -22,8 +20,6 @@ import java.io.IOException;
  *
  */
 public class SignInWithThirdPartyRequest extends UserRequest {
-	//TODO Fix constant value
-	private final String socialPlusAppToken = GlobalObjectRegistry.getObject(Options.class).getAppToken();
 
 	private final PostSessionRequest request;
 
@@ -35,7 +31,7 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 		request.setAccessToken(thirdPartyAccessToken);
 		//TODO
 		//request.setRequestToken(requestToken);
-		request.setInstanceId(instanceID);
+		request.setInstanceId(instanceId);
 		request.setCreateUser(false);
 	}
 

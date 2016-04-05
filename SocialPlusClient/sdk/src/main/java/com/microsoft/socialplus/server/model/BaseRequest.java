@@ -29,10 +29,10 @@ import com.microsoft.socialplus.autorest.TopicLikesOperationsImpl;
 import com.microsoft.socialplus.autorest.TopicsOperations;
 import com.microsoft.socialplus.autorest.TopicsOperationsImpl;
 import com.microsoft.socialplus.autorest.models.Platform;
-import com.microsoft.socialplus.autorest.models.PlatformType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
+import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.RequestInfoProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -86,7 +86,6 @@ public class BaseRequest {
 	}
 
 	//TODO: init all fields
-	private final String instanceHandle;
 	protected final Platform platform = Platform.ANDROID;
 	private String location;
 	private final long time = System.currentTimeMillis();
@@ -94,13 +93,12 @@ public class BaseRequest {
 	protected final String language;
 	private final int networkType;
 	protected final String appKey;
-	protected final String instanceID;
+	protected final String instanceId;
 
 	private transient boolean useCacheOnly;
 
 	protected BaseRequest() {
 		RequestInfoProvider requestInfoProvider = GlobalObjectRegistry.getObject(RequestInfoProvider.class);
-		instanceHandle = requestInfoProvider.getInstanceHandle();
 		networkType = requestInfoProvider.getNetworkType();
 		Locale locale = Locale.getDefault();
 		String language = locale.getLanguage();
@@ -114,8 +112,8 @@ public class BaseRequest {
 			}
 		}
 		this.language = localeCode;
-		appKey = SocialPlus.APP_KEY; // TODO This should be stored somewhere
-		instanceID = "1"; // TODO
+		appKey = GlobalObjectRegistry.getObject(Options.class).getAppKey();
+		instanceId = requestInfoProvider.getInstanceId();
 	}
 
 	/**

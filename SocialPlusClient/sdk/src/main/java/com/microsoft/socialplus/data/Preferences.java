@@ -24,7 +24,7 @@ import com.microsoft.socialplus.pending.PendingAction;
 public class Preferences {
 
 	private static final String PREF_FILE_NAME = "socialplus.pref";
-	private static final String INSTANCE_HANDLE = "instance_handle";
+	private static final String INSTANCE_ID = "instance_id";
 	private static final String USER_HANDLE = "userhandle";
 	private static final String NOTIFICATION_COUNT = "notification_count";
 	private static final String DISPLAY_APP = "display_app";
@@ -45,19 +45,19 @@ public class Preferences {
 	}
 
 	/**
-	 * Gets a generates app instance handle.
+	 * Gets a generates app instance id.
 	 *
 	 * @see com.microsoft.socialplus.server.model.BaseRequest
 	 */
-	public String getInstanceHandle() {
-		return sharedPreferences.getString(INSTANCE_HANDLE, "");
+	public String getInstanceId() {
+		return sharedPreferences.getString(INSTANCE_ID, "");
 	}
 
 	/**
 	 * Stores a generates app instance handle.
 	 */
-	public void setInstanceHandle(String instanceHandle) {
-		editor().putString(INSTANCE_HANDLE, instanceHandle).apply();
+	public void setInstanceId(String instanceId) {
+		editor().putString(INSTANCE_ID, instanceId).apply();
 	}
 
 	/**

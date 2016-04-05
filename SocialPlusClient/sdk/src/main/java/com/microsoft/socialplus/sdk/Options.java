@@ -35,8 +35,7 @@ public final class Options {
 		checkValueIsNotNull("socialNetworks.twitter", socialNetworks.twitter);
 		checkValueIsNotNull("socialNetworks.google", socialNetworks.google);
 		checkValueIsNotNull("socialNetworks.microsoft", socialNetworks.microsoft);
-		checkValueIsNotEmpty("application.appHandle", application.appHandle);
-		checkValueIsNotEmpty("application.appToken", application.appToken);
+		checkValueIsNotEmpty("application.appKey", application.appKey);
 		checkValueIsNotEmpty("socialNetworks.facebook.clientId", socialNetworks.facebook.clientId);
 		checkValueIsNotEmpty("socialNetworks.microsoft.clientId", socialNetworks.microsoft.clientId);
 		checkValueIsNotEmpty("socialNetworks.google.clientId", socialNetworks.google.clientId);
@@ -96,12 +95,8 @@ public final class Options {
 		return socialNetworks.google.loginEnabled;
 	}
 
-	public String getAppHandle() {
-		return application.appHandle;
-	}
-
-	public String getAppToken() {
-		return application.appHandle;
+	public String getAppKey() {
+		return application.appKey;
 	}
 
 	public String getFacebookApplicationId() {
@@ -131,8 +126,7 @@ public final class Options {
 
 		private static final int DEFAULT_NUMBER_OF_DISCUSSION_ITEMS = 20;
 
-		private String appHandle = null;
-		private String appToken = null;
+		private String appKey = null;
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 

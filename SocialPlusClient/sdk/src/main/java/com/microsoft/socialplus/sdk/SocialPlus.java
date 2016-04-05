@@ -250,8 +250,6 @@ public final class SocialPlus {
         System.out.println("Author: " + topicView.getUser().getFullName());
     }
 
-
-    public static final String APP_KEY = "418fd70f-b956-499f-a1b7-85de5ab305af";
     public static final String API_URL = "http://sp-ppe.cloudapp.net/";
 
     /**

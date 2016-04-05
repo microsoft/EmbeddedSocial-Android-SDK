@@ -66,7 +66,6 @@ public class UserRequest extends BaseRequest {
 	}
 
 	//TODO: init all fields
-	private final String appHandle;
 
 	private String userHandle;
 	protected String bearerToken;
@@ -78,7 +77,6 @@ public class UserRequest extends BaseRequest {
 		userSessionSignature = "OK";
 		userHandle = Preferences.getInstance().getUserHandle();
 		bearerToken = Preferences.getInstance().getBearerToken();
-		appHandle = GlobalObjectRegistry.getObject(Options.class).getAppHandle();
 	}
 
 	public String getUserHandle() {

@@ -31,11 +31,11 @@ public class RequestInfoProvider {
 	}
 
 	/**
-	 * returns instance handle value (saved or newly generated)
+	 * returns instance id value (saved or newly generated)
 	 * @return
 	 */
-	public String getInstanceHandle() {
-		return InstanceHandleHolder.INSTANCE_HANDLE;
+	public String getInstanceId() {
+		return InstanceHandleHolder.INSTANCE_ID;
 	}
 
 	/**
@@ -48,16 +48,16 @@ public class RequestInfoProvider {
 
 	private static class InstanceHandleHolder {
 
-		private static final String INSTANCE_HANDLE = getInstanceHandle();
+		private static final String INSTANCE_ID = getInstanceId();
 
-		private static String getInstanceHandle() {
+		private static String getInstanceId() {
 			Preferences preferences = GlobalObjectRegistry.getObject(Preferences.class);
-			String instanceHandle = preferences.getInstanceHandle();
-			if (TextUtils.isEmpty(instanceHandle)) {
-				instanceHandle = UUID.randomUUID().toString();
-				preferences.setInstanceHandle(instanceHandle);
+			String instanceId = preferences.getInstanceId();
+			if (TextUtils.isEmpty(instanceId)) {
+				instanceId = UUID.randomUUID().toString();
+				preferences.setInstanceId(instanceId);
 			}
-			return instanceHandle;
+			return instanceId;
 		}
 	}
 
