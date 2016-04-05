@@ -10,3 +10,4 @@ gen/
 *.iml
 local.properties
 aar/
+apk/
