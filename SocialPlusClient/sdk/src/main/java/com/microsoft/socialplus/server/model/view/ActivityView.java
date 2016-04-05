@@ -8,11 +8,10 @@ package com.microsoft.socialplus.server.model.view;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.microsoft.socialplus.autorest.models.ActivityType;
 import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.autorest.models.ContentCompactView;
 import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.base.utils.EnumUtils;
-import com.microsoft.socialplus.data.model.ActivityType;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
@@ -90,7 +89,7 @@ public class ActivityView implements UniqueItem, TimedItem {
 	private List<UserCompactView> loadActorUsers(List<com.microsoft.socialplus.autorest.models.UserCompactView> autorestUsers) {
 		ArrayList<UserCompactView> users = new ArrayList<>();
 		for (com.microsoft.socialplus.autorest.models.UserCompactView user : autorestUsers) {
-			actorUsers.add(new UserCompactView(user));
+			users.add(new UserCompactView(user));
 		}
 		return users;
 	}
@@ -109,7 +108,7 @@ public class ActivityView implements UniqueItem, TimedItem {
 	}
 
 	public ActivityType getActivityType() {
-		return ActivityType.valueOf(activityType);
+		return ActivityType.fromValue(activityType);
 	}
 
 	public List<UserCompactView> getActorUsers() {

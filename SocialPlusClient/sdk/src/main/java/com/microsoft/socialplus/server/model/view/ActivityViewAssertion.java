@@ -8,9 +8,9 @@ package com.microsoft.socialplus.server.model.view;
 
 import android.text.TextUtils;
 
+import com.microsoft.socialplus.autorest.models.ActivityType;
 import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.base.function.Predicate;
-import com.microsoft.socialplus.data.model.ActivityType;
 
 import java.util.HashMap;
 import java.util.List;
@@ -70,8 +70,8 @@ public final class ActivityViewAssertion implements Predicate<ActivityView> {
 
 	public static Predicate<ActivityView> forUserFeed() {
 		Map<ActivityType, Predicate<ActivityView>> predicates = getCommonPredicates();
-		predicates.put(ActivityType.FOLLOW_ACCEPT, HAS_ONE_ACTOR_USER);
-		predicates.put(ActivityType.FOLLOW_REQUEST, HAS_ONE_ACTOR_USER);
+		predicates.put(ActivityType.FOLLOWACCEPT, HAS_ONE_ACTOR_USER);
+		predicates.put(ActivityType.FOLLOWREQUEST, HAS_ONE_ACTOR_USER);
 		predicates.put(ActivityType.FOLLOWING, HAS_ONE_ACTOR_USER);
 		return new ActivityViewAssertion(predicates);
 	}
@@ -84,11 +84,12 @@ public final class ActivityViewAssertion implements Predicate<ActivityView> {
 
 	private static Map<ActivityType, Predicate<ActivityView>> getCommonPredicates() {
 		Map<ActivityType, Predicate<ActivityView>> predicatesByType = new HashMap<>();
-		predicatesByType.put(ActivityType.MENTION, HAS_ONE_ACTOR_USER_AND_CONTENT);
-		predicatesByType.put(ActivityType.CHILD, object -> HAS_AT_LEAST_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
-		predicatesByType.put(ActivityType.CHILD_PEER, object -> HAS_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
-		predicatesByType.put(ActivityType.FOLLOW_ACCEPT, HAS_ONE_ACTOR_USER);
-		predicatesByType.put(ActivityType.FOLLOW_REQUEST, HAS_ONE_ACTOR_USER);
+		predicatesByType.put(ActivityType.COMMENT, object -> HAS_AT_LEAST_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
+		predicatesByType.put(ActivityType.REPLY, object -> HAS_AT_LEAST_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
+		predicatesByType.put(ActivityType.COMMENTPEER, object -> HAS_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
+		predicatesByType.put(ActivityType.REPLYPEER, object -> HAS_ONE_ACTOR_USER_AND_CONTENT.test(object) && actedOnTopicOrComment(object));
+		predicatesByType.put(ActivityType.FOLLOWACCEPT, HAS_ONE_ACTOR_USER);
+		predicatesByType.put(ActivityType.FOLLOWREQUEST, HAS_ONE_ACTOR_USER);
 		predicatesByType.put(ActivityType.LIKE, HAS_AT_LEAST_ONE_ACTOR_USER_AND_CONTENT);
 		return predicatesByType;
 	}

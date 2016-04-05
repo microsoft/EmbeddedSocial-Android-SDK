@@ -8,6 +8,7 @@ package com.microsoft.socialplus.ui.adapter.renderer;
 
 import android.content.Context;
 
+import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.ActivityView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
@@ -36,6 +37,21 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 		R.string.sp_activity_you_child_comment
 	};
 
+	/**
+	 * @param actedOnContentType type of content acted on
+	 * @return 0 for topic, 1 for comment, 2 for reply
+	 */
+	private static int getMessageIdIndex(ContentType actedOnContentType) {
+		switch (actedOnContentType) {
+			case TOPIC:
+				return 0;
+			case COMMENT:
+				return 1;
+			default:
+				return 2;
+		}
+	}
+
 	@Override
 	protected void renderFollowingEvent(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
@@ -45,13 +61,13 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 	@Override
 	protected void renderMention(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		int messageId = MENTION_MESSAGE_IDS[item.getActedOnContentType().ordinal()];
+		int messageId = MENTION_MESSAGE_IDS[getMessageIdIndex(item.getActedOnContentType())];
 		holder.text.setText(context.getString(messageId, user.getFullName(), item.getActedOnContentText()));
 	}
 
 	@Override
 	protected void renderLike(Context context, ActivityView item, ViewHolder holder) {
-		int messageId = LIKE_MESSAGE_IDS[item.getActedOnContentType().ordinal()];
+		int messageId = LIKE_MESSAGE_IDS[getMessageIdIndex(item.getActedOnContentType())];
 		holder.text.setText(context.getString(messageId, formatActors(context, item), item.getActedOnContentText()));
 	}
 
@@ -64,13 +80,13 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 	@Override
 	protected void renderChildPeer(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		int messageId = CHILD_PEER_MESSAGE_IDS[item.getActedOnContentType().ordinal()];
+		int messageId = CHILD_PEER_MESSAGE_IDS[getMessageIdIndex(item.getActedOnContentType())];
 		holder.text.setText(context.getString(messageId, user.getFullName(), item.getActedOnContentText()));
 	}
 
 	@Override
 	protected void renderChild(Context context, ActivityView item, ViewHolder holder) {
-		int messageId = CHILD_MESSAGE_IDS[item.getActedOnContentType().ordinal()];
+		int messageId = CHILD_MESSAGE_IDS[getMessageIdIndex(item.getActedOnContentType())];
 		holder.text.setText(context.getString(messageId, formatActors(context, item), item.getActedOnContentText()));
 	}
 

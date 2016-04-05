@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.microsoft.socialplus.autorest.models.ActivityType;
 import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.data.model.ActivityType;
 import com.microsoft.socialplus.image.ImageLoader;
 import com.microsoft.socialplus.image.ImageLocation;
 import com.microsoft.socialplus.image.ImageViewContentLoader;
@@ -46,12 +46,13 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 
 	static {
 		DECORATION_BY_TYPE.put(ActivityType.LIKE, R.drawable.sp_decor_like);
-		DECORATION_BY_TYPE.put(ActivityType.FOLLOW_ACCEPT, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.FOLLOW_REQUEST, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.CHILD_PEER, R.drawable.sp_decor_comment);
-		DECORATION_BY_TYPE.put(ActivityType.CHILD, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.FOLLOWACCEPT, R.drawable.sp_decor_follow);
+		DECORATION_BY_TYPE.put(ActivityType.FOLLOWREQUEST, R.drawable.sp_decor_follow);
 		DECORATION_BY_TYPE.put(ActivityType.FOLLOWING, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.MENTION, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.COMMENTPEER, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.REPLYPEER, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.COMMENT, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.REPLY, R.drawable.sp_decor_comment);
 	}
 
 	@Override
@@ -103,22 +104,21 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 			case FOLLOWING:
 				renderFollowingEvent(context, item, holder);
 				break;
-			case MENTION:
-				renderMention(context, item, holder);
-				break;
 			case LIKE:
 				renderLike(context, item, holder);
 				break;
-			case FOLLOW_REQUEST:
+			case FOLLOWREQUEST:
 				renderFollowRequest(context, item, holder);
 				break;
-			case CHILD_PEER:
+			case COMMENTPEER:
+			case REPLYPEER:
 				renderChildPeer(context, item, holder);
 				break;
-			case CHILD:
+			case COMMENT:
+			case REPLY:
 				renderChild(context, item, holder);
 				break;
-			case FOLLOW_ACCEPT:
+			case FOLLOWACCEPT:
 				renderFollowAccepted(context, item, holder);
 				break;
 			default:

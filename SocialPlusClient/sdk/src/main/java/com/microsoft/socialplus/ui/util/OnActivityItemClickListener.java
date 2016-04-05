@@ -31,14 +31,15 @@ public class OnActivityItemClickListener implements View.OnClickListener {
 		Context context = v.getContext();
 		switch (activity.getActivityType()) {
 			case FOLLOWING:
-			case FOLLOW_REQUEST:
-			case FOLLOW_ACCEPT:
+			case FOLLOWREQUEST:
+			case FOLLOWACCEPT:
 				openUserProfile(context);
 				break;
 			case LIKE:
-			case CHILD:
-			case CHILD_PEER:
-			case MENTION:
+			case COMMENT:
+			case REPLY:
+			case COMMENTPEER:
+			case REPLYPEER:
 				openContent(context);
 				break;
 		}
