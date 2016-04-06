@@ -58,6 +58,7 @@ import com.microsoft.socialplus.ui.activity.AddPostActivity;
 import com.microsoft.socialplus.ui.activity.CommentActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
 import com.microsoft.socialplus.ui.fragment.AddPostFragment;
+import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
 import com.microsoft.socialplus.ui.fragment.ReplyFeedFragment;
 import com.microsoft.socialplus.ui.notification.NotificationController;
 
@@ -210,6 +211,14 @@ public final class SocialPlus {
         Fragment feedFragment = new ReplyFeedFragment();
         Bundle b = new Bundle();
         b.putCharSequence(IntentExtras.COMMENT_HANDLE, commentHandle);
+        feedFragment.setArguments(b);
+        return feedFragment;
+    }
+
+    public static Fragment getCommentFeedFragment(String topicHandle) {
+        Fragment feedFragment = new CommentFeedFragment();
+        Bundle b = new Bundle();
+        b.putCharSequence(IntentExtras.TOPIC_HANDLE, topicHandle);
         feedFragment.setArguments(b);
         return feedFragment;
     }
