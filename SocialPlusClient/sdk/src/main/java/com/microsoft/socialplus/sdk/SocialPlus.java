@@ -56,9 +56,17 @@ import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.service.WorkerService;
 import com.microsoft.socialplus.ui.activity.AddPostActivity;
 import com.microsoft.socialplus.ui.activity.CommentActivity;
+import com.microsoft.socialplus.ui.activity.HomeActivity;
+import com.microsoft.socialplus.ui.activity.MyProfileActivity;
+import com.microsoft.socialplus.ui.activity.OptionsActivity;
+import com.microsoft.socialplus.ui.activity.PinsActivity;
+import com.microsoft.socialplus.ui.activity.PopularActivity;
+import com.microsoft.socialplus.ui.activity.RecentActivityActivity;
+import com.microsoft.socialplus.ui.activity.SearchActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
 import com.microsoft.socialplus.ui.fragment.AddPostFragment;
 import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
+import com.microsoft.socialplus.ui.fragment.PinsFragment;
 import com.microsoft.socialplus.ui.fragment.ReplyFeedFragment;
 import com.microsoft.socialplus.ui.notification.NotificationController;
 
@@ -222,6 +230,46 @@ public final class SocialPlus {
         feedFragment.setArguments(b);
         return feedFragment;
     }
+
+    public static Fragment getPinsFragment() {
+        return new PinsFragment();
+    }
+
+    public static void launchPinsActivity(Context context) {
+        Intent intent = new Intent(context, PinsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchPopularActivity(Context context) {
+        Intent intent = new Intent(context, PopularActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchActivityFeedActivity(Context context) {
+        Intent intent = new Intent(context, RecentActivityActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchProfileActivity(Context context) {
+        Intent intent = new Intent(context, MyProfileActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchYourFeedActivity(Context context) {
+        Intent intent = new Intent(context, HomeActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchSearchActivity(Context context) {
+        Intent intent = new Intent(context, SearchActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchOptionsActivity(Context context) {
+        Intent intent = new Intent(context, OptionsActivity.class);
+        context.startActivity(intent);
+    }
+
 
     public static void getTopicFromFetcher(String topicHandle) {
         new Thread(()->
