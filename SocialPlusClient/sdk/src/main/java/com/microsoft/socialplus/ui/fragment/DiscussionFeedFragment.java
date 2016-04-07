@@ -90,8 +90,8 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			FetchableRecyclerView recyclerView = getRecyclerView();
 			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.sp_view_enter_note, recyclerView, false);
 			noteText = (EditText) enterNote.findViewById(R.id.sp_noteText);
-			bottomBar = (ViewGroup) enterNote.findViewById(R.id.sp_bottomBarAlex);
-			doneButton = (Button) enterNote.findViewById(R.id.sp_doneButtonAlex);
+			bottomBar = (ViewGroup) enterNote.findViewById(R.id.sp_bottomBar);
+			doneButton = (Button) enterNote.findViewById(R.id.sp_doneButton);
 			noteText.setHint(getNoteHint());
 			setOnDoneClickListener(v -> {
 				if (noteText != null) {
