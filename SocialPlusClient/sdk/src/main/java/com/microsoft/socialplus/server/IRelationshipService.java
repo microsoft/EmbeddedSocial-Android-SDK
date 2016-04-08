@@ -17,6 +17,7 @@ import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
+import com.microsoft.socialplus.server.model.relationship.RemoveFollowerRequest;
 import com.microsoft.socialplus.server.model.relationship.UnblockUserRequest;
 import com.microsoft.socialplus.server.model.relationship.UnfollowUserRequest;
 
@@ -56,4 +57,7 @@ public interface IRelationshipService {
 
 	Response unfollowUser(UnfollowUserRequest request)
 			throws NetworkRequestException;
+
+	Response removeFollower(RemoveFollowerRequest request)
+		throws NetworkRequestException;
 }
