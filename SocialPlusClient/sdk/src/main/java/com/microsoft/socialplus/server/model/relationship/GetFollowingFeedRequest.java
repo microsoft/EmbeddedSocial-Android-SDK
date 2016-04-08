@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.server.model.relationship;
 
+import com.microsoft.socialplus.autorest.UserFollowingOperations;
+import com.microsoft.socialplus.autorest.UserFollowingOperationsImpl;
 import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
@@ -15,6 +17,8 @@ import com.microsoft.socialplus.server.model.UsersListResponse;
 import java.io.IOException;
 
 public final class GetFollowingFeedRequest extends GetFollowFeedRequest {
+    private static final UserFollowingOperations USER_FOLLOWING =
+            new UserFollowingOperationsImpl(RETROFIT, CLIENT);
 
     public GetFollowingFeedRequest(String queryUserHandle) {
         super(queryUserHandle);
@@ -24,7 +28,8 @@ public final class GetFollowingFeedRequest extends GetFollowFeedRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = FOLLOWING.getFollowing(bearerToken, getCursor(), getBatchSize());
+            serviceResponse = USER_FOLLOWING.getFollowing(getQueryUserHandle(), bearerToken,
+                    getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }
