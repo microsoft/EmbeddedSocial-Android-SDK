@@ -12,6 +12,7 @@ import android.content.Context;
 import com.microsoft.socialplus.data.storage.AccountServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.ActivityServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.AuthenticationServiceWrapper;
+import com.microsoft.socialplus.data.storage.BlobServiceWrapper;
 import com.microsoft.socialplus.data.storage.BuildServiceWrapper;
 import com.microsoft.socialplus.data.storage.ContentServiceCachingWrapper;
 import com.microsoft.socialplus.data.storage.ImageServiceWrapper;
@@ -34,6 +35,7 @@ public final class SocialPlusServiceProvider {
 	private final IReportService reportService;
 	private final ISearchService searchService;
 	private final IImageService imageService;
+	private final IBlobService blobService;
 	private final IBuildService buildService;
 
 	/**
@@ -49,6 +51,7 @@ public final class SocialPlusServiceProvider {
 		reportService = new ReportServiceWrapper();
 		searchService = new SearchServiceCachingWrapper();
 		imageService = new ImageServiceWrapper();
+		blobService = new BlobServiceWrapper();
 		buildService = new BuildServiceWrapper();
 	}
 
