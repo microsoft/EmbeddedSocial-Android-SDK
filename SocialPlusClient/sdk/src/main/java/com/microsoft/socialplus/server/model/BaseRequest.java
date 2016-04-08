@@ -69,7 +69,7 @@ public class BaseRequest {
 		httpClient.addInterceptor(logging);
 
 		RETROFIT = new Retrofit.Builder()
-				.baseUrl(SocialPlus.API_URL)
+				.baseUrl(GlobalObjectRegistry.getObject(Options.class).getApiUrl())
 				.addConverterFactory(GsonConverterFactory.create())
 				.client(httpClient.build())
 				.build();

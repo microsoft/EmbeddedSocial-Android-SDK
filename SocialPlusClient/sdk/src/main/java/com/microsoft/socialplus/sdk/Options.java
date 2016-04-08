@@ -35,6 +35,7 @@ public final class Options {
 		checkValueIsNotNull("socialNetworks.twitter", socialNetworks.twitter);
 		checkValueIsNotNull("socialNetworks.google", socialNetworks.google);
 		checkValueIsNotNull("socialNetworks.microsoft", socialNetworks.microsoft);
+		checkValueIsNotEmpty("application.apiUrl", application.apiUrl);
 		checkValueIsNotEmpty("application.appKey", application.appKey);
 		checkValueIsNotEmpty("socialNetworks.facebook.clientId", socialNetworks.facebook.clientId);
 		checkValueIsNotEmpty("socialNetworks.microsoft.clientId", socialNetworks.microsoft.clientId);
@@ -95,6 +96,10 @@ public final class Options {
 		return socialNetworks.google.loginEnabled;
 	}
 
+	public String getApiUrl() {
+		return application.apiUrl;
+	}
+
 	public String getAppKey() {
 		return application.appKey;
 	}
@@ -126,6 +131,7 @@ public final class Options {
 
 		private static final int DEFAULT_NUMBER_OF_DISCUSSION_ITEMS = 20;
 
+		private String apiUrl = null;
 		private String appKey = null;
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;

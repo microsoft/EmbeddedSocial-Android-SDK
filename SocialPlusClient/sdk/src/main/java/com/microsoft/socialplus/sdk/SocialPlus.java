@@ -307,8 +307,6 @@ public final class SocialPlus {
         System.out.println("Author: " + topicView.getUser().getFullName());
     }
 
-    public static final String API_URL = "http://sp-ppe.cloudapp.net/";
-
     /**
      * Starts an activity to view a comment feed for a given topic
      * @param context	valid context
