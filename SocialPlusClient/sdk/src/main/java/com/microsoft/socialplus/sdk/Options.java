@@ -16,7 +16,6 @@ import com.microsoft.socialplus.ui.theme.ThemeGroup;
 @SuppressWarnings("FieldCanBeLocal")
 public final class Options {
 
-	private int version = 0;
 	private Application application = null;
 	private SocialNetworks socialNetworks = null;
 	private DrawTheme theme = null;
@@ -25,9 +24,6 @@ public final class Options {
 	}
 
 	void verify() {
-		if (version <= 0) {
-			throwInvalidConfigException("invalid version");
-		}
 		checkValueIsNotNull("application", application);
 		checkValueIsNotNull("socialNetworks", socialNetworks);
 		checkValueIsNotNull("name", theme);
