@@ -69,7 +69,7 @@ public class BaseRequest {
 		httpClient.addInterceptor(logging);
 
 		RETROFIT = new Retrofit.Builder()
-				.baseUrl(GlobalObjectRegistry.getObject(Options.class).getApiUrl())
+				.baseUrl(GlobalObjectRegistry.getObject(Options.class).getServerUrl())
 				.addConverterFactory(GsonConverterFactory.create())
 				.client(httpClient.build())
 				.build();

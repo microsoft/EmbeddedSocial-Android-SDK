@@ -1,7 +1,7 @@
 {
 	"version" : "1",
 	"application" : {
-	  	"apiUrl" : "http://sp-ppe.cloudapp.net/",
+	  	"serverUrl" : "http://sp-ppe.cloudapp.net/",
 		"appHandle" : "e60ec707-c673-407c-90db-44dc7b3db334",
 		"appToken" : "FGjUISeDe1DePoJaooq6g+gZvKqyyjS3|000000004413B70D",
 	  	"appKey" : "418fd70f-b956-499f-a1b7-85de5ab305af",
