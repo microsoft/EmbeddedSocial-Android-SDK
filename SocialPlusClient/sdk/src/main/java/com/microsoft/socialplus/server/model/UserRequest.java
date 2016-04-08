@@ -16,6 +16,8 @@ import com.microsoft.socialplus.autorest.MyFollowersOperations;
 import com.microsoft.socialplus.autorest.MyFollowersOperationsImpl;
 import com.microsoft.socialplus.autorest.MyFollowingOperations;
 import com.microsoft.socialplus.autorest.MyFollowingOperationsImpl;
+import com.microsoft.socialplus.autorest.MyLikesOperations;
+import com.microsoft.socialplus.autorest.MyLikesOperationsImpl;
 import com.microsoft.socialplus.autorest.MyLinkedAccountsOperations;
 import com.microsoft.socialplus.autorest.MyLinkedAccountsOperationsImpl;
 import com.microsoft.socialplus.autorest.MyNotificationsOperations;
@@ -26,6 +28,8 @@ import com.microsoft.socialplus.autorest.MyPinsOperations;
 import com.microsoft.socialplus.autorest.MyPinsOperationsImpl;
 import com.microsoft.socialplus.autorest.MyPushRegistrationsOperations;
 import com.microsoft.socialplus.autorest.MyPushRegistrationsOperationsImpl;
+import com.microsoft.socialplus.autorest.MyTopicsOperations;
+import com.microsoft.socialplus.autorest.MyTopicsOperationsImpl;
 import com.microsoft.socialplus.autorest.SessionsOperations;
 import com.microsoft.socialplus.autorest.SessionsOperationsImpl;
 import com.microsoft.socialplus.autorest.UsersOperations;
@@ -49,6 +53,8 @@ public class UserRequest extends BaseRequest {
 	protected static final HashtagsOperations HASHTAGS;
 	protected static final MyLinkedAccountsOperations LINKED_ACCOUNTS;
 	protected static final ImagesOperations IMAGES;
+	protected static final MyTopicsOperations MY_TOPICS;
+	protected static final MyLikesOperations LIKES;
 
 	static {
 		USERS = new UsersOperationsImpl(RETROFIT, CLIENT);
@@ -63,6 +69,8 @@ public class UserRequest extends BaseRequest {
 		HASHTAGS = new HashtagsOperationsImpl(RETROFIT, CLIENT);
 		LINKED_ACCOUNTS = new MyLinkedAccountsOperationsImpl(RETROFIT, CLIENT);
 		IMAGES = new ImagesOperationsImpl(RETROFIT, CLIENT);
+		MY_TOPICS = new MyTopicsOperationsImpl(RETROFIT, CLIENT);
+		LIKES = new MyLikesOperationsImpl(RETROFIT, CLIENT);
 	}
 
 	//TODO: init all fields

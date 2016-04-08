@@ -17,5 +17,9 @@ public enum TopicFeedType {
 	EVERYONE_POPULAR_ALL_TIME,   // shown on Popular page
 	EVERYONE_POPULAR_THIS_MONTH, // shown on Popular page
 	EVERYONE_POPULAR_THIS_WEEK,  // shown on Popular page
-	EVERYONE_POPULAR_TODAY       // shown on Popular page
+	EVERYONE_POPULAR_TODAY,      // shown on Popular page
+	MY_RECENT,
+	MY_POPULAR,
+	MY_LIKED,
+	FEATURED
 }
