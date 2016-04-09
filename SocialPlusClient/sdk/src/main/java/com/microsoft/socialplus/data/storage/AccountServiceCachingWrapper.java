@@ -7,6 +7,8 @@
 package com.microsoft.socialplus.data.storage;
 
 import com.microsoft.socialplus.autorest.models.AppCompactView;
+import com.microsoft.socialplus.autorest.models.LinkedAccountView;
+import com.microsoft.socialplus.data.storage.request.wrapper.account.GetMyProfileWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserAccountWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserProfileWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserWrapper;
@@ -15,7 +17,9 @@ import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
+import com.microsoft.socialplus.server.model.account.GetLinkedAccountsRequest;
 import com.microsoft.socialplus.server.model.account.GetMyAppsRequest;
+import com.microsoft.socialplus.server.model.account.GetMyProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
@@ -30,6 +34,7 @@ import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest
 import com.microsoft.socialplus.server.model.account.UserPasswordResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
+import com.microsoft.socialplus.server.model.view.UserProfileView;
 
 import java.util.List;
 
@@ -42,12 +47,14 @@ public class AccountServiceCachingWrapper implements IAccountService {
 
 	private final GetUserWrapper getUserWrapper;
 	private final GetUserProfileWrapper getUserProfileWrapper;
+	private final GetMyProfileWrapper getMyProfileWrapper;
 	private final GetUserAccountWrapper getUserAccountWrapper;
 
 	public AccountServiceCachingWrapper() {
 		UserCache userCache = new UserCache();
 		getUserWrapper = new GetUserWrapper(this::getUser, userCache);
 		getUserProfileWrapper = new GetUserProfileWrapper(this::getUserProfile, userCache);
+		getMyProfileWrapper = new GetMyProfileWrapper(this::getMyProfile, userCache);
 		getUserAccountWrapper = new GetUserAccountWrapper(this::getUserAccount, userCache);
 	}
 
@@ -74,6 +81,16 @@ public class AccountServiceCachingWrapper implements IAccountService {
 	@Override
 	public GetUserProfileResponse getUserProfile(GetUserProfileRequest request) throws NetworkRequestException {
 		return getUserProfileWrapper.getResponse(request);
+	}
+
+	@Override
+	public GetUserProfileResponse getMyProfile(GetMyProfileRequest request) throws NetworkRequestException {
+		return getMyProfileWrapper.getResponse(request);
+	}
+
+	@Override
+	public List<LinkedAccountView> getLinkedAccounts(GetLinkedAccountsRequest request) throws NetworkRequestException {
+		return request.send();
 	}
 
 	@Override

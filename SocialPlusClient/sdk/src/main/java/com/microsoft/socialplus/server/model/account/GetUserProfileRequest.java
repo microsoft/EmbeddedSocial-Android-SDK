@@ -14,9 +14,6 @@ import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
 
-/**
- *
- */
 public class GetUserProfileRequest extends UserRequest {
 
 	private final String queryUserHandle;
@@ -44,6 +41,7 @@ public class GetUserProfileRequest extends UserRequest {
 			throw new NetworkRequestException(e.getMessage());
 		}
 		checkResponseCode(serviceResponse);
+
 		return new GetUserProfileResponse(serviceResponse.getBody());
 	}
 }
