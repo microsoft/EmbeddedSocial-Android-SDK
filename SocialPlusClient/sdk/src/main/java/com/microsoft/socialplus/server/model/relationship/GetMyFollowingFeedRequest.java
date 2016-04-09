@@ -8,28 +8,25 @@ package com.microsoft.socialplus.server.model.relationship;
 
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.FeedUserRequest;
+import com.microsoft.socialplus.server.model.UsersListResponse;
 
 import java.io.IOException;
 
-import retrofit2.Response;
-
-public class UnfollowUserRequest extends UserRelationshipRequest {
-
-    public UnfollowUserRequest(String relationshipUserHandle) {
-        super(relationshipUserHandle);
-    }
+public class GetMyFollowingFeedRequest extends FeedUserRequest {
 
     @Override
-    public Response send() throws NetworkRequestException {
-        ServiceResponse<Object> serviceResponse;
+    public UsersListResponse send() throws NetworkRequestException {
+        ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = MY_FOLLOWING.deleteFollowing(relationshipUserHandle, bearerToken);
+            serviceResponse = MY_FOLLOWING.getFollowing(bearerToken, getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }
         checkResponseCode(serviceResponse);
 
-        return serviceResponse.getResponse();
+        return new UsersListResponse(serviceResponse.getBody());
     }
 }

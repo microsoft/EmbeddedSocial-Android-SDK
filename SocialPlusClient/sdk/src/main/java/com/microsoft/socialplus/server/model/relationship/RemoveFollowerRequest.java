@@ -24,7 +24,7 @@ public class RemoveFollowerRequest extends UserRelationshipRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = FOLLOWERS.deleteFollower(relationshipUserHandle, bearerToken);
+            serviceResponse = MY_FOLLOWERS.deleteFollower(relationshipUserHandle, bearerToken);
         } catch (ServiceException |IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

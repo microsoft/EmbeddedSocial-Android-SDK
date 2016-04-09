@@ -9,6 +9,9 @@ package com.microsoft.socialplus.data.storage;
 import com.microsoft.socialplus.data.storage.request.wrapper.relationship.BlockedUserFeedRequestWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.relationship.FollowerFeedRequestWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.relationship.FollowingFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.MyFollowerFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.MyFollowingFeedRequestWrapper;
+import com.microsoft.socialplus.data.storage.request.wrapper.relationship.MyFollowingInOtherAppsRequestWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.relationship.PendingUserFeedRequestWrapper;
 import com.microsoft.socialplus.server.IRelationshipService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -20,6 +23,9 @@ import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
 import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingInOtherAppsRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.RemoveFollowerRequest;
@@ -37,6 +43,9 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	private final PendingUserFeedRequestWrapper pendingUsersWrapper;
 	private final FollowerFeedRequestWrapper userFollowerFeedWrapper;
 	private final FollowingFeedRequestWrapper userFollowingWrapper;
+	private final MyFollowingFeedRequestWrapper myFollowingWrapper;
+	private final MyFollowerFeedRequestWrapper myFollowerWrapper;
+	private final MyFollowingInOtherAppsRequestWrapper myFollowingInOtherAppsWrapper;
 
 
 	/**
@@ -60,9 +69,24 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 			UserCache.UserFeedType.BLOCKED
 		);
 		pendingUsersWrapper = new PendingUserFeedRequestWrapper(
-			this::getUserPendingFeed,
-			userCache,
-			UserCache.UserFeedType.PENDING
+				this::getUserPendingFeed,
+				userCache,
+				UserCache.UserFeedType.PENDING
+		);
+		myFollowingWrapper = new MyFollowingFeedRequestWrapper(
+				this::getMyFollowingFeed,
+				userCache,
+				UserCache.UserFeedType.FOLLOWING
+		);
+		myFollowerWrapper = new MyFollowerFeedRequestWrapper(
+				this::getMyFollowerFeed,
+				userCache,
+				UserCache.UserFeedType.FOLLOWER
+		);
+		myFollowingInOtherAppsWrapper = new MyFollowingInOtherAppsRequestWrapper(
+				this::getUserFollowingInOtherAppsFeed,
+				userCache,
+				UserCache.UserFeedType.PENDING
 		);
 	}
 
@@ -94,6 +118,21 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	@Override
 	public UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request) throws NetworkRequestException {
 		return userFollowingWrapper.getResponse(request);
+	}
+
+	@Override
+	public UsersListResponse getMyFollowerFeed(GetMyFollowerFeedRequest request) throws NetworkRequestException {
+		return myFollowerWrapper.getResponse(request);
+	}
+
+	@Override
+	public UsersListResponse getMyFollowingFeed(GetMyFollowingFeedRequest request) throws NetworkRequestException {
+		return myFollowingWrapper.getResponse(request);
+	}
+
+	@Override
+	public UsersListResponse getUserFollowingInOtherAppsFeed(GetFollowingInOtherAppsRequest request) throws NetworkRequestException {
+		return myFollowingInOtherAppsWrapper.getResponse(request);
 	}
 
 	@Override

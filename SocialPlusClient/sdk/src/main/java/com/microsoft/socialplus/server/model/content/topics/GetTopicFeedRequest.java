@@ -55,7 +55,7 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 					break;
 				case FOLLOWING_RECENT:
 					// users/me/following/topics
-					serviceResponse = FOLLOWING.getTopics(bearerToken, cursor, limit);
+					serviceResponse = MY_FOLLOWING.getTopics(bearerToken, cursor, limit);
 					break;
 				case EVERYONE_RECENT:
 					serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken);

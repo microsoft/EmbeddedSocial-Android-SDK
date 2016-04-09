@@ -15,6 +15,9 @@ import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
 import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetFollowingInOtherAppsRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowerFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.RemoveFollowerRequest;
@@ -40,13 +43,22 @@ public interface IRelationshipService {
 	UsersListResponse getUserBlockedFeed(GetBlockedUsersRequest request)
 			throws NetworkRequestException;
 
+	UsersListResponse getMyFollowerFeed(GetMyFollowerFeedRequest request)
+			throws NetworkRequestException;
+
 	UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request)
+			throws NetworkRequestException;
+
+	UsersListResponse getMyFollowingFeed(GetMyFollowingFeedRequest request)
 			throws NetworkRequestException;
 
 	UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request)
 			throws NetworkRequestException;
 
 	UsersListResponse getUserPendingFeed(GetPendingUsersRequest request)
+			throws NetworkRequestException;
+
+	UsersListResponse getUserFollowingInOtherAppsFeed(GetFollowingInOtherAppsRequest request)
 			throws NetworkRequestException;
 
 	Response rejectUser(RejectFollowRequest request)

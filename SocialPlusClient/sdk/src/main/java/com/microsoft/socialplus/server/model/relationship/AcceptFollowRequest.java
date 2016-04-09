@@ -27,7 +27,7 @@ public class AcceptFollowRequest extends UserRelationshipRequest {
         request.setUserHandle(relationshipUserHandle);
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = FOLLOWERS.postFollower(request, bearerToken);
+            serviceResponse = MY_FOLLOWERS.postFollower(request, bearerToken);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

@@ -43,8 +43,8 @@ public class UserRequest extends BaseRequest {
 	protected static final MyPinsOperations PINS;
 	protected static final MyBlockedUsersOperations BLOCKED;
 	protected static final MyPendingUsersOperations PENDING;
-	protected static final MyFollowersOperations FOLLOWERS;
-	protected static final MyFollowingOperations FOLLOWING;
+	protected static final MyFollowersOperations MY_FOLLOWERS;
+	protected static final MyFollowingOperations MY_FOLLOWING;
 	protected static final HashtagsOperations HASHTAGS;
 	protected static final MyLinkedAccountsOperations LINKED_ACCOUNTS;
 	protected static final MyTopicsOperations MY_TOPICS;
@@ -58,8 +58,8 @@ public class UserRequest extends BaseRequest {
 		PINS = new MyPinsOperationsImpl(RETROFIT, CLIENT);
 		BLOCKED = new MyBlockedUsersOperationsImpl(RETROFIT, CLIENT);
 		PENDING = new MyPendingUsersOperationsImpl(RETROFIT, CLIENT);
-		FOLLOWERS = new MyFollowersOperationsImpl(RETROFIT, CLIENT);
-		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
+		MY_FOLLOWERS = new MyFollowersOperationsImpl(RETROFIT, CLIENT);
+		MY_FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
 		HASHTAGS = new HashtagsOperationsImpl(RETROFIT, CLIENT);
 		LINKED_ACCOUNTS = new MyLinkedAccountsOperationsImpl(RETROFIT, CLIENT);
 		MY_TOPICS = new MyTopicsOperationsImpl(RETROFIT, CLIENT);

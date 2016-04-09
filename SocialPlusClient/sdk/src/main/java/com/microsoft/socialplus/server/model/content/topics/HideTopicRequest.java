@@ -24,7 +24,7 @@ public class HideTopicRequest extends GenericTopicRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = FOLLOWING.deleteTopic(topicHandle, bearerToken);
+            serviceResponse = MY_FOLLOWING.deleteTopic(topicHandle, bearerToken);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }
