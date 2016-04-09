@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.data.storage;
 
+import com.microsoft.socialplus.autorest.models.AppCompactView;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserAccountWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserProfileWrapper;
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserWrapper;
@@ -14,6 +15,7 @@ import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
+import com.microsoft.socialplus.server.model.account.GetMyAppsRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
@@ -28,6 +30,8 @@ import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest
 import com.microsoft.socialplus.server.model.account.UserPasswordResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
+
+import java.util.List;
 
 import retrofit2.Response;
 
@@ -94,6 +98,11 @@ public class AccountServiceCachingWrapper implements IAccountService {
 
 	@Override
 	public Response updateUserVisibility(UpdateUserVisibilityRequest request) throws NetworkRequestException {
+		return request.send();
+	}
+
+	@Override
+	public List<AppCompactView> getMyApps(GetMyAppsRequest request) throws NetworkRequestException {
 		return request.send();
 	}
 }

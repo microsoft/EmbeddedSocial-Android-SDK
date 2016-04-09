@@ -6,10 +6,12 @@
 
 package com.microsoft.socialplus.server;
 
+import com.microsoft.socialplus.autorest.models.AppCompactView;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
+import com.microsoft.socialplus.server.model.account.GetMyAppsRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.account.GetUserProfileRequest;
@@ -24,6 +26,8 @@ import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest
 import com.microsoft.socialplus.server.model.account.UserPasswordResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
+
+import java.util.List;
 
 import retrofit2.Response;
 
@@ -61,5 +65,8 @@ public interface IAccountService {
 			throws NetworkRequestException;
 
 	Response updateUserVisibility(UpdateUserVisibilityRequest request)
+			throws NetworkRequestException;
+
+	List<AppCompactView> getMyApps(GetMyAppsRequest request)
 			throws NetworkRequestException;
 }
