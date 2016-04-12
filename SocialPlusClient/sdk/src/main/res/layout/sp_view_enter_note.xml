@@ -4,46 +4,26 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   ~
   -->
-
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/sp_enterNote"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical"
+	android:layout_height="wrap_content"
 	>
 
 	<EditText
 		android:id="@+id/sp_noteText"
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_margin="@dimen/sp_padding_large"
+		android:layout_weight="1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="16dp"
 		android:inputType="textMultiLine|textCapSentences"
-		/>
-
-	<FrameLayout
-	android:id="@+id/sp_bottomBar"
-	android:background="?attr/sp_contentBackground"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:visibility="gone"
-	tools:ignore="MissingPrefix"
-		>
-
-	<View
-		style="@style/SocialPlusSdkDivider"
-		android:layout_gravity="top"/>
-
+	/>
 	<Button
 		android:id="@+id/sp_doneButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="@string/sp_menu_done"
-		android:layout_gravity="right"
 		style="@style/SocialPlusSdkBottomButton"
 		/>
-
-	</FrameLayout>
 </LinearLayout>

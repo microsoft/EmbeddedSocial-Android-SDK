@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
@@ -52,7 +54,6 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	private EditText noteText;
 	private boolean scrolledDown;
 	private Handler uiHandler;
-	private ViewGroup bottomBar;
 	private Button doneButton;
 
 	private ProfileInfoRenderer.ProfileViewHolder profileViewHolder;
@@ -72,12 +73,12 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 		uiHandler = new Handler(Looper.getMainLooper());
 	}
 
-	public void showBottomBar() {
-		bottomBar.setVisibility(View.VISIBLE);
+	public void showDoneButton() {
+		doneButton.setVisibility(View.VISIBLE);
 	}
 
-	public void hideBottomBar() {
-		bottomBar.setVisibility(View.GONE);
+	public void hideDoneButton() {
+		doneButton.setVisibility(View.INVISIBLE);
 	}
 
 	public void setOnDoneClickListener(View.OnClickListener listener) {
@@ -90,7 +91,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			FetchableRecyclerView recyclerView = getRecyclerView();
 			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.sp_view_enter_note, recyclerView, false);
 			noteText = (EditText) enterNote.findViewById(R.id.sp_noteText);
-			bottomBar = (ViewGroup) enterNote.findViewById(R.id.sp_bottomBar);
+
 			doneButton = (Button) enterNote.findViewById(R.id.sp_doneButton);
 			noteText.setHint(getNoteHint());
 			setOnDoneClickListener(v -> {
@@ -104,9 +105,9 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			noteText.setOnFocusChangeListener((v, hasFocus) -> {
 				if (hasFocus) {
 					if (!TextHelper.isEmpty(((EditText) v).getText())) {
-						showBottomBar();
+						showDoneButton();
 					} else {
-						hideBottomBar();
+						hideDoneButton();
 					}
 				}
 			});
@@ -119,9 +120,9 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 				@Override
 				public void onTextChanged(CharSequence s, int start, int before, int count) {
 					if (!TextHelper.isEmpty(s)) {
-						showBottomBar();
+						showDoneButton();
 					} else {
-						hideBottomBar();
+						hideDoneButton();
 					}
 				}
 
