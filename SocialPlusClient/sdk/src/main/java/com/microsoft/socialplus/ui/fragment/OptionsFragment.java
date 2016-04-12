@@ -46,11 +46,11 @@ public class OptionsFragment extends BaseFragment {
 		super.onViewCreated(view, savedInstanceState);
 		View.OnClickListener defaultListener = v -> showToast("Not implemented");
 		// TODO: hide it in not "master app"
-		setOnClickListener(view, R.id.sp_applications, defaultListener);
-		setOnClickListener(view, R.id.sp_findFacebookFriends, v -> searchFriends(IdentityProvider.FACEBOOK));
-		setOnClickListener(view, R.id.sp_findGooglePlusFriends, v -> searchFriends(IdentityProvider.GOOGLE));
-		setOnClickListener(view, R.id.sp_findMicrosoftContacts, v -> searchFriends(IdentityProvider.MICROSOFT));
-		setOnClickListener(view, R.id.sp_findFriendsFromOtherApps, defaultListener);
+//		setOnClickListener(view, R.id.sp_applications, defaultListener);
+//		setOnClickListener(view, R.id.sp_findFacebookFriends, v -> searchFriends(IdentityProvider.FACEBOOK));
+//		setOnClickListener(view, R.id.sp_findGooglePlusFriends, v -> searchFriends(IdentityProvider.GOOGLE));
+//		setOnClickListener(view, R.id.sp_findMicrosoftContacts, v -> searchFriends(IdentityProvider.MICROSOFT));
+//		setOnClickListener(view, R.id.sp_findFriendsFromOtherApps, defaultListener);
 		setOnClickListener(view, R.id.sp_privacyPolicy, v -> startActivity(PrivacyPolicyActivity.class));
 		setOnClickListener(view, R.id.sp_terms, v -> startActivity(TermsAndConditionsActivity.class));
 		setOnClickListener(view, R.id.sp_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));

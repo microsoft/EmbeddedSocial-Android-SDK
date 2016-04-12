@@ -17,55 +17,55 @@
 		android:orientation="vertical"
 		>
 
-		<TextView
-			style="@style/SocialPlusSdkOptionsHeader.Phone"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/sp_applications_header"
-			/>
+		<!--<TextView-->
+			<!--style="@style/SocialPlusSdkOptionsHeader.Phone"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:text="@string/sp_applications_header"-->
+			<!--/>-->
 
-		<TextView
-			android:id="@+id/sp_applications"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
-			android:text="@string/sp_muted_apps"
-			/>
+		<!--<TextView-->
+			<!--android:id="@+id/sp_applications"-->
+			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--android:text="@string/sp_muted_apps"-->
+			<!--/>-->
 
-		<TextView
-			style="@style/SocialPlusSdkOptionsHeader.Phone"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/sp_header_follow"
-			/>
+		<!--<TextView-->
+			<!--style="@style/SocialPlusSdkOptionsHeader.Phone"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:text="@string/sp_header_follow"-->
+			<!--/>-->
 
-		<TextView
-			android:id="@+id/sp_findFacebookFriends"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
-			android:text="@string/sp_button_find_friends_facebook"
-			/>
+		<!--<TextView-->
+			<!--android:id="@+id/sp_findFacebookFriends"-->
+			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--android:text="@string/sp_button_find_friends_facebook"-->
+			<!--/>-->
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<!--<View style="@style/SocialPlusSdkDivider"/>-->
 
-		<TextView
-			android:id="@+id/sp_findGooglePlusFriends"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
-			android:text="@string/sp_button_find_friends_google_plus"
-			/>
+		<!--<TextView-->
+			<!--android:id="@+id/sp_findGooglePlusFriends"-->
+			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--android:text="@string/sp_button_find_friends_google_plus"-->
+			<!--/>-->
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<!--<View style="@style/SocialPlusSdkDivider"/>-->
 
-		<TextView
-			android:id="@+id/sp_findMicrosoftContacts"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
-			android:text="@string/sp_button_find_friends_microsoft"
-			/>
+		<!--<TextView-->
+			<!--android:id="@+id/sp_findMicrosoftContacts"-->
+			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--android:text="@string/sp_button_find_friends_microsoft"-->
+			<!--/>-->
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<!--<View style="@style/SocialPlusSdkDivider"/>-->
 
-		<TextView
-			android:id="@+id/sp_findFriendsFromOtherApps"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
-			android:text="@string/sp_button_find_friends_other_apps"
-			/>
+		<!--<TextView-->
+			<!--android:id="@+id/sp_findFriendsFromOtherApps"-->
+			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--android:text="@string/sp_button_find_friends_other_apps"-->
+			<!--/>-->
 
 		<TextView
 			style="@style/SocialPlusSdkOptionsHeader.Phone"
