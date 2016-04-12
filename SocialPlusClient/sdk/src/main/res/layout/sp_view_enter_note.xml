@@ -25,5 +25,6 @@
 		android:layout_height="wrap_content"
 		android:text="@string/sp_menu_done"
 		style="@style/SocialPlusSdkBottomButton"
+		android:visibility="invisible"
 		/>
 </LinearLayout>
