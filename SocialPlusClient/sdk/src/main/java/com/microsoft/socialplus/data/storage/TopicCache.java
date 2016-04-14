@@ -90,7 +90,9 @@ public class TopicCache {
 	public TopicsListResponse getResponse(GetTopicFeedRequest request) throws SQLException {
 		TopicFeedType feedType = request.getTopicFeedType();
 		boolean sortResults = feedType == TopicFeedType.USER_RECENT
-			|| feedType == TopicFeedType.FOLLOWING_RECENT;
+				|| feedType == TopicFeedType.FOLLOWING_RECENT
+				|| feedType == TopicFeedType.EVERYONE_RECENT
+				|| feedType == TopicFeedType.MY_RECENT;
 
 		return getResponse(feedType.ordinal(), request.getQuery(), sortResults);
 	}
