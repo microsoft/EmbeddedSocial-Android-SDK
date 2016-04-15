@@ -210,6 +210,11 @@ public final class SocialPlus {
         launchAddPostActivity(context, "", "", Uri.EMPTY, false);
     }
 
+    public static void clearCache(Context context) {
+        DatabaseHelper helper = new DatabaseHelper(context);
+        helper.clearData();
+    }
+
     public static Fragment getAddPostFragment() {
         AddPostFragment fragment = AddPostFragment.newInstance();
         return fragment;

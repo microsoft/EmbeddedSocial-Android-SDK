@@ -90,4 +90,12 @@ public final class SocialPlusServiceProvider {
 	public IImageService getImageService() {
 		return imageService;
 	}
+
+	public IBlobService getBlobService() {
+		return blobService;
+	}
+
+	public IBuildService getBuildService() {
+		return buildService;
+	}
 }
