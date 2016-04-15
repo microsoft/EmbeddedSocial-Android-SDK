@@ -25,7 +25,7 @@ public class ContentTriggers {
 
 	private static final String CLEANUP_COMMENT_FEEDS_STATEMENT
 		= "delete from " + CommentFeedRelation.TABLE_NAME
-		+ " where old." + Topics.TOPIC_HANDLE + " = "
+		+ " where OLD." + Topics.TOPIC_HANDLE + " = "
 		+ CommentFeedRelation.TABLE_NAME + "." + CommentFeedRelation.TOPIC_HANDLE;
 
 	private static final String DELETE_UNREFERENCED_TOPICS_STATEMENT
