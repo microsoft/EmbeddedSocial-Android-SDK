@@ -21,7 +21,7 @@ public class GetPinFeedRequest extends FeedUserRequest {
     public TopicsListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseTopicView> serviceResponse;
         try {
-            serviceResponse = PINS.getPins(bearerToken, getCursor(), getBatchSize());
+            serviceResponse = PINS.getPins(bearerToken, getCursor(), getBatchSize(), appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

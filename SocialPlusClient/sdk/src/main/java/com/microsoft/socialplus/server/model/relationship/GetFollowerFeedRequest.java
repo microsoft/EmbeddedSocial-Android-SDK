@@ -30,7 +30,7 @@ public final class GetFollowerFeedRequest extends GetFollowFeedRequest {
 		ServiceResponse<FeedResponseUserCompactView> serviceResponse;
 		try {
 			serviceResponse = USER_FOLLOWERS.getFollowers(getQueryUserHandle(), bearerToken,
-					getCursor(), getBatchSize());
+					getCursor(), getBatchSize(), appKey, null);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

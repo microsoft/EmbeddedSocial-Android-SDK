@@ -32,7 +32,7 @@ public class GetThirdPartyTokenRequest extends UserRequest {
 	public ThirdPartyTokenResponse send() throws NetworkRequestException {
 		ServiceResponse<GetRequestTokenResponse> serviceResponse;
 		try {
-			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, appKey, bearerToken);
+			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, appKey, bearerToken, null);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

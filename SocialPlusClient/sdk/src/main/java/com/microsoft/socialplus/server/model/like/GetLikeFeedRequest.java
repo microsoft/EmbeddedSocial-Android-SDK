@@ -45,15 +45,15 @@ public class GetLikeFeedRequest extends FeedUserRequest {
 			switch (contentType) {
 				case TOPIC:
 					serviceResponse = TOPIC_LIKES.getLikes(contentHandle, cursor,
-							batchSize, appKey, bearerToken);
+							batchSize, appKey, bearerToken, null);
 					break;
 				case COMMENT:
 					serviceResponse = COMMENT_LIKES.getLikes(contentHandle, cursor,
-							batchSize, appKey, bearerToken);
+							batchSize, appKey, bearerToken, null);
 					break;
 				case REPLY:
 					serviceResponse = REPLY_LIKES.getLikes(contentHandle, cursor,
-							batchSize, appKey, bearerToken);
+							batchSize, appKey, bearerToken, null);
 					break;
 				default:
 					throw new IllegalStateException("Unknown type for like");

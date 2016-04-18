@@ -15,7 +15,8 @@ public class GetPopularUsersRequest extends FeedUserRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserProfileView> serviceResponse;
         try {
-            serviceResponse = USERS.getPopularUsers(getIntCursor(), getBatchSize(), appKey, bearerToken);
+            serviceResponse =
+                    USERS.getPopularUsers(getIntCursor(), getBatchSize(), appKey, bearerToken, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

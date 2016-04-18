@@ -51,23 +51,23 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 			switch (topicFeedType) {
 				case USER_RECENT:
 					// {userHandle}/topics
-					serviceResponse = USER_TOPICS.getTopics(query, cursor, limit, appKey, bearerToken);
+					serviceResponse = USER_TOPICS.getTopics(query, cursor, limit, appKey, bearerToken, null);
 					break;
 				case FOLLOWING_RECENT:
 					// users/me/following/topics
-					serviceResponse = MY_FOLLOWING.getTopics(bearerToken, cursor, limit);
+					serviceResponse = MY_FOLLOWING.getTopics(bearerToken, cursor, limit, appKey, null);
 					break;
 				case EVERYONE_RECENT:
-					serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken);
+					serviceResponse = TOPICS.getTopics(cursor, limit, appKey, bearerToken, null);
 					break;
 				case MY_RECENT:
-					serviceResponse = MY_TOPICS.getTopics(bearerToken, cursor, limit);
+					serviceResponse = MY_TOPICS.getTopics(bearerToken, cursor, limit, appKey, null);
 					break;
 				case MY_LIKED:
-					serviceResponse = LIKES.getLikedTopics(bearerToken, cursor, limit);
+					serviceResponse = LIKES.getLikedTopics(bearerToken, cursor, limit, appKey, null);
 					break;
 				case FEATURED:
-					serviceResponse = TOPICS.getFeaturedTopics(cursor, limit, appKey, bearerToken);
+					serviceResponse = TOPICS.getFeaturedTopics(cursor, limit, appKey, bearerToken, null);
 					break;
 				default: // Based on popularity
 					serviceResponse = getPopularTopics(getIntCursor(), limit);
@@ -83,12 +83,12 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 			throws ServiceException, IOException {
 		if (topicFeedType == TopicFeedType.USER_POPULAR) {
 			// {userHandle}/topics/popular
-			return USER_TOPICS.getPopularTopics(query, cursor, limit, appKey, bearerToken);
+			return USER_TOPICS.getPopularTopics(query, cursor, limit, appKey, bearerToken, null);
 		} else if (topicFeedType == TopicFeedType.MY_POPULAR) {
-			return MY_TOPICS.getPopularTopics(bearerToken, cursor, limit);
+			return MY_TOPICS.getPopularTopics(bearerToken, cursor, limit, appKey, null);
 		} else { // EVERYONE_POPULAR
 			TimeRange timeRange = getTimeRange();
-			return TOPICS.getPopularTopics(timeRange, cursor, limit, appKey, bearerToken);
+			return TOPICS.getPopularTopics(timeRange, cursor, limit, appKey, bearerToken, null);
 		}
 	}
 

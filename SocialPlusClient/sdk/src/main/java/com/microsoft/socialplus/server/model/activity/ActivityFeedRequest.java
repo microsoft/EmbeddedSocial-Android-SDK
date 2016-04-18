@@ -20,7 +20,8 @@ public class ActivityFeedRequest extends FeedUserRequest {
     public ActivityFeedResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseActivityView> serviceResponse;
         try {
-            serviceResponse = MY_FOLLOWING.getActivities(bearerToken, getCursor(), getBatchSize());
+            serviceResponse =
+                    MY_FOLLOWING.getActivities(bearerToken, getCursor(), getBatchSize(), appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

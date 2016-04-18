@@ -20,7 +20,8 @@ public class GetNotificationFeedRequest extends FeedUserRequest {
     public GetNotificationFeedResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseActivityView> serviceResponse;
         try {
-            serviceResponse = NOTIFICATIONS.getNotifications(bearerToken, getCursor(), getBatchSize());
+            serviceResponse = NOTIFICATIONS.getNotifications(bearerToken, getCursor(),
+                    getBatchSize(), appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

@@ -21,7 +21,8 @@ public class GetMyFollowerFeedRequest extends FeedUserRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = MY_FOLLOWERS.getFollowers(bearerToken, getCursor(), getBatchSize());
+            serviceResponse =
+                    MY_FOLLOWERS.getFollowers(bearerToken, getCursor(), getBatchSize(), appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

@@ -26,7 +26,7 @@ public class GetFollowingInOtherAppsRequest extends FeedUserRequest {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
             serviceResponse = APP_FOLLOWING_OPERATIONS.getUsers(appKey, bearerToken,
-                    getCursor() /*TODO add limit once server is fixed*/);
+                    getCursor(), /*TODO add limit once server is fixed*/ appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

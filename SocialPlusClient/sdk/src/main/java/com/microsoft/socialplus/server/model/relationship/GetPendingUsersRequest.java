@@ -15,7 +15,8 @@ public class GetPendingUsersRequest extends FeedUserRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = PENDING.getPendingUsers(bearerToken, getCursor(), getBatchSize());
+            serviceResponse =
+                    PENDING.getPendingUsers(bearerToken, getCursor(),getBatchSize(), appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

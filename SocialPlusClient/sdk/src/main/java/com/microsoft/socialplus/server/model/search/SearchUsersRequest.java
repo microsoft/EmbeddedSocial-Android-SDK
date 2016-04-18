@@ -18,7 +18,8 @@ public class SearchUsersRequest extends SearchRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = SEARCH.getUsers(query, getIntCursor(), getBatchSize(), appKey, bearerToken);
+            serviceResponse =
+                    SEARCH.getUsers(query, getIntCursor(), getBatchSize(), appKey, bearerToken, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

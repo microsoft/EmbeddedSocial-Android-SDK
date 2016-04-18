@@ -31,7 +31,7 @@ public final class CreateUserRequest extends UserRequest {
 	public AuthenticationResponse send() throws NetworkRequestException {
 		ServiceResponse<PostUserResponse> serviceResponse;
 		try {
-			serviceResponse = USERS.postUser(body, appKey, bearerToken);
+			serviceResponse = USERS.postUser(body, appKey, bearerToken, null);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
