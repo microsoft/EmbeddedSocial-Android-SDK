@@ -101,13 +101,13 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	/**
 	 * For update fetcher.
 	 */
-	public CommentView(String topicHandle, String commentHandle, String contentText) {
+	public CommentView(String topicHandle, String commentHandle, String contentText, String blobUrl) {
 		this.commentHandle = commentHandle;
 		this.topicHandle = topicHandle;
 		this.user = UserAccount.getInstance().generateCompactUserView();
 		this.commentText = contentText;
 		this.commentBlobType = 0;
-		this.commentBlobUrl = null;
+		this.commentBlobUrl = blobUrl;
 		this.createdTime = 0;
 		this.totalLikes = 0;
 		this.totalReplies = 0;

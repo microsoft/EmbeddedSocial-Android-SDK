@@ -182,6 +182,7 @@ public final class DbSchemas {
 		public static final String ROOT_HANDLE = "rootHandle";
 		public static final String CONTENT_TEXT = "contentText";
 		public static final String CONTENT_TYPE = "contentType";
+		public static final String IMAGE_PATH = "imagePath";
 	}
 
 	public class EditedTopic {

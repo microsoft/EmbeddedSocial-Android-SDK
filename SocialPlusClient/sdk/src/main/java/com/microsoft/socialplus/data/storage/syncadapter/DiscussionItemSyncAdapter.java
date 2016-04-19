@@ -6,8 +6,12 @@
 
 package com.microsoft.socialplus.data.storage.syncadapter;
 
+import android.text.TextUtils;
+
 import com.j256.ormlite.dao.Dao;
+import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.autorest.models.ImageType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.CommentFeedType;
@@ -18,7 +22,9 @@ import com.microsoft.socialplus.data.storage.model.CommentFeedRelation;
 import com.microsoft.socialplus.data.storage.transaction.DbTransaction;
 import com.microsoft.socialplus.event.content.CommentPostedToBackendEvent;
 import com.microsoft.socialplus.event.content.ReplyPostedToBackendEvent;
+import com.microsoft.socialplus.image.ImageLoader;
 import com.microsoft.socialplus.server.IContentService;
+import com.microsoft.socialplus.server.ImageUploader;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentRequest;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentResponse;
@@ -32,6 +38,8 @@ import com.microsoft.socialplus.server.model.view.CommentView;
 import com.microsoft.socialplus.server.model.view.ReplyView;
 import com.microsoft.socialplus.server.sync.exception.SynchronizationException;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -93,11 +101,23 @@ public class DiscussionItemSyncAdapter extends AbstractAutoCleanupSyncAdapter<Di
 
 	private void postComment(DiscussionItem item) throws NetworkRequestException {
 		IContentService contentService = getServiceProvider().getContentService();
-		AddCommentResponse response = contentService.addComment(
-			new AddCommentRequest(item.getRootHandle(), item.getContentText()));
 
-		new CommentPostedToBackendEvent().submit();
 		try {
+			String imagePath = item.getImagePath();
+			String imageUrl = null;
+			try {
+				if (!TextUtils.isEmpty(imagePath)) {
+					imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.CONTENTBLOB);
+				}
+			} catch (IOException e) {
+				DebugLog.logException(e);
+			}
+			AddCommentResponse response = contentService.addComment(
+					new AddCommentRequest(item.getRootHandle(), item.getContentText(),
+							BlobType.IMAGE, imageUrl));
+
+			new CommentPostedToBackendEvent().submit();
+
 			GetCommentRequest dataRequest = new GetCommentRequest(response.getCommentHandle());
 			GetCommentResponse commentResponse = contentService.getComment(dataRequest);
 			CommentView comment = commentResponse.getComment();

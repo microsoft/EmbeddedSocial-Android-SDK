@@ -8,6 +8,7 @@ package com.microsoft.socialplus.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -52,7 +53,7 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 	}
 
 	@Override
-	protected void onDonePressed(String text) {
+	protected void onDonePressed(String text, String imagePath) {
 		DiscussionItem noteData = DiscussionItem.newReply(getHandle(), text);
 		new UserActionProxy(getActivity()).postReply(noteData);
 	}

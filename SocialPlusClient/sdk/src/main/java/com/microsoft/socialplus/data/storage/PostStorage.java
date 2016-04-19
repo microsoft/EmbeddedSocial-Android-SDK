@@ -139,7 +139,7 @@ public class PostStorage {
 		}
 	}
 
-	private String storeImageToTempFile(@Nullable Uri imageUri) throws IOException {
+	public String storeImageToTempFile(@Nullable Uri imageUri) throws IOException {
 		String imagePath = "";
 
 		if (imageUri != null) {

@@ -6,6 +6,10 @@
 
 package com.microsoft.socialplus.ui.fragment;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -25,9 +29,13 @@ import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.event.EventBus;
+import com.microsoft.socialplus.base.utils.BitmapUtils;
 import com.microsoft.socialplus.base.utils.EnumUtils;
+import com.microsoft.socialplus.base.utils.ObjectUtils;
 import com.microsoft.socialplus.base.utils.ViewUtils;
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.AccountData;
+import com.microsoft.socialplus.data.storage.PostStorage;
 import com.microsoft.socialplus.event.ScrollPositionEvent;
 import com.microsoft.socialplus.event.content.LikeAddedEvent;
 import com.microsoft.socialplus.event.content.LikeRemovedEvent;
@@ -42,23 +50,34 @@ import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.ui.adapter.DiscussionFeedAdapter;
 import com.microsoft.socialplus.ui.adapter.renderer.ProfileInfoRenderer;
 import com.microsoft.socialplus.ui.fragment.base.BaseListContentFragment;
+import com.microsoft.socialplus.ui.fragment.module.PhotoProviderModule;
+import com.microsoft.socialplus.ui.util.FitWidthSizeSpec;
 import com.microsoft.socialplus.ui.util.ProfileOpenHelper;
 import com.microsoft.socialplus.ui.util.TextHelper;
 import com.squareup.otto.Subscribe;
 
+import java.io.IOException;
+
 /**
  * Fragment to display topic and comments feed.
  */
-public abstract class DiscussionFeedFragment extends BaseListContentFragment<DiscussionFeedAdapter> {
+public abstract class DiscussionFeedFragment extends BaseListContentFragment<DiscussionFeedAdapter>
+		implements PhotoProviderModule.Consumer {
+	private static final String PREF_IMAGE_URI = "imageUri";
 
 	private EditText noteText;
 	private boolean scrolledDown;
 	private Handler uiHandler;
 	private Button doneButton;
+	private ImageButton imageButton;
+	private ImageView coverView;
+	private PostStorage postStorage;
+	private PhotoProviderModule photoProvider;
+	private Uri imageUri;
 
 	private ProfileInfoRenderer.ProfileViewHolder profileViewHolder;
 
-	protected abstract void onDonePressed(String text);
+	protected abstract void onDonePressed(String text, String imagePath);
 
 	protected abstract String getHandle();
 
@@ -71,7 +90,9 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	protected DiscussionFeedFragment() {
 		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayTopic);
 		uiHandler = new Handler(Looper.getMainLooper());
-	}
+		photoProvider = new PhotoProviderModule(this, this);
+		addModule(photoProvider);
+}
 
 	public void showDoneButton() {
 		doneButton.setVisibility(View.VISIBLE);
@@ -85,23 +106,39 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 		doneButton.setOnClickListener(listener);
 	}
 
+	public void setAttachImageClickListener(View.OnClickListener listener) {
+		imageButton.setOnClickListener(listener);
+	}
+
 	@Override
 	protected void initRecyclerView() {
 		if (UserAccount.getInstance().isSignedIn() && !isLocal()) {
 			FetchableRecyclerView recyclerView = getRecyclerView();
 			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.sp_view_enter_note, recyclerView, false);
 			noteText = (EditText) enterNote.findViewById(R.id.sp_noteText);
-
 			doneButton = (Button) enterNote.findViewById(R.id.sp_doneButton);
+			imageButton = (ImageButton) enterNote.findViewById(R.id.sp_attachImageButton);
+			coverView = (ImageView) enterNote.findViewById(R.id.sp_noteImage);
+
 			noteText.setHint(getNoteHint());
 			setOnDoneClickListener(v -> {
 				if (noteText != null) {
-					onDonePressed(noteText.getText().toString());
+					String imagePath = null;
+					try {
+						imagePath = postStorage.storeImageToTempFile(imageUri);
+					} catch (IOException e){
+						DebugLog.i("Store Discussion item image failed");
+					}
+					onDonePressed(noteText.getText().toString(), imagePath);
 					noteText.setText("");
 					noteText.clearFocus();
 					ViewUtils.hideKeyboard(this);
 				}
 			});
+			setAttachImageClickListener(v -> {
+				photoProvider.showSelectImageDialog();
+			});
+
 			noteText.setOnFocusChangeListener((v, hasFocus) -> {
 				if (hasFocus) {
 					if (!TextHelper.isEmpty(((EditText) v).getText())) {
@@ -199,9 +236,18 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		ViewGroup profileView = findView(view, R.id.sp_profileLayout);
+		postStorage = new PostStorage(view.getContext());
 		synchronized (this) {
 			profileViewHolder = profileView != null ? new ProfileInfoRenderer.ProfileViewHolder(profileView) : null;
 		}
+
+		if (savedInstanceState != null) {
+			imageUri = savedInstanceState.getParcelable(PREF_IMAGE_URI);
+			if (imageUri != null) {
+				photoProvider.loadBitmap(imageUri);
+			}
+		}
+
 		renderAuthorIfNeeded();
 	}
 
@@ -281,4 +327,39 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			}
 		}
 	};
+
+	@Override
+	public void onPhotoSelected(Uri newImageUri) {
+		this.imageUri = newImageUri;
+	}
+
+	@Override
+	public void onPhotoLoaded(Uri loadedImageUri, Bitmap thumbnail) {
+		if (ObjectUtils.equal(imageUri, loadedImageUri)) {
+			if (thumbnail != null) {
+				showView(R.id.sp_noteImage);
+				ViewGroup.LayoutParams layoutParams = coverView.getLayoutParams();
+				double imageRatio = (double) thumbnail.getHeight() / thumbnail.getWidth();
+				int imageViewWidth = coverView.getWidth();
+				int imageViewHeight = (int) (imageViewWidth * imageRatio);
+				layoutParams.width = imageViewWidth;
+				layoutParams.height = imageViewHeight;
+				coverView.setLayoutParams(layoutParams);
+			} else {
+				hideView(R.id.sp_noteImage);
+			}
+			coverView.setImageBitmap(thumbnail);
+		}
+	}
+
+	@Override
+	public BitmapUtils.SizeSpec getSizeSpec() {
+		return new FitWidthSizeSpec(getActivity());
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putParcelable(PREF_IMAGE_URI, imageUri);
+	}
 }

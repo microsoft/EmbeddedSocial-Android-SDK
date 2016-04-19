@@ -8,6 +8,7 @@ package com.microsoft.socialplus.data.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.view.CommentView;
@@ -34,24 +35,28 @@ public class DiscussionItem {
 	@DatabaseField(columnName = DbSchemas.DiscussionItem.CONTENT_TYPE)
 	private ContentType contentType;
 
+	@DatabaseField(columnName = DbSchemas.DiscussionItem.IMAGE_PATH)
+	private String imagePath;
+
 	/**
 	 * For ORM.
 	 */
 	@SuppressWarnings("unused")
 	DiscussionItem() {  }
 
-	private DiscussionItem(ContentType contentType, String rootHandle, String contentText) {
+	private DiscussionItem(ContentType contentType, String rootHandle, String contentText, String imagePath) {
 		this.contentType = contentType;
 		this.rootHandle = rootHandle;
 		this.contentText = contentText;
+		this.imagePath = imagePath;
 	}
 
-	public static DiscussionItem newComment(String rootHandle, String contentText) {
-		return new DiscussionItem(ContentType.COMMENT, rootHandle, contentText);
+	public static DiscussionItem newComment(String rootHandle, String contentText, String blobUrl) {
+		return new DiscussionItem(ContentType.COMMENT, rootHandle, contentText, blobUrl);
 	}
 
 	public static DiscussionItem newReply(String rootHandle, String contentText) {
-		return new DiscussionItem(ContentType.REPLY, rootHandle, contentText);
+		return new DiscussionItem(ContentType.REPLY, rootHandle, contentText, null);
 	}
 
 	public String getRootHandle() {
@@ -66,9 +71,13 @@ public class DiscussionItem {
 		return contentType;
 	}
 
+	public String getImagePath() {
+		return imagePath;
+	}
+
 	public CommentView asComment() {
 		CommentView commentView = new CommentView(rootHandle, LOCAL_HANDLE_PREFIX + hashCode(),
-			getContentText());
+			getContentText(), getImagePath());
 		commentView.setLocal(id);
 		return commentView;
 	}
