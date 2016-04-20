@@ -64,6 +64,7 @@ import java.io.IOException;
 public abstract class DiscussionFeedFragment extends BaseListContentFragment<DiscussionFeedAdapter>
 		implements PhotoProviderModule.Consumer {
 	private static final String PREF_IMAGE_URI = "imageUri";
+	private static final int IMAGE_PREVIEW_DPS = 150;
 
 	private EditText noteText;
 	private boolean scrolledDown;
@@ -108,6 +109,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 
 	public void setAttachImageClickListener(View.OnClickListener listener) {
 		imageButton.setOnClickListener(listener);
+		coverView.setOnClickListener(listener);
 	}
 
 	@Override
@@ -339,11 +341,11 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			if (thumbnail != null) {
 				showView(R.id.sp_noteImage);
 				ViewGroup.LayoutParams layoutParams = coverView.getLayoutParams();
-				double imageRatio = (double) thumbnail.getHeight() / thumbnail.getWidth();
-				int imageViewWidth = coverView.getWidth();
-				int imageViewHeight = (int) (imageViewWidth * imageRatio);
+				double imageRatio = (double) thumbnail.getWidth() / thumbnail.getHeight();
+				float density = getContext().getResources().getDisplayMetrics().density;
+				layoutParams.height = (int)(IMAGE_PREVIEW_DPS * density + 0.5f);
+				int imageViewWidth = (int) (layoutParams.height * imageRatio);
 				layoutParams.width = imageViewWidth;
-				layoutParams.height = imageViewHeight;
 				coverView.setLayoutParams(layoutParams);
 			} else {
 				hideView(R.id.sp_noteImage);
