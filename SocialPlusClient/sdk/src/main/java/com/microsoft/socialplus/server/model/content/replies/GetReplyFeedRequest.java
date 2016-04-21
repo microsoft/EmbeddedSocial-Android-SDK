@@ -30,8 +30,8 @@ public class GetReplyFeedRequest extends FeedUserRequest {
 	public GetReplyFeedResponse send() throws NetworkRequestException {
 		ServiceResponse<FeedResponseReplyView> serviceResponse;
 		try {
-			serviceResponse = COMMENT_REPLIES.getReplies(commentHandle, bearerToken,
-					getCursor(), getBatchSize(), appKey, null);
+			serviceResponse = COMMENT_REPLIES.getReplies(commentHandle, getCursor(),
+					getBatchSize(), appKey, bearerToken, null);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
