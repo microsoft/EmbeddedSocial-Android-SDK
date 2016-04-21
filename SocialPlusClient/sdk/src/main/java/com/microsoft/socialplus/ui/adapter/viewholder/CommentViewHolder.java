@@ -13,11 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.socialplus.base.utils.ViewUtils;
+import com.microsoft.socialplus.image.CoverLoader;
+import com.microsoft.socialplus.image.ImageViewContentLoader;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.CommentView;
 import com.microsoft.socialplus.ui.adapter.QuantityStringUtils;
 import com.microsoft.socialplus.ui.theme.ThemeAttributes;
 import com.microsoft.socialplus.ui.util.ButtonStyleHelper;
+import com.microsoft.socialplus.ui.util.ContentUpdateHelper;
 
 /**
  * Init comment view layout.
@@ -25,6 +28,7 @@ import com.microsoft.socialplus.ui.util.ButtonStyleHelper;
 public class CommentViewHolder extends UserHeaderViewHolder {
 	private final CommentButtonListener commentButtonListener;
 
+	private ImageViewContentLoader coverContentLoader;
 	private View commentRootView;
 	private TextView commentText;
 
@@ -99,6 +103,8 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		contextMenuButton.setTag(R.id.sp_keyComment, comment);
 
 		setCommentBackgroundColor(comment);
+		ContentUpdateHelper.setTopicCoverImage(coverContentLoader, comment.getImageLocation());
+
 	}
 
 	private void setCommentBackgroundColor(CommentView comment) {
@@ -133,6 +139,8 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		setHeaderClickable(true);
 
 		contentButton = (ViewGroup) view.findViewById(R.id.sp_contentButton);
+		ImageView coverImage = (ImageView) view.findViewById(R.id.sp_coverImage);
+		coverContentLoader = new CoverLoader(coverImage);
 
 		commentText = (TextView) view.findViewById(R.id.sp_commentText);
 		commentLikesCountButton = (TextView) view.findViewById(R.id.sp_commentLikesCountButton);

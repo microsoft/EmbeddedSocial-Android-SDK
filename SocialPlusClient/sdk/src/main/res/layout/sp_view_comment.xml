@@ -9,13 +9,34 @@
 	   android:layout_width="match_parent"
 	   android:layout_height="match_parent"
 	>
+	<com.microsoft.socialplus.ui.view.AspectRatioImageView
+		android:id="@+id/sp_coverImage"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/sp_card_cover_image_height"
+		android:layout_marginBottom="@dimen/sp_padding_large"
+		android:layout_below="@id/sp_profileImage"
+		android:background="?attr/sp_topicCoverBackground"
+		android:scaleType="centerCrop"
+		/>
+	<!--app:sp_aspectRatio="0.66"-->
+
+	<FrameLayout
+		android:id="@+id/sp_commentImageButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignBottom="@id/sp_coverImage"
+		android:layout_alignTop="@id/sp_coverImage"
+		android:foreground="?attr/sp_buttonBackground"
+		android:clickable="true"
+		android:visibility="gone"
+		/>
 
 	<TextView
 		android:id="@+id/sp_commentText"
 		style="@style/SocialPlusSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_below="@id/sp_profileImage"
+		android:layout_below="@id/sp_coverImage"
 		android:paddingBottom="4dp"
 		android:layout_marginRight="@dimen/sp_padding_large"
 		android:layout_toRightOf="@id/sp_leftBorder"

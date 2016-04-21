@@ -152,6 +152,9 @@ public final class ContentUpdateHelper {
 	public static void setTopicCoverImage(@NonNull ImageViewContentLoader imageViewContentLoader, ImageLocation coverImageLocation) {
 		imageViewContentLoader.cancel();
 		ImageView coverImage = imageViewContentLoader.getImageView();
+		if (coverImage == null) {
+			return;
+		}
 		if (coverImageLocation != null) {
 			final int coverImageWidth = coverImage.getResources().getDimensionPixelSize(R.dimen.sp_card_cover_image_width);
 			coverImage.setVisibility(View.VISIBLE);

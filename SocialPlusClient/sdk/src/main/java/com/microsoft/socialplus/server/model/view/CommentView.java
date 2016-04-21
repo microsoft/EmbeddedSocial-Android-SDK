@@ -12,8 +12,10 @@ import android.os.Parcelable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.storage.DbSchemas;
+import com.microsoft.socialplus.image.ImageLocation;
 import com.microsoft.socialplus.server.model.TimedItem;
 import com.microsoft.socialplus.server.model.UniqueItem;
 import com.microsoft.socialplus.ui.util.TimeUtils;
@@ -175,6 +177,15 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 
 	public void setUserProfile(AccountData userProfile) {
 		this.userProfile = userProfile;
+	}
+
+	public ImageLocation getImageLocation() {
+		String url = commentBlobType == BlobType.IMAGE.ordinal() ? commentBlobUrl : null;
+		if (local) {
+			return ImageLocation.createLocalImageLocation(url);
+		} else {
+			return ImageLocation.createTopicImageLocation(url);
+		}
 	}
 
 	@Override
