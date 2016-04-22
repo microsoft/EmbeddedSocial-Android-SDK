@@ -15,8 +15,10 @@ import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.autorest.models.FollowerStatus;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.event.ScrollPositionEvent;
 import com.microsoft.socialplus.event.click.OpenCommentEvent;
+import com.microsoft.socialplus.event.click.ViewCommentCoverImageEvent;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.model.view.CommentView;
 import com.microsoft.socialplus.service.IntentExtras;
@@ -89,6 +91,10 @@ public class CommentButtonListener {
 		if (container == Container.TOPIC) {
 			new OpenCommentEvent((CommentView) view.getTag(R.id.sp_keyComment)).submit();
 		}
+	}
+
+	public void onClickCover(CommentView view) {
+		EventBus.post(new ViewCommentCoverImageEvent(view));
 	}
 
 	public enum Container {

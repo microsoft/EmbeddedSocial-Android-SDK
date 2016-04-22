@@ -9,6 +9,7 @@ package com.microsoft.socialplus.ui.adapter.viewholder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import com.microsoft.socialplus.ui.util.ContentUpdateHelper;
 public class CommentViewHolder extends UserHeaderViewHolder {
 	private final CommentButtonListener commentButtonListener;
 
+	private FrameLayout coverButton;
 	private ImageViewContentLoader coverContentLoader;
 	private View commentRootView;
 	private TextView commentText;
@@ -104,7 +106,7 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 
 		setCommentBackgroundColor(comment);
 		ContentUpdateHelper.setTopicCoverImage(coverContentLoader, comment.getImageLocation());
-
+		setupCoverButton(comment);
 	}
 
 	private void setCommentBackgroundColor(CommentView comment) {
@@ -154,5 +156,13 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		commentRepliesCountButton.setOnClickListener(commentButtonListener::onClickRepliesCount);
 		commentButton.setOnClickListener(commentButtonListener::onClickComment);
 		likeButton.setOnClickListener(commentButtonListener::onClickLike);
+	}
+
+	private void setupCoverButton(CommentView commentView) {
+		coverButton = (FrameLayout) commentRootView.findViewById(R.id.sp_coverButton);
+		if (coverButton != null) {
+			coverButton.setOnClickListener((v) ->
+					commentButtonListener.onClickCover(commentView));
+		}
 	}
 }

@@ -29,6 +29,7 @@ import com.microsoft.socialplus.event.RequestSignInEvent;
 import com.microsoft.socialplus.event.click.OpenCommentEvent;
 import com.microsoft.socialplus.event.click.OpenTopicEvent;
 import com.microsoft.socialplus.event.click.OpenUserProfileEvent;
+import com.microsoft.socialplus.event.click.ViewCommentCoverImageEvent;
 import com.microsoft.socialplus.event.click.ViewCoverImageEvent;
 import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.sdk.R;
@@ -87,6 +88,15 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 			intent.putExtra(
 				IntentExtras.COVER_IMAGE_URL_EXTRA,
 				viewCoverImageEvent.getTopic().getImageLocation().getOriginalUrl());
+			startActivity(intent);
+		}
+
+		@Subscribe
+		public void onViewCommentCoverImage(ViewCommentCoverImageEvent viewCommentCoverImageEvent) {
+			Intent intent = new Intent(getApplication(), ViewImageActivity.class);
+			intent.putExtra(
+					IntentExtras.COVER_IMAGE_URL_EXTRA,
+					viewCommentCoverImageEvent.getComment().getImageLocation().getOriginalUrl());
 			startActivity(intent);
 		}
 

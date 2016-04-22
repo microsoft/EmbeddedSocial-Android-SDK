@@ -18,17 +18,15 @@
 		android:background="?attr/sp_topicCoverBackground"
 		android:scaleType="centerCrop"
 		/>
-	<!--app:sp_aspectRatio="0.66"-->
 
 	<FrameLayout
-		android:id="@+id/sp_commentImageButton"
+		android:id="@+id/sp_coverButton"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_alignBottom="@id/sp_coverImage"
 		android:layout_alignTop="@id/sp_coverImage"
 		android:foreground="?attr/sp_buttonBackground"
 		android:clickable="true"
-		android:visibility="gone"
 		/>
 
 	<TextView
