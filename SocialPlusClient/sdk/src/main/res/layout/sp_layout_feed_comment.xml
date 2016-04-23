@@ -29,7 +29,7 @@
 
 	<FrameLayout
 		android:id="@+id/sp_userHeaderButton"
-		android:layout_width="56dp"
+		android:layout_width="match_parent"
 		android:layout_height="56dp"
 		android:layout_marginLeft="@dimen/sp_padding_large"
 		android:layout_marginTop="@dimen/sp_padding_base"
@@ -79,42 +79,74 @@
 
 	</LinearLayout>
 
-	<TextView
-		android:id="@+id/sp_commentText"
-		style="@style/SocialPlusSdkTextSubhead"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/sp_menuGroup"
-		android:paddingBottom="4dp"
-		android:layout_marginRight="@dimen/sp_padding_large"
-		android:layout_toRightOf="@id/sp_profileImage"
-		android:paddingRight="@dimen/sp_padding_large"
-		/>
-
-	<FrameLayout
-		android:id="@+id/sp_contentButton"
+	<LinearLayout
+		android:id="@+id/sp_comment_content"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_alignBottom="@id/sp_commentText"
-		android:layout_alignLeft="@id/sp_commentText"
-		android:layout_below="@id/sp_profileName"
-		android:clickable="true"
-		android:foreground="?attr/sp_buttonBackground"
-		/>
+		android:orientation="vertical"
+		android:layout_below="@id/sp_profileImage"
+		android:layout_toRightOf="@id/sp_profileImage"
+		>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@id/sp_coverImage"
+			>
+			<com.microsoft.socialplus.ui.view.AspectRatioImageView
+				android:id="@+id/sp_coverImage"
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/sp_card_cover_image_height"
+				android:layout_marginBottom="@dimen/sp_padding_large"
+				android:background="?attr/sp_topicCoverBackground"
+				android:scaleType="centerCrop"
+				android:layout_marginRight="10dp"
+				/>
 
-	<android.widget.Space
-		android:id="@+id/sp_leftBorder"
-		android:layout_width="80dp"
-		android:layout_height="@dimen/sp_user_icon_size"
-		/>
+			<FrameLayout
+				android:id="@+id/sp_coverButton"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignBottom="@id/sp_coverImage"
+				android:layout_alignTop="@id/sp_coverImage"
+				android:foreground="?attr/sp_buttonBackground"
+				android:clickable="true"
+				/>
+		</RelativeLayout>
 
-	<include
-		layout="@layout/sp_view_comment_buttons"/>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@id/sp_coverImage"
+			>
+			<TextView
+				android:id="@+id/sp_commentText"
+				style="@style/SocialPlusSdkTextSubhead"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingBottom="4dp"
+				android:layout_marginRight="@dimen/sp_padding_large"
+				android:paddingRight="@dimen/sp_padding_large"
+				/>
+
+			<FrameLayout
+				android:id="@+id/sp_contentButton"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignBottom="@id/sp_commentText"
+				android:layout_alignLeft="@id/sp_commentText"
+				android:layout_alignTop="@id/sp_commentText"
+				android:clickable="true"
+				android:foreground="?attr/sp_buttonBackground"
+				/>
+		</RelativeLayout>
+		<include
+			layout="@layout/sp_view_comment_buttons"/>
+	</LinearLayout>
 
 	<View
 		android:id="@+id/sp_dividerLayoutBottom"
 		style="@style/SocialPlusSdkDivider"
-		android:layout_below="@id/sp_buttonsLayout"
-		android:layout_marginTop="@dimen/sp_padding_base"/>
-
+		android:layout_below="@id/sp_comment_content"
+		android:layout_marginTop="@dimen/sp_padding_base"
+		/>
 </RelativeLayout>
