@@ -10,8 +10,8 @@ import android.text.TextUtils;
 
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.data.model.TopicFeedType;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.PostStorage;
-import com.microsoft.socialplus.data.storage.TopicCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
@@ -20,15 +20,15 @@ import java.sql.SQLException;
 
 public class TopicFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<GetTopicFeedRequest, TopicsListResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 	private final PostStorage postStorage;
 
 	public TopicFeedRequestWrapper(INetworkMethod<GetTopicFeedRequest, TopicsListResponse> networkMethod,
-	                               PostStorage postStorage, TopicCache topicCache) {
+	                               PostStorage postStorage, ContentCache contentCache) {
 
 		super(networkMethod);
 		this.postStorage = postStorage;
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 	}
 
 	private void addPendingPosts(GetTopicFeedRequest request, TopicsListResponse topicFeed) {
@@ -47,12 +47,12 @@ public class TopicFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<G
 	protected void storeResponse(GetTopicFeedRequest request, TopicsListResponse response)
 		throws SQLException {
 
-		topicCache.storeFeed(request, response);
+		contentCache.storeFeed(request, response);
 	}
 
 	@Override
 	protected TopicsListResponse getCachedResponse(GetTopicFeedRequest request) throws SQLException {
-		return topicCache.getResponse(request);
+		return contentCache.getResponse(request);
 	}
 
 	@Override

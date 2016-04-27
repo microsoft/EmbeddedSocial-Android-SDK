@@ -104,12 +104,4 @@ public final class GetTopicFeedRequest extends FeedUserRequest {
 				return TimeRange.ALLTIME;
 		}
 	}
-
-	@Override
-	public String toString() {
-		return "GetTopicFeedRequest{" +
-			"query='" + query + '\'' +
-			", topicFeedType=" + topicFeedType +
-			'}';
-	}
 }

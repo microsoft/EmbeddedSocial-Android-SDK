@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.data.storage.request.wrapper.content;
 
-import com.microsoft.socialplus.data.storage.TopicCache;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicResponse;
@@ -15,13 +15,13 @@ import java.sql.SQLException;
 
 public class TopicRequestWrapper extends AbstractNetworkMethodWrapper<GetTopicRequest, GetTopicResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 
 	public TopicRequestWrapper(INetworkMethod<GetTopicRequest, GetTopicResponse> networkMethod,
-							   TopicCache topicCache) {
+							   ContentCache contentCache) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 	}
 
 	@Override
@@ -31,12 +31,12 @@ public class TopicRequestWrapper extends AbstractNetworkMethodWrapper<GetTopicRe
 		if (response.getTopic() == null) {
 			return;
 		}
-		topicCache.storeTopic(response.getTopic());
+		contentCache.storeTopic(response.getTopic());
 	}
 
 	@Override
 	protected GetTopicResponse getCachedResponse(GetTopicRequest request) throws SQLException {
-		GetTopicResponse response = topicCache.getSingleTopicResponse(request);
+		GetTopicResponse response = contentCache.getSingleTopicResponse(request);
 
 		if (response.getTopic() == null) {
 			throw new SQLException("Couldn't find cached topic " + request.getTopicHandle());

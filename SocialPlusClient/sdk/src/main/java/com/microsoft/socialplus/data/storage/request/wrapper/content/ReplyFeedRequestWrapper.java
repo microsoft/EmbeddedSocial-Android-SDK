@@ -9,8 +9,8 @@ package com.microsoft.socialplus.data.storage.request.wrapper.content;
 import android.content.Context;
 
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.PostStorage;
-import com.microsoft.socialplus.data.storage.TopicCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedRequest;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedResponse;
@@ -22,14 +22,14 @@ import java.util.List;
 
 public class ReplyFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<GetReplyFeedRequest, GetReplyFeedResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 	private final PostStorage postStorage;
 
 	public ReplyFeedRequestWrapper(INetworkMethod<GetReplyFeedRequest, GetReplyFeedResponse> networkMethod,
-	                               TopicCache topicCache, Context context) {
+								   ContentCache contentCache, Context context) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 		this.postStorage = new PostStorage(context);
 	}
 
@@ -37,12 +37,12 @@ public class ReplyFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<G
 	protected void storeResponse(GetReplyFeedRequest request, GetReplyFeedResponse response)
 		throws SQLException {
 
-		topicCache.storeReplyFeed(request, response);
+		contentCache.storeReplyFeed(request, response);
 	}
 
 	@Override
 	protected GetReplyFeedResponse getCachedResponse(GetReplyFeedRequest request) throws SQLException {
-		return topicCache.getReplyFeedResponse(request);
+		return contentCache.getReplyFeedResponse(request);
 	}
 
 	@Override

@@ -18,7 +18,6 @@ import com.microsoft.socialplus.data.storage.request.wrapper.content.TopicFeedRe
 import com.microsoft.socialplus.data.storage.request.wrapper.content.TopicRequestWrapper;
 import com.microsoft.socialplus.server.IContentService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentRequest;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentResponse;
@@ -70,19 +69,19 @@ public class ContentServiceCachingWrapper implements IContentService {
 	 * Creates an instance.
 	 */
 	public ContentServiceCachingWrapper(Context context) {
-		TopicCache topicCache = new TopicCache();
+		ContentCache contentCache = new ContentCache();
 		PostStorage postStorage = new PostStorage(context);
-		commentRequestWrapper = new CommentRequestWrapper(this::getComment, topicCache);
-		replyRequestWrapper = new ReplyRequestWrapper(this::getReply, topicCache);
+		commentRequestWrapper = new CommentRequestWrapper(this::getComment, contentCache);
+		replyRequestWrapper = new ReplyRequestWrapper(this::getReply, contentCache);
 		topicFeedRequestWrapper = new TopicFeedRequestWrapper(this::getTopicFeed,
-			postStorage, topicCache);
-		topicRequestWrapper = new TopicRequestWrapper(this::getTopic, topicCache);
+			postStorage, contentCache);
+		topicRequestWrapper = new TopicRequestWrapper(this::getTopic, contentCache);
 		likeFeedRequestWrapper = new LikeFeedRequestWrapper(this::getLikeFeed, new UserCache());
-		pinRequestWrapper = new PinFeedRequestWrapper(this::getPinFeed, topicCache);
+		pinRequestWrapper = new PinFeedRequestWrapper(this::getPinFeed, contentCache);
 		commentFeedRequestWrapper = new CommentFeedRequestWrapper(this::getCommentFeed,
-			topicCache, context);
+			contentCache, context);
 		replyFeedRequestWrapper = new ReplyFeedRequestWrapper(this::getReplyFeed,
-			topicCache, context);
+			contentCache, context);
 	}
 
 	@Override

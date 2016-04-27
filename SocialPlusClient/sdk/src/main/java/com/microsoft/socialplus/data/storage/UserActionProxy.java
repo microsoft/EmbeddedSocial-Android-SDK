@@ -44,7 +44,7 @@ import java.sql.SQLException;
 public class UserActionProxy {
 
 	private final UserActionCache actionCache = new UserActionCache();
-	private final TopicCache topicCache = new TopicCache();
+	private final ContentCache contentCache = new ContentCache();
 	private final UserCache userCache = new UserCache();
 	private final PostStorage postStorage;
 	private final Context context;
@@ -106,7 +106,7 @@ public class UserActionProxy {
 	public void removeTopic(TopicView topic) {
 		checkAuthorization();
 		if (!topic.isLocal()) {
-			topicCache.removeTopic(topic.getHandle());
+			contentCache.removeTopic(topic.getHandle());
 			addContentRemovalRequest(topic.getHandle(), ContentType.TOPIC);
 			launchSync();
 		} else {
@@ -124,7 +124,7 @@ public class UserActionProxy {
 			postStorage.removeUnsentComment(comment.getOfflineId());
 		} else {
 			addContentRemovalRequest(comment.getHandle(), ContentType.COMMENT);
-			topicCache.removeComment(comment.getHandle());
+			contentCache.removeComment(comment.getHandle());
 		}
 		new CommentRemovedEvent(new RemoveContentData(comment.getHandle()), true).submit();
 		launchSync();
@@ -138,7 +138,7 @@ public class UserActionProxy {
 		if (!reply.isLocal()) {
 			try {
 				addContentRemovalRequest(reply.getHandle(), ContentType.REPLY);
-				topicCache.removeReply(reply.getReplyHandle());
+				contentCache.removeReply(reply.getReplyHandle());
 			} catch (SQLException e) {
 				DebugLog.logException(e);
 			}

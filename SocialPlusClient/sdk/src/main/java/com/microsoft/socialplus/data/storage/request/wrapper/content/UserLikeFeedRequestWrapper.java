@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.data.storage.request.wrapper.content;
 
-import com.microsoft.socialplus.data.storage.TopicCache;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
@@ -15,26 +15,26 @@ import java.sql.SQLException;
 
 public class UserLikeFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<FeedUserRequest, TopicsListResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 
 	public UserLikeFeedRequestWrapper(INetworkMethod<FeedUserRequest, TopicsListResponse> networkMethod,
-	                                  TopicCache topicCache) {
+									  ContentCache contentCache) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 	}
 
 	@Override
 	protected void storeResponse(FeedUserRequest request, TopicsListResponse response)
 		throws SQLException {
 
-		topicCache.storeLikeFeed(request, response);
+		contentCache.storeLikeFeed(request, response);
 	}
 
 	@Override
 	protected TopicsListResponse getCachedResponse(FeedUserRequest request)
 		throws SQLException {
 
-		return topicCache.getLikeFeedResponse();
+		return contentCache.getLikeFeedResponse();
 	}
 }

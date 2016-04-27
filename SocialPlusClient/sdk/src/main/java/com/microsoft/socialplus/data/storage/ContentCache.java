@@ -47,7 +47,7 @@ import java.util.List;
 /**
  * Provides cache for topics.
  */
-public class TopicCache {
+public class ContentCache {
 
 	private static final int LIKED_FEED_TYPE = -1001;
 	private static final int PINNED_FEED_TYPE = -1002;
@@ -64,7 +64,7 @@ public class TopicCache {
 	/**
 	 * Default constructor.
 	 */
-	TopicCache() {
+	ContentCache() {
 		DatabaseHelper helper = GlobalObjectRegistry.getObject(DatabaseHelper.class);
 		topicDao = helper.getTopicDao();
 		commentDao = helper.getCommentDao();

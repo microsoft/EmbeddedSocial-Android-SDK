@@ -6,9 +6,8 @@
 
 package com.microsoft.socialplus.data.storage.request.wrapper.content;
 
-import com.microsoft.socialplus.data.storage.TopicCache;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
 import com.microsoft.socialplus.server.model.pin.GetPinFeedRequest;
 
@@ -16,22 +15,22 @@ import java.sql.SQLException;
 
 public class PinFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<GetPinFeedRequest, TopicsListResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 
 	public PinFeedRequestWrapper(INetworkMethod<GetPinFeedRequest, TopicsListResponse> networkMethod,
-	                             TopicCache topicCache) {
+								 ContentCache contentCache) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 	}
 
 	@Override
 	protected void storeResponse(GetPinFeedRequest request, TopicsListResponse response) throws SQLException {
-		topicCache.storePinFeed(request, response);
+		contentCache.storePinFeed(request, response);
 	}
 
 	@Override
 	protected TopicsListResponse getCachedResponse(GetPinFeedRequest request) throws SQLException {
-		return topicCache.getPinFeedResponse();
+		return contentCache.getPinFeedResponse();
 	}
 }

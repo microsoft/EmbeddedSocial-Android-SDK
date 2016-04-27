@@ -6,7 +6,7 @@
 
 package com.microsoft.socialplus.data.storage.request.wrapper.content;
 
-import com.microsoft.socialplus.data.storage.TopicCache;
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyRequest;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyResponse;
@@ -15,24 +15,24 @@ import java.sql.SQLException;
 
 public class ReplyRequestWrapper extends AbstractNetworkMethodWrapper<GetReplyRequest, GetReplyResponse> {
 
-	private final TopicCache topicCache;
+	private final ContentCache contentCache;
 
 	public ReplyRequestWrapper(INetworkMethod<GetReplyRequest, GetReplyResponse> networkMethod,
-	                           TopicCache topicCache) {
+							   ContentCache contentCache) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 	}
 
 	@Override
 	protected void storeResponse(GetReplyRequest request, GetReplyResponse response)
 		throws SQLException {
 
-		topicCache.storeReply(response.getReply());
+		contentCache.storeReply(response.getReply());
 	}
 
 	@Override
 	protected GetReplyResponse getCachedResponse(GetReplyRequest request) throws SQLException {
-		return new GetReplyResponse(topicCache.getReply(request.getReplyHandle()));
+		return new GetReplyResponse(contentCache.getReply(request.getReplyHandle()));
 	}
 }

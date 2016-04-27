@@ -8,8 +8,8 @@ package com.microsoft.socialplus.data.storage.request.wrapper.content;
 
 import android.content.Context;
 
+import com.microsoft.socialplus.data.storage.ContentCache;
 import com.microsoft.socialplus.data.storage.PostStorage;
-import com.microsoft.socialplus.data.storage.TopicCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.content.comments.GetCommentFeedRequest;
 import com.microsoft.socialplus.server.model.content.comments.GetCommentFeedResponse;
@@ -22,13 +22,13 @@ import java.util.List;
 public class CommentFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<GetCommentFeedRequest, GetCommentFeedResponse> {
 
 	private final PostStorage postStorage;
-	private TopicCache topicCache;
+	private ContentCache contentCache;
 
 	public CommentFeedRequestWrapper(INetworkMethod<GetCommentFeedRequest, GetCommentFeedResponse> networkMethod,
-	                                 TopicCache topicCache, Context context) {
+									 ContentCache contentCache, Context context) {
 
 		super(networkMethod);
-		this.topicCache = topicCache;
+		this.contentCache = contentCache;
 		this.postStorage = new PostStorage(context);
 	}
 
@@ -36,12 +36,12 @@ public class CommentFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper
 	protected void storeResponse(GetCommentFeedRequest request, GetCommentFeedResponse response)
 		throws SQLException {
 
-		topicCache.storeCommentFeed(request, response);
+		contentCache.storeCommentFeed(request, response);
 	}
 
 	@Override
 	protected GetCommentFeedResponse getCachedResponse(GetCommentFeedRequest request) throws SQLException {
-		return topicCache.getCommentFeedResponse(request);
+		return contentCache.getCommentFeedResponse(request);
 	}
 
 	@Override
