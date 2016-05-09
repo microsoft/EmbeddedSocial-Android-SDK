@@ -129,7 +129,23 @@ public class BaseRequest {
 	}
 
 	protected void checkResponseCode(ServiceResponse serviceResponse) {
-		// TODO implement
+		switch (serviceResponse.getResponse().code()) {
+			case 200:
+				// do nothing
+				break;
+			case 400:
+				// bad request
+				break;
+			case 401:
+				// invalidate bearer token
+				// launch social plus activity
+				break;
+			case 403:
+				// forbidden
+				break;
+			case 404:
+				//Not found
+		}
 	}
 
 	public void forceCacheUsage() {
