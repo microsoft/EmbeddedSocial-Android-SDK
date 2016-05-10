@@ -64,6 +64,7 @@ import com.microsoft.socialplus.ui.activity.PopularActivity;
 import com.microsoft.socialplus.ui.activity.RecentActivityActivity;
 import com.microsoft.socialplus.ui.activity.SearchActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
+import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.AddPostFragment;
 import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
 import com.microsoft.socialplus.ui.fragment.PinsFragment;
@@ -160,6 +161,10 @@ public final class SocialPlus {
 		FacebookSdk.sdkInitialize(context);
 		FacebookSdk.setApplicationId(options.getFacebookApplicationId());
 	}
+
+    public static void initColors(int color) {
+        BaseActivity.setColor(color);
+    }
 
 	private static void initLogging(Context context) {
 		if (BuildConfig.DEBUG) {

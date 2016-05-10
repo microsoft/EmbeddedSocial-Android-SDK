@@ -54,6 +54,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private Toolbar toolbar;
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
+	private static int color;
 
 	private boolean navigationLocked = false;
 
@@ -72,6 +73,10 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		this.activeNavigationItemId = activeNavigationItemId;
 	}
 
+	public static void setColor(int newColor) {
+		color = newColor;
+	}
+
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		setContentView(getLayoutResId());
@@ -79,7 +84,11 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		setSupportActionBar(toolbar);
 		bottomBar = findView(R.id.sp_bottomBar);
 		doneButton = findView(R.id.sp_doneButton);
+		if (color != 0) {
+			toolbar.setBackgroundColor(color);
+		}
 		ActionBar actionBar = getSupportActionBar();
+
 		if (actionBar != null) {
 			setupActionBar(actionBar);
 		}
