@@ -15,4 +15,13 @@ import com.microsoft.socialplus.base.event.ThreadType;
  */
 @HandlingThread(ThreadType.MAIN)
 public class UserSignedInEvent extends AbstractEvent {
+    private final int messageId;
+
+    public UserSignedInEvent(int messageId) {
+        this.messageId = messageId;
+    }
+
+    public int getMessageId() {
+        return messageId;
+    }
 }

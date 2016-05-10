@@ -6,13 +6,22 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
+import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+
 import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.autorest.models.PostSessionRequest;
 import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.ui.activity.FollowersActivity;
+import com.microsoft.socialplus.ui.activity.SignInActivity;
 
 import java.io.IOException;
 
@@ -51,6 +60,15 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 
 		checkResponseCode(serviceResponse);
 
-		return new AuthenticationResponse(serviceResponse.getBody());
+		int messageId = 0; // invalid message id
+		if (serviceResponse.getResponse().isSuccess()) {
+			if (request.getCreateUser()) {
+				messageId = R.string.sp_msg_general_create_user_success;
+			} else {
+				messageId = R.string.sp_msg_general_signin_success;
+			}
+		}
+
+		return new AuthenticationResponse(serviceResponse.getBody(), messageId);
 	}
 }

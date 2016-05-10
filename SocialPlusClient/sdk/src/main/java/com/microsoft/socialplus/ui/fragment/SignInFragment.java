@@ -104,6 +104,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	@SuppressWarnings("unused")
 	@Subscribe
 	public void onSignedIn(UserSignedInEvent event) {
+		Toast.makeText(getActivity(), event.getMessageId(), Toast.LENGTH_LONG).show();
 		onSignedIn();
 	}
 

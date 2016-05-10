@@ -13,15 +13,17 @@ public class AuthenticationResponse {
 
 	private String userHandle;
 	private String sessionToken;
+	private int messageId;
 
 	public AuthenticationResponse(PostUserResponse response) {
 		this.userHandle = response.getUserHandle();
 		this.sessionToken = response.getSessionToken();
 	}
 
-	public AuthenticationResponse(PostSessionResponse response) {
+	public AuthenticationResponse(PostSessionResponse response, int messageId) {
 		this.userHandle = response.getUserHandle();
 		this.sessionToken = response.getSessionToken();
+		this.messageId = messageId;
 	}
 
 	public String getUserHandle() {
@@ -30,5 +32,9 @@ public class AuthenticationResponse {
 
 	public String getSessionToken() {
 		return sessionToken;
+	}
+
+	public int getMessageId() {
+		return messageId;
 	}
 }

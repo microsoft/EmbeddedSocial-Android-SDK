@@ -66,9 +66,10 @@ public class UserAccount {
 	 * @param sessionToken current user's sessionToken
 	 * @param newAccountDetails current user's account details
 	 */
-	public void onSignedIn(String newUserHandle, String sessionToken, AccountData newAccountDetails) {
+	public void onSignedIn(String newUserHandle, String sessionToken, AccountData newAccountDetails,
+						   int messageId) {
 		GlobalObjectRegistry.getObject(DatabaseHelper.class).clearData();
-		setNewAccountData(newUserHandle, sessionToken, newAccountDetails);
+		setNewAccountData(newUserHandle, sessionToken, newAccountDetails, messageId);
 		PendingAction postponedAction = Preferences.getInstance().getPendingAction();
 		if (postponedAction != null) {
 			postponedAction.execute(context);
@@ -76,13 +77,14 @@ public class UserAccount {
 		Preferences.getInstance().clearPendingAction();
 	}
 
-	private void setNewAccountData(String newUserHandle, String sessionToken, AccountData newAccountDetails) {
+	private void setNewAccountData(String newUserHandle, String sessionToken,
+								   AccountData newAccountDetails, int messageId) {
 		userHandle = newUserHandle;
 		accountDetails = newAccountDetails;
 		AccountDataStorage.store(context, newAccountDetails);
 		Preferences.getInstance().setUserHandle(newUserHandle);
 		Preferences.getInstance().setBearerToken(sessionToken);
-		EventBus.post(new UserSignedInEvent());
+		EventBus.post(new UserSignedInEvent(messageId));
 	}
 
 	/**
