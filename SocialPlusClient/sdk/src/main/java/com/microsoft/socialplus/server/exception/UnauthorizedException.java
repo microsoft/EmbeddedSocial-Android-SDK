@@ -9,7 +9,7 @@ package com.microsoft.socialplus.server.exception;
 /**
  *
  */
-public class UnauthorizedException extends ServerException {
+public class UnauthorizedException extends StatusException {
 
 	public static final int STATUS_CODE = 401;
 

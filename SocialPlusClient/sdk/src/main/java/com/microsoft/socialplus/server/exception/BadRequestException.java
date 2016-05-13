@@ -9,7 +9,7 @@ package com.microsoft.socialplus.server.exception;
 /**
  *
  */
-public class BadRequestException extends ServerException {
+public class BadRequestException extends StatusException {
 
 	public static final int STATUS_CODE = 400;
 

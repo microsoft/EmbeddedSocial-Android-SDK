@@ -9,7 +9,7 @@ package com.microsoft.socialplus.server.exception;
 /**
  *
  */
-public class ResourceAlreadyExistsException extends ServerException {
+public class ResourceAlreadyExistsException extends StatusException {
 
 	public static final int STATUS_CODE = 409;
 

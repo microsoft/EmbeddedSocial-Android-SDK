@@ -35,13 +35,16 @@ import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.RequestInfoProvider;
+import com.microsoft.socialplus.server.exception.BadRequestException;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.exception.NotFoundException;
 
 import java.io.IOException;
 import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -128,23 +131,10 @@ public class BaseRequest {
 		throw new UnsupportedOperationException();
 	}
 
-	protected void checkResponseCode(ServiceResponse serviceResponse) {
-		switch (serviceResponse.getResponse().code()) {
-			case 200:
-				// do nothing
-				break;
-			case 400:
-				// bad request
-				break;
-			case 401:
-				// invalidate bearer token
-				// launch social plus activity
-				break;
-			case 403:
-				// forbidden
-				break;
-			case 404:
-				//Not found
+	protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
+		Response response = serviceResponse.getResponse();
+		if (!response.isSuccess()) {
+			throw NetworkRequestException.generateException(response.code(), response.message());
 		}
 	}
 

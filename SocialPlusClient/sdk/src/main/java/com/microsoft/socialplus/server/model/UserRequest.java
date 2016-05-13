@@ -6,6 +6,9 @@
 
 package com.microsoft.socialplus.server.model;
 
+import android.provider.Settings;
+
+import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.autorest.HashtagsOperations;
 import com.microsoft.socialplus.autorest.HashtagsOperationsImpl;
 import com.microsoft.socialplus.autorest.MyBlockedUsersOperations;
@@ -33,6 +36,8 @@ import com.microsoft.socialplus.autorest.SessionsOperationsImpl;
 import com.microsoft.socialplus.autorest.UsersOperations;
 import com.microsoft.socialplus.autorest.UsersOperationsImpl;
 import com.microsoft.socialplus.data.Preferences;
+import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.exception.UnauthorizedException;
 
 public class UserRequest extends BaseRequest {
 
@@ -90,6 +95,19 @@ public class UserRequest extends BaseRequest {
 
 	public void setUserSessionSignature(String userSessionSignature) {
 		this.userSessionSignature = userSessionSignature;
+	}
+
+	@Override
+	protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
+		// TODO
+		switch (serviceResponse.getResponse().code()) {
+			case 401: // unauthorized
+				// invalidate bearer token
+				Preferences.getInstance().setBearerToken(null);
+				throw new UnauthorizedException(serviceResponse.getResponse().message());
+			default:
+				super.checkResponseCode(serviceResponse);
+		}
 	}
 
 	public void setBearerToken(String bearerToken) {

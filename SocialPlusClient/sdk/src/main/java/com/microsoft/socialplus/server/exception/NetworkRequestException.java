@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.server.exception;
 
+import org.apache.commons.lang3.NotImplementedException;
+
 /**
  * Indicates error during performing a request to the server (either server or network error).
  */
@@ -26,4 +28,22 @@ public class NetworkRequestException extends Exception {
 		super(throwable);
 	}
 
+	public static NetworkRequestException generateException(int statusCode, String message) {
+		switch (statusCode) {
+			case BadRequestException.STATUS_CODE:
+				return new BadRequestException(message);
+			case ForbiddenException.STATUS_CODE:
+				return new ForbiddenException(message);
+			case NotFoundException.STATUS_CODE:
+				return new NotFoundException(message);
+			case ConflictException.STATUS_CODE:
+				return new ConflictException(message);
+			case InternalServerException.STATUS_CODE:
+				return new InternalServerException(message);
+			case ServiceUnavailableException.STATUS_CODE:
+			 	return new ServiceUnavailableException(message);
+			default: // no detail provided
+				return new NetworkRequestException();
+		}
+	}
 }

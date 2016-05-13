@@ -7,23 +7,23 @@
 package com.microsoft.socialplus.server.exception;
 
 /**
- * Base class for server exceptions
+ * Base class for network exceptions with status codes
  */
-public class ServerException extends NetworkRequestException {
+public class StatusException extends NetworkRequestException {
 
 	private final int statusCode;
 
-	public ServerException(int statusCode, String message) {
+	public StatusException(int statusCode, String message) {
 		super(message);
 		this.statusCode = statusCode;
 	}
 
-	public ServerException(int statusCode, String message, Throwable cause) {
+	public StatusException(int statusCode, String message, Throwable cause) {
 		super(message, cause);
 		this.statusCode = statusCode;
 	}
 
-	public ServerException(int statusCode, Throwable cause) {
+	public StatusException(int statusCode, Throwable cause) {
 		super(cause);
 		this.statusCode = statusCode;
 	}

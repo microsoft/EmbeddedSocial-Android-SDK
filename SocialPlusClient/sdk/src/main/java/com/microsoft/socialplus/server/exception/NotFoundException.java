@@ -9,7 +9,7 @@ package com.microsoft.socialplus.server.exception;
 /**
  * Server exceptions in case resource not found
  */
-public class NotFoundException extends ServerException {
+public class NotFoundException extends StatusException {
 	public static final int STATUS_CODE = 404;
 
 	public NotFoundException(String message) {
