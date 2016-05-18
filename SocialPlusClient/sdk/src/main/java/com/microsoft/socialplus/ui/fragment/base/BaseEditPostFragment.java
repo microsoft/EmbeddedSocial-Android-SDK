@@ -64,8 +64,8 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 		initAccountView(view);
 		coverView = findView(view, R.id.sp_postImage);
 		titleView = findView(view, R.id.sp_titleLayout);
-		titleView.setValidator(new FieldNotEmptyValidator(getContext()));
 		descriptionView = findView(view, R.id.sp_description);
+		descriptionView.setValidator(new FieldNotEmptyValidator(getContext()));
 		imageMessageView = findView(view, R.id.sp_imageMessage);
 		BaseActivity activity = getOwner();
 		activity.showBottomBar();
@@ -105,13 +105,13 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 	protected abstract boolean isInputEmpty();
 
 	public boolean uploadPost() {
-		if (titleView.validate()) {
+		if (descriptionView.validate()) {
 			hideKeyboard();
 			onFinishedEditing();
 			return true;
 		} else {
-			Toast.makeText(getActivity(), R.string.sp_message_enter_title, Toast.LENGTH_SHORT).show();
-			titleView.focusAndShowKeyboard();
+			Toast.makeText(getActivity(), R.string.sp_message_enter_description, Toast.LENGTH_SHORT).show();
+			descriptionView.focusAndShowKeyboard();
 			return false;
 		}
 	}

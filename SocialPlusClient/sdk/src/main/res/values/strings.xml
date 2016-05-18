@@ -14,8 +14,8 @@
 	<string name="sp_hint_first_name">First name</string>
 	<string name="sp_hint_last_name">Last name</string>
 	<string name="sp_hint_bio">Bio (optional)</string>
-	<string name="sp_hint_title">Title</string>
-	<string name="sp_hint_description">Description (optional)</string>
+	<string name="sp_hint_title">Title (optional)</string>
+	<string name="sp_hint_description">Description</string>
 	<string name="sp_hint_add_comment">Type here to comment…</string>
 	<string name="sp_hint_add_reply">Type here to reply…</string>
 	<string name="sp_comment">Comment</string>
@@ -78,7 +78,7 @@
 	<string name="sp_message_correct_input">Please correct the errors in your profile</string>
 	<string name="sp_add_picture_suggestion">Tap here to add a picture</string>
 	<string name="sp_button_post_topic">@string/sp_post</string>
-	<string name="sp_message_enter_title">Please enter a title</string>
+	<string name="sp_message_enter_description">Please enter a description</string>
 	<string name="sp_title_add_post_confirm_quit">Return to feed?</string>
 	<string name="sp_message_add_post_confirm_quit">Going back to the feed will delete the content of this draft, are you sure you want to go back?</string>
 	<string name="sp_option_add_post_leave">Leave post</string>
