@@ -11,8 +11,8 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.microsoft.socialplus.base.LimitedSizeHashMap;
-import com.squareup.picasso.patched252.Picasso;
-import com.squareup.picasso.patched252.Target;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.Map;
 

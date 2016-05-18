@@ -13,8 +13,8 @@ import android.os.ConditionVariable;
 import android.widget.ImageView;
 
 import com.microsoft.socialplus.sdk.BuildConfig;
-import com.squareup.picasso.patched252.Picasso;
-import com.squareup.picasso.patched252.Target;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
