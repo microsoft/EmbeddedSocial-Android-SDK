@@ -8,7 +8,6 @@ package com.microsoft.socialplus.data.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.socialplus.autorest.models.BlobType;
 import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.data.storage.DbSchemas;
 import com.microsoft.socialplus.server.model.view.CommentView;
