@@ -78,9 +78,11 @@ public class PostSyncAdapter implements ISynchronizable {
 				String imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.CONTENTBLOB);
 				requestBuilder.setTopicBlobType(BlobType.IMAGE);
 				requestBuilder.setTopicBlobHandle(imageUrl);
+			} else {
+				imagePath = null;
 			}
 			AddTopicResponse response = contentService.addTopic(requestBuilder.build());
-			loadTopicToCache(contentService, response.getTopicHandle());
+			loadTopicToCache(contentService, response.getTopicHandle(), imagePath);
 		} catch (BadRequestException e) {
 			throw new OperationRejectedException(e);
 		} catch (IOException | NetworkRequestException e) {
@@ -90,11 +92,11 @@ public class PostSyncAdapter implements ISynchronizable {
 		}
 	}
 
-	private void loadTopicToCache(IContentService contentService, String topicHandle) {
+	private void loadTopicToCache(IContentService contentService, String topicHandle, String imagePath) {
 		try {
 			// by requesting the topic it is stored to cache automatically
 			boolean loadFromCache = false;
-			GetTopicResponse response = contentService.getTopic(new GetTopicRequest(topicHandle));
+			GetTopicResponse response = contentService.getTopic(new GetTopicRequest(topicHandle, imagePath));
 			TopicView topic = response.getTopic();
 			if (topic != null) {
 				TopicFeedRelation userRecentRelation = new TopicFeedRelation(

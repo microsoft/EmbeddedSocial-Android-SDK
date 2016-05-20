@@ -20,8 +20,15 @@ import java.io.IOException;
  */
 public class GetTopicRequest extends GenericTopicRequest {
 
+	private String existingImagePath;
+
 	public GetTopicRequest(String topicHandle) {
+		this(topicHandle, null);
+	}
+
+	public GetTopicRequest(String topicHandle, String existingImagePath) {
 		super(topicHandle);
+		this.existingImagePath = existingImagePath;
 	}
 
 	@Override
@@ -34,7 +41,11 @@ public class GetTopicRequest extends GenericTopicRequest {
 		}
 		checkResponseCode(serviceResponse);
 
-		return new GetTopicResponse(
-				new com.microsoft.socialplus.server.model.view.TopicView(serviceResponse.getBody()));
+		com.microsoft.socialplus.server.model.view.TopicView topic =
+				new com.microsoft.socialplus.server.model.view.TopicView(serviceResponse.getBody());
+		if (existingImagePath != null) {
+			topic.setLocalImage(existingImagePath);
+		}
+		return new GetTopicResponse(topic);
 	}
 }

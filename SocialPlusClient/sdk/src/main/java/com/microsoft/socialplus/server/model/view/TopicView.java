@@ -87,6 +87,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	 */
 	private boolean local;
 
+	private String localImage;
+
 	/**
 	 * Id of post data corresponding to a local topic.
 	 */
@@ -177,6 +179,9 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	}
 
 	public ImageLocation getImageLocation() {
+		if (localImage != null) {
+			return ImageLocation.createLocalImageLocation(localImage);
+		}
 		String url = topicBlobType == BlobType.IMAGE.ordinal() ? topicBlobUrl : null;
 		if (local) {
 			return ImageLocation.createLocalImageLocation(url);
@@ -241,7 +246,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		this.createdTime = createdTime;
 	}
 
-	private void setLocal(boolean local) {
+	public void setLocal(boolean local) {
 		this.local = local;
 	}
 
@@ -253,8 +258,12 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		this.topicBlobType = topicBlobType;
 	}
 
-	private void setTopicBlobUrl(String topicBlobUrl) {
+	public void setTopicBlobUrl(String topicBlobUrl) {
 		this.topicBlobUrl = topicBlobUrl;
+	}
+
+	public void setLocalImage(String localImage) {
+		this.localImage = localImage;
 	}
 
 	private void setTopicCategory(String topicCategory) {
