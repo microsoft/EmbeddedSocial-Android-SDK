@@ -132,11 +132,6 @@ public class NavigationDrawerFragment extends Fragment {
 			mDrawerState.closeDrawer();
 		}
 
-		if (position == mCurrentSelectedPosition) {
-			SocialPlus.getLikeFeed("4PJ1Co7nUb5");
-			return;
-		}
-
 		Intent intent = new Intent(getContext(), MainActivity.class);
 		intent.putExtra(MainActivity.FRAGMENT_ID_EXTRA, position);
 		getContext().startActivity(intent);

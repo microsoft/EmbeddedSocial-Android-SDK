@@ -9,8 +9,6 @@ package com.microsoft.socialplus.sdk;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,37 +23,23 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.QueryBuilder;
-import com.microsoft.socialplus.autorest.SocialPlusClient;
-import com.microsoft.socialplus.autorest.SocialPlusClientImpl;
-import com.microsoft.socialplus.autorest.TopicsOperations;
-import com.microsoft.socialplus.autorest.TopicsOperationsImpl;
 import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.Preferences;
-import com.microsoft.socialplus.data.model.CommentFeedType;
 import com.microsoft.socialplus.data.storage.DatabaseHelper;
-import com.microsoft.socialplus.data.storage.DbSchemas;
-import com.microsoft.socialplus.fetcher.CommentFeedFetcher;
-import com.microsoft.socialplus.fetcher.FetchersFactory;
-import com.microsoft.socialplus.fetcher.base.Fetcher;
-import com.microsoft.socialplus.fetcher.base.RequestType;
+import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.image.ImageLoader;
 import com.microsoft.socialplus.sdk.ui.DrawerDisplayMode;
 import com.microsoft.socialplus.server.NetworkAvailability;
 import com.microsoft.socialplus.server.RequestInfoProvider;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
-import com.microsoft.socialplus.server.model.view.TopicView;
-import com.microsoft.socialplus.server.model.view.UserCompactView;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.service.WorkerService;
 import com.microsoft.socialplus.ui.activity.AddPostActivity;
-import com.microsoft.socialplus.ui.activity.CommentActivity;
 import com.microsoft.socialplus.ui.activity.HomeActivity;
 import com.microsoft.socialplus.ui.activity.MyProfileActivity;
 import com.microsoft.socialplus.ui.activity.OptionsActivity;
@@ -71,18 +55,9 @@ import com.microsoft.socialplus.ui.fragment.PinsFragment;
 import com.microsoft.socialplus.ui.fragment.ReplyFeedFragment;
 import com.microsoft.socialplus.ui.notification.NotificationController;
 
-import junit.framework.Assert;
-
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.sql.SQLException;
-import java.util.List;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Social Plus SDK facade.
@@ -280,43 +255,6 @@ public final class SocialPlus {
         context.startActivity(intent);
     }
 
-
-    public static void getTopicFromFetcher(String topicHandle) {
-        new Thread(()->
-        {
-            CommentFeedFetcher commentFeedFetcher = new CommentFeedFetcher(CommentFeedType.RECENT, topicHandle, null);
-            TopicView topicView = null;
-            try {
-                topicView = commentFeedFetcher.readTopic(RequestType.REGULAR);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            if (topicView != null) {
-                printTopicInfo(topicView);
-            }
-        }
-        ).start();
-    }
-
-    public static void getLikeFeed(String topicHandle) {
-        new Thread(()->
-        {
-            Fetcher<UserCompactView> fetcher = FetchersFactory.createLikeFeedFetcher(topicHandle, ContentType.TOPIC);
-            try {
-                System.out.println("output: " + fetcher.getAllData());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        ).start();
-    }
-
-    public static void printTopicInfo(TopicView topicView) {
-        System.out.println("Title:  " + topicView.getTopicTitle());
-        System.out.println("Text:   " + topicView.getTopicText());
-        System.out.println("Author: " + topicView.getUser().getFullName());
-    }
-
     /**
      * Starts an activity to view a comment feed for a given topic
      * @param context	valid context
@@ -324,171 +262,6 @@ public final class SocialPlus {
     public static void launchCommentFeedActivity(Context context, String topicHandle) {
         Intent intent = new Intent(context, TopicActivity.class);
         intent.putExtra(IntentExtras.TOPIC_HANDLE, topicHandle);
-        context.startActivity(intent);
-    }
-
-    // TODO remove fake cache (also AddPostCallback class)
-    protected static final String TABLE_NAME = "TitleToHandle";
-    protected static final String CACHE_FILE = "alex.sqlite";
-
-    /**
-     * Determines if external storage is open for writes
-     * @return true is external storage can be written to
-     */
-    public static boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
-    }
-
-    /**
-     * Retrieves the file containing the Alex cache
-     * @return File with contents of Alex cache
-     */
-    public static File getDatabaseFile() {
-        if (!isExternalStorageWritable()) {
-            System.out.println("Cannot access external memory");
-            return null;
-        }
-
-        File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-
-        // ensure the Documents dir exists
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        // access the database file
-        File databaseFile = new File(dir, CACHE_FILE);
-
-        if (!databaseFile.exists()) {
-            // this file does not exist yet, let's create it with public permissions
-            try {
-                databaseFile.createNewFile();
-            } catch (IOException e) {
-                System.out.println("Could not create database file");
-                System.out.println(e.getMessage());
-                return null;
-            }
-
-            databaseFile.setReadable(true, false); // readable, ownerOnly
-            databaseFile.setWritable(true, false);
-        }
-
-        return databaseFile;
-    }
-
-    public static void getOrCreateTopic(Context context, String topicTitle) {
-        getOrCreateTopic(context, topicTitle, null, null);
-    }
-
-        /**
-         * Gets a topic and associated comment feed based on topic title.
-         * If topic does not yet exist, creates one transparently to the user.
-         * @param context Context fo the calling application
-         * @param topicTitle Title of the topic.
-         * @param topicDescription description for the topic
-         * @param imageURI URI for a picture associated with this topic
-         */
-    public static void getOrCreateTopic(Context context, String topicTitle, String topicDescription, Uri imageURI) {
-        File file = getDatabaseFile();
-        if (file == null) {
-            System.out.println("Alex cache not configured properly");
-            return;
-        }
-        SQLiteDatabase alexCache = SQLiteDatabase.openOrCreateDatabase(file, null);
-        alexCache.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(Title VARCHAR, Handle VARCHAR);");
-
-        String topicHandle = getTopicHandleFromAlexCache(alexCache, topicTitle);
-
-        // check the real cache as well
-        if (topicHandle == null) {
-            try {
-                topicHandle = getTopicHandle(topicTitle);
-            } catch (SQLException e) {
-                System.out.println("uh oh");
-            }
-
-            if (topicHandle != null) {
-                // the topic was in the real cache but not the alex-cache
-                insertTopicHandleToAlexCache(alexCache, topicTitle, topicHandle);
-            }
-        }
-
-        if (topicHandle == null) {
-            // neither cache found this topic so create it
-            AddPostCallback.PENDING_TITLE = topicTitle;
-            AddPostCallback.CONTEXT = context;
-            launchAddPostActivity(context, topicTitle, topicDescription, imageURI, true);
-        } else {
-            launchCommentFeedActivity(context, topicHandle);
-        }
-        alexCache.close();
-    }
-
-    /**
-     * Retreives a topic handle from the Alex cache
-     * @param db to search
-     * @param topicTitle title of topic being searched for
-     * @return handle to topic
-     */
-    private static String getTopicHandleFromAlexCache(SQLiteDatabase db, String topicTitle) {
-        String selectQuery = "SELECT Handle FROM " + TABLE_NAME + " WHERE Title=?";
-        Cursor c = db.rawQuery(selectQuery, new String[]{topicTitle});
-        if (!c.moveToFirst()) {
-            return null;
-        }
-
-        Assert.assertEquals("Found more than one entry with the same title", 1, c.getCount());
-
-        String handle = c.getString(0);
-        c.close();
-        return handle;
-    }
-
-    /**
-     * Inserts a row into a custom SQLite db
-     * @param alexCache the cache to use
-     * @param topicTitle
-     * @param topicHandle
-     */
-    protected static void insertTopicHandleToAlexCache(SQLiteDatabase alexCache,
-                                                     String topicTitle, String topicHandle) {
-        alexCache.execSQL("INSERT INTO " + SocialPlus.TABLE_NAME + " VALUES('"
-                + topicTitle + "','" + topicHandle + "');");
-    }
-
-    /**
-     * Retrieves the topic handle from the legitimate SDK local cache
-     * @param topicTitle the title of the topic to find
-     * @return handle of the topic
-     * @throws SQLException
-     */
-    protected static String getTopicHandle(String topicTitle) throws SQLException {
-        DatabaseHelper helper = GlobalObjectRegistry.getObject(DatabaseHelper.class);
-        Dao<TopicView, String> topicViews = helper.getTopicDao();
-        QueryBuilder<TopicView, String> builder = topicViews.queryBuilder();
-        builder.where().eq(DbSchemas.Topics.TOPIC_TITLE, topicTitle);
-        List<TopicView> topics = builder.query();
-
-        if (topics.isEmpty()) {
-            return null;
-        }
-
-//        Assert.assertEquals("More than one topic with the same title", topics.size(), 1);
-        if (topics.size() > 1) {
-            System.out.println("multiple topics with same title:::");
-            for (TopicView topic : topics) {
-                System.out.println(topic.getTopicTitle());
-            }
-        }
-
-        // Assume there is only one entry
-        return topics.get(0).getHandle();
-    }
-
-    public static void getReplyFeed(Context context, String commentHandle) {
-        Intent intent = new Intent(context, CommentActivity.class);
-        intent.putExtra(IntentExtras.COMMENT_HANDLE, commentHandle);
         context.startActivity(intent);
     }
 }

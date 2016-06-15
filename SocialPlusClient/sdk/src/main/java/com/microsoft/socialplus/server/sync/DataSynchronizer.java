@@ -7,7 +7,6 @@
 package com.microsoft.socialplus.server.sync;
 
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.sdk.AddPostCallback;
 import com.microsoft.socialplus.server.sync.exception.OperationRejectedException;
 import com.microsoft.socialplus.server.sync.exception.SynchronizationException;
 import com.microsoft.socialplus.service.handler.SynchronizationHandler;
@@ -44,11 +43,6 @@ public class DataSynchronizer {
 			try {
 				int syncedEntities = synchronizeProducer(producer, producerInfo.producerName);
 				if (syncedEntities > 0) {
-					if (producerInfo.producerName.equals(SynchronizationHandler.PENDING_POST_SYNC_NAME)) {
-						// a new post has been created on the server -- callback to open it
-						new AddPostCallback().onDataUpdated();
-					}
-
 					DebugLog.i("synced " + syncedEntities + " items from '"
 						+ producerInfo.producerName + "'");
 				}
