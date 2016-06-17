@@ -127,16 +127,16 @@ public class ReportFragment extends BaseFragment {
 		listReportReason.setOnItemClickListener((parent, view, position, id) -> {
 			switch (position) {
 				case 0:
-					reason = Reason.SPAM;
+					reason = Reason.THREATSCYBERBULLYINGHARASSMENT;
 					break;
 				case 1:
-					reason = Reason.CYBERBULLYING;
+					reason = Reason.CHILDENDANGERMENTEXPLOITATION;
 					break;
 				case 2:
-					reason = Reason.CHILDENDANGERMENT;
+					reason = Reason.OFFENSIVECONTENT;
 					break;
 				case 3:
-					reason = Reason.OFFENSIVE;
+					reason = Reason.VIRUSSPYWAREMALWARE;
 					break;
 				case 4:
 					reason = Reason.CONTENTINFRINGEMENT;

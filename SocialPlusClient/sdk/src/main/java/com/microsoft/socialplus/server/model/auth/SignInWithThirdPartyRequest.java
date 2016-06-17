@@ -20,6 +20,7 @@ import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.ui.activity.FollowersActivity;
 import com.microsoft.socialplus.ui.activity.SignInActivity;
 
@@ -31,6 +32,7 @@ import java.io.IOException;
 public class SignInWithThirdPartyRequest extends UserRequest {
 
 	private final PostSessionRequest request;
+	private boolean createdNewUser;
 
 	public SignInWithThirdPartyRequest(
 			IdentityProvider identityProvider,
@@ -41,7 +43,7 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 		//TODO
 		//request.setRequestToken(requestToken);
 		request.setInstanceId(instanceId);
-		request.setCreateUser(false);
+		createdNewUser = false;
 	}
 
 	@Override
@@ -53,8 +55,18 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 			throw new NetworkRequestException(e.getMessage());
 		}
 
-		if (!request.getCreateUser() && serviceResponse.getResponse().code() == 404) {
-			request.setCreateUser(true);
+		if (!createdNewUser && serviceResponse.getResponse().code() == 404) {
+			// create new user
+			// TODO
+//			CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
+//					.setIdentityProvider(request.getIdentityProvider())
+//					.setAccessToken(request.getAccessToken())
+//					.setInstanceId(instanceId)
+//					.build();
+			// create new user request
+			// send new user request
+			// check response
+			createdNewUser = true;
 			return send();
 		}
 
@@ -62,7 +74,7 @@ public class SignInWithThirdPartyRequest extends UserRequest {
 
 		int messageId = 0; // invalid message id
 		if (serviceResponse.getResponse().isSuccess()) {
-			if (request.getCreateUser()) {
+			if (createdNewUser) {
 				messageId = R.string.sp_msg_general_create_user_success;
 			} else {
 				messageId = R.string.sp_msg_general_signin_success;

@@ -214,7 +214,7 @@ public class ContentTest extends BaseRestServicesTest {
 		String topicHandle = addTopic(authenticationResponse);
 		try {
 			ReportContentRequest reportContentRequest
-				= new ReportContentRequest(ContentType.TOPIC, topicHandle, Reason.SPAM);
+				= new ReportContentRequest(ContentType.TOPIC, topicHandle, Reason.OTHER);
 			reportService.reportContent(prepareUserRequest(reportContentRequest, authenticationResponse));
 		} finally {
 			try {

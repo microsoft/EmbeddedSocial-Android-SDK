@@ -125,7 +125,7 @@ public class UserTest extends BaseRestServicesTest {
 		AuthenticationResponse randomUser = createRandomUser();
 		try {
 			ReportUserRequest reportUserRequest =
-					new ReportUserRequest(randomUser.getUserHandle(), Reason.SPAM);
+					new ReportUserRequest(randomUser.getUserHandle(), Reason.OTHER);
 			reportService.reportUser(prepareUserRequest(reportUserRequest, authenticationResponse));
 		} finally {
 			try {

@@ -24,7 +24,7 @@ public class GetBuildInfoRequest extends UserRequest {
     public BuildsCurrentResponse send() throws NetworkRequestException {
         ServiceResponse<BuildsCurrentResponse> serviceResponse;
         try {
-            serviceResponse = BUILDS_OPERATIONS.getBuildsCurrent(appKey, bearerToken, null);
+            serviceResponse = BUILDS_OPERATIONS.getBuildsCurrent();
         } catch (ServiceException |IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

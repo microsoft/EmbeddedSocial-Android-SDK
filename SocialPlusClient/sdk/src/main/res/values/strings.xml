@@ -201,10 +201,10 @@
 	<string name="sp_report_question_user">user</string>
 	<string name="sp_report_question_pattern">What\'s the problem with this %1$s?</string>
 	<string-array name="sp_report_reasons_array">
-		<item>Unsolicited/spam</item>
 		<item>Threats, cyberbullying, harassment</item>
 		<item>Child endangerment or exploitation</item>
 		<item>Offensive content</item>
+		<item>Virus/Spyware/Malware</item>
 		<item>Content infringement</item>
 		<item>Other</item>
 	</string-array>
