@@ -19,6 +19,7 @@ public class Action {
 	public static class Tags {
 		public static final String SIGN_IN = "signIn";
 		public static final String SIGN_OUT = "signOut";
+		public static final String CREATE_ACCOUNT = "createAccount";
 		public static final String UPDATE_ACCOUNT = "updateAccount";
 		public static final String DELETE_ACCOUNT = "deleteAccount";
 		public static final String GET_COMMENT = "getComment";

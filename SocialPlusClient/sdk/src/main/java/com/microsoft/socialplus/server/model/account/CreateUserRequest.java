@@ -25,6 +25,7 @@ public final class CreateUserRequest extends UserRequest {
 
 	private CreateUserRequest() {
 		body = new PostUserRequest();
+		body.setInstanceId(instanceId);
 	}
 
 	@Override

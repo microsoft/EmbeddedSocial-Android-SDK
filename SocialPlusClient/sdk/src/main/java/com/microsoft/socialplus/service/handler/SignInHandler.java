@@ -8,16 +8,19 @@ package com.microsoft.socialplus.service.handler;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.actions.Action;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.AccountData;
+import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.exception.NotFoundException;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
@@ -25,6 +28,7 @@ import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.service.WorkerService;
+import com.microsoft.socialplus.ui.activity.CreateProfileActivity;
 import com.microsoft.socialplus.ui.util.SocialNetworkAccount;
 
 /**
@@ -58,6 +62,13 @@ public class SignInHandler extends ActionHandler {
 		try {
 			AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
 			handleSuccessfulResult(action, signInResponse);
+		} catch (NotFoundException e) {
+			Intent i = new Intent(context, CreateProfileActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			Bundle extras = new Bundle();
+			extras.putParcelable(IntentExtras.THIRD_PARTY_ACCOUNT, thirdPartyAccount);
+			i.putExtras(extras);
+			context.startActivity(i);
 		} catch (Exception e) {
 			DebugLog.logException(e);
 			UserAccount.getInstance().onSignInWithThirdPartyFailed(thirdPartyAccount);
@@ -69,11 +80,11 @@ public class SignInHandler extends ActionHandler {
 
 		String userHandle = response.getUserHandle();
 		String sessionToken = "Bearer " + response.getSessionToken();
-		int messageId = response.getMessageId();
 		GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
 		GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
 		AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
 		if (!action.isCompleted()) {
+			int messageId = R.string.sp_msg_general_signin_success;
 			UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
 			WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
 		}

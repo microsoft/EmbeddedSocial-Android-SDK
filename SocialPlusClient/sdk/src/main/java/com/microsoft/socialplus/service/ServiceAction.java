@@ -29,6 +29,8 @@ public enum ServiceAction {
 
 	SYNC_DATA,
 
+	CREATE_ACCOUNT,
+
 	UPDATE_ACCOUNT,
 
 	UPDATE_NOTIFICATION_COUNT,

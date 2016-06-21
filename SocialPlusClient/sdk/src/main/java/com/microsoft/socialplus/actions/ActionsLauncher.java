@@ -10,6 +10,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.microsoft.socialplus.data.model.AccountDataDifference;
+import com.microsoft.socialplus.data.model.CreateAccountData;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.service.WorkerService;
@@ -44,6 +45,12 @@ public final class ActionsLauncher {
 	public static Action signOut(Context context) {
 		return ActionIntentBuilder.forActionWithTag(Action.Tags.SIGN_OUT)
 				.launch(context, ServiceAction.SIGN_OUT);
+	}
+
+	public static Action createAccount(Context context, CreateAccountData createAccountData) {
+		return ActionIntentBuilder.forActionWithTag(Action.Tags.CREATE_ACCOUNT)
+				.setCreateAccountData(createAccountData)
+				.launch(context, ServiceAction.CREATE_ACCOUNT);
 	}
 
 	public static Action updateAccount(Context context, AccountDataDifference difference) {
@@ -82,6 +89,11 @@ public final class ActionsLauncher {
 
 		ActionIntentBuilder setUserHandle(String userHandle) {
 			extras.putString(IntentExtras.USER_HANDLE, userHandle);
+			return this;
+		}
+
+		ActionIntentBuilder setCreateAccountData(CreateAccountData createAccountData) {
+			extras.putParcelable(IntentExtras.CREATE_ACCOUNT_DATA, createAccountData);
 			return this;
 		}
 

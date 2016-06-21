@@ -10,7 +10,7 @@ import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.EditProfileFragment;
 
 /**
- * Activity for editing user's profile.
+ * Activity for editing a user's profile.
  */
 public class EditProfileActivity extends BaseActivity {
 

@@ -23,6 +23,7 @@ public final class IntentExtras {
 	public static final String JUMP_TO_EDIT = "jumpToEdit";
 	public static final String COMMENT_HANDLE = "commentHandle";
 	public static final String REPLY_HANDLE = "replyHandle";
+	public static final String CREATE_ACCOUNT_DATA = "createAccountData";
 	public static final String ACCOUNT_DATA_DIFFERENCE = "accountDataDifference";
 	public static final String TOPIC_EXTRA = "topicExtra";
 	public static final String COVER_IMAGE_URL_EXTRA = "coverImageCoverExtra";

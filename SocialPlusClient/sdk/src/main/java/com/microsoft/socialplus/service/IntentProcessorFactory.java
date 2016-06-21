@@ -11,6 +11,7 @@ import android.content.Context;
 import com.microsoft.socialplus.base.service.IServiceIntentProcessor;
 import com.microsoft.socialplus.base.service.IntentProcessor;
 import com.microsoft.socialplus.service.handler.BackgroundInitializationHandler;
+import com.microsoft.socialplus.service.handler.CreateAccountHandler;
 import com.microsoft.socialplus.service.handler.DeleteAccountHandler;
 import com.microsoft.socialplus.service.handler.DeleteSearchHistoryHandler;
 import com.microsoft.socialplus.service.handler.GetCommentHandler;
@@ -43,6 +44,7 @@ public class IntentProcessorFactory {
 		processor.registerIntentHandler(ServiceAction.SIGN_IN, new SignInHandler(context));
 		processor.registerIntentHandler(ServiceAction.SIGN_OUT, new SignOutHandler(context));
 		processor.registerIntentHandler(ServiceAction.SYNC_DATA, new SynchronizationHandler(context));
+		processor.registerIntentHandler(ServiceAction.CREATE_ACCOUNT, new CreateAccountHandler(context));
 		processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));
 		processor.registerIntentHandler(ServiceAction.GCM_REGISTER, new GetGcmIdHandler(context));
 		processor.registerIntentHandler(ServiceAction.BACKGROUND_INIT, new BackgroundInitializationHandler(context));

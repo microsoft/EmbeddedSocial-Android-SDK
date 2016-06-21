@@ -29,6 +29,7 @@
 	<string name="sp_screen_title_topic">@string/sp_post</string>
 	<string name="sp_screen_title_comment">Comment</string>
 	<string name="sp_screen_title_edit_profile">Edit profile</string>
+	<string name="sp_screen_title_create_profile">Create profile</string>
 	<string name="sp_screen_title_followers">Followers</string>
 	<string name="sp_screen_title_following">@string/sp_tab_title_following</string>
 	<string name="sp_screen_title_likes">Likes</string>
@@ -159,6 +160,7 @@
 	<string name="sp_hint_search_people">Search people</string>
 	<string name="sp_button_follow">@string/sp_follow</string>
 
+	<string name="sp_message_wait_until_account_created">Wait until account is created</string>
 	<string name="sp_message_wait_until_account_updated">Wait until account is updated</string>
 	<string name="sp_message_no_people">No people</string>
 	<string name="sp_message_no_likes">No likes</string>
