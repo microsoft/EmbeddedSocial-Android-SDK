@@ -81,6 +81,6 @@ public class ReportContentOperation {
 	}
 
 	public boolean isForUser() {
-		return contentType == CONTENT_TYPE_USER;
+		return contentType.equals(CONTENT_TYPE_USER);
 	}
 }
