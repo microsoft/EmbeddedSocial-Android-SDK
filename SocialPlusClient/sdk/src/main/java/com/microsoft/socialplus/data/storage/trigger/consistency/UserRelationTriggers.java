@@ -145,7 +145,7 @@ public class UserRelationTriggers {
 					+ " where ${user_handle} = new.${user_handle}")
 					.var("user_profile", DbSchemas.UserProfile.TABLE_NAME)
 					.var("following_status", DbSchemas.UserProfile.FOLLOWING_STATUS)
-					.var("blocked", FollowingStatus.BLOCKED.toValue())
+					.var("blocked", FollowingStatus.BLOCKED.ordinal())
 					.var("user_handle", DbSchemas.UserFeeds.USER_HANDLE)
 					.render()
 			).build()
