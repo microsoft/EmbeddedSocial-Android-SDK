@@ -65,6 +65,12 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	@DatabaseField
 	private String topicDeepLink;
 
+    @DatabaseField
+	private String friendlyName;
+
+	@DatabaseField
+	private String group;
+
 	@DatabaseField(columnName = DbSchemas.Topics.CREATED_TIME)
 	private long createdTime;
 
@@ -141,6 +147,22 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		return topicDeepLink;
 	}
 
+    public String getFriendlyName() {
+        return friendlyName;
+    }
+
+    public void setFriendlyName(String friendlyName) {
+        this.friendlyName = friendlyName;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
 	@Override
 	public long getElapsedSeconds() {
 		return TimeUtils.elapsedSeconds(createdTime);
@@ -208,6 +230,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		out.writeInt(topicBlobType);
 		out.writeString(topicBlobUrl);
 		out.writeString(topicDeepLink);
+        out.writeString(friendlyName);
+        out.writeString(group);
 		out.writeLong(createdTime);
 		out.writeLong(totalLikes);
 		out.writeLong(totalComments);
@@ -229,6 +253,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobType = in.readInt();
 		topicBlobUrl = in.readString();
 		topicDeepLink = in.readString();
+        friendlyName = in.readString();
+        group = in.readString();
 		createdTime = in.readLong();
 		totalLikes = in.readLong();
 		totalComments = in.readLong();
@@ -322,7 +348,6 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 
 	public TopicView(com.microsoft.socialplus.autorest.models.TopicView view) {
 		topicHandle = view.getTopicHandle();
-		//topicType = in.readInt(); // TODO
 		publisherType = view.getPublisherType().ordinal();
 		user = new UserCompactView(view.getUser());
 		app = new AppCompactView(view.getApp());
@@ -332,6 +357,8 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		topicBlobType = view.getBlobType().ordinal();
 		topicBlobUrl = view.getBlobUrl();
 		topicDeepLink = view.getDeepLink();
+        friendlyName = view.getFriendlyName();
+        group = view.getGroup();
 		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = view.getTotalLikes();
 		totalComments = view.getTotalComments();
@@ -397,10 +424,20 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 			return this;
 		}
 
-		public Builder setTopicDeepLink(String topicDeepLink) {
-			topic.setTopicDeepLink(topicDeepLink);
-			return this;
-		}
+        public Builder setTopicDeepLink(String topicDeepLink) {
+            topic.setTopicDeepLink(topicDeepLink);
+            return this;
+        }
+
+        public Builder setFriendlyName(String friendlyName) {
+            topic.setFriendlyName(friendlyName);
+            return this;
+        }
+
+        public Builder setGroup(String group) {
+            topic.setGroup(group);
+            return this;
+        }
 
 		public Builder setTopicHandle(String topicHandle) {
 			topic.setTopicHandle(topicHandle);
