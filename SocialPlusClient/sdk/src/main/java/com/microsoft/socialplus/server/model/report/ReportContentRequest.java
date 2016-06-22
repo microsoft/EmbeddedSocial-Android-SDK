@@ -41,6 +41,9 @@ public class ReportContentRequest extends UserRequest {
 	private ContentType contentType;
 
 	public ReportContentRequest(ContentType contentType, String contentHandle, Reason reason) {
+		if (contentType == null) {
+			throw new IllegalArgumentException("Content type cannot be null");
+		}
 		if (contentType == ContentType.UNKNOWN) {
 			throw new IllegalArgumentException("Content type cannot be unknown");
 		}
