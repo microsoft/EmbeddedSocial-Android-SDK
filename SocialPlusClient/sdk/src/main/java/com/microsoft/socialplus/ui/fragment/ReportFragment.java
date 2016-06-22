@@ -123,7 +123,11 @@ public class ReportFragment extends BaseFragment {
 			getResources().getStringArray(R.array.sp_report_reasons_array));
 		listReportReason.setAdapter(adapter);
 		listReportReason.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+
+		// set default reason in case user does not interact with menu
+		reason = Reason.THREATSCYBERBULLYINGHARASSMENT;
 		listReportReason.setItemChecked(0, true);
+
 		listReportReason.setOnItemClickListener((parent, view, position, id) -> {
 			switch (position) {
 				case 0:
