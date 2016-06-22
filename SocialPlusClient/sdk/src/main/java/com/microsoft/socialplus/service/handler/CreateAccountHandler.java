@@ -35,7 +35,7 @@ import com.microsoft.socialplus.service.WorkerService;
 import java.io.IOException;
 
 /**
- * Sends a delete account request to the server.
+ * Sends a create account request to the server.
  */
 public class CreateAccountHandler extends ActionHandler {
 

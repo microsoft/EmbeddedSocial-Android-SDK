@@ -44,7 +44,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Fragment to edit profile.
+ * Fragment to create profile.
  */
 @SuppressWarnings("FieldCanBeLocal")
 public class CreateProfileFragment extends BaseFragmentWithProgress {
