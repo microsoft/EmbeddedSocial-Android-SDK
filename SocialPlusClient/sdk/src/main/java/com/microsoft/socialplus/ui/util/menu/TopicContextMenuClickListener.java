@@ -11,8 +11,11 @@ import android.content.Intent;
 import android.view.MenuItem;
 
 import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.socialplus.base.GlobalObjectRegistry;
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ReportHandler;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.ui.activity.EditPostActivity;
@@ -52,6 +55,14 @@ public class TopicContextMenuClickListener extends ContextMenuClickListener {
 			return true;
 		} else if (i == R.id.sp_actionHideTopic) {
 			userActionProxy.hideTopic(topic.getHandle());
+			return true;
+		} else if (i == R.id.sp_reportCustom) {
+			ReportHandler reportHandler = GlobalObjectRegistry.getObject(ReportHandler.class);
+			try {
+				reportHandler.generateReport(context, topic.getFriendlyName());
+			} catch (NullPointerException e) {
+				DebugLog.logException(e);
+			}
 			return true;
 		} else {
 			return false;

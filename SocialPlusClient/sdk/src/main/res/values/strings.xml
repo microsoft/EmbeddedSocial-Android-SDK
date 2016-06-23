@@ -64,6 +64,7 @@
 	<string name="sp_menu_follow">@string/sp_follow</string>
 	<string name="sp_menu_block_user">Block user</string>
 	<string name="sp_menu_report_user">Report user</string>
+	<string name="sp_menu_report_custom">Report problem</string>
 	<string name="sp_menu_unblock_user">@string/sp_button_unblock</string>
 	<string name="sp_menu_report_post">Report post</string>
 	<string name="sp_menu_remove_post">Remove post</string>

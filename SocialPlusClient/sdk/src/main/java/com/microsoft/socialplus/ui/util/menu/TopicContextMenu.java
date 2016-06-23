@@ -9,9 +9,13 @@ package com.microsoft.socialplus.ui.util.menu;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
+import android.text.TextUtils;
+import android.view.Menu;
 
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ReportHandler;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.ui.adapter.viewholder.TopicRenderOptions;
 
@@ -38,11 +42,26 @@ public class TopicContextMenu {
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
 				menu.inflate(R.menu.sp_topic_hide);
 			}
-		}
+			addCustomReportHandler(menu);
+        }
 		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(context, topic));
 	}
 
 	private static boolean isOwnTopic(TopicView topic) {
 		return UserAccount.getInstance().isCurrentUser(topic.getUser().getHandle());
+	}
+
+    /**
+     * Adds a custom report handler if one was provided
+     */
+	private static void addCustomReportHandler(@NonNull PopupMenu menu) {
+		ReportHandler reportHandler = GlobalObjectRegistry.getObject(ReportHandler.class);
+		if (reportHandler != null) {
+			String displayString = reportHandler.getDisplayString();
+			if (!TextUtils.isEmpty(displayString)) {
+                // create an item with the a known ID and the provided title
+                menu.getMenu().add(Menu.NONE, R.id.sp_reportCustom, Menu.NONE, displayString);
+            }
+        }
 	}
 }

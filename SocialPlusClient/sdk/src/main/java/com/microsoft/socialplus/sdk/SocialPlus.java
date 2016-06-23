@@ -264,4 +264,8 @@ public final class SocialPlus {
         intent.putExtra(IntentExtras.TOPIC_HANDLE, topicHandle);
         context.startActivity(intent);
     }
+
+    public static void setReportHandler(ReportHandler reportHandler) {
+        GlobalObjectRegistry.addObject(ReportHandler.class, reportHandler);
+    }
 }
