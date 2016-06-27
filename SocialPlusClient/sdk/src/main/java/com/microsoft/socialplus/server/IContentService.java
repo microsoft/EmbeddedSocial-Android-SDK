@@ -7,7 +7,6 @@
 package com.microsoft.socialplus.server;
 
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentRequest;
 import com.microsoft.socialplus.server.model.content.comments.AddCommentResponse;
@@ -23,14 +22,18 @@ import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedRespons
 import com.microsoft.socialplus.server.model.content.replies.GetReplyRequest;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyResponse;
 import com.microsoft.socialplus.server.model.content.replies.RemoveReplyRequest;
+import com.microsoft.socialplus.server.model.content.topics.AddTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.AddTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.AddTopicResponse;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
+import com.microsoft.socialplus.server.model.content.topics.GetTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicResponse;
 import com.microsoft.socialplus.server.model.content.topics.HideTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.RemoveTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.RemoveTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
+import com.microsoft.socialplus.server.model.content.topics.UpdateTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.UpdateTopicRequest;
 import com.microsoft.socialplus.server.model.like.AddLikeRequest;
 import com.microsoft.socialplus.server.model.like.GetLikeFeedRequest;
@@ -87,6 +90,19 @@ public interface IContentService {
 	Response updateTopic(UpdateTopicRequest request)
 			throws NetworkRequestException;
 
+	// NAMES
+	Response addTopicName(AddTopicNameRequest request)
+			throws NetworkRequestException;
+
+	String getTopicName(GetTopicNameRequest request)
+			throws NetworkRequestException;
+
+	Response updateTopicName(UpdateTopicNameRequest request)
+			throws NetworkRequestException;
+
+	Response removeTopicName(RemoveTopicNameRequest request)
+			throws NetworkRequestException;
+
 	// LIKE
 
 	Response addLike(AddLikeRequest request)
@@ -109,5 +125,6 @@ public interface IContentService {
 	Response removePin(RemovePinRequest request)
 			throws NetworkRequestException;
 
-	Response hideTopic(HideTopicRequest request) throws NetworkRequestException;
+	Response hideTopic(HideTopicRequest request)
+			throws NetworkRequestException;
 }

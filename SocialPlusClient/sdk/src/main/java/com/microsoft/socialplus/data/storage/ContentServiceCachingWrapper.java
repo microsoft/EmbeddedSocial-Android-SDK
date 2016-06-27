@@ -33,14 +33,18 @@ import com.microsoft.socialplus.server.model.content.replies.GetReplyFeedRespons
 import com.microsoft.socialplus.server.model.content.replies.GetReplyRequest;
 import com.microsoft.socialplus.server.model.content.replies.GetReplyResponse;
 import com.microsoft.socialplus.server.model.content.replies.RemoveReplyRequest;
+import com.microsoft.socialplus.server.model.content.topics.AddTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.AddTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.AddTopicResponse;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicFeedRequest;
+import com.microsoft.socialplus.server.model.content.topics.GetTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.GetTopicResponse;
 import com.microsoft.socialplus.server.model.content.topics.HideTopicRequest;
+import com.microsoft.socialplus.server.model.content.topics.RemoveTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.RemoveTopicRequest;
 import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
+import com.microsoft.socialplus.server.model.content.topics.UpdateTopicNameRequest;
 import com.microsoft.socialplus.server.model.content.topics.UpdateTopicRequest;
 import com.microsoft.socialplus.server.model.like.AddLikeRequest;
 import com.microsoft.socialplus.server.model.like.GetLikeFeedRequest;
@@ -181,6 +185,26 @@ public class ContentServiceCachingWrapper implements IContentService {
 
 	@Override
 	public Response updateTopic(UpdateTopicRequest request) throws NetworkRequestException {
+		return request.send();
+	}
+
+	@Override
+	public Response addTopicName(AddTopicNameRequest request) throws NetworkRequestException {
+		return request.send();
+	}
+
+	@Override
+	public String getTopicName(GetTopicNameRequest request) throws NetworkRequestException {
+		return request.send();
+	}
+
+	@Override
+	public Response updateTopicName(UpdateTopicNameRequest request) throws NetworkRequestException {
+		return request.send();
+	}
+
+	@Override
+	public Response removeTopicName(RemoveTopicNameRequest request) throws NetworkRequestException {
 		return request.send();
 	}
 }
