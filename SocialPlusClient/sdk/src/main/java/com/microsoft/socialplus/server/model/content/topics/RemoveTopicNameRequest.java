@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.server.model.content.topics;
 
+import com.microsoft.socialplus.autorest.models.DeleteTopicNameRequest;
 import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
@@ -16,15 +17,14 @@ import java.io.IOException;
 
 import retrofit2.Response;
 
-public class PutTopicNameRequest extends UserRequest {
+public class RemoveTopicNameRequest extends UserRequest {
 
     private final String topicName;
-    private final com.microsoft.socialplus.autorest.models.PutTopicNameRequest requestBody;
+    private final DeleteTopicNameRequest requestBody;
 
-    public PutTopicNameRequest(String topicHandle, String topicName, PublisherType publisherType) {
+    public RemoveTopicNameRequest(String topicName, PublisherType publisherType) {
         this.topicName = topicName;
-        requestBody = new com.microsoft.socialplus.autorest.models.PutTopicNameRequest();
-        requestBody.setTopicHandle(topicHandle);
+        requestBody = new DeleteTopicNameRequest();
         requestBody.setPublisherType(publisherType);
     }
 
@@ -32,7 +32,7 @@ public class PutTopicNameRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.putTopicName(topicName, requestBody, bearerToken, appKey, null);
+            serviceResponse = TOPICS.deleteTopicName(topicName, requestBody, bearerToken, appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

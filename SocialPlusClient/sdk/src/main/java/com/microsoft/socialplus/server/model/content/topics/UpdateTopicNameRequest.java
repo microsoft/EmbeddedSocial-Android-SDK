@@ -9,6 +9,7 @@ package com.microsoft.socialplus.server.model.content.topics;
 import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
+import com.microsoft.socialplus.autorest.models.PutTopicNameRequest;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 
@@ -16,14 +17,15 @@ import java.io.IOException;
 
 import retrofit2.Response;
 
-public class PostTopicNameRequest extends UserRequest {
+public class UpdateTopicNameRequest extends UserRequest {
 
-    private final com.microsoft.socialplus.autorest.models.PostTopicNameRequest requestBody;
+    private final String topicName;
+    private final PutTopicNameRequest requestBody;
 
-    public PostTopicNameRequest(String topicHandle, String topicName, PublisherType publisherType) {
-        requestBody = new com.microsoft.socialplus.autorest.models.PostTopicNameRequest();
+    public UpdateTopicNameRequest(String topicHandle, String topicName, PublisherType publisherType) {
+        this.topicName = topicName;
+        requestBody = new PutTopicNameRequest();
         requestBody.setTopicHandle(topicHandle);
-        requestBody.setTopicName(topicName);
         requestBody.setPublisherType(publisherType);
     }
 
@@ -31,7 +33,7 @@ public class PostTopicNameRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.postTopicName(requestBody, bearerToken, appKey, null);
+            serviceResponse = TOPICS.putTopicName(topicName, requestBody, bearerToken, appKey, null);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }
