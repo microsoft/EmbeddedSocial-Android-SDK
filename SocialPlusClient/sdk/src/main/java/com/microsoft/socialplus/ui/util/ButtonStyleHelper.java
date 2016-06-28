@@ -23,21 +23,23 @@ import com.microsoft.socialplus.sdk.R;
  */
 public class ButtonStyleHelper {
 
-	private final int greenCompletedColor;
+	private final int completedColor;
 	private final int accentColor;
 	private final ColorStateList greenColor;
 	private final ColorStateList grayColor;
+	private final ColorStateList redColor;
 
 	public ButtonStyleHelper(Context context) {
 		Resources res = context.getResources();
-		greenCompletedColor = res.getColor(R.color.sp_button_completed_text);
+		completedColor = res.getColor(R.color.sp_button_completed_text);
 		greenColor = res.getColorStateList(R.color.sp_button_text_green);
 		grayColor = res.getColorStateList(R.color.sp_button_text_gray);
+		redColor = res.getColorStateList(R.color.sp_pink_500);
 		accentColor = GlobalObjectRegistry.getObject(Options.class).getAccentColor();
 	}
 
 	public void applyGreenCompletedStyle(TextView view) {
-		view.setTextColor(greenCompletedColor);
+		view.setTextColor(completedColor);
 		view.setBackgroundResource(R.drawable.sp_button_green_completed);
 	}
 
@@ -49,6 +51,16 @@ public class ButtonStyleHelper {
 	public void applyGrayStyle(TextView view) {
 		view.setTextColor(grayColor);
 		view.setBackgroundResource(R.drawable.sp_button_gray);
+	}
+
+	public void applyRedStyle(TextView view) {
+		view.setTextColor(redColor);
+		view.setBackgroundResource(R.drawable.sp_button_red);
+	}
+
+	public void applyRedCompletedStyle(TextView view) {
+		view.setTextColor(completedColor);
+		view.setBackgroundResource(R.drawable.sp_button_red_completed);
 	}
 
 	public void applyAccentColor(ImageView imageView, boolean isApply) {

@@ -27,5 +27,4 @@ public abstract class BaseFollowersFragment extends BaseUsersListFragment {
 		String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
 		return TextUtils.isEmpty(userHandle) ? UserAccount.getInstance().getUserHandle() : userHandle;
 	}
-
 }

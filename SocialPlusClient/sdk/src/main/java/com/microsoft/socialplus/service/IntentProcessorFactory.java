@@ -18,6 +18,7 @@ import com.microsoft.socialplus.service.handler.GetCommentHandler;
 import com.microsoft.socialplus.service.handler.GetGcmIdHandler;
 import com.microsoft.socialplus.service.handler.GetReplyHandler;
 import com.microsoft.socialplus.service.handler.LinkUserThirdPartyAccountHandler;
+import com.microsoft.socialplus.service.handler.RemoveFollowerHandler;
 import com.microsoft.socialplus.service.handler.SignInHandler;
 import com.microsoft.socialplus.service.handler.SignOutHandler;
 import com.microsoft.socialplus.service.handler.SynchronizationHandler;
@@ -55,6 +56,7 @@ public class IntentProcessorFactory {
 		processor.registerIntentHandler(ServiceAction.DELETE_ACCOUNT, new DeleteAccountHandler());
 		processor.registerIntentHandler(ServiceAction.LINK_USER_THIRD_PARTY_ACCOUNT, new LinkUserThirdPartyAccountHandler());
 		processor.registerIntentHandler(ServiceAction.UNLINK_USER_THIRD_PARTY_ACCOUNT, new UnlinkUserThirdPartyAccountHandler());
+		processor.registerIntentHandler(ServiceAction.REMOVE_FOLLOWER, new RemoveFollowerHandler());
 
 		return processor;
 	}

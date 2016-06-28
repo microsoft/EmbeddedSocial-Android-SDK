@@ -24,6 +24,7 @@ public class UserListItemHolder extends BaseViewHolder {
 	public final ImageViewContentLoader photoContentLoader;
 	public final TextView fullNameView;
 	public final TextView actionButton;
+	public final TextView removeFollowerButton;
 
 	public UserListItemHolder(View itemView) {
 		super(itemView);
@@ -31,6 +32,7 @@ public class UserListItemHolder extends BaseViewHolder {
 		photoContentLoader = new UserPhotoLoader(photoView);
 		fullNameView = ViewUtils.findView(itemView, R.id.sp_fullName);
 		actionButton = ViewUtils.findView(itemView, R.id.sp_actionButton);
+		removeFollowerButton = ViewUtils.findView(itemView, R.id.sp_removeFollowerButton);
 	}
 
 }

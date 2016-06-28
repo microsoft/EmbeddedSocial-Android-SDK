@@ -24,6 +24,7 @@ public class Action {
 		public static final String DELETE_ACCOUNT = "deleteAccount";
 		public static final String GET_COMMENT = "getComment";
 		public static final String GET_REPLY = "getReply";
+		public static final String REMOVE_FOLLOWER = "removeFollower";
 	}
 
 	private static AtomicLong NEXT_ID = new AtomicLong();

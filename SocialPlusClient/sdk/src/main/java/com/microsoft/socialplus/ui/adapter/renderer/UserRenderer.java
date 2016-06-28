@@ -31,18 +31,22 @@ public class UserRenderer extends BaseUserRenderer {
 		if (userAccount.isCurrentUser(user.getHandle()) || user.getFollowerStatus() == FollowerStatus.BLOCKED) {
 			holder.actionButton.setVisibility(View.GONE);
 		} else {
-			holder.actionButton.setVisibility(View.VISIBLE);
-			switch (user.getFollowerStatus()) {
-				case FOLLOW:
-					renderFollowingUser(user, holder);
-					break;
-				case PENDING:
-					renderPendingUser(holder);
-					break;
-				case NONE:
-					renderNotFollowingUser(user, holder);
-					break;
-			}
+			renderActionButton(user, holder);
+		}
+	}
+
+	protected void renderActionButton(UserCompactView user, UserListItemHolder holder) {
+		holder.actionButton.setVisibility(View.VISIBLE);
+		switch (user.getFollowerStatus()) {
+			case FOLLOW:
+				renderFollowingUser(user, holder);
+				break;
+			case PENDING:
+				renderPendingUser(holder);
+				break;
+			case NONE:
+				renderNotFollowingUser(user, holder);
+				break;
 		}
 	}
 
@@ -81,6 +85,4 @@ public class UserRenderer extends BaseUserRenderer {
 		});
 		getStyleHelper().applyGreenCompletedStyle(holder.actionButton);
 	}
-
-
 }

@@ -156,6 +156,8 @@
 	<string name="sp_pending">Pending</string>
 	<string name="sp_follow">Follow</string>
 	<string name="sp_unfollow">Unfollow</string>
+	<string name="sp_remove_follower">Remove</string>
+	<string name="sp_removed_follower">Removed</string>
 
 	<string name="sp_hint_search_topics">Search topics</string>
 	<string name="sp_hint_search_people">Search people</string>

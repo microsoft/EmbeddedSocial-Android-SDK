@@ -24,7 +24,7 @@ import com.microsoft.socialplus.ui.util.ProfileOpenHelper;
 public abstract class BaseUserRenderer extends Renderer<UserCompactView, UserListItemHolder> {
 
 	private final ButtonStyleHelper styleHelper;
-	private Context context;
+	protected Context context;
 
 	public BaseUserRenderer(Context context) {
 		this.context = context;
