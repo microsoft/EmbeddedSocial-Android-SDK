@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.Image;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.microsoft.socialplus.actions.Action;
 import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.AuthorizationCause;
 import com.microsoft.socialplus.account.UserAccount;
@@ -75,6 +77,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	private PostStorage postStorage;
 	private PhotoProviderModule photoProvider;
 	private Uri imageUri;
+	private Activity mActivity;
 
 	private ProfileInfoRenderer.ProfileViewHolder profileViewHolder;
 
@@ -87,6 +90,12 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	protected abstract AccountData getAuthorProfile();
 
 	protected abstract UserCompactView getAuthor();
+
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		mActivity = activity;
+	}
 
 	protected DiscussionFeedFragment() {
 		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayTopic);
@@ -138,10 +147,10 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 					ViewUtils.hideKeyboard(this);
 				}
 			});
+
 			setAttachImageClickListener(v -> {
 				photoProvider.showSelectImageDialog();
 			});
-
 			noteText.setOnFocusChangeListener((v, hasFocus) -> {
 				if (hasFocus) {
 					if (!TextHelper.isEmpty(((EditText) v).getText())) {
@@ -357,7 +366,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 
 	@Override
 	public BitmapUtils.SizeSpec getSizeSpec() {
-		return new FitWidthSizeSpec(getActivity());
+		return new FitWidthSizeSpec(mActivity);
 	}
 
 	@Override
