@@ -15,7 +15,7 @@ import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.sdk.R;
-import com.microsoft.socialplus.sdk.ReportHandler;
+import com.microsoft.socialplus.sdk.IReportHandler;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.ui.activity.EditPostActivity;
@@ -57,7 +57,7 @@ public class TopicContextMenuClickListener extends ContextMenuClickListener {
 			userActionProxy.hideTopic(topic.getHandle());
 			return true;
 		} else if (i == R.id.sp_reportCustom) {
-			ReportHandler reportHandler = GlobalObjectRegistry.getObject(ReportHandler.class);
+			IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
 			try {
 				reportHandler.generateReport(context, topic.getFriendlyName());
 			} catch (NullPointerException e) {

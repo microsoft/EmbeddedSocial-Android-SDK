@@ -12,7 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 
-public interface NavigationDrawerHandler {
+public interface INavigationDrawerHandler {
     /**
      * Fragment to be used in the navigation drawer
      */

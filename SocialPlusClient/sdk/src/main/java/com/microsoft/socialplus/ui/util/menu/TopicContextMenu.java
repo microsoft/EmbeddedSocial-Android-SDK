@@ -15,7 +15,7 @@ import android.view.Menu;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.R;
-import com.microsoft.socialplus.sdk.ReportHandler;
+import com.microsoft.socialplus.sdk.IReportHandler;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.ui.adapter.viewholder.TopicRenderOptions;
 
@@ -55,7 +55,7 @@ public class TopicContextMenu {
      * Adds a custom report handler if one was provided
      */
 	private static void addCustomReportHandler(@NonNull PopupMenu menu) {
-		ReportHandler reportHandler = GlobalObjectRegistry.getObject(ReportHandler.class);
+		IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
 		if (reportHandler != null) {
 			String displayString = reportHandler.getDisplayString();
 			if (!TextUtils.isEmpty(displayString)) {

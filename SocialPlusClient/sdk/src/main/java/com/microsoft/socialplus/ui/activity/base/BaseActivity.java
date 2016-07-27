@@ -35,7 +35,7 @@ import com.microsoft.socialplus.event.PermissionRequestResultEvent;
 import com.microsoft.socialplus.event.click.NavigationItemClickedEvent;
 import com.microsoft.socialplus.sdk.BuildConfig;
 import com.microsoft.socialplus.sdk.IDrawerState;
-import com.microsoft.socialplus.sdk.NavigationDrawerHandler;
+import com.microsoft.socialplus.sdk.INavigationDrawerHandler;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.sdk.ui.DrawerHandler;
 import com.microsoft.socialplus.sdk.ui.DrawerHandlerFactory;
@@ -61,7 +61,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
 	private static int color;
-	private NavigationDrawerHandler navigationDrawerHandler;
+	private INavigationDrawerHandler navigationDrawerHandler;
 
 	private boolean navigationLocked = false;
 
@@ -99,7 +99,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		if (actionBar != null) {
 			setupActionBar(actionBar);
 		}
-		navigationDrawerHandler = GlobalObjectRegistry.getObject(NavigationDrawerHandler.class);
+		navigationDrawerHandler = GlobalObjectRegistry.getObject(INavigationDrawerHandler.class);
 		if (navigationDrawerHandler == null) {
 			if (savedInstanceState != null) {
 				displayMenu = (DrawerHandler.DisplayMenu) savedInstanceState.getSerializable(DISPLAY_MENU_EXTRA);
@@ -151,7 +151,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		drawerLayout.setDrawerListener(drawerToggle);
 		drawerToggle.syncState();
 
-		navigationDrawerHandler = GlobalObjectRegistry.getObject(NavigationDrawerHandler.class);
+		navigationDrawerHandler = GlobalObjectRegistry.getObject(INavigationDrawerHandler.class);
 		if (navigationDrawerHandler != null) {
 			Fragment customNavFragment = navigationDrawerHandler.getFragment();
 			getSupportFragmentManager().beginTransaction()

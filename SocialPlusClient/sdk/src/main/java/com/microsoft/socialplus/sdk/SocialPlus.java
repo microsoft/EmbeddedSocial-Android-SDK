@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
@@ -264,11 +263,11 @@ public final class SocialPlus {
         context.startActivity(intent);
     }
 
-    public static void setReportHandler(ReportHandler reportHandler) {
-        GlobalObjectRegistry.addObject(ReportHandler.class, reportHandler);
+    public static void setReportHandler(IReportHandler reportHandler) {
+        GlobalObjectRegistry.addObject(IReportHandler.class, reportHandler);
     }
 
-    public static void setNavigationDrawerHandler(NavigationDrawerHandler navigationDrawerHandler) {
-        GlobalObjectRegistry.addObject(NavigationDrawerHandler.class, navigationDrawerHandler);
+    public static void setNavigationDrawerHandler(INavigationDrawerHandler navigationDrawerHandler) {
+        GlobalObjectRegistry.addObject(INavigationDrawerHandler.class, navigationDrawerHandler);
     }
 }

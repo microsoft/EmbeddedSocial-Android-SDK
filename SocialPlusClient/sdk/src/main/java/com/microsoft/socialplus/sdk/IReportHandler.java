@@ -8,7 +8,7 @@ package com.microsoft.socialplus.sdk;
 
 import android.content.Context;
 
-public interface ReportHandler {
+public interface IReportHandler {
     /**
      * Handles generating a report
      * @param context
