@@ -22,8 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.microsoft.socialplus.sdk.IDrawerState;
-import com.microsoft.socialplus.sdk.SocialPlus;
-import com.microsoft.socialplus.sdk.ui.SocialPlusActivity;
+import com.microsoft.socialplus.sdk.ui.SocialPlusNavigationActivity;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -112,7 +111,7 @@ public class NavigationDrawerFragment extends Fragment {
 	/**
 	 * Users of this fragment must call this method to set up the navigation drawer interactions.
 	 */
-	public void setUp(SocialPlusActivity activity) {
+	public void setUp(SocialPlusNavigationActivity activity) {
 		// If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,
 		// per the navigation drawer design guidelines.
 		if (!mUserLearnedDrawer && !mFromSavedInstanceState) {

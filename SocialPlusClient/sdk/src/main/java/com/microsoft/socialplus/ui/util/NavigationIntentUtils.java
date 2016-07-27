@@ -9,7 +9,7 @@ package com.microsoft.socialplus.ui.util;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.microsoft.socialplus.sdk.ui.SocialPlusActivity;
+import com.microsoft.socialplus.sdk.ui.SocialPlusNavigationActivity;
 import com.microsoft.socialplus.ui.activity.GateActivity;
 import com.microsoft.socialplus.ui.activity.HomeActivity;
 import com.microsoft.socialplus.ui.activity.MyProfileActivity;
@@ -121,10 +121,10 @@ public class NavigationIntentUtils {
 	}
 
 	private void setupHostActivity(Intent intent) {
-		if (activity instanceof SocialPlusActivity) {
+		if (activity instanceof SocialPlusNavigationActivity) {
 			intent.putExtra(
 					BaseActivity.HOST_MENU_BUNDLE_EXTRA,
-					((SocialPlusActivity) activity).getHostAppExtras());
+					((SocialPlusNavigationActivity) activity).getHostAppExtras());
 		}
 	}
 }
