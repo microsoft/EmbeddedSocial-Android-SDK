@@ -30,7 +30,6 @@ import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.storage.DatabaseHelper;
-import com.microsoft.socialplus.data.storage.UserActionProxy;
 import com.microsoft.socialplus.image.ImageLoader;
 import com.microsoft.socialplus.sdk.ui.DrawerDisplayMode;
 import com.microsoft.socialplus.server.NetworkAvailability;
@@ -267,5 +266,9 @@ public final class SocialPlus {
 
     public static void setReportHandler(ReportHandler reportHandler) {
         GlobalObjectRegistry.addObject(ReportHandler.class, reportHandler);
+    }
+
+    public static void setNavigationDrawerHandler(NavigationDrawerHandler navigationDrawerHandler) {
+        GlobalObjectRegistry.addObject(NavigationDrawerHandler.class, navigationDrawerHandler);
     }
 }

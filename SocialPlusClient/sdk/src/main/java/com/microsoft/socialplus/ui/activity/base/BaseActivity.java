@@ -7,6 +7,7 @@
 package com.microsoft.socialplus.ui.activity.base;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -17,19 +18,24 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
+
+import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.event.PermissionRequestResultEvent;
 import com.microsoft.socialplus.event.click.NavigationItemClickedEvent;
 import com.microsoft.socialplus.sdk.BuildConfig;
 import com.microsoft.socialplus.sdk.IDrawerState;
+import com.microsoft.socialplus.sdk.NavigationDrawerHandler;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.sdk.ui.DrawerHandler;
 import com.microsoft.socialplus.sdk.ui.DrawerHandlerFactory;
@@ -55,6 +61,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
 	private static int color;
+	private NavigationDrawerHandler navigationDrawerHandler;
 
 	private boolean navigationLocked = false;
 
@@ -92,15 +99,20 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		if (actionBar != null) {
 			setupActionBar(actionBar);
 		}
-		if (savedInstanceState != null) {
-			displayMenu = (DrawerHandler.DisplayMenu) savedInstanceState.getSerializable(DISPLAY_MENU_EXTRA);
+		navigationDrawerHandler = GlobalObjectRegistry.getObject(NavigationDrawerHandler.class);
+		if (navigationDrawerHandler == null) {
+			if (savedInstanceState != null) {
+				displayMenu = (DrawerHandler.DisplayMenu) savedInstanceState.getSerializable(DISPLAY_MENU_EXTRA);
+			}
+			if (displayMenu == null) {
+				displayMenu = DrawerHandler.DisplayMenu.SOCIAL_MENU;
+			}
 		}
-		if (displayMenu == null) {
-			displayMenu = DrawerHandler.DisplayMenu.SOCIAL_MENU;
-		}
+
 		if (hasNavigationMenu()) {
 			initDrawerLayout();
 		}
+
 		setupLayout();
 		if (savedInstanceState == null) {
 			setupFragments();
@@ -122,6 +134,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private void initDrawerLayout() {
 		frameContentView = findView(android.R.id.content);
 		drawerLayout = findView(R.id.sp_drawerLayout);
+
 		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.sp_open_side_menu, R.string.sp_close_side_menu) {
 			@Override
 			public void onDrawerOpened(View drawerView) {
@@ -138,14 +151,41 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		drawerLayout.setDrawerListener(drawerToggle);
 		drawerToggle.syncState();
 
-		if (BuildConfig.STANDALONE_APP) {
+		navigationDrawerHandler = GlobalObjectRegistry.getObject(NavigationDrawerHandler.class);
+		if (navigationDrawerHandler != null) {
+			Fragment customNavFragment = navigationDrawerHandler.getFragment();
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.sp_navigationLayout, NavigationFragment.create(activeNavigationItemId))
+					.replace(R.id.sp_navigationLayout, customNavFragment)
 					.commit();
+			getSupportFragmentManager().executePendingTransactions();
+
+			customNavFragment.onActivityCreated(null);
+			FrameLayout navigation = (FrameLayout)findViewById(R.id.sp_navigationLayout);
+
+			View view = customNavFragment.onCreateView(getLayoutInflater(), drawerLayout, null);
+
+			navigation.addView(view);
+
+			// scale
+			Resources res = getResources();
+			DrawerLayout.LayoutParams layoutParams =
+					new DrawerLayout.LayoutParams(res.getDimensionPixelSize(navigationDrawerHandler.getWidth()),
+							ViewGroup.LayoutParams.MATCH_PARENT);
+			layoutParams.gravity = Gravity.START;
+			navigation.setLayoutParams(layoutParams);
+			navigation.setBackgroundColor(res.getColor(navigationDrawerHandler.getBackgroundColor()));
+
+			navigationDrawerHandler.setUp(this, R.id.sp_navigationLayout, drawerLayout);
 		} else {
-			drawerHandler = DrawerHandlerFactory.createHandler(this, getIntent().getBundleExtra(HOST_MENU_BUNDLE_EXTRA));
-			drawerHandler.inflate((ViewGroup) findViewById(R.id.sp_navigationLayout), activeNavigationItemId);
-			drawerHandler.setDisplayMenu(displayMenu);
+			if (BuildConfig.STANDALONE_APP) {
+				getSupportFragmentManager().beginTransaction()
+						.replace(R.id.sp_navigationLayout, NavigationFragment.create(activeNavigationItemId))
+						.commit();
+			} else {
+				drawerHandler = DrawerHandlerFactory.createHandler(this, getIntent().getBundleExtra(HOST_MENU_BUNDLE_EXTRA));
+				drawerHandler.inflate((ViewGroup) findViewById(R.id.sp_navigationLayout), activeNavigationItemId);
+				drawerHandler.setDisplayMenu(displayMenu);
+			}
 		}
 	}
 
@@ -172,8 +212,10 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 */
 	protected void setActivityContent(Fragment fragment) {
 		ViewGroup parent = findView(R.id.sp_content);
-		parent.removeAllViews();
-		getSupportFragmentManager().beginTransaction().replace(R.id.sp_content, fragment).commit();
+		if (parent != null) {
+			parent.removeAllViews();
+			getSupportFragmentManager().beginTransaction().replace(R.id.sp_content, fragment).commit();
+		}
 	}
 
 	public void showBottomBar() {
@@ -239,6 +281,9 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		if (navigationLocked) {
 			return true;
 		}
+		if (navigationDrawerHandler != null) {
+			return false;
+		}
 		// Pass the event to ActionBarDrawerToggle, if it returns
 		// true, then it has handled the app icon touch event
 		if (drawerToggle != null && drawerToggle.onOptionsItemSelected(item)) {
@@ -280,16 +325,24 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 	@Override
 	public final void openDrawer() {
-		drawerLayout.openDrawer(GravityCompat.START);
+		if (drawerLayout != null) {
+			drawerLayout.openDrawer(GravityCompat.START);
+		}
 	}
 
 	@Override
 	public final void closeDrawer() {
-		drawerLayout.postDelayed(drawerLayout::closeDrawers, CLOSE_DRAWER_DELAY);
+		if (drawerLayout != null) {
+			drawerLayout.postDelayed(drawerLayout::closeDrawers, CLOSE_DRAWER_DELAY);
+		}
 	}
 
 	@Override
 	public final boolean isDrawerOpen() {
+		if (drawerLayout == null) {
+			return false;
+		}
 		return drawerLayout.isDrawerOpen(GravityCompat.START);
 	}
 }
+
