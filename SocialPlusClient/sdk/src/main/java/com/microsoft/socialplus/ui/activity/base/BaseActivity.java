@@ -175,7 +175,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 			navigation.setLayoutParams(layoutParams);
 			navigation.setBackgroundColor(res.getColor(navigationDrawerHandler.getBackgroundColor()));
 
-			navigationDrawerHandler.setUp(this, R.id.sp_navigationLayout, drawerLayout);
+			navigationDrawerHandler.setUp(R.id.sp_navigationLayout, drawerLayout);
 		} else {
 			if (BuildConfig.STANDALONE_APP) {
 				getSupportFragmentManager().beginTransaction()

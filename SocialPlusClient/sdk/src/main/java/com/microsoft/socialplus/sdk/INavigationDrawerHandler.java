@@ -20,11 +20,10 @@ public interface INavigationDrawerHandler {
 
     /**
      * Do any final set up before the fragment is displayed
-     * @param activity hosting the fragment
      * @param fragmentId of fragment
      * @param drawerLayout containing fragment
      */
-    public void setUp(FragmentActivity activity, int fragmentId, DrawerLayout drawerLayout);
+    public void setUp(int fragmentId, DrawerLayout drawerLayout);
 
     /**
      * Returns the resource ID defining the navigation drawer width
