@@ -4,23 +4,31 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   ~
   -->
-
-<android.support.v4.widget.DrawerLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/sp_drawerLayout"
+	android:id="@+id/sp_drawerContainer"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
+	<!-- Toolbar will be placed here for apps that want the navdrawer placed below the toolbar -->
 
-	<include
-		layout="@layout/sp_activity_base"
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/sp_drawerLayout"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+		android:layout_height="match_parent">
 
-	<FrameLayout
-		android:id="@+id/sp_navigationLayout"
-		android:layout_width="@dimen/sp_drawer_width"
-		android:layout_height="match_parent"
-		android:layout_gravity="start"
-		android:background="@color/sp_drawer_background"/>
+		<include
+			layout="@layout/sp_activity_base"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
 
-</android.support.v4.widget.DrawerLayout>
+		<FrameLayout
+			android:id="@+id/sp_navigationLayout"
+			android:layout_width="@dimen/sp_drawer_width"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:background="@color/sp_drawer_background"/>
+
+	</android.support.v4.widget.DrawerLayout>
+</LinearLayout>

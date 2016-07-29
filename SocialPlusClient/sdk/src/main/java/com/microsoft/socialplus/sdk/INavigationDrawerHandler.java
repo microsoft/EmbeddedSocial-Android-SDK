@@ -14,7 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 
 public interface INavigationDrawerHandler {
     /**
-     * Fragment to be used in the navigation drawer
+     * @return fragment to be used in the navigation drawer
      */
     public Fragment getFragment();
 
@@ -26,12 +26,17 @@ public interface INavigationDrawerHandler {
     public void setUp(int fragmentId, DrawerLayout drawerLayout);
 
     /**
-     * Returns the resource ID defining the navigation drawer width
+     * @return the resource ID defining the navigation drawer width
      */
     public @DimenRes int getWidth();
 
     /**
-     * Returns the resource ID defining the navigation drawer background color
+     * @return resource ID defining the navigation drawer background color
      */
     public @ColorRes int getBackgroundColor();
+
+    /**
+     * @return true if the toolbar should be visible when the navigation drawer is open
+     */
+    public boolean displayToolbar();
 }

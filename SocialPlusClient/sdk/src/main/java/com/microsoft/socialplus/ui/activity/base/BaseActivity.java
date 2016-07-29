@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
@@ -174,6 +175,11 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 			layoutParams.gravity = Gravity.START;
 			navigation.setLayoutParams(layoutParams);
 			navigation.setBackgroundColor(res.getColor(navigationDrawerHandler.getBackgroundColor()));
+
+			if (navigationDrawerHandler.displayToolbar()) {
+				((ViewGroup)toolbar.getParent()).removeView(toolbar);
+				((LinearLayout)findView(R.id.sp_drawerContainer)).addView(toolbar, 0);
+			}
 
 			navigationDrawerHandler.setUp(R.id.sp_navigationLayout, drawerLayout);
 		} else {
