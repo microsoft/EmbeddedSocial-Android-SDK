@@ -8,11 +8,14 @@ package com.microsoft.socialplus.ui.activity.base;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -21,11 +24,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
@@ -61,7 +66,8 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private Toolbar toolbar;
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
-	private static int color;
+	private static int backgroundColorId;
+	protected static int textColorId;
 	private INavigationDrawerHandler navigationDrawerHandler;
 
 	private boolean navigationLocked = false;
@@ -81,8 +87,28 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		this.activeNavigationItemId = activeNavigationItemId;
 	}
 
-	public static void setColor(int newColor) {
-		color = newColor;
+	public static void setBackgroundColorId(@ColorRes int newColor) {
+		backgroundColorId = newColor;
+	}
+
+	public static void setTextColorId(@ColorRes int newColor) {
+		textColorId = newColor;
+	}
+
+	public static int getTextColor() {
+		return textColorId;
+	}
+
+	public static boolean isValidBackgroundColor() {
+		return isValidColorId(backgroundColorId);
+	}
+
+	public static boolean isValidTextColor() {
+		return isValidColorId(textColorId);
+	}
+
+	public static boolean isValidColorId(int id) {
+		return id > 0;
 	}
 
 	@Override
@@ -92,8 +118,13 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		setSupportActionBar(toolbar);
 		bottomBar = findView(R.id.sp_bottomBar);
 		doneButton = findView(R.id.sp_doneButton);
-		if (color != 0) {
-			toolbar.setBackgroundColor(color);
+		if (isValidBackgroundColor()) {
+			toolbar.setBackgroundColor(ContextCompat.getColor(this, backgroundColorId));
+		}
+		if (isValidTextColor()) {
+			int color = ContextCompat.getColor(this, textColorId);
+			toolbar.setTitleTextColor(color);
+			toolbar.setSubtitleTextColor(color);
 		}
 		ActionBar actionBar = getSupportActionBar();
 
@@ -118,6 +149,20 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		if (savedInstanceState == null) {
 			setupFragments();
 		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		if (isValidTextColor()) {
+			int color = ContextCompat.getColor(this, textColorId);
+			for (int i = 0; i < toolbar.getChildCount(); i++) {
+				View v = toolbar.getChildAt(i);
+				if (v instanceof ImageButton) {
+					((ImageButton) v).setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+				}
+			}
+		}
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	/**

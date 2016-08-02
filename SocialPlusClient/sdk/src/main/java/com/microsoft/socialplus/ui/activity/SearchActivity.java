@@ -13,12 +13,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.base.utils.ViewUtils;
@@ -76,6 +81,14 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 			resetSearchViewFocus();
 			return false;
 		});
+	}
+
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		if (isValidTextColor()) {
+			setQueryTextColor();
+		}
 	}
 
 	@Override
@@ -240,6 +253,30 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 		resetSearchViewFocus();
 	}
 
+	private void setQueryTextColor() {
+		findChildViews(searchView, ContextCompat.getColor(this, textColorId));
+	}
+
+	private void findChildViews(ViewGroup curr, int color) {
+		for (int i = 0; i < curr.getChildCount(); i++) {
+			View child = curr.getChildAt(i);
+			if (child instanceof TextView) {
+				// color the text view
+				((TextView) child).setTextColor(color);
+				if (child instanceof EditText) {
+					// color the edit text
+					((EditText) child).setHintTextColor(color);
+				}
+			} else if (child instanceof ImageView) {
+				// color the microphone image
+				((ImageView)child).setColorFilter(color);
+			} else if (child instanceof ViewGroup) {
+				// recurse down this view group
+				findChildViews((ViewGroup) child, color);
+			}
+		}
+	}
+
 	@Override
 	protected void setupFragments() {
 		super.setupFragments();
@@ -251,6 +288,9 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 		if (getCurrentSearchType() == SearchType.TOPICS && isTopicsSearchTextNotEmpty()) {
 			getMenuInflater().inflate(R.menu.sp_feed_display_method, menu);
 		}
+		// Call into super method to color hamburger menu
+		super.onCreateOptionsMenu(menu);
+
 		return true;
 	}
 

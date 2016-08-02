@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
@@ -135,8 +136,12 @@ public final class SocialPlus {
 		FacebookSdk.setApplicationId(options.getFacebookApplicationId());
 	}
 
-    public static void initColors(int color) {
-        BaseActivity.setColor(color);
+    /**
+     * Sets the background color and text color of the toolbar
+     */
+    public static void initColors(@ColorRes int backgroundColor, @ColorRes int textColor) {
+        BaseActivity.setBackgroundColorId(backgroundColor);
+        BaseActivity.setTextColorId(textColor);
     }
 
 	private static void initLogging(Context context) {

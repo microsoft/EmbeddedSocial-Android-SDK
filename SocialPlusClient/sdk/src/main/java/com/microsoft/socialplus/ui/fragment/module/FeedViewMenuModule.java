@@ -7,6 +7,8 @@
 package com.microsoft.socialplus.ui.fragment.module;
 
 import android.content.res.TypedArray;
+import android.graphics.PorterDuff;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.display.DisplayMethod;
 import com.microsoft.socialplus.event.click.DisplayMethodChangedEvent;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.base.BaseFragment;
 import com.microsoft.socialplus.ui.fragment.base.Module;
 
@@ -43,6 +46,11 @@ public class FeedViewMenuModule extends Module {
 			int iconId = typedArray.getResourceId(attrId, 0);
 			typedArray.recycle();
 			viewSwitch.setIcon(iconId);
+			if (BaseActivity.isValidTextColor()) {
+				viewSwitch.getIcon().setColorFilter(
+						ContextCompat.getColor(getContext(),BaseActivity.getTextColor()),
+						PorterDuff.Mode.SRC_ATOP);
+			}
 
 			viewSwitch.setTitle(displayMethod == DisplayMethod.GALLERY ? R.string.sp_menu_list : R.string.sp_menu_gallery);
 		}
