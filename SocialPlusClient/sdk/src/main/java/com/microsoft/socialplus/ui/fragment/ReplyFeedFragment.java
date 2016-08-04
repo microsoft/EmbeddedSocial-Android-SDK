@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.microsoft.socialplus.base.event.EventBus;
@@ -45,6 +46,12 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 			);
 		}
 		return new DiscussionFeedAdapter(getActivity(), commentFeedFetcher, DiscussionFeedAdapter.FeedType.REPLY);
+	}
+
+	@Override
+	protected void initRecyclerView() {
+		super.initRecyclerView();
+		imageButton.setVisibility(View.GONE);
 	}
 
 	@Override

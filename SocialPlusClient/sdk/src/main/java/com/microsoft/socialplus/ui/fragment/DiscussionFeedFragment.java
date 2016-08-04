@@ -72,7 +72,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	private boolean scrolledDown;
 	private Handler uiHandler;
 	private Button doneButton;
-	private ImageButton imageButton;
+	protected ImageButton imageButton;
 	private ImageView coverView;
 	private PostStorage postStorage;
 	private PhotoProviderModule photoProvider;
