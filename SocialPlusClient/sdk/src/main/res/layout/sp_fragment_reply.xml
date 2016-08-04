@@ -33,40 +33,44 @@
 		layout="@layout/sp_progressbar"
 		/>
 
-	<RelativeLayout
-		android:id="@+id/sp_contentLayout"
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		>
+		android:layout_height="match_parent">
 
-		<android.widget.Space
-			android:id="@+id/sp_leftBorder"
-			android:layout_width="@dimen/sp_padding_large"
-			android:layout_height="@dimen/sp_user_icon_size"
-			/>
-
-		<include layout="@layout/sp_view_reply"/>
-
-		<View
-			android:id="@+id/sp_dividerLayoutBottom"
-			style="@style/SocialPlusSdkDivider"
-			android:layout_below="@+id/sp_replyLikesCountButton"
-			android:layout_marginTop="@dimen/sp_padding_base"/>
-
-		<Button
-			android:id="@+id/sp_openCommentButton"
+		<RelativeLayout
+			android:id="@+id/sp_contentLayout"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/sp_dividerLayoutBottom"
-			android:layout_marginBottom="@dimen/sp_padding_large"
-			android:layout_marginLeft="@dimen/sp_padding_base"
-			android:layout_marginRight="@dimen/sp_padding_base"
-			android:layout_marginTop="@dimen/sp_padding_large"
-			android:text="@string/sp_button_open_comment"
-			android:textAllCaps="true"
-			android:textSize="14dp"
-			/>
+			android:layout_height="match_parent"
+			>
 
-	</RelativeLayout>
+			<android.widget.Space
+				android:id="@+id/sp_leftBorder"
+				android:layout_width="@dimen/sp_padding_large"
+				android:layout_height="@dimen/sp_user_icon_size"
+				/>
 
+			<include layout="@layout/sp_view_reply"/>
+
+			<View
+				android:id="@+id/sp_dividerLayoutBottom"
+				style="@style/SocialPlusSdkDivider"
+				android:layout_below="@+id/sp_replyLikesCountButton"
+				android:layout_marginTop="@dimen/sp_padding_base"/>
+
+			<Button
+				android:id="@+id/sp_openCommentButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/sp_dividerLayoutBottom"
+				android:layout_marginBottom="@dimen/sp_padding_large"
+				android:layout_marginLeft="@dimen/sp_padding_base"
+				android:layout_marginRight="@dimen/sp_padding_base"
+				android:layout_marginTop="@dimen/sp_padding_large"
+				android:text="@string/sp_button_open_comment"
+				android:textAllCaps="true"
+				android:textSize="14dp"
+				/>
+
+		</RelativeLayout>
+	</ScrollView>
 </FrameLayout>

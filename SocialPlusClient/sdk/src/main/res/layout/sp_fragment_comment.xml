@@ -33,46 +33,50 @@
 		layout="@layout/sp_progressbar"
 		/>
 
-	<RelativeLayout
-		android:id="@+id/sp_contentLayout"
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		>
+		android:layout_height="match_parent">
 
-		<android.widget.Space
-			android:id="@+id/sp_leftBorder"
-			android:layout_width="@dimen/sp_padding_large"
-			android:layout_height="@dimen/sp_user_icon_size"
-			/>
-
-		<include
-			layout="@layout/sp_view_user_header"
+		<RelativeLayout
+			android:id="@+id/sp_contentLayout"
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>
+			android:layout_height="match_parent"
+			>
 
-		<include layout="@layout/sp_view_comment"/>
+			<android.widget.Space
+				android:id="@+id/sp_leftBorder"
+				android:layout_width="@dimen/sp_padding_large"
+				android:layout_height="@dimen/sp_user_icon_size"
+				/>
 
-		<View
-			android:id="@+id/sp_dividerLayoutBottom"
-			style="@style/SocialPlusSdkDivider"
-			android:layout_below="@+id/sp_buttonsLayout"
-			android:layout_marginTop="@dimen/sp_padding_base"/>
+			<include
+				layout="@layout/sp_view_user_header"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				/>
 
-		<Button
-			android:id="@+id/sp_openTopicButton"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_below="@+id/sp_dividerLayoutBottom"
-			android:layout_marginBottom="@dimen/sp_padding_large"
-			android:layout_marginLeft="@dimen/sp_padding_base"
-			android:layout_marginRight="@dimen/sp_padding_base"
-			android:layout_marginTop="@dimen/sp_padding_large"
-			android:text="@string/sp_button_open_topic"
-			android:textAllCaps="true"
-			android:textSize="14dp"
-			/>
+			<include layout="@layout/sp_view_comment"/>
 
-	</RelativeLayout>
+			<View
+				android:id="@+id/sp_dividerLayoutBottom"
+				style="@style/SocialPlusSdkDivider"
+				android:layout_below="@+id/sp_buttonsLayout"
+				android:layout_marginTop="@dimen/sp_padding_base"/>
 
+			<Button
+				android:id="@+id/sp_openTopicButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/sp_dividerLayoutBottom"
+				android:layout_marginBottom="@dimen/sp_padding_large"
+				android:layout_marginLeft="@dimen/sp_padding_base"
+				android:layout_marginRight="@dimen/sp_padding_base"
+				android:layout_marginTop="@dimen/sp_padding_large"
+				android:text="@string/sp_button_open_topic"
+				android:textAllCaps="true"
+				android:textSize="14dp"
+				/>
+
+		</RelativeLayout>
+	</ScrollView>
 </FrameLayout>
