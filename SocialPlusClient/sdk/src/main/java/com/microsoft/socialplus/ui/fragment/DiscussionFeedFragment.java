@@ -149,8 +149,14 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 			});
 
 			setAttachImageClickListener(v -> {
-				photoProvider.showSelectImageDialog();
+				if (imageUri == null) {
+					// no image present
+					photoProvider.showSelectImageDialog();
+				} else {
+					photoProvider.showEditImageDialog();
+				}
 			});
+
 			noteText.setOnFocusChangeListener((v, hasFocus) -> {
 				if (hasFocus) {
 					if (!TextHelper.isEmpty(((EditText) v).getText())) {
@@ -343,6 +349,10 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	@Override
 	public void onPhotoSelected(Uri newImageUri) {
 		this.imageUri = newImageUri;
+		if (imageUri == null) {
+			// image was removed
+			hideView(R.id.sp_noteImage);
+		}
 	}
 
 	@Override
