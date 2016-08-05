@@ -17,6 +17,7 @@
 		android:layout_below="@id/sp_profileImage"
 		android:background="?attr/sp_topicCoverBackground"
 		android:scaleType="centerCrop"
+		android:visibility="gone"
 		/>
 
 	<FrameLayout
