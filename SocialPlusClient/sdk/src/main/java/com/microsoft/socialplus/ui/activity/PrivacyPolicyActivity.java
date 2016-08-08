@@ -6,6 +6,9 @@
 
 package com.microsoft.socialplus.ui.activity;
 
+import android.os.Bundle;
+import android.view.View;
+
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.TextFragment;
@@ -18,5 +21,11 @@ public class PrivacyPolicyActivity extends BaseActivity {
 	@Override
 	protected void setupFragments() {
 		setActivityContent(TextFragment.create(R.string.sp_privacy_policy_text));
+	}
+
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
 	}
 }

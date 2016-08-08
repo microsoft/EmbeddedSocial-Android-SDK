@@ -241,6 +241,18 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	}
 
 	/**
+	 * Configures the toolbar to end the activity when the back arrow is pressed
+	 */
+	protected void setNonNavDrawerToolbar() {
+		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+	}
+
+	/**
 	 * Layout id for the activity.
 	 */
 	@LayoutRes

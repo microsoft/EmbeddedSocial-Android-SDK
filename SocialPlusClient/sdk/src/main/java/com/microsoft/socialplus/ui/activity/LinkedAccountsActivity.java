@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.ui.activity;
 
+import android.os.Bundle;
+
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.LinkedAccountsFragment;
 
@@ -24,4 +26,9 @@ public class LinkedAccountsActivity extends BaseActivity {
 		return true;
 	}
 
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
+	}
 }
