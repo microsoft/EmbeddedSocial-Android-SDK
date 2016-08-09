@@ -45,6 +45,7 @@
 		android:layout_toRightOf="@id/sp_leftBorder"
 		android:singleLine="true"
 		android:textStyle="bold"
+		android:autoLink="web"
 		/>
 
 	<TextView
@@ -53,7 +54,6 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_postTitle"
-		android:textColorLink="@color/sp_text_link_color"
 		android:layout_marginRight="@dimen/sp_padding_large"
 		android:layout_marginTop="@dimen/sp_padding_base"
 		android:layout_toRightOf="@id/sp_leftBorder"

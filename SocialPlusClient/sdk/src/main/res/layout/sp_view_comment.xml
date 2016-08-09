@@ -37,6 +37,7 @@
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_coverImage"
 		android:paddingBottom="4dp"
+		android:autoLink="web"
 		android:layout_marginRight="@dimen/sp_padding_large"
 		android:layout_toRightOf="@id/sp_leftBorder"
 		/>

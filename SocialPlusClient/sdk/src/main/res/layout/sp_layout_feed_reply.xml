@@ -94,6 +94,7 @@
 		android:layout_marginRight="@dimen/sp_padding_large"
 		android:layout_toRightOf="@id/sp_profileImage"
 		android:layout_toLeftOf="@id/sp_menuGroup"
+		android:autoLink="web"
 		/>
 
 	<ImageView

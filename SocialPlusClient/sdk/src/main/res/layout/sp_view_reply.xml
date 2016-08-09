@@ -50,6 +50,7 @@
 		android:background="?attr/sp_buttonBackground"
 		android:clickable="true"
 		android:gravity="center_vertical"
+		android:autoLink="web"
 		/>
 
 	<View

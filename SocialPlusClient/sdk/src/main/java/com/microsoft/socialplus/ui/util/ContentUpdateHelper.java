@@ -13,12 +13,15 @@ import android.net.Uri;
 import android.provider.Browser;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -112,23 +115,38 @@ public final class ContentUpdateHelper {
 	}
 
 	private static final String SEARCH_SCHEME = "search://";
+	private static final String HTTP_SCHEME = "http://";
+	private static final String HTTPS_SCHEME = "https://";
 	private static final Pattern TAG_MATCHER = Pattern.compile("#+[A-Za-z0-9-_]+\\b");
 
-	public static void setTopicBody(@NonNull TextView topicBody, String topicText) {
+	public static void setTopicBody(Context context, @NonNull TextView topicBody, String topicText) {
 		if (TextUtils.isEmpty(topicText)) {
 			topicBody.setVisibility(View.GONE);
 		} else {
-			boolean hasHashtag = false;
+			boolean hasLink = false;
 			Spannable spannable = new SpannableString(topicText);
 			Matcher matcher = TAG_MATCHER.matcher(spannable);
 			while (matcher.find()) {
-				hasHashtag = true;
+				hasLink = true;
 				final int start = matcher.start();
 				final int end = matcher.end();
 				spannable.setSpan(new URLSpanNoUnderline(SEARCH_SCHEME + spannable.subSequence(start + 1, end)), start, end, 0);
+				spannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.sp_text_link_color)), start, end, 0);
 			}
 
-			if (hasHashtag) {
+			Matcher urlMatcher = Patterns.WEB_URL.matcher(spannable);
+			while (urlMatcher.find()) {
+				hasLink = true;
+				final int start = urlMatcher.start();
+				final int end = urlMatcher.end();
+				String url = "" + spannable.subSequence(start, end);
+				if (!url.startsWith(HTTP_SCHEME) && ! url.startsWith(HTTPS_SCHEME)) {
+					url = HTTP_SCHEME + url;
+				}
+				spannable.setSpan(new URLSpan(url), start, end, 0);
+			}
+
+			if (hasLink) {
 				topicBody.setMovementMethod(LinkMovementMethod.getInstance());
 			}
 			topicBody.setText(spannable);

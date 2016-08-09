@@ -69,7 +69,7 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		renderUserHeader(topic);
 
 		postTitle.setText(topic.getTopicTitle());
-		ContentUpdateHelper.setTopicBody(postBody, topic.getTopicText());
+		ContentUpdateHelper.setTopicBody(getContext(), postBody, topic.getTopicText());
 
 		if (!Preferences.getInstance().isDisplayApp() || topic.getApp() == null) {
 			appLayout.setVisibility(View.GONE);
