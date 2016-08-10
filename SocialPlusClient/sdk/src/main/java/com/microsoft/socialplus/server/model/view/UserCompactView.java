@@ -116,7 +116,6 @@ public class UserCompactView implements Parcelable, UniqueItem {
 
 	public UserCompactView(com.microsoft.socialplus.autorest.models.UserCompactView view) {
 		userHandle = view.getUserHandle();
-		//username = view.
 		firstName = view.getFirstName();
 		lastName = view.getLastName();
 		userPhotoUrl = view.getPhotoUrl();

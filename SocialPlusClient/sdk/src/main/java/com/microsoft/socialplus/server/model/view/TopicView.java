@@ -349,7 +349,9 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 	public TopicView(com.microsoft.socialplus.autorest.models.TopicView view) {
 		topicHandle = view.getTopicHandle();
 		publisherType = view.getPublisherType().ordinal();
-		user = new UserCompactView(view.getUser());
+		if (getPublisherType() == PublisherType.USER) {
+			user = new UserCompactView(view.getUser());
+		}
 		app = new AppCompactView(view.getApp());
 		topicCategory = view.getCategories();
 		topicTitle = view.getTitle();

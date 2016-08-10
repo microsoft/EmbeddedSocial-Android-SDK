@@ -8,6 +8,7 @@ package com.microsoft.socialplus.fetcher;
 
 import android.support.annotation.NonNull;
 
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.model.CommentFeedType;
@@ -74,17 +75,18 @@ public class CommentFeedFetcher extends Fetcher<Object> {
 	private TopicView getTopic(RequestType requestType) throws Exception {
 		TopicView result = topicView == null || requestType.isFullDataReloadRequired() ? readTopic(requestType) : topicView;
 		IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
-		GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			request.forceCacheUsage();
+		if (result.getPublisherType() == PublisherType.USER) {
+			GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
+			if (requestType == RequestType.SYNC_WITH_CACHE) {
+				request.forceCacheUsage();
+			}
+			AccountData profile = new AccountData(accountService.getUserProfile(request).getUser());
+			result.setUserProfile(profile);
 		}
-		AccountData profile = new AccountData(accountService.getUserProfile(request).getUser());
-		result.setUserProfile(profile);
 		return result;
 	}
 
-	//TODO make private again
-	public TopicView readTopic(RequestType requestType) throws Exception {
+	private TopicView readTopic(RequestType requestType) throws Exception {
 		GetTopicRequest request = new GetTopicRequest(topicHandle);
 		if (requestType == RequestType.SYNC_WITH_CACHE) {
 			request.forceCacheUsage();

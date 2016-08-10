@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.sdk.IReportHandler;
@@ -36,7 +37,9 @@ public class TopicContextMenu {
 			if (isOwnTopic(topic)) {
 				menu.inflate(R.menu.sp_topic_own);
 			} else {
-				UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
+				if (topic.getPublisherType() != PublisherType.APP) {
+					UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
+				}
 				menu.inflate(R.menu.sp_topic);
 			}
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
@@ -48,6 +51,9 @@ public class TopicContextMenu {
 	}
 
 	private static boolean isOwnTopic(TopicView topic) {
+		if (topic.getPublisherType() == PublisherType.APP) {
+			return false;
+		}
 		return UserAccount.getInstance().isCurrentUser(topic.getUser().getHandle());
 	}
 

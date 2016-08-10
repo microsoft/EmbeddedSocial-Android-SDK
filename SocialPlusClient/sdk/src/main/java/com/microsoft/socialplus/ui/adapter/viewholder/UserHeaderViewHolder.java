@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.socialplus.account.UserAccount;
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.event.EventBus;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.event.click.OpenUserProfileEvent;
@@ -54,16 +55,21 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	}
 
 	protected void renderUserHeader(TopicView topic) {
-		setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
+		if (topic.getPublisherType() == PublisherType.USER) {
+			setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
+			setProfileImage(topic.getUser().getUserPhotoUrl());
+			contextMenuButton.setTag(R.id.sp_keyIsOwnContent,
+					topic.getUser().getHandle().equals(Preferences.getInstance().getUserHandle()));
+			contextMenuButton.setTag(R.id.sp_keyFollowerStatus, topic.getUser().getFollowerStatus());
+			contextMenuButton.setTag(R.id.sp_keyUser, topic.getUser());
+			userHeaderButton.setTag(R.id.sp_keyUser, topic.getUser());
+		} else {
+			// PublisherType.APP
+			userHeaderButton.setClickable(false);
+		}
 		setTime(topic.getElapsedSeconds());
-		setProfileImage(topic.getUser().getUserPhotoUrl());
 
 		contextMenuButton.setTag(R.id.sp_keyTopic, topic);
-		contextMenuButton.setTag(R.id.sp_keyIsOwnContent,
-			topic.getUser().getHandle().equals(Preferences.getInstance().getUserHandle()));
-		contextMenuButton.setTag(R.id.sp_keyFollowerStatus, topic.getUser().getFollowerStatus());
-		contextMenuButton.setTag(R.id.sp_keyUser, topic.getUser());
-		userHeaderButton.setTag(R.id.sp_keyUser, topic.getUser());
 	}
 
 	protected void renderUserHeader(ReplyView reply) {

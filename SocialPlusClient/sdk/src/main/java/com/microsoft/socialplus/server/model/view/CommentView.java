@@ -134,13 +134,16 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 	public CommentView(com.microsoft.socialplus.autorest.models.CommentView view) {
 		commentHandle = view.getCommentHandle();
 		topicHandle = view.getTopicHandle();
-		user = new UserCompactView(view.getUser());
+		com.microsoft.socialplus.autorest.models.UserCompactView viewUser = view.getUser();
+		if (viewUser != null) {
+			user = new UserCompactView(viewUser);
+		}
 		commentText = view.getText();
 		commentBlobType = view.getBlobType().ordinal();
 		commentBlobUrl = view.getBlobUrl();
 		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = view.getTotalLikes();
-		totalReplies = view.getTotalReplies(); //TODO make safe
+		totalReplies = view.getTotalReplies();
 		likeStatus = view.getLiked();
 		local = false; //TODO
 		offlineId = -1; // TODO
