@@ -21,6 +21,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -33,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.ui.activity.base.BaseTabsActivity;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
@@ -44,7 +46,7 @@ import com.microsoft.socialplus.sdk.R;
  * <p>
  * The colors can be customized in two ways. The first and simplest is to provide an array of colors
  * via {@link #setSelectedIndicatorColors(int...)} and {@link #setDividerColors(int...)}. The
- * alternative is via the {@link TabColorizer} interface which provides you complete control over
+ * alternative is via the {@link TabIndicatorColorizer} interface which provides you complete control over
  * which color is used for any individual position.
  * <p>
  * The views used as tabs can be customized by calling {@link #setCustomTabView(int, int)},
@@ -54,9 +56,9 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
 	/**
 	 * Allows complete control over the colors drawn in the tab layout. Set with
-	 * {@link #setCustomTabColorizer(TabColorizer)}.
+	 * {@link #setCustomTabColorizer(TabIndicatorColorizer)}.
 	 */
-	public interface TabColorizer {
+	public interface TabIndicatorColorizer {
 
 		/**
 		 * @return return the color of the indicator used when {@code position} is selected.
@@ -103,20 +105,28 @@ public class SlidingTabLayout extends HorizontalScrollView {
 		addView(mTabStrip, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
 		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.sp_AppTheme);
-		activeTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorActive, Color.WHITE);
-		notActiveTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorNotActive, Color.WHITE);
-		typedArray.recycle();
+		BaseTabsActivity.TabColorizer colorizer = BaseTabsActivity.getCustomTabColorizer();
+		if (colorizer != null) {
+			// Use custom colors
+			activeTextColor = ContextCompat.getColor(getContext(), colorizer.getActiveTextColor());
+			notActiveTextColor = ContextCompat.getColor(getContext(), colorizer.getNotActiveTextColor());
+		} else {
+			// Use default colors
+			activeTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorActive, Color.WHITE);
+			notActiveTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorNotActive, Color.WHITE);
+			typedArray.recycle();
+		}
 	}
 
 	/**
-	 * Set the custom {@link TabColorizer} to be used.
+	 * Set the custom {@link TabIndicatorColorizer} to be used.
 	 * <p>
 	 * If you only require simple custmisation then you can use
 	 * {@link #setSelectedIndicatorColors(int...)} and {@link #setDividerColors(int...)} to achieve
 	 * similar effects.
 	 */
-	public void setCustomTabColorizer(TabColorizer tabColorizer) {
-		mTabStrip.setCustomTabColorizer(tabColorizer);
+	public void setCustomTabColorizer(TabIndicatorColorizer tabColorizer) {
+		mTabStrip.setCustomTabIndicatorColorizer(tabColorizer);
 	}
 
 	/**

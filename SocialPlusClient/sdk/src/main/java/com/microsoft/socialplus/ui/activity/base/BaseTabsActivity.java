@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.ui.activity.base;
 
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
@@ -35,12 +37,28 @@ public abstract class BaseTabsActivity extends BaseActivity {
 
 	private ViewPager viewPager;
 	private SlidingTabLayout slidingTabLayout;
+	private static TabColorizer customTabColorizer;
 
 	protected BaseTabsActivity() {
 	}
 
 	protected BaseTabsActivity(int activeNavigationItemId) {
 		super(activeNavigationItemId);
+	}
+
+	public interface TabColorizer {
+		@ColorRes int getBackgroundColor();
+		@ColorRes int getActiveTextColor();
+		@ColorRes int getNotActiveTextColor();
+		@ColorRes int getSelectorColor();
+	}
+
+	public static void setTabColorizer(TabColorizer tabColorizer) {
+		customTabColorizer = tabColorizer;
+	}
+
+	public static TabColorizer getCustomTabColorizer() {
+		return customTabColorizer;
 	}
 
 	@Override
@@ -55,8 +73,12 @@ public abstract class BaseTabsActivity extends BaseActivity {
 		slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sp_slidingTabs);
 		slidingTabLayout.setViewPager(viewPager);
 
-		//noinspection deprecation
-		slidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.sp_lime_A400));
+		int selectorColorId = R.color.sp_lime_A400;
+		if (customTabColorizer != null) {
+			slidingTabLayout.setBackgroundColor(ContextCompat.getColor(this, customTabColorizer.getBackgroundColor()));
+			selectorColorId = customTabColorizer.getSelectorColor();
+		}
+		slidingTabLayout.setSelectedIndicatorColors(ContextCompat.getColor(this, selectorColorId));
 
 		viewPager.addOnPageChangeListener(onPageChangeListener);
 	}

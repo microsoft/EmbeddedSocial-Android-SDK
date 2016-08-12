@@ -23,9 +23,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.microsoft.socialplus.autorest.models.ContentType;
 import com.microsoft.socialplus.account.UserAccount;
-import com.microsoft.socialplus.autorest.models.Reason;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.Preferences;
@@ -48,6 +46,7 @@ import com.microsoft.socialplus.ui.activity.RecentActivityActivity;
 import com.microsoft.socialplus.ui.activity.SearchActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
+import com.microsoft.socialplus.ui.activity.base.BaseTabsActivity;
 import com.microsoft.socialplus.ui.fragment.AddPostFragment;
 import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
 import com.microsoft.socialplus.ui.fragment.PinsFragment;
@@ -139,9 +138,12 @@ public final class SocialPlus {
     /**
      * Sets the background color and text color of the toolbar
      */
-    public static void initColors(@ColorRes int backgroundColor, @ColorRes int textColor) {
-        BaseActivity.setBackgroundColorId(backgroundColor);
-        BaseActivity.setTextColorId(textColor);
+    public static void setToolbarColors(BaseActivity.ToolbarColorizer colorizer) {
+        BaseActivity.setToolbarColorizer(colorizer);
+    }
+
+    public static void setTabColors(BaseTabsActivity.TabColorizer colorizer){
+        BaseTabsActivity.setTabColorizer(colorizer);
     }
 
 	private static void initLogging(Context context) {

@@ -66,8 +66,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private Toolbar toolbar;
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
-	private static int backgroundColorId;
-	protected static int textColorId;
+	protected static ToolbarColorizer customToolbarColorizer;
 	private INavigationDrawerHandler navigationDrawerHandler;
 
 	private boolean navigationLocked = false;
@@ -79,6 +78,11 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		}
 	};
 
+	public interface ToolbarColorizer {
+		@ColorRes int getBackgroundColor();
+		@ColorRes int getTextColor();
+	}
+
 	protected BaseActivity() {
 		this(0);
 	}
@@ -87,28 +91,12 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		this.activeNavigationItemId = activeNavigationItemId;
 	}
 
-	public static void setBackgroundColorId(@ColorRes int newColor) {
-		backgroundColorId = newColor;
+	public static void setToolbarColorizer(ToolbarColorizer colorizer) {
+		customToolbarColorizer = colorizer;
 	}
 
-	public static void setTextColorId(@ColorRes int newColor) {
-		textColorId = newColor;
-	}
-
-	public static int getTextColor() {
-		return textColorId;
-	}
-
-	public static boolean isValidBackgroundColor() {
-		return isValidColorId(backgroundColorId);
-	}
-
-	public static boolean isValidTextColor() {
-		return isValidColorId(textColorId);
-	}
-
-	public static boolean isValidColorId(int id) {
-		return id > 0;
+	public static ToolbarColorizer getToolbarColorizer() {
+		return customToolbarColorizer;
 	}
 
 	@Override
@@ -118,14 +106,14 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		setSupportActionBar(toolbar);
 		bottomBar = findView(R.id.sp_bottomBar);
 		doneButton = findView(R.id.sp_doneButton);
-		if (isValidBackgroundColor()) {
-			toolbar.setBackgroundColor(ContextCompat.getColor(this, backgroundColorId));
+
+		if (customToolbarColorizer != null) {
+			toolbar.setBackgroundColor(ContextCompat.getColor(this, customToolbarColorizer.getBackgroundColor()));
+			int textColor = ContextCompat.getColor(this, customToolbarColorizer.getTextColor());
+			toolbar.setTitleTextColor(textColor);
+			toolbar.setSubtitleTextColor(textColor);
 		}
-		if (isValidTextColor()) {
-			int color = ContextCompat.getColor(this, textColorId);
-			toolbar.setTitleTextColor(color);
-			toolbar.setSubtitleTextColor(color);
-		}
+
 		ActionBar actionBar = getSupportActionBar();
 
 		if (actionBar != null) {
@@ -153,8 +141,8 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (isValidTextColor()) {
-			int color = ContextCompat.getColor(this, textColorId);
+		if (customToolbarColorizer != null) {
+			int color = ContextCompat.getColor(this, customToolbarColorizer.getTextColor());
 			for (int i = 0; i < toolbar.getChildCount(); i++) {
 				View v = toolbar.getChildAt(i);
 				if (v instanceof ImageButton) {

@@ -86,7 +86,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		super.initView(savedInstanceState);
-		if (isValidTextColor()) {
+		if (customToolbarColorizer != null) {
 			setQueryTextColor();
 		}
 	}
@@ -254,7 +254,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	}
 
 	private void setQueryTextColor() {
-		findChildViews(searchView, ContextCompat.getColor(this, textColorId));
+		findChildViews(searchView, ContextCompat.getColor(this, customToolbarColorizer.getTextColor()));
 	}
 
 	private void findChildViews(ViewGroup curr, int color) {

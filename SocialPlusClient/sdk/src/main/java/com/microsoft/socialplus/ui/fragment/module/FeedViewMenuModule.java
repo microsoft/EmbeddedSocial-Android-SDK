@@ -46,9 +46,10 @@ public class FeedViewMenuModule extends Module {
 			int iconId = typedArray.getResourceId(attrId, 0);
 			typedArray.recycle();
 			viewSwitch.setIcon(iconId);
-			if (BaseActivity.isValidTextColor()) {
+			BaseActivity.ToolbarColorizer colorizer = BaseActivity.getToolbarColorizer();
+			if (colorizer != null) {
 				viewSwitch.getIcon().setColorFilter(
-						ContextCompat.getColor(getContext(),BaseActivity.getTextColor()),
+						ContextCompat.getColor(getContext(), colorizer.getTextColor()),
 						PorterDuff.Mode.SRC_ATOP);
 			}
 
