@@ -39,7 +39,7 @@ public class ReportUserRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = USER_REPORTS.postReport(reportUserHandle, request, bearerToken);
+			serviceResponse = USER_REPORTS.postReport(reportUserHandle, request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

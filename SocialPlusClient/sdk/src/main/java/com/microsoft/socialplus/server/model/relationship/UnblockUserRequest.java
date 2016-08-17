@@ -24,7 +24,7 @@ public class UnblockUserRequest extends UserRelationshipRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = BLOCKED.deleteBlockedUser(relationshipUserHandle, bearerToken);
+            serviceResponse = BLOCKED.deleteBlockedUser(relationshipUserHandle, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

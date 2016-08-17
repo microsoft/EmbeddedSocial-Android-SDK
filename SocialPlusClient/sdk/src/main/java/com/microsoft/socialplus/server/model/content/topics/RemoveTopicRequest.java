@@ -24,7 +24,7 @@ public class RemoveTopicRequest extends GenericTopicRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.deleteTopic(topicHandle, bearerToken);
+            serviceResponse = TOPICS.deleteTopic(topicHandle, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

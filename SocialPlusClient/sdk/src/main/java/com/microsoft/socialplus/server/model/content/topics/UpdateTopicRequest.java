@@ -31,7 +31,7 @@ public class UpdateTopicRequest extends GenericTopicRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = TOPICS.putTopic(topicHandle, request, bearerToken);
+			serviceResponse = TOPICS.putTopic(topicHandle, request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

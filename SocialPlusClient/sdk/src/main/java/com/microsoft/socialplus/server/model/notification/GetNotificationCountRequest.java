@@ -20,7 +20,7 @@ public class GetNotificationCountRequest extends UserRequest {
     public CountResponse send() throws NetworkRequestException {
         ServiceResponse<CountResponse> serviceResponse;
         try {
-            serviceResponse = NOTIFICATIONS.getNotificationsCount(bearerToken);
+            serviceResponse = NOTIFICATIONS.getNotificationsCount(authorization);
         } catch (ServiceException |IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

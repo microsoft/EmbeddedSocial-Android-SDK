@@ -20,7 +20,7 @@ public class GetMyProfileRequest extends UserRequest {
     public GetUserProfileResponse send() throws NetworkRequestException {
         ServiceResponse<UserProfileView> serviceResponse;
         try {
-            serviceResponse = USERS.getMyProfile(bearerToken);
+            serviceResponse = USERS.getMyProfile(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

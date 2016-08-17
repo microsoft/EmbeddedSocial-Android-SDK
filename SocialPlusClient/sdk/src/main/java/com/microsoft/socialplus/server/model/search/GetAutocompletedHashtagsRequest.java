@@ -17,7 +17,7 @@ public class GetAutocompletedHashtagsRequest extends SearchRequest {
     public AutocompletedHashtagsResponse send() throws NetworkRequestException {
         ServiceResponse<List<String>> serviceResponse;
         try {
-            serviceResponse = HASHTAGS.getAutocompletedHashtags(query, appKey, bearerToken, null);
+            serviceResponse = HASHTAGS.getAutocompletedHashtags(query, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

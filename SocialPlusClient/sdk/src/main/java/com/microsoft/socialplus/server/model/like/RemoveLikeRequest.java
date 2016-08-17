@@ -26,13 +26,13 @@ public class RemoveLikeRequest extends GenericLikeRequest {
         try {
             switch (contentType) {
                 case TOPIC:
-                    serviceResponse = TOPIC_LIKES.deleteLike(contentHandle, bearerToken);
+                    serviceResponse = TOPIC_LIKES.deleteLike(contentHandle, authorization);
                     break;
                 case COMMENT:
-                    serviceResponse = COMMENT_LIKES.deleteLike(contentHandle, bearerToken);
+                    serviceResponse = COMMENT_LIKES.deleteLike(contentHandle, authorization);
                     break;
                 case REPLY:
-                    serviceResponse = REPLY_LIKES.deleteLike(contentHandle, bearerToken);
+                    serviceResponse = REPLY_LIKES.deleteLike(contentHandle, authorization);
                     break;
                 default:
                     throw new IllegalStateException("Unknown type for like");

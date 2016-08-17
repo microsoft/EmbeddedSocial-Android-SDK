@@ -35,7 +35,7 @@ public class AddImageRequest extends UserRequest {
 	public String send() throws NetworkRequestException {
 		ServiceResponse<PostImageResponse> serviceResponse;
 		try {
-			serviceResponse = IMAGES.postImage(imageType, bearerToken, image);
+			serviceResponse = IMAGES.postImage(imageType, authorization, image);
 		} catch (ServiceException |IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

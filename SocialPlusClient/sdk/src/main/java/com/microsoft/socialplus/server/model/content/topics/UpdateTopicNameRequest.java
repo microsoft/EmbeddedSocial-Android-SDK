@@ -33,7 +33,7 @@ public class UpdateTopicNameRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.putTopicName(topicName, requestBody, bearerToken, appKey, null);
+            serviceResponse = TOPICS.putTopicName(topicName, requestBody, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

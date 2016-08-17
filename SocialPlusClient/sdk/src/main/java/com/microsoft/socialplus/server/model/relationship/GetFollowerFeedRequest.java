@@ -11,7 +11,6 @@ import com.microsoft.socialplus.autorest.UserFollowersOperationsImpl;
 import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UsersListResponse;
 
@@ -29,8 +28,8 @@ public final class GetFollowerFeedRequest extends GetFollowFeedRequest {
 	public UsersListResponse send() throws NetworkRequestException {
 		ServiceResponse<FeedResponseUserCompactView> serviceResponse;
 		try {
-			serviceResponse = USER_FOLLOWERS.getFollowers(getQueryUserHandle(), bearerToken,
-					getCursor(), getBatchSize(), appKey, null);
+			serviceResponse = USER_FOLLOWERS.getFollowers(getQueryUserHandle(), authorization,
+					getCursor(), getBatchSize());
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

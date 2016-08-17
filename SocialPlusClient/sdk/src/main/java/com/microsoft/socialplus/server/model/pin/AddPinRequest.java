@@ -9,7 +9,6 @@ package com.microsoft.socialplus.server.model.pin;
 import com.microsoft.socialplus.autorest.models.PostPinRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.base.utils.ObjectUtils;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class AddPinRequest extends GenericPinRequest {
         request.setTopicHandle(topicHandle);
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = PINS.postPin(request, bearerToken);
+            serviceResponse = PINS.postPin(request, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

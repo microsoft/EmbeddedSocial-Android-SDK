@@ -15,14 +15,14 @@ import com.microsoft.socialplus.server.model.UsersListResponse;
 
 import java.io.IOException;
 
-public class GetMyFollowingFeedRequest extends FeedUserRequest {
+public class GetMyFollowingUsersFeedRequest extends FeedUserRequest {
 
     @Override
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
             serviceResponse =
-                    MY_FOLLOWING.getFollowing(bearerToken, getCursor(), getBatchSize(), appKey, null);
+                    MY_FOLLOWING.getFollowingUsers(authorization, getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

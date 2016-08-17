@@ -59,13 +59,13 @@ public class ReportContentRequest extends UserRequest {
 		try {
 			switch (contentType) {
 				case TOPIC:
-					serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, bearerToken);
+					serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, authorization);
 					break;
 				case COMMENT:
-					serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, bearerToken);
+					serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, authorization);
 					break;
 				case REPLY:
-					serviceResponse = REPLY_REPORT.postReport(contentHandle, request, bearerToken);
+					serviceResponse = REPLY_REPORT.postReport(contentHandle, request, authorization);
 					break;
 				default:
 					throw new IllegalStateException("Unknown type for like");

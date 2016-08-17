@@ -6,7 +6,6 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -21,7 +20,7 @@ public class SignOutRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = SESSION.deleteSession(bearerToken);
+            serviceResponse = SESSION.deleteSession(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

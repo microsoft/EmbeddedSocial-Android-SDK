@@ -9,7 +9,6 @@ package com.microsoft.socialplus.server.model.notification;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.OperatingSystemType;
 import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class UnRegisterPushNotificationRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = PUSH_REGISTRATION.deletePushRegistration(platform, registrationID, bearerToken);
+			serviceResponse = PUSH_REGISTRATION.deletePushRegistration(platform, registrationID, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

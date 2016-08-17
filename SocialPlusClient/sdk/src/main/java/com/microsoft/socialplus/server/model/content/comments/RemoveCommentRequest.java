@@ -24,7 +24,7 @@ public class RemoveCommentRequest extends GenericCommentRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = COMMENTS.deleteComment(commentHandle, bearerToken);
+			serviceResponse = COMMENTS.deleteComment(commentHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

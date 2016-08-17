@@ -17,7 +17,6 @@ import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.account.LinkThirdPartyRequest;
-import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.ui.util.SocialNetworkAccount;

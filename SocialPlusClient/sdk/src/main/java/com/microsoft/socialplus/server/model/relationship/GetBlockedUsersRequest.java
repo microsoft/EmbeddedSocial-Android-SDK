@@ -15,8 +15,7 @@ public class GetBlockedUsersRequest extends FeedUserRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = BLOCKED.getBlockedUsers(bearerToken, getCursor(),
-                    getBatchSize(), appKey, null);
+            serviceResponse = BLOCKED.getBlockedUsers(authorization, getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

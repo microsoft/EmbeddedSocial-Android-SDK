@@ -38,7 +38,7 @@ public class AddCommentRequest extends UserRequest {
 	public AddCommentResponse send() throws NetworkRequestException {
 		ServiceResponse<PostCommentResponse> serviceResponse;
 		try {
-			serviceResponse = TOPIC_COMMENTS.postComment(topicHandle, request, bearerToken);
+			serviceResponse = TOPIC_COMMENTS.postComment(topicHandle, request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

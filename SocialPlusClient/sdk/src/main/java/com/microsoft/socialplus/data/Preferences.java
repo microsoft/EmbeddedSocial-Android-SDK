@@ -31,7 +31,7 @@ public class Preferences {
 	private static final String PENDING_ACTION = "pending_action";
 	private static final String DISPLAY_METHOD = "display_method";
 	private static final String USE_STAGGERED_LAYOUT_MANAGER = "use_slm";
-	private static final String BEARER_TOKEN = "bearerToken";
+	private static final String AUTHORIZATION = "authorization";
 
 	private final SharedPreferences sharedPreferences;
 	/**
@@ -75,17 +75,17 @@ public class Preferences {
 	}
 
 	/**
-	 * Gets current user's current session token (prepended with "Bearer "). null if no session exists
+	 * Gets current user's current session token. null if no session exists
 	 */
-	public String getBearerToken() {
-		return sharedPreferences.getString(BEARER_TOKEN, null);
+	public String getAuthorizationToken() {
+		return sharedPreferences.getString(AUTHORIZATION, null);
 	}
 
 	/**
-	 * Stores current user's current session token (prepended with "Bearer ").
+	 * Stores current user's current session token.
 	 */
-	public void setBearerToken(String bearerToken) {
-		editor().putString(BEARER_TOKEN, bearerToken).apply();
+	public void setAuthorizationToken(String authorizationToken) {
+		editor().putString(AUTHORIZATION, authorizationToken).apply();
 	}
 
 	/**

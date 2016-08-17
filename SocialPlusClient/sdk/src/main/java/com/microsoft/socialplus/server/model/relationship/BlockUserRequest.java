@@ -27,7 +27,7 @@ public class BlockUserRequest extends UserRelationshipRequest {
         request.setUserHandle(relationshipUserHandle);
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = BLOCKED.postBlockedUser(request, bearerToken);
+            serviceResponse = BLOCKED.postBlockedUser(request, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

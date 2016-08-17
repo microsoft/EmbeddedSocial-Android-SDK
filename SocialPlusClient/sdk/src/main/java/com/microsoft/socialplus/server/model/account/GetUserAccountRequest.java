@@ -16,7 +16,7 @@ public class GetUserAccountRequest extends UserRequest {
     public GetUserAccountRequest() {}
 
     public GetUserAccountRequest(String bearerToken) {
-        this.bearerToken = bearerToken;
+        this.authorization = bearerToken;
     }
 
     @Override
@@ -24,8 +24,8 @@ public class GetUserAccountRequest extends UserRequest {
         ServiceResponse<UserProfileView> myProfileResponse;
         ServiceResponse<List<LinkedAccountView>> myLinkedAccountsResponse;
         try {
-            myProfileResponse = USERS.getMyProfile(bearerToken);
-            myLinkedAccountsResponse = LINKED_ACCOUNTS.getLinkedAccounts(bearerToken);
+            myProfileResponse = USERS.getMyProfile(authorization);
+            myLinkedAccountsResponse = LINKED_ACCOUNTS.getLinkedAccounts(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

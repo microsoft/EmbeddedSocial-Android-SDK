@@ -35,7 +35,7 @@ public class GetTopicRequest extends GenericTopicRequest {
 	public GetTopicResponse send() throws NetworkRequestException {
 		ServiceResponse<TopicView> serviceResponse;
 		try {
-			serviceResponse = TOPICS.getTopic(topicHandle, appKey, bearerToken, null);
+			serviceResponse = TOPICS.getTopic(topicHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

@@ -19,26 +19,23 @@ import java.io.IOException;
 /**
  *
  */
-public class SignInWithThirdPartyRequest extends UserRequest {
+public class CreateSessionRequest extends UserRequest {
 
 	private final PostSessionRequest request;
 
-	public SignInWithThirdPartyRequest(
-			IdentityProvider identityProvider,
-			String thirdPartyAccessToken) {
+	public CreateSessionRequest(IdentityProvider identityProvider, String accessToken, String requestToken) {
 		request = new PostSessionRequest();
-		request.setIdentityProvider(identityProvider);
-		request.setAccessToken(thirdPartyAccessToken);
-		//TODO
-		//request.setRequestToken(requestToken);
+		request.setUserHandle(getUserHandle());
 		request.setInstanceId(instanceId);
+
+		authorization = createThirdPartyAuthorization(identityProvider, accessToken, requestToken);
 	}
 
 	@Override
 	public AuthenticationResponse send() throws NetworkRequestException {
 		ServiceResponse<PostSessionResponse> serviceResponse;
 		try {
-			serviceResponse = SESSION.postSession(request, appKey, bearerToken, null);
+			serviceResponse = SESSION.postSession(request, authorization);
         } catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

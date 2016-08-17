@@ -14,7 +14,6 @@ import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserProf
 import com.microsoft.socialplus.data.storage.request.wrapper.account.GetUserWrapper;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
 import com.microsoft.socialplus.server.model.account.GetLinkedAccountsRequest;
@@ -31,10 +30,7 @@ import com.microsoft.socialplus.server.model.account.UnlinkUserThirdPartyAccount
 import com.microsoft.socialplus.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.socialplus.server.model.account.UpdateUserPublicAccountInfoRequest;
 import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest;
-import com.microsoft.socialplus.server.model.account.UserPasswordResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
-import com.microsoft.socialplus.server.model.view.UserProfileView;
 
 import java.util.List;
 

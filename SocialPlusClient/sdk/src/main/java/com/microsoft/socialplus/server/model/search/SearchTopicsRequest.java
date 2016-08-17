@@ -19,7 +19,7 @@ public class SearchTopicsRequest extends SearchRequest {
         ServiceResponse<FeedResponseTopicView> serviceResponse;
         try {
             serviceResponse =
-                    SEARCH.getTopics(query, getIntCursor(), getBatchSize(), appKey, bearerToken, null);
+                    SEARCH.getTopics(query, authorization, getIntCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

@@ -24,7 +24,7 @@ public class UnfollowUserRequest extends UserRelationshipRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = MY_FOLLOWING.deleteFollowing(relationshipUserHandle, bearerToken);
+            serviceResponse = MY_FOLLOWING.deleteFollowingUser(relationshipUserHandle, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

@@ -28,7 +28,7 @@ public class UnlinkUserThirdPartyAccountRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider, bearerToken);
+			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

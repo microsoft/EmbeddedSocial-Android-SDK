@@ -37,8 +37,8 @@ public final class GetCommentFeedRequest extends FeedUserRequest {
 	public GetCommentFeedResponse send() throws NetworkRequestException {
 		ServiceResponse<FeedResponseCommentView> serviceResponse;
 		try {
-			serviceResponse = TOPIC_COMMENTS.getTopicComments(topicHandle, getCursor(),
-					getBatchSize(), appKey, bearerToken, null);
+			serviceResponse = TOPIC_COMMENTS.getTopicComments(topicHandle, authorization,
+					getCursor(), getBatchSize());
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

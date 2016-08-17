@@ -28,8 +28,8 @@ public final class GetFollowingFeedRequest extends GetFollowFeedRequest {
     public UsersListResponse send() throws NetworkRequestException {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
-            serviceResponse = USER_FOLLOWING.getFollowing(getQueryUserHandle(), bearerToken,
-                    getCursor(), getBatchSize(), appKey, null);
+            serviceResponse = USER_FOLLOWING.getFollowing(getQueryUserHandle(), authorization,
+                    getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

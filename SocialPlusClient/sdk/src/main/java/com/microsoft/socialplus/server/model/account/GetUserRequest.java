@@ -29,7 +29,7 @@ public class GetUserRequest extends UserRequest {
 	public GetUserResponse send() throws NetworkRequestException {
 		ServiceResponse<UserProfileView> serviceResponse;
 		try {
-			serviceResponse = USERS.getUser(queryUserHandle, appKey, bearerToken, null);
+			serviceResponse = USERS.getUser(queryUserHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

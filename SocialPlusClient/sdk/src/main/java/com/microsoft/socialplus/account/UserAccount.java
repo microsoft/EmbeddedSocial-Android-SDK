@@ -83,7 +83,7 @@ public class UserAccount {
 		accountDetails = newAccountDetails;
 		AccountDataStorage.store(context, newAccountDetails);
 		Preferences.getInstance().setUserHandle(newUserHandle);
-		Preferences.getInstance().setBearerToken(sessionToken);
+		Preferences.getInstance().setAuthorizationToken(sessionToken);
 		EventBus.post(new UserSignedInEvent(messageId));
 	}
 
@@ -122,7 +122,7 @@ public class UserAccount {
 		ActionsLauncher.signOut(context);
 		AccountDataStorage.clear(context);
 		Preferences.getInstance().setUserHandle(null);
-		Preferences.getInstance().setBearerToken(null);
+		Preferences.getInstance().setAuthorizationToken(null);
 		Preferences.getInstance().resetNotificationCount();
 		accountDetails = null;
 		userHandle = null;

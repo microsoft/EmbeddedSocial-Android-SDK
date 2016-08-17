@@ -32,7 +32,7 @@ public class AddTopicNameRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.postTopicName(requestBody, bearerToken, appKey, null);
+            serviceResponse = TOPICS.postTopicName(requestBody, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

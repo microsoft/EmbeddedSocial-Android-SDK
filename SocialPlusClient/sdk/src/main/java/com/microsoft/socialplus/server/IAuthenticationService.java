@@ -6,12 +6,12 @@
 
 package com.microsoft.socialplus.server;
 
+import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.auth.GetThirdPartyTokenRequest;
-import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
+import com.microsoft.socialplus.server.model.auth.GetRequestTokenRequest;
+import com.microsoft.socialplus.server.model.auth.CreateSessionRequest;
 import com.microsoft.socialplus.server.model.auth.SignOutRequest;
-import com.microsoft.socialplus.server.model.auth.ThirdPartyTokenResponse;
 
 import retrofit2.Response;
 
@@ -20,12 +20,12 @@ import retrofit2.Response;
  */
 public interface IAuthenticationService {
 
-	AuthenticationResponse signInWithThirdParty(SignInWithThirdPartyRequest request)
+	AuthenticationResponse signInWithThirdParty(CreateSessionRequest request)
 			throws NetworkRequestException;
 
 	Response signOut(SignOutRequest request)
 			throws NetworkRequestException;
 
-	ThirdPartyTokenResponse getThirdPartyRequestToken(GetThirdPartyTokenRequest request)
+	GetRequestTokenResponse getThirdPartyRequestToken(GetRequestTokenRequest request)
 		throws NetworkRequestException;
 }

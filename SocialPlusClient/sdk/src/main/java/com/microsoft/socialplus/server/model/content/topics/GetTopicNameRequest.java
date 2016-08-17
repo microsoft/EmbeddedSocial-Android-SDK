@@ -29,7 +29,7 @@ public class GetTopicNameRequest extends UserRequest {
     public String send() throws NetworkRequestException {
         ServiceResponse<GetTopicNameResponse> serviceResponse;
         try {
-            serviceResponse = TOPICS.getTopicName(topicName, publisherType, appKey, bearerToken, null);
+            serviceResponse = TOPICS.getTopicName(topicName, publisherType, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

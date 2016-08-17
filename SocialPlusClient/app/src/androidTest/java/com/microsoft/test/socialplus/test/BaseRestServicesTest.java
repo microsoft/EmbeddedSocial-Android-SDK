@@ -48,7 +48,7 @@ public abstract class BaseRestServicesTest extends ApplicationTestCase<SocialPlu
 
 		userRequest.setUserHandle(response.getUserHandle());
 		userRequest.setUserSessionSignature(response.getSessionToken());
-		userRequest.setBearerToken("Bearer " + response.getSessionToken());
+		userRequest.setAuthorization("Bearer " + response.getSessionToken());
 		return userRequest;
 	}
 
@@ -62,7 +62,7 @@ public abstract class BaseRestServicesTest extends ApplicationTestCase<SocialPlu
 				.setFirstName(firstName)
 				.setLastName(lastName)
 				.setInstanceId("1")
-				.setAccessToken("a17ed05c-c730-445e-ad92-4c4ad005149e:") // Auth bypass
+				// TODO this is broken and requires code to interface with AAD to get a token
 				.build();
 		return getServiceProvider().getAccountService().createUser(request);
 

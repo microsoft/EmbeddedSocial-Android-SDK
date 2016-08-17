@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.actions.Action;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.model.AccountData;
@@ -21,10 +22,11 @@ import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.exception.NotFoundException;
+import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.auth.SignInWithThirdPartyRequest;
+import com.microsoft.socialplus.server.model.auth.CreateSessionRequest;
 import com.microsoft.socialplus.service.IntentExtras;
 import com.microsoft.socialplus.service.ServiceAction;
 import com.microsoft.socialplus.service.WorkerService;
@@ -56,9 +58,10 @@ public class SignInHandler extends ActionHandler {
 	}
 
 	private void signinWithThirdParty(Action action, SocialNetworkAccount thirdPartyAccount) {
-		SignInWithThirdPartyRequest signInWithThirdPartyRequest = new SignInWithThirdPartyRequest(
+		CreateSessionRequest signInWithThirdPartyRequest = new CreateSessionRequest(
 				thirdPartyAccount.getAccountType(),
-				thirdPartyAccount.getThirdPartyAccessToken());
+				thirdPartyAccount.getThirdPartyAccessToken(),
+				thirdPartyAccount.getThirdPartyRequestToken());
 		try {
 			AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
 			handleSuccessfulResult(action, signInResponse);
@@ -79,7 +82,7 @@ public class SignInHandler extends ActionHandler {
 			throws NetworkRequestException {
 
 		String userHandle = response.getUserHandle();
-		String sessionToken = "Bearer " + response.getSessionToken();
+		String sessionToken = UserRequest.createSessionAuthorization(response.getSessionToken());
 		GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
 		GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
 		AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
