@@ -15,8 +15,8 @@ public class GetUserAccountRequest extends UserRequest {
 
     public GetUserAccountRequest() {}
 
-    public GetUserAccountRequest(String bearerToken) {
-        this.authorization = bearerToken;
+    public GetUserAccountRequest(String authorization) {
+        this.authorization = authorization;
     }
 
     @Override
