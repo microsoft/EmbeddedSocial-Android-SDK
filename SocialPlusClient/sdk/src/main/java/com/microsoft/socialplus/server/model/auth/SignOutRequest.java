@@ -16,6 +16,15 @@ import java.io.IOException;
 import retrofit2.Response;
 
 public class SignOutRequest extends UserRequest {
+
+    public SignOutRequest() {
+
+    }
+
+    public SignOutRequest(String authorization) {
+        this.authorization = authorization;
+    }
+
     @Override
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;

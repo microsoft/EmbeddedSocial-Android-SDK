@@ -36,10 +36,10 @@ public class SignOutHandler extends ActionHandler {
 
 	@Override
 	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		String userHandle = intent.getStringExtra(IntentExtras.USER_HANDLE);
+		String authorization = intent.getStringExtra(IntentExtras.AUTHORIZATION);
 		IAuthenticationService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAuthenticationService();
 		try {
-			SignOutRequest request = new SignOutRequest();
+			SignOutRequest request = new SignOutRequest(authorization);
 			server.signOut(request);
 		} catch (NetworkRequestException e) {
 			// ignore server errors
