@@ -117,6 +117,10 @@ public class UserRequest extends BaseRequest {
 		this.userSessionSignature = userSessionSignature;
 	}
 
+	public String getAuthorization() {
+		return authorization;
+	}
+
 	@Override
 	protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
 		// TODO

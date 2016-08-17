@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.server.model.account;
 
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.autorest.models.UserProfileView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
@@ -15,6 +16,15 @@ import com.microsoft.socialplus.server.model.UserRequest;
 import java.io.IOException;
 
 public class GetMyProfileRequest extends UserRequest {
+
+    public GetMyProfileRequest() {
+
+    }
+
+    public GetMyProfileRequest(String authorization) {
+        this.authorization = authorization;
+    }
+
 
     @Override
     public GetUserProfileResponse send() throws NetworkRequestException {

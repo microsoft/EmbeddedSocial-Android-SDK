@@ -65,6 +65,7 @@ public class CreateAccountHandler extends ActionHandler {
                 .setBio(createAccountData.getBio())
                 .setIdentityProvider(createAccountData.getIdentityProvider())
                 .setAccessToken(createAccountData.getThirdPartyAccessToken())
+                .setRequestToken(createAccountData.getThirdPartyRequestToken())
                 .build();
         try {
             AuthenticationResponse createUserResponse = accountService.createUser(createUserRequest);

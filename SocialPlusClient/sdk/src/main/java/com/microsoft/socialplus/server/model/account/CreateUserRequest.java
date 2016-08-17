@@ -22,7 +22,7 @@ public final class CreateUserRequest extends UserRequest {
 	private PostUserRequest body;
 	private IdentityProvider identityProvider;
 	private String accessToken;
-	private String requestToken; // TODO for Twitter
+	private String requestToken;
 
 	private CreateUserRequest() {
 		body = new PostUserRequest();
@@ -74,6 +74,11 @@ public final class CreateUserRequest extends UserRequest {
 
 		public Builder setAccessToken(String accessToken) {
 			request.accessToken = accessToken;
+			return this;
+		}
+
+		public Builder setRequestToken(String requestToken) {
+			request.requestToken = requestToken;
 			return this;
 		}
 

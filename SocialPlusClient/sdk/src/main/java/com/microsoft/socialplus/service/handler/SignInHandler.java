@@ -20,11 +20,14 @@ import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
+import com.microsoft.socialplus.server.exception.InternalServerException;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.exception.NotFoundException;
 import com.microsoft.socialplus.server.model.UserRequest;
+import com.microsoft.socialplus.server.model.account.GetMyProfileRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
+import com.microsoft.socialplus.server.model.account.GetUserProfileResponse;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
 import com.microsoft.socialplus.server.model.auth.CreateSessionRequest;
 import com.microsoft.socialplus.service.IntentExtras;
@@ -62,10 +65,21 @@ public class SignInHandler extends ActionHandler {
 				thirdPartyAccount.getAccountType(),
 				thirdPartyAccount.getThirdPartyAccessToken(),
 				thirdPartyAccount.getThirdPartyRequestToken());
+
+
+		String authorization = signInWithThirdPartyRequest.getAuthorization();
+		GetMyProfileRequest getMyProfileRequest = new GetMyProfileRequest(authorization);
+
 		try {
+			// Determine the user's user handle
+			GetUserProfileResponse getUserProfileResponse = getMyProfileRequest.send();
+
+			// set the user handle and attempt sign in
+			signInWithThirdPartyRequest.setUserHandle(getUserProfileResponse.getUser().getHandle());
 			AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
 			handleSuccessfulResult(action, signInResponse);
-		} catch (NotFoundException e) {
+		} catch (InternalServerException e) {//TODO replace with: NotFoundException e) {
+			// User handle not found; create an account
 			Intent i = new Intent(context, CreateProfileActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			Bundle extras = new Bundle();
