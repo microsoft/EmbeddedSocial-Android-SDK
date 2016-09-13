@@ -29,13 +29,15 @@
 			android:layout_weight="1"
 			/>
 
-		<ImageView
+		<TextView
 			android:id="@+id/sp_logo"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:gravity="center"
 			android:paddingTop="15dp"
-			android:scaleType="center"
-			android:src="?attr/sp_largeLogo"
+			android:textSize="35dp"
+			android:textStyle="bold"
+			android:text="@string/sp_lib_title"
 			/>
 
 		<FrameLayout
