@@ -19,7 +19,7 @@ import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.actions.Action;
 import com.microsoft.socialplus.auth.AbstractAuthenticator;
 import com.microsoft.socialplus.auth.FacebookAuthenticator;
-import com.microsoft.socialplus.auth.GoogleWebAuthenticator;
+import com.microsoft.socialplus.auth.GoogleNativeAuthenticator;
 import com.microsoft.socialplus.auth.IAuthenticationCallback;
 import com.microsoft.socialplus.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.socialplus.auth.TwitterWebAuthenticator;
@@ -128,7 +128,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void signInWithGoogle() {
-		startAuthentication(new GoogleWebAuthenticator(this, this));
+		startAuthentication(new GoogleNativeAuthenticator(this, this));
 	}
 
 	private void signInWithTwitter() {

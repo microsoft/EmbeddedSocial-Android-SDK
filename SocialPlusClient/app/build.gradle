@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'com.android.application'
 
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         applicationId "com.microsoft.socialplus"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 22
         versionCode computeVersionCode()
         versionName computeVersionName()
@@ -39,7 +39,7 @@ android {
     signingConfigs {
         develop.initWith(signingConfigs.debug)
         develop {
-            storeFile file("debug.keystore")
+            storeFile file('debug.keystore')
         }
     }
 
@@ -110,3 +110,5 @@ def clearOutputFolder() {
 }
 
 clearOutputFolder()
+
+apply plugin: 'com.google.gms.google-services'

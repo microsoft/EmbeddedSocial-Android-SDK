@@ -16,18 +16,36 @@
 			android:launchMode="singleTop"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
+
+		<activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<category android:name="android.intent.category.BROWSABLE"/>
+				<data android:scheme="com.microsoft.socialplus"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.microsoft.socialplus.ui.activity.SignInActivity"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|layoutDirection"
+			android:label="@string/sp_screen_title_signin"
+			android:windowSoftInputMode="stateHidden"
+			android:theme="@style/SocialPlusSdkAppTheme.Stub">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+
 		<activity
 			android:name="com.microsoft.socialplus.ui.activity.PopularActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_popular"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
-			/>
-		<activity
-			android:name="com.microsoft.socialplus.ui.activity.SignInActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-			android:label="@string/sp_screen_title_signin"
-			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity

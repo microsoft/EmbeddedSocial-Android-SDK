@@ -81,45 +81,6 @@
           "status": 1
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:780162482042:android:d711eba878a361d5",
-        "android_client_info": {
-          "package_name": "com.microsoft.socialplus.sdk"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "780162482042-kjj30vq320e9i5mn9la11qrhtrgmli3s.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.microsoft.socialplus.sdk",
-            "certificate_hash": "B07DC74D8BF065F74A297018A61B557949B354CB"
-          }
-        },
-        {
-          "client_id": "780162482042-6djo7tqugaers4c6pcphm7v1c9vbenbf.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCtWmoegayqJO-OyKAy2N_7zW1WE64djEU"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
-        }
-      }
     }
   ],
   "configuration_version": "1"

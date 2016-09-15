@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.auth.AbstractAuthenticator;
 import com.microsoft.socialplus.auth.FacebookAuthenticator;
-import com.microsoft.socialplus.auth.GoogleWebAuthenticator;
+import com.microsoft.socialplus.auth.GoogleNativeAuthenticator;
 import com.microsoft.socialplus.auth.IAuthenticationCallback;
 import com.microsoft.socialplus.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.socialplus.auth.TwitterWebAuthenticator;
@@ -103,7 +103,7 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 				authenticator = new MicrosoftLiveAuthenticator(this, this);
 				break;
 			case GOOGLE:
-				authenticator = new GoogleWebAuthenticator(this, this);
+				authenticator = new GoogleNativeAuthenticator(this, this);
 				break;
 			case TWITTER:
 				authenticator = new TwitterWebAuthenticator(this, this);
