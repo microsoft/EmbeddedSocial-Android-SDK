@@ -100,6 +100,10 @@ public final class Options {
 		return application.appKey;
 	}
 
+	public void setAppKey(String appKey) {
+		application.appKey = appKey;
+	}
+
 	public String getFacebookApplicationId() {
 		return socialNetworks.facebook.clientId;
 	}

@@ -67,25 +67,38 @@ public final class SocialPlus {
 	 */
 	private SocialPlus() {  }
 
-	/**
-	 * Initializes Social Plus SDK.
-	 * @param application   the application instance
-	 * @param configResId   resource id of the JSON configuration file for the SDK
-	 */
-	public static void init(Application application, @RawRes int configResId) {
-		if (BuildConfig.DEBUG) {
-			initLogging(application);
-		}
-		InputStream is = application.getResources().openRawResource(configResId);
-		Reader reader = new InputStreamReader(is);
-		Options options = new Gson().fromJson(reader, Options.class);
-		options.verify();
-		GlobalObjectRegistry.addObject(options);
-		initGlobalObjects(application, options);
-		WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
-		// TODO: Added to main activity access token tracking
-		// https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
-	}
+    /**
+     * Initializes Social Plus SDK.
+     * @param application   the application instance
+     * @param configResId   resource id of the JSON configuration file for the SDK
+     */
+    public static void init(Application application, @RawRes int configResId) {
+        init(application, configResId, null);
+    }
+
+    /**
+     * Initializes Social Plus SDK.
+     * @param application   the application instance
+     * @param configResId   resource id of the JSON configuration file for the SDK
+     * @param appKey        application key
+     */
+    public static void init(Application application, @RawRes int configResId, String appKey) {
+        if (BuildConfig.DEBUG) {
+            initLogging(application);
+        }
+        InputStream is = application.getResources().openRawResource(configResId);
+        Reader reader = new InputStreamReader(is);
+        Options options = new Gson().fromJson(reader, Options.class);
+        if (appKey != null) {
+            options.setAppKey(appKey);
+        }
+        options.verify();
+        GlobalObjectRegistry.addObject(options);
+        initGlobalObjects(application, options);
+        WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
+        // TODO: Added to main activity access token tracking
+        // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
+    }
 
 	/**
 	 * Initializes navigation drawer.
