@@ -29,7 +29,7 @@ android {
 
     defaultConfig {
         applicationId "com.microsoft.socialplus"
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 22
         versionCode computeVersionCode()
         versionName computeVersionName()

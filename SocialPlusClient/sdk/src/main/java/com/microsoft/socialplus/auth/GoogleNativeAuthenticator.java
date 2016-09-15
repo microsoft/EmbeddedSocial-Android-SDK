@@ -18,6 +18,7 @@ import com.microsoft.socialplus.ui.activity.SignInActivity;
 import net.openid.appauth.AuthorizationRequest;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
+import net.openid.appauth.ResponseTypeValues;
 
 /**
  * Implements Google authentication process using Google Play Services SDK.
@@ -36,7 +37,8 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	public void makeAuthRequest() {
 		AuthorizationServiceConfiguration serviceConfiguration = new AuthorizationServiceConfiguration(
 				Uri.parse("https://accounts.google.com/o/oauth2/v2/auth") /* auth endpoint */,
-				Uri.parse("https://www.googleapis.com/oauth2/v4/token") /* token endpoint */
+				Uri.parse("https://www.googleapis.com/oauth2/v4/token") /* token endpoint */,
+				null
 		);
 
 		String clientId = "780162482042-2rpd1e6fq2517u3i7moo2lfppan675v5.apps.googleusercontent.com";
@@ -45,7 +47,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 		AuthorizationRequest request = new AuthorizationRequest.Builder(
 				serviceConfiguration,
 				clientId,
-				AuthorizationRequest.RESPONSE_TYPE_CODE,
+				ResponseTypeValues.CODE,
 				redirectUri)
 				.setScope("profile email") //TODO set scope appropriately
 				.build();
