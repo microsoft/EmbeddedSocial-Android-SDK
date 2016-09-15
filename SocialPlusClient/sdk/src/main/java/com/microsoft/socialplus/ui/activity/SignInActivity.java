@@ -72,7 +72,8 @@ public class SignInActivity extends BaseActivity {
 
 	private void checkIntent(Intent intent) {
 		if (intent != null) {
-			if (intent.getAction().equals("com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE")) {
+			String action = intent.getAction();
+			if (action != null && action.equals("com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE")) {
 				if (!intent.hasExtra(IS_USED)) {
 					handleAuthorizationResponse(intent);
 					intent.putExtra(IS_USED, true);
