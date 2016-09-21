@@ -22,7 +22,7 @@
 				<action android:name="android.intent.action.VIEW"/>
 				<category android:name="android.intent.category.DEFAULT"/>
 				<category android:name="android.intent.category.BROWSABLE"/>
-				<data android:scheme="com.microsoft.socialplus"/>
+				<data android:scheme="@string/sp_google_auth_callback"/>
 			</intent-filter>
 		</activity>
 		<activity
@@ -30,6 +30,11 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|layoutDirection"
 			android:label="@string/sp_screen_title_signin"
 			android:windowSoftInputMode="stateHidden"
+			android:theme="@style/SocialPlusSdkAppTheme.Stub">
+		</activity>
+		<activity
+			android:name="com.microsoft.socialplus.ui.activity.GoogleCallbackActivity"
+			android:label="@string/sp_screen_title_signin"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub">
 			<intent-filter>
 				<action android:name="com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE"/>

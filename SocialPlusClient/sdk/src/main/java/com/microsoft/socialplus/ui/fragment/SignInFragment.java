@@ -156,8 +156,6 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
-		progressView = null;
-		buttonsView = null;
 	}
 
 	@Override

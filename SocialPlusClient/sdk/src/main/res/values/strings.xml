@@ -279,4 +279,6 @@
 	<string name="sp_account_link_error">Error when linking your account.</string>
 	<string name="sp_account_unlink_error">Error when unlinking your account.</string>
 
+	<string name="sp_google_auth_callback">com.microsoft.socialplus</string>
+	<string name="sp_google_auth_response">com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE</string>
 </resources>

@@ -28,6 +28,10 @@ public class SocialNetworkAccount implements Parcelable {
 		this.thirdPartyAccessToken = thirdPartyAccessToken;
 	}
 
+	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken) {
+		this(identityProvider, "", accessToken);
+	}
+
 	/**
 	 * Creates an instance from OAuth request token and verifier pair.
 	 * @param   identityProvider   type of account
@@ -47,7 +51,6 @@ public class SocialNetworkAccount implements Parcelable {
 	 * @return  {@link SocialNetworkAccount} instance.
 	 */
 	public static SocialNetworkAccount fromOauthCode(IdentityProvider identityProvider, String code) {
-
 		return new SocialNetworkAccount(identityProvider, "", code);
 	}
 
