@@ -63,6 +63,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 							@Nullable AuthorizationException ex) -> {
 						if (ex != null) {
 							DebugLog.logException(ex);
+							service.dispose();
 							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReciever);
 							onAuthenticationError(getFragment().getString(R.string.sp_msg_google_signin_failed));
 						} else {
@@ -88,6 +89,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 
 		PendingIntent pendingIntent = GoogleCallbackActivity.createPostAuthorizationIntent(context, request);
 		service.performAuthorizationRequest(request, pendingIntent);
+		service.dispose();
 	}
 
 	private BroadcastReceiver googleAuthReciever = new BroadcastReceiver() {
