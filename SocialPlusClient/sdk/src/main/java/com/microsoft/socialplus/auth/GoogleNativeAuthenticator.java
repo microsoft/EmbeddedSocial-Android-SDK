@@ -18,6 +18,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.ui.activity.GoogleCallbackActivity;
@@ -61,6 +62,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 				(@Nullable AuthorizationServiceConfiguration serviceConfiguration,
 							@Nullable AuthorizationException ex) -> {
 						if (ex != null) {
+							DebugLog.logException(ex);
 							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReciever);
 							onAuthenticationError(getFragment().getString(R.string.sp_msg_google_signin_failed));
 						} else {

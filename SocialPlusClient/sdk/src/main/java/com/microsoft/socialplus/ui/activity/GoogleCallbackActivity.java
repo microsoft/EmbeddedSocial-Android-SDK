@@ -15,6 +15,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.microsoft.socialplus.auth.GoogleNativeAuthenticator;
 import com.microsoft.socialplus.auth.SocialNetworkTokens;
 import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.ui.util.SocialNetworkAccount;
 
@@ -65,6 +66,7 @@ public class GoogleCallbackActivity extends SignInActivity {
         if (resp != null) {
             getAccessToken(resp);
         } else {
+            DebugLog.logException(ex);
             sendAuthFailure();
        }
     }
@@ -76,12 +78,13 @@ public class GoogleCallbackActivity extends SignInActivity {
                 new AuthorizationService.TokenResponseCallback() {
                     @Override public void onTokenRequestCompleted(
                             TokenResponse resp, AuthorizationException ex) {
-                        if (resp != null) {
+                        if (ex == null && resp != null) {
                             SocialNetworkAccount account = new SocialNetworkAccount(
                                     IdentityProvider.GOOGLE, resp.accessToken);
                             SocialNetworkTokens.google().storeToken(resp.accessToken);
                             sendAuthSuccess(account);
                         } else {
+                            DebugLog.logException(ex);
                             sendAuthFailure();
                         }
                     }
