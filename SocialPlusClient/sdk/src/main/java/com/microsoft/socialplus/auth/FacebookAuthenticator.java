@@ -55,9 +55,11 @@ public class FacebookAuthenticator extends AbstractAuthenticator {
 
 	private void notifySignInSuccess(Profile profile) {
 		SocialNetworkAccount socialNetworkAccount = new SocialNetworkAccount(
-			IdentityProvider.FACEBOOK,
-			profile.getId(),
-			AccessToken.getCurrentAccessToken().getToken()
+				IdentityProvider.FACEBOOK,
+				profile.getId(),
+				AccessToken.getCurrentAccessToken().getToken(),
+				profile.getFirstName(),
+				profile.getLastName()
 		);
 		if (authMode.canStoreToken()) {
 			SocialNetworkTokens.facebook().storeToken(AccessToken.getCurrentAccessToken());

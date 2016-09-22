@@ -102,6 +102,14 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
             userPhotoUri = savedInstanceState.getParcelable(PREF_PHOTO_URI);
             renderUserPhoto(UserAccount.getInstance().getAccountDetails());
         }
+        String firstName = thirdPartyAccount.getFirstName();
+        String lastName = thirdPartyAccount.getLastName();
+        if (firstName != null) {
+            firstNameView.setText(firstName);
+        }
+        if (lastName != null) {
+            lastNameView.setText(lastName);
+        }
     }
 
     private void onDone() {

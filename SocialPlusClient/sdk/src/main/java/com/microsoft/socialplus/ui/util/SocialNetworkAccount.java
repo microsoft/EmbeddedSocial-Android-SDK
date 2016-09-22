@@ -19,17 +19,25 @@ public class SocialNetworkAccount implements Parcelable {
 	private final IdentityProvider identityProvider;
 	private final String thirdPartyAccountHandle;
 	private final String thirdPartyAccessToken;
+	private final String firstName;
+	private final String lastName;
 
 	public SocialNetworkAccount(IdentityProvider identityProvider, String thirdPartyAccountHandle,
-	                            String thirdPartyAccessToken) {
-
+								String thirdPartyAccessToken, String firstName, String lastName) {
 		this.identityProvider = identityProvider;
 		this.thirdPartyAccountHandle = thirdPartyAccountHandle;
 		this.thirdPartyAccessToken = thirdPartyAccessToken;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public SocialNetworkAccount(IdentityProvider identityProvider, String thirdPartyAccountHandle,
+	                            String thirdPartyAccessToken) {
+		this(identityProvider, thirdPartyAccountHandle, thirdPartyAccessToken, null, null);
 	}
 
 	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken) {
-		this(identityProvider, "", accessToken);
+		this(identityProvider, "", accessToken, null, null);
 	}
 
 	/**
@@ -41,7 +49,7 @@ public class SocialNetworkAccount implements Parcelable {
 	 */
 	public static SocialNetworkAccount fromOauthTokenAndVerifier(IdentityProvider identityProvider,
 			String requestToken, String oauthVerifier) {
-		return new SocialNetworkAccount(identityProvider, oauthVerifier, requestToken);
+		return new SocialNetworkAccount(identityProvider, oauthVerifier, requestToken, null, null);
 	}
 
 	/**
@@ -51,7 +59,7 @@ public class SocialNetworkAccount implements Parcelable {
 	 * @return  {@link SocialNetworkAccount} instance.
 	 */
 	public static SocialNetworkAccount fromOauthCode(IdentityProvider identityProvider, String code) {
-		return new SocialNetworkAccount(identityProvider, "", code);
+		return new SocialNetworkAccount(identityProvider, "", code, null, null);
 	}
 
 	public IdentityProvider getAccountType() {
@@ -66,6 +74,14 @@ public class SocialNetworkAccount implements Parcelable {
 		return thirdPartyAccessToken;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
 	@Override
 	public int describeContents() {
 		return 0;
@@ -76,12 +92,16 @@ public class SocialNetworkAccount implements Parcelable {
 		out.writeString(identityProvider.toValue());
 		out.writeString(thirdPartyAccountHandle);
 		out.writeString(thirdPartyAccessToken);
+		out.writeString(firstName);
+		out.writeString(lastName);
 	}
 
 	private SocialNetworkAccount(Parcel in) {
 		identityProvider = IdentityProvider.fromValue(in.readString());
 		thirdPartyAccountHandle = in.readString();
 		thirdPartyAccessToken = in.readString();
+		firstName = in.readString();
+		lastName = in.readString();
 	}
 
 

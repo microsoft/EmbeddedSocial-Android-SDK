@@ -113,9 +113,11 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 					getFragment().getString(R.string.sp_message_ms_live_error_pattern, profile.getError().getMessage()));
 			} else {
 				SocialNetworkAccount account = new SocialNetworkAccount(
-					IdentityProvider.MICROSOFT,
-					profile.getId(),
-					liveAccessToken
+						IdentityProvider.MICROSOFT,
+						profile.getId(),
+						liveAccessToken,
+						profile.getFirstName(),
+						profile.getLastName()
 				);
 				onAuthenticationSuccess(account);
 			}
