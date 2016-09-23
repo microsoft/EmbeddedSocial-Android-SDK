@@ -7,7 +7,6 @@
 package com.microsoft.socialplus.ui.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +28,7 @@ import com.microsoft.socialplus.ui.activity.FriendlistActivity;
 import com.microsoft.socialplus.ui.activity.LinkedAccountsActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.base.BaseFragment;
+import com.microsoft.socialplus.ui.util.WebPageHelper;
 
 /**
  * Settings fragment.
@@ -50,8 +50,8 @@ public class OptionsFragment extends BaseFragment {
 //		setOnClickListener(view, R.id.sp_findGooglePlusFriends, v -> searchFriends(IdentityProvider.GOOGLE));
 //		setOnClickListener(view, R.id.sp_findMicrosoftContacts, v -> searchFriends(IdentityProvider.MICROSOFT));
 //		setOnClickListener(view, R.id.sp_findFriendsFromOtherApps, defaultListener);
-		setOnClickListener(view, R.id.sp_privacyPolicy, v -> openWebPage(getString(R.string.sp_privacy_policy_url)));
-		setOnClickListener(view, R.id.sp_terms, v -> openWebPage(getString(R.string.sp_terms_url)));
+		setOnClickListener(view, R.id.sp_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
+		setOnClickListener(view, R.id.sp_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
 		setOnClickListener(view, R.id.sp_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
 		setOnClickListener(view, R.id.sp_deleteSearchHistory, v -> deleteSearchHistory());
 		setOnClickListener(view, R.id.sp_signOut, v -> signOut());
@@ -92,11 +92,5 @@ public class OptionsFragment extends BaseFragment {
 	private void deleteSearchHistory() {
 		WorkerService.getLauncher(getContext()).launchService(ServiceAction.DELETE_SEARCH_HISTORY);
 		showToast(R.string.sp_search_history_deleted);
-	}
-
-	private void openWebPage(String url) {
-		Uri pageUri = Uri.parse(url);
-		Intent openPage = new Intent(Intent.ACTION_VIEW, pageUri);
-		startActivity(openPage);
 	}
 }

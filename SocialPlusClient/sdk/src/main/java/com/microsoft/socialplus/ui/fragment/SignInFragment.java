@@ -33,6 +33,7 @@ import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.ui.fragment.base.BaseFragment;
 import com.microsoft.socialplus.ui.fragment.module.SlowConnectionMessageModule;
 import com.microsoft.socialplus.ui.util.SocialNetworkAccount;
+import com.microsoft.socialplus.ui.util.WebPageHelper;
 import com.squareup.otto.Subscribe;
 
 /**
@@ -79,7 +80,8 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 		setupSignInButton(view, R.id.sp_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
 		setupSignInButton(view, R.id.sp_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
 
-
+		setOnClickListener(view, R.id.sp_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
+		setOnClickListener(view, R.id.sp_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
 	}
 
 	private void setupSignInButton(View root, @IdRes int viewId, View.OnClickListener onClickListener, boolean visible) {
