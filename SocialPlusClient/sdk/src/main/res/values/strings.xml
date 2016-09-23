@@ -7,7 +7,7 @@
 <resources>
 	<string name="sp_app_name">Embedded Social</string>
 	<string name="sp_lib_name">Embedded Social SDK</string>
-	<string name="sp_lib_title">Embedded Social</string>
+	<string name="sp_lib_title">Microsoft Embedded Social</string>
 
 	<string name="sp_sign_in">Sign in</string>
 
