@@ -43,7 +43,7 @@ android {
         }
         release {
             buildConfigField "boolean", "STANDALONE_APP", "false"
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debugStandalone.initWith(buildTypes.debug)

@@ -15,3 +15,34 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+# for Java lambdas
+-dontwarn java.lang.invoke.**
+
+# for SDK dir
+-keep class com.microsoft.socialplus.sdk.** { *; }
+
+# for search
+-keep public class com.microsoft.socialplus.provider.AbstractSocialPlusSearchSuggestionProvider { *; }
+
+# for debug log
+-keep public class com.microsoft.socialplus.base.utils.debug.DebugLog { *; }
+
+# dont obfuscate enums
+-keepclassmembers enum com.microsoft.socialplus.** { *; }
+
+# for xml
+-keepattributes Signature
+-keepnames class com.fasterxml.jackson.** { *; }
+-dontwarn com.fasterxml.jackson.databind.**
+-keep class org.codehaus.** { *; }
+-keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
+    public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
+}
+
+# for otto event bus
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @com.squareup.otto.Subscribe public *;
+    @com.squareup.otto.Produce public *;
+}
