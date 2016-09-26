@@ -264,6 +264,8 @@
 	<string name="sp_button_find_friends_google_plus">Find Google+ friends</string>
 	<string name="sp_header_follow">Follow people</string>
 
+	<string name="sp_privacy_policy_link_title">Privacy &amp; cookies</string>
+	<string name="sp_terms_link_title">Terms of use</string>
 	<string name="sp_privacy_policy_url">https://privacy.microsoft.com/en-us/privacystatement</string>
 	<string name="sp_terms_url">https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx</string>
 	<string name="sp_delete_account_warning">This action will permanently delete your account and all associated information. The account deletion cannot be undone.\n\nDo you really want to do it?</string>
