@@ -1,7 +1,7 @@
 {
 	"application" : {
-	  	"serverUrl" : "https://ppe.embeddedsocial.microsoft.com/",
-	  	"appKey" : "ab765deb-37ae-4dc3-9691-571d355faf56",
+	  	"serverUrl" : "https://api.embeddedsocial.microsoft.com/",
+	  	"appKey" : "0d2f32b6-18ed-4232-9eb4-d91399b5da8f",
 		"numberOfCommentsToShow" : 20,
 		"numberOfRepliesToShow" : 20
 	},
