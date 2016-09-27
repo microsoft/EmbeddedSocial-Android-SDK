@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
+import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
 import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
 import com.microsoft.socialplus.base.utils.debug.DebugLog;
@@ -19,8 +20,7 @@ import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.auth.GetThirdPartyTokenRequest;
-import com.microsoft.socialplus.server.model.auth.ThirdPartyTokenResponse;
+import com.microsoft.socialplus.server.model.auth.GetRequestTokenRequest;
 import com.microsoft.socialplus.ui.activity.WebAuthenticationActivity;
 import com.microsoft.socialplus.ui.util.SocialNetworkAccount;
 
@@ -62,8 +62,8 @@ public class TwitterWebAuthenticator extends AbstractAuthenticator {
 	protected void onAuthenticationStarted() throws AuthenticationException {
 		executor.submit(() -> {
 			try {
-				GetThirdPartyTokenRequest request = new GetThirdPartyTokenRequest(IdentityProvider.TWITTER);
-				ThirdPartyTokenResponse response = authService.getThirdPartyRequestToken(request);
+				GetRequestTokenRequest request = new GetRequestTokenRequest(IdentityProvider.TWITTER);
+				GetRequestTokenResponse response = authService.getThirdPartyRequestToken(request);
 				requestToken = response.getRequestToken();
 			} catch (NetworkRequestException e) {
 				DebugLog.logException(e);

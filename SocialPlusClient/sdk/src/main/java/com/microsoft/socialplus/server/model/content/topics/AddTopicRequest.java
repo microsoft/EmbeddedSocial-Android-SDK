@@ -29,7 +29,7 @@ public final class AddTopicRequest extends UserRequest {
 	public AddTopicResponse send() throws NetworkRequestException {
 		ServiceResponse<PostTopicResponse> serviceResponse;
 		try {
-			serviceResponse = TOPICS.postTopic(body, bearerToken);
+			serviceResponse = TOPICS.postTopic(body, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

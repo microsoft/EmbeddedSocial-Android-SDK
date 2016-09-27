@@ -11,8 +11,6 @@ import com.microsoft.socialplus.autorest.models.PostUserRequest;
 import com.microsoft.socialplus.autorest.models.PostUserResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.base.GlobalObjectRegistry;
-import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
@@ -22,6 +20,9 @@ import java.io.IOException;
 public final class CreateUserRequest extends UserRequest {
 
 	private PostUserRequest body;
+	private IdentityProvider identityProvider;
+	private String accessToken;
+	private String requestToken;
 
 	private CreateUserRequest() {
 		body = new PostUserRequest();
@@ -31,8 +32,9 @@ public final class CreateUserRequest extends UserRequest {
 	@Override
 	public AuthenticationResponse send() throws NetworkRequestException {
 		ServiceResponse<PostUserResponse> serviceResponse;
+		authorization = createThirdPartyAuthorization(identityProvider, accessToken, requestToken);
 		try {
-			serviceResponse = USERS.postUser(body, appKey, bearerToken, null);
+			serviceResponse = USERS.postUser(body, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
@@ -66,12 +68,17 @@ public final class CreateUserRequest extends UserRequest {
 		}
 
 		public Builder setIdentityProvider(IdentityProvider identityProvider) {
-			request.body.setIdentityProvider(identityProvider);
+			request.identityProvider = identityProvider;
 			return this;
 		}
 
 		public Builder setAccessToken(String accessToken) {
-			request.body.setAccessToken(accessToken);
+			request.accessToken = accessToken;
+			return this;
+		}
+
+		public Builder setRequestToken(String requestToken) {
+			request.requestToken = requestToken;
 			return this;
 		}
 
@@ -83,7 +90,7 @@ public final class CreateUserRequest extends UserRequest {
 		public CreateUserRequest build() {
 			if (request.body.getFirstName() == null
 					|| request.body.getLastName() == null
-					|| request.body.getIdentityProvider() == null
+					|| request.accessToken == null
 					|| request.body.getInstanceId() == null) {
 				throw new IllegalArgumentException("one of the required fields was empty");
 			}

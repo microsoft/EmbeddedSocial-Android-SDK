@@ -6,8 +6,6 @@
 
 package com.microsoft.socialplus.server.model;
 
-import android.provider.Settings;
-
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.autorest.HashtagsOperations;
 import com.microsoft.socialplus.autorest.HashtagsOperationsImpl;
@@ -35,11 +33,16 @@ import com.microsoft.socialplus.autorest.SessionsOperations;
 import com.microsoft.socialplus.autorest.SessionsOperationsImpl;
 import com.microsoft.socialplus.autorest.UsersOperations;
 import com.microsoft.socialplus.autorest.UsersOperationsImpl;
+import com.microsoft.socialplus.autorest.models.IdentityProvider;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
 import com.microsoft.socialplus.server.exception.UnauthorizedException;
 
 public class UserRequest extends BaseRequest {
+	public static final String ANONYMOUS = "Anon AK=%s";
+	public static final String SESSION_TEMPLATE = "SocialPlus TK=%s";
+	public static final String OAUTH_TEMPLATE = "%s AK=%s|TK=%s";
+	public static final String TWITTER_TEMPLATE = "%s AK=%s|RT=%s|TK=%s";
 
 	protected static final UsersOperations USERS;
 	protected static final MyNotificationsOperations NOTIFICATIONS;
@@ -74,7 +77,7 @@ public class UserRequest extends BaseRequest {
 	//TODO: init all fields
 
 	private String userHandle;
-	protected String bearerToken;
+	protected String authorization;
 
 	private long userSessionExpirationTime;
 	private String userSessionSignature;
@@ -82,7 +85,24 @@ public class UserRequest extends BaseRequest {
 	public UserRequest() {
 		userSessionSignature = "OK";
 		userHandle = Preferences.getInstance().getUserHandle();
-		bearerToken = Preferences.getInstance().getBearerToken();
+		authorization = Preferences.getInstance().getAuthorizationToken();
+
+		if (authorization == null) {
+			authorization = String.format(ANONYMOUS, appKey);
+			Preferences.getInstance().setAuthorizationToken(authorization);
+		}
+	}
+
+	public static String createSessionAuthorization(String sessionToken) {
+		return String.format(SESSION_TEMPLATE, sessionToken);
+	}
+
+	public String createThirdPartyAuthorization(IdentityProvider identityProvider,
+												String accessToken, String requestToken) {
+		if (identityProvider == IdentityProvider.TWITTER) {
+			return String.format(TWITTER_TEMPLATE, identityProvider, appKey, requestToken, accessToken);
+		}
+		return String.format(OAUTH_TEMPLATE, identityProvider, appKey, accessToken);
 	}
 
 	public String getUserHandle() {
@@ -97,20 +117,24 @@ public class UserRequest extends BaseRequest {
 		this.userSessionSignature = userSessionSignature;
 	}
 
+	public String getAuthorization() {
+		return authorization;
+	}
+
 	@Override
 	protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
 		// TODO
 		switch (serviceResponse.getResponse().code()) {
 			case 401: // unauthorized
-				// invalidate bearer token
-				Preferences.getInstance().setBearerToken(null);
+				// invalidate session token
+				Preferences.getInstance().setAuthorizationToken(null);
 				throw new UnauthorizedException(serviceResponse.getResponse().message());
 			default:
 				super.checkResponseCode(serviceResponse);
 		}
 	}
 
-	public void setBearerToken(String bearerToken) {
-		this.bearerToken = bearerToken;
+	public void setAuthorization(String authorization) {
+		this.authorization = authorization;
 	}
 }

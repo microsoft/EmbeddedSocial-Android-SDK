@@ -22,7 +22,7 @@ public class GetMyFollowerFeedRequest extends FeedUserRequest {
         ServiceResponse<FeedResponseUserCompactView> serviceResponse;
         try {
             serviceResponse =
-                    MY_FOLLOWERS.getFollowers(bearerToken, getCursor(), getBatchSize(), appKey, null);
+                    MY_FOLLOWERS.getFollowers(authorization, getCursor(), getBatchSize());
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

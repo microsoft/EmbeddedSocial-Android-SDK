@@ -42,8 +42,9 @@ public final class ActionsLauncher {
 				.launch(context, ServiceAction.GET_REPLY);
 	}
 
-	public static Action signOut(Context context) {
+	public static Action signOut(Context context, String authorization) {
 		return ActionIntentBuilder.forActionWithTag(Action.Tags.SIGN_OUT)
+				.setAuthorization(authorization)
 				.launch(context, ServiceAction.SIGN_OUT);
 	}
 
@@ -86,6 +87,11 @@ public final class ActionsLauncher {
 		private ActionIntentBuilder(Action action) {
 			this.action = action;
 			extras.putLong(IntentExtras.ACTION_ID, action.getId());
+		}
+
+		ActionIntentBuilder setAuthorization(String authorization) {
+			extras.putString(IntentExtras.AUTHORIZATION, authorization);
+			return this;
 		}
 
 		ActionIntentBuilder setThirdPartyAccount(SocialNetworkAccount thirdPartyAccount) {

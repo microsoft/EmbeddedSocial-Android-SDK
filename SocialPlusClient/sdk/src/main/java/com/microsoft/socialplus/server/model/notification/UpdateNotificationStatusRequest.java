@@ -29,7 +29,7 @@ public class UpdateNotificationStatusRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = NOTIFICATIONS.putNotificationsStatus(request, bearerToken);
+			serviceResponse = NOTIFICATIONS.putNotificationsStatus(request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

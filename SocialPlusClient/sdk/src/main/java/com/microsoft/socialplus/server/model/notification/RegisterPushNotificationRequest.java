@@ -34,7 +34,7 @@ public class RegisterPushNotificationRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = PUSH_REGISTRATION.putPushRegistration(platform, registrationID, request, bearerToken);
+			serviceResponse = PUSH_REGISTRATION.putPushRegistration(platform, registrationID, request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

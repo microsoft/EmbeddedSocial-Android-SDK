@@ -22,6 +22,7 @@ public class CreateAccountData implements Parcelable {
     private Uri photoUri;
     private IdentityProvider identityProvider;
     private String thirdPartyAccessToken;
+    private String thirdPartyRequestToken;
 
     public CreateAccountData() { }
 
@@ -73,6 +74,14 @@ public class CreateAccountData implements Parcelable {
         this.thirdPartyAccessToken = thirdPartyAccessToken;
     }
 
+    public String getThirdPartyRequestToken() {
+        return thirdPartyRequestToken;
+    }
+
+    public void setThirdPartyRequestToken(String thirdPartyRequestToken) {
+        this.thirdPartyRequestToken = thirdPartyRequestToken;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -85,6 +94,7 @@ public class CreateAccountData implements Parcelable {
         this.photoUri = in.readParcelable(Uri.class.getClassLoader());
         this.identityProvider = IdentityProvider.fromValue(in.readString());
         this.thirdPartyAccessToken = in.readString();
+        this.thirdPartyRequestToken = in.readString();
     }
 
     @Override
@@ -95,6 +105,7 @@ public class CreateAccountData implements Parcelable {
         dest.writeParcelable(this.photoUri, 0);
         dest.writeString(this.identityProvider.toValue());
         dest.writeString(this.thirdPartyAccessToken);
+        dest.writeString(this.thirdPartyRequestToken);
     }
 
     public static final Parcelable.Creator<CreateAccountData> CREATOR
@@ -138,6 +149,11 @@ public class CreateAccountData implements Parcelable {
 
         public Builder setThirdPartyAccessToken(String thirdPartyAccessToken) {
             createAccountData.setThirdPartyAccessToken(thirdPartyAccessToken);
+            return this;
+        }
+
+        public Builder setThirdPartyRequestToken(String thirdPartyRequestToken) {
+            createAccountData.setThirdPartyRequestToken(thirdPartyRequestToken);
             return this;
         }
 

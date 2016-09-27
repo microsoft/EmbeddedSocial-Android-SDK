@@ -14,7 +14,7 @@ public class GetTrendingHashtagsRequest extends UserRequest {
     public GetTrendingHashtagsResponse send() throws NetworkRequestException {
         ServiceResponse<List<String>> serviceResponse;
         try {
-            serviceResponse = HASHTAGS.getTrendingHashtags(appKey, bearerToken, null);
+            serviceResponse = HASHTAGS.getTrendingHashtags(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

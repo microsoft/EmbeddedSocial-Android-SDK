@@ -24,7 +24,7 @@ public class RejectFollowRequest extends UserRelationshipRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = PENDING.deletePendingUser(relationshipUserHandle, bearerToken);
+            serviceResponse = PENDING.deletePendingUser(relationshipUserHandle, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

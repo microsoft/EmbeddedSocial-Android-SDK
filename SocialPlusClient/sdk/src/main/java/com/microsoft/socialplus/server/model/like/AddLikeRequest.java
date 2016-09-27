@@ -26,13 +26,13 @@ public class AddLikeRequest extends GenericLikeRequest {
         try {
             switch (contentType) {
                 case TOPIC:
-                    serviceResponse = TOPIC_LIKES.postLike(contentHandle, bearerToken);
+                    serviceResponse = TOPIC_LIKES.postLike(contentHandle, authorization);
                     break;
                 case COMMENT:
-                    serviceResponse = COMMENT_LIKES.postLike(contentHandle, bearerToken);
+                    serviceResponse = COMMENT_LIKES.postLike(contentHandle, authorization);
                     break;
                 case REPLY:
-                    serviceResponse = REPLY_LIKES.postLike(contentHandle, bearerToken);
+                    serviceResponse = REPLY_LIKES.postLike(contentHandle, authorization);
                     break;
                 default:
                     throw new IllegalStateException("Unknown type for like");

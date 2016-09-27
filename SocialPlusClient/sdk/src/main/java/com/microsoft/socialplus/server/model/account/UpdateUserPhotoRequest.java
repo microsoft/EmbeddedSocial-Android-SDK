@@ -32,7 +32,7 @@ public class UpdateUserPhotoRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = USERS.putUserPhoto(request, bearerToken);
+			serviceResponse = USERS.putUserPhoto(request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

@@ -6,7 +6,6 @@
 
 package com.microsoft.socialplus.server.model.auth;
 
-import com.microsoft.socialplus.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -17,11 +16,20 @@ import java.io.IOException;
 import retrofit2.Response;
 
 public class SignOutRequest extends UserRequest {
+
+    public SignOutRequest() {
+
+    }
+
+    public SignOutRequest(String authorization) {
+        this.authorization = authorization;
+    }
+
     @Override
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = SESSION.deleteSession(bearerToken);
+            serviceResponse = SESSION.deleteSession(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

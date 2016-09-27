@@ -18,8 +18,8 @@ public class LinkThirdPartyRequest extends UserRequest {
     public LinkThirdPartyRequest(IdentityProvider identityProvider,
                                  String accessToken) {
         request = new PostLinkedAccountRequest();
-        request.setIdentityProvider(identityProvider);
-        request.setAccessToken(accessToken);
+//        request.setIdentityProvider(identityProvider);
+//        request.setAccessToken(accessToken);
         //TODO
 //        request.setRequestToken(requestToken);
     }
@@ -28,7 +28,7 @@ public class LinkThirdPartyRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = LINKED_ACCOUNTS.postLinkedAccount(request, bearerToken);
+            serviceResponse = LINKED_ACCOUNTS.postLinkedAccount(request, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

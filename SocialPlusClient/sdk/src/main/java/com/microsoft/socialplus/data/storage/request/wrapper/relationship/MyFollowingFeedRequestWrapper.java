@@ -9,18 +9,18 @@ package com.microsoft.socialplus.data.storage.request.wrapper.relationship;
 import com.microsoft.socialplus.data.storage.UserCache;
 import com.microsoft.socialplus.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.socialplus.server.model.UsersListResponse;
-import com.microsoft.socialplus.server.model.relationship.GetMyFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowingUsersFeedRequest;
 
 import java.sql.SQLException;
 
 public class MyFollowingFeedRequestWrapper
-        extends AbstractBatchNetworkMethodWrapper<GetMyFollowingFeedRequest, UsersListResponse> {
+        extends AbstractBatchNetworkMethodWrapper<GetMyFollowingUsersFeedRequest, UsersListResponse> {
 
     private final UserCache userCache;
     private final UserCache.UserFeedType feedType;
 
     public MyFollowingFeedRequestWrapper(
-            INetworkMethod<GetMyFollowingFeedRequest, UsersListResponse> networkMethod,
+            INetworkMethod<GetMyFollowingUsersFeedRequest, UsersListResponse> networkMethod,
             UserCache userCache, UserCache.UserFeedType feedType) {
 
         super(networkMethod);
@@ -29,14 +29,14 @@ public class MyFollowingFeedRequestWrapper
     }
 
     @Override
-    protected void storeResponse(GetMyFollowingFeedRequest request,
+    protected void storeResponse(GetMyFollowingUsersFeedRequest request,
                                  UsersListResponse response) throws SQLException {
 
         userCache.storeUserFeed(request, feedType, response);
     }
 
     @Override
-    protected UsersListResponse getCachedResponse(GetMyFollowingFeedRequest request)
+    protected UsersListResponse getCachedResponse(GetMyFollowingUsersFeedRequest request)
             throws SQLException {
 
         return userCache.getResponse(feedType);

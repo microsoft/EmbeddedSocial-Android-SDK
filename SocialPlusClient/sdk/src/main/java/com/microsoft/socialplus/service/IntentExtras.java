@@ -17,6 +17,7 @@ public final class IntentExtras {
 	}
 
 	public static final String THIRD_PARTY_ACCOUNT = "thirdPartyAccount";
+	public static final String AUTHORIZATION = "authorization";
 	public static final String ACTION_ID = "actionId";
 	public static final String USER_HANDLE = "userHandle";
 	public static final String TOPIC_HANDLE = "topicHandle";

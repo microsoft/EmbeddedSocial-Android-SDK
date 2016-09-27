@@ -7,7 +7,7 @@
 package com.microsoft.socialplus.server.model.relationship;
 
 import com.microsoft.socialplus.autorest.models.FollowingStatus;
-import com.microsoft.socialplus.autorest.models.PostFollowingRequest;
+import com.microsoft.socialplus.autorest.models.PostFollowingUserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -22,11 +22,11 @@ public class FollowUserRequest extends UserRelationshipRequest {
 
     @Override
     public FollowUserResponse send() throws NetworkRequestException {
-        PostFollowingRequest request = new PostFollowingRequest();
+        PostFollowingUserRequest request = new PostFollowingUserRequest();
         request.setUserHandle(relationshipUserHandle);
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = MY_FOLLOWING.postFollowing(request, bearerToken);
+            serviceResponse = MY_FOLLOWING.postFollowingUser(request, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

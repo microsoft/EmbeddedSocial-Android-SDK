@@ -33,7 +33,7 @@ public class UpdateUserVisibilityRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = USERS.putUserVisibility(request, bearerToken);
+			serviceResponse = USERS.putUserVisibility(request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

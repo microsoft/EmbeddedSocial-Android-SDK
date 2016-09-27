@@ -7,7 +7,6 @@
 package com.microsoft.socialplus.server.model.account;
 
 import com.microsoft.socialplus.autorest.models.LinkedAccountView;
-import com.microsoft.socialplus.autorest.models.UserProfileView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
@@ -22,7 +21,7 @@ public class GetLinkedAccountsRequest extends UserRequest {
     public List<LinkedAccountView> send() throws NetworkRequestException {
         ServiceResponse<List<LinkedAccountView>> serviceResponse;
         try {
-            serviceResponse = LINKED_ACCOUNTS.getLinkedAccounts(bearerToken);
+            serviceResponse = LINKED_ACCOUNTS.getLinkedAccounts(authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

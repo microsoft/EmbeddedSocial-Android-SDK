@@ -22,7 +22,7 @@ public class GetReplyRequest extends GenericReplyRequest {
 	public GetReplyResponse send() throws NetworkRequestException {
 		ServiceResponse<ReplyView> serviceResponse;
 		try {
-			serviceResponse = REPLIES.getReply(replyHandle, bearerToken);
+			serviceResponse = REPLIES.getReply(replyHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

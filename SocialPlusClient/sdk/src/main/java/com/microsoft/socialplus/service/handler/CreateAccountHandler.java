@@ -24,6 +24,7 @@ import com.microsoft.socialplus.server.IAccountService;
 import com.microsoft.socialplus.server.IAuthenticationService;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
 import com.microsoft.socialplus.server.exception.NetworkRequestException;
+import com.microsoft.socialplus.server.model.UserRequest;
 import com.microsoft.socialplus.server.model.account.CreateUserRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountRequest;
 import com.microsoft.socialplus.server.model.account.GetUserAccountResponse;
@@ -64,6 +65,7 @@ public class CreateAccountHandler extends ActionHandler {
                 .setBio(createAccountData.getBio())
                 .setIdentityProvider(createAccountData.getIdentityProvider())
                 .setAccessToken(createAccountData.getThirdPartyAccessToken())
+                .setRequestToken(createAccountData.getThirdPartyRequestToken())
                 .build();
         try {
             AuthenticationResponse createUserResponse = accountService.createUser(createUserRequest);
@@ -80,7 +82,7 @@ public class CreateAccountHandler extends ActionHandler {
             throws NetworkRequestException {
 
         String userHandle = response.getUserHandle();
-        String sessionToken = "Bearer " + response.getSessionToken();
+        String sessionToken = UserRequest.createSessionAuthorization(response.getSessionToken());
         GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
         GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
         AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());

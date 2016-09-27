@@ -83,7 +83,7 @@ public class UserAccount {
 		accountDetails = newAccountDetails;
 		AccountDataStorage.store(context, newAccountDetails);
 		Preferences.getInstance().setUserHandle(newUserHandle);
-		Preferences.getInstance().setBearerToken(sessionToken);
+		Preferences.getInstance().setAuthorizationToken(sessionToken);
 		EventBus.post(new UserSignedInEvent(messageId));
 	}
 
@@ -119,10 +119,10 @@ public class UserAccount {
 	 * Clears all the data associated with the current user (except the data in the database) and launch the request to the server to sign-out.
 	 */
 	public void signOut() {
-		ActionsLauncher.signOut(context);
+		ActionsLauncher.signOut(context, Preferences.getInstance().getAuthorizationToken());
 		AccountDataStorage.clear(context);
 		Preferences.getInstance().setUserHandle(null);
-		Preferences.getInstance().setBearerToken(null);
+		Preferences.getInstance().setAuthorizationToken(null);
 		Preferences.getInstance().resetNotificationCount();
 		accountDetails = null;
 		userHandle = null;

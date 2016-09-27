@@ -23,7 +23,7 @@ public class GetCommentRequest extends GenericCommentRequest {
 	public GetCommentResponse send() throws NetworkRequestException {
 		ServiceResponse<CommentView> serviceResponse;
 		try {
-			serviceResponse = COMMENTS.getComment(commentHandle, bearerToken);
+			serviceResponse = COMMENTS.getComment(commentHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

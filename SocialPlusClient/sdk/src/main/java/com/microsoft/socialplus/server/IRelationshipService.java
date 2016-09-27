@@ -17,7 +17,7 @@ import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowingInOtherAppsRequest;
 import com.microsoft.socialplus.server.model.relationship.GetMyFollowerFeedRequest;
-import com.microsoft.socialplus.server.model.relationship.GetMyFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowingUsersFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.RemoveFollowerRequest;
@@ -49,7 +49,7 @@ public interface IRelationshipService {
 	UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request)
 			throws NetworkRequestException;
 
-	UsersListResponse getMyFollowingFeed(GetMyFollowingFeedRequest request)
+	UsersListResponse getMyFollowingUsersFeed(GetMyFollowingUsersFeedRequest request)
 			throws NetworkRequestException;
 
 	UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request)

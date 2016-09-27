@@ -26,7 +26,7 @@ public class GetMyAppsRequest extends FeedUserRequest {
     public List<AppCompactView> send() throws NetworkRequestException {
         ServiceResponse<List<AppCompactView>> serviceResponse;
         try {
-            serviceResponse = MY_APPS.getApps(bearerToken /* TODO add cursor and limit when server side fixed*/);
+            serviceResponse = MY_APPS.getApps(authorization /* TODO add cursor and limit when server side fixed*/);
         } catch (ServiceException |IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

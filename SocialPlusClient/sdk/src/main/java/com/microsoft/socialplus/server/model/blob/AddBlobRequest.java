@@ -29,7 +29,7 @@ public class AddBlobRequest extends UserRequest {
     public String send() throws NetworkRequestException {
         ServiceResponse<PostBlobResponse> serviceResponse;
         try {
-            serviceResponse = BLOBS.postBlob(bearerToken, blob);
+            serviceResponse = BLOBS.postBlob(authorization, blob);
         } catch (ServiceException |IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

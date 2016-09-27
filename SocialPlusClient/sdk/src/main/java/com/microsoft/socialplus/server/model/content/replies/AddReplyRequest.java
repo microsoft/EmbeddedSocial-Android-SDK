@@ -31,7 +31,7 @@ public class AddReplyRequest extends UserRequest {
 	public AddReplyResponse send() throws NetworkRequestException {
 		ServiceResponse<PostReplyResponse> serviceResponse;
 		try {
-			serviceResponse = COMMENT_REPLIES.postReply(commentHandle, request, bearerToken);
+			serviceResponse = COMMENT_REPLIES.postReply(commentHandle, request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

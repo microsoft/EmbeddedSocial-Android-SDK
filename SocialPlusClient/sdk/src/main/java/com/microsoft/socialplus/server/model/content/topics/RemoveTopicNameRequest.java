@@ -32,7 +32,7 @@ public class RemoveTopicNameRequest extends UserRequest {
     public Response send() throws NetworkRequestException {
         ServiceResponse<Object> serviceResponse;
         try {
-            serviceResponse = TOPICS.deleteTopicName(topicName, requestBody, bearerToken, appKey, null);
+            serviceResponse = TOPICS.deleteTopicName(topicName, requestBody, authorization);
         } catch (ServiceException|IOException e) {
             throw new NetworkRequestException(e.getMessage());
         }

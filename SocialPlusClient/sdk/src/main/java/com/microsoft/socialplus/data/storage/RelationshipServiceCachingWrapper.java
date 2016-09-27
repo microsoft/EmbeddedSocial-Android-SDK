@@ -25,7 +25,7 @@ import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest
 import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetFollowingInOtherAppsRequest;
 import com.microsoft.socialplus.server.model.relationship.GetMyFollowerFeedRequest;
-import com.microsoft.socialplus.server.model.relationship.GetMyFollowingFeedRequest;
+import com.microsoft.socialplus.server.model.relationship.GetMyFollowingUsersFeedRequest;
 import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
 import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
 import com.microsoft.socialplus.server.model.relationship.RemoveFollowerRequest;
@@ -74,7 +74,7 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 				UserCache.UserFeedType.PENDING
 		);
 		myFollowingWrapper = new MyFollowingFeedRequestWrapper(
-				this::getMyFollowingFeed,
+				this::getMyFollowingUsersFeed,
 				userCache,
 				UserCache.UserFeedType.FOLLOWING
 		);
@@ -126,7 +126,7 @@ public class RelationshipServiceCachingWrapper implements IRelationshipService {
 	}
 
 	@Override
-	public UsersListResponse getMyFollowingFeed(GetMyFollowingFeedRequest request) throws NetworkRequestException {
+	public UsersListResponse getMyFollowingUsersFeed(GetMyFollowingUsersFeedRequest request) throws NetworkRequestException {
 		return myFollowingWrapper.getResponse(request);
 	}
 

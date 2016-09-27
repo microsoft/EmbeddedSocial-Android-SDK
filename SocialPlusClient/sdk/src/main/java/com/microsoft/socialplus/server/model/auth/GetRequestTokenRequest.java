@@ -17,27 +17,27 @@ import com.microsoft.socialplus.server.model.UserRequest;
 
 import java.io.IOException;
 
-public class GetThirdPartyTokenRequest extends UserRequest {
+public class GetRequestTokenRequest extends UserRequest {
 
 	private static final RequestTokensOperations REQUEST_TOKENS
 			= new RequestTokensOperationsImpl(RETROFIT, CLIENT);
 
 	private IdentityProvider identityProvider;
 
-	public GetThirdPartyTokenRequest(IdentityProvider identityProvider) {
+	public GetRequestTokenRequest(IdentityProvider identityProvider) {
 		this.identityProvider = identityProvider;
 	}
 
 	@Override
-	public ThirdPartyTokenResponse send() throws NetworkRequestException {
+	public GetRequestTokenResponse send() throws NetworkRequestException {
 		ServiceResponse<GetRequestTokenResponse> serviceResponse;
 		try {
-			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, appKey, bearerToken, null);
+			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}
 		checkResponseCode(serviceResponse);
 
-		return new ThirdPartyTokenResponse(serviceResponse.getBody());
+		return serviceResponse.getBody();
 	}
 }

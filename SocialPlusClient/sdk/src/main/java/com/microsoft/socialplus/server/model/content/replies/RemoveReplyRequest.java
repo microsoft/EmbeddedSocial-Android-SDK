@@ -24,7 +24,7 @@ public class RemoveReplyRequest extends GenericReplyRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = REPLIES.deleteReply(replyHandle, bearerToken);
+			serviceResponse = REPLIES.deleteReply(replyHandle, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

@@ -34,7 +34,7 @@ public class UpdateUserPublicAccountInfoRequest extends UserRequest {
 	public Response send() throws NetworkRequestException {
 		ServiceResponse<Object> serviceResponse;
 		try {
-			serviceResponse = USERS.putUserInfo(request, bearerToken);
+			serviceResponse = USERS.putUserInfo(request, authorization);
 		} catch (ServiceException|IOException e) {
 			throw new NetworkRequestException(e.getMessage());
 		}

@@ -123,6 +123,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                     .setPhotoUri(userPhotoUri)
                     .setIdentityProvider(thirdPartyAccount.getAccountType())
                     .setThirdPartyAccessToken(thirdPartyAccount.getThirdPartyAccessToken())
+                    .setThirdPartyRequestToken(thirdPartyAccount.getThirdPartyRequestToken())
                     .build();
 
             ActionsLauncher.createAccount(getContext(), createAccountData);
