@@ -6,6 +6,7 @@
 
 package com.microsoft.socialplus.ui.activity;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
 import com.microsoft.socialplus.account.UserAccount;
@@ -39,4 +40,9 @@ public class MyProfileActivity extends BaseProfileActivity {
 		return true;
 	}
 
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
+	}
 }

@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.ui.activity;
 
+import android.os.Bundle;
+
 import com.microsoft.socialplus.ui.activity.base.BaseDiscussionActivity;
 import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
 
@@ -21,4 +23,9 @@ public class TopicActivity extends BaseDiscussionActivity {
 		setActivityContent(feedFragment);
 	}
 
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
+	}
 }

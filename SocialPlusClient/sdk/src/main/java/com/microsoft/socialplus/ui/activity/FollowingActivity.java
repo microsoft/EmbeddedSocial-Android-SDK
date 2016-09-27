@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.ui.activity;
 
+import android.os.Bundle;
+
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.FollowingFragment;
 
@@ -17,5 +19,11 @@ public class FollowingActivity extends BaseActivity {
 	@Override
 	protected void setupFragments() {
 		setActivityContent(new FollowingFragment());
+	}
+
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
 	}
 }
