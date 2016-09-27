@@ -51,7 +51,10 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 	@Override
 	protected void initRecyclerView() {
 		super.initRecyclerView();
-		imageButton.setVisibility(View.GONE);
+		if (imageButton != null) {
+			// could be null if user is not signed in or the comment is local
+			imageButton.setVisibility(View.GONE);
+		}
 	}
 
 	@Override
