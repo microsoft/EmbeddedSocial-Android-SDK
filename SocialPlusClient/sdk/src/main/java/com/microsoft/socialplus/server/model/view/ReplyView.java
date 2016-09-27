@@ -54,7 +54,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		this.commentHandle = commentHandle;
 		this.user = UserAccount.getInstance().generateCompactUserView();
 		this.replyText = replyText;
-		this.createdTime = 0;
+		this.createdTime = System.currentTimeMillis();
 		this.totalLikes = 0;
 		this.likeStatus = false;
 	}
@@ -78,7 +78,7 @@ public class ReplyView implements Parcelable, UniqueItem, TimedItem {
 		createdTime = view.getCreatedTime().getMillis();
 		totalLikes = view.getTotalLikes();
 		likeStatus = view.getLiked();
-		local = false;// TODO
+		local = false;
 	}
 
 	public boolean isLocal() {

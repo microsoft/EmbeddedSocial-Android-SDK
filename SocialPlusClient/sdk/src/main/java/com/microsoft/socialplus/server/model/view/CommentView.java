@@ -110,7 +110,7 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		this.commentText = contentText;
 		this.commentBlobType = 0;
 		this.commentBlobUrl = blobUrl;
-		this.createdTime = 0;
+		this.createdTime = System.currentTimeMillis();
 		this.totalLikes = 0;
 		this.totalReplies = 0;
 		this.likeStatus = false;
