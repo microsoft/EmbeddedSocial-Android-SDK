@@ -283,6 +283,13 @@ public final class SocialPlus {
         context.startActivity(intent);
     }
 
+    /**
+     * @return true if the user is signed in
+     */
+    public static boolean isSignedIn() {
+        return UserAccount.getInstance().isSignedIn();
+    }
+
     public static void setReportHandler(IReportHandler reportHandler) {
         GlobalObjectRegistry.addObject(IReportHandler.class, reportHandler);
     }
