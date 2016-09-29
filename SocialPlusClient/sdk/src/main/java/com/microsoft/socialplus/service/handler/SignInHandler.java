@@ -78,7 +78,7 @@ public class SignInHandler extends ActionHandler {
 			signInWithThirdPartyRequest.setUserHandle(getUserProfileResponse.getUser().getHandle());
 			AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
 			handleSuccessfulResult(action, signInResponse);
-		} catch (InternalServerException e) {//TODO replace with: NotFoundException e) {
+		} catch (NotFoundException e) {
 			// User handle not found; create an account
 			Intent i = new Intent(context, CreateProfileActivity.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
