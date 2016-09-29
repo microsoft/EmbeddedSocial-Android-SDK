@@ -283,4 +283,5 @@
 
 	<string name="sp_google_auth_callback">com.microsoft.socialplus</string>
 	<string name="sp_google_auth_response">com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE</string>
+	<string name="sp_google_auth_redirect">com.microsoft.socialplus:/oauth2redirect</string>
 </resources>

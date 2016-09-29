@@ -74,10 +74,9 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	}
 
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
-		Uri redirectUri = Uri.parse("com.microsoft.socialplus:/oauth2redirect");
-
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		String clientId = options.getGoogleClientId();
+		Uri redirectUri = Uri.parse(context.getString(R.string.sp_google_auth_redirect));
 
 		AuthorizationRequest request = new AuthorizationRequest.Builder(
 				serviceConfiguration,
