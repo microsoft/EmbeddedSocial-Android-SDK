@@ -45,6 +45,7 @@ import com.microsoft.socialplus.sdk.INavigationDrawerHandler;
 import com.microsoft.socialplus.sdk.R;
 import com.microsoft.socialplus.sdk.ui.DrawerHandler;
 import com.microsoft.socialplus.sdk.ui.DrawerHandlerFactory;
+import com.microsoft.socialplus.sdk.ui.ToolbarColorizer;
 import com.microsoft.socialplus.ui.fragment.NavigationFragment;
 import com.squareup.otto.Subscribe;
 
@@ -77,11 +78,6 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 			drawerLayout.postDelayed(drawerLayout::closeDrawers, CLOSE_DRAWER_DELAY);
 		}
 	};
-
-	public interface ToolbarColorizer {
-		@ColorRes int getBackgroundColor();
-		@ColorRes int getTextColor();
-	}
 
 	protected BaseActivity() {
 		this(0);

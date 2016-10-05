@@ -6,7 +6,6 @@
 
 package com.microsoft.socialplus.ui.activity.base;
 
-import android.support.annotation.ColorRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.base.view.SlidingTabLayout;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ui.TabColorizer;
 
 /**
  * Base class for activities with tabs.
@@ -44,13 +44,6 @@ public abstract class BaseTabsActivity extends BaseActivity {
 
 	protected BaseTabsActivity(int activeNavigationItemId) {
 		super(activeNavigationItemId);
-	}
-
-	public interface TabColorizer {
-		@ColorRes int getBackgroundColor();
-		@ColorRes int getActiveTextColor();
-		@ColorRes int getNotActiveTextColor();
-		@ColorRes int getSelectorColor();
 	}
 
 	public static void setTabColorizer(TabColorizer tabColorizer) {

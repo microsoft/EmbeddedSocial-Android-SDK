@@ -18,6 +18,7 @@ import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.display.DisplayMethod;
 import com.microsoft.socialplus.event.click.DisplayMethodChangedEvent;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ui.ToolbarColorizer;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.fragment.base.BaseFragment;
 import com.microsoft.socialplus.ui.fragment.base.Module;
@@ -46,7 +47,7 @@ public class FeedViewMenuModule extends Module {
 			int iconId = typedArray.getResourceId(attrId, 0);
 			typedArray.recycle();
 			viewSwitch.setIcon(iconId);
-			BaseActivity.ToolbarColorizer colorizer = BaseActivity.getToolbarColorizer();
+			ToolbarColorizer colorizer = BaseActivity.getToolbarColorizer();
 			if (colorizer != null) {
 				viewSwitch.getIcon().setColorFilter(
 						ContextCompat.getColor(getContext(), colorizer.getTextColor()),

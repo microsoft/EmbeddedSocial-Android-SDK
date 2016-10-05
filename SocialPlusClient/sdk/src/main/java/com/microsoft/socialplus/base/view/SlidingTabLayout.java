@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ui.TabColorizer;
 import com.microsoft.socialplus.ui.activity.base.BaseTabsActivity;
 
 /**
@@ -105,7 +106,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 		addView(mTabStrip, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
 		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.sp_AppTheme);
-		BaseTabsActivity.TabColorizer colorizer = BaseTabsActivity.getCustomTabColorizer();
+		TabColorizer colorizer = BaseTabsActivity.getCustomTabColorizer();
 		if (colorizer != null) {
 			// Use custom colors
 			activeTextColor = ContextCompat.getColor(getContext(), colorizer.getActiveTextColor());

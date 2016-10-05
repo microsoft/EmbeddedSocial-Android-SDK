@@ -30,6 +30,8 @@ import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.storage.DatabaseHelper;
 import com.microsoft.socialplus.image.ImageLoader;
 import com.microsoft.socialplus.sdk.ui.DrawerDisplayMode;
+import com.microsoft.socialplus.sdk.ui.TabColorizer;
+import com.microsoft.socialplus.sdk.ui.ToolbarColorizer;
 import com.microsoft.socialplus.server.NetworkAvailability;
 import com.microsoft.socialplus.server.RequestInfoProvider;
 import com.microsoft.socialplus.server.SocialPlusServiceProvider;
@@ -151,11 +153,11 @@ public final class SocialPlus {
     /**
      * Sets the background color and text color of the toolbar
      */
-    public static void setToolbarColors(BaseActivity.ToolbarColorizer colorizer) {
+    public static void setToolbarColors(ToolbarColorizer colorizer) {
         BaseActivity.setToolbarColorizer(colorizer);
     }
 
-    public static void setTabColors(BaseTabsActivity.TabColorizer colorizer){
+    public static void setTabColors(TabColorizer colorizer){
         BaseTabsActivity.setTabColorizer(colorizer);
     }
 
