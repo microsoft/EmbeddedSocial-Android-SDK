@@ -22,6 +22,8 @@
 # for SDK dir
 -keep class com.microsoft.socialplus.sdk.** { *; }
 
+-keepnames class com.microsoft.socialplus.ui.activity.base.BaseActivity
+
 # for search
 -keep public class com.microsoft.socialplus.provider.AbstractSocialPlusSearchSuggestionProvider { *; }
 
