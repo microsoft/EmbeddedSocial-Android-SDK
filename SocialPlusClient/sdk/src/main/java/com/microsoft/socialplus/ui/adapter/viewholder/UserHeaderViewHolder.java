@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.ui.adapter.viewholder;
 
+import android.content.res.Resources;
+import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,11 +15,13 @@ import android.widget.TextView;
 import com.microsoft.socialplus.account.UserAccount;
 import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.base.event.EventBus;
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.event.click.OpenUserProfileEvent;
 import com.microsoft.socialplus.image.ImageViewContentLoader;
 import com.microsoft.socialplus.image.UserPhotoLoader;
 import com.microsoft.socialplus.sdk.R;
+import com.microsoft.socialplus.sdk.ui.AppProfile;
 import com.microsoft.socialplus.server.model.view.ReplyView;
 import com.microsoft.socialplus.server.model.view.TopicView;
 import com.microsoft.socialplus.server.model.view.UserCompactView;
@@ -37,11 +41,16 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	protected View contextMenuButton;
 
 	private View userHeaderButton;
+	private static AppProfile appProfile;
 
 	public UserHeaderViewHolder(View view) {
 		super(view);
 		this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.sp_user_icon_size);
 		initViews(view);
+	}
+
+	public static void setAppProfile(AppProfile customAppProfile) {
+		appProfile = customAppProfile;
 	}
 
 	private void initViews(View view) {
@@ -63,9 +72,20 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 			contextMenuButton.setTag(R.id.sp_keyFollowerStatus, topic.getUser().getFollowerStatus());
 			contextMenuButton.setTag(R.id.sp_keyUser, topic.getUser());
 			userHeaderButton.setTag(R.id.sp_keyUser, topic.getUser());
-		} else {
-			// PublisherType.APP
-			userHeaderButton.setClickable(false);
+		} else if (appProfile != null) { // PublisherType.APP
+			try {
+				profileName.setText(getContext().getString(appProfile.getName()));
+			} catch (Resources.NotFoundException e) {
+				DebugLog.logException(e);
+			}
+			try {
+				int imageId = appProfile.getImage();
+				// Test to ensure the resource exists
+				getResources().getResourceName(imageId);
+				setProfileImage(imageId);
+			} catch (Resources.NotFoundException e) {
+				DebugLog.logException(e);
+			}
 		}
 		setTime(topic.getElapsedSeconds());
 
@@ -117,6 +137,10 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 
 	private void setProfileImage(String photoUrl) {
 		ContentUpdateHelper.setProfileImage(getContext(), profileContentLoader, photoUrl);
+	}
+
+	private void setProfileImage(@DrawableRes int imageResId) {
+		ContentUpdateHelper.setProfileImage(profileContentLoader, imageResId);
 	}
 
 	private static class UserHeaderClickListener implements View.OnClickListener {

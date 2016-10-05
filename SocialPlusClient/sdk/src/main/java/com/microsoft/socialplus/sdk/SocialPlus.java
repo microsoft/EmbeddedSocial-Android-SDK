@@ -29,6 +29,7 @@ import com.microsoft.socialplus.base.utils.debug.DebugLog;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.data.storage.DatabaseHelper;
 import com.microsoft.socialplus.image.ImageLoader;
+import com.microsoft.socialplus.sdk.ui.AppProfile;
 import com.microsoft.socialplus.sdk.ui.DrawerDisplayMode;
 import com.microsoft.socialplus.sdk.ui.TabColorizer;
 import com.microsoft.socialplus.sdk.ui.ToolbarColorizer;
@@ -49,6 +50,7 @@ import com.microsoft.socialplus.ui.activity.SearchActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseTabsActivity;
+import com.microsoft.socialplus.ui.adapter.viewholder.UserHeaderViewHolder;
 import com.microsoft.socialplus.ui.fragment.AddPostFragment;
 import com.microsoft.socialplus.ui.fragment.CommentFeedFragment;
 import com.microsoft.socialplus.ui.fragment.PinsFragment;
@@ -159,6 +161,10 @@ public final class SocialPlus {
 
     public static void setTabColors(TabColorizer colorizer){
         BaseTabsActivity.setTabColorizer(colorizer);
+    }
+
+    public static void setAppProfile(AppProfile appProfile) {
+        UserHeaderViewHolder.setAppProfile(appProfile);
     }
 
 	private static void initLogging(Context context) {

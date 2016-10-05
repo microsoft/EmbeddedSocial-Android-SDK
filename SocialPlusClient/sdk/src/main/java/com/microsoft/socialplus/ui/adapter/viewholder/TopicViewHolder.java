@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.microsoft.socialplus.autorest.models.PublisherType;
 import com.microsoft.socialplus.data.Preferences;
 import com.microsoft.socialplus.image.CoverLoader;
 import com.microsoft.socialplus.image.ImageViewContentLoader;
@@ -48,7 +49,7 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 	private ImageView commentButton;
 	private ImageView pinButton;
 
-	private final boolean headerClickable;
+	private boolean headerClickable;
 
 	private final TopicButtonsListener topicButtonsListener;
 
@@ -67,7 +68,10 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 
 	public void renderItem(int position, TopicView topic) {
 		renderUserHeader(topic);
-
+		if (topic.getPublisherType() == PublisherType.APP) {
+			headerClickable = false;
+			setHeaderClickable(headerClickable);
+		}
 		postTitle.setText(topic.getTopicTitle());
 		ContentUpdateHelper.setTopicBody(getContext(), postBody, topic.getTopicText());
 

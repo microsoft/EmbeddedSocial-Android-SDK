@@ -114,6 +114,10 @@ public final class ContentUpdateHelper {
 		}
 	}
 
+	public static void setProfileImage(@NonNull ImageViewContentLoader imageViewContentLoader, @DrawableRes int imageResId) {
+		imageViewContentLoader.setImageResource(imageResId);
+	}
+
 	private static final String SEARCH_SCHEME = "search://";
 	private static final String HTTP_SCHEME = "http://";
 	private static final String HTTPS_SCHEME = "https://";
