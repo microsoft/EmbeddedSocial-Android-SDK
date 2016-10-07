@@ -52,4 +52,9 @@ public class AnotherUserProfileActivity extends BaseProfileActivity {
 		}
 	}
 
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
+	}
 }
