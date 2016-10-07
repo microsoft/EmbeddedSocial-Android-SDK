@@ -61,7 +61,7 @@
 			<LinearLayout
 				android:id="@+id/sp_buttons"
 				android:orientation="vertical"
-				android:layout_marginTop="64dp"
+				android:layout_marginTop="20dp"
 				style="@style/SocialPlusSdkSignInButtonsLayout"
 				android:layout_gravity="center_horizontal"
 				>
@@ -119,26 +119,32 @@
 			</LinearLayout>
 
 		</FrameLayout>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:text="@string/sp_microsoft_agreement"/>
 
 		<RelativeLayout
 			android:layout_width="match_parent"
-			android:layout_height="40dp"
+			android:layout_height="25dp"
 			android:orientation="horizontal"
 			>
 			<Space
 				android:id="@+id/center"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
+				android:layout_width="1dp"
+				android:layout_height="1dp"
 				android:layout_centerHorizontal="true"
 				android:visibility="invisible"/>
 			<TextView
 				android:id="@+id/sp_privacyPolicy"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/sp_privacy_policy_link_title"
+				android:text="@string/sp_button_privacy_policy"
 				android:clickable="true"
 				android:layout_toLeftOf="@+id/center"
-				android:layout_marginRight="20dp"
+				android:layout_marginRight="25dp"
+				android:textColor="@android:color/holo_blue_dark"
 				android:layout_alignParentBottom="true"
 				/>
 			<TextView
@@ -148,10 +154,16 @@
 				android:text="@string/sp_terms_link_title"
 				android:clickable="true"
 				android:layout_toRightOf="@+id/center"
-				android:layout_marginLeft="30dp"
+				android:layout_marginLeft="25dp"
+				android:textColor="@android:color/holo_blue_dark"
 				android:layout_alignParentBottom="true"
 				/>
 		</RelativeLayout>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/sp_additional_app_terms"/>
+
 		<View
 			android:layout_width="match_parent"
 			android:layout_height="0px"

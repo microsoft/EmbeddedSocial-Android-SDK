@@ -264,7 +264,9 @@
 	<string name="sp_button_find_friends_google_plus">Find Google+ friends</string>
 	<string name="sp_header_follow">Follow people</string>
 
-	<string name="sp_privacy_policy_link_title">Privacy &amp; cookies</string>
+	<string name="sp_microsoft_agreement">By creating an Embedded Social account, I agree to the Microsoft</string>
+	<string name="sp_additional_app_terms">The application you are using may have additional terms.</string>
+	<string name="sp_privacy_and_cookies_title">Privacy &amp; cookies</string>
 	<string name="sp_terms_link_title">Terms of use</string>
 	<string name="sp_privacy_policy_url">http://go.microsoft.com/fwlink/?LinkId=521839</string>
 	<string name="sp_terms_url">http://go.microsoft.com/fwlink/?LinkID=206977</string>
