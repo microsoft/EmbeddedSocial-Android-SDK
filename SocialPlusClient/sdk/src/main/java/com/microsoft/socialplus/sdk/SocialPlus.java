@@ -47,6 +47,7 @@ import com.microsoft.socialplus.ui.activity.PinsActivity;
 import com.microsoft.socialplus.ui.activity.PopularActivity;
 import com.microsoft.socialplus.ui.activity.RecentActivityActivity;
 import com.microsoft.socialplus.ui.activity.SearchActivity;
+import com.microsoft.socialplus.ui.activity.SignInActivity;
 import com.microsoft.socialplus.ui.activity.TopicActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseActivity;
 import com.microsoft.socialplus.ui.activity.base.BaseTabsActivity;
@@ -278,6 +279,11 @@ public final class SocialPlus {
 
     public static void launchOptionsActivity(Context context) {
         Intent intent = new Intent(context, OptionsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchSignInActivity(Context context) {
+        Intent intent = new Intent(context, SignInActivity.class);
         context.startActivity(intent);
     }
 
