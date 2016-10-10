@@ -75,7 +75,7 @@ public class SignInHandler extends ActionHandler {
 			GetUserProfileResponse getUserProfileResponse = getMyProfileRequest.send();
 
 			// set the user handle and attempt sign in
-			signInWithThirdPartyRequest.setUserHandle(getUserProfileResponse.getUser().getHandle());
+			signInWithThirdPartyRequest.setRequestUserHandle(getUserProfileResponse.getUser().getHandle());
 			AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
 			handleSuccessfulResult(action, signInResponse);
 		} catch (NotFoundException e) {

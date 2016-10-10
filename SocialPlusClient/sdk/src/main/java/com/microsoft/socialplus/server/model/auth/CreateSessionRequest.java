@@ -31,6 +31,10 @@ public class CreateSessionRequest extends UserRequest {
 		authorization = createThirdPartyAuthorization(identityProvider, accessToken, requestToken);
 	}
 
+	public void setRequestUserHandle(String userHandle) {
+		request.setUserHandle(userHandle);
+	}
+
 	@Override
 	public AuthenticationResponse send() throws NetworkRequestException {
 		ServiceResponse<PostSessionResponse> serviceResponse;
