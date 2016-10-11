@@ -83,7 +83,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 				clientId,
 				ResponseTypeValues.CODE,
 				redirectUri)
-				.setScope("profile email") //TODO set scope appropriately
+				.setScope("profile") // TODO "email" needed for find friends
 				.build();
 
 		PendingIntent pendingIntent = GoogleCallbackActivity.createPostAuthorizationIntent(context, request);

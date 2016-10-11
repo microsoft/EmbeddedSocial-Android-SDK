@@ -38,7 +38,8 @@ import java.util.List;
 public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 
 	// TODO add wl.basic for find friends functionality
-	private static final List<String> AUTH_SCOPES = Arrays.asList("wl.signin", "wl.emails");
+	// TODO "wl.emails" needed for find friends
+	private static final List<String> AUTH_SCOPES = Arrays.asList("wl.signin");
 
 	private final GeneralLiveAuthListener generalLiveAuthListener = new GeneralLiveAuthListener();
 	private final LiveOperationListener liveOperationListener = new LiveOperationListenerImpl();

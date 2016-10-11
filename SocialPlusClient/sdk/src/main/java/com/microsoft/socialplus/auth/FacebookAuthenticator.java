@@ -129,7 +129,7 @@ public class FacebookAuthenticator extends AbstractAuthenticator {
 		/**
 		 * Allow sign-in only.
 		 */
-		SIGN_IN_ONLY(false, "public_profile", "email"),
+		SIGN_IN_ONLY(false, "public_profile"), // TODO "email" is only necessary for find friends
 
 		/**
 		 * Allow sign-in and obtaining friend list.
