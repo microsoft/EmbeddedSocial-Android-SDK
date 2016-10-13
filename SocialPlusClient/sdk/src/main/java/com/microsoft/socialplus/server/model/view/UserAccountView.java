@@ -26,9 +26,6 @@ public class UserAccountView implements UniqueItem {
 	private String userHandle;
 
 	@DatabaseField
-	private String username;
-
-	@DatabaseField
 	private String firstName;
 
 	@DatabaseField
@@ -41,25 +38,7 @@ public class UserAccountView implements UniqueItem {
 	private String bio;
 
 	@DatabaseField
-	private String userWebsite;
-
-	@DatabaseField
 	private boolean isPrivate;
-
-	@DatabaseField
-	private String email;
-
-	@DatabaseField
-	private String phoneNumber;
-
-	@DatabaseField
-	private int gender;
-
-	@DatabaseField
-	private long birthday;
-
-	@DatabaseField
-	private boolean hasPassword;
 
 	private List<ThirdPartyAccountView> thirdPartyAccounts;
 
@@ -71,19 +50,11 @@ public class UserAccountView implements UniqueItem {
 	public UserAccountView(com.microsoft.socialplus.autorest.models.UserProfileView profileView,
 						   List<LinkedAccountView> linkedAccounts) {
 		userHandle = profileView.getUserHandle();
-//		username = //TODO remove unused fields
 		firstName = profileView.getFirstName();
 		lastName = profileView.getLastName();
 		userPhotoUrl = profileView.getPhotoUrl();
 		bio = profileView.getBio();
-//		userWebsite;
 		isPrivate = profileView.getVisibility() == Visibility.PRIVATE;
-//		email;
-//		phoneNumber;
-//		gender;
-//		birthday;
-//		hasPassword;
-
 		thirdPartyAccounts = new ArrayList<>();
 		for (LinkedAccountView linkedAccount : linkedAccounts) {
 			IdentityProvider provider = linkedAccount.getIdentityProvider();
@@ -95,10 +66,6 @@ public class UserAccountView implements UniqueItem {
 	@Override
 	public String getHandle() {
 		return userHandle;
-	}
-
-	public String getUsername() {
-		return username;
 	}
 
 	public String getFirstName() {
@@ -117,32 +84,8 @@ public class UserAccountView implements UniqueItem {
 		return bio;
 	}
 
-	public String getUserWebsite() {
-		return userWebsite;
-	}
-
 	public boolean isPrivate() {
 		return isPrivate;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public int getGender() {
-		return gender;
-	}
-
-	public long getBirthday() {
-		return birthday;
-	}
-
-	public boolean isHasPassword() {
-		return hasPassword;
 	}
 
 	public void setThirdPartyAccounts(List<ThirdPartyAccountView> thirdPartyAccounts) {
