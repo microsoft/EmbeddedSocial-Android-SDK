@@ -6,6 +6,8 @@
 
 package com.microsoft.socialplus.server.model;
 
+import com.microsoft.socialplus.base.utils.debug.DebugLog;
+
 public class FeedUserRequest extends UserRequest {
 
 	public static final int DEFAULT_BATCH_SIZE = 20;
@@ -39,7 +41,7 @@ public class FeedUserRequest extends UserRequest {
 		try {
 			intCursor = Integer.parseInt(getCursor());
 		} catch (NumberFormatException e){
-			e.printStackTrace();
+			DebugLog.logException(e);
 		}
 		return intCursor;
 	}
