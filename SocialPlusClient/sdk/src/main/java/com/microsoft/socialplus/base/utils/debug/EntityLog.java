@@ -88,8 +88,9 @@ public final class EntityLog {
 		int readCount = 0;
 		byte[] buffer = new byte[BUFFER_SIZE];
 
+		OutputStream output = null;
 		try {
-			OutputStream output = new FileOutputStream(entityFile);
+			 output= new FileOutputStream(entityFile);
 			do {
 				readCount = entity.stream.read(buffer);
 				if (readCount > 0) {
@@ -97,12 +98,17 @@ public final class EntityLog {
 				}
 			} while (readCount > 0);
 
-			output.close();
-			entity.stream.close();
 			DebugLog.i(entity.tag + " saved to " + entityFile.getName()
 					+ " (" + entityFile.length() + " bytes)");
 		} catch (IOException e) {
 			DebugLog.logException(e);
+		} finally {
+			try {
+				output.close();
+				entity.stream.close();
+			} catch (IOException e) {
+				DebugLog.logException(e);
+			}
 		}
 	}
 
