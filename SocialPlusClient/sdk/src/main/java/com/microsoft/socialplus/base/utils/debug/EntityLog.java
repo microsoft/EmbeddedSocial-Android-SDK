@@ -104,7 +104,9 @@ public final class EntityLog {
 			DebugLog.logException(e);
 		} finally {
 			try {
-				output.close();
+				if (output != null) {
+					output.close();
+				}
 				entity.stream.close();
 			} catch (IOException e) {
 				DebugLog.logException(e);
