@@ -75,7 +75,6 @@ public class UserTest extends BaseRestServicesTest {
 		assertNotNull("user first name is empty", user.getFirstName());
 		assertNotNull("user last name is empty", user.getLastName());
 //		assertNotNull("user email is empty", user.getEmail()); //TODO email is unused
-		assertNotNull("username is empty", user.getUsername());
 	}
 
 	public void testGetUser() throws Exception {

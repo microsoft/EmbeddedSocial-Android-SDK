@@ -28,7 +28,6 @@ public class AccountData implements Parcelable {
 	private String lastName;
 	private String userPhotoUrl;
 	private String userCoverUrl;
-	private String username;
 	private String bio;
 	private String thirdPartyAccountHandle;
 	private String thirdPartyAccessToken;
@@ -50,7 +49,6 @@ public class AccountData implements Parcelable {
 		this.lastName = userProfile.getLastName();
 		this.userPhotoUrl = userProfile.getUserPhotoUrl();
 		this.userCoverUrl = userProfile.getUserCoverUrl();
-		this.username = userProfile.getUsername();
 		this.bio = userProfile.getBio();
 		this.followingCount = userProfile.getTotalFollowings();
 		this.followersCount = userProfile.getTotalFollowers();
@@ -65,7 +63,6 @@ public class AccountData implements Parcelable {
 		this.lastName = in.readString();
 		this.userPhotoUrl = in.readString();
 		this.userCoverUrl = in.readString();
-		this.username = in.readString();
 		this.bio = in.readString();
 		this.thirdPartyAccountHandle = in.readString();
 		this.thirdPartyAccessToken = in.readString();
@@ -129,14 +126,6 @@ public class AccountData implements Parcelable {
 
 	public void setUserCoverUrl(String userCoverUrl) {
 		this.userCoverUrl = userCoverUrl;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getFullName() {
@@ -214,7 +203,6 @@ public class AccountData implements Parcelable {
 		accountData.setFirstName(userAccountView.getFirstName());
 		accountData.setLastName(userAccountView.getLastName());
 		accountData.setUserPhotoUrl(userAccountView.getUserPhotoUrl());
-		accountData.setUsername(userAccountView.getUsername());
 		accountData.setBio(userAccountView.getBio());
 		accountData.setIsPrivate(userAccountView.isPrivate());
 		accountData.setAccountTypeFromThirdPartyAccounts(userAccountView.getThirdPartyAccounts());
@@ -233,7 +221,6 @@ public class AccountData implements Parcelable {
 		dest.writeString(this.lastName);
 		dest.writeString(this.userPhotoUrl);
 		dest.writeString(this.userCoverUrl);
-		dest.writeString(this.username);
 		dest.writeString(this.bio);
 		dest.writeString(this.thirdPartyAccountHandle);
 		dest.writeString(this.thirdPartyAccessToken);

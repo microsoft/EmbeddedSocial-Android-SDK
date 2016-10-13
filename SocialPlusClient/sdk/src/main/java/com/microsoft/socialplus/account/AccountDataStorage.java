@@ -42,7 +42,6 @@ final class AccountDataStorage {
 		prefs.edit()
 				.putString(FIRST_NAME, accountData.getFirstName())
 				.putString(LAST_NAME, accountData.getLastName())
-				.putString(USERNAME, accountData.getUsername())
 				.putString(BIO, accountData.getBio())
 				.putLong(FOLLOWERS_COUNT, accountData.getFollowersCount())
 				.putLong(FOLLOWING_COUNT, accountData.getFollowingCount())
@@ -61,7 +60,6 @@ final class AccountDataStorage {
 		AccountData accountData = new AccountData();
 		accountData.setFirstName(prefs.getString(FIRST_NAME, ""));
 		accountData.setLastName(prefs.getString(LAST_NAME, ""));
-		accountData.setUsername(prefs.getString(USERNAME, ""));
 		accountData.setBio(prefs.getString(BIO, ""));
 		accountData.setFollowersCount(prefs.getLong(FOLLOWERS_COUNT, 0));
 		accountData.setFollowingCount(prefs.getLong(FOLLOWING_COUNT, 0));
