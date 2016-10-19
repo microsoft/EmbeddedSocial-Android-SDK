@@ -73,6 +73,7 @@ public class CreateAccountHandler extends ActionHandler {
             uploadPhoto(createAccountData.getPhotoUri());
         } catch (IOException | NetworkRequestException e) {
             DebugLog.logException(e);
+            UserAccount.getInstance().onCreateUserFailed();
             action.fail();
         }
     }

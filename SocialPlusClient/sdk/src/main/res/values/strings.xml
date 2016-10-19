@@ -244,6 +244,7 @@
 	<string name="sp_msg_general_signin_cancelled">Sign-in attempt was cancelled</string>
 	<string name="sp_msg_general_signin_success">Signing in</string>
 	<string name="sp_msg_general_create_user_success">Creating account</string>
+	<string name="sp_msg_general_create_user_error">An error has occurred during user creation</string>
 	<string name="sp_msg_general_operation_error">An error occurred during this operation</string>
 
 	<string name="sp_tab_topics">Topics</string>

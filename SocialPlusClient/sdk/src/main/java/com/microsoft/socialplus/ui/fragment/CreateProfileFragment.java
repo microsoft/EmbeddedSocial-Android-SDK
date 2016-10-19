@@ -21,6 +21,7 @@ import com.microsoft.socialplus.base.utils.BitmapUtils;
 import com.microsoft.socialplus.base.utils.ViewUtils;
 import com.microsoft.socialplus.data.model.AccountData;
 import com.microsoft.socialplus.data.model.CreateAccountData;
+import com.microsoft.socialplus.event.signin.CreateUserFailedEvent;
 import com.microsoft.socialplus.event.signin.UserSignedInEvent;
 import com.microsoft.socialplus.image.CoverLoader;
 import com.microsoft.socialplus.image.ImageLoader;
@@ -115,6 +116,8 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
         if (checkCorrectness()) {
             hideKeyboard();
 
+            setProgressVisible(true);
+
             CreateAccountData createAccountData = new CreateAccountData.Builder()
                     .setFirstName(firstNameView.getText())
                     .setLastName(lastNameView.getText())
@@ -132,8 +135,15 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     @SuppressWarnings("unused")
     @Subscribe
     public void onSignedIn(UserSignedInEvent event) {
+        setProgressVisible(false);
         Toast.makeText(getActivity(), event.getMessageId(), Toast.LENGTH_LONG).show();
         finishActivity();
+    }
+
+    @Subscribe
+    public void onCreateUserFailed(CreateUserFailedEvent event) {
+        setProgressVisible(false);
+        Toast.makeText(getActivity(), getContext().getString(R.string.sp_msg_general_create_user_error), Toast.LENGTH_LONG).show();
     }
 
     public boolean checkCorrectness() {

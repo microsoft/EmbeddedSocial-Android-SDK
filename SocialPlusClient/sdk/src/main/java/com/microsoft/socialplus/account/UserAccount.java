@@ -25,6 +25,7 @@ import com.microsoft.socialplus.event.RequestSignInEvent;
 import com.microsoft.socialplus.event.relationship.UserBlockedEvent;
 import com.microsoft.socialplus.event.relationship.UserFollowedStateChangedEvent;
 import com.microsoft.socialplus.event.relationship.UserUnblockedEvent;
+import com.microsoft.socialplus.event.signin.CreateUserFailedEvent;
 import com.microsoft.socialplus.event.signin.SignInWithThirdPartyFailedEvent;
 import com.microsoft.socialplus.event.signin.UserSignedInEvent;
 import com.microsoft.socialplus.pending.PendingAction;
@@ -91,6 +92,13 @@ public class UserAccount {
 	 */
 	public void onSignInWithThirdPartyFailed(SocialNetworkAccount thirdPartyAccount) {
 		EventBus.post(new SignInWithThirdPartyFailedEvent(thirdPartyAccount));
+	}
+
+	/**
+	 * Called when create user process failed
+	 */
+	public void onCreateUserFailed() {
+		EventBus.post(new CreateUserFailedEvent());
 	}
 
 	/**
