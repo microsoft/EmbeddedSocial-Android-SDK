@@ -31,6 +31,7 @@ import com.microsoft.socialplus.autorest.models.Platform;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.socialplus.base.GlobalObjectRegistry;
+import com.microsoft.socialplus.sdk.BuildConfig;
 import com.microsoft.socialplus.sdk.Options;
 import com.microsoft.socialplus.sdk.SocialPlus;
 import com.microsoft.socialplus.server.RequestInfoProvider;
@@ -65,10 +66,14 @@ public class BaseRequest {
 	protected static final ReplyLikesOperations REPLY_LIKES;
 
 	static {
-		HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-		logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 		OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-		httpClient.addInterceptor(logging);
+
+		if (BuildConfig.DEBUG) {
+			// add http logging if this is a debug build
+			HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+			logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+			httpClient.addInterceptor(logging);
+		}
 
 		RETROFIT = new Retrofit.Builder()
 				.baseUrl(GlobalObjectRegistry.getObject(Options.class).getServerUrl())
