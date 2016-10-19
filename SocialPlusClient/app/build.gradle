@@ -62,9 +62,7 @@ android {
             output.outputFile = new File((File) outputFolder, "SocialPlus_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
         }
     }
-    dexOptions {
-        incremental false
-    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
