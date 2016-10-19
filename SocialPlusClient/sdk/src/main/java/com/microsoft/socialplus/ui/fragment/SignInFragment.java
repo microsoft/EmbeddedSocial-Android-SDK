@@ -11,8 +11,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.format.DateUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.microsoft.socialplus.account.UserAccount;
@@ -80,8 +84,20 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 		setupSignInButton(view, R.id.sp_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
 		setupSignInButton(view, R.id.sp_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
 
-		setOnClickListener(view, R.id.sp_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
-		setOnClickListener(view, R.id.sp_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
+		Spannable privacy = new SpannableString(getContext().getString(R.string.sp_terms));
+		privacy.setSpan(new ClickableSpan() {
+			@Override
+			public void onClick(View widget) {
+				WebPageHelper.openPrivacyPolicy(getContext());
+			}
+		}, 53, 70, 0);
+		privacy.setSpan(new ClickableSpan() {
+			@Override
+			public void onClick(View widget) {
+				WebPageHelper.openTermsAndConditions(getContext());
+			}
+		}, 75, 87, 0);
+		((TextView)view.findViewById(R.id.sp_policyText)).setText(privacy);
 	}
 
 	private void setupSignInButton(View root, @IdRes int viewId, View.OnClickListener onClickListener, boolean visible) {

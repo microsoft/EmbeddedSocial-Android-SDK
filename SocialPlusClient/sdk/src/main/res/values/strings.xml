@@ -234,10 +234,10 @@
 	<string name="sp_activity_feed_following">Following</string>
 	<string name="sp_message_private_user">This user is private</string>
 	<string name="sp_sign_in_with">Sign in with:</string>
-	<string name="sp_facebook">Facebook</string>
-	<string name="sp_twitter">Twitter</string>
-	<string name="sp_microsoft">Microsoft</string>
-	<string name="sp_google">Google</string>
+	<string name="sp_facebook">Sign in with Facebook</string>
+	<string name="sp_twitter">Sign in with Twitter</string>
+	<string name="sp_microsoft">Sign in with Microsoft</string>
+	<string name="sp_google">Sign in with Google</string>
 	<string name="sp_no_image">No image</string>
 	<string name="sp_msg_couldnt_access_google_profile">Couldn\'t get access to Google profile</string>
 	<string name="sp_msg_google_signin_failed">Sign-in with Google failed</string>
@@ -265,6 +265,7 @@
 	<string name="sp_header_follow">Follow people</string>
 
 	<string name="sp_microsoft_agreement">By creating an Embedded Social account, I agree to the Microsoft</string>
+	<!-- TODO replace additional terms string in app to include app name -->
 	<string name="sp_additional_app_terms">The application you are using may have additional terms.</string>
 	<string name="sp_privacy_and_cookies_title">Privacy &amp; cookies</string>
 	<string name="sp_terms_link_title">Terms of use</string>
@@ -286,4 +287,5 @@
 	<string name="sp_google_auth_callback">com.microsoft.socialplus</string>
 	<string name="sp_google_auth_response">com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE</string>
 	<string name="sp_google_auth_redirect">com.microsoft.socialplus:/oauth2redirect</string>
+	<string name="sp_terms">By using Microsoft Embedded Social, you agree to the Privacy Statement and Terms of Use.</string>
 </resources>

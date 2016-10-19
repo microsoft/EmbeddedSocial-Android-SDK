@@ -53,4 +53,9 @@
 
 	<color name="sp_button_base_gray">#ff999999</color>
 	<color name="sp_button_completed_text">@android:color/white</color>
+
+	<color name="sp_sign_in_google">#4285f4</color>
+	<color name="sp_sign_in_facebook">#3b5997</color>
+	<color name="sp_sign_in_microsoft">#2a79d9</color>
+	<color name="sp_sign_in_twitter">#1da1f2</color>
 </resources>

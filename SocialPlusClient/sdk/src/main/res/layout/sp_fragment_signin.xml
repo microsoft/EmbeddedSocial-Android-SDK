@@ -4,46 +4,29 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   ~
   -->
-
 <ScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:fillViewport="true"
-	>
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:fillViewport="true">
 
-	<LinearLayout
+	<RelativeLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
 		android:orientation="vertical"
 		android:paddingLeft="16dp"
 		android:paddingRight="16dp"
-		android:gravity="center_horizontal"
-		>
-
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="0px"
-			android:layout_weight="1"
-			/>
-
-		<TextView
-			android:id="@+id/sp_logo"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			android:paddingTop="15dp"
-			android:textSize="40sp"
-			android:textStyle="bold"
-			android:text="@string/sp_lib_title"
-			/>
+		android:gravity="center_horizontal">
 
 		<FrameLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			>
+			android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
 
 
 			<ProgressBar
@@ -61,115 +44,119 @@
 			<LinearLayout
 				android:id="@+id/sp_buttons"
 				android:orientation="vertical"
-				android:layout_marginTop="20dp"
+				android:layout_marginTop="40dp"
 				style="@style/SocialPlusSdkSignInButtonsLayout"
 				android:layout_gravity="center_horizontal"
 				>
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textColor="?attr/sp_textColorSecondary"
-					android:textSize="14dp"
-					android:text="@string/sp_sign_in_with"
-					android:layout_marginBottom="12dp"
-					android:layout_marginLeft="6dp"
-					/>
-
-				<Button
-					android:id="@+id/sp_signInFacebook"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/sp_facebook"
-					android:drawableLeft="@drawable/sp_facebook"
-					style="@style/SocialPlusSdkSignInButton"
-					app:theme="@style/SocialPlusSdkFacebook"
-					/>
-
-				<Button
-					android:id="@+id/sp_signInTwitter"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/sp_twitter"
-					android:drawableLeft="@drawable/sp_twitter"
-					style="@style/SocialPlusSdkSignInButton"
-					app:theme="@style/SocialPlusSdkTwitter"
-					/>
-
-				<Button
-					android:id="@+id/sp_signInMicrosoft"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/sp_microsoft"
-					android:drawableLeft="@drawable/sp_windows"
-					style="@style/SocialPlusSdkSignInButton"
-					app:theme="@style/SocialPlusSdkMicrosoft"
-					/>
-
-				<Button
+				<LinearLayout
 					android:id="@+id/sp_signInGoogle"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/sp_google"
-					android:drawableLeft="@drawable/sp_google"
-					style="@style/SocialPlusSdkSignInButton"
-					app:theme="@style/SocialPlusSdkGoogle"
-					/>
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/sp_sign_in_button_height"
+					android:background="@drawable/sp_google_button_background"
+					style="@style/SocialPlusSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/sp_google_logo"
+						style="@style/SocialPlusSignInImage"
+						/>
 
+					<include layout="@layout/sp_vertical_bar"/>
+
+					<TextView
+						android:text="@string/sp_google"
+						style="@style/SocialPlusSignInText"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/sp_signInFacebook"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/sp_sign_in_button_height"
+					android:background="@drawable/sp_facebook_button_background"
+					style="@style/SocialPlusSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/sp_facebook_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/sp_vertical_bar"/>
+
+					<TextView
+						android:text="@string/sp_facebook"
+						style="@style/SocialPlusSignInText"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/sp_signInMicrosoft"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/sp_sign_in_button_height"
+					android:background="@drawable/sp_microsoft_button_background"
+					style="@style/SocialPlusSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/sp_microsoft_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/sp_vertical_bar"/>
+
+					<TextView
+						android:text="@string/sp_microsoft"
+						style="@style/SocialPlusSignInText"/>
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/sp_signInTwitter"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/sp_sign_in_button_height"
+					android:background="@drawable/sp_twitter_button_background"
+					style="@style/SocialPlusSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/sp_twitter_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/sp_vertical_bar"/>
+
+					<TextView
+						android:text="@string/sp_twitter"
+						style="@style/SocialPlusSignInText"/>
+				</LinearLayout>
 			</LinearLayout>
-
 		</FrameLayout>
-		<TextView
+
+		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="20dp"
-			android:text="@string/sp_microsoft_agreement"/>
-
-		<RelativeLayout
-			android:layout_width="match_parent"
-			android:layout_height="25dp"
-			android:orientation="horizontal"
-			>
-			<Space
-				android:id="@+id/center"
-				android:layout_width="1dp"
-				android:layout_height="1dp"
-				android:layout_centerHorizontal="true"
-				android:visibility="invisible"/>
+			android:layout_alignParentBottom="true"
+			android:orientation="vertical">
 			<TextView
-				android:id="@+id/sp_privacyPolicy"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/sp_button_privacy_policy"
-				android:clickable="true"
-				android:layout_toLeftOf="@+id/center"
-				android:layout_marginRight="25dp"
-				android:textColor="@android:color/holo_blue_dark"
-				android:layout_alignParentBottom="true"
+				android:text="Powered by Microsoft Embedded Social"
+				android:textSize="18dp"
+				android:layout_gravity="center"
+				android:paddingBottom="90dp"
 				/>
+
 			<TextView
-				android:id="@+id/sp_terms"
-				android:layout_height="wrap_content"
+				android:id="@+id/sp_policyText"
 				android:layout_width="wrap_content"
-				android:text="@string/sp_terms_link_title"
-				android:clickable="true"
-				android:layout_toRightOf="@+id/center"
-				android:layout_marginLeft="25dp"
-				android:textColor="@android:color/holo_blue_dark"
-				android:layout_alignParentBottom="true"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+				android:text="@string/sp_additional_app_terms"
+				android:layout_marginBottom="20dp"
 				/>
-		</RelativeLayout>
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/sp_additional_app_terms"/>
-
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="0px"
-			android:layout_weight="1"
-			/>
-
-	</LinearLayout>
-
+		</LinearLayout>
+	</RelativeLayout>
 </ScrollView>

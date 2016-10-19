@@ -9,6 +9,8 @@
 	<dimen name="sp_user_icon_size">40dp</dimen>
 	<dimen name="sp_button_base_size">40dp</dimen>
 	<dimen name="sp_button_icon_size">24dp</dimen>
+	<dimen name="sp_sign_in_button_height">60dp</dimen>
+	<dimen name="sp_sign_in_button_radius">2dp</dimen>
 
 	<dimen name="sp_padding_small">4dp</dimen>
 	<dimen name="sp_padding_base">8dp</dimen>
