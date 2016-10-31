@@ -22,7 +22,15 @@
 # for SDK dir
 -keep class com.microsoft.socialplus.sdk.** { *; }
 
--keepnames class com.microsoft.socialplus.ui.activity.base.BaseActivity
+# for extending BaseActivity
+-keepclasseswithmembers class com.microsoft.socialplus.ui.activity.base.BaseActivity {
+  public <methods>;
+}
+
+# for error reporting
+-keepclasseswithmembers class com.microsoft.socialplus.server.model.view.TopicView {
+  public <methods>;
+}
 
 # for search
 -keep public class com.microsoft.socialplus.provider.AbstractSocialPlusSearchSuggestionProvider { *; }

@@ -7,6 +7,7 @@ package com.microsoft.socialplus.ui.util.menu;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -44,7 +45,7 @@ public class TopicContextMenu {
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
 				menu.inflate(R.menu.sp_topic_hide);
 			}
-			addCustomReportHandler(menu);
+			addCustomReportHandler(context, menu, topic);
         }
 		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(context, topic));
 	}
@@ -59,10 +60,10 @@ public class TopicContextMenu {
     /**
      * Adds a custom report handler if one was provided
      */
-	private static void addCustomReportHandler(@NonNull PopupMenu menu) {
+	private static void addCustomReportHandler(Context context, @NonNull PopupMenu menu, TopicView topic) {
 		IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
 		if (reportHandler != null) {
-			String displayString = reportHandler.getDisplayString();
+			String displayString = reportHandler.getDisplayString(context, topic);
 			if (!TextUtils.isEmpty(displayString)) {
                 // create an item with the a known ID and the provided title
                 menu.getMenu().add(Menu.NONE, R.id.sp_reportCustom, Menu.NONE, displayString);

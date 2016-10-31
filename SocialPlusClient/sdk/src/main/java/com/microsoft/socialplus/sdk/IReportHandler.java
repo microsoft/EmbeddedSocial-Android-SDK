@@ -7,6 +7,8 @@ package com.microsoft.socialplus.sdk;
 
 import android.content.Context;
 
+import com.microsoft.socialplus.server.model.view.TopicView;
+
 public interface IReportHandler {
     /**
      * Handles generating a report
@@ -15,8 +17,12 @@ public interface IReportHandler {
      */
     public void generateReport(Context context, String reportContent);
 
+
     /**
-     * Provides the string to show the user
+     *
+     * @param context current application context
+     * @param topic view of content with menu open
+     * @return string to display; null if new option should not be added
      */
-    public String getDisplayString();
+    public String getDisplayString(Context context, TopicView topic);
 }
