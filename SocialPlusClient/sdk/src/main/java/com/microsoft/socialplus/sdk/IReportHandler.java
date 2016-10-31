@@ -13,9 +13,9 @@ public interface IReportHandler {
     /**
      * Handles generating a report
      * @param context
-     * @param reportContent topic friendly name
+     * @param topic data associated with this topic
      */
-    public void generateReport(Context context, String reportContent);
+    public void generateReport(Context context, TopicView topic);
 
 
     /**

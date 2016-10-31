@@ -58,7 +58,7 @@ public class TopicContextMenuClickListener extends ContextMenuClickListener {
 		} else if (i == R.id.sp_reportCustom) {
 			IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
 			try {
-				reportHandler.generateReport(context, topic.getFriendlyName());
+				reportHandler.generateReport(context, topic);
 			} catch (NullPointerException e) {
 				DebugLog.logException(e);
 			}
