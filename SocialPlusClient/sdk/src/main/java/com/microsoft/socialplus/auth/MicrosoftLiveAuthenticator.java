@@ -77,7 +77,7 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 		public void onAuthComplete(LiveStatus status, LiveConnectSession session, Object userState) {
 			if (status == LiveStatus.CONNECTED) {
 				DebugLog.i("Microsoft Live login success");
-				liveAccessToken = session.getAccessToken();
+				liveAccessToken = android.net.Uri.encode(session.getAccessToken());
 				SocialNetworkTokens.microsoft().storeToken(session);
 				LiveConnectClient liveConnectClient = new LiveConnectClient(session);
 				liveConnectClient.getAsync("me", liveOperationListener);
