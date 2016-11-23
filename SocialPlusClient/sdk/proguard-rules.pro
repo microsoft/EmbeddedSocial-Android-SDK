@@ -16,6 +16,8 @@
 #   public *;
 #}
 
+-dontobfuscate
+
 # for Java lambdas
 -dontwarn java.lang.invoke.**
 
@@ -23,6 +25,7 @@
 -keep class com.microsoft.socialplus.sdk.** { *; }
 
 # for extending BaseActivity
+
 -keepclasseswithmembers class com.microsoft.socialplus.ui.activity.base.BaseActivity {
   public <methods>;
 }
@@ -56,3 +59,10 @@
     @com.squareup.otto.Subscribe public *;
     @com.squareup.otto.Produce public *;
 }
+
+# lambdas
+-dontwarn java.lang.invoke**
+
+-keep class javax.** { *; }
+-keep class java.** { *; }
+-keep class org.** { *; }
