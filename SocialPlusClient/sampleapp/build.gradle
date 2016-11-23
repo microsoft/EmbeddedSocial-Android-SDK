@@ -12,6 +12,13 @@ buildscript {
 
 apply plugin: 'com.android.application'
 
+repositories {
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/acrowntest/test"
+    }
+}
+
 android {
     signingConfigs {
         debug {

@@ -11,8 +11,16 @@ buildscript {
 
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'com.google.gms.google-services' // applied at bottom of file to avoid dependency collisions
 
+repositories {
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/acrowntest/test"
+    }
+}
 android {
     signingConfigs {
         debug {
@@ -20,8 +28,8 @@ android {
         }
     }
     publishNonDefault true
-    compileSdkVersion 23
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.1'
     resourcePrefix 'sp_'
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -86,24 +94,16 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:support-annotations:23.4.0'
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.floreysoft:jmte:3.1.1'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
-    // for autorest
-    compile 'com.android.support:multidex:1.0.1'
-    compile 'com.fasterxml.jackson.core:jackson-core:2.6.2'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.2'
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.0.4'
-    compile 'joda-time:joda-time:2.3'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
-    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.1.2'
-    compile 'com.google.guava:guava:15.0'
-    compile 'com.microsoft.rest:client-runtime:1.0.0-beta1'
-    compile project(':SocialPlus_Autorest_debug')
+
+    compile 'com.acrowntest.test:autorest:0.0.1'
 }
 
 retrolambda {
@@ -123,5 +123,95 @@ def clearOutputFolder() {
 }
 
 clearOutputFolder()
+
+
+def siteUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK'
+def gitUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK.git'
+group = "com.acrowntest.test"
+version = '0.0.5'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId "com.acrowntest.test"
+                artifactId 'sdk'
+
+                name = 'sdk'
+                description = 'test library'
+                url siteUrl
+
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'acrown-msft'
+                        name 'Alex Crown'
+                        email 'acrown@microsoft.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//task javadoc(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    destinationDir = file("../javadoc")
+//    failOnError false
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+
+//artifacts {
+////    archives javadocJar
+//    archives sourcesJar
+//}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+    configurations = ['archives']
+    pkg {
+        repo = 'test'
+        name = 'sdk'
+        userOrg = 'acrowntest'
+        licenses = ['MIT']
+        vcsUrl = gitUrl
+        publish = true
+        version {
+            name = '0.0.5'
+            desc = 'TestLib 0.0.5'
+            released = new Date()
+            vcsTag = '0.0.5'
+            attributes = ['gradle-plugin': 'com.acrowntest.test:sdk']
+            gpg {
+                sign = true
+            }
+        }
+    }
+}
 
 apply plugin: 'com.google.gms.google-services'

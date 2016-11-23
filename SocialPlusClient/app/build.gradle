@@ -14,6 +14,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 //apply plugin: 'com.google.gms.google-services'
 
+repositories {
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/acrowntest/test"
+    }
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion '22.0.1'
