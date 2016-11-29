@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.format.DateUtils;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
@@ -83,20 +84,24 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 		setupSignInButton(view, R.id.sp_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
 		setupSignInButton(view, R.id.sp_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
 
-		Spannable privacy = new SpannableString(getContext().getString(R.string.sp_terms));
-		privacy.setSpan(new ClickableSpan() {
+		Spannable termsText = new SpannableString(getContext().getString(R.string.sp_terms));
+
+		termsText.setSpan(new ClickableSpan() {
 			@Override
 			public void onClick(View widget) {
 				WebPageHelper.openPrivacyPolicy(getContext());
 			}
 		}, 53, 70, 0);
-		privacy.setSpan(new ClickableSpan() {
+		termsText.setSpan(new ClickableSpan() {
 			@Override
 			public void onClick(View widget) {
 				WebPageHelper.openTermsAndConditions(getContext());
 			}
 		}, 75, 87, 0);
-		((TextView)view.findViewById(R.id.sp_policyText)).setText(privacy);
+
+		TextView termsView = (TextView)view.findViewById(R.id.sp_policyText);
+		termsView.setText(termsText);
+		termsView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
 	private void setupSignInButton(View root, @IdRes int viewId, View.OnClickListener onClickListener, boolean visible) {

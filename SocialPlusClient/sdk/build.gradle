@@ -128,7 +128,7 @@ clearOutputFolder()
 def siteUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK.git'
 group = "com.acrowntest.test"
-version = '0.0.5'
+version = '0.0.6'
 
 install {
     repositories.mavenInstaller {
@@ -202,10 +202,10 @@ bintray {
         vcsUrl = gitUrl
         publish = true
         version {
-            name = '0.0.5'
-            desc = 'TestLib 0.0.5'
+            name = '0.0.6'
+            desc = 'TestLib 0.0.6'
             released = new Date()
-            vcsTag = '0.0.5'
+            vcsTag = '0.0.6'
             attributes = ['gradle-plugin': 'com.acrowntest.test:sdk']
             gpg {
                 sign = true
