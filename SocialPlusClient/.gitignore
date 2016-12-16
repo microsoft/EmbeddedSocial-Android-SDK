@@ -4,7 +4,7 @@
 .idea
 .DS_Store
 build/
-!sdk/src/main/java/com/microsoft/socialplus/server/model/build/
+!sdk/src/main/java/com/microsoft/embeddedsocial/server/model/build/
 gen/
 /picasso
 /LiveSdk
