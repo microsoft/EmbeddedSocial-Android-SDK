@@ -6,14 +6,13 @@
 
 package com.microsoft.test.socialplus.test;
 
-import com.microsoft.socialplus.server.IActivityService;
-import com.microsoft.socialplus.server.IRelationshipService;
-import com.microsoft.socialplus.server.model.FeedUserRequest;
-import com.microsoft.socialplus.server.model.activity.ActivityFeedRequest;
-import com.microsoft.socialplus.server.model.activity.ActivityFeedResponse;
-import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.relationship.AcceptFollowRequest;
-import com.microsoft.socialplus.server.model.relationship.FollowUserRequest;
+import com.microsoft.embeddedsocial.server.IActivityService;
+import com.microsoft.embeddedsocial.server.IRelationshipService;
+import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
+import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedResponse;
+import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
+import com.microsoft.embeddedsocial.server.model.relationship.AcceptFollowRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.FollowUserRequest;
 
 public class ActivityTest extends BaseRestServicesTest {
 

@@ -40,7 +40,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
-        buildConfigField "com.microsoft.socialplus.server.ServerConfig", "SERVER", "com.microsoft.socialplus.server.ServerConfig.STAGING"
+        buildConfigField "com.microsoft.embeddedsocial.server.ServerConfig", "SERVER", "com.microsoft.embeddedsocial.server.ServerConfig.STAGING"
         signingConfig signingConfigs.debug
     }
     buildTypes {
@@ -73,7 +73,7 @@ android {
     }
     libraryVariants.all { variant ->
         variant.outputs.each { output ->
-            output.outputFile = new File((File) outputFolder, "SocialPlus_SDK_$variant.buildType.name" + '.aar')
+            output.outputFile = new File((File) outputFolder, "EmbeddedSocial_SDK_$variant.buildType.name" + '.aar')
         }
     }
     productFlavors {
@@ -102,7 +102,6 @@ dependencies {
     compile 'com.floreysoft:jmte:3.1.1'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-
     compile 'com.acrowntest.test:autorest:0.0.1'
 }
 

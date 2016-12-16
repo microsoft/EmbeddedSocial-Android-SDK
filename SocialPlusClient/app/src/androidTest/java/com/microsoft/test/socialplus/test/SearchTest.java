@@ -6,18 +6,16 @@
 
 package com.microsoft.test.socialplus.test;
 
-import com.microsoft.socialplus.server.ISearchService;
-import com.microsoft.socialplus.server.model.UserRequest;
-import com.microsoft.socialplus.server.model.UsersListResponse;
-import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.content.topics.TopicsListResponse;
-import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsRequest;
-import com.microsoft.socialplus.server.model.search.GetTrendingHashtagsResponse;
-import com.microsoft.socialplus.server.model.search.SearchRequest;
-import com.microsoft.socialplus.server.model.search.SearchTopicsRequest;
-import com.microsoft.socialplus.server.model.search.SearchUsersRequest;
-import com.microsoft.socialplus.server.model.view.TopicView;
-import com.microsoft.socialplus.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.server.ISearchService;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
+import com.microsoft.embeddedsocial.server.model.content.topics.TopicsListResponse;
+import com.microsoft.embeddedsocial.server.model.search.GetTrendingHashtagsRequest;
+import com.microsoft.embeddedsocial.server.model.search.GetTrendingHashtagsResponse;
+import com.microsoft.embeddedsocial.server.model.search.SearchTopicsRequest;
+import com.microsoft.embeddedsocial.server.model.search.SearchUsersRequest;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.test.socialplus.TestConstants;
 
 import java.util.List;

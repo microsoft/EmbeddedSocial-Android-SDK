@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.microsoft.socialplus"
+        applicationId "com.microsoft.embeddedsocial"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode computeVersionCode()

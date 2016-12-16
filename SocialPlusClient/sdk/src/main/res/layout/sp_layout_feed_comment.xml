@@ -91,7 +91,7 @@
 			android:layout_height="match_parent"
 			android:layout_below="@id/sp_coverImage"
 			>
-			<com.microsoft.socialplus.ui.view.AspectRatioImageView
+			<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
 				android:id="@+id/sp_coverImage"
 				android:layout_width="match_parent"
 				android:layout_height="@dimen/sp_card_cover_image_height"

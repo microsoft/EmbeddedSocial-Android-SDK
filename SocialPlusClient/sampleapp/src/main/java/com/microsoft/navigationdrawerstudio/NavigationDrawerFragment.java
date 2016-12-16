@@ -21,8 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.microsoft.socialplus.sdk.IDrawerState;
-import com.microsoft.socialplus.sdk.ui.SocialPlusNavigationActivity;
+import com.microsoft.embeddedsocial.sdk.IDrawerState;
+import com.microsoft.embeddedsocial.sdk.ui.SocialPlusNavigationActivity;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

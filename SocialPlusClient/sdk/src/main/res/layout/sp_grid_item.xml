@@ -13,7 +13,7 @@
 	android:layout_margin="@dimen/sp_grid_half_padding"
 	>
 
-	<com.microsoft.socialplus.ui.view.AspectRatioImageView
+	<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
 		android:id="@+id/sp_image"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"

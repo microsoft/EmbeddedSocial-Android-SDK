@@ -12,13 +12,13 @@
 
 	<include layout="@layout/sp_navigation_profile"/>
 
-	<com.microsoft.socialplus.ui.view.NavigationItemView
+	<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 		android:id="@+id/sp_navigationFirstMenu"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:paddingLeft="@dimen/sp_padding_large"/>
 
-	<com.microsoft.socialplus.ui.view.NavigationItemView
+	<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 		android:id="@+id/sp_navigationSecondMenu"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

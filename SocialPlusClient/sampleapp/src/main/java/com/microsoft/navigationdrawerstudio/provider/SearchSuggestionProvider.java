@@ -6,7 +6,7 @@
 
 package com.microsoft.navigationdrawerstudio.provider;
 
-import com.microsoft.socialplus.provider.AbstractSocialPlusSearchSuggestionProvider;
+import com.microsoft.embeddedsocial.provider.AbstractSocialPlusSearchSuggestionProvider;
 
 /**
  * Implementation of Social Plus search suggestion provider. Doesn't require to override anything.

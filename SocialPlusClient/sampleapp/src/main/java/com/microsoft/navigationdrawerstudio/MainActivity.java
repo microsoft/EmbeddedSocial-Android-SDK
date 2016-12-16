@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.microsoft.socialplus.sdk.ui.SocialPlusNavigationActivity;
+import com.microsoft.embeddedsocial.sdk.ui.SocialPlusNavigationActivity;
 
 public class MainActivity extends SocialPlusNavigationActivity {
 	public static final String FRAGMENT_ID_EXTRA = "FRAGMENT_ID_EXTRA";

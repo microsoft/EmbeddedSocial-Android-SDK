@@ -82,7 +82,7 @@
 
 			</FrameLayout>
 
-			<com.microsoft.socialplus.ui.view.TextInput
+			<com.microsoft.embeddedsocial.ui.view.TextInput
 				android:id="@+id/sp_titleLayout"
 				android:layout_width="@dimen/sp_add_post_edit_text_width"
 				android:layout_height="wrap_content"
@@ -100,9 +100,9 @@
 					android:textStyle="bold"
 					/>
 
-			</com.microsoft.socialplus.ui.view.TextInput>
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
 
-			<com.microsoft.socialplus.ui.view.TextInput
+			<com.microsoft.embeddedsocial.ui.view.TextInput
 				android:id="@+id/sp_description"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
 					android:inputType="textMultiLine|textCapSentences"
 					/>
 
-			</com.microsoft.socialplus.ui.view.TextInput>
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
 
 
 		</RelativeLayout>

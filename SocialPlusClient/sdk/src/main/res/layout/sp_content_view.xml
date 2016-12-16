@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   -->
 
-<com.microsoft.socialplus.fetcher.base.FetchableRecyclerView
+<com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@id/sp_recyclerView"
 	android:layout_width="match_parent"

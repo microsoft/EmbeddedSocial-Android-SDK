@@ -11,10 +11,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.webkit.URLUtil;
 
-import com.microsoft.socialplus.R;
+import com.microsoft.embeddedsocial.R;
 import com.microsoft.socialplus.autorest.models.ImageType;
-import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.server.ImageUploader;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.server.ImageUploader;
 
 public class ImageTest extends BaseRestServicesTest {
 

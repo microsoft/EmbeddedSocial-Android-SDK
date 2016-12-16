@@ -7,23 +7,23 @@
 package com.microsoft.test.socialplus.test;
 
 import com.microsoft.socialplus.autorest.models.Visibility;
-import com.microsoft.socialplus.server.IRelationshipService;
-import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.UsersListResponse;
-import com.microsoft.socialplus.server.model.account.UpdateUserVisibilityRequest;
-import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.relationship.AcceptFollowRequest;
-import com.microsoft.socialplus.server.model.relationship.BlockUserRequest;
-import com.microsoft.socialplus.server.model.relationship.FollowUserRequest;
-import com.microsoft.socialplus.server.model.relationship.FollowUserResponse;
-import com.microsoft.socialplus.server.model.relationship.GetBlockedUsersRequest;
-import com.microsoft.socialplus.server.model.relationship.GetFollowerFeedRequest;
-import com.microsoft.socialplus.server.model.relationship.GetFollowingFeedRequest;
-import com.microsoft.socialplus.server.model.relationship.GetPendingUsersRequest;
-import com.microsoft.socialplus.server.model.relationship.RejectFollowRequest;
-import com.microsoft.socialplus.server.model.relationship.UnblockUserRequest;
-import com.microsoft.socialplus.server.model.relationship.UnfollowUserRequest;
-import com.microsoft.socialplus.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.server.IRelationshipService;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.embeddedsocial.server.model.account.UpdateUserVisibilityRequest;
+import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
+import com.microsoft.embeddedsocial.server.model.relationship.AcceptFollowRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.BlockUserRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.FollowUserRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.FollowUserResponse;
+import com.microsoft.embeddedsocial.server.model.relationship.GetBlockedUsersRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.GetFollowerFeedRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.GetFollowingFeedRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.RejectFollowRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.UnblockUserRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.UnfollowUserRequest;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 import java.util.List;
 

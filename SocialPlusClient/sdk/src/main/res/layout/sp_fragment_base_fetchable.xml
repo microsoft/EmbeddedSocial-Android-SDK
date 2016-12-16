@@ -14,7 +14,7 @@
 
 	<!-- The outer FrameLayout is a workaround against the bug with SwipeRefreshLayout inside ViewPager -->
 
-	<com.microsoft.socialplus.ui.view.AdvancedSwipeRefreshLayout
+	<com.microsoft.embeddedsocial.ui.view.AdvancedSwipeRefreshLayout
 		android:id="@+id/sp_swipeRefresh"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -58,5 +58,5 @@
 			</ScrollView>
 
 		</FrameLayout>
-	</com.microsoft.socialplus.ui.view.AdvancedSwipeRefreshLayout>
+	</com.microsoft.embeddedsocial.ui.view.AdvancedSwipeRefreshLayout>
 </FrameLayout>

@@ -22,7 +22,7 @@
 
 		<include layout="@layout/sp_navigation_profile"/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationHome"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 			app:sp_name="@string/sp_navigation_home"
 			/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationSearch"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
 			app:sp_name="@string/sp_navigation_search"
 			/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationPopular"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
 			app:sp_name="@string/sp_navigation_popular"
 			/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationPins"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
 			app:sp_name="@string/sp_navigation_pins"
 			/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationActivity"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
 			app:sp_name="@string/sp_navigation_activity_feed"
 			/>
 
-		<com.microsoft.socialplus.ui.view.NavigationItemView
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
 			android:id="@+id/sp_navigationOptions"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

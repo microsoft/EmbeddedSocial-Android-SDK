@@ -9,16 +9,16 @@ package com.microsoft.test.socialplus.test;
 import android.test.ApplicationTestCase;
 
 import com.microsoft.socialplus.autorest.models.PublisherType;
-import com.microsoft.socialplus.SocialPlusApplication;
-import com.microsoft.socialplus.base.utils.debug.DebugLog;
-import com.microsoft.socialplus.server.SocialPlusServiceProvider;
-import com.microsoft.socialplus.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.server.model.UserRequest;
-import com.microsoft.socialplus.server.model.account.CreateUserRequest;
-import com.microsoft.socialplus.server.model.account.DeleteUserRequest;
-import com.microsoft.socialplus.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.server.model.content.topics.AddTopicRequest;
-import com.microsoft.socialplus.server.model.content.topics.RemoveTopicRequest;
+import com.microsoft.embeddedsocial.SocialPlusApplication;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
+import com.microsoft.embeddedsocial.server.model.account.CreateUserRequest;
+import com.microsoft.embeddedsocial.server.model.account.DeleteUserRequest;
+import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
+import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.RemoveTopicRequest;
 import com.microsoft.test.socialplus.TestConstants;
 import com.microsoft.test.socialplus.util.StringUtils;
 

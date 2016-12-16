@@ -89,7 +89,7 @@
 					android:text="@string/sp_account_info_header"
 					/>
 
-				<com.microsoft.socialplus.ui.view.TextInput
+				<com.microsoft.embeddedsocial.ui.view.TextInput
 					android:id="@+id/sp_firstNameLayout"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -106,9 +106,9 @@
 						android:maxLength="16"
 						/>
 
-				</com.microsoft.socialplus.ui.view.TextInput>
+				</com.microsoft.embeddedsocial.ui.view.TextInput>
 
-				<com.microsoft.socialplus.ui.view.TextInput
+				<com.microsoft.embeddedsocial.ui.view.TextInput
 					android:id="@+id/sp_lastNameLayout"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -125,9 +125,9 @@
 						android:maxLength="16"
 						/>
 
-				</com.microsoft.socialplus.ui.view.TextInput>
+				</com.microsoft.embeddedsocial.ui.view.TextInput>
 
-				<com.microsoft.socialplus.ui.view.TextInput
+				<com.microsoft.embeddedsocial.ui.view.TextInput
 					android:id="@+id/sp_bioLayout"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
 						android:inputType="textMultiLine"
 						/>
 
-				</com.microsoft.socialplus.ui.view.TextInput>
+				</com.microsoft.embeddedsocial.ui.view.TextInput>
 
 				<TextView
 					style="@style/SocialPlusSdkTextSubhead.Green"

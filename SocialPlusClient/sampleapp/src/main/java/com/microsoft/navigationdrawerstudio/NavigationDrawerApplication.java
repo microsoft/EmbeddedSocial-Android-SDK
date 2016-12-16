@@ -10,8 +10,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.microsoft.socialplus.sdk.SocialPlus;
-import com.microsoft.socialplus.sdk.ui.DrawerDisplayMode;
+import com.microsoft.embeddedsocial.sdk.SocialPlus;
+import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
 
 public class NavigationDrawerApplication extends Application {
 

@@ -4,13 +4,13 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-		  package="com.microsoft.socialplus.sdk"
+		  package="com.microsoft.embeddedsocial.sdk"
 	>
 
 	<application>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.HomeActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.HomeActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:launchMode="singleTop"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
@@ -25,14 +25,14 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.SignInActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.SignInActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|layoutDirection"
 			android:label="@string/sp_screen_title_signin"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub">
 		</activity>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.GoogleCallbackActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.GoogleCallbackActivity"
 			android:label="@string/sp_screen_title_signin"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub">
 			<intent-filter>
@@ -42,75 +42,75 @@
 		</activity>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.PopularActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.PopularActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_popular"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.AddPostActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.AddPostActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_add_post"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.BlockedUsersActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.BlockedUsersActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_blocked_users_header"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.FollowersActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.FollowersActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_followers"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.FollowingActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.FollowingActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_following"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.TopicActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.TopicActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_topic"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.CommentActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.CommentActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_comment"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.AnotherUserProfileActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.AnotherUserProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label=""
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.EditProfileActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.EditProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_edit_profile"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.CreateProfileActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_create_profile"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.SearchActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.SearchActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:launchMode="singleTop"
 			android:label=""
@@ -134,7 +134,7 @@
 		</activity>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.ReportActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.ReportActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_report_title"
 			android:windowSoftInputMode="stateHidden"
@@ -142,7 +142,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.LikesActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.LikesActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_likes"
 			android:windowSoftInputMode="stateHidden"
@@ -150,7 +150,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.LinkedAccountsActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_linked_accounts"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
@@ -159,7 +159,7 @@
 
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.RecentActivityActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_activity"
 			android:windowSoftInputMode="stateHidden"
@@ -167,7 +167,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.FollowRequestsActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.FollowRequestsActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_follow_requests"
 			android:windowSoftInputMode="stateHidden"
@@ -175,14 +175,14 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.DisplayNoteActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.PinsActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.PinsActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_my_pins"
@@ -190,7 +190,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.MyProfileActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.MyProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label=""
@@ -198,7 +198,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.OptionsActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.OptionsActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_options"
@@ -206,23 +206,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.PrivacyPolicyActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-			android:windowSoftInputMode="stateHidden"
-			android:label="@string/sp_screen_title_privacy_policy"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
-			/>
-
-		<activity
-			android:name="com.microsoft.socialplus.ui.activity.TermsAndConditionsActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-			android:windowSoftInputMode="stateHidden"
-			android:label="@string/sp_screen_title_terms"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
-			/>
-
-		<activity
-			android:name="com.microsoft.socialplus.ui.activity.EditPostActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.EditPostActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_edit_post"
@@ -230,7 +214,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.DeleteAccountActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.DeleteAccountActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_delete_account"
@@ -238,7 +222,7 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.FriendlistActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.FriendlistActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label=""
@@ -246,14 +230,14 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.ViewImageActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.ViewImageActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/SocialPlusSdkAppTheme.Stub"
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.GateActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.GateActivity"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar"
 			/>
 		<activity
@@ -264,13 +248,13 @@
 			/>
 
 		<activity
-			android:name="com.microsoft.socialplus.ui.activity.WebAuthenticationActivity"
+			android:name="com.microsoft.embeddedsocial.ui.activity.WebAuthenticationActivity"
 			android:theme="@android:style/Theme.NoTitleBar"
 			android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
 			/>
 
 		<service
-			android:name="com.microsoft.socialplus.service.WorkerService"
+			android:name="com.microsoft.embeddedsocial.service.WorkerService"
 			android:exported="false"
 			/>
 
@@ -283,12 +267,12 @@
 				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
 				<action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
 
-				<category android:name="com.microsoft.socialplus"/>
+				<category android:name="com.microsoft.embeddedsocial"/>
 			</intent-filter>
 		</receiver>
 
 		<service
-			android:name="com.microsoft.socialplus.service.PushNotificationListenerService"
+			android:name="com.microsoft.embeddedsocial.service.PushNotificationListenerService"
 			android:exported="false"
 			>
 			<intent-filter>
@@ -296,7 +280,7 @@
 			</intent-filter>
 		</service>
 		<service
-			android:name="com.microsoft.socialplus.service.GcmInstanceIdListenerService"
+			android:name="com.microsoft.embeddedsocial.service.GcmInstanceIdListenerService"
 			android:exported="false"
 			>
 			<intent-filter>
