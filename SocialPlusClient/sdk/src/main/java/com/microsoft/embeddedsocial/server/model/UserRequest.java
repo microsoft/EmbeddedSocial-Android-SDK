@@ -39,7 +39,7 @@ import com.microsoft.embeddedsocial.data.Preferences;
 
 public class UserRequest extends BaseRequest {
 	public static final String ANONYMOUS = "Anon AK=%s";
-	public static final String SESSION_TEMPLATE = "EmbeddedSocial TK=%s";
+	public static final String SESSION_TEMPLATE = "SocialPlus TK=%s";
 	public static final String OAUTH_TEMPLATE = "%s AK=%s|TK=%s";
 	public static final String TWITTER_TEMPLATE = "%s AK=%s|RT=%s|TK=%s";
 
