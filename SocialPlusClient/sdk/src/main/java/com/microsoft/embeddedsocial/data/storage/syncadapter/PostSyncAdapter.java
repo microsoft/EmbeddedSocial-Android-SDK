@@ -17,8 +17,8 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
-import com.microsoft.socialplus.autorest.models.BlobType;
-import com.microsoft.socialplus.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AddPostData;
@@ -28,7 +28,7 @@ import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
 import com.microsoft.embeddedsocial.data.storage.transaction.DbTransaction;
 import com.microsoft.embeddedsocial.server.IContentService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.BadRequestException;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicRequest;
@@ -63,7 +63,7 @@ public class PostSyncAdapter implements ISynchronizable {
 	@Override
 	public void synchronize() throws SynchronizationException {
 		IContentService contentService = GlobalObjectRegistry
-			.getObject(SocialPlusServiceProvider.class)
+			.getObject(EmbeddedSocialServiceProvider.class)
 			.getContentService();
 
 		AddTopicRequest.Builder requestBuilder = new AddTopicRequest.Builder()

@@ -12,7 +12,7 @@ import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.content.GetCommentEvent;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentRequest;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentResponse;
@@ -27,7 +27,7 @@ public class GetCommentHandler extends ActionHandler {
 	@Override
 	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
 		IContentService contentService
-				= GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getContentService();
+				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 
 		final String commentHandle = intent.getExtras().getString(IntentExtras.COMMENT_HANDLE);
 

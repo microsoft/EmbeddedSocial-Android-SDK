@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.IContentService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
@@ -37,7 +37,7 @@ class ReplyFeedFetcher extends Fetcher<Object> {
 		this.commentHandle = commentHandle;
 		this.commentView = commentView;
 
-		contentService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getContentService();
+		contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 		replyFeedRequestExecutor = new BatchDataRequestExecutor<>(
 				contentService::getReplyFeed,
 				() -> new GetReplyFeedRequest(commentHandle)
@@ -73,7 +73,7 @@ class ReplyFeedFetcher extends Fetcher<Object> {
 
 	private CommentView getComment(RequestType requestType) throws NetworkRequestException {
 		CommentView result = (commentView == null || requestType.isFullDataReloadRequired()) ? readComment(requestType) : commentView;
-		IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
+		IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 		GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
 		if (requestType == RequestType.SYNC_WITH_CACHE) {
 			request.forceCacheUsage();

@@ -52,7 +52,7 @@ public final class Options {
 	}
 
 	private void throwInvalidConfigException(String message) {
-		throw new IllegalArgumentException("Invalid SocialPlus configuration file: " + message);
+		throw new IllegalArgumentException("Invalid EmbeddedSocial configuration file: " + message);
 	}
 
 	private void checkValueIsNotEmpty(String name, String value) {

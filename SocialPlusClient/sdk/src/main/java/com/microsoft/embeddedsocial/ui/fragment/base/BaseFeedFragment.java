@@ -43,7 +43,7 @@ public abstract class BaseFeedFragment extends BaseContentFragment<FetchableAdap
 	private int gallerySpanCount = 1;
 
 	protected BaseFeedFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayFeed);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
 		addModule(new CommonTopicFeedBehaviorModule(this));
 		addEventListener(new Object() {
 

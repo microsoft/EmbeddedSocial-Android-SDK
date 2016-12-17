@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.server;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.build.GetBuildInfoRequest;
-import com.microsoft.socialplus.autorest.models.BuildsCurrentResponse;
+import com.microsoft.embeddedsocial.autorest.models.BuildsCurrentResponse;
 
 public interface IBuildService {
 

@@ -34,7 +34,7 @@
 
 	<TextView
 		android:id="@+id/sp_profileName"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:textStyle="bold"
 
 		android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
 
 		<TextView
 			android:id="@+id/sp_postTime"
-			style="@style/SocialPlusSdkTextBody2"
+			style="@style/EmbeddedSocialSdkTextBody2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginRight="@dimen/sp_padding_base"
@@ -86,7 +86,7 @@
 
 	<TextView
 		android:id="@+id/sp_replyText"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_profileName"
@@ -112,7 +112,7 @@
 
 	<TextView
 		android:id="@+id/sp_replyLikesCountButton"
-		style="@style/SocialPlusSdkTextCaption.Green"
+		style="@style/EmbeddedSocialSdkTextCaption.Green"
 		android:layout_width="wrap_content"
 		android:layout_height="@dimen/sp_button_base_size"
 		android:layout_below="@id/sp_replyText"
@@ -128,7 +128,7 @@
 
 	<View
 		android:id="@+id/sp_dividerLayoutBottom"
-		style="@style/SocialPlusSdkDivider"
+		style="@style/EmbeddedSocialSdkDivider"
 		android:layout_below="@id/sp_replyLikesCountButton"
 		android:layout_marginTop="@dimen/sp_padding_base"
 		android:layout_toRightOf="@id/sp_leftBorder"/>

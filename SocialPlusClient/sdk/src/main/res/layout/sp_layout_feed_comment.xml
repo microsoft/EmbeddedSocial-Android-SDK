@@ -38,7 +38,7 @@
 
 	<TextView
 		android:id="@+id/sp_profileName"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_alignTop="@id/sp_profileImage"
@@ -59,7 +59,7 @@
 
 		<TextView
 			android:id="@+id/sp_postTime"
-			style="@style/SocialPlusSdkTextBody2"
+			style="@style/EmbeddedSocialSdkTextBody2"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginRight="@dimen/sp_padding_base"
@@ -119,7 +119,7 @@
 			>
 			<TextView
 				android:id="@+id/sp_commentText"
-				style="@style/SocialPlusSdkTextSubhead"
+				style="@style/EmbeddedSocialSdkTextSubhead"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:paddingBottom="4dp"
@@ -145,7 +145,7 @@
 
 	<View
 		android:id="@+id/sp_dividerLayoutBottom"
-		style="@style/SocialPlusSdkDivider"
+		style="@style/EmbeddedSocialSdkDivider"
 		android:layout_below="@id/sp_comment_content"
 		android:layout_marginTop="@dimen/sp_padding_base"
 		/>

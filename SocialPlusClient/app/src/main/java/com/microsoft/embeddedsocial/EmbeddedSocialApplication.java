@@ -12,14 +12,14 @@ import android.os.StrictMode;
 import android.support.multidex.MultiDex;
 
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.sdk.SocialPlus;
+import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
 /**
  * Application class for the project.
  */
-public class SocialPlusApplication extends Application implements UncaughtExceptionHandler {
+public class EmbeddedSocialApplication extends Application implements UncaughtExceptionHandler {
 
 	private static final UncaughtExceptionHandler DEFAULT_EXCEPTION_HANDLER = Thread.getDefaultUncaughtExceptionHandler();
 
@@ -38,7 +38,7 @@ public class SocialPlusApplication extends Application implements UncaughtExcept
 				.build());
 		}
 		Thread.setDefaultUncaughtExceptionHandler(this);
-		SocialPlus.init(this, R.raw.social_plus_config);
+		EmbeddedSocial.init(this, R.raw.social_plus_config);
 	}
 
 	@Override

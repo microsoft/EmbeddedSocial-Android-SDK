@@ -9,9 +9,9 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.autorest.MyAppFollowingOperations;
-import com.microsoft.socialplus.autorest.MyAppFollowingOperationsImpl;
-import com.microsoft.socialplus.autorest.models.FeedResponseUserCompactView;
+import com.microsoft.embeddedsocial.autorest.MyAppFollowingOperations;
+import com.microsoft.embeddedsocial.autorest.MyAppFollowingOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
 
 import java.io.IOException;

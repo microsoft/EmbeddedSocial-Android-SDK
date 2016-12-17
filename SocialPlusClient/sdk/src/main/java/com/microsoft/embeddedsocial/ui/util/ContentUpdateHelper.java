@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;

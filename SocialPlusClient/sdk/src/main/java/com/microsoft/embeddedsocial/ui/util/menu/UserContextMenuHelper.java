@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 
 /**
  * Helper for work with user context menu.

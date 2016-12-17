@@ -12,8 +12,8 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.socialplus.autorest.models.BlobType;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
 import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.server.model.TimedItem;
@@ -343,7 +343,7 @@ public class TopicView implements Parcelable, UniqueItem, TimedItem {
 		}
 	};
 
-	public TopicView(com.microsoft.socialplus.autorest.models.TopicView view) {
+	public TopicView(com.microsoft.embeddedsocial.autorest.models.TopicView view) {
 		topicHandle = view.getTopicHandle();
 		publisherType = view.getPublisherType().ordinal();
 		if (getPublisherType() == PublisherType.USER) {

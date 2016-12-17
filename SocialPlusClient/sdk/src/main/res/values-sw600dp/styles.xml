@@ -9,12 +9,12 @@
 	tools:ignore="ResourceName"
 	>
 
-	<style name="SocialPlusSdkSignInButtonsLayout">
+	<style name="EmbeddedSocialSdkSignInButtonsLayout">
 		<item name="android:layout_width">400dp</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 
-	<style name="SocialPlusSdkDivider.List">
+	<style name="EmbeddedSocialSdkDivider.List">
 		<item name="android:visibility">visible</item>
 	</style>
 

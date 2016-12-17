@@ -10,7 +10,7 @@ import android.support.v7.widget.PopupMenu;
 import android.view.View;
 
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.event.EventBus;

@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.server;
 
 import com.microsoft.embeddedsocial.server.model.auth.CreateSessionRequest;
 import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
-import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
+import com.microsoft.embeddedsocial.autorest.models.GetRequestTokenResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import com.microsoft.embeddedsocial.server.model.auth.GetRequestTokenRequest;

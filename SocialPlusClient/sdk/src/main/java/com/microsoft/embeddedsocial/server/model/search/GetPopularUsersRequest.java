@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.server.model.search;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
 import com.microsoft.embeddedsocial.server.model.UsersListResponse;
-import com.microsoft.socialplus.autorest.models.FeedResponseUserProfileView;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserProfileView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

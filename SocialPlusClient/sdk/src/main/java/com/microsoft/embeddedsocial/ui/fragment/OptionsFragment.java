@@ -15,7 +15,7 @@ import android.view.View;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
 import com.microsoft.embeddedsocial.data.Preferences;

@@ -9,7 +9,7 @@ import android.text.TextUtils;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 
 /**

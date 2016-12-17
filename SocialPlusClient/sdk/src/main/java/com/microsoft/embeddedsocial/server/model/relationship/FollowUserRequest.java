@@ -7,8 +7,8 @@ package com.microsoft.embeddedsocial.server.model.relationship;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
-import com.microsoft.socialplus.autorest.models.FollowingStatus;
-import com.microsoft.socialplus.autorest.models.PostFollowingUserRequest;
+import com.microsoft.embeddedsocial.autorest.models.FollowingStatus;
+import com.microsoft.embeddedsocial.autorest.models.PostFollowingUserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

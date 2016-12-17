@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.relationship;
 
-import com.microsoft.socialplus.autorest.models.PostFollowerRequest;
+import com.microsoft.embeddedsocial.autorest.models.PostFollowerRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

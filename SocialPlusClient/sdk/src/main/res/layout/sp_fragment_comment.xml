@@ -18,7 +18,7 @@
 
 		<TextView
 			android:id="@+id/sp_messageLayout"
-			style="@style/SocialPlusSdkContentErrorMessage"
+			style="@style/EmbeddedSocialSdkContentErrorMessage"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:gravity="center"
@@ -58,7 +58,7 @@
 
 			<View
 				android:id="@+id/sp_dividerLayoutBottom"
-				style="@style/SocialPlusSdkDivider"
+				style="@style/EmbeddedSocialSdkDivider"
 				android:layout_below="@+id/sp_buttonsLayout"
 				android:layout_marginTop="@dimen/sp_padding_base"/>
 

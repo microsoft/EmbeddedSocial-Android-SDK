@@ -10,11 +10,11 @@ import android.content.Intent;
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.server.INotificationService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.models.CountResponse;
+import com.microsoft.embeddedsocial.autorest.models.CountResponse;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.notification.GetNotificationCountRequest;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 
@@ -24,7 +24,7 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
 public class UpdateNotificationCountHandler implements IServiceIntentHandler<ServiceAction> {
 	@Override
 	public void handleIntent(ServiceAction action, Intent intent) {
-		INotificationService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getNotificationService();
+		INotificationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getNotificationService();
 		try {
 			CountResponse response = server.getNotificationCount(new GetNotificationCountRequest());
 			long notificationCount = response.getCount();

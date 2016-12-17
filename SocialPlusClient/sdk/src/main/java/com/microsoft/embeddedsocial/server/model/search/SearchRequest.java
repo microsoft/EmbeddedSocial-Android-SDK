@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.search;
 
-import com.microsoft.socialplus.autorest.SearchOperations;
-import com.microsoft.socialplus.autorest.SearchOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.SearchOperations;
+import com.microsoft.embeddedsocial.autorest.SearchOperationsImpl;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
 
 public class SearchRequest extends FeedUserRequest {

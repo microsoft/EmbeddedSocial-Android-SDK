@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.server.model.report;
 
-import com.microsoft.socialplus.autorest.UserReportsOperations;
-import com.microsoft.socialplus.autorest.UserReportsOperationsImpl;
-import com.microsoft.socialplus.autorest.models.PostReportRequest;
-import com.microsoft.socialplus.autorest.models.Reason;
+import com.microsoft.embeddedsocial.autorest.UserReportsOperations;
+import com.microsoft.embeddedsocial.autorest.UserReportsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.PostReportRequest;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

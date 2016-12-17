@@ -44,7 +44,7 @@ import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
 import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
 import com.microsoft.embeddedsocial.server.RequestInfoProvider;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
@@ -63,12 +63,12 @@ import java.io.Reader;
 /**
  * Social Plus SDK facade.
  */
-public final class SocialPlus {
+public final class EmbeddedSocial {
 
 	/**
 	 * Private constructor to forbid instantiation.
 	 */
-	private SocialPlus() {  }
+	private EmbeddedSocial() {  }
 
     /**
      * Initializes Social Plus SDK.
@@ -138,8 +138,8 @@ public final class SocialPlus {
 			.create();
 		GlobalObjectRegistry.addObject(gson);
 		ImageLoader.init(context);
-		SocialPlusServiceProvider serviceProvider = new SocialPlusServiceProvider(context);
-		GlobalObjectRegistry.addObject(SocialPlusServiceProvider.class, serviceProvider);
+		EmbeddedSocialServiceProvider serviceProvider = new EmbeddedSocialServiceProvider(context);
+		GlobalObjectRegistry.addObject(EmbeddedSocialServiceProvider.class, serviceProvider);
 		GlobalObjectRegistry.addObject(new Preferences(context));
 		GlobalObjectRegistry.addObject(new RequestInfoProvider(context));
 		GlobalObjectRegistry.addObject(new UserAccount(context));

@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.LikesActivity;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 
 /**

@@ -39,7 +39,7 @@
 
 	<TextView
 		android:id="@+id/sp_commentRepliesCountButton"
-		style="@style/SocialPlusSdkTextCaption.Green"
+		style="@style/EmbeddedSocialSdkTextCaption.Green"
 		android:layout_width="wrap_content"
 		android:layout_height="@dimen/sp_button_base_size"
 		android:layout_alignParentRight="true"
@@ -52,7 +52,7 @@
 
 	<TextView
 		android:id="@+id/sp_commentLikesCountButton"
-		style="@style/SocialPlusSdkTextCaption.Green"
+		style="@style/EmbeddedSocialSdkTextCaption.Green"
 		android:layout_width="wrap_content"
 		android:layout_height="@dimen/sp_button_base_size"
 		android:layout_alignBaseline="@id/sp_commentRepliesCountButton"

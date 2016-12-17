@@ -4,10 +4,10 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.Reason;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.CommentFeedType;
 import com.microsoft.embeddedsocial.data.model.TopicFeedType;

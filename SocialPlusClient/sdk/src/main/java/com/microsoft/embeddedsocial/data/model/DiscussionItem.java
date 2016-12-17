@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.data.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;

@@ -13,7 +13,7 @@
 			android:name="com.microsoft.embeddedsocial.ui.activity.HomeActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:launchMode="singleTop"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity android:name="net.openid.appauth.RedirectUriReceiverActivity">
@@ -29,14 +29,14 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|layoutDirection"
 			android:label="@string/sp_screen_title_signin"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub">
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub">
 		</activity>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.GoogleCallbackActivity"
 			android:label="@string/sp_screen_title_signin"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub">
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub">
 			<intent-filter>
-				<action android:name="com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE"/>
+				<action android:name="com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE"/>
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>
@@ -46,79 +46,79 @@
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_popular"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.AddPostActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_add_post"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.BlockedUsersActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_blocked_users_header"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.FollowersActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_followers"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.FollowingActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_following"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.TopicActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_topic"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.CommentActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label="@string/sp_screen_title_comment"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.AnotherUserProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:label=""
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.EditProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_edit_profile"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_create_profile"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.SearchActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:launchMode="singleTop"
 			android:label=""
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			>
 			<meta-data
 				android:name="android.app.searchable"
-				android:resource="@xml/socialplus_searchable"
+				android:resource="@xml/embeddedsocial_searchable"
 				/>
 
 			<intent-filter>
@@ -138,7 +138,7 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_report_title"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -146,14 +146,14 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_likes"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_linked_accounts"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			android:windowSoftInputMode="stateHidden"
 			/>
 
@@ -163,7 +163,7 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_activity"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -171,14 +171,14 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:label="@string/sp_screen_title_follow_requests"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity"
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -186,7 +186,7 @@
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_my_pins"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -194,7 +194,7 @@
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label=""
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -202,7 +202,7 @@
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_options"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -210,7 +210,7 @@
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_edit_post"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -218,7 +218,7 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label="@string/sp_screen_title_delete_account"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
@@ -226,14 +226,14 @@
 			android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
 			android:windowSoftInputMode="stateHidden"
 			android:label=""
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.ViewImageActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:windowSoftInputMode="stateHidden"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			/>
 
 		<activity

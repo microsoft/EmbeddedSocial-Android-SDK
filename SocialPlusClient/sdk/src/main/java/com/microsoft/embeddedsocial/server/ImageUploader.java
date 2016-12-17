@@ -13,7 +13,7 @@ import android.webkit.MimeTypeMap;
 
 import com.google.common.io.Files;
 import com.microsoft.embeddedsocial.server.model.image.AddImageRequest;
-import com.microsoft.socialplus.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 
@@ -68,7 +68,7 @@ public class ImageUploader {
 			throws NetworkRequestException, IOException {
 
 		IImageService imageService
-				= GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getImageService();
+				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getImageService();
 		AddImageRequest addImageRequest = new AddImageRequest(Files.toByteArray(image), imageType);
 		return imageService.addImage(addImageRequest);
 	}

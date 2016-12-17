@@ -9,8 +9,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.server.model.view.UserProfileView;

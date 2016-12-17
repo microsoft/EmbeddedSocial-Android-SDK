@@ -17,7 +17,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.squareup.otto.Subscribe;
 
-public abstract class SocialPlusNavigationActivity extends SocialPlusActivity implements IDrawerState {
+public abstract class EmbeddedSocialNavigationActivity extends EmbeddedSocialActivity implements IDrawerState {
 	protected static final String DISPLAY_MENU_EXTRA = "DISPLAY_MENU_EXTRA";
 
 	private static final int NO_SELECTED_ITEM_ID = 0;

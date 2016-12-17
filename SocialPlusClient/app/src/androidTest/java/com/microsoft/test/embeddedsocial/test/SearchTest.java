@@ -4,7 +4,7 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
 import com.microsoft.embeddedsocial.server.ISearchService;
 import com.microsoft.embeddedsocial.server.model.UsersListResponse;
@@ -16,7 +16,7 @@ import com.microsoft.embeddedsocial.server.model.search.SearchTopicsRequest;
 import com.microsoft.embeddedsocial.server.model.search.SearchUsersRequest;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.test.socialplus.TestConstants;
+import com.microsoft.test.embeddedsocial.TestConstants;
 
 import java.util.List;
 

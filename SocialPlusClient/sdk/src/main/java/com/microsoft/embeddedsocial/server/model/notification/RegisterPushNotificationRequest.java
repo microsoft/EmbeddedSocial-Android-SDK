@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.notification;
 
-import com.microsoft.socialplus.autorest.models.PutPushRegistrationRequest;
+import com.microsoft.embeddedsocial.autorest.models.PutPushRegistrationRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

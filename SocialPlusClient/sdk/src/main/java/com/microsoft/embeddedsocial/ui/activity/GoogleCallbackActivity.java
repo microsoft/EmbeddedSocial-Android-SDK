@@ -16,7 +16,7 @@ import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationRequest;

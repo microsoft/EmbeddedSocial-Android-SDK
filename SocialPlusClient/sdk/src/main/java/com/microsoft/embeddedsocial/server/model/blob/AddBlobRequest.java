@@ -8,9 +8,9 @@ package com.microsoft.embeddedsocial.server.model.blob;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.autorest.BlobsOperations;
-import com.microsoft.socialplus.autorest.BlobsOperationsImpl;
-import com.microsoft.socialplus.autorest.models.PostBlobResponse;
+import com.microsoft.embeddedsocial.autorest.BlobsOperations;
+import com.microsoft.embeddedsocial.autorest.BlobsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.PostBlobResponse;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.io.IOException;

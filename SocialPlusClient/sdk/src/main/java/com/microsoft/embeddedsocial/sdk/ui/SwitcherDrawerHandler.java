@@ -59,7 +59,7 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 				displaySwitcherHostingAppMenuFragment();
 				break;
 			case SOCIAL_MENU:
-				displaySwitcherSocialPlusMenuFragment();
+				displaySwitcherEmbeddedSocialMenuFragment();
 				break;
 		}
 		setupNavigationProfile();
@@ -90,7 +90,7 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 		fragmentTransaction.commit();
 	}
 
-	private void displaySwitcherSocialPlusMenuFragment() {
+	private void displaySwitcherEmbeddedSocialMenuFragment() {
 		removeFragment(hostingAppMenuFragment);
 
 		drawerContainer.removeAllViews();

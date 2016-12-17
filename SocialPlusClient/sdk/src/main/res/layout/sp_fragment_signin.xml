@@ -44,7 +44,7 @@ android:fillViewport="true">
 				android:id="@+id/sp_buttons"
 				android:orientation="vertical"
 				android:layout_marginTop="40dp"
-				style="@style/SocialPlusSdkSignInButtonsLayout"
+				style="@style/EmbeddedSocialSdkSignInButtonsLayout"
 				android:layout_gravity="center_horizontal"
 				>
 
@@ -53,19 +53,19 @@ android:fillViewport="true">
 					android:layout_width="wrap_content"
 					android:layout_height="@dimen/sp_sign_in_button_height"
 					android:background="@drawable/sp_google_button_background"
-					style="@style/SocialPlusSdkSignInButton">
+					style="@style/EmbeddedSocialSdkSignInButton">
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
 						android:src="@drawable/sp_google_logo"
-						style="@style/SocialPlusSignInImage"
+						style="@style/EmbeddedSocialSignInImage"
 						/>
 
 					<include layout="@layout/sp_vertical_bar"/>
 
 					<TextView
 						android:text="@string/sp_google"
-						style="@style/SocialPlusSignInText"/>
+						style="@style/EmbeddedSocialSignInText"/>
 				</LinearLayout>
 
 				<LinearLayout
@@ -73,7 +73,7 @@ android:fillViewport="true">
 					android:layout_width="wrap_content"
 					android:layout_height="@dimen/sp_sign_in_button_height"
 					android:background="@drawable/sp_facebook_button_background"
-					style="@style/SocialPlusSdkSignInButton">
+					style="@style/EmbeddedSocialSdkSignInButton">
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
@@ -85,7 +85,7 @@ android:fillViewport="true">
 
 					<TextView
 						android:text="@string/sp_facebook"
-						style="@style/SocialPlusSignInText"/>
+						style="@style/EmbeddedSocialSignInText"/>
 				</LinearLayout>
 
 				<LinearLayout
@@ -93,7 +93,7 @@ android:fillViewport="true">
 					android:layout_width="wrap_content"
 					android:layout_height="@dimen/sp_sign_in_button_height"
 					android:background="@drawable/sp_microsoft_button_background"
-					style="@style/SocialPlusSdkSignInButton">
+					style="@style/EmbeddedSocialSdkSignInButton">
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
@@ -105,14 +105,14 @@ android:fillViewport="true">
 
 					<TextView
 						android:text="@string/sp_microsoft"
-						style="@style/SocialPlusSignInText"/>
+						style="@style/EmbeddedSocialSignInText"/>
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/sp_signInTwitter"
 					android:layout_width="wrap_content"
 					android:layout_height="@dimen/sp_sign_in_button_height"
 					android:background="@drawable/sp_twitter_button_background"
-					style="@style/SocialPlusSdkSignInButton">
+					style="@style/EmbeddedSocialSdkSignInButton">
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
@@ -124,7 +124,7 @@ android:fillViewport="true">
 
 					<TextView
 						android:text="@string/sp_twitter"
-						style="@style/SocialPlusSignInText"/>
+						style="@style/EmbeddedSocialSignInText"/>
 				</LinearLayout>
 			</LinearLayout>
 		</FrameLayout>

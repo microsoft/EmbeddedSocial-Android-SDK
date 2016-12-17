@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.server.model.like;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

@@ -9,7 +9,7 @@ import android.content.Context;
 
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.sdk.R;
 
 /**

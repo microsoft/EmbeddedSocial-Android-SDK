@@ -82,7 +82,7 @@ public abstract class BaseFragment extends Fragment {
 	};
 
 	protected BaseFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayBaseFragment);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayBaseFragment);
 		setRetainInstance(true);
 		eventListeners.add(this);
 		eventListeners.add(actionEventListener);

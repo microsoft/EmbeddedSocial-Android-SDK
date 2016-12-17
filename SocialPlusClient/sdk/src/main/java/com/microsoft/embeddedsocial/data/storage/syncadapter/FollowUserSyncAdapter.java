@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.storage.model.UserRelationOperation;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.relationship.FollowUserResponse;
 import com.microsoft.embeddedsocial.server.model.relationship.UserRelationshipRequest;
@@ -27,7 +27,7 @@ public class FollowUserSyncAdapter extends AbstractUserRelationSyncAdapter<Follo
 	protected FollowUserResponse performNetworkRequest(UserRelationshipRequest request)
 		throws NetworkRequestException {
 
-		return GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class)
+		return GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
 			.getRelationshipService()
 			.followUser(new FollowUserRequest(request.getRelationshipUserHandle()));
 	}

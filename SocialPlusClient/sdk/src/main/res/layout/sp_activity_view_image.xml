@@ -19,7 +19,7 @@
 
 	<android.support.v7.widget.Toolbar
 		android:id="@+id/sp_toolbar"
-		style="@style/SocialPlusSdkToolbarStyleImage"
+		style="@style/EmbeddedSocialSdkToolbarStyleImage"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:elevation="0dp"

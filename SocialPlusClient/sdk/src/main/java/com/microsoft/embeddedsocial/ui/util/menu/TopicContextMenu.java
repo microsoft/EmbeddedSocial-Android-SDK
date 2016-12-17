@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.sdk.IReportHandler;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicRenderOptions;
 

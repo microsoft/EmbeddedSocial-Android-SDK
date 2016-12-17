@@ -36,7 +36,7 @@
 				/>
 
 			<TextView
-				style="@style/SocialPlusSdkTextSubhead"
+				style="@style/EmbeddedSocialSdkTextSubhead"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="16dp"
@@ -75,7 +75,7 @@
 		</FrameLayout>
 
 		<TextView
-			style="@style/SocialPlusSdkTextSubhead.Green"
+			style="@style/EmbeddedSocialSdkTextSubhead.Green"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/sp_padding_large"
@@ -95,7 +95,7 @@
 			>
 
 			<EditText
-				style="@style/SocialPlusSdkEditTextStyle"
+				style="@style/EmbeddedSocialSdkEditTextStyle"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:hint="@string/sp_hint_first_name"
@@ -115,7 +115,7 @@
 			>
 
 			<EditText
-				style="@style/SocialPlusSdkEditTextStyle"
+				style="@style/EmbeddedSocialSdkEditTextStyle"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:hint="@string/sp_hint_last_name"
@@ -135,7 +135,7 @@
 			>
 
 			<EditText
-				style="@style/SocialPlusSdkEditTextStyle"
+				style="@style/EmbeddedSocialSdkEditTextStyle"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:hint="@string/sp_hint_bio"
@@ -145,7 +145,7 @@
 		</com.microsoft.embeddedsocial.ui.view.TextInput>
 
 		<TextView
-			style="@style/SocialPlusSdkTextSubhead.Green"
+			style="@style/EmbeddedSocialSdkTextSubhead.Green"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/sp_padding_large"

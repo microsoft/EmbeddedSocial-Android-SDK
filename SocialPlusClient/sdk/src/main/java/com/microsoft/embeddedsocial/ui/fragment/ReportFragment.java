@@ -12,8 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.Reason;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
 import com.microsoft.embeddedsocial.event.dialog.OnPositiveButtonClickedEvent;
 import com.microsoft.embeddedsocial.sdk.R;

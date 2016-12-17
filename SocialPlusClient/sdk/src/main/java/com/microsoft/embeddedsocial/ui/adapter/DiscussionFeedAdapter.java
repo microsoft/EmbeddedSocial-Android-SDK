@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyButtonListener;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicFlatViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentButtonListener;

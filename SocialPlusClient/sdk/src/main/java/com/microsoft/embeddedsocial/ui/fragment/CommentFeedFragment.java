@@ -52,7 +52,7 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 	};
 
 	public CommentFeedFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayTopic);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayTopic);
 	}
 
 	@Override

@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import com.microsoft.socialplus.autorest.models.AppCompactView;
-import com.microsoft.socialplus.autorest.models.LinkedAccountView;
+import com.microsoft.embeddedsocial.autorest.models.AppCompactView;
+import com.microsoft.embeddedsocial.autorest.models.LinkedAccountView;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.account.GetMyProfileWrapper;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.account.GetUserAccountWrapper;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.account.GetUserProfileWrapper;

@@ -9,7 +9,7 @@
 	tools:ignore="ResourceName"
 	>
 
-	<style name="SocialPlusSdkAppTheme.Light" parent="SocialPlusSdkAppTheme.LightBase">
+	<style name="EmbeddedSocialSdkAppTheme.Light" parent="EmbeddedSocialSdkAppTheme.LightBase">
 		<item name="sp_navigationItemBackground">@drawable/sp_navigation_item_background</item>
 	</style>
 

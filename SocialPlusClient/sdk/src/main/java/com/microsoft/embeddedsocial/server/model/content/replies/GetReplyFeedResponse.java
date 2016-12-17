@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.server.model.content.replies;
 
 import com.microsoft.embeddedsocial.server.model.ListResponse;
-import com.microsoft.socialplus.autorest.models.FeedResponseReplyView;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseReplyView;
 import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 
@@ -23,7 +23,7 @@ public class GetReplyFeedResponse extends FeedUserResponse implements ListRespon
 
 	public GetReplyFeedResponse(FeedResponseReplyView response) {
 		replies = new ArrayList<>();
-		for (com.microsoft.socialplus.autorest.models.ReplyView reply : response.getData()) {
+		for (com.microsoft.embeddedsocial.autorest.models.ReplyView reply : response.getData()) {
 			replies.add(new ReplyView(reply));
 		}
 	}

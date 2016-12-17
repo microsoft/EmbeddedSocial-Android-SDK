@@ -35,7 +35,7 @@
 			android:name="com.microsoft.embeddedsocial.ui.activity.HomeActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"
 			android:launchMode="singleTop"
-			android:theme="@style/SocialPlusSdkAppTheme.Stub"
+			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub"
 			>
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -46,7 +46,7 @@
 
 		<provider
 			android:name="com.microsoft.embeddedsocial.provider.SearchSuggestionProvider"
-			android:authorities="com.microsoft.embeddedsocial.socialplus_searchprovider"
+			android:authorities="com.microsoft.embeddedsocial.embeddedsocial_searchprovider"
 			android:exported="false"
 			android:syncable="true"
 			/>

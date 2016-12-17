@@ -48,7 +48,7 @@ public class NavigationFragment extends BaseFragment {
 	private NavigationIntentUtils navigation;
 
 	public NavigationFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkAppTheme_Light);
+		addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_Light);
 		addEventListener(new Object() {
 			@Subscribe
 			public void onUpdateNotificationCount(UpdateNotificationCountEvent event) {

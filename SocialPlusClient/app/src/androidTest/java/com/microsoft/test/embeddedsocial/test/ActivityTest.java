@@ -4,7 +4,7 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
 import com.microsoft.embeddedsocial.server.IActivityService;
 import com.microsoft.embeddedsocial.server.IRelationshipService;

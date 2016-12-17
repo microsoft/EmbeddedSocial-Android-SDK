@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.content.GetReplyEvent;
 import com.microsoft.embeddedsocial.server.IContentService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
@@ -27,7 +27,7 @@ public class GetReplyHandler extends ActionHandler {
 	@Override
 	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
 		IContentService contentService
-				= GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getContentService();
+				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 
 		final String replyHandle = intent.getExtras().getString(IntentExtras.REPLY_HANDLE);
 

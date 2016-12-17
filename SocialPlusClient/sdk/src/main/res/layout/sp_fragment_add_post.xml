@@ -42,7 +42,7 @@
 
 				<TextView
 					android:id="@+id/sp_username"
-					style="@style/SocialPlusSdkTextSubhead"
+					style="@style/EmbeddedSocialSdkTextSubhead"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginLeft="@dimen/sp_padding_large"
@@ -60,7 +60,7 @@
 
 				<TextView
 					android:id="@+id/sp_imageMessage"
-					style="@style/SocialPlusSdkTextAddPhotoCaption"
+					style="@style/EmbeddedSocialSdkTextAddPhotoCaption"
 					android:layout_width="match_parent"
 					android:layout_height="@dimen/sp_add_post_photo_height"
 					android:layout_gravity="center"
@@ -87,7 +87,7 @@
 				>
 
 				<EditText
-					style="@style/SocialPlusSdkEditTextStyle"
+					style="@style/EmbeddedSocialSdkEditTextStyle"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:hint="@string/sp_hint_title"

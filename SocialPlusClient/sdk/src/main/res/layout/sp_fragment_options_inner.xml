@@ -17,7 +17,7 @@
 		>
 
 		<!--<TextView-->
-			<!--style="@style/SocialPlusSdkOptionsHeader.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsHeader.Phone"-->
 			<!--android:layout_width="match_parent"-->
 			<!--android:layout_height="wrap_content"-->
 			<!--android:text="@string/sp_applications_header"-->
@@ -25,12 +25,12 @@
 
 		<!--<TextView-->
 			<!--android:id="@+id/sp_applications"-->
-			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
 			<!--android:text="@string/sp_muted_apps"-->
 			<!--/>-->
 
 		<!--<TextView-->
-			<!--style="@style/SocialPlusSdkOptionsHeader.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsHeader.Phone"-->
 			<!--android:layout_width="match_parent"-->
 			<!--android:layout_height="wrap_content"-->
 			<!--android:text="@string/sp_header_follow"-->
@@ -38,36 +38,36 @@
 
 		<!--<TextView-->
 			<!--android:id="@+id/sp_findFacebookFriends"-->
-			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
 			<!--android:text="@string/sp_button_find_friends_facebook"-->
 			<!--/>-->
 
-		<!--<View style="@style/SocialPlusSdkDivider"/>-->
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
 
 		<!--<TextView-->
 			<!--android:id="@+id/sp_findGooglePlusFriends"-->
-			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
 			<!--android:text="@string/sp_button_find_friends_google_plus"-->
 			<!--/>-->
 
-		<!--<View style="@style/SocialPlusSdkDivider"/>-->
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
 
 		<!--<TextView-->
 			<!--android:id="@+id/sp_findMicrosoftContacts"-->
-			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
 			<!--android:text="@string/sp_button_find_friends_microsoft"-->
 			<!--/>-->
 
-		<!--<View style="@style/SocialPlusSdkDivider"/>-->
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
 
 		<!--<TextView-->
 			<!--android:id="@+id/sp_findFriendsFromOtherApps"-->
-			<!--style="@style/SocialPlusSdkOptionsItem.Phone"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
 			<!--android:text="@string/sp_button_find_friends_other_apps"-->
 			<!--/>-->
 
 		<TextView
-			style="@style/SocialPlusSdkOptionsHeader.Phone"
+			style="@style/EmbeddedSocialSdkOptionsHeader.Phone"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/sp_header_about"
@@ -75,20 +75,20 @@
 
 		<TextView
 			android:id="@+id/sp_privacyPolicy"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_privacy_policy"
 			/>
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<View style="@style/EmbeddedSocialSdkDivider"/>
 
 		<TextView
 			android:id="@+id/sp_terms"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_terms_and_conditions"
 			/>
 
 		<TextView
-			style="@style/SocialPlusSdkOptionsHeader.Phone"
+			style="@style/EmbeddedSocialSdkOptionsHeader.Phone"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="@string/sp_account_header"
@@ -96,31 +96,31 @@
 
 		<TextView
 			android:id="@+id/sp_linkedAccounts"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_linked_accounts"
 			/>
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<View style="@style/EmbeddedSocialSdkDivider"/>
 
 		<TextView
 			android:id="@+id/sp_deleteSearchHistory"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_delete_search_history"
 			/>
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<View style="@style/EmbeddedSocialSdkDivider"/>
 
 		<TextView
 			android:id="@+id/sp_signOut"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_sign_out"
 			/>
 
-		<View style="@style/SocialPlusSdkDivider"/>
+		<View style="@style/EmbeddedSocialSdkDivider"/>
 
 		<TextView
 			android:id="@+id/sp_deleteAccount"
-			style="@style/SocialPlusSdkOptionsItem.Phone"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
 			android:text="@string/sp_button_delete_account"
 			/>
 

@@ -17,7 +17,7 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 
@@ -35,7 +35,7 @@ public class SignOutHandler extends ActionHandler {
 	@Override
 	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
 		String authorization = intent.getStringExtra(IntentExtras.AUTHORIZATION);
-		IAuthenticationService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAuthenticationService();
+		IAuthenticationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAuthenticationService();
 		try {
 			SignOutRequest request = new SignOutRequest(authorization);
 			server.signOut(request);

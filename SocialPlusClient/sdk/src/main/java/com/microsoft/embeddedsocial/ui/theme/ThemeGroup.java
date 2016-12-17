@@ -23,10 +23,10 @@ public enum ThemeGroup {
 	DARK;
 
 	static {
-		LIGHT.themeResIds.put(Theme.REGULAR, R.style.SocialPlusSdkAppTheme_Light);
-		LIGHT.themeResIds.put(Theme.SEARCH, R.style.SocialPlusSdkAppTheme_Light_Search);
-		DARK.themeResIds.put(Theme.REGULAR, R.style.SocialPlusSdkAppTheme_Dark);
-		DARK.themeResIds.put(Theme.SEARCH, R.style.SocialPlusSdkAppTheme_Dark);
+		LIGHT.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Light);
+		LIGHT.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Light_Search);
+		DARK.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Dark);
+		DARK.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Dark);
 	}
 
 	private final Map<Theme, Integer> themeResIds = new HashMap<>();

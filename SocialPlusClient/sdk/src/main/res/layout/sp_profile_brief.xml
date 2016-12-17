@@ -17,7 +17,7 @@
 	>
 
 	<android.support.v7.widget.CardView
-		style="@style/SocialPlusSdkCardViewStyle"
+		style="@style/EmbeddedSocialSdkCardViewStyle"
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -55,14 +55,14 @@
 
 					<TextView
 						android:id="@+id/sp_followersCount"
-						style="@style/SocialPlusSdkButton"
+						style="@style/EmbeddedSocialSdkButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						/>
 
 					<TextView
 						android:id="@+id/sp_followingCount"
-						style="@style/SocialPlusSdkButton"
+						style="@style/EmbeddedSocialSdkButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						/>
@@ -75,7 +75,7 @@
 
 					<TextView
 						android:id="@+id/sp_editProfile"
-						style="@style/SocialPlusSdkButton"
+						style="@style/EmbeddedSocialSdkButton"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/sp_button_edit_profile"
@@ -83,7 +83,7 @@
 
 					<TextView
 						android:id="@+id/sp_followingStatus"
-						style="@style/SocialPlusSdkBoundedButton.Small"
+						style="@style/EmbeddedSocialSdkBoundedButton.Small"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginRight="10dp"

@@ -44,7 +44,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/sp_menu_done"
-			style="@style/SocialPlusSdkBottomButton"
+			style="@style/EmbeddedSocialSdkBottomButton"
 			android:visibility="invisible"
 			/>
 	</LinearLayout>

@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.server.model.view;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.socialplus.autorest.models.*;
+import com.microsoft.embeddedsocial.autorest.models.*;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class UserAccountView implements UniqueItem {
 	 */
 	UserAccountView() {  }
 
-	public UserAccountView(com.microsoft.socialplus.autorest.models.UserProfileView profileView,
+	public UserAccountView(com.microsoft.embeddedsocial.autorest.models.UserProfileView profileView,
 						   List<LinkedAccountView> linkedAccounts) {
 		userHandle = profileView.getUserHandle();
 		firstName = profileView.getFirstName();

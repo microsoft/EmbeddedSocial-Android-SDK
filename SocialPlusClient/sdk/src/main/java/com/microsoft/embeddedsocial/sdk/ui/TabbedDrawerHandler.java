@@ -67,7 +67,7 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 		fragmentTransaction.commit();
 	}
 
-	private void selectSocialPlusMenuFragment() {
+	private void selectEmbeddedSocialMenuFragment() {
 		displayMenu = DisplayMenu.SOCIAL_MENU;
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
 		fragmentTransaction.replace(R.id.sp_tab_container, socialPlusMenuFragment, SOCIAL_TAG);
@@ -79,7 +79,7 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 		if (HOSTING_APP_TAG.equals(tab.getTag())) {
 			selectHostingAppMenuFragment();
 		} else if (SOCIAL_TAG.equals(tab.getTag())) {
-			selectSocialPlusMenuFragment();
+			selectEmbeddedSocialMenuFragment();
 		}
 	}
 

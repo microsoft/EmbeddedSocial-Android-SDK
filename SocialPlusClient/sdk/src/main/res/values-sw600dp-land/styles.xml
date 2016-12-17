@@ -9,7 +9,7 @@
 	tools:ignore="ResourceName"
 	>
 
-	<style name="SocialPlusSdkThemeOverlayTopic">
+	<style name="EmbeddedSocialSdkThemeOverlayTopic">
 		<item name="sp_baseContentLayout">@layout/sp_topic_content_tablet</item>
 		<item name="sp_baseContentViewId">@id/sp_contentView</item>
 	</style>

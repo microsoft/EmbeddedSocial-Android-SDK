@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 /**
  * Stores {@link AccountData} permanently.

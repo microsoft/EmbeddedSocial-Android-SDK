@@ -18,7 +18,7 @@ public class GetUserProfileResponse {
 		this.user = user;
 	}
 
-	public GetUserProfileResponse(com.microsoft.socialplus.autorest.models.UserProfileView response) {
+	public GetUserProfileResponse(com.microsoft.embeddedsocial.autorest.models.UserProfileView response) {
 		user = new UserProfileView(response);
 	}
 

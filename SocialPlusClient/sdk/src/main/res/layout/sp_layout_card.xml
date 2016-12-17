@@ -14,7 +14,7 @@
 		android:id="@+id/sp_card_root_view"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		style="@style/SocialPlusSdkCardViewStyle"
+		style="@style/EmbeddedSocialSdkCardViewStyle"
 		>
 
 		<RelativeLayout

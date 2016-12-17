@@ -22,7 +22,7 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			style="@style/SocialPlusSdkGreenTextStyle"
+			style="@style/EmbeddedSocialSdkGreenTextStyle"
 			android:paddingBottom="@dimen/sp_padding_base"
 			android:text="@string/sp_report_result_title"
 			/>
@@ -48,7 +48,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:padding="@dimen/sp_padding_base"
-			style="@style/SocialPlusSdkGreenTextStyle"
+			style="@style/EmbeddedSocialSdkGreenTextStyle"
 			/>
 
 		<ListView

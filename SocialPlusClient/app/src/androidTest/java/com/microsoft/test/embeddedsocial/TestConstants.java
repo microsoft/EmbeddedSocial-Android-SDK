@@ -4,7 +4,7 @@
  *
  */
 
-package com.microsoft.test.socialplus;
+package com.microsoft.test.embeddedsocial;
 
 public class TestConstants {
 

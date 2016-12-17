@@ -39,7 +39,7 @@
 		</activity>
 		<provider
 			android:name="com.microsoft.navigationdrawerstudio.provider.SearchSuggestionProvider"
-			android:authorities="com.microsoft.navigationdrawerstudio.socialplus_searchprovider"
+			android:authorities="com.microsoft.navigationdrawerstudio.embeddedsocial_searchprovider"
 			android:exported="false"
 			android:syncable="true"
 			/>

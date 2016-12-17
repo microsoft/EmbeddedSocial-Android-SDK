@@ -13,7 +13,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.socialplus.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
 import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.server.model.TimedItem;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
@@ -130,10 +130,10 @@ public class CommentView implements Parcelable, UniqueItem, TimedItem {
 		offlineId = in.readInt();
 	}
 
-	public CommentView(com.microsoft.socialplus.autorest.models.CommentView view) {
+	public CommentView(com.microsoft.embeddedsocial.autorest.models.CommentView view) {
 		commentHandle = view.getCommentHandle();
 		topicHandle = view.getTopicHandle();
-		com.microsoft.socialplus.autorest.models.UserCompactView viewUser = view.getUser();
+		com.microsoft.embeddedsocial.autorest.models.UserCompactView viewUser = view.getUser();
 		if (viewUser != null) {
 			user = new UserCompactView(viewUser);
 		}

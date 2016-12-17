@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.data.storage.syncadapter;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.BadRequestException;
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedException;
@@ -20,7 +20,7 @@ import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedExcep
 public abstract class AbstractSyncAdapter<T> implements ISynchronizable {
 
 	private final T item;
-	private final SocialPlusServiceProvider serviceProvider;
+	private final EmbeddedSocialServiceProvider serviceProvider;
 
 	/**
 	 * Creates an instance.
@@ -28,7 +28,7 @@ public abstract class AbstractSyncAdapter<T> implements ISynchronizable {
 	 */
 	protected AbstractSyncAdapter(T item) {
 		this.item = item;
-		this.serviceProvider = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class);
+		this.serviceProvider = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class);
 	}
 
 	/**
@@ -41,9 +41,9 @@ public abstract class AbstractSyncAdapter<T> implements ISynchronizable {
 
 	/**
 	 * Gets Social Plus API service provider.
-	 * @return  {@link SocialPlusServiceProvider} instance.
+	 * @return  {@link EmbeddedSocialServiceProvider} instance.
 	 */
-	protected final SocialPlusServiceProvider getServiceProvider() {
+	protected final EmbeddedSocialServiceProvider getServiceProvider() {
 		return serviceProvider;
 	}
 

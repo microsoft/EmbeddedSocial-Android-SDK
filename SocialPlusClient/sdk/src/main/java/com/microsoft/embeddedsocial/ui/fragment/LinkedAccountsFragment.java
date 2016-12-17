@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.fetcher.UserAccountFetcher;
 import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;

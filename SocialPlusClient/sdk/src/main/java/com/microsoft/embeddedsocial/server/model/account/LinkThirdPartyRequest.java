@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.server.model.account;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
-import com.microsoft.socialplus.autorest.models.PostLinkedAccountRequest;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.PostLinkedAccountRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.model.UserRequest;

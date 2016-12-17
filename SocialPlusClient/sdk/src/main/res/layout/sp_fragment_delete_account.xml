@@ -24,7 +24,7 @@
 			android:text="@string/sp_cancel"
 			android:layout_alignParentBottom="true"
 			android:layout_alignParentRight="true"
-			style="@style/SocialPlusSdkBottomButton"
+			style="@style/EmbeddedSocialSdkBottomButton"
 			/>
 
 		<Button
@@ -34,7 +34,7 @@
 			android:text="@string/sp_delete"
 			android:layout_alignParentBottom="true"
 			android:layout_toLeftOf="@id/sp_cancelButton"
-			style="@style/SocialPlusSdkBottomButton"
+			style="@style/EmbeddedSocialSdkBottomButton"
 			/>
 
 		<TextView

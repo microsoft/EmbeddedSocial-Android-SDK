@@ -12,5 +12,5 @@
 	android:layout_marginLeft="16dp"
 	android:layout_marginTop="24dp"
 	android:layout_marginBottom="14dp"
-	style="@style/SocialPlusSdkGreenTextStyle"
+	style="@style/EmbeddedSocialSdkGreenTextStyle"
 	/>

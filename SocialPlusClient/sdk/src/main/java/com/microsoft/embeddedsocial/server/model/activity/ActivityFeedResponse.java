@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.server.model.activity;
 
 import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
-import com.microsoft.socialplus.autorest.models.FeedResponseActivityView;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
 import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class ActivityFeedResponse extends FeedUserResponse implements ListRespon
 
 	public ActivityFeedResponse(FeedResponseActivityView response) {
 		activities = new ArrayList<>();
-		for (com.microsoft.socialplus.autorest.models.ActivityView view : response.getData()) {
+		for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
 			activities.add(new ActivityView(view));
 		}
 	}

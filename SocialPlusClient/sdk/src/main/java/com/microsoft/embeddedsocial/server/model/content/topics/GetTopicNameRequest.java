@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
-import com.microsoft.socialplus.autorest.models.GetTopicNameResponse;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.GetTopicNameResponse;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

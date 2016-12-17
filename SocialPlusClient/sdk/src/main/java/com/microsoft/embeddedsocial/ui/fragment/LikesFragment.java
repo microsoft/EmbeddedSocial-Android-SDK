@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;

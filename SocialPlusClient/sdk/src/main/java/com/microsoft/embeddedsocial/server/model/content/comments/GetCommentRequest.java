@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.server.model.content.comments;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.models.CommentView;
+import com.microsoft.embeddedsocial.autorest.models.CommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

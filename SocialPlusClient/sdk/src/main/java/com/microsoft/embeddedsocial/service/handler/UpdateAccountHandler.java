@@ -10,8 +10,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.microsoft.socialplus.autorest.models.ImageType;
-import com.microsoft.socialplus.autorest.models.Visibility;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -20,7 +20,7 @@ import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.AccountDataDifference;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.ImageUploader;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
@@ -36,7 +36,7 @@ import java.io.IOException;
 public class UpdateAccountHandler extends ActionHandler {
 
 	private final Context context;
-	private final IAccountService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
+	private final IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 
 	public UpdateAccountHandler(Context context) {
 		this.context = context;

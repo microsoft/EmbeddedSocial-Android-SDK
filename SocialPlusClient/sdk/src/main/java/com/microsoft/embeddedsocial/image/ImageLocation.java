@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.image;
 
 import android.text.TextUtils;
 
-import com.microsoft.socialplus.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
 
 /**
  * Image url bound to it's size.

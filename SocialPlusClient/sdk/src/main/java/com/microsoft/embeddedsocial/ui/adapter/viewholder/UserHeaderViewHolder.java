@@ -17,7 +17,7 @@ import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.Preferences;

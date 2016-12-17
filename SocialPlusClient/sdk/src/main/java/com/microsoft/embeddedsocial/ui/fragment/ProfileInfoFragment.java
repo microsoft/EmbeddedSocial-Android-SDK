@@ -30,7 +30,7 @@ public class ProfileInfoFragment extends BaseListContentFragment<ProfileInfoAdap
 	private Fetcher<AccountData> fetcher;
 
 	public ProfileInfoFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayFeed);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
 	}
 
 	@Override

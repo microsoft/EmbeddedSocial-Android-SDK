@@ -23,7 +23,7 @@
 
 	<TextView
 		android:id="@+id/sp_fullName"
-		style="@style/SocialPlusSdkTextHead"
+		style="@style/EmbeddedSocialSdkTextHead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="@dimen/sp_padding_small"
@@ -34,7 +34,7 @@
 
 	<TextView
 		android:id="@+id/sp_bio"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_fullName"

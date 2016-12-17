@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
 import com.microsoft.embeddedsocial.server.model.ListResponse;
-import com.microsoft.socialplus.autorest.models.FeedResponseTopicView;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseTopicView;
 import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
@@ -23,7 +23,7 @@ public class TopicsListResponse extends FeedUserResponse implements ListResponse
 
 	public TopicsListResponse(FeedResponseTopicView response) {
 		topics = new ArrayList<>();
-		for (com.microsoft.socialplus.autorest.models.TopicView topic : response.getData()) {
+		for (com.microsoft.embeddedsocial.autorest.models.TopicView topic : response.getData()) {
 			topics.add(new TopicView(topic));
 		}
 	}

@@ -40,7 +40,7 @@
 				<TableRow>
 
 					<TextView
-						style="@style/SocialPlusSdkOptionsHeader"
+						style="@style/EmbeddedSocialSdkOptionsHeader"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:text="@string/sp_applications_header"
@@ -52,7 +52,7 @@
 
 					<TextView
 						android:id="@+id/sp_applications"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_muted_apps"
@@ -90,7 +90,7 @@
 				<TableRow>
 
 					<TextView
-						style="@style/SocialPlusSdkOptionsHeader"
+						style="@style/EmbeddedSocialSdkOptionsHeader"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:text="@string/sp_header_follow"
@@ -102,7 +102,7 @@
 
 					<TextView
 						android:id="@+id/sp_findFacebookFriends"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_find_friends_facebook"
@@ -110,7 +110,7 @@
 
 					<TextView
 						android:id="@+id/sp_findMicrosoftContacts"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_find_friends_microsoft"
@@ -121,12 +121,12 @@
 				<TableRow>
 
 					<View
-						style="@style/SocialPlusSdkDivider.Tablet"
+						style="@style/EmbeddedSocialSdkDivider.Tablet"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						/>
 
 					<View
-						style="@style/SocialPlusSdkDivider.Tablet"
+						style="@style/EmbeddedSocialSdkDivider.Tablet"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						/>
 
@@ -136,7 +136,7 @@
 
 					<TextView
 						android:id="@+id/sp_findGooglePlusFriends"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_find_friends_google_plus"
@@ -144,7 +144,7 @@
 
 					<TextView
 						android:id="@+id/sp_findFriendsFromOtherApps"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_find_friends_other_apps"
@@ -175,7 +175,7 @@
 				<TableRow>
 
 					<TextView
-						style="@style/SocialPlusSdkOptionsHeader"
+						style="@style/EmbeddedSocialSdkOptionsHeader"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:text="@string/sp_account_header"
@@ -187,7 +187,7 @@
 
 					<TextView
 						android:id="@+id/sp_linkedAccounts"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_linked_accounts"
@@ -195,7 +195,7 @@
 
 					<TextView
 						android:id="@+id/sp_deleteSearchHistory"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_delete_search_history"
@@ -206,12 +206,12 @@
 				<TableRow>
 
 					<View
-						style="@style/SocialPlusSdkDivider.Tablet"
+						style="@style/EmbeddedSocialSdkDivider.Tablet"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						/>
 
 					<View
-						style="@style/SocialPlusSdkDivider.Tablet"
+						style="@style/EmbeddedSocialSdkDivider.Tablet"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						/>
 
@@ -221,7 +221,7 @@
 
 					<TextView
 						android:id="@+id/sp_signOut"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_sign_out"
@@ -229,7 +229,7 @@
 
 					<TextView
 						android:id="@+id/sp_deleteAccount"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_delete_account"
@@ -260,7 +260,7 @@
 				<TableRow>
 
 					<TextView
-						style="@style/SocialPlusSdkOptionsHeader"
+						style="@style/EmbeddedSocialSdkOptionsHeader"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:text="@string/sp_header_about"
@@ -272,7 +272,7 @@
 
 					<TextView
 						android:id="@+id/sp_privacyPolicy"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_privacy_policy"
@@ -280,7 +280,7 @@
 
 					<TextView
 						android:id="@+id/sp_terms"
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginLeft="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="@string/sp_button_terms_and_conditions"
@@ -310,7 +310,7 @@
 				>
 
 				<TextView
-					style="@style/SocialPlusSdkOptionsHeader"
+					style="@style/EmbeddedSocialSdkOptionsHeader"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Feed layout"
@@ -323,7 +323,7 @@
 					>
 
 					<TextView
-						style="@style/SocialPlusSdkOptionsItem"
+						style="@style/EmbeddedSocialSdkOptionsItem"
 						android:layout_marginRight="@dimen/sp_padding_base"
 						android:layout_weight="1"
 						android:text="Use staggered grid layout manager"

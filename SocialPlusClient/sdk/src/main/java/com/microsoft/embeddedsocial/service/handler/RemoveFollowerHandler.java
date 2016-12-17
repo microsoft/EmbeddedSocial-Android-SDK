@@ -12,7 +12,7 @@ import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.IRelationshipService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.relationship.RemoveFollowerRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
@@ -24,7 +24,7 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
 public class RemoveFollowerHandler extends ActionHandler {
 
     private final IRelationshipService relationshipService = GlobalObjectRegistry
-            .getObject(SocialPlusServiceProvider.class)
+            .getObject(EmbeddedSocialServiceProvider.class)
             .getRelationshipService();
 
     public RemoveFollowerHandler() { }

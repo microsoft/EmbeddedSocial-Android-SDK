@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.activity;
 
-import com.microsoft.socialplus.autorest.models.FeedResponseActivityView;
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

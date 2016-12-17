@@ -14,11 +14,11 @@ import android.text.TextUtils;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.IAuthenticationService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.GetRequestTokenResponse;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.auth.GetRequestTokenRequest;
 import com.microsoft.embeddedsocial.ui.activity.WebAuthenticationActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
@@ -42,7 +42,7 @@ public class TwitterWebAuthenticator extends AbstractAuthenticator {
 
 	private final ExecutorService executor = Executors.newSingleThreadExecutor();
 	private final IAuthenticationService authService = GlobalObjectRegistry
-		.getObject(SocialPlusServiceProvider.class)
+		.getObject(EmbeddedSocialServiceProvider.class)
 		.getAuthenticationService();
 
 	private String requestToken;

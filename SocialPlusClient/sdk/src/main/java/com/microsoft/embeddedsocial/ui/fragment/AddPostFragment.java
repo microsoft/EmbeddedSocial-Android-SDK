@@ -26,7 +26,7 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseEditPostFragment;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
 import com.microsoft.embeddedsocial.ui.util.TextHelper;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 
 /**
  * Fragment for adding a new post.

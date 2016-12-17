@@ -11,7 +11,7 @@ import android.os.Parcelable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.socialplus.autorest.models.*;
+import com.microsoft.embeddedsocial.autorest.models.*;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 
 /**
@@ -112,7 +112,7 @@ public class UserCompactView implements Parcelable, UniqueItem {
 		followerStatus = in.readString();
 	}
 
-	public UserCompactView(com.microsoft.socialplus.autorest.models.UserCompactView view) {
+	public UserCompactView(com.microsoft.embeddedsocial.autorest.models.UserCompactView view) {
 		userHandle = view.getUserHandle();
 		firstName = view.getFirstName();
 		lastName = view.getLastName();
@@ -121,7 +121,7 @@ public class UserCompactView implements Parcelable, UniqueItem {
 		followerStatus = view.getFollowerStatus().toValue();
 	}
 
-	public UserCompactView(com.microsoft.socialplus.autorest.models.UserProfileView view) {
+	public UserCompactView(com.microsoft.embeddedsocial.autorest.models.UserProfileView view) {
 		userHandle = view.getUserHandle();
 		firstName = view.getFirstName();
 		lastName = view.getLastName();

@@ -8,27 +8,27 @@ package com.microsoft.embeddedsocial.server.model;
 import android.text.TextUtils;
 
 import com.microsoft.embeddedsocial.sdk.BuildConfig;
-import com.microsoft.socialplus.autorest.CommentLikesOperations;
-import com.microsoft.socialplus.autorest.CommentLikesOperationsImpl;
-import com.microsoft.socialplus.autorest.CommentRepliesOperations;
-import com.microsoft.socialplus.autorest.CommentRepliesOperationsImpl;
-import com.microsoft.socialplus.autorest.CommentsOperations;
-import com.microsoft.socialplus.autorest.CommentsOperationsImpl;
-import com.microsoft.socialplus.autorest.MyFollowingOperations;
-import com.microsoft.socialplus.autorest.MyFollowingOperationsImpl;
-import com.microsoft.socialplus.autorest.RepliesOperations;
-import com.microsoft.socialplus.autorest.RepliesOperationsImpl;
-import com.microsoft.socialplus.autorest.ReplyLikesOperations;
-import com.microsoft.socialplus.autorest.ReplyLikesOperationsImpl;
-import com.microsoft.socialplus.autorest.SocialPlusClient;
-import com.microsoft.socialplus.autorest.SocialPlusClientImpl;
-import com.microsoft.socialplus.autorest.TopicCommentsOperations;
-import com.microsoft.socialplus.autorest.TopicCommentsOperationsImpl;
-import com.microsoft.socialplus.autorest.TopicLikesOperations;
-import com.microsoft.socialplus.autorest.TopicLikesOperationsImpl;
-import com.microsoft.socialplus.autorest.TopicsOperations;
-import com.microsoft.socialplus.autorest.TopicsOperationsImpl;
-import com.microsoft.socialplus.autorest.models.Platform;
+import com.microsoft.embeddedsocial.autorest.CommentLikesOperations;
+import com.microsoft.embeddedsocial.autorest.CommentLikesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.CommentRepliesOperations;
+import com.microsoft.embeddedsocial.autorest.CommentRepliesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.CommentsOperations;
+import com.microsoft.embeddedsocial.autorest.CommentsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.MyFollowingOperations;
+import com.microsoft.embeddedsocial.autorest.MyFollowingOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.RepliesOperations;
+import com.microsoft.embeddedsocial.autorest.RepliesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.ReplyLikesOperations;
+import com.microsoft.embeddedsocial.autorest.ReplyLikesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClient;
+import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClientImpl;
+import com.microsoft.embeddedsocial.autorest.TopicCommentsOperations;
+import com.microsoft.embeddedsocial.autorest.TopicCommentsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.TopicLikesOperations;
+import com.microsoft.embeddedsocial.autorest.TopicLikesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.TopicsOperations;
+import com.microsoft.embeddedsocial.autorest.TopicsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.Platform;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -50,7 +50,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class BaseRequest {
 	protected static final Retrofit RETROFIT;
-	protected static final SocialPlusClient CLIENT;
+	protected static final EmbeddedSocialClient CLIENT;
 
 	protected static final TopicsOperations TOPICS;
 	protected static final MyFollowingOperations FOLLOWING;
@@ -77,7 +77,7 @@ public class BaseRequest {
 				.addConverterFactory(GsonConverterFactory.create())
 				.client(httpClient.build())
 				.build();
-		CLIENT = new SocialPlusClientImpl();
+		CLIENT = new EmbeddedSocialClientImpl();
 		TOPICS = new TopicsOperationsImpl(RETROFIT, CLIENT);
 		FOLLOWING = new MyFollowingOperationsImpl(RETROFIT, CLIENT);
 		TOPIC_COMMENTS = new TopicCommentsOperationsImpl(RETROFIT, CLIENT);

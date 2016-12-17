@@ -32,9 +32,9 @@ import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyRespons
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
-import com.microsoft.socialplus.autorest.models.BlobType;
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
 
 import java.io.File;
 import java.io.IOException;

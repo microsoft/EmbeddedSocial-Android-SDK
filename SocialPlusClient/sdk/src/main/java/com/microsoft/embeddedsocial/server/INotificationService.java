@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server;
 
-import com.microsoft.socialplus.autorest.models.CountResponse;
+import com.microsoft.embeddedsocial.autorest.models.CountResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.notification.GetNotificationCountRequest;
 import com.microsoft.embeddedsocial.server.model.notification.GetNotificationFeedRequest;

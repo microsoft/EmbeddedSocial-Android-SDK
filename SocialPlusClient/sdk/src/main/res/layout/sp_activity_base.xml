@@ -39,7 +39,7 @@
 		>
 
 		<View
-			style="@style/SocialPlusSdkDivider"
+			style="@style/EmbeddedSocialSdkDivider"
 			android:layout_gravity="top"/>
 
 		<Button
@@ -48,7 +48,7 @@
 			android:layout_height="wrap_content"
 			android:text="@string/sp_menu_done"
 			android:layout_gravity="right"
-			style="@style/SocialPlusSdkBottomButton"
+			style="@style/EmbeddedSocialSdkBottomButton"
 			/>
 
 	</FrameLayout>

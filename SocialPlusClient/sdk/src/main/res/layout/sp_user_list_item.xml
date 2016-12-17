@@ -45,7 +45,7 @@
 
 		<TextView
 			android:id="@+id/sp_removeFollowerButton"
-			style="@style/SocialPlusSdkBoundedButton"
+			style="@style/EmbeddedSocialSdkBoundedButton"
 			android:visibility="gone"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -53,13 +53,13 @@
 
 		<TextView
 			android:id="@+id/sp_actionButton"
-			style="@style/SocialPlusSdkBoundedButton"
+			style="@style/EmbeddedSocialSdkBoundedButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			/>
 
 	</LinearLayout>
 
-	<View style="@style/SocialPlusSdkDivider.List"/>
+	<View style="@style/EmbeddedSocialSdkDivider.List"/>
 
 </LinearLayout>

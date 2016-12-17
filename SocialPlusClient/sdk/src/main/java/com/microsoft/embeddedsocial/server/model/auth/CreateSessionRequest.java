@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.server.model.auth;
 
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
-import com.microsoft.socialplus.autorest.models.PostSessionRequest;
-import com.microsoft.socialplus.autorest.models.PostSessionResponse;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.PostSessionRequest;
+import com.microsoft.embeddedsocial.autorest.models.PostSessionResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

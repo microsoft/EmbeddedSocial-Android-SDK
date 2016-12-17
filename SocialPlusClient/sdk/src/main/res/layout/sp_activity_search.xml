@@ -55,7 +55,7 @@
 					android:foreground="?android:windowContentOverlay"
 					/>
 
-				<View style="@style/SocialPlusSdkDivider"/>
+				<View style="@style/EmbeddedSocialSdkDivider"/>
 
 				<View
 					android:id="@+id/sp_transparentCover"

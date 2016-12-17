@@ -11,8 +11,8 @@ import android.support.v7.widget.PopupMenu;
 import android.view.View;
 
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.service.IntentExtras;

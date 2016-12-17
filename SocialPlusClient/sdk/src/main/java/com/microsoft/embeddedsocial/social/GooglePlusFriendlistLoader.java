@@ -11,7 +11,7 @@ import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.social.exception.InvalidCredentialsException;
 import com.microsoft.embeddedsocial.social.exception.NotAuthorizedToSocialNetworkException;
 import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

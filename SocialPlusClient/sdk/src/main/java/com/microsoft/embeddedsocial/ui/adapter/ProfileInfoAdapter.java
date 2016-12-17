@@ -21,7 +21,7 @@ import com.microsoft.embeddedsocial.ui.activity.BlockedUsersActivity;
 import com.microsoft.embeddedsocial.ui.activity.FollowRequestsActivity;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.ProfileInfoRenderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
 
 import java.util.ArrayList;

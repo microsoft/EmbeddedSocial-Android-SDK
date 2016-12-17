@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.model.UserRelationOperation;
 import com.microsoft.embeddedsocial.server.IRelationshipService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.relationship.BlockUserRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.RejectFollowRequest;
@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class GeneralUserRelationSyncAdapter extends AbstractUserRelationSyncAdapter<Response> {
 
 	private static final IRelationshipService SERVICE = GlobalObjectRegistry
-			.getObject(SocialPlusServiceProvider.class)
+			.getObject(EmbeddedSocialServiceProvider.class)
 			.getRelationshipService();
 
 	public GeneralUserRelationSyncAdapter(UserRelationOperation operation,

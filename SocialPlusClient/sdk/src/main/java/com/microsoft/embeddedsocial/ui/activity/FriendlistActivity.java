@@ -13,7 +13,7 @@ import android.support.v7.app.ActionBar;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FriendlistFragment;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 

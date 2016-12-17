@@ -23,7 +23,7 @@ import com.microsoft.embeddedsocial.data.storage.ReportServiceWrapper;
 /**
  * Wrapper for interactions with REST-services
  */
-public final class SocialPlusServiceProvider {
+public final class EmbeddedSocialServiceProvider {
 
 	private final IAccountService accountService;
 	private final IActivityService activityService;
@@ -40,7 +40,7 @@ public final class SocialPlusServiceProvider {
 	/**
 	 * Constructor
 	 */
-	public SocialPlusServiceProvider(Context context) {
+	public EmbeddedSocialServiceProvider(Context context) {
 		accountService = new AccountServiceCachingWrapper();
 		activityService = new ActivityServiceCachingWrapper(context);
 		authenticationService = new AuthenticationServiceWrapper();

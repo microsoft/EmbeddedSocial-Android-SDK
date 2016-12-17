@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.social;
 
 import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 import java.util.List;
 

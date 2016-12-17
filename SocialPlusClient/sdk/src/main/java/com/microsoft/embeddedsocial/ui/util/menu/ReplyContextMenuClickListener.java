@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 
 /**
  * Menu listener for the reply layout

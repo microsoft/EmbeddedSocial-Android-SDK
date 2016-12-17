@@ -12,7 +12,7 @@ import com.microsoft.embeddedsocial.data.model.FollowRequest;
 import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.server.IRelationshipService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
 
 import java.util.List;
@@ -25,7 +25,7 @@ class FollowRequestsFetcher extends Fetcher<FollowRequest> {
 	private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
 
 	public FollowRequestsFetcher() {
-		IRelationshipService server = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getRelationshipService();
+		IRelationshipService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getRelationshipService();
 		requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
 	}
 

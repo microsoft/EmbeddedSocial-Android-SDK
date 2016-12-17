@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.discover;
 
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 

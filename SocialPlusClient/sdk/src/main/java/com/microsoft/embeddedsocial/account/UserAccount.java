@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import com.facebook.login.LoginManager;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;

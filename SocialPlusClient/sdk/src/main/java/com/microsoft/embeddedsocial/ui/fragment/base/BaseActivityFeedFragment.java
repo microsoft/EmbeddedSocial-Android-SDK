@@ -21,7 +21,7 @@ import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 public abstract class BaseActivityFeedFragment extends BaseListContentFragment<FetchableAdapter<ActivityView, ?>> {
 
 	protected BaseActivityFeedFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayFeed);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
 	}
 
 	@Override

@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokenHolder;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.social.exception.NotAuthorizedToSocialNetworkException;
 import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
 import okhttp3.OkHttpClient;

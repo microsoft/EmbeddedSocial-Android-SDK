@@ -17,7 +17,7 @@ import android.support.v4.content.LocalBroadcastManager;
 
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.activity.GoogleCallbackActivity;

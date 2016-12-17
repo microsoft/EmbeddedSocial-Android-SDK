@@ -9,7 +9,7 @@
 	tools:ignore="ResourceName"
 	>
 
-	<style name="SocialPlusSdkThemeOverlayBaseFragment">
+	<style name="EmbeddedSocialSdkThemeOverlayBaseFragment">
 		<item name="sp_listItemBackground">@drawable/sp_button_background</item>
 	</style>
 

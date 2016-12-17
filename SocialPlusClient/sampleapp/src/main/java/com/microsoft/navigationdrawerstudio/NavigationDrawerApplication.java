@@ -10,7 +10,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.microsoft.embeddedsocial.sdk.SocialPlus;
+import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
 import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
 
 public class NavigationDrawerApplication extends Application {
@@ -18,8 +18,8 @@ public class NavigationDrawerApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		SocialPlus.init(this, R.raw.social_plus_config);
-		SocialPlus.initDrawer(this, new DrawerFactory(), DrawerDisplayMode.TABS, "STUDIO");
+		EmbeddedSocial.init(this, R.raw.social_plus_config);
+		EmbeddedSocial.initDrawer(this, new DrawerFactory(), DrawerDisplayMode.TABS, "STUDIO");
 	}
 
 	@Override

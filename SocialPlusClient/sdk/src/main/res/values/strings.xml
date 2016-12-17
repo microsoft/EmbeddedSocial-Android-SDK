@@ -15,8 +15,8 @@
 	<string name="sp_hint_bio">Bio (optional)</string>
 	<string name="sp_hint_title">Title (optional)</string>
 	<string name="sp_hint_description">Description</string>
-	<string name="sp_hint_add_comment">Type here to commentâ€¦</string>
-	<string name="sp_hint_add_reply">Type here to replyâ€¦</string>
+	<string name="sp_hint_add_comment">Type here to comment…</string>
+	<string name="sp_hint_add_reply">Type here to reply…</string>
 	<string name="sp_comment">Comment</string>
 	<string name="sp_reply">Reply</string>
 	<string name="sp_post">Post</string>
@@ -124,8 +124,8 @@
 	<string name="sp_following">Following</string>
 	<string name="sp_load_more_retry_button">Loading failed. Tap here to retry.</string>
 	<string name="sp_load_more_suggestion">Load more</string>
-	<string name="sp_load_more_comments">View previous commentsâ€¦</string>
-	<string name="sp_load_more_replies">View previous repliesâ€¦</string>
+	<string name="sp_load_more_comments">View previous comments…</string>
+	<string name="sp_load_more_replies">View previous replies…</string>
 
 	<string name="sp_recent">Recent</string>
 
@@ -284,8 +284,8 @@
 	<string name="sp_account_link_error">Error when linking your account.</string>
 	<string name="sp_account_unlink_error">Error when unlinking your account.</string>
 
-	<string name="sp_google_auth_callback">com.microsoft.socialplus</string>
-	<string name="sp_google_auth_response">com.microsoft.socialplus.HANDLE_AUTHORIZATION_RESPONSE</string>
-	<string name="sp_google_auth_redirect">com.microsoft.socialplus:/oauth2redirect</string>
+	<string name="sp_google_auth_callback">com.microsoft.embeddedsocial</string>
+	<string name="sp_google_auth_response">com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE</string>
+	<string name="sp_google_auth_redirect">com.microsoft.embeddedsocial:/oauth2redirect</string>
 	<string name="sp_terms">By using Microsoft Embedded Social, you agree to the Privacy Statement and Terms of Use.</string>
 </resources>

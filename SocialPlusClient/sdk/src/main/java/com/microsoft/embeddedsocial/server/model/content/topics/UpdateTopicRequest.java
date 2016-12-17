@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.server.model.content.topics;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.BaseRequest;
-import com.microsoft.socialplus.autorest.models.PutTopicRequest;
+import com.microsoft.embeddedsocial.autorest.models.PutTopicRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

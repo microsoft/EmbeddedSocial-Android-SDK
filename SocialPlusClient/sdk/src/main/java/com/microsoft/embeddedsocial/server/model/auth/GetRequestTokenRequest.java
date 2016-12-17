@@ -6,10 +6,10 @@
 package com.microsoft.embeddedsocial.server.model.auth;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.socialplus.autorest.RequestTokensOperations;
-import com.microsoft.socialplus.autorest.RequestTokensOperationsImpl;
-import com.microsoft.socialplus.autorest.models.GetRequestTokenResponse;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.RequestTokensOperations;
+import com.microsoft.embeddedsocial.autorest.RequestTokensOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.GetRequestTokenResponse;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.model.UserRequest;

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.image.CoverLoader;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;

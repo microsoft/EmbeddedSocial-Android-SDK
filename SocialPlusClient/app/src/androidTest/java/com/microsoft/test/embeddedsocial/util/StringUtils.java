@@ -4,9 +4,9 @@
  *
  */
 
-package com.microsoft.test.socialplus.util;
+package com.microsoft.test.embeddedsocial.util;
 
-import com.microsoft.test.socialplus.TestConstants;
+import com.microsoft.test.embeddedsocial.TestConstants;
 
 import java.util.Random;
 

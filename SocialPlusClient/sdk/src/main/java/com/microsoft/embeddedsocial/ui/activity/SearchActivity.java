@@ -30,7 +30,7 @@ import com.microsoft.embeddedsocial.data.model.SearchType;
 import com.microsoft.embeddedsocial.data.storage.SearchHistory;
 import com.microsoft.embeddedsocial.event.click.OnTrendingHashtagSelectedEvent;
 import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
-import com.microsoft.embeddedsocial.provider.AbstractSocialPlusSearchSuggestionProvider;
+import com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuListenerFragment;
@@ -229,10 +229,10 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	}
 
 	private void updateSearchTypeInProvider(SearchType currentSearchType) {
-		String providerAuthority = AbstractSocialPlusSearchSuggestionProvider.getDefaultAuthority(this);
+		String providerAuthority = AbstractEmbeddedSocialSearchSuggestionProvider.getDefaultAuthority(this);
 		ContentProviderClient client = getContentResolver().acquireContentProviderClient(providerAuthority);
-		AbstractSocialPlusSearchSuggestionProvider provider
-			= (AbstractSocialPlusSearchSuggestionProvider) client.getLocalContentProvider();
+		AbstractEmbeddedSocialSearchSuggestionProvider provider
+			= (AbstractEmbeddedSocialSearchSuggestionProvider) client.getLocalContentProvider();
 		provider.setSearchType(currentSearchType);
 		client.release();
 	}

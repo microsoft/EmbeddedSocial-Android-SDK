@@ -11,7 +11,7 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.report.ReportContentRequest;
 import com.microsoft.embeddedsocial.server.model.report.ReportUserRequest;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.server.IReportService;
 
 /**

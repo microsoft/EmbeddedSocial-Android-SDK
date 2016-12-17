@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.sdk.ui;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-public class SocialPlusActivity extends AppCompatActivity {
+public class EmbeddedSocialActivity extends AppCompatActivity {
     public final Bundle getHostAppExtras() {
         return getIntent().getExtras();
     }

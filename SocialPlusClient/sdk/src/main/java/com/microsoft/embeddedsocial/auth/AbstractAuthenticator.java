@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.auth;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.IDisposable;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.R;

@@ -19,8 +19,8 @@ import com.microsoft.embeddedsocial.server.model.relationship.GetMyFollowingUser
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.social.AuthorizationRequest;
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.function.Producer;
 import com.microsoft.embeddedsocial.data.model.CommentFeedType;
@@ -32,7 +32,7 @@ import com.microsoft.embeddedsocial.server.IActivityService;
 import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.IRelationshipService;
 import com.microsoft.embeddedsocial.server.ISearchService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.embeddedsocial.server.model.pin.GetPinFeedRequest;
@@ -61,7 +61,7 @@ public final class FetchersFactory {
 	private static final IActivityService ACTIVITY_SERVICE;
 
 	static {
-		SocialPlusServiceProvider socialPlusServiceProvider = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class);
+		EmbeddedSocialServiceProvider socialPlusServiceProvider = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class);
 		RELATIONSHIP_SERVICE = socialPlusServiceProvider.getRelationshipService();
 		CONTENT_SERVICE = socialPlusServiceProvider.getContentService();
 		SEARCH_SERVICE = socialPlusServiceProvider.getSearchService();

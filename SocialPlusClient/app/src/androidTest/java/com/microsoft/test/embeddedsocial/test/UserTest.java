@@ -4,16 +4,16 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
 import android.text.TextUtils;
 
-import com.microsoft.socialplus.autorest.models.Reason;
-import com.microsoft.socialplus.autorest.models.Visibility;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
+import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.IAuthenticationService;
 import com.microsoft.embeddedsocial.server.IReportService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.ResourceAlreadyExistsException;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountResponse;
@@ -29,7 +29,7 @@ import com.microsoft.embeddedsocial.server.model.report.ReportUserRequest;
 import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.server.model.view.UserProfileView;
-import com.microsoft.test.socialplus.TestConstants;
+import com.microsoft.test.embeddedsocial.TestConstants;
 
 public class UserTest extends BaseRestServicesTest {
 	
@@ -40,7 +40,7 @@ public class UserTest extends BaseRestServicesTest {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		SocialPlusServiceProvider serviceProvider = getServiceProvider();
+		EmbeddedSocialServiceProvider serviceProvider = getServiceProvider();
 		accountService = serviceProvider.getAccountService();
 		authenticationService = serviceProvider.getAuthenticationService();
 		reportService = serviceProvider.getReportService();

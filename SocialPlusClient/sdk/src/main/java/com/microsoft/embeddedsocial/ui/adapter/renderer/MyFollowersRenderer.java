@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.socialplus.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 
 /**

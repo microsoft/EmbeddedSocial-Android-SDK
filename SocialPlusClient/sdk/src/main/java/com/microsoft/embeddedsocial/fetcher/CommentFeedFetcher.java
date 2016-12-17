@@ -20,10 +20,10 @@ import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeed
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.socialplus.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.IContentService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicRequest;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class CommentFeedFetcher extends Fetcher<Object> {
 		this.topicHandle = topicHandle;
 		this.topicView = topicView;
 
-		contentService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getContentService();
+		contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 		commentFeedRequestExecutor = new BatchDataRequestExecutor<>(
 			contentService::getCommentFeed,
 			() -> new GetCommentFeedRequest(feedType, topicHandle)
@@ -73,7 +73,7 @@ public class CommentFeedFetcher extends Fetcher<Object> {
 	@NonNull
 	private TopicView getTopic(RequestType requestType) throws Exception {
 		TopicView result = topicView == null || requestType.isFullDataReloadRequired() ? readTopic(requestType) : topicView;
-		IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
+		IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 		if (result.getPublisherType() == PublisherType.USER) {
 			GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
 			if (requestType == RequestType.SYNC_WITH_CACHE) {

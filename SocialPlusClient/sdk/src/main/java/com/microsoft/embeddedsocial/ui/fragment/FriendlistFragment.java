@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;

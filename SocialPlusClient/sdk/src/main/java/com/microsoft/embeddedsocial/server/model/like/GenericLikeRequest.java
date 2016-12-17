@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.like;
 
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 public class GenericLikeRequest extends UserRequest {

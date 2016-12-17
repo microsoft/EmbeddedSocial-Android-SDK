@@ -36,7 +36,7 @@
 
 	<TextView
 		android:id="@+id/sp_postTitle"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_coverImage"
@@ -49,7 +49,7 @@
 
 	<TextView
 		android:id="@+id/sp_postBody"
-		style="@style/SocialPlusSdkTextSubhead"
+		style="@style/EmbeddedSocialSdkTextSubhead"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/sp_postTitle"
@@ -81,7 +81,7 @@
 
 		<TextView
 			android:id="@+id/sp_postAppName"
-			style="@style/SocialPlusSdkTextSubhead"
+			style="@style/EmbeddedSocialSdkTextSubhead"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:singleLine="true"
@@ -91,7 +91,7 @@
 
 	<View
 		android:id="@+id/sp_dividerLayoutTop"
-		style="@style/SocialPlusSdkDivider"
+		style="@style/EmbeddedSocialSdkDivider"
 		android:layout_below="@id/sp_postAppLayout"
 		android:layout_marginBottom="@dimen/sp_padding_base"
 		android:layout_marginTop="@dimen/sp_padding_xlarge"/>
@@ -156,7 +156,7 @@
 
 		<TextView
 			android:id="@+id/sp_postCommentsCountButton"
-			style="@style/SocialPlusSdkTextCaption.Green"
+			style="@style/EmbeddedSocialSdkTextCaption.Green"
 			android:layout_width="wrap_content"
 			android:layout_height="@dimen/sp_button_base_size"
 			android:layout_alignParentRight="true"
@@ -170,7 +170,7 @@
 
 		<TextView
 			android:id="@+id/sp_postLikesCountButton"
-			style="@style/SocialPlusSdkTextCaption.Green"
+			style="@style/EmbeddedSocialSdkTextCaption.Green"
 			android:layout_width="wrap_content"
 			android:layout_height="@dimen/sp_button_base_size"
 			android:layout_alignBaseline="@id/sp_postCommentsCountButton"
@@ -186,7 +186,7 @@
 
 	<View
 		android:id="@+id/sp_dividerLayoutBottom"
-		style="@style/SocialPlusSdkDivider"
+		style="@style/EmbeddedSocialSdkDivider"
 		android:layout_below="@id/sp_buttonsLayout"
 		android:layout_marginTop="@dimen/sp_padding_base"
 		android:visibility="gone"/>

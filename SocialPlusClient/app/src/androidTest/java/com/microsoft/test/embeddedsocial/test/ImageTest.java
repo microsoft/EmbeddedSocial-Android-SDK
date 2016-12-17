@@ -4,7 +4,7 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.webkit.URLUtil;
 
 import com.microsoft.embeddedsocial.R;
-import com.microsoft.socialplus.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.ImageUploader;
 

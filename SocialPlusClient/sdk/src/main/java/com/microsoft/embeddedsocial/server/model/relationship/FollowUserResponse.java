@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.relationship;
 
-import com.microsoft.socialplus.autorest.models.FollowingStatus;
+import com.microsoft.embeddedsocial.autorest.models.FollowingStatus;
 
 public class FollowUserResponse {
 

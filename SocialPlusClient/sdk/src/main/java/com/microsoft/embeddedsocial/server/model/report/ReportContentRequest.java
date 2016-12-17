@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.server.model.report;
 
-import com.microsoft.socialplus.autorest.CommentReportsOperations;
-import com.microsoft.socialplus.autorest.CommentReportsOperationsImpl;
-import com.microsoft.socialplus.autorest.ReplyReportsOperations;
-import com.microsoft.socialplus.autorest.ReplyReportsOperationsImpl;
-import com.microsoft.socialplus.autorest.TopicReportsOperations;
-import com.microsoft.socialplus.autorest.TopicReportsOperationsImpl;
-import com.microsoft.socialplus.autorest.models.ContentType;
-import com.microsoft.socialplus.autorest.models.PostReportRequest;
-import com.microsoft.socialplus.autorest.models.Reason;
+import com.microsoft.embeddedsocial.autorest.CommentReportsOperations;
+import com.microsoft.embeddedsocial.autorest.CommentReportsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.ReplyReportsOperations;
+import com.microsoft.embeddedsocial.autorest.ReplyReportsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.TopicReportsOperations;
+import com.microsoft.embeddedsocial.autorest.TopicReportsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.PostReportRequest;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;

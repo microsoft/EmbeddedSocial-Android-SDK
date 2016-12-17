@@ -16,7 +16,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.ui.activity.EditPostActivity;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.sdk.IReportHandler;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 

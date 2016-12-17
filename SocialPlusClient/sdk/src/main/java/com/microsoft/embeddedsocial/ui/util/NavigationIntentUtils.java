@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.ui.util;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.microsoft.embeddedsocial.sdk.ui.SocialPlusNavigationActivity;
+import com.microsoft.embeddedsocial.sdk.ui.EmbeddedSocialNavigationActivity;
 import com.microsoft.embeddedsocial.ui.activity.GateActivity;
 import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
 import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
@@ -120,10 +120,10 @@ public class NavigationIntentUtils {
 	}
 
 	private void setupHostActivity(Intent intent) {
-		if (activity instanceof SocialPlusNavigationActivity) {
+		if (activity instanceof EmbeddedSocialNavigationActivity) {
 			intent.putExtra(
 					BaseActivity.HOST_MENU_BUNDLE_EXTRA,
-					((SocialPlusNavigationActivity) activity).getHostAppExtras());
+					((EmbeddedSocialNavigationActivity) activity).getHostAppExtras());
 		}
 	}
 }

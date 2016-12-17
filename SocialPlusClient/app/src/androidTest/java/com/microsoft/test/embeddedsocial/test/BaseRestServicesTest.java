@@ -4,14 +4,14 @@
  *
  */
 
-package com.microsoft.test.socialplus.test;
+package com.microsoft.test.embeddedsocial.test;
 
 import android.test.ApplicationTestCase;
 
-import com.microsoft.socialplus.autorest.models.PublisherType;
-import com.microsoft.embeddedsocial.SocialPlusApplication;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.EmbeddedSocialApplication;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.embeddedsocial.server.model.account.CreateUserRequest;
@@ -19,27 +19,27 @@ import com.microsoft.embeddedsocial.server.model.account.DeleteUserRequest;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.RemoveTopicRequest;
-import com.microsoft.test.socialplus.TestConstants;
-import com.microsoft.test.socialplus.util.StringUtils;
+import com.microsoft.test.embeddedsocial.TestConstants;
+import com.microsoft.test.embeddedsocial.util.StringUtils;
 
-public abstract class BaseRestServicesTest extends ApplicationTestCase<SocialPlusApplication> {
+public abstract class BaseRestServicesTest extends ApplicationTestCase<EmbeddedSocialApplication> {
 
 	private static final int DELAYED_EXECUTION_TIMEOUT = 20 * 1000;
 
-	private SocialPlusServiceProvider serviceProvider;
+	private EmbeddedSocialServiceProvider serviceProvider;
 
 	public BaseRestServicesTest() {
-		super(SocialPlusApplication.class);
+		super(EmbeddedSocialApplication.class);
 	}
 
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 		createApplication();
-		serviceProvider = new SocialPlusServiceProvider(getContext());
+		serviceProvider = new EmbeddedSocialServiceProvider(getContext());
 	}
 
-	protected SocialPlusServiceProvider getServiceProvider() {
+	protected EmbeddedSocialServiceProvider getServiceProvider() {
 		return serviceProvider;
 	}
 

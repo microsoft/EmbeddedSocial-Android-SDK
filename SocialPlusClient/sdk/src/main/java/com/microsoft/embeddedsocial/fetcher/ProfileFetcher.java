@@ -18,7 +18,7 @@ import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.server.IAccountService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.view.UserProfileView;
 
 import java.util.Collections;
@@ -49,7 +49,7 @@ class ProfileFetcher extends Fetcher<AccountData> {
 
 	private AccountData readProfile(RequestType requestType) throws NetworkRequestException {
 		try {
-			IAccountService accountService = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
+			IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 			UserProfileView userProfile = getUserProfile(accountService, requestType);
 			AccountData accountData = new AccountData(userProfile);
 			if (UserAccount.getInstance().isCurrentUser(userHandle)) {

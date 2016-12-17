@@ -44,7 +44,7 @@ import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
 import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
 import com.microsoft.embeddedsocial.ui.util.TextHelper;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.event.content.LikeAddedEvent;
@@ -94,7 +94,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	}
 
 	protected DiscussionFeedFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayTopic);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayTopic);
 		uiHandler = new Handler(Looper.getMainLooper());
 		photoProvider = new PhotoProviderModule(this, this);
 		addModule(photoProvider);

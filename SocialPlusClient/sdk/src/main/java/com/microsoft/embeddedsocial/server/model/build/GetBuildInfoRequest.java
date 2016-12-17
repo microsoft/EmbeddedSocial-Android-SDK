@@ -7,9 +7,9 @@ package com.microsoft.embeddedsocial.server.model.build;
 
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.autorest.BuildsOperations;
-import com.microsoft.socialplus.autorest.BuildsOperationsImpl;
-import com.microsoft.socialplus.autorest.models.BuildsCurrentResponse;
+import com.microsoft.embeddedsocial.autorest.BuildsOperations;
+import com.microsoft.embeddedsocial.autorest.BuildsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.BuildsCurrentResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 

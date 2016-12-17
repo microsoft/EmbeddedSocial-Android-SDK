@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;

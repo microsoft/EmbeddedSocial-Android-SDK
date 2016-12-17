@@ -23,7 +23,7 @@ import com.microsoft.embeddedsocial.server.model.BaseRequest;
  */
 public class Preferences {
 
-	private static final String PREF_FILE_NAME = "socialplus.pref";
+	private static final String PREF_FILE_NAME = "embeddedsocial.pref";
 	private static final String INSTANCE_ID = "instance_id";
 	private static final String USER_HANDLE = "userhandle";
 	private static final String NOTIFICATION_COUNT = "notification_count";

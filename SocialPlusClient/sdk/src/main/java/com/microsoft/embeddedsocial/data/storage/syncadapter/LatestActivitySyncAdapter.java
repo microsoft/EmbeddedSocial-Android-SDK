@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.storage.ActivityCache;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.BadRequestException;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.notification.UpdateNotificationStatusRequest;
@@ -31,7 +31,7 @@ public class LatestActivitySyncAdapter implements ISynchronizable {
 		String lastActivityHandle = metadataStorage.getLastActivityHandle();
 		UpdateNotificationStatusRequest request = new UpdateNotificationStatusRequest(lastActivityHandle);
 		try {
-			GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class)
+			GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
 				.getNotificationService()
 				.updateNotificationStatus(request);
 		} catch (BadRequestException e) {

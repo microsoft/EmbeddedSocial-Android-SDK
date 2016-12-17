@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.INotificationService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.notification.RegisterPushNotificationRequest;
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
@@ -33,7 +33,7 @@ class TokenSyncAdapter implements ISynchronizable {
 			return;
 		}
 		INotificationService notificationService = GlobalObjectRegistry
-			.getObject(SocialPlusServiceProvider.class)
+			.getObject(EmbeddedSocialServiceProvider.class)
 			.getNotificationService();
 
 		RegisterPushNotificationRequest request = new RegisterPushNotificationRequest(

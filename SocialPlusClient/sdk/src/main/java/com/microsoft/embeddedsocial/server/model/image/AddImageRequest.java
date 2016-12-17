@@ -7,10 +7,10 @@ package com.microsoft.embeddedsocial.server.model.image;
 
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.socialplus.autorest.ImagesOperations;
-import com.microsoft.socialplus.autorest.ImagesOperationsImpl;
-import com.microsoft.socialplus.autorest.models.ImageType;
-import com.microsoft.socialplus.autorest.models.PostImageResponse;
+import com.microsoft.embeddedsocial.autorest.ImagesOperations;
+import com.microsoft.embeddedsocial.autorest.ImagesOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.PostImageResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 

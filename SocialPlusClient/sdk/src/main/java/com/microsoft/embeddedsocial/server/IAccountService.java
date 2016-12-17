@@ -22,8 +22,8 @@ import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAcc
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserVisibilityRequest;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
-import com.microsoft.socialplus.autorest.models.AppCompactView;
-import com.microsoft.socialplus.autorest.models.LinkedAccountView;
+import com.microsoft.embeddedsocial.autorest.models.AppCompactView;
+import com.microsoft.embeddedsocial.autorest.models.LinkedAccountView;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
 
 import java.util.List;

@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.CreateAccountData;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.IAccountService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.embeddedsocial.server.model.account.CreateUserRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountRequest;
@@ -40,11 +40,11 @@ import java.io.IOException;
 public class CreateAccountHandler extends ActionHandler {
 
     private final IAccountService accountService = GlobalObjectRegistry
-            .getObject(SocialPlusServiceProvider.class)
+            .getObject(EmbeddedSocialServiceProvider.class)
             .getAccountService();
 
     private final IAuthenticationService authenticationService = GlobalObjectRegistry
-            .getObject(SocialPlusServiceProvider.class)
+            .getObject(EmbeddedSocialServiceProvider.class)
             .getAuthenticationService();
 
     private final Context context;

@@ -8,10 +8,10 @@ package com.microsoft.embeddedsocial.server.model.view;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.socialplus.autorest.models.ActivityType;
-import com.microsoft.socialplus.autorest.models.BlobType;
-import com.microsoft.socialplus.autorest.models.ContentCompactView;
-import com.microsoft.socialplus.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.ActivityType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.ContentCompactView;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.server.model.TimedItem;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 import com.microsoft.embeddedsocial.ui.util.TimeUtils;
@@ -68,7 +68,7 @@ public class ActivityView implements UniqueItem, TimedItem {
 	 */
 	ActivityView() {  }
 
-	public ActivityView(com.microsoft.socialplus.autorest.models.ActivityView view) {
+	public ActivityView(com.microsoft.embeddedsocial.autorest.models.ActivityView view) {
 		activityHandle = view.getActivityHandle();
 		activityType = view.getActivityType().toValue();
 		actorUsers = loadActorUsers(view.getActorUsers());
@@ -85,9 +85,9 @@ public class ActivityView implements UniqueItem, TimedItem {
 		unread = view.getUnread();
 	}
 
-	private List<UserCompactView> loadActorUsers(List<com.microsoft.socialplus.autorest.models.UserCompactView> autorestUsers) {
+	private List<UserCompactView> loadActorUsers(List<com.microsoft.embeddedsocial.autorest.models.UserCompactView> autorestUsers) {
 		ArrayList<UserCompactView> users = new ArrayList<>();
-		for (com.microsoft.socialplus.autorest.models.UserCompactView user : autorestUsers) {
+		for (com.microsoft.embeddedsocial.autorest.models.UserCompactView user : autorestUsers) {
 			users.add(new UserCompactView(user));
 		}
 		return users;

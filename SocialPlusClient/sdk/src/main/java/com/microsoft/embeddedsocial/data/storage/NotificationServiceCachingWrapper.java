@@ -21,7 +21,7 @@ import com.microsoft.embeddedsocial.server.model.notification.UpdateNotification
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.socialplus.autorest.models.CountResponse;
+import com.microsoft.embeddedsocial.autorest.models.CountResponse;
 
 import java.sql.SQLException;
 

@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.server.IAccountService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.model.account.LinkThirdPartyRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
@@ -29,7 +29,7 @@ public class LinkUserThirdPartyAccountHandler implements IServiceIntentHandler<S
 	public void handleIntent(ServiceAction action, Intent intent) {
 		final SocialNetworkAccount account = intent.getExtras().getParcelable(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
 
-		IAccountService service = GlobalObjectRegistry.getObject(SocialPlusServiceProvider.class).getAccountService();
+		IAccountService service = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 		LinkThirdPartyRequest linkUserThirdPartyAccountRequest = new LinkThirdPartyRequest(
 				account.getAccountType(),
 				account.getThirdPartyAccessToken());

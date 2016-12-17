@@ -6,7 +6,7 @@
 package com.microsoft.embeddedsocial.social;
 
 import com.google.gson.Gson;
-import com.microsoft.socialplus.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.live.LiveConnectClient;
 import com.microsoft.live.LiveConnectSession;
 import com.microsoft.live.LiveOperation;

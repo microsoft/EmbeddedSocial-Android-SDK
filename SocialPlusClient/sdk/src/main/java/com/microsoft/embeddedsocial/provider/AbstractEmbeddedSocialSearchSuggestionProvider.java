@@ -20,7 +20,7 @@ import com.microsoft.embeddedsocial.data.model.SearchType;
 import com.microsoft.embeddedsocial.data.storage.SearchHistory;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.ISearchService;
-import com.microsoft.embeddedsocial.server.SocialPlusServiceProvider;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.search.GetAutocompletedHashtagsRequest;
 import com.microsoft.embeddedsocial.server.model.search.AutocompletedHashtagsResponse;
@@ -30,9 +30,9 @@ import java.util.List;
 /**
  * Abstract search provider to load suggestions to search request.
  */
-public abstract class AbstractSocialPlusSearchSuggestionProvider extends ContentProvider {
+public abstract class AbstractEmbeddedSocialSearchSuggestionProvider extends ContentProvider {
 
-	private static final String AUTHORITY_POSTFIX = ".socialplus_searchprovider";
+	private static final String AUTHORITY_POSTFIX = ".embeddedsocial_searchprovider";
 
 	private static final int SUGGESTION_QUERY_MIN_LENGTH = 3;
 
@@ -94,7 +94,7 @@ public abstract class AbstractSocialPlusSearchSuggestionProvider extends Content
 
 	private Cursor getServerSearchTopicSuggestion(String suggestionRequest) {
 		ISearchService searchService = GlobalObjectRegistry
-			.getObject(SocialPlusServiceProvider.class)
+			.getObject(EmbeddedSocialServiceProvider.class)
 			.getSearchService();
 		MatrixCursor cursor = null;
 		try {

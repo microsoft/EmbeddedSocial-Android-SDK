@@ -75,7 +75,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 	};
 
 	public BaseContentFragment() {
-		addThemeToMerge(R.style.SocialPlusSdkThemeOverlayContentFragment);
+		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayContentFragment);
 		addModule(slowConnectionMessageModule);
 	}
 
