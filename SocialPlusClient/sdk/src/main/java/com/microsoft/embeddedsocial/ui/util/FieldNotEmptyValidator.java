@@ -16,7 +16,7 @@ import com.microsoft.embeddedsocial.ui.view.TextInput;
 public class FieldNotEmptyValidator extends TextInput.Validator {
 
 	public FieldNotEmptyValidator(Context context) {
-		super(context.getString(R.string.sp_message_field_cant_be_empty));
+		super(context.getString(R.string.es_message_field_cant_be_empty));
 	}
 
 	@Override

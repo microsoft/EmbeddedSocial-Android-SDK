@@ -21,16 +21,16 @@ public final class UserContextMenuHelper {
 	public static void inflateUserRelationshipContextMenu(@NonNull PopupMenu menu, FollowerStatus userRelationshipStatus) {
 		switch (userRelationshipStatus) {
 			case NONE:
-				menu.inflate(R.menu.sp_user_follow);
-				menu.inflate(R.menu.sp_user_block);
+				menu.inflate(R.menu.es_user_follow);
+				menu.inflate(R.menu.es_user_block);
 				break;
 			case PENDING:
 			case FOLLOW:
-				menu.inflate(R.menu.sp_user_unfollow);
-				menu.inflate(R.menu.sp_user_block);
+				menu.inflate(R.menu.es_user_unfollow);
+				menu.inflate(R.menu.es_user_block);
 				break;
 			case BLOCKED:
-				menu.inflate(R.menu.sp_user_unblock);
+				menu.inflate(R.menu.es_user_unblock);
 				break;
 		}
 	}

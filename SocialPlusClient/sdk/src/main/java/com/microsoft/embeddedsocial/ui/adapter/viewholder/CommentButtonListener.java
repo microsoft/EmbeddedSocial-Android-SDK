@@ -41,44 +41,44 @@ public class CommentButtonListener {
 	public void onClickLike(View view) {
 		ContentUpdateHelper.launchLike(
 			context,
-			(String) view.getTag(R.id.sp_keyHandle),
+			(String) view.getTag(R.id.es_keyHandle),
 			ContentType.COMMENT,
-			(boolean) view.getTag(R.id.sp_keyIsAdd)
+			(boolean) view.getTag(R.id.es_keyIsAdd)
 		);
 	}
 
 	public void onClickContextMenu(View view) {
 		PopupMenu menu = new PopupMenu(context, view);
-		if (((Boolean) view.getTag(R.id.sp_keyIsOwnContent))) {
-			menu.inflate(R.menu.sp_comment_own);
+		if (((Boolean) view.getTag(R.id.es_keyIsOwnContent))) {
+			menu.inflate(R.menu.es_comment_own);
 		} else {
-			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.sp_keyFollowerStatus);
+			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.es_keyFollowerStatus);
 			UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
-			menu.inflate(R.menu.sp_comment);
+			menu.inflate(R.menu.es_comment);
 		}
 		menu.setOnMenuItemClickListener(new CommentContextMenuClickListener(
-			context, (CommentView) view.getTag(R.id.sp_keyComment)));
+			context, (CommentView) view.getTag(R.id.es_keyComment)));
 		menu.show();
 	}
 
 	public void onClickLikesCount(View view) {
 		Intent intent = new Intent(context, LikesActivity.class);
-		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.sp_keyHandle));
+		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.es_keyHandle));
 		intent.putExtra(IntentExtras.CONTENT_TYPE, ContentType.COMMENT.toValue());
 		context.startActivity(intent);
 	}
 
 	public void onClickRepliesCount(View view) {
 		if (container == Container.TOPIC) {
-			new OpenCommentEvent((CommentView) view.getTag(R.id.sp_keyComment)).submit();
+			new OpenCommentEvent((CommentView) view.getTag(R.id.es_keyComment)).submit();
 		} else {
-			new ScrollPositionEvent((Integer) view.getTag(R.id.sp_keyPosition)).submit();
+			new ScrollPositionEvent((Integer) view.getTag(R.id.es_keyPosition)).submit();
 		}
 	}
 
 	public void onClickComment(View view) {
 		if (container == Container.TOPIC) {
-			new OpenCommentEvent((CommentView) view.getTag(R.id.sp_keyComment), true).submit();
+			new OpenCommentEvent((CommentView) view.getTag(R.id.es_keyComment), true).submit();
 		} else {
 			if (UserAccount.getInstance().checkAuthorization(AuthorizationCause.COMMENT)) {
 				new ScrollPositionEvent(ScrollPositionEvent.EDIT_POSITION).submit();
@@ -88,7 +88,7 @@ public class CommentButtonListener {
 
 	public void onClickContent(View view) {
 		if (container == Container.TOPIC) {
-			new OpenCommentEvent((CommentView) view.getTag(R.id.sp_keyComment)).submit();
+			new OpenCommentEvent((CommentView) view.getTag(R.id.es_keyComment)).submit();
 		}
 	}
 

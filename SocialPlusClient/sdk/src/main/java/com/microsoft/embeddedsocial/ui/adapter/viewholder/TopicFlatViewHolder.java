@@ -23,16 +23,16 @@ public class TopicFlatViewHolder extends TopicViewHolder {
 	private FrameLayout coverButton;
 
 	public static TopicFlatViewHolder create(TopicButtonsListener topicButtonsListener, ViewGroup parent) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sp_layout_topic, parent, false);
+		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_topic, parent, false);
 		return new TopicFlatViewHolder(topicButtonsListener, view);
 	}
 
 	protected TopicFlatViewHolder(TopicButtonsListener topicButtonsListener, View view) {
 		super(topicButtonsListener, view, true);
-		topDivider = view.findViewById(R.id.sp_dividerLayoutTop);
-		bottomDivider = view.findViewById(R.id.sp_dividerLayoutBottom);
-		contentButton = (FrameLayout) view.findViewById(R.id.sp_contentButton);
-		coverButton = (FrameLayout) view.findViewById(R.id.sp_coverButton);
+		topDivider = view.findViewById(R.id.es_dividerLayoutTop);
+		bottomDivider = view.findViewById(R.id.es_dividerLayoutBottom);
+		contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
+		coverButton = (FrameLayout) view.findViewById(R.id.es_coverButton);
 		coverButton.setOnClickListener(topicButtonsListener::onClickCover);
 	}
 
@@ -42,13 +42,13 @@ public class TopicFlatViewHolder extends TopicViewHolder {
 			return;
 		}
 		super.renderItem(position, topic);
-		postCommentsCountButton.setTag(R.id.sp_keyPosition, position);
+		postCommentsCountButton.setTag(R.id.es_keyPosition, position);
 		topDivider.setVisibility(View.GONE);
 		bottomDivider.setVisibility(View.VISIBLE);
 		contentButton.setVisibility(View.GONE);
 		coverButton.setVisibility(View.VISIBLE);
 		postTitle.setSingleLine(false);
 
-		coverButton.setTag(R.id.sp_keyTopic, topic);
+		coverButton.setTag(R.id.es_keyTopic, topic);
 	}
 }

@@ -96,10 +96,10 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	@Override
 	protected void initView(Bundle savedInstanceState) {
 		setContentView(getLayoutResId());
-		toolbar = findView(R.id.sp_toolbar);
+		toolbar = findView(R.id.es_toolbar);
 		setSupportActionBar(toolbar);
-		bottomBar = findView(R.id.sp_bottomBar);
-		doneButton = findView(R.id.sp_doneButton);
+		bottomBar = findView(R.id.es_bottomBar);
+		doneButton = findView(R.id.es_doneButton);
 
 		if (customToolbarColorizer != null) {
 			toolbar.setBackgroundColor(ContextCompat.getColor(this, customToolbarColorizer.getBackgroundColor()));
@@ -161,9 +161,9 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 	private void initDrawerLayout() {
 		frameContentView = findView(android.R.id.content);
-		drawerLayout = findView(R.id.sp_drawerLayout);
+		drawerLayout = findView(R.id.es_drawerLayout);
 
-		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.sp_open_side_menu, R.string.sp_close_side_menu) {
+		drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.es_open_side_menu, R.string.es_close_side_menu) {
 			@Override
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
@@ -183,12 +183,12 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		if (navigationDrawerHandler != null) {
 			Fragment customNavFragment = navigationDrawerHandler.getFragment();
 			getSupportFragmentManager().beginTransaction()
-					.replace(R.id.sp_navigationLayout, customNavFragment)
+					.replace(R.id.es_navigationLayout, customNavFragment)
 					.commit();
 			getSupportFragmentManager().executePendingTransactions();
 
 			customNavFragment.onActivityCreated(null);
-			FrameLayout navigation = (FrameLayout)findViewById(R.id.sp_navigationLayout);
+			FrameLayout navigation = (FrameLayout)findViewById(R.id.es_navigationLayout);
 
 			View view = customNavFragment.onCreateView(getLayoutInflater(), drawerLayout, null);
 
@@ -205,18 +205,18 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 			if (navigationDrawerHandler.displayToolbar()) {
 				((ViewGroup)toolbar.getParent()).removeView(toolbar);
-				((LinearLayout)findView(R.id.sp_drawerContainer)).addView(toolbar, 0);
+				((LinearLayout)findView(R.id.es_drawerContainer)).addView(toolbar, 0);
 			}
 
-			navigationDrawerHandler.setUp(R.id.sp_navigationLayout, drawerLayout);
+			navigationDrawerHandler.setUp(R.id.es_navigationLayout, drawerLayout);
 		} else {
 			if (BuildConfig.STANDALONE_APP) {
 				getSupportFragmentManager().beginTransaction()
-						.replace(R.id.sp_navigationLayout, NavigationFragment.create(activeNavigationItemId))
+						.replace(R.id.es_navigationLayout, NavigationFragment.create(activeNavigationItemId))
 						.commit();
 			} else {
 				drawerHandler = DrawerHandlerFactory.createHandler(this, getIntent().getBundleExtra(HOST_MENU_BUNDLE_EXTRA));
-				drawerHandler.inflate((ViewGroup) findViewById(R.id.sp_navigationLayout), activeNavigationItemId);
+				drawerHandler.inflate((ViewGroup) findViewById(R.id.es_navigationLayout), activeNavigationItemId);
 				drawerHandler.setDisplayMenu(displayMenu);
 			}
 		}
@@ -239,7 +239,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 */
 	@LayoutRes
 	protected int getLayoutResId() {
-		return hasNavigationMenu() ? R.layout.sp_activity_base_navigation : R.layout.sp_activity_base;
+		return hasNavigationMenu() ? R.layout.es_activity_base_navigation : R.layout.es_activity_base;
 	}
 
 	/**
@@ -247,7 +247,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 * @param layoutId id of layout
 	 */
 	protected void setActivityContent(@LayoutRes int layoutId) {
-		ViewGroup parent = findView(R.id.sp_content);
+		ViewGroup parent = findView(R.id.es_content);
 		parent.removeAllViews();
 		LayoutInflater.from(this).inflate(layoutId, parent);
 	}
@@ -256,10 +256,10 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 * Sets a fragment as an inner activity content.
 	 */
 	protected void setActivityContent(Fragment fragment) {
-		ViewGroup parent = findView(R.id.sp_content);
+		ViewGroup parent = findView(R.id.es_content);
 		if (parent != null) {
 			parent.removeAllViews();
-			getSupportFragmentManager().beginTransaction().replace(R.id.sp_content, fragment).commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.es_content, fragment).commit();
 		}
 	}
 
@@ -295,7 +295,7 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	}
 
 	public final boolean isTablet() {
-		return getResources().getBoolean(R.bool.sp_isTablet);
+		return getResources().getBoolean(R.bool.es_isTablet);
 	}
 
 	@Override

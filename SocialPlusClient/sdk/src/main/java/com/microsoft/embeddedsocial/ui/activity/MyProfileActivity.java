@@ -17,7 +17,7 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
 public class MyProfileActivity extends BaseProfileActivity {
 
 	public MyProfileActivity() {
-		super(R.id.sp_navigationProfile);
+		super(R.id.es_navigationProfile);
 	}
 
 	@Override

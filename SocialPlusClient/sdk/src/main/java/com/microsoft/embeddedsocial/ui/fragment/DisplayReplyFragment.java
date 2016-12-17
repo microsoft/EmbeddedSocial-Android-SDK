@@ -40,14 +40,14 @@ public class DisplayReplyFragment extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_reply;
+		return R.layout.es_fragment_reply;
 	}
 
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		setHasOptionsMenu(false);
 
-		getActivity().setTitle(R.string.sp_screen_title_display_reply);
+		getActivity().setTitle(R.string.es_screen_title_display_reply);
 
 		Bundle arguments = getArguments();
 		if (arguments == null || !arguments.containsKey(IntentExtras.REPLY_HANDLE)) {
@@ -76,10 +76,10 @@ public class DisplayReplyFragment extends BaseFragment {
 	private void initView(View rootView) {
 		replyButtonListener = new ReplyButtonListener(getActivity());
 
-		contentLayout = rootView.findViewById(R.id.sp_contentLayout);
-		progressLayout = rootView.findViewById(R.id.sp_progressLayout);
-		messageLayout = rootView.findViewById(R.id.sp_messageLayout);
-		Button openCommentButton = (Button) rootView.findViewById(R.id.sp_openCommentButton);
+		contentLayout = rootView.findViewById(R.id.es_contentLayout);
+		progressLayout = rootView.findViewById(R.id.es_progressLayout);
+		messageLayout = rootView.findViewById(R.id.es_messageLayout);
+		Button openCommentButton = (Button) rootView.findViewById(R.id.es_openCommentButton);
 		openCommentButton.setOnClickListener(v -> {
 			if (TextUtils.isEmpty(commentHandle)) {
 				return;
@@ -116,7 +116,7 @@ public class DisplayReplyFragment extends BaseFragment {
 	public void onReplyRemoved(ReplyRemovedEvent replyRemovedEvent) {
 		if (replyRemovedEvent.isSuccessful()) {
 			getActivity().finish();
-			Toast.makeText(getActivity(), R.string.sp_content_removed_reply, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_content_removed_reply, Toast.LENGTH_SHORT).show();
 		}
 	}
 

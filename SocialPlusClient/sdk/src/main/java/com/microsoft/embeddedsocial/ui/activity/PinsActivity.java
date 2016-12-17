@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
 public class PinsActivity extends BaseFeedActivity {
 
 	public PinsActivity() {
-		super(R.id.sp_navigationPins);
+		super(R.id.es_navigationPins);
 	}
 
 	@Override

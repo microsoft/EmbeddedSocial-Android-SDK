@@ -64,7 +64,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 							DebugLog.logException(ex);
 							service.dispose();
 							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReciever);
-							onAuthenticationError(getFragment().getString(R.string.sp_msg_google_signin_failed));
+							onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
 						} else {
 							// service configuration retrieved, proceed to authorization...'
 							sendAuthRequest(serviceConfiguration);
@@ -75,7 +75,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		String clientId = options.getGoogleClientId();
-		Uri redirectUri = Uri.parse(context.getString(R.string.sp_google_auth_redirect));
+		Uri redirectUri = Uri.parse(context.getString(R.string.es_google_auth_redirect));
 
 		AuthorizationRequest request = new AuthorizationRequest.Builder(
 				serviceConfiguration,
@@ -97,7 +97,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 			if (account != null) {
 				onAuthenticationSuccess(account);
 			} else {
-				onAuthenticationError(getFragment().getString(R.string.sp_msg_google_signin_failed));
+				onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
 			}
 
 			LocalBroadcastManager.getInstance(context).unregisterReceiver(this);

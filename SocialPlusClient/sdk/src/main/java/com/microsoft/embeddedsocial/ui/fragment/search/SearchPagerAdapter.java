@@ -27,13 +27,13 @@ public class SearchPagerAdapter extends SimplePagerAdapter {
 
 	public SearchPagerAdapter(Context context, FragmentManager fm, SearchTextHolder searchTextHolder) {
 		super(context, fm, new SimplePagerAdapter.Page(
-				R.string.sp_tab_topics,
+				R.string.es_tab_topics,
 				() -> searchTextHolder.isSearchTextEmpty(SearchType.TOPICS)
 					? new TrendingHashtagsFragment()
 					: new SearchTopicsFragment()
 			),
 			new SimplePagerAdapter.Page(
-				R.string.sp_tab_people,
+				R.string.es_tab_people,
 				() -> searchTextHolder.isSearchTextEmpty(SearchType.PEOPLE)
 					? new PopularUsersFragment()
 					: new SearchPeopleFragment()

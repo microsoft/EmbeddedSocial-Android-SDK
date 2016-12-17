@@ -26,7 +26,7 @@ public abstract class TopicButtonsListener {
 
 	public void onClickLikesCount(View view) {
 		Intent intent = new Intent(context, LikesActivity.class);
-		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.sp_keyHandle));
+		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.es_keyHandle));
 		intent.putExtra(IntentExtras.CONTENT_TYPE, ContentType.TOPIC.toValue());
 
 		context.startActivity(intent);

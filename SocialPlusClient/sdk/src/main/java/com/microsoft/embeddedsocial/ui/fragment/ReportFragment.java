@@ -38,7 +38,7 @@ public class ReportFragment extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_report;
+		return R.layout.es_fragment_report;
 	}
 
 	@Override
@@ -87,39 +87,39 @@ public class ReportFragment extends BaseFragment {
 
 	private void initUserView(View rootView, String reportUserHandle) {
 		this.reportUserHandle = reportUserHandle;
-		((TextView) rootView.findViewById(R.id.sp_text_report_question))
-			.setText(getString(R.string.sp_report_question_pattern, getString(R.string.sp_report_question_user)));
+		((TextView) rootView.findViewById(R.id.es_text_report_question))
+			.setText(getString(R.string.es_report_question_pattern, getString(R.string.es_report_question_user)));
 	}
 
 	private void initContentView(View rootView, String contentHandle, ContentType contentType) {
 		this.contentHandle = contentHandle;
 		this.contentType = contentType;
 
-		int contentTypeResId = R.string.sp_report_question_post;
+		int contentTypeResId = R.string.es_report_question_post;
 		switch (this.contentType) {
 			case TOPIC:
-				contentTypeResId = R.string.sp_report_question_post;
+				contentTypeResId = R.string.es_report_question_post;
 				break;
 			case COMMENT:
-				contentTypeResId = R.string.sp_report_question_comment;
+				contentTypeResId = R.string.es_report_question_comment;
 				break;
 			case REPLY:
-				contentTypeResId = R.string.sp_report_question_reply;
+				contentTypeResId = R.string.es_report_question_reply;
 				break;
 		}
 
-		((TextView) rootView.findViewById(R.id.sp_text_report_question))
-			.setText(getString(R.string.sp_report_question_pattern, getString(contentTypeResId)));
+		((TextView) rootView.findViewById(R.id.es_text_report_question))
+			.setText(getString(R.string.es_report_question_pattern, getString(contentTypeResId)));
 	}
 
 	private void initBaseView(View rootView) {
-		selectLayout = rootView.findViewById(R.id.sp_select_layout);
-		resultLayout = rootView.findViewById(R.id.sp_result_layout);
+		selectLayout = rootView.findViewById(R.id.es_select_layout);
+		resultLayout = rootView.findViewById(R.id.es_result_layout);
 
-		ListView listReportReason = (ListView) rootView.findViewById(R.id.sp_list_report_reason);
+		ListView listReportReason = (ListView) rootView.findViewById(R.id.es_list_report_reason);
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(
 			getActivity(), android.R.layout.simple_list_item_single_choice,
-			getResources().getStringArray(R.array.sp_report_reasons_array));
+			getResources().getStringArray(R.array.es_report_reasons_array));
 		listReportReason.setAdapter(adapter);
 		listReportReason.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -158,8 +158,8 @@ public class ReportFragment extends BaseFragment {
 
 	private void setDoneViewOnTheTablet() {
 		new AlertDialogFragment.Builder(getActivity(), REPORT_RESULT_ID)
-			.setTitle(R.string.sp_report_result_title)
-			.setMessage(R.string.sp_report_result_text)
+			.setTitle(R.string.es_report_result_title)
+			.setMessage(R.string.es_report_result_text)
 			.setPositiveButton(android.R.string.ok)
 			.show(getActivity(), null);
 	}

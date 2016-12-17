@@ -22,7 +22,7 @@ public class CoverLoader extends ImageViewContentLoader {
 	protected void onBitmapFailed() {
 		ImageView imageView = getImageView();
 		imageView.setScaleType(ImageView.ScaleType.CENTER);
-		imageView.setImageResource(R.drawable.sp_ic_broken_image);
+		imageView.setImageResource(R.drawable.es_ic_broken_image);
 	}
 
 }

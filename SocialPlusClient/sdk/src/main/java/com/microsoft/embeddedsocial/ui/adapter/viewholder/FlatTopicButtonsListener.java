@@ -34,14 +34,14 @@ public class FlatTopicButtonsListener extends TopicButtonsListener {
 	@Override
 	public void onClickContextMenu(View view) {
 		PopupMenu menu = new PopupMenu(context, view);
-		TopicView topic = (TopicView) view.getTag(R.id.sp_keyTopic);
+		TopicView topic = (TopicView) view.getTag(R.id.es_keyTopic);
 		TopicContextMenu.inflateContextMenu(context, menu, topic, options);
 		menu.show();
 	}
 
 	@Override
 	public void onClickCommentsCount(View view) {
-		EventBus.post(new ScrollPositionEvent((Integer) view.getTag(R.id.sp_keyPosition)));
+		EventBus.post(new ScrollPositionEvent((Integer) view.getTag(R.id.es_keyPosition)));
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class FlatTopicButtonsListener extends TopicButtonsListener {
 	public void onClickPin(View view) {
 		ContentUpdateHelper.launchPin(
 			context,
-			(String) view.getTag(R.id.sp_keyHandle),
-			(boolean) view.getTag(R.id.sp_keyIsAdd)
+			(String) view.getTag(R.id.es_keyHandle),
+			(boolean) view.getTag(R.id.es_keyIsAdd)
 		);
 	}
 
@@ -67,16 +67,16 @@ public class FlatTopicButtonsListener extends TopicButtonsListener {
 
 	@Override
 	public void onClickCover(View view) {
-		EventBus.post(new ViewCoverImageEvent((TopicView) view.getTag(R.id.sp_keyTopic)));
+		EventBus.post(new ViewCoverImageEvent((TopicView) view.getTag(R.id.es_keyTopic)));
 	}
 
 	@Override
 	public void onClickLike(View view) {
 		ContentUpdateHelper.launchLike(
 			context,
-			(String) view.getTag(R.id.sp_keyHandle),
+			(String) view.getTag(R.id.es_keyHandle),
 			ContentType.TOPIC,
-			(boolean) view.getTag(R.id.sp_keyIsAdd)
+			(boolean) view.getTag(R.id.es_keyIsAdd)
 		);
 	}
 }

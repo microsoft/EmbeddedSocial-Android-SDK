@@ -32,17 +32,17 @@ public class FeedViewMenuModule extends Module {
 	}
 
 	public void inflateMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.sp_feed_display_method, menu);
+		inflater.inflate(R.menu.es_feed_display_method, menu);
 	}
 
 	@Override
 	protected void onPrepareOptionsMenu(Menu menu) {
-		MenuItem viewSwitch = menu.findItem(R.id.sp_viewSwitch);
+		MenuItem viewSwitch = menu.findItem(R.id.es_viewSwitch);
 		if (viewSwitch != null) {
 			DisplayMethod displayMethod = Preferences.getInstance().getDisplayMethod();
 
-			int attrId = displayMethod == DisplayMethod.GALLERY ? R.styleable.sp_AppTheme_sp_listIndicator : R.styleable.sp_AppTheme_sp_galleryIndicator;
-			TypedArray typedArray = getContext().obtainStyledAttributes(R.styleable.sp_AppTheme);
+			int attrId = displayMethod == DisplayMethod.GALLERY ? R.styleable.es_AppTheme_es_listIndicator : R.styleable.es_AppTheme_es_galleryIndicator;
+			TypedArray typedArray = getContext().obtainStyledAttributes(R.styleable.es_AppTheme);
 			int iconId = typedArray.getResourceId(attrId, 0);
 			typedArray.recycle();
 			viewSwitch.setIcon(iconId);
@@ -53,13 +53,13 @@ public class FeedViewMenuModule extends Module {
 						PorterDuff.Mode.SRC_ATOP);
 			}
 
-			viewSwitch.setTitle(displayMethod == DisplayMethod.GALLERY ? R.string.sp_menu_list : R.string.sp_menu_gallery);
+			viewSwitch.setTitle(displayMethod == DisplayMethod.GALLERY ? R.string.es_menu_list : R.string.es_menu_gallery);
 		}
 	}
 
 	@Override
 	protected boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.sp_viewSwitch) {
+		if (item.getItemId() == R.id.es_viewSwitch) {
 			DisplayMethod newDisplayMethod = Preferences.getInstance().getDisplayMethod().next();
 			Preferences.getInstance().setDisplayMethod(newDisplayMethod);
 			EventBus.post(new DisplayMethodChangedEvent());

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/es_gray_900"
+	android:fitsSystemWindows="true"
+	>
+
+	<LinearLayout
+		android:id="@+id/es_navigationPanel"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		>
+
+		<include layout="@layout/es_navigation_profile"/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationHome"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_home_normal"
+			app:es_icon_highlight="@drawable/es_navigation_home_highlight"
+			app:es_name="@string/es_navigation_home"
+			/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationSearch"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_search_normal"
+			app:es_icon_highlight="@drawable/es_navigation_search_highlight"
+			app:es_name="@string/es_navigation_search"
+			/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationPopular"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_popular_normal"
+			app:es_icon_highlight="@drawable/es_navigation_popular_highlight"
+			app:es_name="@string/es_navigation_popular"
+			/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationPins"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_pins_normal"
+			app:es_icon_highlight="@drawable/es_navigation_pins_highlight"
+			app:es_name="@string/es_navigation_pins"
+			/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationActivity"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_activity_normal"
+			app:es_icon_highlight="@drawable/es_navigation_activity_highlight"
+			app:es_name="@string/es_navigation_activity_feed"
+			/>
+
+		<com.microsoft.embeddedsocial.ui.view.NavigationItemView
+			android:id="@+id/es_navigationOptions"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:es_icon_normal="@drawable/es_navigation_settings_normal"
+			app:es_icon_highlight="@drawable/es_navigation_settings_highlight"
+			app:es_name="@string/es_navigation_options"
+			/>
+
+	</LinearLayout>
+
+</ScrollView>

@@ -55,17 +55,17 @@ public abstract class BaseTabsActivity extends BaseActivity {
 
 	@Override
 	protected void setupLayout() {
-		setActivityContent(R.layout.sp_fragment_tabs);
-		viewPager = (ViewPager) findViewById(R.id.sp_viewpager);
+		setActivityContent(R.layout.es_fragment_tabs);
+		viewPager = (ViewPager) findViewById(R.id.es_viewpager);
 
 		PagerAdapter adapter = createPagerAdapter();
 		viewPager.setAdapter(adapter);
 		viewPager.setOffscreenPageLimit(adapter.getCount());
 
-		slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sp_slidingTabs);
+		slidingTabLayout = (SlidingTabLayout) findViewById(R.id.es_slidingTabs);
 		slidingTabLayout.setViewPager(viewPager);
 
-		int selectorColorId = R.color.sp_lime_A400;
+		int selectorColorId = R.color.es_lime_A400;
 		if (customTabColorizer != null) {
 			slidingTabLayout.setBackgroundColor(ContextCompat.getColor(this, customTabColorizer.getBackgroundColor()));
 			selectorColorId = customTabColorizer.getSelectorColor();

@@ -20,7 +20,7 @@ public class FollowRequestHolder extends UserListItemHolder {
 
 	public FollowRequestHolder(View itemView) {
 		super(itemView);
-		acceptButton = ViewUtils.findView(itemView, R.id.sp_acceptButton);
-		rejectButton = ViewUtils.findView(itemView, R.id.sp_rejectButton);
+		acceptButton = ViewUtils.findView(itemView, R.id.es_acceptButton);
+		rejectButton = ViewUtils.findView(itemView, R.id.es_rejectButton);
 	}
 }

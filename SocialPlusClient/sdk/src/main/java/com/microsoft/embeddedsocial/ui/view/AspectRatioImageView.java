@@ -35,8 +35,8 @@ public class AspectRatioImageView extends ImageView {
 	}
 
 	private void init(AttributeSet attrs) {
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.sp_AspectRatioImageView);
-		ratio = a.getFloat(R.styleable.sp_AspectRatioImageView_sp_aspectRatio, 1);
+		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.es_AspectRatioImageView);
+		ratio = a.getFloat(R.styleable.es_AspectRatioImageView_es_aspectRatio, 1);
 		a.recycle();
 	}
 

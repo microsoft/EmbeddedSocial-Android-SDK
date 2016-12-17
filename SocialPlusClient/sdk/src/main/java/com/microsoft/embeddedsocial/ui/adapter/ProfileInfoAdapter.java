@@ -39,7 +39,7 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 	private static final Renderer<Object, SingleViewHolder> PRIVATE_MESSAGE_RENDERER = new Renderer<Object, SingleViewHolder>() {
 		@Override
 		public SingleViewHolder createViewHolder(ViewGroup parent) {
-			return SingleViewHolder.create(R.layout.sp_private_user_message, parent);
+			return SingleViewHolder.create(R.layout.es_private_user_message, parent);
 		}
 	};
 
@@ -66,14 +66,14 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 
 	private ButtonRenderer createBlockedUsersRenderer(Context context) {
 		return new ButtonRenderer(
-			R.string.sp_blocked_users_header,
+			R.string.es_blocked_users_header,
 			v -> context.startActivity(new Intent(context, BlockedUsersActivity.class))
 		);
 	}
 
 	private ButtonRenderer createFollowRequestsRenderer(Context context) {
 		return new ButtonRenderer(
-			R.string.sp_title_follow_requests,
+			R.string.es_title_follow_requests,
 			v -> context.startActivity(new Intent(context, FollowRequestsActivity.class))
 		);
 	}
@@ -127,7 +127,7 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 
 		@Override
 		public RecyclerView.ViewHolder createViewHolder(ViewGroup parent) {
-			Button button = (Button) ViewUtils.inflateLayout(R.layout.sp_profile_button, parent);
+			Button button = (Button) ViewUtils.inflateLayout(R.layout.es_profile_button, parent);
 			button.setOnClickListener(onClickListener);
 			button.setText(textId);
 			return new SingleViewHolder(button);

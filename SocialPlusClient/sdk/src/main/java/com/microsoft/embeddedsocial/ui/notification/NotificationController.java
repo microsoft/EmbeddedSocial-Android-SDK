@@ -41,7 +41,7 @@ public class NotificationController {
 		@SuppressWarnings("unused")
 		@Subscribe
 		public void onPostUploadFailed(PostUploadFailedEvent event) {
-			int messageId = R.string.sp_message_failed_to_publish_post;
+			int messageId = R.string.es_message_failed_to_publish_post;
 			Notification notification = buildBaseNotification(messageId)
 				.setAutoCancel(true)
 				.setOngoing(false)
@@ -89,10 +89,10 @@ public class NotificationController {
 
 	private NotificationCompat.Builder buildBaseNotification(String text) {
 		return new NotificationCompat.Builder(context)
-			.setContentTitle(context.getString(R.string.sp_lib_name))
+			.setContentTitle(context.getString(R.string.es_lib_name))
 			.setContentText(text)
 			.setTicker(text)
 			.setContentIntent(appLaunchIntent)
-			.setSmallIcon(R.drawable.sp_ic_bar_notification);
+			.setSmallIcon(R.drawable.es_ic_bar_notification);
 	}
 }

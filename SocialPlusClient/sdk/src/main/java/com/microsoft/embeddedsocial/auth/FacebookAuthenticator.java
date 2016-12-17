@@ -94,9 +94,9 @@ public class FacebookAuthenticator extends AbstractAuthenticator {
 
 		@Override
 		public void onCancel() {
-			int signInErrorId = R.string.sp_message_facebook_login_cancel;
+			int signInErrorId = R.string.es_message_facebook_login_cancel;
 			if (!ConnectionUtils.isConnectingToInternet(getFragment().getActivity().getBaseContext())) {
-				signInErrorId = R.string.sp_message_no_internet_connection;
+				signInErrorId = R.string.es_message_no_internet_connection;
 			}
 			FacebookAuthenticator.this.onAuthenticationError(getFragment().getString(signInErrorId));
 		}
@@ -104,7 +104,7 @@ public class FacebookAuthenticator extends AbstractAuthenticator {
 		@Override
 		public void onError(FacebookException exception) {
 			FacebookAuthenticator.this.onAuthenticationError(
-				getFragment().getString(R.string.sp_message_facebook_error_pattern, exception.getMessage()));
+				getFragment().getString(R.string.es_message_facebook_error_pattern, exception.getMessage()));
 		}
 	}
 

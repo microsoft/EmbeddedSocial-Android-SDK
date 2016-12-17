@@ -58,7 +58,7 @@ public class FriendlistFragment extends BaseUsersListFragment {
 	}
 
 	private void showErrorMessage() {
-		showToast(R.string.sp_msg_general_operation_error);
+		showToast(R.string.es_msg_general_operation_error);
 	}
 
 	@Override

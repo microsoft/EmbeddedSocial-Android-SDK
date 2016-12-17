@@ -105,7 +105,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 		mTabStrip = new SlidingTabStrip(context);
 		addView(mTabStrip, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
-		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.sp_AppTheme);
+		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.es_AppTheme);
 		TabColorizer colorizer = BaseTabsActivity.getCustomTabColorizer();
 		if (colorizer != null) {
 			// Use custom colors
@@ -113,8 +113,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
 			notActiveTextColor = ContextCompat.getColor(getContext(), colorizer.getNotActiveTextColor());
 		} else {
 			// Use default colors
-			activeTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorActive, Color.WHITE);
-			notActiveTextColor = typedArray.getColor(R.styleable.sp_AppTheme_sp_tabIndicatorTextColorNotActive, Color.WHITE);
+			activeTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorActive, Color.WHITE);
+			notActiveTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorNotActive, Color.WHITE);
 			typedArray.recycle();
 		}
 	}
@@ -212,7 +212,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 		/*LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1.0f);*/ // for all width tab indicator
 		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-			getResources().getDimensionPixelSize(R.dimen.sp_tab_width), LinearLayout.LayoutParams.MATCH_PARENT);
+			getResources().getDimensionPixelSize(R.dimen.es_tab_width), LinearLayout.LayoutParams.MATCH_PARENT);
 		textView.setLayoutParams(layoutParams);
 
 		return textView;

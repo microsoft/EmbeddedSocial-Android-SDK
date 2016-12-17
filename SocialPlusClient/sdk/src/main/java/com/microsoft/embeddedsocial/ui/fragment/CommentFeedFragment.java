@@ -45,7 +45,7 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 				returnIntent.putExtra(IntentExtras.TOPIC_REMOVE_EXTRA, getHandle());
 				getActivity().setResult(Activity.RESULT_OK, returnIntent);
 				getActivity().finish();
-				Toast.makeText(getActivity(), R.string.sp_message_failed_to_refresh_topic, Toast.LENGTH_LONG).show();
+				Toast.makeText(getActivity(), R.string.es_message_failed_to_refresh_topic, Toast.LENGTH_LONG).show();
 			}
 		}
 
@@ -78,7 +78,7 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 
 	@Override
 	protected int getNoteHint() {
-		return R.string.sp_hint_add_comment;
+		return R.string.es_hint_add_comment;
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 	@Subscribe
 	public void onTopicRemoved(TopicRemovedEvent topicRemovedEvent) {
 		if (topicRemovedEvent.isSuccessful()) {
-			Toast.makeText(getActivity(), R.string.sp_content_removed_topic, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_content_removed_topic, Toast.LENGTH_SHORT).show();
 			Intent returnIntent = new Intent();
 			returnIntent.putExtra(IntentExtras.TOPIC_REMOVE_EXTRA, getHandle());
 			getActivity().setResult(Activity.RESULT_OK, returnIntent);
@@ -131,9 +131,9 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 	public void onCommentRemoved(CommentRemovedEvent commentRemovedEvent) {
 		if (commentRemovedEvent.isSuccessful()) {
 			getAdapter().removeComment(commentRemovedEvent.getData().getHandle());
-			Toast.makeText(getActivity(), R.string.sp_content_removed_comment, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_content_removed_comment, Toast.LENGTH_SHORT).show();
 		} else {
-			Toast.makeText(getActivity(), R.string.sp_message_failed_to_remove_comment, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_message_failed_to_remove_comment, Toast.LENGTH_SHORT).show();
 		}
 	}
 

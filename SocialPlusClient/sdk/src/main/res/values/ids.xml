@@ -5,15 +5,15 @@
   -->
 
 <resources>
-    <item type="id" name="sp_keyHandle"/>
-    <item type="id" name="sp_keyComment"/>
-    <item type="id" name="sp_keyReply"/>
-    <item type="id" name="sp_keyUser"/>
-    <item type="id" name="sp_keyTopic"/>
-    <item type="id" name="sp_keyIsAdd"/>
-    <item type="id" name="sp_keyIsOwnContent"/>
-    <item type="id" name="sp_keyFollowerStatus"/>
-    <item type="id" name="sp_keyPosition"/>
+    <item type="id" name="es_keyHandle"/>
+    <item type="id" name="es_keyComment"/>
+    <item type="id" name="es_keyReply"/>
+    <item type="id" name="es_keyUser"/>
+    <item type="id" name="es_keyTopic"/>
+    <item type="id" name="es_keyIsAdd"/>
+    <item type="id" name="es_keyIsOwnContent"/>
+    <item type="id" name="es_keyFollowerStatus"/>
+    <item type="id" name="es_keyPosition"/>
 
-    <item type="id" name="sp_recyclerView"/>
+    <item type="id" name="es_recyclerView"/>
 </resources>

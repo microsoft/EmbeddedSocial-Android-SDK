@@ -31,7 +31,7 @@ public enum DisplayMethod {
 	 */
 	public int getHorizontalPadding(Context context) {
 		return context.getResources()
-			.getDimensionPixelOffset(this == GALLERY ? R.dimen.sp_grid_half_padding : R.dimen.sp_card_list_padding_hor);
+			.getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_hor);
 	}
 
 	/**
@@ -39,7 +39,7 @@ public enum DisplayMethod {
 	 */
 	public int getVerticalPadding(Context context) {
 		return context.getResources()
-			.getDimensionPixelOffset(this == GALLERY ? R.dimen.sp_grid_half_padding : R.dimen.sp_card_list_padding_ver);
+			.getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_ver);
 	}
 
 }

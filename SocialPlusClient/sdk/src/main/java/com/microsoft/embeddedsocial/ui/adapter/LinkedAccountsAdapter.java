@@ -46,7 +46,7 @@ public class LinkedAccountsAdapter extends FetchableAdapter<UserAccountView, Lin
 
 	@Override
 	public LinkedAccountViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.sp_view_account, parent, false);
+		View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_view_account, parent, false);
 		return new LinkedAccountViewHolder(itemView);
 	}
 

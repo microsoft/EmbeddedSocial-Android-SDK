@@ -49,14 +49,14 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
 
 	@Override
 	protected int getContentLayoutId() {
-		return R.layout.sp_fragment_delete_account;
+		return R.layout.es_fragment_delete_account;
 	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		setOnClickListener(view, R.id.sp_cancelButton, v -> finishActivity());
-		setOnClickListener(view, R.id.sp_deleteButton, v -> {
+		setOnClickListener(view, R.id.es_cancelButton, v -> finishActivity());
+		setOnClickListener(view, R.id.es_deleteButton, v -> {
 			setProgressVisible(true);
 			ActionsLauncher.deleteAccount(v.getContext());
 		});
@@ -69,13 +69,13 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
 	}
 
 	private void onAccountDeleted() {
-		showToast(R.string.sp_account_deleted);
+		showToast(R.string.es_account_deleted);
 		finishActivity();
 		updateActivitiesStackOnLogOut();
 	}
 
 	private void onError() {
 		setProgressVisible(false);
-		showToast(R.string.sp_message_network_error);
+		showToast(R.string.es_message_network_error);
 	}
 }

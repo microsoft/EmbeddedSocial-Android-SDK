@@ -121,11 +121,11 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	protected void initRecyclerView() {
 		if (UserAccount.getInstance().isSignedIn() && !isLocal()) {
 			FetchableRecyclerView recyclerView = getRecyclerView();
-			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.sp_view_enter_note, recyclerView, false);
-			noteText = (EditText) enterNote.findViewById(R.id.sp_noteText);
-			doneButton = (Button) enterNote.findViewById(R.id.sp_doneButton);
-			imageButton = (ImageButton) enterNote.findViewById(R.id.sp_attachImageButton);
-			coverView = (ImageView) enterNote.findViewById(R.id.sp_noteImage);
+			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.es_view_enter_note, recyclerView, false);
+			noteText = (EditText) enterNote.findViewById(R.id.es_noteText);
+			doneButton = (Button) enterNote.findViewById(R.id.es_doneButton);
+			imageButton = (ImageButton) enterNote.findViewById(R.id.es_attachImageButton);
+			coverView = (ImageView) enterNote.findViewById(R.id.es_noteImage);
 
 			noteText.setHint(getNoteHint());
 			setOnDoneClickListener(v -> {
@@ -138,7 +138,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 					}
 					onDonePressed(noteText.getText().toString(), imagePath);
 					noteText.setText("");
-					hideView(R.id.sp_noteImage);
+					hideView(R.id.es_noteImage);
 					noteText.clearFocus();
 					ViewUtils.hideKeyboard(this);
 				}
@@ -249,7 +249,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		ViewGroup profileView = findView(view, R.id.sp_profileLayout);
+		ViewGroup profileView = findView(view, R.id.es_profileLayout);
 		postStorage = new PostStorage(view.getContext());
 		synchronized (this) {
 			profileViewHolder = profileView != null ? new ProfileInfoRenderer.ProfileViewHolder(profileView) : null;
@@ -347,7 +347,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 		this.imageUri = newImageUri;
 		if (imageUri == null) {
 			// image was removed
-			hideView(R.id.sp_noteImage);
+			hideView(R.id.es_noteImage);
 		}
 	}
 
@@ -355,7 +355,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	public void onPhotoLoaded(Uri loadedImageUri, Bitmap thumbnail) {
 		if (ObjectUtils.equal(imageUri, loadedImageUri)) {
 			if (thumbnail != null) {
-				showView(R.id.sp_noteImage);
+				showView(R.id.es_noteImage);
 				ViewGroup.LayoutParams layoutParams = coverView.getLayoutParams();
 				double imageRatio = (double) thumbnail.getWidth() / thumbnail.getHeight();
 				float density = getContext().getResources().getDisplayMetrics().density;
@@ -364,7 +364,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 				layoutParams.width = imageViewWidth;
 				coverView.setLayoutParams(layoutParams);
 			} else {
-				hideView(R.id.sp_noteImage);
+				hideView(R.id.es_noteImage);
 			}
 			coverView.setImageBitmap(thumbnail);
 		}

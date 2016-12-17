@@ -231,7 +231,7 @@ public abstract class FetchableAdapter<T, V extends ViewHolder> extends Adapter<
 	 * Returns a string to be used on the suggestion to load more data. Override this method in your adapter to override the default suggestion message.
 	 */
 	protected String getLoadMoreSuggestion(Context context) {
-		return context.getString(R.string.sp_load_more_suggestion);
+		return context.getString(R.string.es_load_more_suggestion);
 	}
 
 	/**

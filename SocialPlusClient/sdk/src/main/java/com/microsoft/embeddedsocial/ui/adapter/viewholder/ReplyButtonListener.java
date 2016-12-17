@@ -33,29 +33,29 @@ public class ReplyButtonListener {
 	public void onClickLike(View view) {
 		ContentUpdateHelper.launchLike(
 			context,
-			(String) view.getTag(R.id.sp_keyHandle),
+			(String) view.getTag(R.id.es_keyHandle),
 			ContentType.REPLY,
-			(boolean) view.getTag(R.id.sp_keyIsAdd)
+			(boolean) view.getTag(R.id.es_keyIsAdd)
 		);
 	}
 
 	public void onClickContextMenu(View view) {
 		PopupMenu menu = new PopupMenu(context, view);
-		if (((Boolean) view.getTag(R.id.sp_keyIsOwnContent))) {
-			menu.inflate(R.menu.sp_reply_own);
+		if (((Boolean) view.getTag(R.id.es_keyIsOwnContent))) {
+			menu.inflate(R.menu.es_reply_own);
 		} else {
-			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.sp_keyFollowerStatus);
+			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.es_keyFollowerStatus);
 			UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
-			menu.inflate(R.menu.sp_reply);
+			menu.inflate(R.menu.es_reply);
 		}
 		menu.setOnMenuItemClickListener(new ReplyContextMenuClickListener(
-			context, (ReplyView) view.getTag(R.id.sp_keyReply)));
+			context, (ReplyView) view.getTag(R.id.es_keyReply)));
 		menu.show();
 	}
 
 	public void onClickLikesCount(View view) {
 		Intent intent = new Intent(context, LikesActivity.class);
-		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.sp_keyHandle));
+		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.es_keyHandle));
 		intent.putExtra(IntentExtras.CONTENT_TYPE, ContentType.REPLY.toValue());
 
 		context.startActivity(intent);

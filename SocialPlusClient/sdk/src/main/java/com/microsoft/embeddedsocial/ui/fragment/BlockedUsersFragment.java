@@ -32,6 +32,6 @@ public class BlockedUsersFragment extends BaseUsersListFragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		setEmptyDataMessage(R.string.sp_no_blocked_users);
+		setEmptyDataMessage(R.string.es_no_blocked_users);
 	}
 }

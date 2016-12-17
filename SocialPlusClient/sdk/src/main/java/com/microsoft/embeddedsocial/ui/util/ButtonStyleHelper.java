@@ -30,36 +30,36 @@ public class ButtonStyleHelper {
 
 	public ButtonStyleHelper(Context context) {
 		Resources res = context.getResources();
-		completedColor = res.getColor(R.color.sp_button_completed_text);
-		greenColor = res.getColorStateList(R.color.sp_button_text_green);
-		grayColor = res.getColorStateList(R.color.sp_button_text_gray);
-		redColor = res.getColorStateList(R.color.sp_pink_500);
+		completedColor = res.getColor(R.color.es_button_completed_text);
+		greenColor = res.getColorStateList(R.color.es_button_text_green);
+		grayColor = res.getColorStateList(R.color.es_button_text_gray);
+		redColor = res.getColorStateList(R.color.es_pink_500);
 		accentColor = GlobalObjectRegistry.getObject(Options.class).getAccentColor();
 	}
 
 	public void applyGreenCompletedStyle(TextView view) {
 		view.setTextColor(completedColor);
-		view.setBackgroundResource(R.drawable.sp_button_green_completed);
+		view.setBackgroundResource(R.drawable.es_button_green_completed);
 	}
 
 	public void applyGreenStyle(TextView view) {
 		view.setTextColor(greenColor);
-		view.setBackgroundResource(R.drawable.sp_button_green);
+		view.setBackgroundResource(R.drawable.es_button_green);
 	}
 
 	public void applyGrayStyle(TextView view) {
 		view.setTextColor(grayColor);
-		view.setBackgroundResource(R.drawable.sp_button_gray);
+		view.setBackgroundResource(R.drawable.es_button_gray);
 	}
 
 	public void applyRedStyle(TextView view) {
 		view.setTextColor(redColor);
-		view.setBackgroundResource(R.drawable.sp_button_red);
+		view.setBackgroundResource(R.drawable.es_button_red);
 	}
 
 	public void applyRedCompletedStyle(TextView view) {
 		view.setTextColor(completedColor);
-		view.setBackgroundResource(R.drawable.sp_button_red_completed);
+		view.setBackgroundResource(R.drawable.es_button_red_completed);
 	}
 
 	public void applyAccentColor(ImageView imageView, boolean isApply) {

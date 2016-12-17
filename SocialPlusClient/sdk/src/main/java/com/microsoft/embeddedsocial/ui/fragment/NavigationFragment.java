@@ -73,26 +73,26 @@ public class NavigationFragment extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_navigation_menu;
+		return R.layout.es_navigation_menu;
 	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		navigationPanel = findView(view, R.id.sp_navigationPanel);
+		navigationPanel = findView(view, R.id.es_navigationPanel);
 		navigationPanel.setOnTouchListener((v, event) -> true);
-		notificationsView = findView(navigationPanel, R.id.sp_navigationActivity);
+		notificationsView = findView(navigationPanel, R.id.es_navigationActivity);
 		setupNavigationView();
 	}
 
 	private void setupNavigationView() {
 		final boolean signedIn = UserAccount.getInstance().isSignedIn();
-		setupNavigationItem(R.id.sp_navigationHome, navigation::gotoHome, signedIn);
-		setupNavigationItem(R.id.sp_navigationSearch, navigation::gotoSearch, true);
-		setupNavigationItem(R.id.sp_navigationPopular, navigation::gotoPopular, true);
-		setupNavigationItem(R.id.sp_navigationPins, navigation::gotoPins, signedIn);
-		setupNavigationItem(R.id.sp_navigationActivity, navigation::gotoActivityFeed, signedIn);
-		setupNavigationItem(R.id.sp_navigationOptions, navigation::gotoOptions, signedIn);
+		setupNavigationItem(R.id.es_navigationHome, navigation::gotoHome, signedIn);
+		setupNavigationItem(R.id.es_navigationSearch, navigation::gotoSearch, true);
+		setupNavigationItem(R.id.es_navigationPopular, navigation::gotoPopular, true);
+		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins, signedIn);
+		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed, signedIn);
+		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions, signedIn);
 	}
 
 	private void setupNavigationProfile() {
@@ -100,7 +100,7 @@ public class NavigationFragment extends BaseFragment {
 			photoLoader = NavigationProfileHelper.setupNavigationProfile(
 				getActivity(), photoLoader, navigationPanel, activeItemId);
 		} else {
-			navigationPanel.findViewById(R.id.sp_navigationProfile).setVisibility(View.GONE);
+			navigationPanel.findViewById(R.id.es_navigationProfile).setVisibility(View.GONE);
 		}
 	}
 

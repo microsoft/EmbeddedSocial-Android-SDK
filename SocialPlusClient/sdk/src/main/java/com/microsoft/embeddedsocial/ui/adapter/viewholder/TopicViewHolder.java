@@ -53,7 +53,7 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 	private final TopicButtonsListener topicButtonsListener;
 
 	public static TopicViewHolder create(TopicButtonsListener topicButtonsListener, ViewGroup parent, boolean headerClickable) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sp_layout_card, parent, false);
+		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_card, parent, false);
 		return new TopicViewHolder(topicButtonsListener, view, headerClickable);
 	}
 
@@ -86,28 +86,28 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 
 		long totalLikes = topic.getTotalLikes();
 		postLikesCountButton.setText(
-				postLikesCountButton.getResources().getQuantityString(R.plurals.sp_topic_likes_pattern,
+				postLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
 						QuantityStringUtils.convertLongToInt(totalLikes),
 						totalLikes));
 
 		long totalComments = topic.getTotalComments();
 		postCommentsCountButton.setText(
-				postCommentsCountButton.getResources().getQuantityString(R.plurals.sp_topic_comments_pattern,
+				postCommentsCountButton.getResources().getQuantityString(R.plurals.es_topic_comments_pattern,
 						QuantityStringUtils.convertLongToInt(totalComments),
 						totalComments));
 
-		postLikesCountButton.setTag(R.id.sp_keyHandle, topic.getHandle());
-		postCommentsCountButton.setTag(R.id.sp_keyTopic, topic);
+		postLikesCountButton.setTag(R.id.es_keyHandle, topic.getHandle());
+		postCommentsCountButton.setTag(R.id.es_keyTopic, topic);
 
-		contentButton.setTag(R.id.sp_keyTopic, topic);
-		commentButton.setTag(R.id.sp_keyTopic, topic);
+		contentButton.setTag(R.id.es_keyTopic, topic);
+		commentButton.setTag(R.id.es_keyTopic, topic);
 
-		likeButton.setTag(R.id.sp_keyHandle, topic.getHandle());
-		likeButton.setTag(R.id.sp_keyIsAdd, !topic.isLikeStatus());
+		likeButton.setTag(R.id.es_keyHandle, topic.getHandle());
+		likeButton.setTag(R.id.es_keyIsAdd, !topic.isLikeStatus());
 		buttonStyleHelper.applyAccentColor(likeButton, topic.isLikeStatus());
 
-		pinButton.setTag(R.id.sp_keyHandle, topic.getHandle());
-		pinButton.setTag(R.id.sp_keyIsAdd, !topic.isPinStatus());
+		pinButton.setTag(R.id.es_keyHandle, topic.getHandle());
+		pinButton.setTag(R.id.es_keyIsAdd, !topic.isPinStatus());
 		buttonStyleHelper.applyAccentColor(pinButton, topic.isPinStatus());
 
 		ContentUpdateHelper.setTopicCoverImage(coverContentLoader, topic.getImageLocation());
@@ -117,10 +117,10 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		int elementsVisibility;
 		if (topic.isLocal()) {
 			elementsVisibility = View.GONE;
-			setCardBackground(R.styleable.sp_AppTheme_sp_uploadingItemColor);
+			setCardBackground(R.styleable.es_AppTheme_es_uploadingItemColor);
 		} else {
 			elementsVisibility = View.VISIBLE;
-			setCardBackground(R.styleable.sp_AppTheme_sp_cardBackground);
+			setCardBackground(R.styleable.es_AppTheme_es_cardBackground);
 		}
 
 		View[] topicElements = {pinButton, likeButton, commentButton, elapsedTime};
@@ -140,28 +140,28 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		setContextMenuClickListener(topicButtonsListener::onClickContextMenu);
 		setHeaderClickable(headerClickable);
 
-		cardRootView = (CardView) view.findViewById(R.id.sp_card_root_view);
-		ImageView coverImage = (ImageView) view.findViewById(R.id.sp_coverImage);
+		cardRootView = (CardView) view.findViewById(R.id.es_card_root_view);
+		ImageView coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
 		coverContentLoader = new CoverLoader(coverImage);
-		postTitle = (TextView) view.findViewById(R.id.sp_postTitle);
-		postBody = (TextView) view.findViewById(R.id.sp_postBody);
-		appLayout = view.findViewById(R.id.sp_postAppLayout);
+		postTitle = (TextView) view.findViewById(R.id.es_postTitle);
+		postBody = (TextView) view.findViewById(R.id.es_postBody);
+		appLayout = view.findViewById(R.id.es_postAppLayout);
 
-		postAppName = (TextView) view.findViewById(R.id.sp_postAppName);
-		postAppIcon = (ImageView) view.findViewById(R.id.sp_postAppIcon);
+		postAppName = (TextView) view.findViewById(R.id.es_postAppName);
+		postAppIcon = (ImageView) view.findViewById(R.id.es_postAppIcon);
 
-		postLikesCountButton = (TextView) view.findViewById(R.id.sp_postLikesCountButton);
+		postLikesCountButton = (TextView) view.findViewById(R.id.es_postLikesCountButton);
 		postLikesCountButton.setOnClickListener(topicButtonsListener::onClickLikesCount);
 		buttonStyleHelper.applyAccentColor(postLikesCountButton);
 
-		postCommentsCountButton = (TextView) view.findViewById(R.id.sp_postCommentsCountButton);
+		postCommentsCountButton = (TextView) view.findViewById(R.id.es_postCommentsCountButton);
 		postCommentsCountButton.setOnClickListener(topicButtonsListener::onClickCommentsCount);
 		buttonStyleHelper.applyAccentColor(postCommentsCountButton);
 
-		contentButton = (FrameLayout) view.findViewById(R.id.sp_contentButton);
-		likeButton = (ImageView) view.findViewById(R.id.sp_likeButton);
-		commentButton = (ImageView) view.findViewById(R.id.sp_commentButton);
-		pinButton = (ImageView) view.findViewById(R.id.sp_pinButton);
+		contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
+		likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
+		commentButton = (ImageView) view.findViewById(R.id.es_commentButton);
+		pinButton = (ImageView) view.findViewById(R.id.es_pinButton);
 
 		contentButton.setOnClickListener(topicButtonsListener::onClickContent);
 		likeButton.setOnClickListener(topicButtonsListener::onClickLike);

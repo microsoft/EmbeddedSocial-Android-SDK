@@ -302,7 +302,7 @@ public abstract class BaseFragment extends Fragment {
 	}
 
 	public final boolean isTablet() {
-		return getResources().getBoolean(R.bool.sp_isTablet);
+		return getResources().getBoolean(R.bool.es_isTablet);
 	}
 
 	public void invalidateMenu() {

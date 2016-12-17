@@ -30,13 +30,13 @@ public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 	private int imageSize;
 
 	public GridRenderer(Context context) {
-		imageSize = context.getResources().getDimensionPixelSize(R.dimen.sp_grid_cell_size);
+		imageSize = context.getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
 	}
 
 	@Override
 	public ViewHolder createViewHolder(ViewGroup parent) {
 		Context context = parent.getContext();
-		View itemView = LayoutInflater.from(context).inflate(R.layout.sp_grid_item, parent, false);
+		View itemView = LayoutInflater.from(context).inflate(R.layout.es_grid_item, parent, false);
 		return new ViewHolder(itemView);
 	}
 
@@ -69,10 +69,10 @@ public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 
 		public ViewHolder(View itemView) {
 			super(itemView);
-			noImageView = ViewUtils.findView(itemView, R.id.sp_noImage);
-			imageView = ViewUtils.findView(itemView, R.id.sp_image);
+			noImageView = ViewUtils.findView(itemView, R.id.es_noImage);
+			imageView = ViewUtils.findView(itemView, R.id.es_image);
 			imageViewContentLoader = new CoverLoader(imageView);
-			uploadingIndicator = ViewUtils.findView(itemView, R.id.sp_uploadingIndicator);
+			uploadingIndicator = ViewUtils.findView(itemView, R.id.es_uploadingIndicator);
 			itemView.setOnClickListener(this);
 		}
 

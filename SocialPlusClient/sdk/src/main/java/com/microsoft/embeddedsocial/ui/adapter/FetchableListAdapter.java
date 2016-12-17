@@ -55,7 +55,7 @@ public class FetchableListAdapter<T, V extends ViewHolder> extends MultiTypeAdap
 		Renderer<Object, SingleViewHolder> titleRenderer = new Renderer<Object, SingleViewHolder>() {
 			@Override
 			public SingleViewHolder createViewHolder(ViewGroup parent) {
-				return SingleViewHolder.create(R.layout.sp_list_header, parent);
+				return SingleViewHolder.create(R.layout.es_list_header, parent);
 			}
 
 			@Override
@@ -68,7 +68,7 @@ public class FetchableListAdapter<T, V extends ViewHolder> extends MultiTypeAdap
 		Renderer<Object, SingleViewHolder> paddingRenderer = new Renderer<Object, SingleViewHolder>() {
 			@Override
 			public SingleViewHolder createViewHolder(ViewGroup parent) {
-				SingleViewHolder holder = SingleViewHolder.create(R.layout.sp_padding, parent);
+				SingleViewHolder holder = SingleViewHolder.create(R.layout.es_padding, parent);
 				holder.itemView.setMinimumHeight(verticalPadding);
 				return holder;
 			}

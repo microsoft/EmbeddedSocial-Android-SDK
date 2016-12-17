@@ -30,7 +30,7 @@ public class TrendingHashtagsRenderer extends Renderer<String, ViewHolder> {
 
 	@Override
 	public ViewHolder createViewHolder(ViewGroup parent) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sp_trending_hashtag_list_item, parent, false);
+		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_trending_hashtag_list_item, parent, false);
 		return new ViewHolder(view);
 	}
 

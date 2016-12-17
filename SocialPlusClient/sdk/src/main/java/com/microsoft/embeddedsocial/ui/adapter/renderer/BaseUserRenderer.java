@@ -43,7 +43,7 @@ public abstract class BaseUserRenderer extends Renderer<UserCompactView, UserLis
 
 	@Override
 	public UserListItemHolder createViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.sp_user_list_item, parent);
+		View view = ViewUtils.inflateLayout(R.layout.es_user_list_item, parent);
 		return new UserListItemHolder(view);
 	}
 

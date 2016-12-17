@@ -57,7 +57,7 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 
 	@Override
 	protected int getNoteHint() {
-		return R.string.sp_hint_add_reply;
+		return R.string.es_hint_add_reply;
 	}
 
 	@Override
@@ -99,9 +99,9 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 		public void onReplyRemoved(ReplyRemovedEvent replyRemovedEvent) {
 			if (replyRemovedEvent.isSuccessful()) {
 				getAdapter().removeReply(replyRemovedEvent.getData().getHandle());
-				Toast.makeText(getActivity(), R.string.sp_content_removed_reply, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), R.string.es_content_removed_reply, Toast.LENGTH_SHORT).show();
 			} else {
-				Toast.makeText(getActivity(), R.string.sp_message_failed_to_remove_reply, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), R.string.es_message_failed_to_remove_reply, Toast.LENGTH_SHORT).show();
 			}
 		}
 
@@ -116,7 +116,7 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 		public void onCommentRemoved(CommentRemovedEvent commentRemovedEvent) {
 			if (commentRemovedEvent.isSuccessful()) {
 				hideKeyboard();
-				Toast.makeText(getActivity(), R.string.sp_content_removed_comment, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), R.string.es_content_removed_comment, Toast.LENGTH_SHORT).show();
 				Intent returnIntent = new Intent();
 				returnIntent.putExtra(IntentExtras.COMMENT_HANDLE, getHandle());
 				getActivity().setResult(Activity.RESULT_OK, returnIntent);

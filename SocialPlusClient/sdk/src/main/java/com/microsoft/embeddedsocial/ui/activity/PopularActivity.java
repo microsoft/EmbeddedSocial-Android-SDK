@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
 public class PopularActivity extends BaseTabsActivity {
 
 	public PopularActivity() {
-		super(R.id.sp_navigationPopular);
+		super(R.id.es_navigationPopular);
 	}
 
 	@Override
@@ -34,10 +34,10 @@ public class PopularActivity extends BaseTabsActivity {
 	@Override
 	protected PagerAdapter createPagerAdapter() {
 		return new SimplePagerAdapter(this, getSupportFragmentManager(),
-			new SimplePagerAdapter.Page(R.string.sp_menu_today, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_TODAY)),
-			new SimplePagerAdapter.Page(R.string.sp_menu_week, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_WEEK)),
-			new SimplePagerAdapter.Page(R.string.sp_menu_month, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_MONTH)),
-			new SimplePagerAdapter.Page(R.string.sp_menu_all_time, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_ALL_TIME))
+			new SimplePagerAdapter.Page(R.string.es_menu_today, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_TODAY)),
+			new SimplePagerAdapter.Page(R.string.es_menu_week, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_WEEK)),
+			new SimplePagerAdapter.Page(R.string.es_menu_month, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_MONTH)),
+			new SimplePagerAdapter.Page(R.string.es_menu_all_time, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_ALL_TIME))
 		);
 	}
 

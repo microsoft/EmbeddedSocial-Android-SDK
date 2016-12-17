@@ -41,10 +41,10 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 	private static final String LAST_ACCOUNT_ID = "last_account";
 
 	private final InnerAccountData[] supportedAccountsId = {
-		new InnerAccountData(R.string.sp_facebook, IdentityProvider.FACEBOOK),
-		new InnerAccountData(R.string.sp_google, IdentityProvider.GOOGLE),
-		new InnerAccountData(R.string.sp_microsoft, IdentityProvider.MICROSOFT),
-		new InnerAccountData(R.string.sp_twitter, IdentityProvider.TWITTER)
+		new InnerAccountData(R.string.es_facebook, IdentityProvider.FACEBOOK),
+		new InnerAccountData(R.string.es_google, IdentityProvider.GOOGLE),
+		new InnerAccountData(R.string.es_microsoft, IdentityProvider.MICROSOFT),
+		new InnerAccountData(R.string.es_twitter, IdentityProvider.TWITTER)
 	};
 
 	private AbstractAuthenticator authenticator;
@@ -81,8 +81,8 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 	private void unlinkAccount(IdentityProvider identityProvider) {
 		if (getAdapter().getCountConnectedAccounts() == 1) {
 			new AlertDialogFragment.Builder(getActivity(), LAST_ACCOUNT_ID)
-				.setTitle(R.string.sp_last_account_title)
-				.setMessage(R.string.sp_last_account_text)
+				.setTitle(R.string.es_last_account_title)
+				.setMessage(R.string.es_last_account_text)
 				.setPositiveButton(android.R.string.ok)
 				.show(getActivity(), null);
 			getAdapter().notifyDataSetChanged();
@@ -149,8 +149,8 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 			String error = event.getError();
 			if (TextUtils.isEmpty(error)) {
 				error = getString(event.getState() == LinkUserThirdPartyAccountEvent.State.LINK
-					? R.string.sp_account_link_error
-					: R.string.sp_account_unlink_error);
+					? R.string.es_account_link_error
+					: R.string.es_account_unlink_error);
 			}
 			getAdapter().notifyDataSetChanged();
 			showToast(error);

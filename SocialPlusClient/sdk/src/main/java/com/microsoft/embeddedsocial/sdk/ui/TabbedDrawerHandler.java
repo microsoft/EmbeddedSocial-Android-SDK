@@ -28,9 +28,9 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 		super.inflate(drawerContainer, socialPlusMenuActiveItemId);
 		drawerContainer.removeAllViews();
 		drawerContainer.addView(
-			activity.getLayoutInflater().inflate(R.layout.sp_sdk_fragment_tabs, drawerContainer, false));
+			activity.getLayoutInflater().inflate(R.layout.es_sdk_fragment_tabs, drawerContainer, false));
 
-		TabLayout drawerMenu = (TabLayout) activity.findViewById(R.id.sp_tabs);
+		TabLayout drawerMenu = (TabLayout) activity.findViewById(R.id.es_tabs);
 
 		hostingAppMenuTab = drawerMenu.newTab()
 			.setTag(HOSTING_APP_TAG)
@@ -38,7 +38,7 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 
 		socialMenuTab = drawerMenu.newTab()
 			.setTag(SOCIAL_TAG)
-			.setCustomView(R.layout.sp_tab_icon);
+			.setCustomView(R.layout.es_tab_icon);
 
 		drawerMenu.setOnTabSelectedListener(this);
 		drawerMenu.addTab(hostingAppMenuTab, true);
@@ -63,14 +63,14 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 	private void selectHostingAppMenuFragment() {
 		displayMenu = DisplayMenu.HOST_MENU;
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.sp_tab_container, hostingAppMenuFragment, HOSTING_APP_TAG);
+		fragmentTransaction.replace(R.id.es_tab_container, hostingAppMenuFragment, HOSTING_APP_TAG);
 		fragmentTransaction.commit();
 	}
 
 	private void selectEmbeddedSocialMenuFragment() {
 		displayMenu = DisplayMenu.SOCIAL_MENU;
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.sp_tab_container, socialPlusMenuFragment, SOCIAL_TAG);
+		fragmentTransaction.replace(R.id.es_tab_container, socialPlusMenuFragment, SOCIAL_TAG);
 		fragmentTransaction.commit();
 	}
 

@@ -139,7 +139,7 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 		userHandle = UserAccount.getInstance().getUserHandle();
 		boolean unauthorizedAccess = isAuthorizationRequired() && !isUserAuthorized();
 		super.onCreate(unauthorizedAccess ? null : savedInstanceState); // pass null to avoid possible crashes after immediate finish
-		boolean isTablet = getResources().getBoolean(R.bool.sp_isTablet);
+		boolean isTablet = getResources().getBoolean(R.bool.es_isTablet);
 		if (!isTablet) {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		}

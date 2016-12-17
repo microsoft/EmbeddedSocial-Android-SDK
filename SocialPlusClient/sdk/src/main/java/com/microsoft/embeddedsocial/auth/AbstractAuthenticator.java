@@ -51,7 +51,7 @@ public abstract class AbstractAuthenticator implements IDisposable {
 	 * Uses {@link #onAuthenticationError(String)} with default error message.
 	 */
 	protected void onGeneralAuthenticationError() {
-		authCallback.onAuthenticationError(getFragment().getString(R.string.sp_msg_general_signin_error));
+		authCallback.onAuthenticationError(getFragment().getString(R.string.es_msg_general_signin_error));
 	}
 
 	/**

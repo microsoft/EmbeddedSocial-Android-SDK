@@ -31,18 +31,18 @@ public class TopicContextMenu {
 	 */
 	public static void inflateContextMenu(@NonNull Context context, @NonNull PopupMenu menu, TopicView topic, TopicRenderOptions options) {
 		if (topic.isLocal()) {
-			menu.inflate(R.menu.sp_topic_pending);
+			menu.inflate(R.menu.es_topic_pending);
 		} else {
 			if (isOwnTopic(topic)) {
-				menu.inflate(R.menu.sp_topic_own);
+				menu.inflate(R.menu.es_topic_own);
 			} else {
 				if (topic.getPublisherType() != PublisherType.APP) {
 					UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
 				}
-				menu.inflate(R.menu.sp_topic);
+				menu.inflate(R.menu.es_topic);
 			}
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
-				menu.inflate(R.menu.sp_topic_hide);
+				menu.inflate(R.menu.es_topic_hide);
 			}
 			addCustomReportHandler(context, menu, topic);
         }
@@ -65,7 +65,7 @@ public class TopicContextMenu {
 			String displayString = reportHandler.getDisplayString(context, topic);
 			if (!TextUtils.isEmpty(displayString)) {
                 // create an item with the a known ID and the provided title
-                menu.getMenu().add(Menu.NONE, R.id.sp_reportCustom, Menu.NONE, displayString);
+                menu.getMenu().add(Menu.NONE, R.id.es_reportCustom, Menu.NONE, displayString);
             }
         }
 	}

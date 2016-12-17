@@ -31,7 +31,7 @@ public class ReportActivity extends BaseActivity {
 		super.setupActionBar(actionBar);
 		Bundle extras = getIntent().getExtras();
 		if (extras.containsKey(IntentExtras.NAME)) {
-			String title = getString(R.string.sp_report_user, extras.getString(IntentExtras.NAME));
+			String title = getString(R.string.es_report_user, extras.getString(IntentExtras.NAME));
 			actionBar.setTitle(title);
 		}
 	}

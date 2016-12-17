@@ -21,9 +21,9 @@ public class ViewImageActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sp_activity_view_image);
+		setContentView(R.layout.es_activity_view_image);
 
-		setSupportActionBar((Toolbar) findViewById(R.id.sp_toolbar));
+		setSupportActionBar((Toolbar) findViewById(R.id.es_toolbar));
 		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setDisplayHomeAsUpEnabled(true);
@@ -31,7 +31,7 @@ public class ViewImageActivity extends AppCompatActivity {
 
 		final ViewImageFragment fragment = new ViewImageFragment();
 		fragment.setArguments(getIntent().getExtras());
-		getSupportFragmentManager().beginTransaction().add(R.id.sp_content, fragment).commit();
+		getSupportFragmentManager().beginTransaction().add(R.id.es_content, fragment).commit();
 	}
 
 	@Override

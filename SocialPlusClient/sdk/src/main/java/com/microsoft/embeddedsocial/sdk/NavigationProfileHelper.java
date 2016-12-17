@@ -31,27 +31,27 @@ public class NavigationProfileHelper {
 
 	public static ImageViewContentLoader setupNavigationProfile(Activity activity, ImageViewContentLoader photoLoader, ViewGroup navigationPanel, int activeItemId) {
 		final boolean signedIn = UserAccount.getInstance().isSignedIn();
-		final View profileItem = navigationPanel.findViewById(R.id.sp_navigationProfile);
-		final ImageView profilePhoto = (ImageView) navigationPanel.findViewById(R.id.sp_photo);
-		final TextView profileName = (TextView) navigationPanel.findViewById(R.id.sp_fullName);
+		final View profileItem = navigationPanel.findViewById(R.id.es_navigationProfile);
+		final ImageView profilePhoto = (ImageView) navigationPanel.findViewById(R.id.es_photo);
+		final TextView profileName = (TextView) navigationPanel.findViewById(R.id.es_fullName);
 
 		if (photoLoader != null) {
 			photoLoader.cancel();
 		}
 
 		if (!signedIn) {
-			profilePhoto.setImageResource(R.drawable.sp_user_no_pic_white);
-			profileName.setText(R.string.sp_sign_in);
+			profilePhoto.setImageResource(R.drawable.es_user_no_pic_white);
+			profileName.setText(R.string.es_sign_in);
 		} else {
 			AccountData accountData = UserAccount.getInstance().getAccountDetails();
-			photoLoader = new UserPhotoLoader(profilePhoto, R.drawable.sp_user_no_pic_white);
+			photoLoader = new UserPhotoLoader(profilePhoto, R.drawable.es_user_no_pic_white);
 			ContentUpdateHelper.setProfileImage(
 					photoLoader,
 					accountData.getUserPhotoUrl(),
-				R.drawable.sp_user_no_pic_white);
+				R.drawable.es_user_no_pic_white);
 			profileName.setText(accountData.getFullName());
 		}
-		if (activeItemId == R.id.sp_navigationProfile) {
+		if (activeItemId == R.id.es_navigationProfile) {
 			profileItem.setBackgroundColor(Color.BLACK);
 		} else {
 			NavigationIntentUtils navigation = new NavigationIntentUtils(activity);

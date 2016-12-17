@@ -17,28 +17,28 @@ import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 public class FollowingRecentActivityRenderer extends BaseRecentActivityRenderer {
 
 	private static final int[] LIKE_MESSAGE_IDS = {
-		R.string.sp_activity_following_like_topic,
-		R.string.sp_activity_following_like_comment,
-		R.string.sp_activity_following_like_reply
+		R.string.es_activity_following_like_topic,
+		R.string.es_activity_following_like_comment,
+		R.string.es_activity_following_like_reply
 	};
 	private static final int[] MENTION_MESSAGE_IDS = {
-		R.string.sp_activity_following_mention_topic,
-		R.string.sp_activity_following_mention_comment,
-		R.string.sp_activity_following_mention_reply
+		R.string.es_activity_following_mention_topic,
+		R.string.es_activity_following_mention_comment,
+		R.string.es_activity_following_mention_reply
 	};
 	private static final int[] CHILD_PEER_MESSAGE_IDS = {
-		R.string.sp_activity_following_child_peer_topic,
-		R.string.sp_activity_following_child_peer_comment
+		R.string.es_activity_following_child_peer_topic,
+		R.string.es_activity_following_child_peer_comment
 	};
 	private static final int[] CHILD_MESSAGE_IDS = {
-		R.string.sp_activity_following_child_topic,
-		R.string.sp_activity_following_child_comment
+		R.string.es_activity_following_child_topic,
+		R.string.es_activity_following_child_comment
 	};
 
 	@Override
 	protected void renderFollowingEvent(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		holder.text.setText(context.getString(R.string.sp_activity_following_following, user.getFullName(), item.getActedOnUser().getFullName()));
+		holder.text.setText(context.getString(R.string.es_activity_following_following, user.getFullName(), item.getActedOnUser().getFullName()));
 	}
 
 	@Override

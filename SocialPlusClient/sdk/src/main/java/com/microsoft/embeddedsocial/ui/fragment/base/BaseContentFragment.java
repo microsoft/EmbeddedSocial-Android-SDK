@@ -60,7 +60,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 
 	private boolean justStarted;
 
-	private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(this, R.string.sp_close, null);
+	private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(this, R.string.es_close, null);
 
 	private final Callback loadingStateListener = new Callback() {
 
@@ -87,19 +87,19 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_base_fetchable;
+		return R.layout.es_fragment_base_fetchable;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = super.onCreateView(inflater, container, savedInstanceState);
 
-		TypedArray typedArray = getContext().obtainStyledAttributes(R.styleable.sp_ThemeOverlay);
-		int contentLayoutId = typedArray.getResourceId(R.styleable.sp_ThemeOverlay_sp_baseContentLayout, R.layout.sp_content_view);
-		int contentViewId = typedArray.getResourceId(R.styleable.sp_ThemeOverlay_sp_baseContentViewId, R.id.sp_recyclerView);
+		TypedArray typedArray = getContext().obtainStyledAttributes(R.styleable.es_ThemeOverlay);
+		int contentLayoutId = typedArray.getResourceId(R.styleable.es_ThemeOverlay_es_baseContentLayout, R.layout.es_content_view);
+		int contentViewId = typedArray.getResourceId(R.styleable.es_ThemeOverlay_es_baseContentViewId, R.id.es_recyclerView);
 		typedArray.recycle();
 
-		ViewGroup contentLayout = findView(view, R.id.sp_contentLayout);
+		ViewGroup contentLayout = findView(view, R.id.es_contentLayout);
 		getLayoutInflater(savedInstanceState).inflate(contentLayoutId, contentLayout);
 		restoreMessages(savedInstanceState);
 		initViews(view, contentViewId);
@@ -109,8 +109,8 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 
 	private void restoreMessages(@Nullable Bundle savedInstanceState) {
 		if (savedInstanceState == null) {
-			emptyDataMessage = getString(R.string.sp_message_no_data);
-			errorMessage = getString(R.string.sp_message_failed_to_load_data);
+			emptyDataMessage = getString(R.string.es_message_no_data);
+			errorMessage = getString(R.string.es_message_failed_to_load_data);
 		} else {
 			emptyDataMessage = savedInstanceState.getString(PREF_EMPTY_MESSAGE);
 			errorMessage = savedInstanceState.getString(PREF_ERROR_MESSAGE);
@@ -119,12 +119,12 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 
 	private void initViews(View view, int contentViewId) {
 		contentView = findView(view, contentViewId);
-		swipeRefreshLayout = findView(view, R.id.sp_swipeRefresh);
+		swipeRefreshLayout = findView(view, R.id.es_swipeRefresh);
 		swipeRefreshLayout.setOnRefreshListener(this);
-		recyclerView = findView(view, R.id.sp_recyclerView);
+		recyclerView = findView(view, R.id.es_recyclerView);
 		setContentLayoutManager(createInitialContentLayoutManager());
-		progressView = findView(view, R.id.sp_progress);
-		messageView = findView(view, R.id.sp_message);
+		progressView = findView(view, R.id.es_progress);
+		messageView = findView(view, R.id.es_message);
 		stateViews = new View[]{contentView, progressView, messageView};
 		initRecyclerView();
 		setHasOptionsMenu(true);
@@ -209,7 +209,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 		if (!isNetworkAvailable()) {
 			View view = getView();
 			if (view != null) {
-				Snackbar.make(view, R.string.sp_message_no_connection, Snackbar.LENGTH_LONG).show();
+				Snackbar.make(view, R.string.es_message_no_connection, Snackbar.LENGTH_LONG).show();
 			}
 		}
 	}

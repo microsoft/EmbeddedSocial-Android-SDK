@@ -25,9 +25,9 @@ public class FollowRequestsFragment extends BaseListContentFragment<FetchableLis
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		int verticalPadding = getResources().getDimensionPixelOffset(R.dimen.sp_users_list_vertical_padding_large);
+		int verticalPadding = getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding_large);
 		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
-		setEmptyDataMessage(R.string.sp_message_no_people);
+		setEmptyDataMessage(R.string.es_message_no_people);
 	}
 
 	@Override

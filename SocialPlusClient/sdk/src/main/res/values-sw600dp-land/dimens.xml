@@ -6,6 +6,6 @@
 
 <resources>
 
-    <dimen name="sp_padding_options_horizontal">240dp</dimen>
+    <dimen name="es_padding_options_horizontal">240dp</dimen>
 
 </resources>

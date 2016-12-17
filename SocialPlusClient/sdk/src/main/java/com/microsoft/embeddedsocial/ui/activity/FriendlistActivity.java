@@ -35,7 +35,7 @@ public class FriendlistActivity extends BaseActivity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		Fragment contentFragment = getSupportFragmentManager().findFragmentById(R.id.sp_content);
+		Fragment contentFragment = getSupportFragmentManager().findFragmentById(R.id.es_content);
 		if (contentFragment != null && contentFragment instanceof FriendlistFragment) {
 			if (data == null) {
 				data = new Intent();
@@ -52,13 +52,13 @@ public class FriendlistActivity extends BaseActivity {
 			String title;
 			switch (identityProvider) {
 				case MICROSOFT:
-					title = getString(R.string.sp_button_find_friends_microsoft);
+					title = getString(R.string.es_button_find_friends_microsoft);
 					break;
 				case GOOGLE:
-					title = getString(R.string.sp_button_find_friends_google_plus);
+					title = getString(R.string.es_button_find_friends_google_plus);
 					break;
 				case FACEBOOK:
-					title = getString(R.string.sp_button_find_friends_facebook);
+					title = getString(R.string.es_button_find_friends_facebook);
 					break;
 				default:
 					title = "";

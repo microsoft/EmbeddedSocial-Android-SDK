@@ -53,7 +53,7 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 
 	public void inflatePhoto(ViewGroup root) {
 		LayoutInflater inflater = LayoutInflater.from(root.getContext());
-		final FrameLayout photoContent = (FrameLayout) root.findViewById(R.id.sp_photoContent);
+		final FrameLayout photoContent = (FrameLayout) root.findViewById(R.id.es_photoContent);
 		if (photoContent == null) {
 			return;
 		}
@@ -61,14 +61,14 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		final int index = photoContentParent.indexOfChild(photoContent);
 		photoContentParent.removeView(photoContent);
 		final int photoLayoutId =
-			(renderType == RenderType.LARGE && isTablet()) ? R.layout.sp_view_profile_photo_large : R.layout.sp_view_profile_photo;
+			(renderType == RenderType.LARGE && isTablet()) ? R.layout.es_view_profile_photo_large : R.layout.es_view_profile_photo;
 		photoContentParent.addView(inflater.inflate(photoLayoutId, root, false), index);
 	}
 
 	@Override
 	public ProfileViewHolder createViewHolder(ViewGroup parent) {
 		LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-		final ViewGroup view = (ViewGroup) inflater.inflate(R.layout.sp_profile_brief, parent, false);
+		final ViewGroup view = (ViewGroup) inflater.inflate(R.layout.es_profile_brief, parent, false);
 		inflatePhoto(view);
 		return new ProfileViewHolder(view, userHandle);
 	}
@@ -79,10 +79,10 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		viewHolder.photoContentLoader.cancel();
 		Resources resources = context.getResources();
 		if (imageLocation != null) {
-			int picSize = resources.getDimensionPixelSize(R.dimen.sp_user_pic_large_size);
+			int picSize = resources.getDimensionPixelSize(R.dimen.es_user_pic_large_size);
 			viewHolder.photoContentLoader.load(imageLocation, picSize);
 		} else {
-			viewHolder.photoContentLoader.setImageResource(ThemeAttributes.getResourceId(context, R.styleable.sp_AppTheme_sp_userNoPhotoIcon));
+			viewHolder.photoContentLoader.setImageResource(ThemeAttributes.getResourceId(context, R.styleable.es_AppTheme_es_userNoPhotoIcon));
 		}
 		viewHolder.fullName.setText(account.getFullName());
 		viewHolder.bio.setText(account.getBio());
@@ -92,9 +92,9 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 			viewHolder.bio.setVisibility(View.VISIBLE);
 		}
 		long followersCount = account.getFollowersCount();
-		viewHolder.followers.setText(resources.getQuantityString(R.plurals.sp_button_followers,
+		viewHolder.followers.setText(resources.getQuantityString(R.plurals.es_button_followers,
 				QuantityStringUtils.convertLongToInt(followersCount), followersCount));
-		viewHolder.following.setText(context.getString(R.string.sp_button_following, account.getFollowingCount()));
+		viewHolder.following.setText(context.getString(R.string.es_button_following, account.getFollowingCount()));
 		boolean canReadFollowers = isCurrentUser || account.arePostsReadable();
 		viewHolder.followers.setEnabled(canReadFollowers);
 		viewHolder.following.setEnabled(canReadFollowers);
@@ -113,17 +113,17 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 			switch (followedStatus) {
 				case PENDING:
 					viewHolder.followingStatus.setEnabled(false);
-					viewHolder.followingStatus.setText(R.string.sp_pending);
+					viewHolder.followingStatus.setText(R.string.es_pending);
 					styleHelper.applyGrayStyle(viewHolder.followingStatus);
 					break;
 				case FOLLOW:
-					viewHolder.followingStatus.setText(R.string.sp_following);
+					viewHolder.followingStatus.setText(R.string.es_following);
 					viewHolder.followingStatus.setEnabled(true);
 					viewHolder.followingStatus.setOnClickListener(v -> UserAccount.getInstance().unfollowUser(userHandle));
 					styleHelper.applyGreenCompletedStyle(viewHolder.followingStatus);
 					break;
 				case NONE:
-					viewHolder.followingStatus.setText(R.string.sp_button_follow);
+					viewHolder.followingStatus.setText(R.string.es_button_follow);
 					viewHolder.followingStatus.setEnabled(true);
 					viewHolder.followingStatus.setOnClickListener(v -> UserAccount.getInstance().followUser(userHandle, account));
 					styleHelper.applyGreenStyle(viewHolder.followingStatus);
@@ -156,18 +156,18 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		}
 
 		public void initViews() {
-			ImageView photo = ViewUtils.findView(itemView, R.id.sp_photo);
+			ImageView photo = ViewUtils.findView(itemView, R.id.es_photo);
 			if (photo == null) {
 				return;
 			}
 			photoContentLoader = new UserPhotoLoader(photo);
-			fullName = ViewUtils.findView(itemView, R.id.sp_fullName);
-			bio = ViewUtils.findView(itemView, R.id.sp_bio);
-			followers = ViewUtils.findView(itemView, R.id.sp_followersCount);
-			following = ViewUtils.findView(itemView, R.id.sp_followingCount);
-			editProfile = ViewUtils.findView(itemView, R.id.sp_editProfile);
-			followingStatus = ViewUtils.findView(itemView, R.id.sp_followingStatus);
-			cardContent = ViewUtils.findView(itemView, R.id.sp_cardContent);
+			fullName = ViewUtils.findView(itemView, R.id.es_fullName);
+			bio = ViewUtils.findView(itemView, R.id.es_bio);
+			followers = ViewUtils.findView(itemView, R.id.es_followersCount);
+			following = ViewUtils.findView(itemView, R.id.es_followingCount);
+			editProfile = ViewUtils.findView(itemView, R.id.es_editProfile);
+			followingStatus = ViewUtils.findView(itemView, R.id.es_followingStatus);
+			cardContent = ViewUtils.findView(itemView, R.id.es_cardContent);
 
 			following.setOnClickListener(this);
 			followers.setOnClickListener(this);
@@ -194,13 +194,13 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		public void onClick(View view) {
 			final Context context = view.getContext();
 			int i = view.getId();
-			if (i == R.id.sp_editProfile) {
+			if (i == R.id.es_editProfile) {
 				context.startActivity(new Intent(context, EditProfileActivity.class));
 
-			} else if (i == R.id.sp_followersCount) {
+			} else if (i == R.id.es_followersCount) {
 				startUserListActivity(context, FollowersActivity.class);
 
-			} else if (i == R.id.sp_followingCount) {
+			} else if (i == R.id.es_followingCount) {
 				startUserListActivity(context, FollowingActivity.class);
 
 			}
@@ -215,7 +215,7 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 	}
 
 	private boolean isTablet() {
-		return context.getResources().getBoolean(R.bool.sp_isTablet);
+		return context.getResources().getBoolean(R.bool.es_isTablet);
 	}
 
 	public enum RenderType {

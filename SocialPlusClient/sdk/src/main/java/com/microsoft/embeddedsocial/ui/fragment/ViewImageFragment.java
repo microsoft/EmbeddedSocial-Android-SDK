@@ -32,7 +32,7 @@ public class ViewImageFragment extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_view_image;
+		return R.layout.es_fragment_view_image;
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class ViewImageFragment extends BaseFragment {
 		Bundle arguments = getArguments();
 		String coverImageUrl = arguments.getString(IntentExtras.COVER_IMAGE_URL_EXTRA);
 
-		progressBar = (ProgressBar) view.findViewById(R.id.sp_progress);
-		coverImage = (ImageView) view.findViewById(R.id.sp_coverImage);
+		progressBar = (ProgressBar) view.findViewById(R.id.es_progress);
+		coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
 		coverContentLoader = new FullImageViewContentLoader(coverImage);
 		if (savedInstanceState == null) {
 			coverImage.setVisibility(View.GONE);

@@ -60,12 +60,12 @@ class SearchModule extends Module {
 	@Override
 	protected void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		owner.setErrorMessage(R.string.sp_message_failed_to_search_data);
+		owner.setErrorMessage(R.string.es_message_failed_to_search_data);
 		updateEmptyDataMessage();
 	}
 
 	private void updateEmptyDataMessage() {
-		owner.setEmptyDataMessage(owner.getString(R.string.sp_message_no_search_data_pattern, query));
+		owner.setEmptyDataMessage(owner.getString(R.string.es_message_no_search_data_pattern, query));
 	}
 
 	private String getActualQuery() {

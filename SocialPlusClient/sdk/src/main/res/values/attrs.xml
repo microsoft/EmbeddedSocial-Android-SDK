@@ -6,108 +6,108 @@
 
 <resources>
 
-	<declare-styleable name="sp_AspectRatioImageView">
+	<declare-styleable name="es_AspectRatioImageView">
 		<!-- height/width ratio -->
-		<attr name="sp_aspectRatio" format="float"/>
+		<attr name="es_aspectRatio" format="float"/>
 	</declare-styleable>
 
-	<declare-styleable name="sp_NavigationItemView">
-		<attr name="sp_icon_normal" format="reference"/>
-		<attr name="sp_icon_highlight" format="reference"/>
-		<attr name="sp_name" format="string"/>
+	<declare-styleable name="es_NavigationItemView">
+		<attr name="es_icon_normal" format="reference"/>
+		<attr name="es_icon_highlight" format="reference"/>
+		<attr name="es_name" format="string"/>
 	</declare-styleable>
 
-	<declare-styleable name="sp_AppTheme">
+	<declare-styleable name="es_AppTheme">
 
 		<!-- default style of items in the navigation menu -->
-		<attr name="sp_navigationItemStyle" format="reference"/>
+		<attr name="es_navigationItemStyle" format="reference"/>
 
 		<!-- background of clickable elements -->
-		<attr name="sp_buttonBackground" format="reference"/>
+		<attr name="es_buttonBackground" format="reference"/>
 
 		<!-- background of items in list -->
-		<attr name="sp_listItemBackground" format="reference"/>
+		<attr name="es_listItemBackground" format="reference"/>
 
 		<!-- background of items in the navigation menu -->
-		<attr name="sp_navigationItemBackground" format="reference"/>
+		<attr name="es_navigationItemBackground" format="reference"/>
 
 		<!-- background of tabs layout -->
-		<attr name="sp_tabIndicatorBackground" format="reference"/>
+		<attr name="es_tabIndicatorBackground" format="reference"/>
 
 		<!-- text color for the active tab indicator -->
-		<attr name="sp_tabIndicatorTextColorActive" format="color"/>
+		<attr name="es_tabIndicatorTextColorActive" format="color"/>
 
 		<!-- text color for an inactive tab indicator -->
-		<attr name="sp_tabIndicatorTextColorNotActive" format="color"/>
+		<attr name="es_tabIndicatorTextColorNotActive" format="color"/>
 
 		<!-- drawable representing "list" mode for topics feed -->
-		<attr name="sp_listIndicator" format="reference"/>
+		<attr name="es_listIndicator" format="reference"/>
 
 		<!-- drawable representing "gallery" mode for topics feed -->
-		<attr name="sp_galleryIndicator" format="reference"/>
+		<attr name="es_galleryIndicator" format="reference"/>
 
 		<!-- background color for CardView's -->
-		<attr name="sp_cardBackground" format="color"/>
+		<attr name="es_cardBackground" format="color"/>
 
 		<!-- background color for activity content -->
-		<attr name="sp_contentBackground" format="color"/>
+		<attr name="es_contentBackground" format="color"/>
 
 		<!-- background color for topic feeds -->
-		<attr name="sp_topicFeedBackground" format="color"/>
+		<attr name="es_topicFeedBackground" format="color"/>
 
 		<!-- background color for gallery items -->
-		<attr name="sp_galleryItemBackground" format="color"/>
+		<attr name="es_galleryItemBackground" format="color"/>
 
 		<!-- background color for topic's cover image in "list" display mode -->
-		<attr name="sp_topicCoverBackground" format="color"/>
+		<attr name="es_topicCoverBackground" format="color"/>
 
 		<!-- drawable for context menu (three dots); doesn't affect drawable in actionbar -->
-		<attr name="sp_contextMenuIcon" format="reference"/>
+		<attr name="es_contextMenuIcon" format="reference"/>
 
 		<!-- drawable to use if a user doesn't have a photo; doesn't affect navigation menu -->
-		<attr name="sp_userNoPhotoIcon" format="reference"/>
+		<attr name="es_userNoPhotoIcon" format="reference"/>
 
 		<!-- style for activity toolbar/actionbar -->
-		<attr name="sp_toolbarStyle" format="reference"/>
+		<attr name="es_toolbarStyle" format="reference"/>
 
 		<!-- color to show during photo loading as a placeholder -->
-		<attr name="sp_photoPlaceholder" format="color"/>
+		<attr name="es_photoPlaceholder" format="color"/>
 
 		<!-- primary text color -->
-		<attr name="sp_textColorPrimary" format="color"/>
+		<attr name="es_textColorPrimary" format="color"/>
 
 		<!-- secondary text color -->
-		<attr name="sp_textColorSecondary" format="color"/>
+		<attr name="es_textColorSecondary" format="color"/>
 
 		<!-- text color for EditText's hint -->
-		<attr name="sp_textColorHint" format="color"/>
+		<attr name="es_textColorHint" format="color"/>
 
 		<!-- background color for items topics/comments/replies that are not uploaded to the server yet -->
-		<attr name="sp_uploadingItemColor" format="color"/>
+		<attr name="es_uploadingItemColor" format="color"/>
 
 		<!-- color of dividers -->
-		<attr name="sp_dividerColor" format="color"/>
+		<attr name="es_dividerColor" format="color"/>
 
 		<!-- drawable to use as EditText's cursor -->
-		<attr name="sp_cursorDrawable" format="reference"/>
+		<attr name="es_cursorDrawable" format="reference"/>
 
 		<!-- reference to Social Plus logo drawable for Sign-in page -->
-		<attr name="sp_largeLogo" format="reference"/>
+		<attr name="es_largeLogo" format="reference"/>
 
 		<!-- color of the bottom line in the tabs indicator layout; actually it's used to hide it -->
-		<attr name="sp_tabsBottomLineColor" format="color"/>
+		<attr name="es_tabsBottomLineColor" format="color"/>
 
 	</declare-styleable>
 
 	<!-- inner attributes, not for customization in app theme -->
-	<declare-styleable name="sp_ThemeOverlay">
+	<declare-styleable name="es_ThemeOverlay">
 		<!-- Background for RecyclerView in BaseContentFragment. -->
-		<attr name="sp_recyclerViewBackground" format="reference"/>
+		<attr name="es_recyclerViewBackground" format="reference"/>
 
 		<!-- Reference to a layout resource of the content view in BaseContentFragment. -->
-		<attr name="sp_baseContentLayout" format="reference"/>
+		<attr name="es_baseContentLayout" format="reference"/>
 
 		<!-- Id of the content view in BaseContentFragment. -->
-		<attr name="sp_baseContentViewId" format="reference"/>
+		<attr name="es_baseContentViewId" format="reference"/>
 	</declare-styleable>
 </resources>

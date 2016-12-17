@@ -45,7 +45,7 @@ public class LikesFragment extends BaseUsersListFragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		setEmptyDataMessage(R.string.sp_message_no_likes);
+		setEmptyDataMessage(R.string.es_message_no_likes);
 	}
 
 	@Override

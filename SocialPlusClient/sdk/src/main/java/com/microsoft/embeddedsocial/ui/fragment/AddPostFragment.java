@@ -58,8 +58,8 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
 
 		postStorage = new PostStorage(view.getContext());
 
-		setOnClickListener(view, R.id.sp_addPhotoButton, this);
-		getImageMessageView().setText(R.string.sp_add_picture_suggestion);
+		setOnClickListener(view, R.id.es_addPhotoButton, this);
+		getImageMessageView().setText(R.string.es_add_picture_suggestion);
 
 		if (savedInstanceState != null) {
 			imageUri = savedInstanceState.getParcelable(PREF_IMAGE_URI);
@@ -101,7 +101,7 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
 	@Override
 	public void onClick(View v) {
 		int i = v.getId();
-		if (i == R.id.sp_addPhotoButton) {
+		if (i == R.id.es_addPhotoButton) {
 			photoProvider.showSelectImageDialog();
 		}
 	}
@@ -116,7 +116,7 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
 		if (ObjectUtils.equal(imageUri, loadedImageUri)) {
 			ImageView coverView = getCoverView();
 			if (thumbnail != null) {
-				hideView(R.id.sp_imageMessage);
+				hideView(R.id.es_imageMessage);
 				ViewGroup.LayoutParams layoutParams = coverView.getLayoutParams();
 				double imageRatio = (double) thumbnail.getHeight() / thumbnail.getWidth();
 				int imageViewWidth = coverView.getWidth();
@@ -125,7 +125,7 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
 				layoutParams.height = imageViewHeight;
 				coverView.setLayoutParams(layoutParams);
 			} else {
-				showView(R.id.sp_imageMessage);
+				showView(R.id.es_imageMessage);
 			}
 			coverView.setImageBitmap(thumbnail);
 		}

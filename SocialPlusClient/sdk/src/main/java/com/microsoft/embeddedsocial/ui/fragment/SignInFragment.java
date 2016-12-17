@@ -54,7 +54,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	private Action signInAction;
 	private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(
 		this,
-		R.string.sp_cancel,
+		R.string.es_cancel,
 		SIGN_IN_TIMEOUT,
 		() -> {
 			if (signInAction != null) {
@@ -70,21 +70,21 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_signin;
+		return R.layout.es_fragment_signin;
 	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		progressView = view.findViewById(R.id.sp_progress);
-		buttonsView = view.findViewById(R.id.sp_buttons);
+		progressView = view.findViewById(R.id.es_progress);
+		buttonsView = view.findViewById(R.id.es_buttons);
 		Options options = GlobalObjectRegistry.getObject(Options.class);
-		setupSignInButton(view, R.id.sp_signInFacebook, v -> signInWithFacebook(), options.isFacebookLoginEnabled());
-		setupSignInButton(view, R.id.sp_signInMicrosoft, v -> signInWithMicrosoft(), options.isMicrosoftLoginEnabled());
-		setupSignInButton(view, R.id.sp_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
-		setupSignInButton(view, R.id.sp_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
+		setupSignInButton(view, R.id.es_signInFacebook, v -> signInWithFacebook(), options.isFacebookLoginEnabled());
+		setupSignInButton(view, R.id.es_signInMicrosoft, v -> signInWithMicrosoft(), options.isMicrosoftLoginEnabled());
+		setupSignInButton(view, R.id.es_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
+		setupSignInButton(view, R.id.es_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
 
-		Spannable termsText = new SpannableString(getContext().getString(R.string.sp_terms));
+		Spannable termsText = new SpannableString(getContext().getString(R.string.es_terms));
 
 		termsText.setSpan(new ClickableSpan() {
 			@Override
@@ -99,7 +99,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 			}
 		}, 75, 87, 0);
 
-		TextView termsView = (TextView)view.findViewById(R.id.sp_policyText);
+		TextView termsView = (TextView)view.findViewById(R.id.es_policyText);
 		termsView.setText(termsText);
 		termsView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
@@ -141,7 +141,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	@Subscribe
 	public void onSignInWithThirdPartyFailed(SignInWithThirdPartyFailedEvent event) {
 		onSignInFinished();
-		Toast.makeText(getActivity(), R.string.sp_msg_general_signin_error, Toast.LENGTH_LONG).show();
+		Toast.makeText(getActivity(), R.string.es_msg_general_signin_error, Toast.LENGTH_LONG).show();
 	}
 
 	private void signInWithFacebook() {

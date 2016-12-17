@@ -27,7 +27,7 @@ public final class ThemeAttributes {
 	}
 
 	private static <T> T getValue(Context context, ValueGetter<T> valueGetter) {
-		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.sp_AppTheme);
+		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.es_AppTheme);
 		T result = valueGetter.get(typedArray);
 		typedArray.recycle();
 		return result;

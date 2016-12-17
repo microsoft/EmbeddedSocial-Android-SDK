@@ -21,7 +21,7 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 public class TextFragment extends BaseFragment {
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_text;
+		return R.layout.es_fragment_text;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class TextFragment extends BaseFragment {
 		super.onViewCreated(view, savedInstanceState);
 		Bundle arguments = getArguments();
 		if (arguments != null && arguments.containsKey(IntentExtras.TEXT_RES_ID)) {
-			findView(view, R.id.sp_text, TextView.class).setText(arguments.getInt(IntentExtras.TEXT_RES_ID));
+			findView(view, R.id.es_text, TextView.class).setText(arguments.getInt(IntentExtras.TEXT_RES_ID));
 		}
 	}
 

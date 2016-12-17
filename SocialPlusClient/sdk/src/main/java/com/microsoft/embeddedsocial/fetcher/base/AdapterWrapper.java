@@ -89,7 +89,7 @@ class AdapterWrapper<T extends ViewHolder> extends Adapter<ViewHolder> {
 			case VIEW_TYPE_LOADING_MORE:
 				return createLoadingMoreViewHolder(parent);
 			case VIEW_TYPE_RETRY_DOWNLOAD:
-				return createButtonViewHolder(parent, R.string.sp_load_more_retry_button);
+				return createButtonViewHolder(parent, R.string.es_load_more_retry_button);
 			case VIEW_TYPE_LOAD_MORE:
 				return createButtonViewHolder(parent, baseAdapter.getLoadMoreSuggestion(parent.getContext()));
 			default:
@@ -101,7 +101,7 @@ class AdapterWrapper<T extends ViewHolder> extends Adapter<ViewHolder> {
 	}
 
 	private ViewHolder createLoadingMoreViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.sp_load_more_indicator, parent);
+		View view = ViewUtils.inflateLayout(R.layout.es_load_more_indicator, parent);
 		return new SingleViewHolder(view);
 	}
 
@@ -110,8 +110,8 @@ class AdapterWrapper<T extends ViewHolder> extends Adapter<ViewHolder> {
 	}
 
 	private ViewHolder createButtonViewHolder(ViewGroup parent, String text) {
-		View view = ViewUtils.inflateLayout(R.layout.sp_load_more_button, parent);
-		TextView button = ViewUtils.findView(view, R.id.sp_button);
+		View view = ViewUtils.inflateLayout(R.layout.es_load_more_button, parent);
+		TextView button = ViewUtils.findView(view, R.id.es_button);
 		button.setOnClickListener(v -> baseAdapter.requestMoreData());
 		button.setText(text);
 		return new SingleViewHolder(view);

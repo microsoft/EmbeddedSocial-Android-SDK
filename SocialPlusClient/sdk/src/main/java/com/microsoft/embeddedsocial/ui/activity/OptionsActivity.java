@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.ui.fragment.OptionsFragment;
  */
 public class OptionsActivity extends BaseActivity {
 	public OptionsActivity() {
-		super(R.id.sp_navigationOptions);
+		super(R.id.es_navigationOptions);
 	}
 
 	@Override

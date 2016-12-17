@@ -54,18 +54,18 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_add_post;
+		return R.layout.es_fragment_add_post;
 	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initAccountView(view);
-		coverView = findView(view, R.id.sp_postImage);
-		titleView = findView(view, R.id.sp_titleLayout);
-		descriptionView = findView(view, R.id.sp_description);
+		coverView = findView(view, R.id.es_postImage);
+		titleView = findView(view, R.id.es_titleLayout);
+		descriptionView = findView(view, R.id.es_description);
 		descriptionView.setValidator(new FieldNotEmptyValidator(getContext()));
-		imageMessageView = findView(view, R.id.sp_imageMessage);
+		imageMessageView = findView(view, R.id.es_imageMessage);
 		BaseActivity activity = getOwner();
 		activity.showBottomBar();
 		activity.setOnDoneClickListener(v -> uploadPost());
@@ -78,9 +78,9 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 
 	private void initAccountView(View view) {
 		AccountData accountData = UserAccount.getInstance().getAccountDetails();
-		findView(view, R.id.sp_username, TextView.class).setText(accountData.getFullName());
+		findView(view, R.id.es_username, TextView.class).setText(accountData.getFullName());
 
-		ImageView profileImage = findView(view, R.id.sp_profileImage, ImageView.class);
+		ImageView profileImage = findView(view, R.id.es_profileImage, ImageView.class);
 		photoLoader = new UserPhotoLoader(profileImage);
 		ContentUpdateHelper.setProfileImage(getContext(), photoLoader, accountData.getUserPhotoUrl());
 	}
@@ -109,7 +109,7 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 			onFinishedEditing();
 			return true;
 		} else {
-			Toast.makeText(getActivity(), R.string.sp_message_enter_description, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_message_enter_description, Toast.LENGTH_SHORT).show();
 			descriptionView.focusAndShowKeyboard();
 			return false;
 		}
@@ -141,10 +141,10 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 	public boolean close() {
 		if (!isInputEmpty()) {
 			new AlertDialogFragment.Builder(getActivity(), CONFIRM_QUIT_DIALOG_ID)
-				.setTitle(R.string.sp_title_add_post_confirm_quit)
-				.setMessage(R.string.sp_message_add_post_confirm_quit)
+				.setTitle(R.string.es_title_add_post_confirm_quit)
+				.setMessage(R.string.es_message_add_post_confirm_quit)
 				.setPositiveButton(android.R.string.cancel)
-				.setNegativeButton(R.string.sp_option_add_post_leave)
+				.setNegativeButton(R.string.es_option_add_post_leave)
 				.show(getActivity(), null);
 			return false;
 		}

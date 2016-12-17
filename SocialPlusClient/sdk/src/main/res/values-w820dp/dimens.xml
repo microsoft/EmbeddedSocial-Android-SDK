@@ -5,5 +5,5 @@
   -->
 
 <resources>
-	<dimen name="sp_activity_horizontal_margin">64dp</dimen>
+	<dimen name="es_activity_horizontal_margin">64dp</dimen>
 </resources>

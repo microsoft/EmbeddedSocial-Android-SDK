@@ -43,7 +43,7 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 
 	private void showTopicContextMenu(View anchorView) {
 		PopupMenu menu = new PopupMenu(context, anchorView);
-		TopicView topic = (TopicView) anchorView.getTag(R.id.sp_keyTopic);
+		TopicView topic = (TopicView) anchorView.getTag(R.id.es_keyTopic);
 		TopicContextMenu.inflateContextMenu(context, menu, topic, options);
 		menu.show();
 	}
@@ -70,7 +70,7 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 
 		@Override
 		public void onClickContent(View view) {
-			openTopic((TopicView) view.getTag(R.id.sp_keyTopic), false);
+			openTopic((TopicView) view.getTag(R.id.es_keyTopic), false);
 		}
 
 		@Override
@@ -85,20 +85,20 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 
 		@Override
 		public void onClickCommentsCount(View view) {
-			openTopic((TopicView) view.getTag(R.id.sp_keyTopic), false);
+			openTopic((TopicView) view.getTag(R.id.es_keyTopic), false);
 		}
 
 		@Override
 		public void onClickComment(View view) {
-			openTopic((TopicView) view.getTag(R.id.sp_keyTopic), true);
+			openTopic((TopicView) view.getTag(R.id.es_keyTopic), true);
 		}
 
 		@Override
 		public void onClickPin(View view) {
 			ContentUpdateHelper.launchPin(
 				context,
-				(String) view.getTag(R.id.sp_keyHandle),
-				(boolean) view.getTag(R.id.sp_keyIsAdd)
+				(String) view.getTag(R.id.es_keyHandle),
+				(boolean) view.getTag(R.id.es_keyIsAdd)
 			);
 		}
 
@@ -106,9 +106,9 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 		public void onClickLike(View view) {
 			ContentUpdateHelper.launchLike(
 				context,
-				(String) view.getTag(R.id.sp_keyHandle),
+				(String) view.getTag(R.id.es_keyHandle),
 				ContentType.TOPIC,
-				(boolean) view.getTag(R.id.sp_keyIsAdd)
+				(boolean) view.getTag(R.id.es_keyIsAdd)
 			);
 		}
 

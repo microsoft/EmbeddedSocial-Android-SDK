@@ -38,7 +38,7 @@ public class NavigationItemView extends LinearLayout {
 	private TextView notificationCountView;
 
 	public NavigationItemView(Context context, AttributeSet attrs) {
-		super(context, attrs, R.attr.sp_navigationItemStyle);
+		super(context, attrs, R.attr.es_navigationItemStyle);
 		init(attrs);
 	}
 
@@ -49,23 +49,23 @@ public class NavigationItemView extends LinearLayout {
 
 	private void init(AttributeSet attrs) {
 		setOrientation(HORIZONTAL);
-		inflate(getContext(), R.layout.sp_navigation_menu_item, this);
-		TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.sp_NavigationItemView);
-		iconNormal = typedArray.getDrawable(R.styleable.sp_NavigationItemView_sp_icon_normal);
-		iconHighlighted = typedArray.getDrawable(R.styleable.sp_NavigationItemView_sp_icon_highlight);
-		String name = typedArray.getString(R.styleable.sp_NavigationItemView_sp_name);
+		inflate(getContext(), R.layout.es_navigation_menu_item, this);
+		TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.es_NavigationItemView);
+		iconNormal = typedArray.getDrawable(R.styleable.es_NavigationItemView_es_icon_normal);
+		iconHighlighted = typedArray.getDrawable(R.styleable.es_NavigationItemView_es_icon_highlight);
+		String name = typedArray.getString(R.styleable.es_NavigationItemView_es_name);
 		typedArray.recycle();
 
-		iconView = ViewUtils.findView(this, R.id.sp_icon);
+		iconView = ViewUtils.findView(this, R.id.es_icon);
 		iconView.setImageDrawable(iconNormal);
 
-		ViewUtils.findView(this, R.id.sp_name, TextView.class).setText(name);
-		notificationCountView = ViewUtils.findView(this, R.id.sp_notificationCount);
+		ViewUtils.findView(this, R.id.es_name, TextView.class).setText(name);
+		notificationCountView = ViewUtils.findView(this, R.id.es_notificationCount);
 		notificationCountView.setVisibility(View.GONE);
 	}
 
 	public void setName(CharSequence name) {
-		ViewUtils.findView(this, R.id.sp_name, TextView.class).setText(name);
+		ViewUtils.findView(this, R.id.es_name, TextView.class).setText(name);
 	}
 
 	public void hideIcon() {
@@ -81,7 +81,7 @@ public class NavigationItemView extends LinearLayout {
 			ThemeGroup themeGroup = GlobalObjectRegistry.getObject(Options.class).getThemeGroup();
 			TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(
 				themeGroup.getThemeResId(Theme.REGULAR),
-				new int[]{R.attr.sp_navigationItemBackground}
+				new int[]{R.attr.es_navigationItemBackground}
 			);
 			Drawable background = typedArray.getDrawable(0);
 			setBackgroundDrawable(background);
@@ -96,10 +96,10 @@ public class NavigationItemView extends LinearLayout {
 			notificationCountView.setVisibility(View.VISIBLE);
 			if (count > MAX_NOTIFICATION_COUNT) {
 				notificationCountView.setText(String.valueOf(MAX_NOTIFICATION_COUNT) + "+");
-				notificationCountView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.sp_notification_num_text_size_small));
+				notificationCountView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.es_notification_num_text_size_small));
 			} else {
 				notificationCountView.setText(String.valueOf(count));
-				notificationCountView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.sp_notification_num_text_size));
+				notificationCountView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.es_notification_num_text_size));
 			}
 		} else {
 			notificationCountView.setVisibility(View.GONE);

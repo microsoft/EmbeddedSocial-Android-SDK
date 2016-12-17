@@ -6,8 +6,8 @@
 
 <searchable
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:hint="@string/sp_hint_search_topics"
-	android:label="@string/sp_lib_name"
+	android:hint="@string/es_hint_search_topics"
+	android:label="@string/es_lib_name"
 	android:queryAfterZeroResults="true"
 	android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
 	android:searchSuggestAuthority="com.microsoft.embeddedsocial.embeddedsocial_searchprovider"

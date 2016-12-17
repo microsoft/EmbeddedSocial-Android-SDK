@@ -94,7 +94,7 @@ public class SlowConnectionMessageModule extends Module {
 	private void showSlowConnectionMessage() {
 		if (isNetworkAvailable()) {
 			//noinspection ConstantConditions
-			snackbar = Snackbar.make(getOwner().getView(), R.string.sp_message_slow_connection, Snackbar.LENGTH_INDEFINITE);
+			snackbar = Snackbar.make(getOwner().getView(), R.string.es_message_slow_connection, Snackbar.LENGTH_INDEFINITE);
 			snackbar.setAction(actionTextId, v -> {
 				dismissMessage();
 				if (actionCallback != null) {

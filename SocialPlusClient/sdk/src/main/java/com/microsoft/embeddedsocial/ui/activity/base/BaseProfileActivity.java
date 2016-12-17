@@ -97,9 +97,9 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 	@Override
 	protected PagerAdapter createPagerAdapter() {
 		SimplePagerAdapter.Page[] pages = new SimplePagerAdapter.Page[]{
-			new SimplePagerAdapter.Page(R.string.sp_profile, () -> ProfileInfoFragment.create(userHandle)),
-			new SimplePagerAdapter.Page(R.string.sp_menu_recent, createFragmentProducer(TopicFeedType.USER_RECENT)),
-			new SimplePagerAdapter.Page(R.string.sp_menu_popular, createFragmentProducer(TopicFeedType.USER_POPULAR))
+			new SimplePagerAdapter.Page(R.string.es_profile, () -> ProfileInfoFragment.create(userHandle)),
+			new SimplePagerAdapter.Page(R.string.es_menu_recent, createFragmentProducer(TopicFeedType.USER_RECENT)),
+			new SimplePagerAdapter.Page(R.string.es_menu_popular, createFragmentProducer(TopicFeedType.USER_POPULAR))
 		};
 		return new SimplePagerAdapter(this, getSupportFragmentManager(), pages) {
 			@Override
@@ -116,13 +116,13 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int itemId = item.getItemId();
-		if (itemId == R.id.sp_actionReportUser) {
+		if (itemId == R.id.es_actionReportUser) {
 			ContentUpdateHelper.startUserReport(this, userHandle, userName);
 			return true;
-		} else if (itemId == R.id.sp_actionBlockUser) {
+		} else if (itemId == R.id.es_actionBlockUser) {
 			UserAccount.getInstance().blockUser(userHandle);
 			return true;
-		} else if (itemId == R.id.sp_addPost) {
+		} else if (itemId == R.id.es_addPost) {
 			startActivity(new Intent(this, AddPostActivity.class));
 			return true;
 		}
@@ -135,14 +135,14 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 		if (getCurrentPagePosition() == 0) {
 			if (isCurrentUser) {
 				if (BuildConfig.STANDALONE_APP) {
-					inflater.inflate(R.menu.sp_my_profile, menu);
+					inflater.inflate(R.menu.es_my_profile, menu);
 				}
 			} else {
-				inflater.inflate(R.menu.sp_user_block, menu);
-				inflater.inflate(R.menu.sp_user_report, menu);
+				inflater.inflate(R.menu.es_user_block, menu);
+				inflater.inflate(R.menu.es_user_report, menu);
 			}
 		} else {
-			inflater.inflate(R.menu.sp_feed_display_method, menu);
+			inflater.inflate(R.menu.es_feed_display_method, menu);
 		}
 		return true;
 	}

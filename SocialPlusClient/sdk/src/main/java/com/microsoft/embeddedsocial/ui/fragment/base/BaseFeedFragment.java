@@ -110,7 +110,7 @@ public abstract class BaseFeedFragment extends BaseContentFragment<FetchableAdap
 			spanCount = gallerySpanCount;
 		} else {
 			Resources resources = getResources();
-			spanCount = resources.getBoolean(R.bool.sp_isLandscape) && resources.getBoolean(R.bool.sp_isTablet) ? 2 : 1;
+			spanCount = resources.getBoolean(R.bool.es_isLandscape) && resources.getBoolean(R.bool.es_isTablet) ? 2 : 1;
 		}
 		return new DisplayParams(displayMethod, spanCount);
 	}
@@ -155,7 +155,7 @@ public abstract class BaseFeedFragment extends BaseContentFragment<FetchableAdap
 		Point size = new Point();
 		display.getSize(size);
 		int width = size.x;
-		int cellSize = getResources().getDimensionPixelSize(R.dimen.sp_grid_cell_size);
+		int cellSize = getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
 		return Math.max(1, (int) Math.round((double) width / cellSize));
 	}
 

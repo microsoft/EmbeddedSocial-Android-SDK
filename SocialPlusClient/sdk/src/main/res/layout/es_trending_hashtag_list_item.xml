@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/es_listItemBackground"
+    android:clickable="true"
+    android:gravity="center_vertical"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall"
+    android:paddingLeft="@dimen/es_padding_large"
+    android:paddingRight="@dimen/es_padding_large"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:textColor="?attr/es_textColorPrimary"
+    />

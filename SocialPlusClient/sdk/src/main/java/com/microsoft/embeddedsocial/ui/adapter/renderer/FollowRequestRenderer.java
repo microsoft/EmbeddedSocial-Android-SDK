@@ -33,7 +33,7 @@ public class FollowRequestRenderer extends Renderer<FollowRequest, FollowRequest
 
 	@Override
 	public FollowRequestHolder createViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.sp_follow_request_list_item, parent);
+		View view = ViewUtils.inflateLayout(R.layout.es_follow_request_list_item, parent);
 		return new FollowRequestHolder(view);
 	}
 

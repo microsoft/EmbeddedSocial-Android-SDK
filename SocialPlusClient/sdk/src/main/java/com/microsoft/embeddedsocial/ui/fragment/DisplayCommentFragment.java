@@ -42,14 +42,14 @@ public class DisplayCommentFragment extends BaseFragment implements ViewStateLis
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_comment;
+		return R.layout.es_fragment_comment;
 	}
 
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		setHasOptionsMenu(false);
 
-		getActivity().setTitle(R.string.sp_screen_title_display_comment);
+		getActivity().setTitle(R.string.es_screen_title_display_comment);
 
 		Bundle arguments = getArguments();
 		if (arguments == null || !arguments.containsKey(IntentExtras.COMMENT_HANDLE)) {
@@ -78,10 +78,10 @@ public class DisplayCommentFragment extends BaseFragment implements ViewStateLis
 	private void initView(View rootView) {
 		commentButtonListener = new CommentButtonListener(getActivity(), CommentButtonListener.Container.COMMENT);
 
-		contentLayout = rootView.findViewById(R.id.sp_contentLayout);
-		progressLayout = rootView.findViewById(R.id.sp_progressLayout);
-		messageLayout = rootView.findViewById(R.id.sp_messageLayout);
-		Button openTopicButton = (Button) rootView.findViewById(R.id.sp_openTopicButton);
+		contentLayout = rootView.findViewById(R.id.es_contentLayout);
+		progressLayout = rootView.findViewById(R.id.es_progressLayout);
+		messageLayout = rootView.findViewById(R.id.es_messageLayout);
+		Button openTopicButton = (Button) rootView.findViewById(R.id.es_openTopicButton);
 		openTopicButton.setOnClickListener(v -> {
 			if (TextUtils.isEmpty(topicHandle)) {
 				return;
@@ -118,7 +118,7 @@ public class DisplayCommentFragment extends BaseFragment implements ViewStateLis
 	public void onCommentRemoved(CommentRemovedEvent commentRemovedEvent) {
 		if (commentRemovedEvent.isSuccessful()) {
 			getActivity().finish();
-			Toast.makeText(getActivity(), R.string.sp_content_removed_comment, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.es_content_removed_comment, Toast.LENGTH_SHORT).show();
 		}
 	}
 

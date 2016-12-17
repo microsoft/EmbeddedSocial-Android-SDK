@@ -30,16 +30,16 @@ public class ContextMenuClickListener implements PopupMenu.OnMenuItemClickListen
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		int i = item.getItemId();
-		if (i == R.id.sp_actionFollow) {
+		if (i == R.id.es_actionFollow) {
 			UserAccount.getInstance().followUser(user);
 			return true;
-		} else if (i == R.id.sp_actionUnfollow) {
+		} else if (i == R.id.es_actionUnfollow) {
 			UserAccount.getInstance().unfollowUser(user.getHandle());
 			return true;
-		} else if (i == R.id.sp_actionBlockUser) {
+		} else if (i == R.id.es_actionBlockUser) {
 			UserAccount.getInstance().blockUser(user.getHandle());
 			return true;
-		} else if (i == R.id.sp_actionUnblockUser) {
+		} else if (i == R.id.es_actionUnblockUser) {
 			UserAccount.getInstance().unblockUser(user.getHandle());
 			return true;
 		} else {

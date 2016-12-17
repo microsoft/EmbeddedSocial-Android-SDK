@@ -30,7 +30,7 @@ public class WebAuthenticationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (!getResources().getBoolean(R.bool.sp_isTablet)) {
+		if (!getResources().getBoolean(R.bool.es_isTablet)) {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		}
 		WebView webView = new WebView(this);

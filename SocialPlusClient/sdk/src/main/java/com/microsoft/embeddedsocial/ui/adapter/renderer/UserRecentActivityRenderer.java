@@ -18,22 +18,22 @@ import com.microsoft.embeddedsocial.sdk.R;
 public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 
 	private static final int[] LIKE_MESSAGE_IDS = {
-		R.string.sp_activity_you_like_topic,
-		R.string.sp_activity_you_like_comment,
-		R.string.sp_activity_you_like_reply
+		R.string.es_activity_you_like_topic,
+		R.string.es_activity_you_like_comment,
+		R.string.es_activity_you_like_reply
 	};
 	private static final int[] MENTION_MESSAGE_IDS = {
-		R.string.sp_activity_you_mention_topic,
-		R.string.sp_activity_you_mention_comment,
-		R.string.sp_activity_you_mention_reply
+		R.string.es_activity_you_mention_topic,
+		R.string.es_activity_you_mention_comment,
+		R.string.es_activity_you_mention_reply
 	};
 	private static final int[] CHILD_PEER_MESSAGE_IDS = {
-		R.string.sp_activity_you_child_peer_topic,
-		R.string.sp_activity_you_child_peer_comment
+		R.string.es_activity_you_child_peer_topic,
+		R.string.es_activity_you_child_peer_comment
 	};
 	private static final int[] CHILD_MESSAGE_IDS = {
-		R.string.sp_activity_you_child_topic,
-		R.string.sp_activity_you_child_comment
+		R.string.es_activity_you_child_topic,
+		R.string.es_activity_you_child_comment
 	};
 
 	/**
@@ -54,7 +54,7 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 	@Override
 	protected void renderFollowingEvent(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		holder.text.setText(context.getString(R.string.sp_activity_you_following, user.getFullName()));
+		holder.text.setText(context.getString(R.string.es_activity_you_following, user.getFullName()));
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 	@Override
 	protected void renderFollowRequest(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		holder.text.setText(context.getString(R.string.sp_activity_you_follow_request, user.getFullName()));
+		holder.text.setText(context.getString(R.string.es_activity_you_follow_request, user.getFullName()));
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class UserRecentActivityRenderer extends BaseRecentActivityRenderer {
 	@Override
 	protected void renderFollowAccepted(Context context, ActivityView item, ViewHolder holder) {
 		UserCompactView user = item.getActorUsers().get(0);
-		holder.text.setText(context.getString(R.string.sp_activity_you_follow_accepted, user.getFullName()));
+		holder.text.setText(context.getString(R.string.es_activity_you_follow_accepted, user.getFullName()));
 	}
 
 }

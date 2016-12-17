@@ -62,21 +62,21 @@ public class UserRenderer extends BaseUserRenderer {
 				}
 			}
 		});
-		holder.actionButton.setText(R.string.sp_follow);
+		holder.actionButton.setText(R.string.es_follow);
 		getStyleHelper().applyGreenStyle(holder.actionButton);
 	}
 
 	private void renderPendingUser(UserListItemHolder holder) {
 		holder.actionButton.setOnClickListener(null);
 		holder.actionButton.setEnabled(false);
-		holder.actionButton.setText(R.string.sp_pending);
+		holder.actionButton.setText(R.string.es_pending);
 		getStyleHelper().applyGrayStyle(holder.actionButton);
 	}
 
 	private void renderFollowingUser(UserCompactView user, UserListItemHolder holder) {
 		holder.actionButton.setOnClickListener(null);
 		holder.actionButton.setEnabled(true);
-		holder.actionButton.setText(R.string.sp_following);
+		holder.actionButton.setText(R.string.es_following);
 		holder.actionButton.setOnClickListener(v -> {
 			UserAccount.getInstance().unfollowUser(user.getHandle());
 			renderNotFollowingUser(user, holder);

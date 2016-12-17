@@ -98,7 +98,7 @@ public final class ContentUpdateHelper {
 	}
 
 	public static void setProfileImage(Context context, @NonNull ImageViewContentLoader imageViewContentLoader, String photoUrl) {
-		int defaultDrawableId = ThemeAttributes.getResourceId(context, R.styleable.sp_AppTheme_sp_userNoPhotoIcon);
+		int defaultDrawableId = ThemeAttributes.getResourceId(context, R.styleable.es_AppTheme_es_userNoPhotoIcon);
 		setProfileImage(imageViewContentLoader, photoUrl, defaultDrawableId);
 	}
 
@@ -106,7 +106,7 @@ public final class ContentUpdateHelper {
 		ImageLocation profileImageLocation = ImageLocation.createUserPhotoImageLocation(photoUrl);
 		imageViewContentLoader.cancel();
 		if (profileImageLocation != null) {
-			final int profileImageWidth = imageViewContentLoader.getImageView().getResources().getDimensionPixelSize(R.dimen.sp_user_icon_size);
+			final int profileImageWidth = imageViewContentLoader.getImageView().getResources().getDimensionPixelSize(R.dimen.es_user_icon_size);
 			imageViewContentLoader.load(profileImageLocation, profileImageWidth);
 		} else {
 			imageViewContentLoader.setImageResource(defaultResId);
@@ -134,7 +134,7 @@ public final class ContentUpdateHelper {
 				final int start = matcher.start();
 				final int end = matcher.end();
 				spannable.setSpan(new URLSpanNoUnderline(SEARCH_SCHEME + spannable.subSequence(start + 1, end)), start, end, 0);
-				spannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.sp_text_link_color)), start, end, 0);
+				spannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.es_text_link_color)), start, end, 0);
 			}
 
 			Matcher urlMatcher = Patterns.WEB_URL.matcher(spannable);
@@ -162,7 +162,7 @@ public final class ContentUpdateHelper {
 
 		ImageLoader.cancel(postAppIcon);
 		if (postAppIconLocation != null) {
-			final int postAppIconWidth = postAppIcon.getResources().getDimensionPixelSize(R.dimen.sp_button_icon_size);
+			final int postAppIconWidth = postAppIcon.getResources().getDimensionPixelSize(R.dimen.es_button_icon_size);
 			postAppIcon.setVisibility(View.VISIBLE);
 			ImageLoader.load(postAppIcon, postAppIconLocation.getUrl(postAppIconWidth));
 		} else {
@@ -177,7 +177,7 @@ public final class ContentUpdateHelper {
 			return;
 		}
 		if (coverImageLocation != null) {
-			final int coverImageWidth = coverImage.getResources().getDimensionPixelSize(R.dimen.sp_card_cover_image_width);
+			final int coverImageWidth = coverImage.getResources().getDimensionPixelSize(R.dimen.es_card_cover_image_width);
 			coverImage.setVisibility(View.VISIBLE);
 			imageViewContentLoader.load(coverImageLocation, coverImageWidth);
 		} else {

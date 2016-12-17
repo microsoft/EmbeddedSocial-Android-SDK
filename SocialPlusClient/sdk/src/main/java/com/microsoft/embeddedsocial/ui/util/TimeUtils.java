@@ -34,24 +34,24 @@ public class TimeUtils {
 
 	public static String secondsToText(Resources resources, long elapsedSeconds) {
 		if (elapsedSeconds < MINUTE_IN_SECONDS) {
-			return resources.getString(R.string.sp_elapsed_time_seconds_pattern, elapsedSeconds);
+			return resources.getString(R.string.es_elapsed_time_seconds_pattern, elapsedSeconds);
 		}
 
 		long minutes = elapsedSeconds / MINUTE_IN_SECONDS;
 		if (minutes < HOUR_IN_MINUTES) {
-			return resources.getString(R.string.sp_elapsed_time_minutes_pattern, minutes);
+			return resources.getString(R.string.es_elapsed_time_minutes_pattern, minutes);
 		}
 
 		long hours = minutes / HOUR_IN_MINUTES;
 		if (hours < DAY_IN_HOURS) {
-			return resources.getString(R.string.sp_elapsed_time_hours_pattern, hours);
+			return resources.getString(R.string.es_elapsed_time_hours_pattern, hours);
 		}
 
 		long days = hours / DAY_IN_HOURS;
 		if (days < WEEK_IN_DAYS) {
-			return resources.getString(R.string.sp_elapsed_time_days_pattern, days);
+			return resources.getString(R.string.es_elapsed_time_days_pattern, days);
 		}
 
-		return resources.getString(R.string.sp_elapsed_time_weeks_pattern, days / WEEK_IN_DAYS);
+		return resources.getString(R.string.es_elapsed_time_weeks_pattern, days / WEEK_IN_DAYS);
 	}
 }

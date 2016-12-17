@@ -19,14 +19,14 @@ import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
 public class RecentActivityActivity extends BaseTabsActivity {
 
 	public RecentActivityActivity() {
-		super(R.id.sp_navigationActivity);
+		super(R.id.es_navigationActivity);
 	}
 
 	@Override
 	protected PagerAdapter createPagerAdapter() {
 		return new SimplePagerAdapter(this, getSupportFragmentManager(),
-			new SimplePagerAdapter.Page(R.string.sp_activity_feed_user, UserActivityFeedFragment::new),
-			new SimplePagerAdapter.Page(R.string.sp_activity_feed_following, FollowingActivityFeedFragment::new)
+			new SimplePagerAdapter.Page(R.string.es_activity_feed_user, UserActivityFeedFragment::new),
+			new SimplePagerAdapter.Page(R.string.es_activity_feed_following, FollowingActivityFeedFragment::new)
 		);
 	}
 

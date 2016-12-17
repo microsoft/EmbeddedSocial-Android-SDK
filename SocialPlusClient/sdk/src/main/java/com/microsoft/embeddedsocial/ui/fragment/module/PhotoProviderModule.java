@@ -84,7 +84,7 @@ public class PhotoProviderModule extends Module implements IDisposable {
 
 				if (!event.isPermissionGranted(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 					DebugLog.e("user denied permission for external storage");
-					Toast.makeText(getContext(), R.string.sp_message_no_permission, Toast.LENGTH_SHORT).show();
+					Toast.makeText(getContext(), R.string.es_message_no_permission, Toast.LENGTH_SHORT).show();
 				} else {
 					retryActionOnPermissionResult(event);
 				}
@@ -127,7 +127,7 @@ public class PhotoProviderModule extends Module implements IDisposable {
 	}
 
 	private void showErrorMessage() {
-		Toast.makeText(getContext(), R.string.sp_message_cant_complete_action, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getContext(), R.string.es_message_cant_complete_action, Toast.LENGTH_SHORT).show();
 	}
 
 	public void takeNewPhoto() {
@@ -220,11 +220,11 @@ public class PhotoProviderModule extends Module implements IDisposable {
 	}
 
 	public void showEditImageDialog() {
-		showImageDialog(R.string.sp_menu_new_photo, R.string.sp_menu_choose_photo, R.string.sp_menu_remove_photo);
+		showImageDialog(R.string.es_menu_new_photo, R.string.es_menu_choose_photo, R.string.es_menu_remove_photo);
 	}
 
 	public void showSelectImageDialog() {
-		showImageDialog(R.string.sp_menu_new_photo, R.string.sp_menu_choose_photo);
+		showImageDialog(R.string.es_menu_new_photo, R.string.es_menu_choose_photo);
 	}
 
 	private void showImageDialog(int... options) {
@@ -237,11 +237,11 @@ public class PhotoProviderModule extends Module implements IDisposable {
 	@Subscribe
 	public void onDialogItemSelected(OnDialogItemSelectedEvent event) {
 		if (dialogId.equals(event.getDialogId())) {
-			if (event.getTextId() == R.string.sp_menu_new_photo) {
+			if (event.getTextId() == R.string.es_menu_new_photo) {
 				takeNewPhoto();
-			} else if (event.getTextId() == R.string.sp_menu_choose_photo) {
+			} else if (event.getTextId() == R.string.es_menu_choose_photo) {
 				choosePhoto();
-			} else if (event.getTextId() == R.string.sp_menu_remove_photo) {
+			} else if (event.getTextId() == R.string.es_menu_remove_photo) {
 				consumer.onPhotoSelected(null);
 			}
 		}

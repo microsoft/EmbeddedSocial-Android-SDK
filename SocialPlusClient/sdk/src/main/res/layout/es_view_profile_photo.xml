@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	>
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/es_photo"
+		android:layout_width="@dimen/es_user_pic_large_size"
+		android:layout_height="@dimen/es_user_pic_large_size"
+		android:layout_marginLeft="@dimen/es_padding_large"
+		android:layout_marginRight="@dimen/es_padding_xlarge"
+		android:layout_marginTop="@dimen/es_padding_large"
+		android:background="?attr/es_photoPlaceholder"
+		android:scaleType="centerCrop"
+		/>
+
+	<TextView
+		android:id="@+id/es_fullName"
+		style="@style/EmbeddedSocialSdkTextHead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/es_padding_small"
+		android:layout_marginRight="@dimen/es_padding_base"
+		android:layout_marginTop="@dimen/es_padding_large"
+		android:layout_toRightOf="@id/es_photo"
+		/>
+
+	<TextView
+		android:id="@+id/es_bio"
+		style="@style/EmbeddedSocialSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/es_fullName"
+		android:layout_marginRight="@dimen/es_padding_base"
+		android:layout_toRightOf="@id/es_photo"
+		/>
+
+</RelativeLayout>

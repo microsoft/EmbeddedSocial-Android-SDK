@@ -24,7 +24,7 @@ public abstract class BaseFragmentWithProgress extends BaseFragment {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.sp_fragment_base_with_progress;
+		return R.layout.es_fragment_base_with_progress;
 	}
 
 	@LayoutRes
@@ -33,7 +33,7 @@ public abstract class BaseFragmentWithProgress extends BaseFragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		progressView = findView(view, R.id.sp_progress);
+		progressView = findView(view, R.id.es_progress);
 		ViewGroup parent = (ViewGroup) view;
 		contentView = getLayoutInflater(savedInstanceState).inflate(getContentLayoutId(), parent, false);
 		parent.addView(contentView);

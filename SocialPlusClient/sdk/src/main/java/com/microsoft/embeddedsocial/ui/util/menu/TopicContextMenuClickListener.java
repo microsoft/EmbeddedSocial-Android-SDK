@@ -41,21 +41,21 @@ public class TopicContextMenuClickListener extends ContextMenuClickListener {
 		}
 
 		int i = item.getItemId();
-		if (i == R.id.sp_actionReportPost) {
+		if (i == R.id.es_actionReportPost) {
 			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.TOPIC);
 			return true;
-		} else if (i == R.id.sp_actionRemove) {
+		} else if (i == R.id.es_actionRemove) {
 			ContentUpdateHelper.launchRemoveTopic(context, topic);
 			return true;
-		} else if (i == R.id.sp_actionEdit) {
+		} else if (i == R.id.es_actionEdit) {
 			Intent intent = new Intent(context, EditPostActivity.class);
 			intent.putExtra(IntentExtras.TOPIC_EXTRA, topic);
 			context.startActivity(intent);
 			return true;
-		} else if (i == R.id.sp_actionHideTopic) {
+		} else if (i == R.id.es_actionHideTopic) {
 			userActionProxy.hideTopic(topic.getHandle());
 			return true;
-		} else if (i == R.id.sp_reportCustom) {
+		} else if (i == R.id.es_reportCustom) {
 			IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
 			try {
 				reportHandler.generateReport(context, topic);

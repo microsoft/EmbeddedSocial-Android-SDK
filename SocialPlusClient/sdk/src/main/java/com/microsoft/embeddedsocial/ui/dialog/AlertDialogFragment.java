@@ -72,8 +72,8 @@ public class AlertDialogFragment extends DialogFragment {
 	private void setupInput(AlertDialog.Builder builder, Context context, Bundle arguments) {
 		if (arguments.getBoolean(PREF_IS_PASSWORD_INPUT)) {
 			@SuppressLint("InflateParams")
-			View view = LayoutInflater.from(context).inflate(R.layout.sp_dialog_input_password, null);
-			inputView = ViewUtils.findView(view, R.id.sp_input);
+			View view = LayoutInflater.from(context).inflate(R.layout.es_dialog_input_password, null);
+			inputView = ViewUtils.findView(view, R.id.es_input);
 			builder.setView(view);
 		}
 	}

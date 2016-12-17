@@ -13,11 +13,11 @@ import com.microsoft.embeddedsocial.sdk.R;
 
 public class WebPageHelper {
     public static void openPrivacyPolicy(Context context) {
-        openWebPage(context, context.getString(R.string.sp_privacy_policy_url));
+        openWebPage(context, context.getString(R.string.es_privacy_policy_url));
     }
 
     public static void openTermsAndConditions(Context context) {
-        openWebPage(context, context.getString(R.string.sp_terms_url));
+        openWebPage(context, context.getString(R.string.es_terms_url));
     }
 
     public static void openWebPage(Context context, String url) {

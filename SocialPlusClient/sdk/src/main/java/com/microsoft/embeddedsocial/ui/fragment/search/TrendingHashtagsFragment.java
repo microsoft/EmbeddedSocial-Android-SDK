@@ -25,7 +25,7 @@ public class TrendingHashtagsFragment extends BaseListContentFragment<FetchableL
 			fetcher = FetchersFactory.createTrendingHashtagsFetcher();
 		}
 		return new FetchableListAdapter.Builder<>(fetcher, new TrendingHashtagsRenderer())
-			.setTitle(getString(R.string.sp_trending_hashtags))
+			.setTitle(getString(R.string.es_trending_hashtags))
 			.build();
 	}
 

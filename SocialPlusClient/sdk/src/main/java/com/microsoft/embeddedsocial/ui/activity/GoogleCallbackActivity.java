@@ -28,7 +28,7 @@ public class GoogleCallbackActivity extends SignInActivity {
 
     public static PendingIntent createPostAuthorizationIntent(@NonNull Context context,
                                                               @NonNull AuthorizationRequest request) {
-        String action = context.getString(R.string.sp_google_auth_response);
+        String action = context.getString(R.string.es_google_auth_response);
         Intent intent = new Intent(action);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return PendingIntent.getActivity(context, request.hashCode(), intent, 0);
@@ -49,7 +49,7 @@ public class GoogleCallbackActivity extends SignInActivity {
     private void checkIntent(Intent intent) {
         if (intent != null) {
             String action = intent.getAction();
-            if (action != null && action.equals(getString(R.string.sp_google_auth_response))) {
+            if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
                 handleAuthorizationResponse(intent);
             } else {
                 finish();

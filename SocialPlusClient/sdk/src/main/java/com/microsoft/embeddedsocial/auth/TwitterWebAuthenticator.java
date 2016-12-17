@@ -91,7 +91,7 @@ public class TwitterWebAuthenticator extends AbstractAuthenticator {
 			if (resultCode == Activity.RESULT_OK) {
 				onAuthenticationResultObtained(data.getStringExtra(WebAuthenticationActivity.EXTRA_RESULT_URL));
 			} else {
-				onAuthenticationError(getFragment().getString(R.string.sp_msg_general_signin_cancelled));
+				onAuthenticationError(getFragment().getString(R.string.es_msg_general_signin_cancelled));
 			}
 			return true;
 		} else {

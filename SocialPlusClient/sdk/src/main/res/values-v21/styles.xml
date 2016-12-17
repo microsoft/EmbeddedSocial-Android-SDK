@@ -10,7 +10,7 @@
 	>
 
 	<style name="EmbeddedSocialSdkThemeOverlayBaseFragment">
-		<item name="sp_listItemBackground">@drawable/sp_button_background</item>
+		<item name="es_listItemBackground">@drawable/es_button_background</item>
 	</style>
 
 </resources>

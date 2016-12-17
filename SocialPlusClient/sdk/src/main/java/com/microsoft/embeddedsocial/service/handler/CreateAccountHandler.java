@@ -87,7 +87,7 @@ public class CreateAccountHandler extends ActionHandler {
         GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
         AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
         if (!action.isCompleted()) {
-            int messageId = R.string.sp_msg_general_create_user_success;
+            int messageId = R.string.es_msg_general_create_user_success;
             UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
             WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
         }

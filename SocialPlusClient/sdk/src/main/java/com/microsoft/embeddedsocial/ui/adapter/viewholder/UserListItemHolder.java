@@ -27,11 +27,11 @@ public class UserListItemHolder extends BaseViewHolder {
 
 	public UserListItemHolder(View itemView) {
 		super(itemView);
-		photoView = ViewUtils.findView(itemView, R.id.sp_photo);
+		photoView = ViewUtils.findView(itemView, R.id.es_photo);
 		photoContentLoader = new UserPhotoLoader(photoView);
-		fullNameView = ViewUtils.findView(itemView, R.id.sp_fullName);
-		actionButton = ViewUtils.findView(itemView, R.id.sp_actionButton);
-		removeFollowerButton = ViewUtils.findView(itemView, R.id.sp_removeFollowerButton);
+		fullNameView = ViewUtils.findView(itemView, R.id.es_fullName);
+		actionButton = ViewUtils.findView(itemView, R.id.es_actionButton);
+		removeFollowerButton = ViewUtils.findView(itemView, R.id.es_removeFollowerButton);
 	}
 
 }

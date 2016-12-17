@@ -33,7 +33,7 @@ public class BlockedUsersRenderer extends BaseUserRenderer {
 	}
 
 	private void renderBlockedUser(UserCompactView user, UserListItemHolder holder) {
-		holder.actionButton.setText(R.string.sp_button_unblock);
+		holder.actionButton.setText(R.string.es_button_unblock);
 		holder.actionButton.setOnClickListener(v -> {
 			UserAccount.getInstance().unblockUser(user.getHandle());
 			user.setUnblocked(true);
@@ -42,7 +42,7 @@ public class BlockedUsersRenderer extends BaseUserRenderer {
 	}
 
 	private void renderUnblockedUser(UserCompactView user, UserListItemHolder holder) {
-		holder.actionButton.setText(R.string.sp_button_block);
+		holder.actionButton.setText(R.string.es_button_block);
 		holder.actionButton.setOnClickListener(v -> {
 			UserAccount.getInstance().blockUser(user.getHandle());
 			user.setUnblocked(false);

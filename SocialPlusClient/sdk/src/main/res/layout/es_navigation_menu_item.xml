@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<merge
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	>
+
+	<ImageView
+		android:id="@+id/es_icon"
+		android:layout_width="24dp"
+		android:layout_height="24dp"
+		android:layout_marginRight="32dp"
+		/>
+
+	<TextView
+		android:id="@+id/es_name"
+		android:layout_width="0px"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:singleLine="true"
+		android:textColor="@android:color/white"
+		android:textSize="15dp"
+		/>
+
+	<TextView
+		android:id="@+id/es_notificationCount"
+		android:layout_height="@dimen/es_notification_icon_size"
+		android:layout_width="@dimen/es_notification_icon_size"
+		android:background="@drawable/es_notification_count_background"
+		android:textColor="@android:color/white"
+		android:gravity="center"
+		/>
+</merge>

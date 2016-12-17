@@ -86,7 +86,7 @@ public abstract class AbstractEmbeddedSocialSearchSuggestionProvider extends Con
 			cursor.newRow()
 				.add(history.get(i).hashCode())
 				.add(history.get(i))
-				.add(R.drawable.sp_ic_clock);
+				.add(R.drawable.es_ic_clock);
 		}
 		return cursor;
 
@@ -106,7 +106,7 @@ public abstract class AbstractEmbeddedSocialSearchSuggestionProvider extends Con
 				cursor.newRow()
 					.add(suggestions.get(i).hashCode())
 					.add(suggestions.get(i))
-					.add(R.drawable.sp_empty);
+					.add(R.drawable.es_empty);
 			}
 		} catch (NetworkRequestException e) {
 			DebugLog.logException(e);

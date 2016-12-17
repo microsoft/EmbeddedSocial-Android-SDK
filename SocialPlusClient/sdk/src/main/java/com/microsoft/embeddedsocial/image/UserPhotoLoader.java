@@ -19,7 +19,7 @@ public class UserPhotoLoader extends ImageViewContentLoader {
 	private final int errorDrawableId;
 
 	public UserPhotoLoader(ImageView imageView) {
-		this(imageView, ThemeAttributes.getResourceId(imageView.getContext(), R.styleable.sp_AppTheme_sp_userNoPhotoIcon));
+		this(imageView, ThemeAttributes.getResourceId(imageView.getContext(), R.styleable.es_AppTheme_es_userNoPhotoIcon));
 	}
 
 	public UserPhotoLoader(ImageView imageView, int errorDrawableId) {

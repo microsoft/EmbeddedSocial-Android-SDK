@@ -19,7 +19,7 @@ import com.microsoft.embeddedsocial.ui.fragment.FollowingFeedFragment;
 public class HomeActivity extends BaseFeedActivity {
 
 	public HomeActivity() {
-		super(R.id.sp_navigationHome);
+		super(R.id.es_navigationHome);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class HomeActivity extends BaseFeedActivity {
 	@Override
 	protected void setupActionBar(ActionBar actionBar) {
 		super.setupActionBar(actionBar);
-		actionBar.setTitle(R.string.sp_navigation_home);
+		actionBar.setTitle(R.string.es_navigation_home);
 	}
 
 	@Override

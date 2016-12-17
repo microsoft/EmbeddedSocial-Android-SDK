@@ -24,8 +24,8 @@ public class LinkedAccountViewHolder extends RecyclerView.ViewHolder {
 
 	public LinkedAccountViewHolder(View itemView) {
 		super(itemView);
-		accountName = (TextView) itemView.findViewById(R.id.sp_account_name);
-		accountState = (SwitchCompat) itemView.findViewById(R.id.sp_account_state);
+		accountName = (TextView) itemView.findViewById(R.id.es_account_name);
+		accountState = (SwitchCompat) itemView.findViewById(R.id.es_account_state);
 	}
 
 	public void renderItem(ThirdPartyAccountView account, IOnCheckedListener onCheckedListener) {

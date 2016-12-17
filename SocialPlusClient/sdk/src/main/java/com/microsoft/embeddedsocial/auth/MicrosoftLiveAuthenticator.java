@@ -84,8 +84,8 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 			} else {
 				onAuthenticationError(
 					getFragment().getString(
-						R.string.sp_message_ms_live_error_pattern,
-						getFragment().getString(R.string.sp_message_cant_login)
+						R.string.es_message_ms_live_error_pattern,
+						getFragment().getString(R.string.es_message_cant_login)
 					)
 				);
 			}
@@ -94,10 +94,10 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 		@Override
 		public void onAuthError(LiveAuthException exception, Object userState) {
 			if (!ConnectionUtils.isConnectingToInternet(getFragment().getActivity().getBaseContext())) {
-				onAuthenticationError(getFragment().getString(R.string.sp_message_no_internet_connection));
+				onAuthenticationError(getFragment().getString(R.string.es_message_no_internet_connection));
 			} else {
 				onAuthenticationError(
-					getFragment().getString(R.string.sp_message_ms_live_error_pattern, exception.getMessage()));
+					getFragment().getString(R.string.es_message_ms_live_error_pattern, exception.getMessage()));
 			}
 		}
 	}
@@ -108,10 +108,10 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 			MicrosoftLiveProfile profile = JsonUtils.fromJson(operation.getRawResult(), MicrosoftLiveProfile.class);
 			if (profile == null) {
 				onAuthenticationError(
-					getFragment().getString(R.string.sp_message_ms_live_error_pattern, getFragment().getString(R.string.sp_message_cant_get_profile)));
+					getFragment().getString(R.string.es_message_ms_live_error_pattern, getFragment().getString(R.string.es_message_cant_get_profile)));
 			} else if (profile.getError() != null) {
 				onAuthenticationError(
-					getFragment().getString(R.string.sp_message_ms_live_error_pattern, profile.getError().getMessage()));
+					getFragment().getString(R.string.es_message_ms_live_error_pattern, profile.getError().getMessage()));
 			} else {
 				SocialNetworkAccount account = new SocialNetworkAccount(
 						IdentityProvider.MICROSOFT,
@@ -127,7 +127,7 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 		@Override
 		public void onError(LiveOperationException exception, LiveOperation operation) {
 			onAuthenticationError(
-				getFragment().getString(R.string.sp_message_ms_live_error_pattern, exception.getMessage()));
+				getFragment().getString(R.string.es_message_ms_live_error_pattern, exception.getMessage()));
 		}
 	}
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+	   android:layout_width="match_parent"
+	   android:layout_height="match_parent"
+	>
+	<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
+		android:id="@+id/es_coverImage"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/es_card_cover_image_height"
+		android:layout_marginBottom="@dimen/es_padding_large"
+		android:layout_below="@id/es_profileImage"
+		android:background="?attr/es_topicCoverBackground"
+		android:scaleType="centerCrop"
+		android:visibility="gone"
+		/>
+
+	<FrameLayout
+		android:id="@+id/es_coverButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignBottom="@id/es_coverImage"
+		android:layout_alignTop="@id/es_coverImage"
+		android:foreground="?attr/es_buttonBackground"
+		android:clickable="true"
+		/>
+
+	<TextView
+		android:id="@+id/es_commentText"
+		style="@style/EmbeddedSocialSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/es_coverImage"
+		android:paddingBottom="4dp"
+		android:autoLink="web"
+		android:layout_marginRight="@dimen/es_padding_large"
+		android:layout_toRightOf="@id/es_leftBorder"
+		/>
+
+	<FrameLayout
+		android:id="@+id/es_contentButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignBottom="@id/es_commentText"
+		android:layout_alignLeft="@id/es_commentText"
+		android:layout_below="@id/es_userHeaderButton"
+		android:clickable="true"
+		android:foreground="?attr/es_buttonBackground"
+		/>
+
+	<include
+		layout="@layout/es_view_comment_buttons"/>
+
+</merge>

@@ -35,7 +35,7 @@ public class AdvancedSwipeRefreshLayout extends SwipeRefreshLayout {
 			return true;
 		} else {
 			if (innerRecyclerView == null) {
-				innerRecyclerView = (RecyclerView) findViewById(R.id.sp_recyclerView);
+				innerRecyclerView = (RecyclerView) findViewById(R.id.es_recyclerView);
 			}
 			return innerRecyclerView.getVisibility() == View.VISIBLE && innerRecyclerView.canScrollVertically(-1);
 		}

@@ -28,9 +28,9 @@ public class PopularUsersFragment extends BaseListContentFragment<FetchableListA
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		int bottomPadding = view.getResources().getDimensionPixelOffset(R.dimen.sp_users_list_vertical_padding);
+		int bottomPadding = view.getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding);
 		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(bottomPadding, 0));
-		setEmptyDataMessage(R.string.sp_message_no_people);
+		setEmptyDataMessage(R.string.es_message_no_people);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class PopularUsersFragment extends BaseListContentFragment<FetchableListA
 			fetcher = FetchersFactory.createPopularUsersFetcher();
 		}
 		return new FetchableListAdapter.Builder<>(fetcher, new UserRenderer(getContext()))
-			.setTitle(getString(R.string.sp_suggested_users))
+			.setTitle(getString(R.string.es_suggested_users))
 			.build();
 	}
 }

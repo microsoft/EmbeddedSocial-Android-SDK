@@ -74,19 +74,19 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 		removeFragment(socialPlusMenuFragment);
 
 		drawerContainer.removeAllViews();
-		drawerContainer.addView(themedInflater.inflate(R.layout.sp_sdk_fragment_switcher, drawerContainer, false));
+		drawerContainer.addView(themedInflater.inflate(R.layout.es_sdk_fragment_switcher, drawerContainer, false));
 
-		final NavigationItemView socialItemView = (NavigationItemView) activity.findViewById(R.id.sp_navigationFirstMenu);
-		socialItemView.setName(activity.getString(R.string.sp_lib_title));
+		final NavigationItemView socialItemView = (NavigationItemView) activity.findViewById(R.id.es_navigationFirstMenu);
+		socialItemView.setName(activity.getString(R.string.es_lib_title));
 		socialItemView.hideIcon();
 		socialItemView.setOnClickListener(v -> setDisplayMenu(DisplayMenu.SOCIAL_MENU));
 
-		final NavigationItemView hostAppItemView = (NavigationItemView) activity.findViewById(R.id.sp_navigationSecondMenu);
+		final NavigationItemView hostAppItemView = (NavigationItemView) activity.findViewById(R.id.es_navigationSecondMenu);
 		hostAppItemView.setName(hostingAppMenuTitle);
 		hostAppItemView.hideIcon();
 
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.sp_menu_container, hostingAppMenuFragment, HOSTING_APP_TAG);
+		fragmentTransaction.replace(R.id.es_menu_container, hostingAppMenuFragment, HOSTING_APP_TAG);
 		fragmentTransaction.commit();
 	}
 
@@ -94,24 +94,24 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 		removeFragment(hostingAppMenuFragment);
 
 		drawerContainer.removeAllViews();
-		drawerContainer.addView(themedInflater.inflate(R.layout.sp_sdk_fragment_switcher, drawerContainer, false));
+		drawerContainer.addView(themedInflater.inflate(R.layout.es_sdk_fragment_switcher, drawerContainer, false));
 
-		final NavigationItemView hostAppItemView = (NavigationItemView) activity.findViewById(R.id.sp_navigationFirstMenu);
+		final NavigationItemView hostAppItemView = (NavigationItemView) activity.findViewById(R.id.es_navigationFirstMenu);
 		hostAppItemView.setName(hostingAppMenuTitle);
 		hostAppItemView.hideIcon();
 		hostAppItemView.setOnClickListener(v -> setDisplayMenu(DisplayMenu.HOST_MENU));
 
-		final NavigationItemView socialItemView = (NavigationItemView) activity.findViewById(R.id.sp_navigationSecondMenu);
-		socialItemView.setName(activity.getString(R.string.sp_lib_title));
+		final NavigationItemView socialItemView = (NavigationItemView) activity.findViewById(R.id.es_navigationSecondMenu);
+		socialItemView.setName(activity.getString(R.string.es_lib_title));
 		socialItemView.hideIcon();
 
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.sp_menu_container, socialPlusMenuFragment, SOCIAL_TAG);
+		fragmentTransaction.replace(R.id.es_menu_container, socialPlusMenuFragment, SOCIAL_TAG);
 		fragmentTransaction.commit();
 	}
 
 	private void removeFragment(Fragment fragment) {
-		FrameLayout menuContainer = (FrameLayout) activity.findViewById(R.id.sp_menu_container);
+		FrameLayout menuContainer = (FrameLayout) activity.findViewById(R.id.es_menu_container);
 		if (menuContainer != null) {
 			FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
 			fragmentTransaction.remove(fragment);

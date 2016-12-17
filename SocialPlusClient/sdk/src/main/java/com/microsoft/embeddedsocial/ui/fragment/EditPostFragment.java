@@ -72,7 +72,7 @@ public class EditPostFragment extends BaseEditPostFragment {
 			coverLoader.load(imageLocation, ViewUtils.getDisplayWidth(getActivity()));
 			imageMessageView.setText("");
 		} else {
-			imageMessageView.setText(R.string.sp_no_image);
+			imageMessageView.setText(R.string.es_no_image);
 		}
 	}
 }

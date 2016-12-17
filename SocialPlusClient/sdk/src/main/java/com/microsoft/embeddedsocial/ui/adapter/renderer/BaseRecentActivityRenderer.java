@@ -44,19 +44,19 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 	private static final Typeface TYPEFACE_NORMAL = Typeface.defaultFromStyle(Typeface.NORMAL);
 
 	static {
-		DECORATION_BY_TYPE.put(ActivityType.LIKE, R.drawable.sp_decor_like);
-		DECORATION_BY_TYPE.put(ActivityType.FOLLOWACCEPT, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.FOLLOWREQUEST, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.FOLLOWING, R.drawable.sp_decor_follow);
-		DECORATION_BY_TYPE.put(ActivityType.COMMENTPEER, R.drawable.sp_decor_comment);
-		DECORATION_BY_TYPE.put(ActivityType.REPLYPEER, R.drawable.sp_decor_comment);
-		DECORATION_BY_TYPE.put(ActivityType.COMMENT, R.drawable.sp_decor_comment);
-		DECORATION_BY_TYPE.put(ActivityType.REPLY, R.drawable.sp_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.LIKE, R.drawable.es_decor_like);
+		DECORATION_BY_TYPE.put(ActivityType.FOLLOWACCEPT, R.drawable.es_decor_follow);
+		DECORATION_BY_TYPE.put(ActivityType.FOLLOWREQUEST, R.drawable.es_decor_follow);
+		DECORATION_BY_TYPE.put(ActivityType.FOLLOWING, R.drawable.es_decor_follow);
+		DECORATION_BY_TYPE.put(ActivityType.COMMENTPEER, R.drawable.es_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.REPLYPEER, R.drawable.es_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.COMMENT, R.drawable.es_decor_comment);
+		DECORATION_BY_TYPE.put(ActivityType.REPLY, R.drawable.es_decor_comment);
 	}
 
 	@Override
 	public ViewHolder createViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.sp_recent_activity_list_item, parent);
+		View view = ViewUtils.inflateLayout(R.layout.es_recent_activity_list_item, parent);
 		return new ViewHolder(view);
 	}
 
@@ -90,7 +90,7 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 		String imageUrl = item.getActedOnContentBlobUrl();
 		if (item.getActedOnContentBlobType() == BlobType.IMAGE && !TextUtils.isEmpty(imageUrl)) {
 			ImageLocation imageLocation = ImageLocation.createTopicImageLocation(imageUrl);
-			ImageLoader.load(holder.blobImage, imageLocation.getUrl(resources.getDimensionPixelSize(R.dimen.sp_user_icon_size)));
+			ImageLoader.load(holder.blobImage, imageLocation.getUrl(resources.getDimensionPixelSize(R.dimen.es_user_icon_size)));
 		} else {
 			holder.blobImage.setVisibility(View.GONE);
 		}
@@ -144,13 +144,13 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 		List<UserCompactView> actorUsers = activity.getActorUsers();
 		switch (activity.getCount()) {
 			case 1:
-				return context.getString(R.string.sp_one_person, actorUsers.get(0).getFullName());
+				return context.getString(R.string.es_one_person, actorUsers.get(0).getFullName());
 			case 2:
-				return context.getString(R.string.sp_two_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName());
+				return context.getString(R.string.es_two_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName());
 			case 3:
-				return context.getString(R.string.sp_three_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName());
+				return context.getString(R.string.es_three_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName());
 			default:
-				return context.getString(R.string.sp_many_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName(), activity.getCount() - 2);
+				return context.getString(R.string.es_many_persons, actorUsers.get(0).getFullName(), actorUsers.get(1).getFullName(), activity.getCount() - 2);
 		}
 	}
 
@@ -167,12 +167,12 @@ abstract class BaseRecentActivityRenderer extends Renderer<ActivityView, UserRec
 
 		public ViewHolder(View itemView) {
 			super(itemView);
-			ImageView userPhoto = ViewUtils.findView(itemView, R.id.sp_photo);
+			ImageView userPhoto = ViewUtils.findView(itemView, R.id.es_photo);
 			photoContentLoader = new UserPhotoLoader(userPhoto);
-			text = ViewUtils.findView(itemView, R.id.sp_text);
-			timestamp = ViewUtils.findView(itemView, R.id.sp_timestamp);
-			blobImage = ViewUtils.findView(itemView, R.id.sp_blobImage);
-			decoration = ViewUtils.findView(itemView, R.id.sp_decoration);
+			text = ViewUtils.findView(itemView, R.id.es_text);
+			timestamp = ViewUtils.findView(itemView, R.id.es_timestamp);
+			blobImage = ViewUtils.findView(itemView, R.id.es_blobImage);
+			decoration = ViewUtils.findView(itemView, R.id.es_decoration);
 		}
 
 		public void reset() {

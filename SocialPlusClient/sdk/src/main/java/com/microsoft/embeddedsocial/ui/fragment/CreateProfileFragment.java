@@ -91,7 +91,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.sp_fragment_create_profile;
+        return R.layout.es_fragment_create_profile;
     }
 
     @Override
@@ -143,7 +143,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     @Subscribe
     public void onCreateUserFailed(CreateUserFailedEvent event) {
         setProgressVisible(false);
-        Toast.makeText(getActivity(), getContext().getString(R.string.sp_msg_general_create_user_error), Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), getContext().getString(R.string.es_msg_general_create_user_error), Toast.LENGTH_LONG).show();
     }
 
     public boolean checkCorrectness() {
@@ -158,7 +158,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
         }
         if (firstViewWithError != null) {
             firstViewWithError.focusAndShowKeyboard();
-            Toast.makeText(getContext(), R.string.sp_message_correct_input, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.es_message_correct_input, Toast.LENGTH_SHORT).show();
         }
         return result;
     }
@@ -177,7 +177,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                 profilePhotoLoader = new UserPhotoLoader(profilePhotoView);
                 profilePhotoLoader.load(
                         photoLocation,
-                        getResources().getDimensionPixelSize(R.dimen.sp_user_icon_size)
+                        getResources().getDimensionPixelSize(R.dimen.es_user_icon_size)
                 );
             }
         }
@@ -198,20 +198,20 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
         editPhotoOnClickListener = new EditImageOnClickListener(photoProvider);
         selectPhotoOnClickListener = new SelectImageOnClickListener(photoProvider);
 
-        firstNameView = findView(view, R.id.sp_firstNameLayout);
+        firstNameView = findView(view, R.id.es_firstNameLayout);
         firstNameView.setValidator(new FieldNotEmptyValidator(getContext()));
         inputFields.add(firstNameView);
-        lastNameView = findView(view, R.id.sp_lastNameLayout);
+        lastNameView = findView(view, R.id.es_lastNameLayout);
         lastNameView.setValidator(new FieldNotEmptyValidator(getContext()));
         inputFields.add(lastNameView);
-        bioView = findView(view, R.id.sp_bioLayout);
-        uploadPhotoView = findView(view, R.id.sp_uploadPhotoLayout);
-        largePhotoView = findView(view, R.id.sp_largePhoto);
-        profilePhotoView = findView(view, R.id.sp_profileImage);
-        photoLayout = findView(view, R.id.sp_photoLayout);
+        bioView = findView(view, R.id.es_bioLayout);
+        uploadPhotoView = findView(view, R.id.es_uploadPhotoLayout);
+        largePhotoView = findView(view, R.id.es_largePhoto);
+        profilePhotoView = findView(view, R.id.es_profileImage);
+        photoLayout = findView(view, R.id.es_photoLayout);
         photoLayout.setVisibility(View.GONE);
-        if (findView(view, R.id.sp_editPhoto) != null) {
-            setOnClickListener(view, R.id.sp_editPhoto, editPhotoOnClickListener);
+        if (findView(view, R.id.es_editPhoto) != null) {
+            setOnClickListener(view, R.id.es_editPhoto, editPhotoOnClickListener);
         }
         if (!isTablet()) {
             uploadPhotoView.setOnClickListener(selectPhotoOnClickListener);
@@ -230,7 +230,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     public boolean onBackPressed() {
         hideKeyboard();
         if (OngoingActions.hasActionsWithTag(Action.Tags.UPDATE_ACCOUNT)) {
-            showToast(R.string.sp_message_wait_until_account_created);
+            showToast(R.string.es_message_wait_until_account_created);
             return false;
         }
         return super.onBackPressed();
@@ -287,7 +287,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
             }
             if (isTablet()) {
                 ImageLoader.cancel(profilePhotoView);
-                profilePhotoView.setImageResource(ThemeAttributes.getResourceId(getContext(), R.styleable.sp_AppTheme_sp_userNoPhotoIcon));
+                profilePhotoView.setImageResource(ThemeAttributes.getResourceId(getContext(), R.styleable.es_AppTheme_es_userNoPhotoIcon));
             }
             userPhotoUri = photoUri;
             updatePhotoLayout(photoUri != null);

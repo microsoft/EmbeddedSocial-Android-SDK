@@ -32,10 +32,10 @@ public class ReplyContextMenuClickListener extends ContextMenuClickListener {
 		}
 
 		int i = item.getItemId();
-		if (i == R.id.sp_actionReportReply) {
+		if (i == R.id.es_actionReportReply) {
 			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.REPLY);
 			return true;
-		} else if (i == R.id.sp_actionRemove) {
+		} else if (i == R.id.es_actionRemove) {
 			ContentUpdateHelper.launchRemoveReply(context, replyView);
 			return true;
 		} else {

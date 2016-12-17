@@ -36,15 +36,15 @@ public abstract class EmbeddedSocialNavigationActivity extends EmbeddedSocialAct
 
 	@Override
 	public void setContentView(@LayoutRes int layoutResID) {
-		super.setContentView(R.layout.sp_sdk_base_drawer_activity_main);
+		super.setContentView(R.layout.es_sdk_base_drawer_activity_main);
 
-		drawerLayout = (DrawerLayout) findViewById(R.id.sp_drawer_layout);
-		ViewGroup content = (ViewGroup) findViewById(R.id.sp_content);
+		drawerLayout = (DrawerLayout) findViewById(R.id.es_drawer_layout);
+		ViewGroup content = (ViewGroup) findViewById(R.id.es_content);
 		content.removeAllViews();
 		content.addView(getLayoutInflater().inflate(layoutResID, content, false));
 
 		drawerHandler = DrawerHandlerFactory.createHandler(this, getIntent().getExtras());
-		drawerHandler.inflate((ViewGroup) findViewById(R.id.sp_container), NO_SELECTED_ITEM_ID);
+		drawerHandler.inflate((ViewGroup) findViewById(R.id.es_container), NO_SELECTED_ITEM_ID);
 		drawerHandler.setDisplayMenu(displayMenu);
 	}
 

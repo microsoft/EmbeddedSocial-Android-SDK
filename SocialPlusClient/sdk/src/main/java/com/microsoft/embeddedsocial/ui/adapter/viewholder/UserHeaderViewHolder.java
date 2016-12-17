@@ -44,7 +44,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 
 	public UserHeaderViewHolder(View view) {
 		super(view);
-		this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.sp_user_icon_size);
+		this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.es_user_icon_size);
 		initViews(view);
 	}
 
@@ -53,24 +53,24 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	}
 
 	private void initViews(View view) {
-		userHeaderButton = view.findViewById(R.id.sp_userHeaderButton);
-		profileImage = (ImageView) view.findViewById(R.id.sp_profileImage);
+		userHeaderButton = view.findViewById(R.id.es_userHeaderButton);
+		profileImage = (ImageView) view.findViewById(R.id.es_profileImage);
 		profileContentLoader = new UserPhotoLoader(profileImage);
-		profileName = (TextView) view.findViewById(R.id.sp_profileName);
-		elapsedTime = (TextView) view.findViewById(R.id.sp_postTime);
+		profileName = (TextView) view.findViewById(R.id.es_profileName);
+		elapsedTime = (TextView) view.findViewById(R.id.es_postTime);
 
-		contextMenuButton = view.findViewById(R.id.sp_contextMenuButton);
+		contextMenuButton = view.findViewById(R.id.es_contextMenuButton);
 	}
 
 	protected void renderUserHeader(TopicView topic) {
 		if (topic.getPublisherType() == PublisherType.USER) {
 			setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
 			setProfileImage(topic.getUser().getUserPhotoUrl());
-			contextMenuButton.setTag(R.id.sp_keyIsOwnContent,
+			contextMenuButton.setTag(R.id.es_keyIsOwnContent,
 					topic.getUser().getHandle().equals(Preferences.getInstance().getUserHandle()));
-			contextMenuButton.setTag(R.id.sp_keyFollowerStatus, topic.getUser().getFollowerStatus());
-			contextMenuButton.setTag(R.id.sp_keyUser, topic.getUser());
-			userHeaderButton.setTag(R.id.sp_keyUser, topic.getUser());
+			contextMenuButton.setTag(R.id.es_keyFollowerStatus, topic.getUser().getFollowerStatus());
+			contextMenuButton.setTag(R.id.es_keyUser, topic.getUser());
+			userHeaderButton.setTag(R.id.es_keyUser, topic.getUser());
 		} else if (appProfile != null) { // PublisherType.APP
 			try {
 				profileName.setText(getContext().getString(appProfile.getName()));
@@ -88,7 +88,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 		}
 		setTime(topic.getElapsedSeconds());
 
-		contextMenuButton.setTag(R.id.sp_keyTopic, topic);
+		contextMenuButton.setTag(R.id.es_keyTopic, topic);
 	}
 
 	protected void renderUserHeader(ReplyView reply) {
@@ -97,12 +97,12 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 		setTime(reply.getElapsedSeconds());
 		setProfileImage(user.getUserPhotoUrl());
 
-		contextMenuButton.setTag(R.id.sp_keyHandle, reply.getHandle());
-		contextMenuButton.setTag(R.id.sp_keyIsOwnContent,
+		contextMenuButton.setTag(R.id.es_keyHandle, reply.getHandle());
+		contextMenuButton.setTag(R.id.es_keyIsOwnContent,
 			user.getHandle().equals(Preferences.getInstance().getUserHandle()));
-		contextMenuButton.setTag(R.id.sp_keyFollowerStatus, user.getFollowerStatus());
-		contextMenuButton.setTag(R.id.sp_keyUser, user);
-		userHeaderButton.setTag(R.id.sp_keyUser, user);
+		contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
+		contextMenuButton.setTag(R.id.es_keyUser, user);
+		userHeaderButton.setTag(R.id.es_keyUser, user);
 	}
 
 	protected void renderUserHeader(UserCompactView user, String topicHandle, long elapsedTime) {
@@ -110,11 +110,11 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 		setTime(elapsedTime);
 		setProfileImage(user.getUserPhotoUrl());
 
-		contextMenuButton.setTag(R.id.sp_keyHandle, topicHandle);
-		contextMenuButton.setTag(R.id.sp_keyIsOwnContent, UserAccount.getInstance().isCurrentUser(user.getHandle()));
-		contextMenuButton.setTag(R.id.sp_keyFollowerStatus, user.getFollowerStatus());
-		contextMenuButton.setTag(R.id.sp_keyUser, user);
-		userHeaderButton.setTag(R.id.sp_keyUser, user);
+		contextMenuButton.setTag(R.id.es_keyHandle, topicHandle);
+		contextMenuButton.setTag(R.id.es_keyIsOwnContent, UserAccount.getInstance().isCurrentUser(user.getHandle()));
+		contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
+		contextMenuButton.setTag(R.id.es_keyUser, user);
+		userHeaderButton.setTag(R.id.es_keyUser, user);
 	}
 
 	protected void setContextMenuClickListener(View.OnClickListener contextMenuClickListener) {
@@ -145,7 +145,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	private static class UserHeaderClickListener implements View.OnClickListener {
 		@Override
 		public void onClick(View view) {
-			UserCompactView user = (UserCompactView) view.getTag(R.id.sp_keyUser);
+			UserCompactView user = (UserCompactView) view.getTag(R.id.es_keyUser);
 			EventBus.post(new OpenUserProfileEvent(user));
 		}
 	}

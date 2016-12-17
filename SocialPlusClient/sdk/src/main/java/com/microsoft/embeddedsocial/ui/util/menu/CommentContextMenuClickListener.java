@@ -32,10 +32,10 @@ public class CommentContextMenuClickListener extends ContextMenuClickListener {
 		}
 
 		int i = item.getItemId();
-		if (i == R.id.sp_actionReportComment) {
+		if (i == R.id.es_actionReportComment) {
 			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.COMMENT);
 			return true;
-		} else if (i == R.id.sp_actionRemove) {
+		} else if (i == R.id.es_actionRemove) {
 			ContentUpdateHelper.launchRemoveComment(context, comment);
 			return true;
 		} else {

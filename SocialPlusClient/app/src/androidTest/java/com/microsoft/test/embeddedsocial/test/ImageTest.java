@@ -19,7 +19,7 @@ import com.microsoft.embeddedsocial.server.ImageUploader;
 public class ImageTest extends BaseRestServicesTest {
 
 	public void testAddImage() throws Exception{
-		Uri uri = resourceToUri(getContext(), R.drawable.sp_logo);
+		Uri uri = resourceToUri(getContext(), R.drawable.es_logo);
 		String imageUri = ImageUploader.uploadImage(getContext(), uri, ImageType.USERPHOTO);
 		DebugLog.i(imageUri);
 		assertTrue("URI is not valid", URLUtil.isValidUrl(imageUri));

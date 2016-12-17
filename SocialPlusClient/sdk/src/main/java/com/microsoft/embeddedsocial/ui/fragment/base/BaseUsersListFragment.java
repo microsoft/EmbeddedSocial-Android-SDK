@@ -27,7 +27,7 @@ public abstract class BaseUsersListFragment extends BaseListContentFragment<Fetc
 	private final int verticalPaddingRes;
 
 	protected BaseUsersListFragment() {
-		this(R.dimen.sp_users_list_vertical_padding);
+		this(R.dimen.es_users_list_vertical_padding);
 	}
 
 	protected BaseUsersListFragment(@DimenRes int verticalPaddingRes) {
@@ -39,7 +39,7 @@ public abstract class BaseUsersListFragment extends BaseListContentFragment<Fetc
 		super.onViewCreated(view, savedInstanceState);
 		int verticalPadding = view.getResources().getDimensionPixelOffset(verticalPaddingRes);
 		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
-		setEmptyDataMessage(R.string.sp_message_no_people);
+		setEmptyDataMessage(R.string.es_message_no_people);
 	}
 
 	@Override

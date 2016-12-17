@@ -17,7 +17,7 @@ import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 public class SignInActivity extends BaseActivity {
 
 	public SignInActivity() {
-		super(R.id.sp_navigationProfile);
+		super(R.id.es_navigationProfile);
 	}
 
 	@Override

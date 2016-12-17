@@ -294,9 +294,9 @@ public class DiscussionFeedAdapter extends FetchableAdapter<Object, RecyclerView
 	protected String getLoadMoreSuggestion(Context context) {
 		switch (feedType) {
 			case COMMENT:
-				return context.getString(R.string.sp_load_more_comments);
+				return context.getString(R.string.es_load_more_comments);
 			case REPLY:
-				return context.getString(R.string.sp_load_more_replies);
+				return context.getString(R.string.es_load_more_replies);
 		}
 		return "";
 	}

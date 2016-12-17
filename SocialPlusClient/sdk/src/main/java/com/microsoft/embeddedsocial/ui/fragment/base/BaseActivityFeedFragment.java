@@ -28,7 +28,7 @@ public abstract class BaseActivityFeedFragment extends BaseListContentFragment<F
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		setSidePadding(DisplayMethod.LIST.getHorizontalPadding(getContext())); // TODO: check if it's needed
-		int padding = getResources().getDimensionPixelOffset(R.dimen.sp_card_list_padding_ver);
+		int padding = getResources().getDimensionPixelOffset(R.dimen.es_card_list_padding_ver);
 		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(padding));
 	}
 }

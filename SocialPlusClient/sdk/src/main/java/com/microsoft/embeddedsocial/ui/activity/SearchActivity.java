@@ -58,7 +58,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	private Map<SearchType, String> searchText = new EnumMap<>(SearchType.class);
 
 	public SearchActivity() {
-		super(R.id.sp_navigationSearch);
+		super(R.id.es_navigationSearch);
 		setTheme(Theme.SEARCH);
 	}
 
@@ -75,8 +75,8 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 			setSearchText(SearchType.PEOPLE, savedInstanceState.getString(PREF_SEARCH_TEXT_PEOPLE));
 		}
 		this.searchHistory = new SearchHistory();
-		contentView = findView(R.id.sp_content);
-		findView(R.id.sp_transparentCover).setOnTouchListener((v, event) -> {
+		contentView = findView(R.id.es_content);
+		findView(R.id.es_transparentCover).setOnTouchListener((v, event) -> {
 			resetSearchViewFocus();
 			return false;
 		});
@@ -92,7 +92,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 
 	@Override
 	protected int getLayoutResId() {
-		return R.layout.sp_activity_search;
+		return R.layout.es_activity_search;
 	}
 
 	@Override
@@ -120,7 +120,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 			existQuery = searchView.getQuery().toString();
 		}
 
-		searchView = findView(R.id.sp_searchView);
+		searchView = findView(R.id.es_searchView);
 
 		setupSearchView();
 		if (!TextUtils.isEmpty(existQuery)) {
@@ -238,7 +238,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	}
 
 	private String resolveHintString(SearchType searchType) {
-		return getString(searchType == SearchType.TOPICS ? R.string.sp_hint_search_topics : R.string.sp_hint_search_people);
+		return getString(searchType == SearchType.TOPICS ? R.string.es_hint_search_topics : R.string.es_hint_search_people);
 	}
 
 	@Override
@@ -285,7 +285,7 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (getCurrentSearchType() == SearchType.TOPICS && isTopicsSearchTextNotEmpty()) {
-			getMenuInflater().inflate(R.menu.sp_feed_display_method, menu);
+			getMenuInflater().inflate(R.menu.es_feed_display_method, menu);
 		}
 		// Call into super method to color hamburger menu
 		super.onCreateOptionsMenu(menu);

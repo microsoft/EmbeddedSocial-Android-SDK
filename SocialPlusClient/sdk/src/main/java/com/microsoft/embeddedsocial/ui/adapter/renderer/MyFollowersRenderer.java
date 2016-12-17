@@ -48,13 +48,13 @@ public class MyFollowersRenderer extends UserRenderer {
             Action action = ActionsLauncher.removeFollower(context, otherUser.getHandle());
             if (!action.isFailed()) {
                 // redraw the button
-                button.setText(R.string.sp_removed_follower);
+                button.setText(R.string.es_removed_follower);
                 getStyleHelper().applyRedCompletedStyle(button);
                 // decrement local followers count
                 currUser.setFollowersCount(Math.max(0, currUser.getFollowersCount() - 1));
             }
         });
-        button.setText(R.string.sp_remove_follower);
+        button.setText(R.string.es_remove_follower);
         getStyleHelper().applyRedStyle(button);
     }
 }
