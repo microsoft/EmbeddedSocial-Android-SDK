@@ -22,27 +22,27 @@
 -dontwarn java.lang.invoke.**
 
 # for SDK dir
--keep class com.microsoft.socialplus.sdk.** { *; }
+-keep class com.microsoft.embeddedsocial.sdk.** { *; }
 
 # for extending BaseActivity
 
--keepclasseswithmembers class com.microsoft.socialplus.ui.activity.base.BaseActivity {
+-keepclasseswithmembers class com.microsoft.embeddedsocial.ui.activity.base.BaseActivity {
   public <methods>;
 }
 
 # for error reporting
--keepclasseswithmembers class com.microsoft.socialplus.server.model.view.TopicView {
+-keepclasseswithmembers class com.microsoft.embeddedsocial.server.model.view.TopicView {
   public <methods>;
 }
 
 # for search
--keep public class com.microsoft.socialplus.provider.AbstractSocialPlusSearchSuggestionProvider { *; }
+-keep public class com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider { *; }
 
 # for debug log
--keep public class com.microsoft.socialplus.base.utils.debug.DebugLog { *; }
+-keep public class com.microsoft.embeddedsocial.base.utils.debug.DebugLog { *; }
 
 # dont obfuscate enums
--keepclassmembers enum com.microsoft.socialplus.** { *; }
+-keepclassmembers enum com.microsoft.embeddedsocial.** { *; }
 
 # for xml
 -keepattributes Signature

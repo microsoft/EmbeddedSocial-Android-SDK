@@ -7,7 +7,7 @@
 package com.microsoft.embeddedsocial.provider;
 
 /**
- * Implementation of Social Plus search suggestion provider. Doesn't require to override anything.
+ * Implementation of Embedded Social search suggestion provider. Doesn't require to override anything.
  */
 public class SearchSuggestionProvider extends AbstractEmbeddedSocialSearchSuggestionProvider {
 }

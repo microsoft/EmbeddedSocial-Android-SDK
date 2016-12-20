@@ -61,7 +61,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 /**
- * Social Plus SDK facade.
+ * Embedded Social SDK facade.
  */
 public final class EmbeddedSocial {
 
@@ -71,7 +71,7 @@ public final class EmbeddedSocial {
 	private EmbeddedSocial() {  }
 
     /**
-     * Initializes Social Plus SDK.
+     * Initializes Embedded Social SDK.
      * @param application   the application instance
      * @param configResId   resource id of the JSON configuration file for the SDK
      */
@@ -80,7 +80,7 @@ public final class EmbeddedSocial {
     }
 
     /**
-     * Initializes Social Plus SDK.
+     * Initializes Embedded Social SDK.
      * @param application   the application instance
      * @param configResId   resource id of the JSON configuration file for the SDK
      * @param appKey        application key
