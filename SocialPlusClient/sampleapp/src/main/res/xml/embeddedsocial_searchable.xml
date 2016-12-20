@@ -11,5 +11,5 @@
     android:label="@string/es_lib_name"
     android:queryAfterZeroResults="true"
     android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
-    android:searchSuggestAuthority="com.microsoft.navigationdrawerstudio.socialplus_searchprovider"
+    android:searchSuggestAuthority="com.microsoft.navigationdrawerstudio.embeddedsocial_searchprovider"
     android:searchSuggestSelection=" ? "/>

@@ -18,13 +18,13 @@ public class SingleDrawerHandler extends DrawerHandler {
 	}
 
 	@Override
-	public void inflate(ViewGroup drawerContainer, int socialPlusMenuActiveItemId) {
-		super.inflate(drawerContainer, socialPlusMenuActiveItemId);
+	public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
+		super.inflate(drawerContainer, embeddedSocialMenuActiveItemId);
 
-		socialPlusMenuFragment = NavigationFragment.create(socialPlusMenuActiveItemId);
+		embeddedSocialMenuFragment = NavigationFragment.create(embeddedSocialMenuActiveItemId);
 
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(drawerContainer.getId(), socialPlusMenuFragment, SOCIAL_TAG);
+		fragmentTransaction.replace(drawerContainer.getId(), embeddedSocialMenuFragment, SOCIAL_TAG);
 		fragmentTransaction.commit();
 	}
 }

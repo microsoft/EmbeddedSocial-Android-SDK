@@ -39,9 +39,9 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 	}
 
 	@Override
-	public void inflate(ViewGroup drawerContainer, int socialPlusMenuActiveItemId) {
-		super.inflate(drawerContainer, socialPlusMenuActiveItemId);
-		socialPlusMenuFragment = NavigationFragment.create(socialPlusMenuActiveItemId, false);
+	public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
+		super.inflate(drawerContainer, embeddedSocialMenuActiveItemId);
+		embeddedSocialMenuFragment = NavigationFragment.create(embeddedSocialMenuActiveItemId, false);
 		setDisplayMenu(DisplayMenu.HOST_MENU);
 	}
 
@@ -67,11 +67,11 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 
 	private void setupNavigationProfile() {
 		photoLoader = NavigationProfileHelper.setupNavigationProfile(
-				activity, photoLoader, drawerContainer, socialPlusMenuActiveItemId);
+				activity, photoLoader, drawerContainer, embeddedSocialMenuActiveItemId);
 	}
 
 	private void displaySwitcherHostingAppMenuFragment() {
-		removeFragment(socialPlusMenuFragment);
+		removeFragment(embeddedSocialMenuFragment);
 
 		drawerContainer.removeAllViews();
 		drawerContainer.addView(themedInflater.inflate(R.layout.es_sdk_fragment_switcher, drawerContainer, false));
@@ -106,7 +106,7 @@ public class SwitcherDrawerHandler extends DrawerHandler {
 		socialItemView.hideIcon();
 
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.es_menu_container, socialPlusMenuFragment, SOCIAL_TAG);
+		fragmentTransaction.replace(R.id.es_menu_container, embeddedSocialMenuFragment, SOCIAL_TAG);
 		fragmentTransaction.commit();
 	}
 

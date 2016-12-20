@@ -91,7 +91,7 @@
 		<!-- drawable to use as EditText's cursor -->
 		<attr name="es_cursorDrawable" format="reference"/>
 
-		<!-- reference to Social Plus logo drawable for Sign-in page -->
+		<!-- reference to Embedded Social logo drawable for Sign-in page -->
 		<attr name="es_largeLogo" format="reference"/>
 
 		<!-- color of the bottom line in the tabs indicator layout; actually it's used to hide it -->

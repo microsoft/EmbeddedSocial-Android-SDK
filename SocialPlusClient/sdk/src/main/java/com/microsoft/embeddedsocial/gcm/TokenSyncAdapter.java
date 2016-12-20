@@ -16,7 +16,7 @@ import com.microsoft.embeddedsocial.server.model.notification.RegisterPushNotifi
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 
 /**
- * Is used to register GCM token on Social Plus server.
+ * Is used to register GCM token on Embedded Social server.
  */
 class TokenSyncAdapter implements ISynchronizable {
 

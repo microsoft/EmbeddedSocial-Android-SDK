@@ -21,7 +21,7 @@ import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
 import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 
 /**
- * Contains methods for navigation in Social Plus sdk.
+ * Contains methods for navigation in Embedded Social sdk.
  */
 public class NavigationIntentUtils {
 
@@ -94,7 +94,7 @@ public class NavigationIntentUtils {
 	}
 
 	/**
-	 * Closes all Social plus sdk activities.
+	 * Closes all Embedded Social sdk activities.
 	 */
 	public void closeSdkActivities() {
 		Intent intent = new Intent(activity, GateActivity.class);

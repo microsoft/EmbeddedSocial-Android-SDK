@@ -40,7 +40,7 @@ public abstract class AbstractSyncAdapter<T> implements ISynchronizable {
 	}
 
 	/**
-	 * Gets Social Plus API service provider.
+	 * Gets Embedded Social API service provider.
 	 * @return  {@link EmbeddedSocialServiceProvider} instance.
 	 */
 	protected final EmbeddedSocialServiceProvider getServiceProvider() {

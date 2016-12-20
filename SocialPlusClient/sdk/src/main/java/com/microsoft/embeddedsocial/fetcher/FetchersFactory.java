@@ -61,12 +61,12 @@ public final class FetchersFactory {
 	private static final IActivityService ACTIVITY_SERVICE;
 
 	static {
-		EmbeddedSocialServiceProvider socialPlusServiceProvider = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class);
-		RELATIONSHIP_SERVICE = socialPlusServiceProvider.getRelationshipService();
-		CONTENT_SERVICE = socialPlusServiceProvider.getContentService();
-		SEARCH_SERVICE = socialPlusServiceProvider.getSearchService();
-		NOTIFICATION_SERVICE = socialPlusServiceProvider.getNotificationService();
-		ACTIVITY_SERVICE = socialPlusServiceProvider.getActivityService();
+		EmbeddedSocialServiceProvider embeddedSocialServiceProvider = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class);
+		RELATIONSHIP_SERVICE = embeddedSocialServiceProvider.getRelationshipService();
+		CONTENT_SERVICE = embeddedSocialServiceProvider.getContentService();
+		SEARCH_SERVICE = embeddedSocialServiceProvider.getSearchService();
+		NOTIFICATION_SERVICE = embeddedSocialServiceProvider.getNotificationService();
+		ACTIVITY_SERVICE = embeddedSocialServiceProvider.getActivityService();
 	}
 
 	public static Fetcher<UserCompactView> createFollowersFetcher(String userHandle) {

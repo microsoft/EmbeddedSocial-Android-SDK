@@ -24,8 +24,8 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 	}
 
 	@Override
-	public void inflate(ViewGroup drawerContainer, int socialPlusMenuActiveItemId) {
-		super.inflate(drawerContainer, socialPlusMenuActiveItemId);
+	public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
+		super.inflate(drawerContainer, embeddedSocialMenuActiveItemId);
 		drawerContainer.removeAllViews();
 		drawerContainer.addView(
 			activity.getLayoutInflater().inflate(R.layout.es_sdk_fragment_tabs, drawerContainer, false));
@@ -44,7 +44,7 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 		drawerMenu.addTab(hostingAppMenuTab, true);
 		drawerMenu.addTab(socialMenuTab);
 
-		socialPlusMenuFragment = NavigationFragment.create(socialPlusMenuActiveItemId);
+		embeddedSocialMenuFragment = NavigationFragment.create(embeddedSocialMenuActiveItemId);
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class TabbedDrawerHandler extends DrawerHandler implements TabLayout.OnTa
 	private void selectEmbeddedSocialMenuFragment() {
 		displayMenu = DisplayMenu.SOCIAL_MENU;
 		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(R.id.es_tab_container, socialPlusMenuFragment, SOCIAL_TAG);
+		fragmentTransaction.replace(R.id.es_tab_container, embeddedSocialMenuFragment, SOCIAL_TAG);
 		fragmentTransaction.commit();
 	}
 

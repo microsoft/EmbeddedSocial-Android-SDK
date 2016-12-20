@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
 
 /**
- * Social Plus library options.
+ * Embedded Social library options.
  */
 @SuppressWarnings("FieldCanBeLocal")
 public final class Options {

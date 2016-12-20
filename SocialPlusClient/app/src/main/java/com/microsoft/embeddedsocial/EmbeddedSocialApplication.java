@@ -38,7 +38,7 @@ public class EmbeddedSocialApplication extends Application implements UncaughtEx
 				.build());
 		}
 		Thread.setDefaultUncaughtExceptionHandler(this);
-		EmbeddedSocial.init(this, R.raw.social_plus_config);
+		EmbeddedSocial.init(this, R.raw.embedded_social_config);
 	}
 
 	@Override

@@ -258,7 +258,7 @@
 	<string name="es_button_terms_and_conditions">Terms and conditions</string>
 	<string name="es_button_privacy_policy">Privacy policy</string>
 	<string name="es_header_about">About</string>
-	<string name="es_button_find_friends_other_apps">Find friends from other Social Plus apps</string>
+	<string name="es_button_find_friends_other_apps">Find friends from other Embedded Social apps</string>
 	<string name="es_button_find_friends_facebook">Find Facebook friends</string>
 	<string name="es_button_find_friends_microsoft">Find Microsoft contacts</string>
 	<string name="es_button_find_friends_google_plus">Find Google+ friends</string>

@@ -20,9 +20,9 @@ public abstract class DrawerHandler {
 	protected final AppCompatActivity activity;
 	protected final Fragment hostingAppMenuFragment;
 	protected final CharSequence hostingAppMenuTitle;
-	protected Fragment socialPlusMenuFragment;
+	protected Fragment embeddedSocialMenuFragment;
 	protected ViewGroup drawerContainer;
-	protected int socialPlusMenuActiveItemId;
+	protected int embeddedSocialMenuActiveItemId;
 	protected DisplayMenu displayMenu;
 
 	DrawerHandler(@NonNull AppCompatActivity activity, Fragment hostingAppMenuFragment, CharSequence hostingAppMenuTitle) {
@@ -31,9 +31,9 @@ public abstract class DrawerHandler {
 		this.hostingAppMenuTitle = hostingAppMenuTitle;
 	}
 
-	public void inflate(ViewGroup drawerContainer, int socialPlusMenuActiveItemId) {
+	public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
 		this.drawerContainer = drawerContainer;
-		this.socialPlusMenuActiveItemId = socialPlusMenuActiveItemId;
+		this.embeddedSocialMenuActiveItemId = embeddedSocialMenuActiveItemId;
 	}
 
 	public void setDisplayMenu(DisplayMenu displayMenu) {

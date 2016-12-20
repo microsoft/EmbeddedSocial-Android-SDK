@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 /**
- * Base class for all authenticators allowing to use 3rd party accounts to log in to Social Plus.
+ * Base class for all authenticators allowing to use 3rd party accounts to log in to Embedded Social.
  */
 public abstract class AbstractAuthenticator implements IDisposable {
 

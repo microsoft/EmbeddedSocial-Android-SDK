@@ -18,7 +18,7 @@ public class NavigationDrawerApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		EmbeddedSocial.init(this, R.raw.social_plus_config);
+		EmbeddedSocial.init(this, R.raw.embedded_social_config);
 		EmbeddedSocial.initDrawer(this, new DrawerFactory(), DrawerDisplayMode.TABS, "STUDIO");
 	}
 
