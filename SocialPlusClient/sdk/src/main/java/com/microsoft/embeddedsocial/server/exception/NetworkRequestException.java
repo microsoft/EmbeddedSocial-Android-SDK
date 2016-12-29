@@ -40,7 +40,7 @@ public class NetworkRequestException extends Exception {
 			case ServiceUnavailableException.STATUS_CODE:
 			 	return new ServiceUnavailableException(message);
 			default: // no detail provided
-				return new NetworkRequestException();
+				return new NetworkRequestException(message);
 		}
 	}
 }
