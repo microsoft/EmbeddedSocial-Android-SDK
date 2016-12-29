@@ -59,6 +59,7 @@ import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.HashMap;
 
 /**
  * Embedded Social SDK facade.
@@ -233,12 +234,17 @@ public final class EmbeddedSocial {
         return feedFragment;
     }
 
-    public static Fragment getCommentFeedFragment(String topicHandle) {
+    public static Fragment getCommentFeedFragment(String topicHandle, HashMap<Integer, Integer> errorMessages) {
         Fragment feedFragment = new CommentFeedFragment();
         Bundle b = new Bundle();
         b.putCharSequence(IntentExtras.TOPIC_HANDLE, topicHandle);
+        b.putSerializable(IntentExtras.ERROR_MESSAGES_EXTRA, errorMessages);
         feedFragment.setArguments(b);
         return feedFragment;
+    }
+
+    public static Fragment getCommentFeedFragment(String topicHandle) {
+        return getCommentFeedFragment(topicHandle, null);
     }
 
     public static Fragment getPinsFragment() {

@@ -24,6 +24,7 @@ import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Callback;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
@@ -31,10 +32,13 @@ import com.microsoft.embeddedsocial.event.content.PinAddedEvent;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.squareup.otto.Subscribe;
 
+import java.util.HashMap;
+
 public class CommentFeedFragment extends DiscussionFeedFragment {
 
 	private String topicHandle;
 	private Fetcher<Object> commentFeedFetcher;
+	private HashMap<Integer, Integer> errorMessages;
 
 	private final Callback callback = new Callback() {
 
@@ -66,6 +70,8 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 			);
 		}
 
+		errorMessages = (HashMap)arguments.getSerializable(IntentExtras.ERROR_MESSAGES_EXTRA);
+
 		DiscussionFeedAdapter adapter = new DiscussionFeedAdapter(
 			getActivity(),
 			commentFeedFetcher,
@@ -74,6 +80,19 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 		adapter.addFetcherCallback(callback);
 
 		return adapter;
+	}
+
+	@Override
+	protected String getErrorMessage(Exception exception) {
+		if (errorMessages != null && exception instanceof StatusException) {
+			int code = ((StatusException)exception).getStatusCode();
+			if (errorMessages.containsKey(code)) {
+				return getString(errorMessages.get(code));
+			}
+		}
+
+		// default message
+		return super.getErrorMessage(exception);
 	}
 
 	@Override

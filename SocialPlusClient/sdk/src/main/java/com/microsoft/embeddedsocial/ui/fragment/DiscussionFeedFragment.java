@@ -189,14 +189,14 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	}
 
 	@Override
-	public void onViewStateChanged(ViewState viewState) {
+	public void onViewStateChanged(ViewState viewState, Exception exception) {
 		if (viewState == ViewState.DATA) {
 			if (!scrolledDown && shouldJumpToInputView()) {
 				EventBus.post(new ScrollPositionEvent(ScrollPositionEvent.EDIT_POSITION));
 				scrolledDown = true;
 			}
 		}
-		super.onViewStateChanged(viewState);
+		super.onViewStateChanged(viewState, exception);
 	}
 
 	private boolean shouldJumpToInputView() {

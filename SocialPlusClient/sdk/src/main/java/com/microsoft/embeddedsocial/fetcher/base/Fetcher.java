@@ -34,6 +34,7 @@ public abstract class Fetcher<T> implements IDisposable {
 	private final DataHolder<T> data = new DataHolder<>(callbackNotifier);
 
 	private FetcherState state = FetcherState.HAS_MORE_DATA;
+	private Exception errorCause;
 	private DataState currentDataState = createEmptyDataState();
 
 	private int pageSizeFactor = 1;
@@ -177,11 +178,14 @@ public abstract class Fetcher<T> implements IDisposable {
 		} else {
 			setState(error ? FetcherState.LAST_ATTEMPT_FAILED : FetcherState.HAS_MORE_DATA);
 		}
+
 		if (error) {
 			callbackNotifier.notifyDataRequestFailed(exception);
 		} else {
 			callbackNotifier.notifyDataRequestSucceeded();
 		}
+
+		setErrorCause(exception);
 	}
 
 	private void replaceDataFromCache() throws Exception {
@@ -234,6 +238,14 @@ public abstract class Fetcher<T> implements IDisposable {
 	 */
 	public final FetcherState getState() {
 		return state;
+	}
+
+	private void setErrorCause(Exception e) {
+		errorCause = e;
+	}
+
+	public final Exception getErrorCause() {
+		return errorCause;
 	}
 
 	/**

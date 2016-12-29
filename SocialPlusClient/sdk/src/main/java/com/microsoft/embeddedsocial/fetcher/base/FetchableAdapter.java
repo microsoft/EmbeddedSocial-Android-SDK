@@ -166,7 +166,7 @@ public abstract class FetchableAdapter<T, V extends ViewHolder> extends Adapter<
 
 	private void notifyViewStateChanged() {
 		if (viewStateListener != null) {
-			viewStateListener.onViewStateChanged(viewState);
+			viewStateListener.onViewStateChanged(viewState, fetcher.getErrorCause());
 		}
 	}
 

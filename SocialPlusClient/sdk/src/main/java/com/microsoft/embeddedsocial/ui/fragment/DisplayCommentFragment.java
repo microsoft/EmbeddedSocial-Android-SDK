@@ -123,7 +123,7 @@ public class DisplayCommentFragment extends BaseFragment implements ViewStateLis
 	}
 
 	@Override
-	public void onViewStateChanged(ViewState viewState) {
+	public void onViewStateChanged(ViewState viewState, Exception exception) {
 		// Not used
 	}
 }

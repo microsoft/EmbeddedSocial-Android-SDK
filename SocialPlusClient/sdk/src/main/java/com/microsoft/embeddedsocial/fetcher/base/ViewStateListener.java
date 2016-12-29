@@ -10,6 +10,6 @@ package com.microsoft.embeddedsocial.fetcher.base;
  */
 public interface ViewStateListener {
 
-	void onViewStateChanged(ViewState viewState);
+	void onViewStateChanged(ViewState viewState, Exception exception);
 
 }

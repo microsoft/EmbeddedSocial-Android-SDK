@@ -26,6 +26,7 @@ public final class IntentExtras {
 	public static final String CREATE_ACCOUNT_DATA = "createAccountData";
 	public static final String ACCOUNT_DATA_DIFFERENCE = "accountDataDifference";
 	public static final String TOPIC_EXTRA = "topicExtra";
+	public static final String ERROR_MESSAGES_EXTRA = "errorMessagesExtra";
 	public static final String COVER_IMAGE_URL_EXTRA = "coverImageCoverExtra";
 	public static final String COMMENT_EXTRA = "commentExtra";
 	public static final String CONTENT_EXTRA = "contentExtra";

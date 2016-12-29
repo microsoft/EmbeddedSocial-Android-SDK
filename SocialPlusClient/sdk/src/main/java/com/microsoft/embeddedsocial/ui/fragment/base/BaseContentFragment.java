@@ -181,7 +181,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 	}
 
 	@Override
-	public void onViewStateChanged(ViewState viewState) {
+	public void onViewStateChanged(ViewState viewState, Exception exception) {
 		swipeRefreshLayout.setRefreshing(viewState == ViewState.REFRESHING);
 		swipeRefreshLayout.setEnabled(viewState != ViewState.LOADING && viewState != ViewState.REFRESHING);
 		switch (viewState) {
@@ -199,7 +199,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 				break;
 			case ERROR:
 				checkConnection();
-				messageView.setText(getErrorMessage());
+				messageView.setText(getErrorMessage(exception));
 				switchToView(messageView);
 				break;
 		}
@@ -218,7 +218,7 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 		return GlobalObjectRegistry.getObject(NetworkAvailability.class).isNetworkAvailable();
 	}
 
-	protected String getErrorMessage() {
+	protected String getErrorMessage(Exception exception) {
 		return errorMessage;
 	}
 

@@ -85,8 +85,8 @@ public abstract class AbstractRequestWrapper<Request extends BaseRequest, Respon
 					cachedResponse = true;
 				} catch (SQLException e2) {
 					DebugLog.logException(e2);
-					// TODO figure out how to populate this exception
-					throw new NetworkRequestException();
+					// throw the original exception
+					throw e;
 				}
 			}
 		}
