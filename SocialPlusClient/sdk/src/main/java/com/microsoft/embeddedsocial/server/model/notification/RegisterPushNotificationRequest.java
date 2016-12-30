@@ -12,6 +12,8 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 
 import java.io.IOException;
 
@@ -25,7 +27,8 @@ public class RegisterPushNotificationRequest extends UserRequest {
 	public RegisterPushNotificationRequest(String registrationID, long lastUpdatedTime) {
 		this.registrationID = registrationID;
 		request = new PutPushRegistrationRequest();
-		request.setLastUpdatedTime(new DateTime(lastUpdatedTime));
+		DateTimeFormatter fmt = ISODateTimeFormat.dateTime();
+		request.setLastUpdatedTime(fmt.print(lastUpdatedTime));
 		request.setLanguage(language);
 	}
 
