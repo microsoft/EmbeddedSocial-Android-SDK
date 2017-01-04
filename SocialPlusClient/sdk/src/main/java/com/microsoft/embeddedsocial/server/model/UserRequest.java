@@ -5,6 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.exception.UnauthorizedException;
 import com.microsoft.rest.ServiceResponse;
@@ -126,7 +127,7 @@ public class UserRequest extends BaseRequest {
 		switch (serviceResponse.getResponse().code()) {
 			case 401: // unauthorized
 				// invalidate session token
-				Preferences.getInstance().setAuthorizationToken(null);
+				UserAccount.getInstance().signOut();
 				throw new UnauthorizedException(serviceResponse.getResponse().message());
 			default:
 				super.checkResponseCode(serviceResponse);
