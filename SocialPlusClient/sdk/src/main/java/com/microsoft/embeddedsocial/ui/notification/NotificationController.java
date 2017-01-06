@@ -12,12 +12,14 @@ import android.content.Intent;
 import android.support.annotation.StringRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 
 import com.microsoft.embeddedsocial.event.sync.PostUploadFailedEvent;
 import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
 import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
 import com.squareup.otto.Subscribe;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,9 +45,9 @@ public class NotificationController {
 		public void onPostUploadFailed(PostUploadFailedEvent event) {
 			int messageId = R.string.es_message_failed_to_publish_post;
 			Notification notification = buildBaseNotification(messageId)
-				.setAutoCancel(true)
-				.setOngoing(false)
-				.build();
+					.setAutoCancel(true)
+					.setOngoing(false)
+					.build();
 			notificationManager.notify(POST_UPLOAD_NOTIFICATION_ID, notification);
 		}
 
@@ -58,11 +60,19 @@ public class NotificationController {
 		@SuppressWarnings("unused")
 		@Subscribe
 		public void onPushNotificationReceived(PushNotificationReceivedEvent event) {
-			Notification notification = buildBaseNotification(event.getText())
-				.setOngoing(false)
-				.setAutoCancel(true)
-				.build();
-			notificationManager.notify(pushNotificationId.incrementAndGet(), notification);
+			NotificationCompat.Builder mBuilder = buildBaseNotification(event.getText())
+					.setOngoing(false).setAutoCancel(true);
+
+
+			Intent intent = new Intent(context, RecentActivityActivity.class);
+			TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+			stackBuilder.addParentStack(RecentActivityActivity.class);
+			stackBuilder.addNextIntent(intent);
+			PendingIntent pendingIntent = stackBuilder.getPendingIntent(pushNotificationId.get(),
+					PendingIntent.FLAG_UPDATE_CURRENT);
+			mBuilder.setContentIntent(pendingIntent);
+
+			notificationManager.notify(pushNotificationId.incrementAndGet(), mBuilder.build());
 		}
 	};
 
