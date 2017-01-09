@@ -5,6 +5,7 @@
 
 package com.microsoft.embeddedsocial.server.model.auth;
 
+import com.microsoft.embeddedsocial.server.exception.UnauthorizedException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
@@ -35,5 +36,14 @@ public class SignOutRequest extends UserRequest {
         checkResponseCode(serviceResponse);
 
         return serviceResponse.getResponse();
+    }
+
+    @Override
+    protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
+        if (serviceResponse.getResponse().code() == 401) { // possible cause: user already signed out
+            throw new UnauthorizedException(serviceResponse.getResponse().message());
+        } else {
+            super.checkResponseCode(serviceResponse);
+        }
     }
 }
