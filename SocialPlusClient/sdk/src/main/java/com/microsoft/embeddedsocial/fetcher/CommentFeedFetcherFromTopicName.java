@@ -28,7 +28,7 @@ public class CommentFeedFetcherFromTopicName extends CommentFeedFetcher {
         );
     }
 
-    private synchronized String getTopicHandle() {
+    public synchronized String getTopicHandle() {
         if (topicHandle == null) {
             // topic handle is not known -- resolve it from topic name
             try {

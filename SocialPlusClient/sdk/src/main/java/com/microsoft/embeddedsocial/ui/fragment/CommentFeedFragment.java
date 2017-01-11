@@ -20,6 +20,7 @@ import com.microsoft.embeddedsocial.event.content.CommentRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.PinRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.TopicRemovedEvent;
 import com.microsoft.embeddedsocial.event.relationship.UserFollowedStateChangedEvent;
+import com.microsoft.embeddedsocial.fetcher.CommentFeedFetcherFromTopicName;
 import com.microsoft.embeddedsocial.fetcher.EmptyDataException;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Callback;
@@ -142,6 +143,9 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 
 	@Override
 	protected String getHandle() {
+		if (topicHandle == null && commentFeedFetcher instanceof CommentFeedFetcherFromTopicName) {
+			topicHandle = ((CommentFeedFetcherFromTopicName)commentFeedFetcher).getTopicHandle();
+		}
 		return topicHandle;
 	}
 
