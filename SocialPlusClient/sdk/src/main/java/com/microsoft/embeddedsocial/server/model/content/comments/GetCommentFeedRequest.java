@@ -14,9 +14,9 @@ import com.microsoft.embeddedsocial.data.model.CommentFeedType;
 
 import java.io.IOException;
 
-public final class GetCommentFeedRequest extends FeedUserRequest {
+public class GetCommentFeedRequest extends FeedUserRequest {
 
-	private final String topicHandle;
+	protected String topicHandle;
 	private final int commentFeedType;
 
 	public GetCommentFeedRequest(CommentFeedType commentFeedType, String topicHandle) {
@@ -30,6 +30,10 @@ public final class GetCommentFeedRequest extends FeedUserRequest {
 
 	public String getTopicHandle() {
 		return topicHandle;
+	}
+
+	public void setTopicHandle(String topicHandle) {
+		this.topicHandle = topicHandle;
 	}
 
 	@Override

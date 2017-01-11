@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.image.ImageLoader;
 import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
@@ -234,13 +235,13 @@ public final class EmbeddedSocial {
         return feedFragment;
     }
 
+    public static Fragment getCommentFeedFragmentByName(String topicName,
+            PublisherType publisherType, HashMap<Integer, Integer> errorMessages) {
+        return CommentFeedFragment.getCommentFeedFragmentFromTopicName(topicName, publisherType, errorMessages);
+    }
+
     public static Fragment getCommentFeedFragment(String topicHandle, HashMap<Integer, Integer> errorMessages) {
-        Fragment feedFragment = new CommentFeedFragment();
-        Bundle b = new Bundle();
-        b.putCharSequence(IntentExtras.TOPIC_HANDLE, topicHandle);
-        b.putSerializable(IntentExtras.ERROR_MESSAGES_EXTRA, errorMessages);
-        feedFragment.setArguments(b);
-        return feedFragment;
+        return CommentFeedFragment.getCommentFeedFragmentFromTopicHandle(topicHandle, errorMessages);
     }
 
     public static Fragment getCommentFeedFragment(String topicHandle) {

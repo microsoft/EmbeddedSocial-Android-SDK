@@ -36,16 +36,20 @@ import java.util.List;
 public class CommentFeedFetcher extends Fetcher<Object> {
 	private static final String TOPIC_LOADED = "topicLoaded";
 
-	private final TopicView topicView;
-	private final String topicHandle;
-	private final IContentService contentService;
-	private final DataRequestExecutor<CommentView, ?> commentFeedRequestExecutor;
+	protected final IContentService contentService;
+	protected String topicHandle;
+	protected DataRequestExecutor<CommentView, ?> commentFeedRequestExecutor;
+	private TopicView topicView;
+
+	protected CommentFeedFetcher() {
+		this.contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
+	}
 
 	public CommentFeedFetcher(CommentFeedType feedType, String topicHandle, TopicView topicView) {
+		this();
 		this.topicHandle = topicHandle;
 		this.topicView = topicView;
 
-		contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 		commentFeedRequestExecutor = new BatchDataRequestExecutor<>(
 			contentService::getCommentFeed,
 			() -> new GetCommentFeedRequest(feedType, topicHandle)
@@ -85,7 +89,7 @@ public class CommentFeedFetcher extends Fetcher<Object> {
 		return result;
 	}
 
-	private TopicView readTopic(RequestType requestType) throws Exception {
+	protected TopicView readTopic(RequestType requestType) throws Exception {
 		GetTopicRequest request = new GetTopicRequest(topicHandle);
 		if (requestType == RequestType.SYNC_WITH_CACHE) {
 			request.forceCacheUsage();

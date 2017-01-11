@@ -181,11 +181,13 @@ public abstract class Fetcher<T> implements IDisposable {
 
 		if (error) {
 			callbackNotifier.notifyDataRequestFailed(exception);
+			if (errorCause == null) {
+				// save the root cause
+				setErrorCause(exception);
+			}
 		} else {
 			callbackNotifier.notifyDataRequestSucceeded();
 		}
-
-		setErrorCause(exception);
 	}
 
 	private void replaceDataFromCache() throws Exception {
@@ -240,7 +242,7 @@ public abstract class Fetcher<T> implements IDisposable {
 		return state;
 	}
 
-	private void setErrorCause(Exception e) {
+	protected void setErrorCause(Exception e) {
 		errorCause = e;
 	}
 

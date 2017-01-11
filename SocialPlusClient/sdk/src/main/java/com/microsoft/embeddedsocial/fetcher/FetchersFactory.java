@@ -5,6 +5,7 @@
 
 package com.microsoft.embeddedsocial.fetcher;
 
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.fetcher.base.RequestType;
 import com.microsoft.embeddedsocial.server.INotificationService;
@@ -95,6 +96,10 @@ public final class FetchersFactory {
 
 	public static Fetcher<Object> createCommentFeedFetcher(String topicHandle, TopicView topicView) {
 		return new CommentFeedFetcher(CommentFeedType.RECENT, topicHandle, topicView);
+	}
+
+	public static Fetcher<Object> createCommentFeedFetcherFromTopicName(String topicName, PublisherType publisherType) {
+		return new CommentFeedFetcherFromTopicName(CommentFeedType.RECENT, topicName, publisherType);
 	}
 
 	public static Fetcher<Object> createReplyFeedFetcher(String commentHandle, CommentView commentView) {

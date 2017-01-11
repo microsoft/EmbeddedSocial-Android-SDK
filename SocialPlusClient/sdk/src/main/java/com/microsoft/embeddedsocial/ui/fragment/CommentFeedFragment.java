@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
@@ -52,25 +53,54 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 				Toast.makeText(getActivity(), R.string.es_message_failed_to_refresh_topic, Toast.LENGTH_LONG).show();
 			}
 		}
-
 	};
 
 	public CommentFeedFragment() {
 		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayTopic);
 	}
 
+	public static CommentFeedFragment getCommentFeedFragmentFromTopicHandle(String topicHandle, HashMap<Integer, Integer> errorMessages) {
+		CommentFeedFragment feedFragment = new CommentFeedFragment();
+		Bundle b = new Bundle();
+		b.putCharSequence(IntentExtras.TOPIC_HANDLE, topicHandle);
+		b.putSerializable(IntentExtras.ERROR_MESSAGES_EXTRA, errorMessages);
+		feedFragment.setArguments(b);
+		return feedFragment;
+	}
+
+	public static CommentFeedFragment getCommentFeedFragmentFromTopicName(String topicName, PublisherType publisherType, HashMap<Integer, Integer> errorMessages) {
+		CommentFeedFragment feedFragment = new CommentFeedFragment();
+		Bundle b = new Bundle();
+		b.putCharSequence(IntentExtras.TOPIC_NAME, topicName);
+		b.putSerializable(IntentExtras.PUBLISHER_TYPE, publisherType.toValue());
+		b.putSerializable(IntentExtras.ERROR_MESSAGES_EXTRA, errorMessages);
+		feedFragment.setArguments(b);
+		return feedFragment;
+	}
+
 	@Override
 	protected DiscussionFeedAdapter createInitialAdapter() {
 		Bundle arguments = getArguments();
-		topicHandle = arguments.getString(IntentExtras.TOPIC_HANDLE);
-		if (commentFeedFetcher == null) {
-			commentFeedFetcher = FetchersFactory.createCommentFeedFetcher(
-				topicHandle,
-				arguments.getParcelable(IntentExtras.TOPIC_EXTRA)
-			);
-		}
 
 		errorMessages = (HashMap)arguments.getSerializable(IntentExtras.ERROR_MESSAGES_EXTRA);
+
+		topicHandle = arguments.getString(IntentExtras.TOPIC_HANDLE);
+
+		if (topicHandle == null) {
+			// Get topic from name
+			String topicName = arguments.getString(IntentExtras.TOPIC_NAME);
+			PublisherType publisherType = PublisherType.fromValue(arguments.getString(IntentExtras.PUBLISHER_TYPE));
+
+			commentFeedFetcher = FetchersFactory.createCommentFeedFetcherFromTopicName(
+					topicName,
+					publisherType
+			);
+		} else if (commentFeedFetcher == null) {
+			commentFeedFetcher = FetchersFactory.createCommentFeedFetcher(
+					topicHandle,
+					arguments.getParcelable(IntentExtras.TOPIC_EXTRA)
+			);
+		}
 
 		DiscussionFeedAdapter adapter = new DiscussionFeedAdapter(
 			getActivity(),
