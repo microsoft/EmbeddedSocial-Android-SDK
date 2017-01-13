@@ -36,9 +36,6 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 	private ImageViewContentLoader coverContentLoader;
 	protected TextView postTitle;
 	private TextView postBody;
-	private View appLayout;
-	private ImageView postAppIcon;
-	private TextView postAppName;
 	private TextView postLikesCountButton;
 	protected TextView postCommentsCountButton;
 	private FrameLayout contentButton;
@@ -73,14 +70,6 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		}
 		postTitle.setText(topic.getTopicTitle());
 		ContentUpdateHelper.setTopicBody(getContext(), postBody, topic.getTopicText());
-
-		if (!Preferences.getInstance().isDisplayApp() || topic.getApp() == null) {
-			appLayout.setVisibility(View.GONE);
-		} else {
-			appLayout.setVisibility(View.VISIBLE);
-			postAppName.setText(topic.getApp().getAppName());
-			ContentUpdateHelper.setTopicAppIcon(postAppIcon, topic.getApp().getAppIconUrl());
-		}
 
 		initLocalTopic(topic);
 
@@ -145,10 +134,6 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		coverContentLoader = new CoverLoader(coverImage);
 		postTitle = (TextView) view.findViewById(R.id.es_postTitle);
 		postBody = (TextView) view.findViewById(R.id.es_postBody);
-		appLayout = view.findViewById(R.id.es_postAppLayout);
-
-		postAppName = (TextView) view.findViewById(R.id.es_postAppName);
-		postAppIcon = (ImageView) view.findViewById(R.id.es_postAppIcon);
 
 		postLikesCountButton = (TextView) view.findViewById(R.id.es_postLikesCountButton);
 		postLikesCountButton.setOnClickListener(topicButtonsListener::onClickLikesCount);

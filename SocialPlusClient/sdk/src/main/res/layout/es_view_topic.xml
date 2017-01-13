@@ -58,41 +58,10 @@
 		android:layout_toRightOf="@id/es_leftBorder"
 		/>
 
-	<LinearLayout
-		android:id="@+id/es_postAppLayout"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/es_postBody"
-		android:layout_marginRight="@dimen/es_padding_large"
-		android:layout_marginTop="@dimen/es_padding_xlarge"
-		android:layout_toRightOf="@id/es_leftBorder"
-		android:gravity="center_vertical"
-		android:orientation="horizontal"
-		>
-
-		<ImageView
-			android:id="@+id/es_postAppIcon"
-			android:layout_width="@dimen/es_button_icon_size"
-			android:layout_height="@dimen/es_button_icon_size"
-			android:layout_marginRight="@dimen/es_padding_large"
-			android:background="@color/es_image_holder"
-			android:scaleType="centerCrop"
-			/>
-
-		<TextView
-			android:id="@+id/es_postAppName"
-			style="@style/EmbeddedSocialSdkTextSubhead"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:singleLine="true"
-			/>
-
-	</LinearLayout>
-
 	<View
 		android:id="@+id/es_dividerLayoutTop"
 		style="@style/EmbeddedSocialSdkDivider"
-		android:layout_below="@id/es_postAppLayout"
+		android:layout_below="@id/es_postBody"
 		android:layout_marginBottom="@dimen/es_padding_base"
 		android:layout_marginTop="@dimen/es_padding_xlarge"/>
 
