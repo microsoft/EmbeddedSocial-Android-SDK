@@ -35,6 +35,9 @@
   public <methods>;
 }
 
+# for exception types
+-keep class com.microsoft.embeddedsocial.server.exception.** { *; }
+
 # for search
 -keep public class com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider { *; }
 
