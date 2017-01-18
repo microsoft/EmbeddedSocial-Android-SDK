@@ -7,11 +7,13 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.fetcher.UserAccountFetcher;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.server.exception.ConflictException;
 import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
@@ -32,6 +34,7 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import com.squareup.otto.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,15 +43,28 @@ import java.util.List;
 public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccountsAdapter> implements LinkedAccountsAdapter.IChangeAccountState, IAuthenticationCallback {
 	private static final String LAST_ACCOUNT_ID = "last_account";
 
-	private final InnerAccountData[] supportedAccountsId = {
-		new InnerAccountData(R.string.es_facebook, IdentityProvider.FACEBOOK),
-		new InnerAccountData(R.string.es_google, IdentityProvider.GOOGLE),
-		new InnerAccountData(R.string.es_microsoft, IdentityProvider.MICROSOFT),
-		new InnerAccountData(R.string.es_twitter, IdentityProvider.TWITTER)
-	};
+	private final List<InnerAccountData> supportedAccountsId;
 
 	private AbstractAuthenticator authenticator;
 	private UserAccountFetcher fetcher;
+
+	public LinkedAccountsFragment() {
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+		supportedAccountsId = new ArrayList<>(4);
+
+		if (options.isFacebookLoginEnabled()) {
+			supportedAccountsId.add(new InnerAccountData(R.string.es_facebook, IdentityProvider.FACEBOOK));
+		}
+		if (options.isGoogleLoginEnabled()) {
+			supportedAccountsId.add(new InnerAccountData(R.string.es_google, IdentityProvider.GOOGLE));
+		}
+		if (options.isMicrosoftLoginEnabled()) {
+			supportedAccountsId.add(new InnerAccountData(R.string.es_microsoft, IdentityProvider.MICROSOFT));
+		}
+		if (options.isTwitterLoginEnabled()) {
+			supportedAccountsId.add(new InnerAccountData(R.string.es_twitter, IdentityProvider.TWITTER));
+		}
+	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -146,12 +162,17 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 				getAdapter().updateAccountState(event.getIdentityProvider(), "");
 			}
 		} else {
-			String error = event.getError();
-			if (TextUtils.isEmpty(error)) {
-				error = getString(event.getState() == LinkUserThirdPartyAccountEvent.State.LINK
-					? R.string.es_account_link_error
-					: R.string.es_account_unlink_error);
+			int errorMessage;
+			if (event.getState() == LinkUserThirdPartyAccountEvent.State.LINK) {
+				if (event.getStatusCode() == ConflictException.STATUS_CODE) {
+					errorMessage = R.string.es_account_link_conflict;
+				} else {
+					errorMessage = R.string.es_account_link_error;
+				}
+			} else {
+				errorMessage = R.string.es_account_unlink_error;
 			}
+			String error = getString(errorMessage);
 			getAdapter().notifyDataSetChanged();
 			showToast(error);
 		}
@@ -164,18 +185,18 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 				fetcher.getAllData().get(0).getThirdPartyAccounts();
 
 			getAdapter().clear();
-			for (int i = 0; i < supportedAccountsId.length; i++) {
+			for (InnerAccountData accountData : supportedAccountsId) {
 				ThirdPartyAccountView existAccount = null;
 				for (ThirdPartyAccountView account : accounts) {
-					if (account.getIdentityProvider() == supportedAccountsId[i].type) {
+					if (account.getIdentityProvider() == accountData.type) {
 						existAccount = account;
 						break;
 					}
 				}
 				getAdapter().add(new ThirdPartyAccountView(
-					getString(supportedAccountsId[i].nameId),
+					getString(accountData.nameId),
 					(existAccount == null) ? null : existAccount.getAccountHandle(),
-					supportedAccountsId[i].type
+						accountData.type
 				));
 			}
 		}

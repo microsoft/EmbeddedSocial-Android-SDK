@@ -9,6 +9,7 @@ import android.content.Intent;
 
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
+import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAccountRequest;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -36,7 +37,14 @@ public class UnlinkUserThirdPartyAccountHandler implements IServiceIntentHandler
 			EventBus.post(LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType));
 		} catch (Exception e) {
 			DebugLog.logException(e);
-			EventBus.post(LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getCause().getMessage()));
+			LinkUserThirdPartyAccountEvent event;
+			if (e instanceof StatusException) {
+				event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage(),
+						((StatusException)e).getStatusCode());
+			} else {
+				event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage());
+			}
+			EventBus.post(event);
 		}
 	}
 

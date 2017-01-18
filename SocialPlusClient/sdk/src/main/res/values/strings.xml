@@ -281,6 +281,7 @@
 
 	<string name="es_last_account_title">Inaccessible action</string>
 	<string name="es_last_account_text">You must have at least one account linked to your profile.</string>
+	<string name="es_account_link_conflict">Linked account already exists.</string>
 	<string name="es_account_link_error">Error when linking your account.</string>
 	<string name="es_account_unlink_error">Error when unlinking your account.</string>
 

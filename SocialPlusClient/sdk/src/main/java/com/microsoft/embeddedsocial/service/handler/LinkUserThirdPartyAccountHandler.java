@@ -15,6 +15,7 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.account.LinkThirdPartyRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
@@ -39,7 +40,14 @@ public class LinkUserThirdPartyAccountHandler implements IServiceIntentHandler<S
 			EventBus.post(LinkUserThirdPartyAccountEvent.createLinkEvent(account));
 		} catch (NetworkRequestException e) {
 			DebugLog.logException(e);
-			EventBus.post(LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getCause().getMessage()));
+			LinkUserThirdPartyAccountEvent event;
+			if (e instanceof StatusException) {
+				event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage(),
+						((StatusException)e).getStatusCode());
+			} else {
+				event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage());
+			}
+			EventBus.post(event);
 		}
 	}
 

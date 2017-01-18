@@ -23,8 +23,7 @@ public class LinkThirdPartyRequest extends UserRequest {
     public LinkThirdPartyRequest(IdentityProvider identityProvider,
                                  String accessToken) {
         request = new PostLinkedAccountRequest();
-//        request.setIdentityProvider(identityProvider);
-//        request.setAccessToken(accessToken);
+        request.setSessionToken(accessToken);
         //TODO
 //        request.setRequestToken(requestToken);
     }

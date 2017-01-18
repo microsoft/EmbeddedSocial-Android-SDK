@@ -21,37 +21,48 @@ public class LinkUserThirdPartyAccountEvent extends AbstractEvent {
 	private final State state;
 	private final String error;
 	private final boolean isSuccess;
+	private final int statusCode;
 
-	private LinkUserThirdPartyAccountEvent(SocialNetworkAccount account, boolean isSuccess, String error) {
+	private LinkUserThirdPartyAccountEvent(SocialNetworkAccount account, boolean isSuccess, String error, int statusCode) {
 		this.account = account;
 		this.isSuccess = isSuccess;
 		this.error = error;
 		this.identityProvider = null;
 		this.state = State.LINK;
+		this.statusCode = statusCode;
 	}
 
-	private LinkUserThirdPartyAccountEvent(IdentityProvider identityProvider, boolean isSuccess, String error) {
+	private LinkUserThirdPartyAccountEvent(IdentityProvider identityProvider, boolean isSuccess, String error, int statusCode) {
 		this.identityProvider = identityProvider;
 		this.isSuccess = isSuccess;
 		this.error = error;
 		this.account = null;
 		this.state = State.UNLINK;
+		this.statusCode = statusCode;
 	}
 
 	public static LinkUserThirdPartyAccountEvent createLinkEvent(SocialNetworkAccount account) {
-		return new LinkUserThirdPartyAccountEvent(account, true, "");
+		return new LinkUserThirdPartyAccountEvent(account, true, "", 200);
 	}
 
 	public static LinkUserThirdPartyAccountEvent createLinkEvent(SocialNetworkAccount account, String error) {
-		return new LinkUserThirdPartyAccountEvent(account, false, error);
+		return new LinkUserThirdPartyAccountEvent(account, false, error, 0);
+	}
+
+	public static LinkUserThirdPartyAccountEvent createLinkEvent(SocialNetworkAccount account, String error, int statusCode) {
+		return new LinkUserThirdPartyAccountEvent(account, false, error, statusCode);
 	}
 
 	public static LinkUserThirdPartyAccountEvent createUnlinkEvent(IdentityProvider identityProvider) {
-		return new LinkUserThirdPartyAccountEvent(identityProvider, true, "");
+		return new LinkUserThirdPartyAccountEvent(identityProvider, true, "", 200);
 	}
 
 	public static LinkUserThirdPartyAccountEvent createUnlinkEvent(IdentityProvider identityProvider, String error) {
-		return new LinkUserThirdPartyAccountEvent(identityProvider, false, error);
+		return new LinkUserThirdPartyAccountEvent(identityProvider, false, error, 0);
+	}
+
+	public static LinkUserThirdPartyAccountEvent createUnlinkEvent(IdentityProvider identityProvider, String error, int statusCode) {
+		return new LinkUserThirdPartyAccountEvent(identityProvider, false, error, statusCode);
 	}
 
 	public boolean iSuccess() {
@@ -60,6 +71,10 @@ public class LinkUserThirdPartyAccountEvent extends AbstractEvent {
 
 	public String getError() {
 		return error;
+	}
+
+	public int getStatusCode() {
+		return statusCode;
 	}
 
 	public IdentityProvider getIdentityProvider() {
