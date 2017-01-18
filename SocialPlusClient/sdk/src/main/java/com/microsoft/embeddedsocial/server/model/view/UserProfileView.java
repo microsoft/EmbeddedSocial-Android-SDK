@@ -23,9 +23,6 @@ public class UserProfileView implements UniqueItem {
 	private String userHandle;
 
 	@DatabaseField
-	private String username;
-
-	@DatabaseField
 	private String firstName;
 
 	@DatabaseField
@@ -36,9 +33,6 @@ public class UserProfileView implements UniqueItem {
 
 	@DatabaseField
 	private String bio;
-
-	@DatabaseField
-	private String website;
 
 	@DatabaseField
 	private boolean isPrivate;
@@ -66,12 +60,10 @@ public class UserProfileView implements UniqueItem {
 
 	public UserProfileView(com.microsoft.embeddedsocial.autorest.models.UserProfileView view) {
 		userHandle = view.getUserHandle();
-//		username =
 		firstName = view.getFirstName();
 		lastName = view.getLastName();
 		userPhotoUrl = view.getPhotoUrl();
 		bio = view.getBio();
-//		website =
 		isPrivate = view.getVisibility() == Visibility.PRIVATE;
 		totalTopics = view.getTotalTopics();
 		totalFollowers = view.getTotalFollowers();
@@ -82,10 +74,6 @@ public class UserProfileView implements UniqueItem {
 
 	public String getHandle() {
 		return userHandle;
-	}
-
-	public String getUsername() {
-		return username;
 	}
 
 	public String getFirstName() {
@@ -107,10 +95,6 @@ public class UserProfileView implements UniqueItem {
 
 	public String getBio() {
 		return bio;
-	}
-
-	public String getWebsite() {
-		return website;
 	}
 
 	public boolean isPrivate() {
