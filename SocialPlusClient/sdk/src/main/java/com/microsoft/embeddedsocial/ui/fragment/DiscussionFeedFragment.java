@@ -332,7 +332,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 		@Subscribe
 		public void onFollowedStateChangedEvent(UserFollowedStateChangedEvent event) {
 			UserCompactView author = getAuthor();
-			if (event.isForUser(author.getHandle())) {
+			if (author != null && event.isForUser(author.getHandle())) {
 				AccountData profile = getAuthorProfile();
 				if (profile != null) {
 					profile.setFollowedStatus(event.getFollowedStatus());

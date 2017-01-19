@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
@@ -214,7 +215,8 @@ public class DiscussionFeedAdapter extends FetchableAdapter<Object, RecyclerView
 		}
 
 		TopicView topicView = (TopicView) getFetcher().getAllData().get(0);
-		if (userHandle.equals(topicView.getUser().getHandle())) {
+		if (topicView.getPublisherType() == PublisherType.USER
+				&& userHandle.equals(topicView.getUser().getHandle())) {
 			topicView.getUser().setFollowerStatus(followerStatus);
 		}
 
