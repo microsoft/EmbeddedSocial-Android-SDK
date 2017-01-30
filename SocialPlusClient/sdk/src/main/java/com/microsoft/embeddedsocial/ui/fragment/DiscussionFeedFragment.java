@@ -140,7 +140,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 					noteText.setText("");
 					hideView(R.id.es_noteImage);
 					noteText.clearFocus();
-					ViewUtils.hideKeyboard(this);
+					ViewUtils.hideKeyboard(getActivity());
 				}
 			});
 
