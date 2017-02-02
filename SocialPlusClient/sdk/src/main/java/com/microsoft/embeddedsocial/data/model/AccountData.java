@@ -26,7 +26,6 @@ public class AccountData implements Parcelable {
 	private String firstName;
 	private String lastName;
 	private String userPhotoUrl;
-	private String userCoverUrl;
 	private String bio;
 	private String thirdPartyAccountHandle;
 	private String thirdPartyAccessToken;
@@ -47,7 +46,6 @@ public class AccountData implements Parcelable {
 		this.firstName = userProfile.getFirstName();
 		this.lastName = userProfile.getLastName();
 		this.userPhotoUrl = userProfile.getUserPhotoUrl();
-		this.userCoverUrl = userProfile.getUserCoverUrl();
 		this.bio = userProfile.getBio();
 		this.followingCount = userProfile.getTotalFollowings();
 		this.followersCount = userProfile.getTotalFollowers();
@@ -61,7 +59,6 @@ public class AccountData implements Parcelable {
 		this.firstName = in.readString();
 		this.lastName = in.readString();
 		this.userPhotoUrl = in.readString();
-		this.userCoverUrl = in.readString();
 		this.bio = in.readString();
 		this.thirdPartyAccountHandle = in.readString();
 		this.thirdPartyAccessToken = in.readString();
@@ -113,18 +110,6 @@ public class AccountData implements Parcelable {
 
 	public void setUserPhotoUrl(String userPhotoUrl) {
 		this.userPhotoUrl = userPhotoUrl;
-	}
-
-	public String getUserCoverUrl() {
-		return userCoverUrl;
-	}
-
-	public ImageLocation getUserCoverLocation() {
-		return ImageLocation.createUserPhotoImageLocation(userCoverUrl);
-	}
-
-	public void setUserCoverUrl(String userCoverUrl) {
-		this.userCoverUrl = userCoverUrl;
 	}
 
 	public String getFullName() {
@@ -219,7 +204,6 @@ public class AccountData implements Parcelable {
 		dest.writeString(this.firstName);
 		dest.writeString(this.lastName);
 		dest.writeString(this.userPhotoUrl);
-		dest.writeString(this.userCoverUrl);
 		dest.writeString(this.bio);
 		dest.writeString(this.thirdPartyAccountHandle);
 		dest.writeString(this.thirdPartyAccessToken);
