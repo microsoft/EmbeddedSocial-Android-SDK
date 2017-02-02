@@ -9,6 +9,14 @@
 
 	<application>
 
+		<!-- Required by Firebase and Flurry analytics -->
+		<uses-permission android:name="android.permission.INTERNET"/>
+		<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+		<!-- Required by Firebase analytics -->
+		<uses-permission android:name="android.permission.WAKE_LOCK"/>
+		<!-- Recommended for Flurry analytics pre-caching -->
+		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 		<activity
 			android:name="com.microsoft.embeddedsocial.ui.activity.HomeActivity"
 			android:configChanges="keyboard|keyboardHidden|screenSize"

@@ -17,6 +17,8 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import com.facebook.FacebookSdk;
+import com.flurry.android.FlurryAgent;
+import com.flurry.android.FlurryAgentListener;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -177,6 +179,15 @@ public final class EmbeddedSocial {
 			DebugLog.prepare(context);
 		}
 	}
+
+    public static void initTelemetry(Context context) {
+        String FLURRY_KEY = "KB6N38WG2MSDC7RJX7YJ";
+        new FlurryAgent.Builder()
+                .withLogEnabled(true)
+                .withCaptureUncaughtExceptions(true)
+                .build(context, FLURRY_KEY);
+
+    }
 
 	/**
 	 * Starts an activity to add a new post.
