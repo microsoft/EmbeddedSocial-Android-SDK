@@ -1,7 +1,7 @@
 {
 	"application" : {
 	  	"serverUrl" : "https://dev-sharad.embeddedsocial.microsoft.com/",
-	  	"appKey" : "e4e642ee-77b3-4fdb-8bee-7de8774f6f81",
+	  	"appKey" : "e206ac75-c9d8-49aa-ad75-e2c1d8de1aff",
 		"numberOfCommentsToShow" : 20,
 		"numberOfRepliesToShow" : 20
 	},
@@ -19,7 +19,7 @@
 			"clientId" : "000000004413B70D"
 		},
 		"twitter" : {
-			"loginEnabled" : "true"
+			"loginEnabled" : "false"
 		}
 	},
 	"theme" : {
