@@ -287,6 +287,5 @@
 
 	<string name="es_google_auth_callback">com.microsoft.embeddedsocial</string>
 	<string name="es_google_auth_response">com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE</string>
-	<string name="es_google_auth_redirect">com.microsoft.embeddedsocial:/oauth2redirect</string>
 	<string name="es_terms">By using Microsoft Embedded Social, you agree to the Privacy Statement and Terms of Use.</string>
 </resources>

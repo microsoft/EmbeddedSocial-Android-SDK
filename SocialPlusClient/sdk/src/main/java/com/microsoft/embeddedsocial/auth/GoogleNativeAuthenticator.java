@@ -75,7 +75,10 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		String clientId = options.getGoogleClientId();
-		Uri redirectUri = Uri.parse(context.getString(R.string.es_google_auth_redirect));
+		String packageName = context.getString(R.string.es_google_auth_callback);
+		String authRedirect = String.format("%s:/oauth2redirect", packageName);
+
+		Uri redirectUri = Uri.parse(authRedirect);
 
 		AuthorizationRequest request = new AuthorizationRequest.Builder(
 				serviceConfiguration,
