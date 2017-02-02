@@ -88,11 +88,6 @@ public class UserProfileView implements UniqueItem {
 		return userPhotoUrl;
 	}
 
-	public String getUserCoverUrl() {
-		// TODO Debug value. Update after API change
-		return userPhotoUrl;
-	}
-
 	public String getBio() {
 		return bio;
 	}
