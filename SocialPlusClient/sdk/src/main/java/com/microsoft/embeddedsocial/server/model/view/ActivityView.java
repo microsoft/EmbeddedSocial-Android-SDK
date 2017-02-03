@@ -74,11 +74,13 @@ public class ActivityView implements UniqueItem, TimedItem {
 		actorUsers = loadActorUsers(view.getActorUsers());
 		count = view.getTotalActions();
 		ContentCompactView actedOnContent = view.getActedOnContent();
-		actedOnContentType = actedOnContent.getContentType().toValue();
-		actedOnContentHandle = actedOnContent.getContentHandle();
-		actedOnContentText = actedOnContent.getText();
-		actedOnContentBlobType = actedOnContent.getBlobType().toValue();
-		actedOnContentBlobUrl = actedOnContent.getBlobUrl();
+		if (actedOnContent != null) {
+			actedOnContentType = actedOnContent.getContentType().toValue();
+			actedOnContentHandle = actedOnContent.getContentHandle();
+			actedOnContentText = actedOnContent.getText();
+			actedOnContentBlobType = actedOnContent.getBlobType().toValue();
+			actedOnContentBlobUrl = actedOnContent.getBlobUrl();
+		}
 		actedOnUser = new UserCompactView(view.getActedOnUser());
 		app = new AppCompactView(view.getApp());
 		createdTime = view.getCreatedTime().getMillis();
