@@ -26,7 +26,7 @@ public class Telemetry {
         analytics = solution;
     }
 
-    enum Analytics {
+    public enum Analytics {
         FLURRY,
         FIREBASE;
     }

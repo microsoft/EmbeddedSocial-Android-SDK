@@ -21,6 +21,9 @@ repositories {
         url "http://dl.bintray.com/acrowntest/test"
     }
 }
+
+def FLURRY_API_KEY = '"' + FlurryApiKey + '"' ?: '"FlurryApiKey"'
+
 android {
     signingConfigs {
         debug {
@@ -45,21 +48,25 @@ android {
     }
     buildTypes {
         debug {
+            buildConfigField "String", "FLURRY_API_KEY", FLURRY_API_KEY
             buildConfigField "boolean", "STANDALONE_APP", "false"
             signingConfig signingConfigs.debug
         }
         release {
+            buildConfigField "String", "FLURRY_API_KEY", FLURRY_API_KEY
             buildConfigField "boolean", "STANDALONE_APP", "false"
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debugStandalone.initWith(buildTypes.debug)
         debugStandalone {
+            buildConfigField "String", "FLURRY_API_KEY", FLURRY_API_KEY
             buildConfigField "boolean", "STANDALONE_APP", "true"
             signingConfig signingConfigs.debug
         }
         releaseStandalone.initWith(buildTypes.release)
         releaseStandalone {
+            buildConfigField "String", "FLURRY_API_KEY", FLURRY_API_KEY
             buildConfigField "boolean", "STANDALONE_APP", "true"
         }
     }

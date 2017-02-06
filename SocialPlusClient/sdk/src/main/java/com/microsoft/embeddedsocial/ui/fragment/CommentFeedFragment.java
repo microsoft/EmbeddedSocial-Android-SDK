@@ -29,6 +29,8 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.telemetry.Event;
+import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
 import com.microsoft.embeddedsocial.event.content.PinAddedEvent;
 import com.microsoft.embeddedsocial.service.IntentExtras;
@@ -170,6 +172,9 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 	public void onPinAdded(PinAddedEvent pinAddedEvent) {
 		if (pinAddedEvent.isResult()) {
 			getAdapter().setTopicPin(true);
+			Event e = Telemetry.newEvent(getContext(), "Pin added");
+			e.addParam("Topic handle", topicHandle);
+			e.log();
 		}
 	}
 

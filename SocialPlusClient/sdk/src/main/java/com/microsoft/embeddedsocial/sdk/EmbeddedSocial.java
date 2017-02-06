@@ -32,6 +32,7 @@ import com.microsoft.embeddedsocial.sdk.ui.TabColorizer;
 import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
 import com.microsoft.embeddedsocial.server.NetworkAvailability;
 import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
 import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
 import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
@@ -102,6 +103,7 @@ public final class EmbeddedSocial {
         options.verify();
         GlobalObjectRegistry.addObject(options);
         initGlobalObjects(application, options);
+        initTelemetry(application);
         WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
         // TODO: Added to main activity access token tracking
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
@@ -181,12 +183,23 @@ public final class EmbeddedSocial {
 	}
 
     public static void initTelemetry(Context context) {
-        String FLURRY_KEY = "KB6N38WG2MSDC7RJX7YJ";
-        new FlurryAgent.Builder()
-                .withLogEnabled(true)
-                .withCaptureUncaughtExceptions(true)
-                .build(context, FLURRY_KEY);
+        boolean success = initFlurry(context);
+    }
 
+    private static boolean initFlurry(Context context) {
+        boolean success = false;
+        try {
+            // Try getting the Flurry session ID
+            // Will throw IllegalStateException if flurry is not already initialized
+            FlurryAgent.getSessionId();
+        } catch (IllegalStateException e) {
+            new FlurryAgent.Builder()
+                    .withLogEnabled(true)
+                    .build(context, BuildConfig.FLURRY_API_KEY);
+            Telemetry.setAnalyticsSolution(Telemetry.Analytics.FLURRY);
+            success = true;
+        }
+        return success;
     }
 
 	/**
