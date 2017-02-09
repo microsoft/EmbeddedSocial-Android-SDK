@@ -8,6 +8,7 @@ package com.microsoft.embeddedsocial.image;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.ConditionVariable;
 import android.widget.ImageView;
 
@@ -32,6 +33,11 @@ public final class ImageLoader {
 
 	private static ExecutorService executor = Executors.newFixedThreadPool(THREADS_COUNT);
 
+	/**
+	 * Toggle this boolean to get logs and stack traces from Picasso in debug builds
+	 */
+	private static boolean LOG_PICASSO = false;
+
 	private ImageLoader() {
 	}
 
@@ -40,7 +46,15 @@ public final class ImageLoader {
 		executor.submit(() -> {
 			Picasso.Builder builder = new Picasso.Builder(context);
 			builder.executor(executor);
-			builder.loggingEnabled(BuildConfig.DEBUG);
+			if (BuildConfig.DEBUG && LOG_PICASSO) {
+				builder.loggingEnabled(true);
+				builder.listener(new Picasso.Listener() {
+					@Override
+					public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+						exception.printStackTrace();
+					}
+				});
+			}
 			picasso = builder.build();
 			initCondition.open();
 		});
