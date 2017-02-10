@@ -24,6 +24,10 @@ import java.util.concurrent.Executors;
  * Helper class for image loading.
  */
 public final class ImageLoader {
+	/**
+	 * Toggle this boolean to get logs and stack traces from Picasso in debug builds
+	 */
+	private static final boolean LOG_PICASSO = false;
 
 	private static final int THREADS_COUNT = 4;
 
@@ -32,11 +36,6 @@ public final class ImageLoader {
 	private static ConditionVariable initCondition = new ConditionVariable();
 
 	private static ExecutorService executor = Executors.newFixedThreadPool(THREADS_COUNT);
-
-	/**
-	 * Toggle this boolean to get logs and stack traces from Picasso in debug builds
-	 */
-	private static boolean LOG_PICASSO = false;
 
 	private ImageLoader() {
 	}
