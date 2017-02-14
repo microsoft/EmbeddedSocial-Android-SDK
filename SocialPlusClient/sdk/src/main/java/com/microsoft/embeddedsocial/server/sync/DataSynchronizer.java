@@ -62,16 +62,26 @@ public class DataSynchronizer {
 
 		List<ISynchronizable> entities = producer.getSynchronizableEntities();
 		int syncedEntities = 0;
+		// Store the first exception from this producer
+		SynchronizationException exception = null;
 
-		try {
-			for (ISynchronizable entity : entities) {
+		for (ISynchronizable entity : entities) {
+			try {
 				synchronizeEntity(entity, producerName);
 				++syncedEntities;
+			} catch (SynchronizationException e) {
+				if (exception == null) {
+					exception = e;
+				}
+			} catch (Exception e) {
+				if (exception == null) {
+					exception = new SynchronizationException("Synchronization failed: " + e.getMessage(), e);
+				}
 			}
-		} catch (SynchronizationException e) {
-			throw e;
-		} catch (Exception e) {
-			throw new SynchronizationException("Synchronization failed: " + e.getMessage(), e);
+		}
+
+		if (exception != null) {
+			throw exception;
 		}
 
 		return syncedEntities;
