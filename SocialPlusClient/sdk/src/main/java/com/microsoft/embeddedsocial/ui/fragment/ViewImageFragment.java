@@ -43,6 +43,7 @@ public class ViewImageFragment extends BaseFragment {
 		String coverImageUrl = arguments.getString(IntentExtras.COVER_IMAGE_URL_EXTRA);
 
 		progressBar = (ProgressBar) view.findViewById(R.id.es_progress);
+		setProgressBarColor(progressBar);
 		coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
 		coverContentLoader = new FullImageViewContentLoader(coverImage);
 		if (savedInstanceState == null) {

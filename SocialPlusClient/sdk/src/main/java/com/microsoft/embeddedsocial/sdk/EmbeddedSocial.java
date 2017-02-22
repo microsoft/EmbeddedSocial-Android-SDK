@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
@@ -39,6 +40,7 @@ import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
 import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.notification.NotificationController;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.Preferences;
@@ -162,6 +164,10 @@ public final class EmbeddedSocial {
 
     public static void setTabColors(TabColorizer colorizer){
         BaseTabsActivity.setTabColorizer(colorizer);
+    }
+
+    public static void setProgressBarColor(@ColorRes int color) {
+        BaseFragment.setProgressBarColorId(color);
     }
 
     public static void setAppProfile(AppProfile appProfile) {

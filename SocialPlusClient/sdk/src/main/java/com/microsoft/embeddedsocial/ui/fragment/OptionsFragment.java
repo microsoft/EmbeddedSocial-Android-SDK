@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.R;
@@ -70,7 +71,9 @@ public class OptionsFragment extends BaseFragment {
 
 	private void signOut() {
 		((BaseActivity) getActivity()).disableNavigationPanel();
-		showView(R.id.es_progress);
+		ProgressBar progressBar = findView(getView(), R.id.es_progress);
+		setProgressBarColor(progressBar);
+		progressBar.setVisibility(View.VISIBLE);
 		hideView(R.id.es_options);
 		UserAccount.getInstance().signOut();
 		new AsyncTask<Void, Void, Void>() {

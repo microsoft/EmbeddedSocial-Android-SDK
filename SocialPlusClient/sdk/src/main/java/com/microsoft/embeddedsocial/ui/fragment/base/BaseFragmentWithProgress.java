@@ -10,6 +10,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
@@ -34,6 +35,7 @@ public abstract class BaseFragmentWithProgress extends BaseFragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		progressView = findView(view, R.id.es_progress);
+		setProgressBarColor((ProgressBar)progressView);
 		ViewGroup parent = (ViewGroup) view;
 		contentView = getLayoutInflater(savedInstanceState).inflate(getContentLayoutId(), parent, false);
 		parent.addView(contentView);

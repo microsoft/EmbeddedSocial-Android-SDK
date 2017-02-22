@@ -8,7 +8,9 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -16,6 +18,7 @@ import android.support.annotation.StringRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.util.Pair;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -23,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.microsoft.embeddedsocial.actions.Action;
@@ -51,6 +55,8 @@ public abstract class BaseFragment extends Fragment {
 
 	private final List<Pair<ActionFilter, ActionListener>> actionListeners = new LinkedList<>();
 	private final List<Object> eventListeners = new LinkedList<>();
+
+	private static int progressBarColorId = -1;
 
 	@SuppressWarnings("FieldCanBeLocal")
 	private final Object actionEventListener = new Object() {
@@ -346,4 +352,21 @@ public abstract class BaseFragment extends Fragment {
 		return getOwner().isShuttingDown();
 	}
 
+	/**
+	 * Colors the progress bar
+     */
+	protected void setProgressBarColor(ProgressBar progressBar) {
+		if (progressBarColorId >= 0) {
+			// Value has changed from the default
+			progressBar.getIndeterminateDrawable().setColorFilter(
+					ContextCompat.getColor(getContext(), progressBarColorId), PorterDuff.Mode.SRC_IN);
+		}
+	}
+
+	/**
+	 * Sets the color to be used for all progress bars
+     */
+	public static void setProgressBarColorId(@ColorRes int newProgressBarColorId) {
+		progressBarColorId = newProgressBarColorId;
+	}
 }
