@@ -47,7 +47,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 		service = new AuthorizationService(context);
 
 		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
-		localBroadcastManager.registerReceiver(googleAuthReciever, new IntentFilter(GOOGLE_ACCOUNT_ACTION));
+		localBroadcastManager.registerReceiver(googleAuthReceiver, new IntentFilter(GOOGLE_ACCOUNT_ACTION));
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 						if (ex != null) {
 							DebugLog.logException(ex);
 							service.dispose();
-							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReciever);
+							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReceiver);
 							onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
 						} else {
 							// service configuration retrieved, proceed to authorization...'
@@ -75,8 +75,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		String clientId = options.getGoogleClientId();
-		String packageName = context.getString(R.string.es_google_auth_callback);
-		String authRedirect = String.format("%s:/oauth2redirect", packageName);
+		String authRedirect = String.format("%s:/oauth2redirect", context.getPackageName());
 
 		Uri redirectUri = Uri.parse(authRedirect);
 
@@ -93,7 +92,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 		service.dispose();
 	}
 
-	private BroadcastReceiver googleAuthReciever = new BroadcastReceiver() {
+	private BroadcastReceiver googleAuthReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			SocialNetworkAccount account = intent.getParcelableExtra(GOOGLE_ACCOUNT);
