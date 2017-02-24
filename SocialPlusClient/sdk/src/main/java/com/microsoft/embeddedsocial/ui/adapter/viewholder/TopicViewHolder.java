@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
-import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.image.CoverLoader;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.sdk.R;
@@ -37,7 +37,7 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 	protected TextView postTitle;
 	private TextView postBody;
 	private TextView postLikesCountButton;
-	protected TextView postCommentsCountButton;
+	protected LinearLayout postCommentsCountButton;
 	private FrameLayout contentButton;
 	private ButtonStyleHelper buttonStyleHelper;
 
@@ -80,7 +80,8 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 						totalLikes));
 
 		long totalComments = topic.getTotalComments();
-		postCommentsCountButton.setText(
+		TextView postCommentsButtonText = (TextView)postCommentsCountButton.findViewById(R.id.es_postCommentsCountButtonText);
+		postCommentsButtonText.setText(
 				postCommentsCountButton.getResources().getQuantityString(R.plurals.es_topic_comments_pattern,
 						QuantityStringUtils.convertLongToInt(totalComments),
 						totalComments));
@@ -139,9 +140,9 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		postLikesCountButton.setOnClickListener(topicButtonsListener::onClickLikesCount);
 		buttonStyleHelper.applyAccentColor(postLikesCountButton);
 
-		postCommentsCountButton = (TextView) view.findViewById(R.id.es_postCommentsCountButton);
+		postCommentsCountButton = (LinearLayout) view.findViewById(R.id.es_postCommentsCountButton);
 		postCommentsCountButton.setOnClickListener(topicButtonsListener::onClickCommentsCount);
-		buttonStyleHelper.applyAccentColor(postCommentsCountButton);
+		applyPostCommentsCountButtonAccentColor();
 
 		contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
 		likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
@@ -152,5 +153,12 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 		likeButton.setOnClickListener(topicButtonsListener::onClickLike);
 		commentButton.setOnClickListener(topicButtonsListener::onClickComment);
 		pinButton.setOnClickListener(topicButtonsListener::onClickPin);
+	}
+
+	private void applyPostCommentsCountButtonAccentColor() {
+		TextView text = (TextView)postCommentsCountButton.findViewById(R.id.es_postCommentsCountButtonText);
+		ImageView image = (ImageView)postCommentsCountButton.findViewById(R.id.es_postCommentsCountButtonImage);
+		buttonStyleHelper.applyAccentColor(text);
+		buttonStyleHelper.applyAccentColor(image, true);
 	}
 }

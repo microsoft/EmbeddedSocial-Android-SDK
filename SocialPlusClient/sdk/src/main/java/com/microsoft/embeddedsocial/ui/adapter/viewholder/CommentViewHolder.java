@@ -5,11 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
@@ -34,7 +37,7 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 	private TextView commentText;
 
 	private TextView commentLikesCountButton;
-	private TextView commentRepliesCountButton;
+	private LinearLayout commentRepliesCountButton;
 	private ImageView commentButton;
 	private ImageView likeButton;
 	private ViewGroup contentButton;
@@ -76,7 +79,8 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 					totalLikes));
 
 		long totalReplies = comment.getTotalReplies();
-		commentRepliesCountButton.setText(
+		TextView commentButtonText = (TextView)commentRepliesCountButton.findViewById(R.id.es_commentRepliesCountButtonText);
+		commentButtonText.setText(
 			commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_replies_pattern,
 					QuantityStringUtils.convertLongToInt(totalReplies),
 					totalReplies));
@@ -109,9 +113,9 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 	}
 
 	private void setCommentBackgroundColor(CommentView comment) {
-		int commentBackground = comment.isLocal()
+		@ColorInt int commentBackground = comment.isLocal()
 			? ThemeAttributes.getColor(getContext(), R.styleable.es_AppTheme_es_uploadingItemColor)
-			: getResources().getColor(R.color.es_comment_background);
+			: ContextCompat.getColor(getContext(), R.color.es_comment_background);
 		commentRootView.setBackgroundColor(commentBackground);
 	}
 
@@ -146,8 +150,8 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 		commentText = (TextView) view.findViewById(R.id.es_commentText);
 		commentLikesCountButton = (TextView) view.findViewById(R.id.es_commentLikesCountButton);
 		buttonStyleHelper.applyAccentColor(commentLikesCountButton);
-		commentRepliesCountButton = (TextView) view.findViewById(R.id.es_commentRepliesCountButton);
-		buttonStyleHelper.applyAccentColor(commentRepliesCountButton);
+		commentRepliesCountButton = (LinearLayout) view.findViewById(R.id.es_commentRepliesCountButton);
+		applyCommentRepliesCountButtonAccentColor();
 		commentButton = (ImageView) view.findViewById(R.id.es_commentButton);
 		likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
 
@@ -163,5 +167,12 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 			coverButton.setOnClickListener((v) ->
 					commentButtonListener.onClickCover(commentView));
 		}
+	}
+
+	private void applyCommentRepliesCountButtonAccentColor() {
+		TextView text = (TextView)commentRepliesCountButton.findViewById(R.id.es_commentRepliesCountButtonText);
+		ImageView image = (ImageView)commentRepliesCountButton.findViewById(R.id.es_commentRepliesCountButtonImage);
+		buttonStyleHelper.applyAccentColor(text);
+		buttonStyleHelper.applyAccentColor(image, true);
 	}
 }
