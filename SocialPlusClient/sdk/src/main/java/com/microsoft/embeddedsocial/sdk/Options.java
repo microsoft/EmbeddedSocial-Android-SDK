@@ -103,6 +103,10 @@ public final class Options {
 		application.appKey = appKey;
 	}
 
+	public boolean isSearchEnabled() {
+		return application.searchEnabled;
+	}
+
 	public String getFacebookApplicationId() {
 		return socialNetworks.facebook.clientId;
 	}
@@ -132,9 +136,9 @@ public final class Options {
 
 		private String serverUrl = null;
 		private String appKey = null;
+		private boolean searchEnabled = false;
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
-
 	}
 
 	/**

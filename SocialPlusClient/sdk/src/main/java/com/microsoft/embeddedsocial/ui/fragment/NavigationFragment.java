@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.data.Preferences;
@@ -86,9 +88,10 @@ public class NavigationFragment extends BaseFragment {
 	}
 
 	private void setupNavigationView() {
+		Options options = GlobalObjectRegistry.getObject(Options.class);
 		final boolean signedIn = UserAccount.getInstance().isSignedIn();
 		setupNavigationItem(R.id.es_navigationHome, navigation::gotoHome, signedIn);
-		setupNavigationItem(R.id.es_navigationSearch, navigation::gotoSearch, true);
+		setupNavigationItem(R.id.es_navigationSearch, navigation::gotoSearch, options.isSearchEnabled());
 		setupNavigationItem(R.id.es_navigationPopular, navigation::gotoPopular, true);
 		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins, signedIn);
 		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed, signedIn);

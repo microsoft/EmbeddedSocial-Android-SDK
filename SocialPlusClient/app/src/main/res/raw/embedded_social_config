@@ -1,9 +1,10 @@
 {
 	"application" : {
-	  	"serverUrl" : "https://dev-sharad.embeddedsocial.microsoft.com/",
-	  	"appKey" : "e206ac75-c9d8-49aa-ad75-e2c1d8de1aff",
+	  	"serverUrl" : "https://ppe.embeddedsocial.microsoft.com/",
+	  	"appKey" : "44314868-309a-4b72-9a27-15827b9b0d50",
 		"numberOfCommentsToShow" : 20,
-		"numberOfRepliesToShow" : 20
+		"numberOfRepliesToShow" : 20,
+		"searchEnabled" : "true"
 	},
 	"socialNetworks" : {
 		"facebook" : {

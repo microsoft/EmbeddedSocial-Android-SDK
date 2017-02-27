@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.WorkerService;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
@@ -43,6 +44,7 @@ public class OptionsFragment extends BaseFragment {
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		Options options = GlobalObjectRegistry.getObject(Options.class);
 		View.OnClickListener defaultListener = v -> showToast("Not implemented");
 		// TODO: hide it in not "master app"
 //		setOnClickListener(view, R.id.es_applications, defaultListener);
@@ -53,7 +55,12 @@ public class OptionsFragment extends BaseFragment {
 		setOnClickListener(view, R.id.es_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
 		setOnClickListener(view, R.id.es_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
 		setOnClickListener(view, R.id.es_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
-		setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
+		if (options.isSearchEnabled()) {
+			setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
+		} else {
+			View deleteSearchHistoryView = findView(view, R.id.es_deleteSearchHistory);
+			deleteSearchHistoryView.setVisibility(View.GONE);
+		}
 		setOnClickListener(view, R.id.es_signOut, v -> signOut());
 		setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
 		SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
