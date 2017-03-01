@@ -66,6 +66,17 @@
 # lambdas
 -dontwarn java.lang.invoke**
 
+# for OrmLite
+-keep class com.j256.**
+-keepclassmembers class com.j256.** { *; }
+-keep enum com.j256.**
+-keepclassmembers enum com.j256.** { *; }
+-keep interface com.j256.**
+-keepclassmembers interface com.j256.** { *; }
+-keepclassmembers class * {
+    public <init>(android.content.Context);
+ }
+
 -keep class javax.** { *; }
 -keep class java.** { *; }
 -keep class org.** { *; }
