@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.webkit.CookieManager;
 
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.IAuthenticationService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
@@ -43,7 +42,6 @@ public class SignOutHandler extends ActionHandler {
 			// ignore server errors
 			DebugLog.logException(e);
 		}
-		MicrosoftLiveAuthenticator.signOut(context);
 		clearCookies();
 	}
 
