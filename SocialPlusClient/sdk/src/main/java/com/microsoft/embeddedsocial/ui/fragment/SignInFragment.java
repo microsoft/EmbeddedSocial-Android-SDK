@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
@@ -160,7 +159,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void signInWithMicrosoft() {
-		startAuthentication(new MicrosoftLiveAuthenticator(this, this));
+
 	}
 
 	private void startAuthentication(AbstractAuthenticator authenticator) {

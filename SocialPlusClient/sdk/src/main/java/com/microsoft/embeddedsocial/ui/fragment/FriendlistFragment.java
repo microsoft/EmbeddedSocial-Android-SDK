@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
@@ -83,9 +82,6 @@ public class FriendlistFragment extends BaseUsersListFragment {
 
 			case GOOGLE:
 				return new GoogleNativeAuthenticator(this, authorizationRequest);
-
-			case MICROSOFT:
-				return new MicrosoftLiveAuthenticator(this, authorizationRequest);
 
 			default:
 				throw new RuntimeException("Unknown authentication method");

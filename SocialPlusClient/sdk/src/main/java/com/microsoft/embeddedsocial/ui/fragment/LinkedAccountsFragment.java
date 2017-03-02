@@ -20,7 +20,6 @@ import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
 import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
@@ -113,9 +112,6 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 		switch (identityProvider) {
 			case FACEBOOK:
 				authenticator = new FacebookAuthenticator(this, this, FacebookAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
-				break;
-			case MICROSOFT:
-				authenticator = new MicrosoftLiveAuthenticator(this, this);
 				break;
 			case GOOGLE:
 				authenticator = new GoogleNativeAuthenticator(this, this);

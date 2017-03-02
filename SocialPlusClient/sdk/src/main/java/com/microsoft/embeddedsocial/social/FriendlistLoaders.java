@@ -22,9 +22,6 @@ public final class FriendlistLoaders {
 			case GOOGLE:
 				return new GooglePlusFriendlistLoader();
 
-			case MICROSOFT:
-				return new MicrosoftLiveFriendlistLoader();
-
 			default:
 				throw new RuntimeException("account type is not supported");
 		}
