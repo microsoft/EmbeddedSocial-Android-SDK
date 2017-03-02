@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="?attr/es_galleryItemBackground"
+	android:foreground="?attr/es_buttonBackground"
+	android:layout_margin="@dimen/es_grid_half_padding"
+	>
+
+	<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
+		android:id="@+id/es_image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"
+		/>
+
+	<TextView
+		android:id="@+id/es_noImage"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/es_no_image"
+		android:layout_gravity="center"
+		/>
+
+	<ImageView
+		android:id="@+id/es_uploadingIndicator"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/es_uploading_indicator"
+		android:layout_gravity="left|bottom"
+		/>
+
+
+</FrameLayout>

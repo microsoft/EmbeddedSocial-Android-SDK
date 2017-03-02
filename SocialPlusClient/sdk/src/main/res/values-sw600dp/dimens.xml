@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<resources>
+	<dimen name="es_padding_card_horizontal">8dp</dimen>
+	<dimen name="es_card_list_padding_hor">12dp</dimen>
+	<dimen name="es_padding_card_vertical">8dp</dimen>
+	<dimen name="es_card_list_padding_ver">12dp</dimen>
+	<dimen name="es_grid_cell_size">200dp</dimen>
+	<dimen name="es_profile_button_padding">20dp</dimen>
+	<dimen name="es_users_list_vertical_padding">0px</dimen>
+	<dimen name="es_users_list_vertical_padding_large">0px</dimen>
+
+	<dimen name="es_padding_options_horizontal">64dp</dimen>
+	<dimen name="es_card_cover_image_width">600dp</dimen>
+	<dimen name="es_add_post_photo_height">240dp</dimen>
+
+</resources>

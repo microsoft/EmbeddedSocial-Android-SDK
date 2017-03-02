@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="?attr/es_contentBackground"
+	>
+
+	<!-- The outer FrameLayout is a workaround against the bug with SwipeRefreshLayout inside ViewPager -->
+
+	<com.microsoft.embeddedsocial.ui.view.AdvancedSwipeRefreshLayout
+		android:id="@+id/es_swipeRefresh"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		>
+
+		<FrameLayout
+			android:id="@+id/es_contentLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<!-- Haven't found a way to make SwipeRefreshLayout work with a non-scrollable child -->
+
+			<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:fillViewport="true"
+				tools:ignore="UselessParent"
+				>
+
+				<FrameLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					tools:ignore="ScrollViewSize"
+					>
+
+					<TextView
+						android:id="@+id/es_message"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						style="@style/EmbeddedSocialSdkContentErrorMessage"
+						/>
+
+					<include
+						android:id="@+id/es_progress"
+						layout="@layout/es_progressbar"
+						/>
+
+				</FrameLayout>
+			</ScrollView>
+
+		</FrameLayout>
+	</com.microsoft.embeddedsocial.ui.view.AdvancedSwipeRefreshLayout>
+</FrameLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<resources>
+	<color name="es_white">#FFFFFF</color>
+	<color name="es_black">#F000</color>
+	<color name="es_green_500">#4CAF50</color>
+	<color name="es_pink_500">#E91E63</color>
+	<color name="es_teal_500">#009688</color>
+	<color name="es_orange_500">#FF9800</color>
+	<color name="es_gray_900">#212121</color>
+	<color name="es_gray_300">#E0E0E0</color>
+	<color name="es_lime_A400">#C6FF00</color>
+	<color name="es_red_50">#ffebee</color>
+	<color name="es_yellow_50">#FFFDE7</color>
+	<color name="es_lightblue_50">#E1F5FE</color>
+
+	<color name="es_text_primary_light">#DF000000</color>
+	<color name="es_text_secondary_light">#8A000000</color>
+	<color name="es_text_hint_light">#42000000</color>
+
+	<color name="es_text_primary_dark">#DFFFFFFF</color>
+	<color name="es_text_secondary_dark">#AAFFFFFF</color>
+	<color name="es_text_hint_dark">#42FFFFFF</color>
+
+	<color name="es_window_background_light">@color/es_white</color>
+	<color name="es_window_background_dark">#606060</color>
+	<color name="es_feed_background_light">#EEEDED</color>
+	<color name="es_toolbar_background">@color/es_gray_900</color>
+	<color name="es_drawer_background">@color/es_gray_900</color>
+	<color name="es_text_green">@color/es_green_500</color>
+	<color name="es_text_link_color">@color/es_green_500</color>
+	<color name="es_image_holder">@color/es_gray_300</color>
+	<color name="es_button_text">@color/es_green_500</color>
+
+	<color name="es_button_color_light">@color/es_lime_A400</color>
+	<color name="es_progressbar">@color/es_lime_A400</color>
+
+	<color name="es_info_message_text">@color/es_white</color>
+	<color name="es_info_message_background">@color/es_pink_500</color>
+	<color name="es_default_card_background">@android:color/white</color>
+	<color name="es_comment_background">@android:color/transparent</color>
+	<color name="es_reply_background">@android:color/transparent</color>
+
+	<color name="es_placeholder">#06000000</color>
+
+	<color name="es_tab_text_active">@android:color/white</color>
+	<color name="es_tab_text_not_active">#bdbdbd</color>
+
+	<color name="es_button_base_gray">#ff999999</color>
+	<color name="es_button_completed_text">@android:color/white</color>
+
+	<color name="es_sign_in_google">#4285f4</color>
+	<color name="es_sign_in_facebook">#3b5997</color>
+	<color name="es_sign_in_microsoft">#2a79d9</color>
+	<color name="es_sign_in_twitter">#1da1f2</color>
+</resources>

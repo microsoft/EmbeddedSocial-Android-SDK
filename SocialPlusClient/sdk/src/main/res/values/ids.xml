@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<resources>
+    <item type="id" name="es_keyHandle"/>
+    <item type="id" name="es_keyComment"/>
+    <item type="id" name="es_keyReply"/>
+    <item type="id" name="es_keyUser"/>
+    <item type="id" name="es_keyTopic"/>
+    <item type="id" name="es_keyIsAdd"/>
+    <item type="id" name="es_keyIsOwnContent"/>
+    <item type="id" name="es_keyFollowerStatus"/>
+    <item type="id" name="es_keyPosition"/>
+
+    <item type="id" name="es_recyclerView"/>
+</resources>

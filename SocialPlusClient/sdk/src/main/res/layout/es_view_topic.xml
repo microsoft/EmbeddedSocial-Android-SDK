@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+	   xmlns:app="http://schemas.android.com/apk/res-auto"
+	   android:layout_width="match_parent"
+	   android:layout_height="match_parent"
+	>
+
+	<include layout="@layout/es_view_user_header"/>
+
+	<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
+		android:id="@+id/es_coverImage"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/es_card_cover_image_height"
+		android:layout_below="@id/es_profileImage"
+		android:layout_marginBottom="@dimen/es_padding_large"
+		android:background="?attr/es_topicCoverBackground"
+		android:scaleType="centerCrop"
+		app:es_aspectRatio="0.66"
+		/>
+
+	<FrameLayout
+		android:id="@+id/es_coverButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_alignBottom="@id/es_coverImage"
+		android:layout_alignTop="@id/es_coverImage"
+		android:foreground="?attr/es_buttonBackground"
+		android:clickable="true"
+		android:visibility="gone"
+		/>
+
+	<TextView
+		android:id="@+id/es_postTitle"
+		style="@style/EmbeddedSocialSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/es_coverImage"
+		android:layout_marginRight="@dimen/es_padding_large"
+		android:layout_toRightOf="@id/es_leftBorder"
+		android:singleLine="true"
+		android:textStyle="bold"
+		android:autoLink="web"
+		/>
+
+	<TextView
+		android:id="@+id/es_postBody"
+		style="@style/EmbeddedSocialSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/es_postTitle"
+		android:layout_marginRight="@dimen/es_padding_large"
+		android:layout_marginTop="@dimen/es_padding_base"
+		android:layout_toRightOf="@id/es_leftBorder"
+		/>
+
+	<View
+		android:id="@+id/es_dividerLayoutTop"
+		style="@style/EmbeddedSocialSdkDivider"
+		android:layout_below="@id/es_postBody"
+		android:layout_marginBottom="@dimen/es_padding_base"
+		android:layout_marginTop="@dimen/es_padding_xlarge"/>
+
+	<FrameLayout
+		android:id="@+id/es_contentButton"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clickable="true"
+		android:foreground="?attr/es_buttonBackground"
+		android:layout_below="@id/es_profileImage"
+		android:layout_above="@+id/es_buttonsLayout"
+		android:layout_alignTop="@id/es_coverImage"
+		android:layout_alignBottom="@id/es_dividerLayoutTop"
+		/>
+
+	<RelativeLayout
+		android:id="@+id/es_buttonsLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/es_dividerLayoutTop"
+		android:layout_marginLeft="@dimen/es_compensate_drawable_size"
+		android:layout_toRightOf="@id/es_leftBorder"
+		>
+
+		<ImageView
+			android:id="@+id/es_likeButton"
+			style="?android:attr/borderlessButtonStyle"
+			android:layout_width="@dimen/es_button_base_size"
+			android:layout_height="@dimen/es_button_base_size"
+			android:layout_marginTop="2dp"
+			android:background="?attr/es_buttonBackground"
+			android:clickable="true"
+			android:scaleType="center"
+			android:src="@drawable/es_ic_like_normal"/>
+
+		<ImageView
+			android:id="@+id/es_commentButton"
+			style="?android:attr/borderlessButtonStyle"
+			android:layout_width="@dimen/es_button_base_size"
+			android:layout_height="@dimen/es_button_base_size"
+			android:layout_marginBottom="@dimen/es_padding_small"
+			android:layout_marginTop="2dp"
+			android:layout_toRightOf="@id/es_likeButton"
+			android:background="?attr/es_buttonBackground"
+			android:clickable="true"
+			android:scaleType="center"
+			android:src="@drawable/es_ic_comment"
+			/>
+
+		<ImageView
+			android:id="@+id/es_pinButton"
+			style="?android:attr/borderlessButtonStyle"
+			android:layout_width="@dimen/es_button_base_size"
+			android:layout_height="@dimen/es_button_base_size"
+			android:layout_marginTop="2dp"
+			android:layout_toRightOf="@id/es_commentButton"
+			android:background="?attr/es_buttonBackground"
+			android:clickable="true"
+			android:scaleType="center"
+			android:src="@drawable/es_ic_pin_normal"/>
+
+		<LinearLayout
+				android:id="@+id/es_postCommentsCountButton"
+				android:layout_width="wrap_content"
+				android:layout_height="@dimen/es_button_base_size"
+				android:orientation="horizontal"
+				android:clickable="true"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="@dimen/es_padding_small"
+				android:gravity="center_vertical"
+		>
+			<ImageView
+					android:id="@+id/es_postCommentsCountButtonImage"
+					android:layout_width="@dimen/es_replies_button_image_size"
+					android:layout_height="@dimen/es_replies_button_image_size"
+					android:src="@drawable/es_ic_comment_green"
+			/>
+			<TextView
+					android:id="@+id/es_postCommentsCountButtonText"
+					style="@style/EmbeddedSocialSdkTextCaption.Green"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:background="?attr/es_buttonBackground"
+					android:gravity="center_vertical"/>
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/es_postLikesCountButton"
+			style="@style/EmbeddedSocialSdkTextCaption.Green"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/es_button_base_size"
+			android:layout_alignBaseline="@id/es_postCommentsCountButton"
+			android:layout_toLeftOf="@id/es_postCommentsCountButton"
+			android:background="?attr/es_buttonBackground"
+			android:clickable="true"
+			android:drawableLeft="@drawable/es_ic_like_green"
+			android:drawablePadding="@dimen/es_counter_drawable_padding"
+			android:gravity="center_vertical"
+			/>
+
+	</RelativeLayout>
+
+	<View
+		android:id="@+id/es_dividerLayoutBottom"
+		style="@style/EmbeddedSocialSdkDivider"
+		android:layout_below="@id/es_buttonsLayout"
+		android:layout_marginTop="@dimen/es_padding_base"
+		android:visibility="gone"/>
+
+</merge>

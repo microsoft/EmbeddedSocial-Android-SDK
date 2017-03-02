@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<RelativeLayout
+	android:id="@+id/es_buttonsLayout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_below="@id/es_commentText"
+	android:layout_marginLeft="@dimen/es_compensate_drawable_size"
+	android:layout_toRightOf="@id/es_leftBorder">
+
+	<ImageView
+		android:id="@+id/es_likeButton"
+		style="?android:attr/borderlessButtonStyle"
+		android:layout_width="@dimen/es_button_base_size"
+		android:layout_height="@dimen/es_button_base_size"
+		android:layout_marginTop="2dp"
+		android:background="?attr/es_buttonBackground"
+		android:clickable="true"
+		android:scaleType="center"
+		android:src="@drawable/es_ic_like_normal"/>
+
+	<ImageView
+		android:id="@+id/es_commentButton"
+		style="?android:attr/borderlessButtonStyle"
+		android:layout_width="@dimen/es_button_base_size"
+		android:layout_height="@dimen/es_button_base_size"
+		android:layout_marginBottom="@dimen/es_padding_small"
+		android:layout_marginTop="2dp"
+		android:layout_toRightOf="@id/es_likeButton"
+		android:background="?attr/es_buttonBackground"
+		android:clickable="true"
+		android:scaleType="center"
+		android:src="@drawable/es_ic_comment"/>
+
+	<LinearLayout
+			android:id="@+id/es_commentRepliesCountButton"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/es_button_base_size"
+			android:orientation="horizontal"
+			android:clickable="true"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="@dimen/es_padding_small"
+			android:gravity="center_vertical"
+	>
+		<ImageView
+				android:id="@+id/es_commentRepliesCountButtonImage"
+				android:layout_width="@dimen/es_replies_button_image_size"
+				android:layout_height="@dimen/es_replies_button_image_size"
+				android:src="@drawable/es_ic_comment_green"
+		/>
+		<TextView
+				android:id="@+id/es_commentRepliesCountButtonText"
+				style="@style/EmbeddedSocialSdkTextCaption.Green"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:background="?attr/es_buttonBackground"
+				android:gravity="center_vertical"/>
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/es_commentLikesCountButton"
+		style="@style/EmbeddedSocialSdkTextCaption.Green"
+		android:layout_width="wrap_content"
+		android:layout_height="@dimen/es_button_base_size"
+		android:layout_alignBaseline="@id/es_commentRepliesCountButton"
+		android:layout_alignWithParentIfMissing="true"
+		android:layout_marginRight="@dimen/es_padding_small"
+		android:layout_toLeftOf="@id/es_commentRepliesCountButton"
+		android:background="?attr/es_buttonBackground"
+		android:clickable="true"
+		android:drawableLeft="@drawable/es_ic_like_green"
+		android:drawablePadding="@dimen/es_counter_drawable_padding"
+		android:gravity="center_vertical"/>
+
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<RelativeLayout
+	android:id="@+id/es_comment_root"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	>
+
+	<de.hdodenhof.circleimageview.CircleImageView
+		android:id="@+id/es_profileImage"
+		android:layout_width="@dimen/es_user_icon_size"
+		android:layout_height="@dimen/es_user_icon_size"
+		android:layout_marginBottom="@dimen/es_padding_large"
+		android:layout_marginLeft="@dimen/es_padding_xlarge"
+		android:layout_marginRight="@dimen/es_padding_large"
+		android:layout_marginTop="@dimen/es_padding_large"
+		android:background="?attr/es_photoPlaceholder"
+		android:scaleType="centerCrop"
+		android:src="?attr/es_userNoPhotoIcon"
+		app:border_width="0px"
+		/>
+
+	<FrameLayout
+		android:id="@+id/es_userHeaderButton"
+		android:layout_width="match_parent"
+		android:layout_height="56dp"
+		android:layout_marginLeft="@dimen/es_padding_large"
+		android:layout_marginTop="@dimen/es_padding_base"
+		android:clickable="true"
+		android:foreground="?attr/es_buttonBackground"
+		/>
+
+	<TextView
+		android:id="@+id/es_profileName"
+		style="@style/EmbeddedSocialSdkTextSubhead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@id/es_profileImage"
+		android:layout_marginRight="@dimen/es_padding_large"
+		android:layout_toRightOf="@id/es_profileImage"
+		android:singleLine="true"
+		android:textStyle="bold"
+		/>
+
+	<LinearLayout
+		android:id="@+id/es_menuGroup"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		>
+
+		<TextView
+			android:id="@+id/es_postTime"
+			style="@style/EmbeddedSocialSdkTextBody2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="@dimen/es_padding_base"
+			android:singleLine="true"
+			/>
+
+		<ImageView
+			android:id="@+id/es_contextMenuButton"
+			android:layout_width="@dimen/es_button_base_size"
+			android:layout_height="52dp"
+			android:background="?attr/es_buttonBackground"
+			android:clickable="true"
+			android:scaleType="center"
+			android:src="?attr/es_contextMenuIcon"
+			/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/es_comment_content"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:layout_below="@id/es_profileImage"
+		android:layout_toRightOf="@id/es_profileImage"
+		>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@id/es_coverImage"
+			>
+			<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
+				android:id="@+id/es_coverImage"
+				android:layout_width="match_parent"
+				android:layout_height="@dimen/es_card_cover_image_height"
+				android:layout_marginBottom="@dimen/es_padding_large"
+				android:background="?attr/es_topicCoverBackground"
+				android:scaleType="centerCrop"
+				android:layout_marginRight="10dp"
+				/>
+
+			<FrameLayout
+				android:id="@+id/es_coverButton"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignBottom="@id/es_coverImage"
+				android:layout_alignTop="@id/es_coverImage"
+				android:foreground="?attr/es_buttonBackground"
+				android:clickable="true"
+				/>
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_below="@id/es_coverImage"
+			>
+			<TextView
+				android:id="@+id/es_commentText"
+				style="@style/EmbeddedSocialSdkTextSubhead"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingBottom="4dp"
+				android:layout_marginRight="@dimen/es_padding_large"
+				android:paddingRight="@dimen/es_padding_large"
+				android:autoLink="web"
+				/>
+
+			<FrameLayout
+				android:id="@+id/es_contentButton"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_alignBottom="@id/es_commentText"
+				android:layout_alignLeft="@id/es_commentText"
+				android:layout_alignTop="@id/es_commentText"
+				android:clickable="true"
+				android:foreground="?attr/es_buttonBackground"
+				/>
+		</RelativeLayout>
+		<include
+			layout="@layout/es_view_comment_buttons"/>
+	</LinearLayout>
+
+	<View
+		android:id="@+id/es_dividerLayoutBottom"
+		style="@style/EmbeddedSocialSdkDivider"
+		android:layout_below="@id/es_comment_content"
+		android:layout_marginTop="@dimen/es_padding_base"
+		/>
+</RelativeLayout>

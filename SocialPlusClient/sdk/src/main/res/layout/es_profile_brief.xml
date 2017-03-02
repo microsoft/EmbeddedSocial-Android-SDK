@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/es_profileLayout"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:paddingRight="@dimen/es_card_list_padding_hor"
+	android:paddingLeft="@dimen/es_card_list_padding_hor"
+	android:paddingTop="@dimen/es_card_list_padding_ver"
+	android:paddingBottom="@dimen/es_card_list_padding_ver"
+	>
+
+	<android.support.v7.widget.CardView
+		style="@style/EmbeddedSocialSdkCardViewStyle"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		>
+
+		<FrameLayout
+			android:id="@+id/es_cardContent"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:foreground="?attr/es_buttonBackground"
+			>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				tools:ignore="UselessParent"
+				>
+
+				<FrameLayout
+					android:id="@+id/es_photoContent"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					/>
+
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/es_padding_base"
+					android:layout_marginLeft="@dimen/es_padding_base"
+					android:layout_marginRight="@dimen/es_padding_base"
+					android:layout_marginTop="@dimen/es_padding_large"
+					android:orientation="horizontal"
+					>
+
+					<TextView
+						android:id="@+id/es_followersCount"
+						style="@style/EmbeddedSocialSdkButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						/>
+
+					<TextView
+						android:id="@+id/es_followingCount"
+						style="@style/EmbeddedSocialSdkButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						/>
+
+					<View
+						android:layout_width="0px"
+						android:layout_height="1dp"
+						android:layout_weight="1"
+						/>
+
+					<TextView
+						android:id="@+id/es_editProfile"
+						style="@style/EmbeddedSocialSdkButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/es_button_edit_profile"
+						/>
+
+					<TextView
+						android:id="@+id/es_followingStatus"
+						style="@style/EmbeddedSocialSdkBoundedButton.Small"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="10dp"
+						/>
+
+				</LinearLayout>
+
+
+			</LinearLayout>
+
+		</FrameLayout>
+
+
+	</android.support.v7.widget.CardView>
+</FrameLayout>

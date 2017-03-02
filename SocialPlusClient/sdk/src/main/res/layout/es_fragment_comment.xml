@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true"
+		>
+
+		<TextView
+			android:id="@+id/es_messageLayout"
+			style="@style/EmbeddedSocialSdkContentErrorMessage"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="@string/es_message_failed_to_load_comment"
+			/>
+
+	</ScrollView>
+
+	<include
+		android:id="@+id/es_progressLayout"
+		layout="@layout/es_progressbar"
+		/>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<RelativeLayout
+			android:id="@+id/es_contentLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<android.widget.Space
+				android:id="@+id/es_leftBorder"
+				android:layout_width="@dimen/es_padding_large"
+				android:layout_height="@dimen/es_user_icon_size"
+				/>
+
+			<include
+				layout="@layout/es_view_user_header"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				/>
+
+			<include layout="@layout/es_view_comment"/>
+
+			<View
+				android:id="@+id/es_dividerLayoutBottom"
+				style="@style/EmbeddedSocialSdkDivider"
+				android:layout_below="@+id/es_buttonsLayout"
+				android:layout_marginTop="@dimen/es_padding_base"/>
+
+			<Button
+				android:id="@+id/es_openTopicButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/es_dividerLayoutBottom"
+				android:layout_marginBottom="@dimen/es_padding_large"
+				android:layout_marginLeft="@dimen/es_padding_base"
+				android:layout_marginRight="@dimen/es_padding_base"
+				android:layout_marginTop="@dimen/es_padding_large"
+				android:text="@string/es_button_open_topic"
+				android:textAllCaps="true"
+				android:textSize="14dp"
+				/>
+
+		</RelativeLayout>
+	</ScrollView>
+</FrameLayout>

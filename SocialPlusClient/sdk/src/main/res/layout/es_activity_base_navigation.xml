@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/es_drawerContainer"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
+	<!-- Toolbar will be placed here for apps that want the navdrawer placed below the toolbar -->
+
+	<android.support.v4.widget.DrawerLayout
+		android:id="@+id/es_drawerLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<include
+			layout="@layout/es_activity_base"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+		<FrameLayout
+			android:id="@+id/es_navigationLayout"
+			android:layout_width="@dimen/es_drawer_width"
+			android:layout_height="match_parent"
+			android:layout_gravity="start"
+			android:background="@color/es_drawer_background"/>
+
+	</android.support.v4.widget.DrawerLayout>
+</LinearLayout>
