@@ -16,7 +16,6 @@
 #   public *;
 #}
 
--dontobfuscate
 
 # for Java lambdas
 -dontwarn java.lang.invoke.**
@@ -41,9 +40,6 @@
 # for search
 -keep public class com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider { *; }
 
-# for debug log
--keep public class com.microsoft.embeddedsocial.base.utils.debug.DebugLog { *; }
-
 # dont obfuscate enums
 -keepclassmembers enum com.microsoft.embeddedsocial.** { *; }
 
@@ -63,20 +59,3 @@
     @com.squareup.otto.Produce public *;
 }
 
-# lambdas
--dontwarn java.lang.invoke**
-
-# for OrmLite
--keep class com.j256.**
--keepclassmembers class com.j256.** { *; }
--keep enum com.j256.**
--keepclassmembers enum com.j256.** { *; }
--keep interface com.j256.**
--keepclassmembers interface com.j256.** { *; }
--keepclassmembers class * {
-    public <init>(android.content.Context);
- }
-
--keep class javax.** { *; }
--keep class java.** { *; }
--keep class org.** { *; }

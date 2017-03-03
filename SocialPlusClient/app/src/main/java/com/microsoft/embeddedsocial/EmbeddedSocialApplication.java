@@ -11,7 +11,6 @@ import android.content.Context;
 import android.os.StrictMode;
 import android.support.multidex.MultiDex;
 
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
 
 import java.lang.Thread.UncaughtExceptionHandler;
@@ -43,7 +42,6 @@ public class EmbeddedSocialApplication extends Application implements UncaughtEx
 
 	@Override
 	public void uncaughtException(Thread thread, Throwable ex) {
-		DebugLog.logExceptionWithStackTrace(ex);
 		DEFAULT_EXCEPTION_HANDLER.uncaughtException(thread, ex);
 	}
 
