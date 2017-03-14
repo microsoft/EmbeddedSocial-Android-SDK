@@ -5,6 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.fragment.module.FeedViewMenuModule;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 
@@ -17,8 +19,11 @@ public class FeedViewMenuListenerFragment extends BaseFragment {
 	private final FeedViewMenuModule menuModule = new FeedViewMenuModule(this);
 
 	public FeedViewMenuListenerFragment() {
-		addModule(menuModule);
-		setHasOptionsMenu(true);
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+		if (options.showGalleryView()) {
+			addModule(menuModule);
+			setHasOptionsMenu(true);
+		}
 	}
 
 	@Override
