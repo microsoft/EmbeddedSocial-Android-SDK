@@ -99,7 +99,7 @@ public class NotificationController {
 
 	private NotificationCompat.Builder buildBaseNotification(String text) {
 		return new NotificationCompat.Builder(context)
-			.setContentTitle(context.getString(R.string.es_lib_name))
+			.setContentTitle(context.getString(R.string.app_name))
 			.setContentText(text)
 			.setTicker(text)
 			.setContentIntent(appLaunchIntent)
