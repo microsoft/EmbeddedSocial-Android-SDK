@@ -16,7 +16,6 @@ import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +77,6 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		progressView = view.findViewById(R.id.es_progress);
-		setProgressBarColor((ProgressBar)progressView);
 		buttonsView = view.findViewById(R.id.es_buttons);
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		setupSignInButton(view, R.id.es_signInFacebook, v -> signInWithFacebook(), options.isFacebookLoginEnabled());

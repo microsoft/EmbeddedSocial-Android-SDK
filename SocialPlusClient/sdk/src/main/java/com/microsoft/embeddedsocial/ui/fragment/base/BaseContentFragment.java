@@ -18,7 +18,6 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -125,7 +124,6 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
 		recyclerView = findView(view, R.id.es_recyclerView);
 		setContentLayoutManager(createInitialContentLayoutManager());
 		progressView = findView(view, R.id.es_progress);
-		setProgressBarColor((ProgressBar)progressView);
 		messageView = findView(view, R.id.es_message);
 		stateViews = new View[]{contentView, progressView, messageView};
 		initRecyclerView();

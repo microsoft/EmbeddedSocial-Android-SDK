@@ -79,7 +79,6 @@ public class OptionsFragment extends BaseFragment {
 	private void signOut() {
 		((BaseActivity) getActivity()).disableNavigationPanel();
 		ProgressBar progressBar = findView(getView(), R.id.es_progress);
-		setProgressBarColor(progressBar);
 		progressBar.setVisibility(View.VISIBLE);
 		hideView(R.id.es_options);
 		UserAccount.getInstance().signOut();

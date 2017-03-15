@@ -166,10 +166,6 @@ public final class EmbeddedSocial {
         BaseTabsActivity.setTabColorizer(colorizer);
     }
 
-    public static void setProgressBarColor(@ColorRes int color) {
-        BaseFragment.setProgressBarColorId(color);
-    }
-
     public static void setAppProfile(AppProfile appProfile) {
         UserHeaderViewHolder.setAppProfile(appProfile);
     }
