@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.sdk.ui.TabColorizer;
 import com.microsoft.embeddedsocial.base.view.SlidingTabLayout;
 
 /**
@@ -36,21 +35,12 @@ public abstract class BaseTabsActivity extends BaseActivity {
 
 	private ViewPager viewPager;
 	private SlidingTabLayout slidingTabLayout;
-	private static TabColorizer customTabColorizer;
 
 	protected BaseTabsActivity() {
 	}
 
 	protected BaseTabsActivity(int activeNavigationItemId) {
 		super(activeNavigationItemId);
-	}
-
-	public static void setTabColorizer(TabColorizer tabColorizer) {
-		customTabColorizer = tabColorizer;
-	}
-
-	public static TabColorizer getCustomTabColorizer() {
-		return customTabColorizer;
 	}
 
 	@Override
@@ -65,12 +55,7 @@ public abstract class BaseTabsActivity extends BaseActivity {
 		slidingTabLayout = (SlidingTabLayout) findViewById(R.id.es_slidingTabs);
 		slidingTabLayout.setViewPager(viewPager);
 
-		int selectorColorId = R.color.es_lime_A400;
-		if (customTabColorizer != null) {
-			slidingTabLayout.setBackgroundColor(ContextCompat.getColor(this, customTabColorizer.getBackgroundColor()));
-			selectorColorId = customTabColorizer.getSelectorColor();
-		}
-		slidingTabLayout.setSelectedIndicatorColors(ContextCompat.getColor(this, selectorColorId));
+		slidingTabLayout.setSelectedIndicatorColors(ContextCompat.getColor(this, R.color.es_tab_bottom_line));
 
 		viewPager.addOnPageChangeListener(onPageChangeListener);
 	}

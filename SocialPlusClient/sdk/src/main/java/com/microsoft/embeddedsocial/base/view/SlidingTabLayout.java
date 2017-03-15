@@ -21,7 +21,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -34,8 +33,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.sdk.ui.TabColorizer;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
@@ -106,17 +103,10 @@ public class SlidingTabLayout extends HorizontalScrollView {
 		addView(mTabStrip, LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 
 		TypedArray typedArray = context.obtainStyledAttributes(R.styleable.es_AppTheme);
-		TabColorizer colorizer = BaseTabsActivity.getCustomTabColorizer();
-		if (colorizer != null) {
-			// Use custom colors
-			activeTextColor = ContextCompat.getColor(getContext(), colorizer.getActiveTextColor());
-			notActiveTextColor = ContextCompat.getColor(getContext(), colorizer.getNotActiveTextColor());
-		} else {
-			// Use default colors
-			activeTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorActive, Color.WHITE);
-			notActiveTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorNotActive, Color.WHITE);
-			typedArray.recycle();
-		}
+		// Use default colors
+		activeTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorActive, Color.WHITE);
+		notActiveTextColor = typedArray.getColor(R.styleable.es_AppTheme_es_tabIndicatorTextColorNotActive, Color.WHITE);
+		typedArray.recycle();
 	}
 
 	/**

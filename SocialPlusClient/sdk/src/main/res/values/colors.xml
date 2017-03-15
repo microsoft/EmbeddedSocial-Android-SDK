@@ -49,6 +49,7 @@
 
 	<color name="es_tab_text_active">@android:color/white</color>
 	<color name="es_tab_text_not_active">#bdbdbd</color>
+	<color name="es_tab_bottom_line">@color/es_lime_A400</color>
 
 	<color name="es_button_base_gray">#ff999999</color>
 	<color name="es_button_completed_text">@android:color/white</color>

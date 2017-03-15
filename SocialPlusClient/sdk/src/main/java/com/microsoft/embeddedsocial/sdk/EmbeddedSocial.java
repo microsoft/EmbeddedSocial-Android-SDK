@@ -27,7 +27,6 @@ import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.image.ImageLoader;
 import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
-import com.microsoft.embeddedsocial.sdk.ui.TabColorizer;
 import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
 import com.microsoft.embeddedsocial.server.NetworkAvailability;
 import com.microsoft.embeddedsocial.service.WorkerService;
@@ -54,7 +53,6 @@ import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
 import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
 import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
 import com.microsoft.embeddedsocial.ui.fragment.AddPostFragment;
 import com.microsoft.embeddedsocial.ui.fragment.CommentFeedFragment;
 import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
@@ -160,10 +158,6 @@ public final class EmbeddedSocial {
      */
     public static void setToolbarColors(ToolbarColorizer colorizer) {
         BaseActivity.setToolbarColorizer(colorizer);
-    }
-
-    public static void setTabColors(TabColorizer colorizer){
-        BaseTabsActivity.setTabColorizer(colorizer);
     }
 
     public static void setAppProfile(AppProfile appProfile) {

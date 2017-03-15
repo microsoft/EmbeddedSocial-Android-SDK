@@ -20,6 +20,7 @@
 		<item name="es_navigationItemStyle">@style/EmbeddedSocialSdkNavigationItem</item>
 		<item name="es_tabIndicatorBackground">@drawable/es_toolbar_background</item>
 		<item name="es_tabIndicatorTextColorActive">@color/es_tab_text_active</item>
+		<item name="es_tabsBottomLineColor">@color/es_tab_bottom_line</item>
 		<item name="es_tabIndicatorTextColorNotActive">@color/es_tab_text_not_active</item>
 		<item name="es_listIndicator">@drawable/es_list</item>
 		<item name="es_galleryIndicator">@drawable/es_gallery</item>
@@ -39,7 +40,6 @@
 		<item name="es_dividerColor">@color/es_text_hint_light</item>
 		<item name="es_cursorDrawable">@drawable/es_cursor_light</item>
 		<item name="es_largeLogo">@drawable/es_logo</item>
-		<item name="es_tabsBottomLineColor">?android:attr/colorForeground</item>
 	</style>
 
 	<style name="EmbeddedSocialSdkAppTheme.Light" parent="EmbeddedSocialSdkAppTheme.LightBase">
