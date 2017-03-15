@@ -20,4 +20,9 @@ public class PinsFragment extends BaseFeedFragment {
 		return FetchersFactory.createPinsFeedFetcher();
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		onRefresh();
+	}
 }
