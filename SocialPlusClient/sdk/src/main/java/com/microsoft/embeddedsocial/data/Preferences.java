@@ -16,6 +16,7 @@ import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.display.DisplayMethod;
 import com.microsoft.embeddedsocial.event.data.UpdateNotificationCountEvent;
 import com.microsoft.embeddedsocial.pending.PendingAction;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.server.model.BaseRequest;
 
 /**
@@ -99,12 +100,17 @@ public class Preferences {
 	 * Gets the current feed display method (list or gallery).
 	 */
 	public DisplayMethod getDisplayMethod() {
-		int displayMethodOrdinal = sharedPreferences.getInt(DISPLAY_METHOD, 0);
-		if (displayMethodOrdinal < 0 || displayMethodOrdinal >= DisplayMethod.values().length) {
-			displayMethodOrdinal = 0;
-		}
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+		if (options.showGalleryView()) {
+			int displayMethodOrdinal = sharedPreferences.getInt(DISPLAY_METHOD, 0);
+			if (displayMethodOrdinal < 0 || displayMethodOrdinal >= DisplayMethod.values().length) {
+				displayMethodOrdinal = 0;
+			}
 
-		return DisplayMethod.values()[displayMethodOrdinal];
+			return DisplayMethod.values()[displayMethodOrdinal];
+		} else {
+			return DisplayMethod.LIST;
+		}
 	}
 
 	/**
