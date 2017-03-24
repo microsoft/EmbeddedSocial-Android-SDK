@@ -100,10 +100,10 @@ public class MainFragment extends Fragment implements IAuthenticationCallback {
 
         if (savedInstanceState != null && savedInstanceState.containsKey(KEY)) {
             users = savedInstanceState.getParcelableArrayList(KEY);
-            if (users.size() == USER_NAMES.length) {
-                createUsersButton.setVisibility(View.GONE);
-                createDemoButton.setVisibility(View.VISIBLE);
-            }
+        }
+        if (users.size() == USER_NAMES.length) {
+            createUsersButton.setVisibility(View.GONE);
+            createDemoButton.setVisibility(View.VISIBLE);
         }
     }
 
