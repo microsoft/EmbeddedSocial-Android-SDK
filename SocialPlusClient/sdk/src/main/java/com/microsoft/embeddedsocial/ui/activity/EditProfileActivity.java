@@ -8,6 +8,8 @@ package com.microsoft.embeddedsocial.ui.activity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.EditProfileFragment;
 
+import android.os.Bundle;
+
 /**
  * Activity for editing a user's profile.
  */
@@ -21,5 +23,11 @@ public class EditProfileActivity extends BaseActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return true;
+	}
+
+	@Override
+	protected void initView(Bundle savedInstanceState) {
+		super.initView(savedInstanceState);
+		setNonNavDrawerToolbar();
 	}
 }

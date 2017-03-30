@@ -8,6 +8,8 @@ package com.microsoft.embeddedsocial.ui.activity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.CreateProfileFragment;
 
+import android.os.Bundle;
+
 /**
  * Activity for creating a user's profile.
  */
@@ -18,5 +20,11 @@ public class CreateProfileActivity extends BaseActivity {
         CreateProfileFragment createProfileFragment = new CreateProfileFragment();
         setActivityContent(createProfileFragment);
         createProfileFragment.setArguments(getIntent().getExtras());
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
+        setNonNavDrawerToolbar();
     }
 }
