@@ -14,8 +14,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.sdk.BuildConfig;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.fragment.ProfileInfoFragment;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.base.event.EventBus;
@@ -101,6 +103,7 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 			new SimplePagerAdapter.Page(R.string.es_menu_recent, createFragmentProducer(TopicFeedType.USER_RECENT)),
 			new SimplePagerAdapter.Page(R.string.es_menu_popular, createFragmentProducer(TopicFeedType.USER_POPULAR))
 		};
+
 		return new SimplePagerAdapter(this, getSupportFragmentManager(), pages) {
 			@Override
 			public int getCount() {
@@ -131,6 +134,8 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+
 		MenuInflater inflater = getMenuInflater();
 		if (getCurrentPagePosition() == 0) {
 			if (isCurrentUser) {
@@ -141,7 +146,7 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 				inflater.inflate(R.menu.es_user_block, menu);
 				inflater.inflate(R.menu.es_user_report, menu);
 			}
-		} else {
+		} else if (options != null && options.showGalleryView()) {
 			inflater.inflate(R.menu.es_feed_display_method, menu);
 		}
 		return true;

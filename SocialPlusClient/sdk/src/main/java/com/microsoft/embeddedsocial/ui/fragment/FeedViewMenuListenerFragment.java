@@ -20,7 +20,7 @@ public class FeedViewMenuListenerFragment extends BaseFragment {
 
 	public FeedViewMenuListenerFragment() {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
-		if (options.showGalleryView()) {
+		if (options != null && options.showGalleryView()) {
 			addModule(menuModule);
 			setHasOptionsMenu(true);
 		}
