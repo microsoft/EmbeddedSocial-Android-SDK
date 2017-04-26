@@ -98,11 +98,21 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 
 	@Override
 	protected PagerAdapter createPagerAdapter() {
-		SimplePagerAdapter.Page[] pages = new SimplePagerAdapter.Page[]{
-			new SimplePagerAdapter.Page(R.string.es_profile, () -> ProfileInfoFragment.create(userHandle)),
-			new SimplePagerAdapter.Page(R.string.es_menu_recent, createFragmentProducer(TopicFeedType.USER_RECENT)),
-			new SimplePagerAdapter.Page(R.string.es_menu_popular, createFragmentProducer(TopicFeedType.USER_POPULAR))
-		};
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+
+		SimplePagerAdapter.Page[] pages;
+		if (options != null && !options.userTopicsEnabled()) {
+			// User topics are not enabled so only show the user profile tab
+			pages = new SimplePagerAdapter.Page[]{
+					new SimplePagerAdapter.Page(R.string.es_profile, () -> ProfileInfoFragment.create(userHandle))
+			};
+		} else {
+			pages = new SimplePagerAdapter.Page[]{
+					new SimplePagerAdapter.Page(R.string.es_profile, () -> ProfileInfoFragment.create(userHandle)),
+					new SimplePagerAdapter.Page(R.string.es_menu_recent, createFragmentProducer(TopicFeedType.USER_RECENT)),
+					new SimplePagerAdapter.Page(R.string.es_menu_popular, createFragmentProducer(TopicFeedType.USER_POPULAR))
+			};
+		}
 
 		return new SimplePagerAdapter(this, getSupportFragmentManager(), pages) {
 			@Override
