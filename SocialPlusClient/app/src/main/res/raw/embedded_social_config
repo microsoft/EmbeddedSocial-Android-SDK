@@ -5,7 +5,7 @@
 		"numberOfCommentsToShow" : 20,
 		"numberOfRepliesToShow" : 20,
 		"searchEnabled" : "true",
-		"showGalleryView" : "false"
+		"showGalleryView" : "true"
 	},
 	"socialNetworks" : {
 		"facebook" : {
