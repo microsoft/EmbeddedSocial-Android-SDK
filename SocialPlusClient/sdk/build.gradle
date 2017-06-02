@@ -126,7 +126,7 @@ clearOutputFolder()
 
 def siteUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/MSR-SocialPlus-Android-SDK.git'
-def versionNum = '0.0.20'
+def versionNum = '0.0.22'
 group = "com.acrowntest.test"
 version = versionNum
 
