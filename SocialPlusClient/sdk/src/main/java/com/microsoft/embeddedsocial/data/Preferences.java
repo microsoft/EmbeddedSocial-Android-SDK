@@ -101,7 +101,7 @@ public class Preferences {
 	 */
 	public DisplayMethod getDisplayMethod() {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
-		if (options.showGalleryView()) {
+		if (options != null && options.showGalleryView()) {
 			int displayMethodOrdinal = sharedPreferences.getInt(DISPLAY_METHOD, 0);
 			if (displayMethodOrdinal < 0 || displayMethodOrdinal >= DisplayMethod.values().length) {
 				displayMethodOrdinal = 0;

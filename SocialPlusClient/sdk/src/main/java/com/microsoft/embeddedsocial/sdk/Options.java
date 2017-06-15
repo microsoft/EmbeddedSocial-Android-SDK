@@ -111,6 +111,8 @@ public final class Options {
 		return application.showGalleryView;
 	}
 
+	public boolean userTopicsEnabled() { return application.userTopicsEnabled; }
+
 	public String getFacebookApplicationId() {
 		return socialNetworks.facebook.clientId;
 	}
@@ -140,8 +142,9 @@ public final class Options {
 
 		private String serverUrl = null;
 		private String appKey = null;
-		private boolean searchEnabled = false;
-		private boolean showGalleryView = false;
+		private boolean searchEnabled = true;
+		private boolean showGalleryView = true;
+		private boolean userTopicsEnabled = true;
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 	}

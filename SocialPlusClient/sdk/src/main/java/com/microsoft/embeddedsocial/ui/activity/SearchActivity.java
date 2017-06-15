@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.SearchType;
@@ -31,6 +32,7 @@ import com.microsoft.embeddedsocial.data.storage.SearchHistory;
 import com.microsoft.embeddedsocial.event.click.OnTrendingHashtagSelectedEvent;
 import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
 import com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuListenerFragment;
@@ -285,7 +287,10 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		if (getCurrentSearchType() == SearchType.TOPICS && isTopicsSearchTextNotEmpty()) {
-			getMenuInflater().inflate(R.menu.es_feed_display_method, menu);
+			Options options = GlobalObjectRegistry.getObject(Options.class);
+			if (options != null && options.showGalleryView()) {
+				getMenuInflater().inflate(R.menu.es_feed_display_method, menu);
+			}
 		}
 		// Call into super method to color hamburger menu
 		super.onCreateOptionsMenu(menu);
