@@ -24,6 +24,7 @@ public class LinkUserThirdPartyAccountEvent extends AbstractEvent {
 	private final int statusCode;
 
 	private LinkUserThirdPartyAccountEvent(SocialNetworkAccount account, boolean isSuccess, String error, int statusCode) {
+		account.clearTokens();
 		this.account = account;
 		this.isSuccess = isSuccess;
 		this.error = error;

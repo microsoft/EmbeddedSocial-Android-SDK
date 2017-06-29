@@ -16,13 +16,4 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 @HandlingThread(ThreadType.MAIN)
 public class SignInWithThirdPartyFailedEvent extends AbstractEvent {
 
-	private final SocialNetworkAccount thirdPartyAccount;
-
-	public SignInWithThirdPartyFailedEvent(SocialNetworkAccount thirdPartyAccount) {
-		this.thirdPartyAccount = thirdPartyAccount;
-	}
-
-	public SocialNetworkAccount getThirdPartyAccount() {
-		return thirdPartyAccount;
-	}
 }

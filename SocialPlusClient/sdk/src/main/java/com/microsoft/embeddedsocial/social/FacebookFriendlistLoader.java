@@ -86,9 +86,10 @@ class FacebookFriendlistLoader extends FriendlistLoader {
 			HttpMethod.GET
 		).executeAndWait();
 
+		facebookTokenHolder.clearToken();
+
 		FacebookRequestError responseError = response.getError();
 		if (responseError != null) {
-			facebookTokenHolder.clearToken();
 			throw new SocialNetworkException("Internal facebook failure: "
 				+ responseError.getErrorMessage() + " [" + responseError.getErrorCode() + "]");
 		}

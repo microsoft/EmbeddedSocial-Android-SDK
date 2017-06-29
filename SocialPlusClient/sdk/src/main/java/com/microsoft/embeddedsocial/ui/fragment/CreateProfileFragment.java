@@ -79,6 +79,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     @Override
     public void setArguments(Bundle args) {
         thirdPartyAccount = args.getParcelable(IntentExtras.THIRD_PARTY_ACCOUNT);
+        args.remove(IntentExtras.THIRD_PARTY_ACCOUNT);
     }
 
     @Override
@@ -128,6 +129,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                     .setThirdPartyRequestToken(thirdPartyAccount.getThirdPartyRequestToken())
                     .build();
 
+            thirdPartyAccount.clearTokens();
             ActionsLauncher.createAccount(getContext(), createAccountData);
         }
     }

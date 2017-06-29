@@ -17,8 +17,8 @@ public class SocialNetworkAccount implements Parcelable {
 
 	private final IdentityProvider identityProvider;
 	private final String thirdPartyAccountHandle;
-	private final String thirdPartyAccessToken;
-	private final String thirdPartyRequestToken;
+	private String thirdPartyAccessToken;
+	private String thirdPartyRequestToken;
 	private final String firstName;
 	private final String lastName;
 
@@ -91,6 +91,11 @@ public class SocialNetworkAccount implements Parcelable {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public void clearTokens() {
+		this.thirdPartyAccessToken = null;
+		this.thirdPartyRequestToken = null;
 	}
 
 	@Override

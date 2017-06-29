@@ -55,6 +55,7 @@ public class SignInHandler extends ActionHandler {
 	@Override
 	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
 		signinWithThirdParty(action, intent.getParcelableExtra(IntentExtras.THIRD_PARTY_ACCOUNT));
+		intent.removeExtra(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
 	}
 
 	private void signinWithThirdParty(Action action, SocialNetworkAccount thirdPartyAccount) {
@@ -85,7 +86,9 @@ public class SignInHandler extends ActionHandler {
 			context.startActivity(i);
 		} catch (Exception e) {
 			DebugLog.logException(e);
-			UserAccount.getInstance().onSignInWithThirdPartyFailed(thirdPartyAccount);
+			UserAccount.getInstance().onSignInWithThirdPartyFailed();
+		} finally {
+			thirdPartyAccount.clearTokens();
 		}
 	}
 

@@ -6,6 +6,7 @@
 package com.microsoft.embeddedsocial.service.handler;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
@@ -35,6 +36,8 @@ public class LinkUserThirdPartyAccountHandler implements IServiceIntentHandler<S
 				account.getAccountType(),
 				account.getThirdPartyAccessToken());
 
+		intent.removeExtra(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
+		account.clearTokens();
 		try {
 			service.linkUserThirdPartyAccount(linkUserThirdPartyAccountRequest);
 			EventBus.post(LinkUserThirdPartyAccountEvent.createLinkEvent(account));

@@ -90,8 +90,8 @@ public class UserAccount {
 	/**
 	 * Called when sign-in process failed.
 	 */
-	public void onSignInWithThirdPartyFailed(SocialNetworkAccount thirdPartyAccount) {
-		EventBus.post(new SignInWithThirdPartyFailedEvent(thirdPartyAccount));
+	public void onSignInWithThirdPartyFailed() {
+		EventBus.post(new SignInWithThirdPartyFailedEvent());
 	}
 
 	/**
