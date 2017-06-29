@@ -115,10 +115,10 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 				authenticator = new FacebookAuthenticator(this, this, FacebookAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
 				break;
 			case MICROSOFT:
-				authenticator = new MicrosoftLiveAuthenticator(this, this);
+				authenticator = new MicrosoftLiveAuthenticator(this, this, MicrosoftLiveAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
 				break;
 			case GOOGLE:
-				authenticator = new GoogleNativeAuthenticator(this, this);
+				authenticator = new GoogleNativeAuthenticator(this, this, GoogleNativeAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
 				break;
 			case TWITTER:
 				authenticator = new TwitterWebAuthenticator(this, this);

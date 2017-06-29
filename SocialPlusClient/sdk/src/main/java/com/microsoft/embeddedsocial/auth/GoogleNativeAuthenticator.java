@@ -29,18 +29,23 @@ import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Implements Google authentication process using Google Play Services SDK.
  */
 public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	public static final String GOOGLE_ACCOUNT_ACTION = "googleAccountAction";
 	public static final String GOOGLE_ACCOUNT = "googleAccount";
+	private final AuthenticationMode authMode;
 
 	private static final Uri ISSUER_URI = Uri.parse("https://accounts.google.com");
 	private AuthorizationService service;
 	private Context context;
 
-	public GoogleNativeAuthenticator(Fragment fragment, IAuthenticationCallback authCallback) {
+	public GoogleNativeAuthenticator(Fragment fragment, IAuthenticationCallback authCallback,
+									 AuthenticationMode authMode) {
 		super(IdentityProvider.GOOGLE, fragment, authCallback);
 
 		context = getFragment().getContext();
@@ -48,6 +53,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 
 		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
 		localBroadcastManager.registerReceiver(googleAuthReceiver, new IntentFilter(GOOGLE_ACCOUNT_ACTION));
+		this.authMode = authMode;
 	}
 
 	@Override
@@ -84,7 +90,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 				clientId,
 				ResponseTypeValues.CODE,
 				redirectUri)
-				.setScope("profile") // TODO "email" needed for find friends
+				.setScopes(authMode.getPermissions())
 				.build();
 
 		PendingIntent pendingIntent = GoogleCallbackActivity.createPostAuthorizationIntent(context, request);
@@ -96,7 +102,11 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			SocialNetworkAccount account = intent.getParcelableExtra(GOOGLE_ACCOUNT);
+			intent.removeExtra(GOOGLE_ACCOUNT);
 			if (account != null) {
+				if (authMode.canStoreToken()) {
+					SocialNetworkTokens.google().storeToken(account.getThirdPartyAccessToken());
+				}
 				onAuthenticationSuccess(account);
 			} else {
 				onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
@@ -105,4 +115,36 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 			LocalBroadcastManager.getInstance(context).unregisterReceiver(this);
 		}
 	};
+
+	/**
+	 * Google authentication mode.
+	 */
+	public enum AuthenticationMode {
+
+		/**
+		 * Allow sign-in only.
+		 */
+		SIGN_IN_ONLY(false, "profile"),
+
+		/**
+		 * Allow sign-in and obtaining friend list.
+		 */
+		OBTAIN_FRIENDS(true, "profile", "email");
+
+		private final List<String> permissions;
+		private final boolean allowStoringToken;
+
+		AuthenticationMode(boolean allowStoringToken, String... permissions) {
+			this.permissions = Arrays.asList(permissions);
+			this.allowStoringToken = allowStoringToken;
+		}
+
+		private List<String> getPermissions() {
+			return permissions;
+		}
+
+		private boolean canStoreToken() {
+			return allowStoringToken;
+		}
+	}
 }

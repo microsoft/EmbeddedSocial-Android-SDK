@@ -57,10 +57,11 @@ class GooglePlusFriendlistLoader extends FriendlistLoader {
 			result.throwExceptionIfNeeded();
 			return extractPeopleIds(result);
 		} catch (InvalidCredentialsException e) {
-			tokenHolder.clearToken();
 			throw e;
 		} catch (IOException e) {
 			throw new SocialNetworkException(e);
+		} finally {
+			tokenHolder.clearToken();
 		}
 	}
 

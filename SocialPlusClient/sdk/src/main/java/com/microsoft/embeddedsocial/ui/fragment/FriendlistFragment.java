@@ -79,13 +79,15 @@ public class FriendlistFragment extends BaseUsersListFragment {
 		switch (identityProvider) {
 			case FACEBOOK:
 				return new FacebookAuthenticator(this, authorizationRequest,
-					FacebookAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
+						FacebookAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
 
 			case GOOGLE:
-				return new GoogleNativeAuthenticator(this, authorizationRequest);
+				return new GoogleNativeAuthenticator(this, authorizationRequest,
+						GoogleNativeAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
 
 			case MICROSOFT:
-				return new MicrosoftLiveAuthenticator(this, authorizationRequest);
+				return new MicrosoftLiveAuthenticator(this, authorizationRequest,
+						MicrosoftLiveAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
 
 			default:
 				throw new RuntimeException("Unknown authentication method");

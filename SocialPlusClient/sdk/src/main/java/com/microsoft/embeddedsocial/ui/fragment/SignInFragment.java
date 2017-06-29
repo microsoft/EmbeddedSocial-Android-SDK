@@ -146,11 +146,12 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 
 	private void signInWithFacebook() {
 		startAuthentication(new FacebookAuthenticator(this, this,
-			FacebookAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
+				FacebookAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
 	}
 
 	private void signInWithGoogle() {
-		startAuthentication(new GoogleNativeAuthenticator(this, this));
+		startAuthentication(new GoogleNativeAuthenticator(this, this,
+				GoogleNativeAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
 	}
 
 	private void signInWithTwitter() {
@@ -158,7 +159,8 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void signInWithMicrosoft() {
-		startAuthentication(new MicrosoftLiveAuthenticator(this, this));
+		startAuthentication(new MicrosoftLiveAuthenticator(this, this,
+				MicrosoftLiveAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
 	}
 
 	private void startAuthentication(AbstractAuthenticator authenticator) {

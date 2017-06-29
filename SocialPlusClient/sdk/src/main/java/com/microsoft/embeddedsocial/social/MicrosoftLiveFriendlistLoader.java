@@ -43,6 +43,8 @@ class MicrosoftLiveFriendlistLoader extends FriendlistLoader {
 			return extractFriendIds(getFriendsOperation.getRawResult());
 		} catch (LiveOperationException e) {
 			throw new SocialNetworkException(e);
+		} finally {
+			tokenHolder.clearToken();
 		}
 	}
 

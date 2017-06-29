@@ -80,7 +80,6 @@ public class GoogleCallbackActivity extends SignInActivity {
                         if (ex == null && resp != null) {
                             SocialNetworkAccount account = new SocialNetworkAccount(
                                     IdentityProvider.GOOGLE, resp.accessToken);
-                            SocialNetworkTokens.google().storeToken(resp.accessToken);
                             sendAuthSuccess(account);
                         } else {
                             DebugLog.logException(ex);

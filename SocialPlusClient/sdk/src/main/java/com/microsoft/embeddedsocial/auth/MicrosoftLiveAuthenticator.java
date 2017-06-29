@@ -35,27 +35,25 @@ import java.util.List;
  * Implements Microsoft Live authentication process.
  */
 public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
-
-	// TODO add wl.basic for find friends functionality
-	// TODO "wl.emails" needed for find friends
-	private static final List<String> AUTH_SCOPES = Arrays.asList("wl.signin");
-
 	private final GeneralLiveAuthListener generalLiveAuthListener = new GeneralLiveAuthListener();
 	private final LiveOperationListener liveOperationListener = new LiveOperationListenerImpl();
 	private final LiveAuthClient authClient;
+	private final AuthenticationMode authMode;
 	private String liveAccessToken;
 
-	public MicrosoftLiveAuthenticator(Fragment fragment, IAuthenticationCallback authCallback) {
+	public MicrosoftLiveAuthenticator(Fragment fragment, IAuthenticationCallback authCallback,
+									  AuthenticationMode authMode) {
 		super(IdentityProvider.MICROSOFT, fragment, authCallback);
 		authClient = new LiveAuthClient(
 			fragment.getActivity().getApplicationContext(),
 			GlobalObjectRegistry.getObject(Options.class).getMicrosoftClientId()
 		);
+		this.authMode = authMode;
 	}
 
 	@Override
 	protected void onAuthenticationStarted() throws AuthenticationException {
-		authClient.login(getFragment().getActivity(), AUTH_SCOPES, generalLiveAuthListener);
+		authClient.login(getFragment().getActivity(), authMode.getPermissions(), generalLiveAuthListener);
 	}
 
 	/**
@@ -77,8 +75,10 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 		public void onAuthComplete(LiveStatus status, LiveConnectSession session, Object userState) {
 			if (status == LiveStatus.CONNECTED) {
 				DebugLog.i("Microsoft Live login success");
+				if (authMode.canStoreToken()) {
+					SocialNetworkTokens.microsoft().storeToken(session);
+				}
 				liveAccessToken = android.net.Uri.encode(session.getAccessToken());
-				SocialNetworkTokens.microsoft().storeToken(session);
 				LiveConnectClient liveConnectClient = new LiveConnectClient(session);
 				liveConnectClient.getAsync("me", liveOperationListener);
 			} else {
@@ -152,6 +152,38 @@ public class MicrosoftLiveAuthenticator extends AbstractAuthenticator {
 		boolean getResult() {
 			blockingCondition.block();
 			return result;
+		}
+	}
+
+	/**
+	 * Microsoft authentication mode.
+	 */
+	public enum AuthenticationMode {
+
+		/**
+		 * Allow sign-in only.
+		 */
+		SIGN_IN_ONLY(false, "wl.signin"),
+
+		/**
+		 * Allow sign-in and obtaining friend list.
+		 */
+		OBTAIN_FRIENDS(true, "wl.signin", "wl.emails");
+
+		private final List<String> permissions;
+		private final boolean allowStoringToken;
+
+		AuthenticationMode(boolean allowStoringToken, String... permissions) {
+			this.permissions = Arrays.asList(permissions);
+			this.allowStoringToken = allowStoringToken;
+		}
+
+		private List<String> getPermissions() {
+			return permissions;
+		}
+
+		private boolean canStoreToken() {
+			return allowStoringToken;
 		}
 	}
 }
