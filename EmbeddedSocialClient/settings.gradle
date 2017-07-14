@@ -4,4 +4,4 @@
  *
  */
 
-include ':app', ':sdk', ':sampleapp', ':SocialPlus_Autorest_debug'
+include ':app', ':sdk', ':sampleapp'
