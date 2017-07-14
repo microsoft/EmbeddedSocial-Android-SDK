@@ -7,10 +7,10 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
@@ -84,23 +84,34 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 		setupSignInButton(view, R.id.es_signInGoogle, v -> signInWithGoogle(), options.isGoogleLoginEnabled());
 		setupSignInButton(view, R.id.es_signInTwitter, v -> signInWithTwitter(), options.isTwitterLoginEnabled());
 
-		Spannable termsText = new SpannableString(getContext().getString(R.string.es_terms));
+		Resources res = getResources();
+		String privacyPolicy = res.getString(R.string.es_privacy_statement);
+		String termsOfUse = res.getString(R.string.es_terms_of_use);
+		String termsText = res.getString(R.string.es_terms, privacyPolicy, termsOfUse);
 
-		termsText.setSpan(new ClickableSpan() {
+		int privacyIndexStart = termsText.indexOf(privacyPolicy);
+		int privacyIndexEnd = privacyIndexStart + privacyPolicy.length();
+		int termsIndexStart = termsText.indexOf(termsOfUse);
+		int termsIndexEnd = termsIndexStart + termsOfUse.length();
+
+		SpannableString spannableText = new SpannableString(termsText);
+
+		spannableText.setSpan(new ClickableSpan() {
 			@Override
 			public void onClick(View widget) {
 				WebPageHelper.openPrivacyPolicy(getContext());
 			}
-		}, 53, 70, 0);
-		termsText.setSpan(new ClickableSpan() {
+		}, privacyIndexStart, privacyIndexEnd, 0);
+
+		spannableText.setSpan(new ClickableSpan() {
 			@Override
 			public void onClick(View widget) {
 				WebPageHelper.openTermsAndConditions(getContext());
 			}
-		}, 75, 87, 0);
+		}, termsIndexStart, termsIndexEnd, 0);
 
 		TextView termsView = (TextView)view.findViewById(R.id.es_policyText);
-		termsView.setText(termsText);
+		termsView.setText(spannableText);
 		termsView.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
