@@ -1,6 +1,6 @@
 # Embedded Social SDK Integration
 ## Adding Embedded Social to the project
-To add the Embedded Social SDK to an Android project, update the build.gradle of your application module to include the SDK.  The EmbeddedSocial SDK supports a minSdkVerion of 15 and higher.  Currently, the project only has Maven artifacts for pre-release purposes on Bintray.
+To add the Embedded Social SDK to an Android project, update the build.gradle of your application module to include the SDK.  The Embedded Social SDK supports a minSdkVersion of 15 and higher.  Currently, the project only has Maven artifacts for pre-release purposes on Bintray.
 1.	Update your repositories to include the Bintray endpoint: http://dl.bintray.com/acrowntest/test 
 ```xml
 repositories {
@@ -61,7 +61,7 @@ Here is an example of such a file:
 ```
 The configuration file consists of the following sections:
 * application – contains information about your application such as application handle, application token, number of comments and replies to show
-* socialNetworks – contains information describing which social networks are enabled as identity providers to support login, and holds application id for corresponding social networks. At leasts one social network must be enabled.  Supported social networks are:
+* socialNetworks – contains information describing which social networks are enabled as identity providers to support login, and holds application id for corresponding social networks. At least one social network must be enabled.  Supported social networks are:
   *	Facebook
   *	Google
   *	Microsoft
@@ -75,7 +75,7 @@ android.permission.WRITE_EXTERNAL_STORAGE
 android.permission.CAMERA
 ```
 
-The internet permissions allows the SDK to interact with our server APIs.  The others enable users to take and post pictures.
+The internet permission allows the SDK to interact with our server APIs.  The others enable users to take and post pictures.
 
 ##	Search
 In order to use search suggestions in Embedded Social SDK, you have to perform the following steps:
@@ -97,7 +97,7 @@ public void onCreate() {
 }
 ```
 ###	Embedding Social features
-The SDK provides a number of methods to embed social functionality into your existing activities.  These methods can be called using `EmbeddedSocial.<method>` from within your application.  In order to use SDK fragments in your application’s activities, you currently need to have that activity extend EmbeddedSocialActivity. 
+The SDK provides a number of methods to embed social functionality into your existing activities.  These methods can be called using `EmbeddedSocial.<method>` from within your application.  To use SDK fragments in your application’s activities, you currently need to have that activity extend EmbeddedSocialActivity. 
 ###	Navigation Drawer
 There are a few options for handling navigation in the application.  You can create your own navigation drawer and integrate social items as necessary or you can use the included Navigation Drawer. 
 ####	SDK navigation initialization
