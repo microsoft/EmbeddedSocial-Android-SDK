@@ -19,11 +19,13 @@ import android.widget.Toast;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.ActionTagFilter;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.AccountDataDifference;
 import com.microsoft.embeddedsocial.image.ImageLoader;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
@@ -257,6 +259,12 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 			uploadPhotoView.setOnClickListener(selectPhotoOnClickListener);
 		}
 		privacySwitch = findView(view, R.id.es_privacySwitch);
+
+		// Only display the privacy toggle if user relations are enabled
+		View editPrivacy = findView(view, R.id.es_editPrivacy);
+		if (!GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+			editPrivacy.setVisibility(View.GONE);
+		}
 	}
 
 	@Override
