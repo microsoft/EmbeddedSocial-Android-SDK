@@ -100,9 +100,11 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		boolean canReadFollowers = isCurrentUser || account.arePostsReadable();
 		viewHolder.followers.setEnabled(canReadFollowers);
 		viewHolder.following.setEnabled(canReadFollowers);
-		if (!isCurrentUser) {
-			initFollowingStatusButton(account, viewHolder);
 
+		// Init the following status button if the profile does not belong to the signed in user
+		// and user relations are enabled
+		if (!isCurrentUser && GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+			initFollowingStatusButton(account, viewHolder);
 		}
 	}
 
