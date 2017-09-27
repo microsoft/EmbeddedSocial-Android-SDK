@@ -17,8 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.activity.FollowersActivity;
 import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -172,6 +174,12 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 			following.setOnClickListener(this);
 			followers.setOnClickListener(this);
 			editProfile.setOnClickListener(this);
+
+			// Only display the followers and following counts if user relations are enabled
+			if (!GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+				following.setVisibility(View.GONE);
+				followers.setVisibility(View.GONE);
+			}
 		}
 
 		public ViewGroup getRootView() {
