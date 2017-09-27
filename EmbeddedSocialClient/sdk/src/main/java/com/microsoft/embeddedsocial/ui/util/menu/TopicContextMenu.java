@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.ui.util.menu;
 
 import android.content.Context;
-import android.graphics.Path;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;

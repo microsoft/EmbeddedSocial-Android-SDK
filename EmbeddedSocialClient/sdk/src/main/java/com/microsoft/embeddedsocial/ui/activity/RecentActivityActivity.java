@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.ui.activity;
 
 import android.support.v4.view.PagerAdapter;
-import android.telephony.gsm.GsmCellLocation;
 
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
