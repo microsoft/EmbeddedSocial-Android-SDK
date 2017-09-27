@@ -6,6 +6,7 @@
 package com.microsoft.embeddedsocial.ui.util.menu;
 
 import android.content.Context;
+import android.graphics.Path;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.view.Menu;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
@@ -36,7 +38,9 @@ public class TopicContextMenu {
 			if (isOwnTopic(topic)) {
 				menu.inflate(R.menu.es_topic_own);
 			} else {
-				if (topic.getPublisherType() != PublisherType.APP) {
+				if (topic.getPublisherType() != PublisherType.APP &&
+						GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+					// Inflate the relation options if this is a user other than the signed in user and user relations are enabled
 					UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
 				}
 				menu.inflate(R.menu.es_topic);
