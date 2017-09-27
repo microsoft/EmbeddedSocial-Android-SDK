@@ -9,6 +9,8 @@ import android.content.Context;
 import android.view.View;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -29,7 +31,8 @@ public class UserRenderer extends BaseUserRenderer {
 		UserAccount userAccount = UserAccount.getInstance();
 		if (userAccount.isCurrentUser(user.getHandle()) || user.getFollowerStatus() == FollowerStatus.BLOCKED) {
 			holder.actionButton.setVisibility(View.GONE);
-		} else {
+		} else if (GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()){
+			// only render the action button if user relations are enabled
 			renderActionButton(user, holder);
 		}
 	}
