@@ -12,10 +12,12 @@ import android.view.View;
 
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.event.ScrollPositionEvent;
 import com.microsoft.embeddedsocial.event.click.OpenCommentEvent;
 import com.microsoft.embeddedsocial.event.click.ViewCommentCoverImageEvent;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
@@ -53,7 +55,10 @@ public class CommentButtonListener {
 			menu.inflate(R.menu.es_comment_own);
 		} else {
 			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.es_keyFollowerStatus);
-			UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
+			if (GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+				// only inflate the user relationship options if user relations are enabled
+				UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
+			}
 			menu.inflate(R.menu.es_comment);
 		}
 		menu.setOnMenuItemClickListener(new CommentContextMenuClickListener(

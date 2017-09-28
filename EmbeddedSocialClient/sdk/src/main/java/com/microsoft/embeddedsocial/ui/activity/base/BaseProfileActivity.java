@@ -153,7 +153,10 @@ public abstract class BaseProfileActivity extends BaseTabsActivity {
 					inflater.inflate(R.menu.es_my_profile, menu);
 				}
 			} else {
-				inflater.inflate(R.menu.es_user_block, menu);
+				// Only show the block user option if user relations are enabled
+				if (options.userRelationsEnabled()) {
+					inflater.inflate(R.menu.es_user_block, menu);
+				}
 				inflater.inflate(R.menu.es_user_report, menu);
 			}
 		} else if (options != null && options.showGalleryView()) {

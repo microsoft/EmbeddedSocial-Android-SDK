@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.BlockedUsersActivity;
 import com.microsoft.embeddedsocial.ui.activity.FollowRequestsActivity;
@@ -79,17 +81,22 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 	}
 
 	private void initItemTypes() {
+		boolean userRelationsEnabled = GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled();
 		itemTypes.clear();
 		if (getDataSize() > 0) {
 			itemTypes.add(VIEW_TYPE_PROFILE);
 			AccountData accountData = getItem(0);
-			if (isCurrentUser) {
-				itemTypes.add(VIEW_TYPE_BLOCKED_USERS);
-				if (accountData.isPrivate()) {
-					itemTypes.add(VIEW_TYPE_FOLLOW_REQUESTS);
+
+			// Only show blocked users, follow requests, and private profiles if user relations are enabled
+			if (userRelationsEnabled) {
+				if (isCurrentUser) {
+					itemTypes.add(VIEW_TYPE_BLOCKED_USERS);
+					if (accountData.isPrivate()) {
+						itemTypes.add(VIEW_TYPE_FOLLOW_REQUESTS);
+					}
+				} else if (accountData.isPrivate() && accountData.getFollowedStatus() != FollowerStatus.FOLLOW) {
+					itemTypes.add(VIEW_TYPE_PRIVATE_USER_MESSAGE);
 				}
-			} else if (accountData.isPrivate() && accountData.getFollowedStatus() != FollowerStatus.FOLLOW) {
-				itemTypes.add(VIEW_TYPE_PRIVATE_USER_MESSAGE);
 			}
 		}
 	}

@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.view.View;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -45,7 +47,10 @@ public class ReplyButtonListener {
 			menu.inflate(R.menu.es_reply_own);
 		} else {
 			FollowerStatus userRelationshipStatus = (FollowerStatus) view.getTag(R.id.es_keyFollowerStatus);
-			UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
+			if (GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+				// only inflate the user relationship options if user relations are enabled
+				UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, userRelationshipStatus);
+			}
 			menu.inflate(R.menu.es_reply);
 		}
 		menu.setOnMenuItemClickListener(new ReplyContextMenuClickListener(

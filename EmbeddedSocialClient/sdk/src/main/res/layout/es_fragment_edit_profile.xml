@@ -144,44 +144,51 @@
 
 		</com.microsoft.embeddedsocial.ui.view.TextInput>
 
-		<TextView
-			style="@style/EmbeddedSocialSdkTextSubhead.Green"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="@dimen/es_padding_large"
-			android:layout_marginLeft="@dimen/es_profile_margin_text"
-			android:layout_marginRight="@dimen/es_profile_margin_text"
-			android:layout_marginTop="@dimen/es_padding_large"
-			android:text="@string/es_privacy_header"
-			/>
-
-		<RelativeLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginBottom="@dimen/es_profile_row_margin"
-			android:layout_marginLeft="@dimen/es_profile_margin_text"
-			android:layout_marginRight="@dimen/es_profile_margin_text"
-			>
+		<LinearLayout
+				android:id="@+id/es_editPrivacy"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
 
 			<TextView
+				style="@style/EmbeddedSocialSdkTextSubhead.Green"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_centerVertical="true"
+				android:layout_marginBottom="@dimen/es_padding_large"
+				android:layout_marginLeft="@dimen/es_profile_margin_text"
 				android:layout_marginRight="@dimen/es_profile_margin_text"
-				android:layout_toLeftOf="@+id/es_privacySwitch"
-				android:paddingBottom="@dimen/es_padding_small"
-				android:text="@string/es_privacy_description"
+				android:layout_marginTop="@dimen/es_padding_large"
+				android:text="@string/es_privacy_header"
 				/>
 
-			<android.support.v7.widget.SwitchCompat
-				android:id="@+id/es_privacySwitch"
-				android:layout_width="wrap_content"
+			<RelativeLayout
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_alignParentRight="true"
-				android:layout_centerVertical="true"
-				/>
+				android:layout_marginBottom="@dimen/es_profile_row_margin"
+				android:layout_marginLeft="@dimen/es_profile_margin_text"
+				android:layout_marginRight="@dimen/es_profile_margin_text"
+				>
 
-		</RelativeLayout>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_marginRight="@dimen/es_profile_margin_text"
+					android:layout_toLeftOf="@+id/es_privacySwitch"
+					android:paddingBottom="@dimen/es_padding_small"
+					android:text="@string/es_privacy_description"
+					/>
+
+				<android.support.v7.widget.SwitchCompat
+					android:id="@+id/es_privacySwitch"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_centerVertical="true"
+					/>
+
+			</RelativeLayout>
+		</LinearLayout>
 
 	</LinearLayout>
 

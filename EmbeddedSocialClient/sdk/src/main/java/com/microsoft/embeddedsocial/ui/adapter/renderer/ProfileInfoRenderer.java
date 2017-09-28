@@ -17,8 +17,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.ui.activity.FollowersActivity;
 import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -98,9 +100,11 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 		boolean canReadFollowers = isCurrentUser || account.arePostsReadable();
 		viewHolder.followers.setEnabled(canReadFollowers);
 		viewHolder.following.setEnabled(canReadFollowers);
-		if (!isCurrentUser) {
-			initFollowingStatusButton(account, viewHolder);
 
+		// Init the following status button if the profile does not belong to the signed in user
+		// and user relations are enabled
+		if (!isCurrentUser && GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+			initFollowingStatusButton(account, viewHolder);
 		}
 	}
 
@@ -172,6 +176,12 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 			following.setOnClickListener(this);
 			followers.setOnClickListener(this);
 			editProfile.setOnClickListener(this);
+
+			// Only display the followers and following counts if user relations are enabled
+			if (!GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+				following.setVisibility(View.GONE);
+				followers.setVisibility(View.GONE);
+			}
 		}
 
 		public ViewGroup getRootView() {
