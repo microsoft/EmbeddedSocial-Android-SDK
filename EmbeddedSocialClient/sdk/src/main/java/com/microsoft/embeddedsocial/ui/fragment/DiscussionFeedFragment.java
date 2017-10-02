@@ -121,7 +121,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	protected void initRecyclerView() {
 		if (UserAccount.getInstance().isSignedIn() && !isLocal()) {
 			FetchableRecyclerView recyclerView = getRecyclerView();
-			final View enterNote = LayoutInflater.from(getActivity()).inflate(R.layout.es_view_enter_note, recyclerView, false);
+			final View enterNote = LayoutInflater.from(getContext()).inflate(R.layout.es_view_enter_note, recyclerView, false);
 			noteText = (EditText) enterNote.findViewById(R.id.es_noteText);
 			doneButton = (Button) enterNote.findViewById(R.id.es_doneButton);
 			imageButton = (ImageButton) enterNote.findViewById(R.id.es_attachImageButton);

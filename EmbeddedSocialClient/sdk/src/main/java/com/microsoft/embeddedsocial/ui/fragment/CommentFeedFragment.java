@@ -58,6 +58,8 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 
 	public CommentFeedFragment() {
 		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayTopic);
+		addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
+
 	}
 
 	public static CommentFeedFragment getCommentFeedFragmentFromTopicHandle(String topicHandle, HashMap<Integer, Integer> errorMessages) {

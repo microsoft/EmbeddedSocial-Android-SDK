@@ -8,9 +8,7 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -124,7 +122,12 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		int layoutId = getLayoutId();
-		return (layoutId == 0) ? null : inflater.inflate(layoutId, container, false);
+
+		// Load the layout with all necessary styles present
+		final Context contextThemeWrapper = getContext();
+		LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+
+		return (layoutId == 0) ? null : localInflater.inflate(getLayoutId(), container, false);
 	}
 
 	private LayoutInflater getThemedLayoutInflater(LayoutInflater inflater) {

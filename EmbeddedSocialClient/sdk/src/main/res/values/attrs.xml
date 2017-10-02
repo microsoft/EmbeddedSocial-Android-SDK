@@ -23,7 +23,7 @@
 		<attr name="es_navigationItemStyle" format="reference"/>
 
 		<!-- background of clickable elements -->
-		<attr name="es_buttonBackground" format="reference"/>
+		<attr name="es_buttonBackground" format="reference|color"/>
 
 		<!-- background of items in list -->
 		<attr name="es_listItemBackground" format="reference"/>
