@@ -290,10 +290,6 @@ public abstract class BaseFragment extends Fragment {
 		}
 	}
 
-	protected BaseActivity getOwner() {
-		return (BaseActivity) getActivity();
-	}
-
 	protected void hideView(@IdRes int viewId) {
 		findView(getView(), viewId).setVisibility(View.GONE);
 	}
@@ -348,6 +344,10 @@ public abstract class BaseFragment extends Fragment {
 	}
 
 	protected boolean isRestarting() {
-		return getOwner().isShuttingDown();
+		Activity activity = getActivity();
+		if (activity instanceof BaseActivity) {
+			return ((BaseActivity)activity).isShuttingDown();
+		}
+		return false;
 	}
 }

@@ -5,6 +5,7 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -77,7 +78,10 @@ public class OptionsFragment extends BaseFragment {
 	}
 
 	private void signOut() {
-		((BaseActivity) getActivity()).disableNavigationPanel();
+		Activity activity = getActivity();
+		if (activity instanceof BaseActivity) {
+			((BaseActivity)activity).disableNavigationPanel();
+		}
 		ProgressBar progressBar = findView(getView(), R.id.es_progress);
 		progressBar.setVisibility(View.VISIBLE);
 		hideView(R.id.es_options);
