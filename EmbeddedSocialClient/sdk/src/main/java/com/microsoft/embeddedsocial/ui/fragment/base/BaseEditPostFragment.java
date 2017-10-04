@@ -8,6 +8,7 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,6 @@ import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.event.dialog.OnNegativeButtonClickedEvent;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
@@ -66,9 +66,10 @@ public abstract class BaseEditPostFragment extends BaseFragment {
 		descriptionView = findView(view, R.id.es_description);
 		descriptionView.setValidator(new FieldNotEmptyValidator(getContext()));
 		imageMessageView = findView(view, R.id.es_imageMessage);
-		BaseActivity activity = getOwner();
-		activity.showBottomBar();
-		activity.setOnDoneClickListener(v -> uploadPost());
+		View bottomBar = findView(view, R.id.es_bottomBar);
+		bottomBar.setVisibility(View.VISIBLE);
+		Button doneButton = findView(view, R.id.es_doneButton);
+		doneButton.setOnClickListener(v -> uploadPost());
 
 		if (savedInstanceState != null) {
 			setTitle(savedInstanceState.getString(PREF_TITLE));
