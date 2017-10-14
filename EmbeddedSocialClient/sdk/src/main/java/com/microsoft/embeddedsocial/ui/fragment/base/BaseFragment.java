@@ -35,16 +35,19 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
+import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
 import com.squareup.otto.Subscribe;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+import static com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener.REQUESTCODE_SIGN_IN;
+
 /**
  * Base fragment class.
  */
 public abstract class BaseFragment extends Fragment {
-
 	private List<Integer> themesToMerge = new LinkedList<>();
 
 	private final List<Module> modules = new LinkedList<>();
@@ -86,6 +89,16 @@ public abstract class BaseFragment extends Fragment {
 		setRetainInstance(true);
 		eventListeners.add(this);
 		eventListeners.add(actionEventListener);
+	}
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		Activity activity = getActivity();
+		if (!(activity instanceof BaseActivity)) {
+			CommonBehaviorEventListener eventListener = new CommonBehaviorEventListener(this);
+			eventListeners.add(eventListener);
+		}
 	}
 
 	/**
@@ -280,6 +293,19 @@ public abstract class BaseFragment extends Fragment {
 		for (Module module : modules) {
 			module.onActivityResult(requestCode, resultCode, data);
 		}
+
+		if (requestCode == REQUESTCODE_SIGN_IN && !(getActivity() instanceof BaseActivity)) {
+			if (resultCode == RESULT_OK) {
+				onUserSignedIn();
+			}
+		}
+	}
+
+	/**
+	 * Optional method to update the current fragment when the user signs in
+	 */
+	public void onUserSignedIn() {
+		// no default implementation
 	}
 
 	@Override

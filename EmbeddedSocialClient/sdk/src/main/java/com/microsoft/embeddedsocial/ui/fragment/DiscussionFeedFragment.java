@@ -224,6 +224,11 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	}
 
 	@Override
+	public void onUserSignedIn() {
+		initRecyclerView();
+	}
+
+	@Override
 	public void onPause() {
 		super.onPause();
 		EventBus.unregister(eventListener);
