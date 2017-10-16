@@ -9,7 +9,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Layout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -61,6 +63,8 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     private ImageView profilePhotoView;
     private ImageViewContentLoader largePhotoLoader;
     private ImageViewContentLoader profilePhotoLoader;
+    private View bottomBar;
+    private Button doneButton;
 
     private EditImageOnClickListener editPhotoOnClickListener;
     private SelectImageOnClickListener selectPhotoOnClickListener;
@@ -80,14 +84,6 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     public void setArguments(Bundle args) {
         thirdPartyAccount = args.getParcelable(IntentExtras.THIRD_PARTY_ACCOUNT);
         args.remove(IntentExtras.THIRD_PARTY_ACCOUNT);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        BaseActivity owner = getOwner();
-        owner.showBottomBar();
-        owner.setOnDoneClickListener(v -> onDone());
     }
 
     @Override
@@ -172,7 +168,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
         if (hasPhoto) {
             if (largePhotoView != null) {
                 largePhotoLoader = new CoverLoader(largePhotoView);
-                largePhotoLoader.load(photoLocation, ViewUtils.getDisplayWidth(getOwner()));
+                largePhotoLoader.load(photoLocation, ViewUtils.getDisplayWidth(getActivity()));
             }
 
             if (isTablet()) {
@@ -211,6 +207,11 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
         largePhotoView = findView(view, R.id.es_largePhoto);
         profilePhotoView = findView(view, R.id.es_profileImage);
         photoLayout = findView(view, R.id.es_photoLayout);
+        bottomBar = findView(view, R.id.es_bottomBar);
+        doneButton = findView(view, R.id.es_doneButton);
+        bottomBar.setVisibility(View.VISIBLE);
+        doneButton.setOnClickListener(v -> onDone());
+
         photoLayout.setVisibility(View.GONE);
         if (findView(view, R.id.es_editPhoto) != null) {
             setOnClickListener(view, R.id.es_editPhoto, editPhotoOnClickListener);
@@ -242,9 +243,9 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     protected void setProgressVisible(boolean progressVisible) {
         super.setProgressVisible(progressVisible);
         if (progressVisible) {
-            getOwner().hideBottomBar();
+            bottomBar.setVisibility(View.GONE);
         } else {
-            getOwner().showBottomBar();
+            bottomBar.setVisibility(View.VISIBLE);
         }
     }
 
@@ -307,7 +308,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
 
         @Override
         public BitmapUtils.SizeSpec getSizeSpec() {
-            return new FitWidthSizeSpec(getOwner());
+            return new FitWidthSizeSpec(getActivity());
         }
     }
 }

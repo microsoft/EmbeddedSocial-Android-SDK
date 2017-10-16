@@ -26,7 +26,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -60,8 +59,6 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	private ActionBarDrawerToggle drawerToggle;
 	private DrawerLayout drawerLayout;
 	private View frameContentView;
-	private ViewGroup bottomBar;
-	private Button doneButton;
 	private Toolbar toolbar;
 	private DrawerHandler drawerHandler;
 	private DrawerHandler.DisplayMenu displayMenu;
@@ -98,8 +95,6 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 		setContentView(getLayoutResId());
 		toolbar = findView(R.id.es_toolbar);
 		setSupportActionBar(toolbar);
-		bottomBar = findView(R.id.es_bottomBar);
-		doneButton = findView(R.id.es_doneButton);
 
 		if (customToolbarColorizer != null) {
 			toolbar.setBackgroundColor(ContextCompat.getColor(this, customToolbarColorizer.getBackgroundColor()));
@@ -261,18 +256,6 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 			parent.removeAllViews();
 			getSupportFragmentManager().beginTransaction().replace(R.id.es_content, fragment).commit();
 		}
-	}
-
-	public void showBottomBar() {
-		bottomBar.setVisibility(View.VISIBLE);
-	}
-
-	public void hideBottomBar() {
-		bottomBar.setVisibility(View.GONE);
-	}
-
-	public void setOnDoneClickListener(View.OnClickListener listener) {
-		doneButton.setOnClickListener(listener);
 	}
 
 	@Override

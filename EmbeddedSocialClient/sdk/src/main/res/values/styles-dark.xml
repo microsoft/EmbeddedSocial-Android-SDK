@@ -10,7 +10,7 @@
 	>
 
 	<style name="EmbeddedSocialSdkAppTheme.Dark.Base" parent="Theme.AppCompat.NoActionBar">
-		<item name="es_buttonBackground">?attr/actionBarItemBackground</item>
+		<item name="es_buttonBackground">@android:color/transparent</item>
 		<item name="colorButtonNormal">#FF4CAF50</item>
 		<item name="android:windowBackground">@color/es_window_background_dark</item>
 		<item name="colorControlNormal">@color/es_text_hint_dark</item>

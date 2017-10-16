@@ -4,9 +4,10 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   -->
 
-<FrameLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/es_editPostLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:paddingLeft="@dimen/es_activity_horizontal_margin"
@@ -14,9 +15,9 @@
 	>
 
 	<ScrollView
-		android:id="@+id/es_editPostLayout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:layout_above="@id/es_bottomBar"
 		>
 
 		<RelativeLayout
@@ -126,5 +127,10 @@
 	</ScrollView>
 
 	<include layout="@layout/es_progressbar"/>
-</FrameLayout>
+
+	<include layout="@layout/es_bottom_bar"
+			 android:layout_height="wrap_content"
+			 android:layout_width="match_parent"
+			 android:layout_alignParentBottom="true"/>
+</RelativeLayout>
 

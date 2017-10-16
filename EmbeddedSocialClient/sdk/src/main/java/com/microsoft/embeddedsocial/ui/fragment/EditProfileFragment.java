@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -66,6 +67,8 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 	private SwitchCompat privacySwitch;
 	private ImageViewContentLoader largePhotoLoader;
 	private ImageViewContentLoader profilePhotoLoader;
+	private View bottomBar;
+	private Button doneButton;
 
 	private EditImageOnClickListener editPhotoOnClickListener;
 	private SelectImageOnClickListener selectPhotoOnClickListener;
@@ -99,14 +102,6 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 				}
 			}
 		});
-	}
-
-	@Override
-	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		BaseActivity owner = getOwner();
-		owner.showBottomBar();
-		owner.setOnDoneClickListener(v -> onDone());
 	}
 
 	@Override
@@ -213,7 +208,7 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 		if (hasPhoto) {
 			if (largePhotoView != null) {
 				largePhotoLoader = new CoverLoader(largePhotoView);
-				largePhotoLoader.load(photoLocation, ViewUtils.getDisplayWidth(getOwner()));
+				largePhotoLoader.load(photoLocation, ViewUtils.getDisplayWidth(getActivity()));
 			}
 
 			if (isTablet()) {
@@ -251,6 +246,11 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 		uploadPhotoView = findView(view, R.id.es_uploadPhotoLayout);
 		largePhotoView = findView(view, R.id.es_largePhoto);
 		profilePhotoView = findView(view, R.id.es_profileImage);
+		bottomBar = findView(view, R.id.es_bottomBar);
+		doneButton = findView(view, R.id.es_doneButton);
+		bottomBar.setVisibility(View.VISIBLE);
+		doneButton.setOnClickListener(v -> onDone());
+
 		photoLayout = findView(view, R.id.es_photoLayout);
 		if (findView(view, R.id.es_editPhoto) != null) {
 			setOnClickListener(view, R.id.es_editPhoto, editPhotoOnClickListener);
@@ -290,9 +290,9 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 	protected void setProgressVisible(boolean progressVisible) {
 		super.setProgressVisible(progressVisible);
 		if (progressVisible) {
-			getOwner().hideBottomBar();
+			bottomBar.setVisibility(View.GONE);
 		} else {
-			getOwner().showBottomBar();
+			bottomBar.setVisibility(View.VISIBLE);
 		}
 	}
 
@@ -356,7 +356,7 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
 
 		@Override
 		public BitmapUtils.SizeSpec getSizeSpec() {
-			return new FitWidthSizeSpec(getOwner());
+			return new FitWidthSizeSpec(getActivity());
 		}
 	}
 }

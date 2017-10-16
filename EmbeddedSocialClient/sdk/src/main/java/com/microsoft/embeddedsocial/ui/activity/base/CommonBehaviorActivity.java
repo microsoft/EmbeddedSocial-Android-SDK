@@ -18,32 +18,24 @@ import android.view.View;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.event.RequestSignInEvent;
-import com.microsoft.embeddedsocial.event.click.OpenCommentEvent;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
-import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
+import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
 import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
 import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.event.click.OpenTopicEvent;
-import com.microsoft.embeddedsocial.event.click.OpenUserProfileEvent;
-import com.microsoft.embeddedsocial.event.click.ViewCommentCoverImageEvent;
-import com.microsoft.embeddedsocial.event.click.ViewCoverImageEvent;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.activity.CommentActivity;
 import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
-import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
-import com.microsoft.embeddedsocial.ui.activity.ViewImageActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.theme.Theme;
-import com.squareup.otto.Subscribe;
 
 import java.util.List;
+
+import static com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener.REQUESTCODE_SIGN_IN;
 
 /**
  * <p>Implements common behavior for app's activities.</p>
@@ -60,8 +52,6 @@ import java.util.List;
  * </p>
  */
 abstract class CommonBehaviorActivity extends AppCompatActivity {
-	private static final int REQUESTCODE_SIGN_IN = 1001;
-
 	private static final int ACTION_PROCEED = 0;
 	private static final int ACTION_RESTART = 1;
 	private static final int ACTION_CLOSE = 2;
@@ -70,55 +60,7 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 	private String userHandle;
 	private AuthorizationCause ongoingAuthorizationCause;
 
-	private Object eventListener = new Object() {
-
-		@Subscribe
-		public void onOpenTopic(OpenTopicEvent topicEvent) {
-			Intent intent = new Intent(getApplication(), TopicActivity.class);
-			intent.putExtra(IntentExtras.TOPIC_EXTRA, topicEvent.getTopic());
-			intent.putExtra(IntentExtras.TOPIC_HANDLE, topicEvent.getTopic().getHandle());
-			intent.putExtra(IntentExtras.JUMP_TO_EDIT, topicEvent.jumpToEdit());
-			startActivity(intent);
-		}
-
-		@Subscribe
-		public void onViewCoverImage(ViewCoverImageEvent viewCoverImageEvent) {
-			Intent intent = new Intent(getApplication(), ViewImageActivity.class);
-			intent.putExtra(
-				IntentExtras.COVER_IMAGE_URL_EXTRA,
-				viewCoverImageEvent.getTopic().getImageLocation().getOriginalUrl());
-			startActivity(intent);
-		}
-
-		@Subscribe
-		public void onViewCommentCoverImage(ViewCommentCoverImageEvent viewCommentCoverImageEvent) {
-			Intent intent = new Intent(getApplication(), ViewImageActivity.class);
-			intent.putExtra(
-					IntentExtras.COVER_IMAGE_URL_EXTRA,
-					viewCommentCoverImageEvent.getComment().getImageLocation().getOriginalUrl());
-			startActivity(intent);
-		}
-
-		@Subscribe
-		public void onOpenComment(OpenCommentEvent commentEvent) {
-			Intent intent = new Intent(getApplication(), CommentActivity.class);
-			intent.putExtra(IntentExtras.COMMENT_EXTRA, commentEvent.getComment());
-			intent.putExtra(IntentExtras.COMMENT_HANDLE, commentEvent.getComment().getHandle());
-			intent.putExtra(IntentExtras.JUMP_TO_EDIT, commentEvent.jumpToEdit());
-			startActivity(intent);
-		}
-
-		@Subscribe
-		public void onOpenUserProfileEvent(OpenUserProfileEvent openUserProfileEvent) {
-			ProfileOpenHelper.openUserProfile(CommonBehaviorActivity.this, openUserProfileEvent.getUser());
-		}
-
-		@Subscribe
-		public void onSignInRequest(RequestSignInEvent event) {
-			CommonBehaviorActivity.this.onSignInRequest(event.getAuthorizationCause());
-		}
-
-	};
+	private CommonBehaviorEventListener eventListener;
 
 	/**
 	 * Sets the theme. Call it only in a constructor.
@@ -127,15 +69,10 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 		this.theme = theme;
 	}
 
-	private void onSignInRequest(AuthorizationCause authorizationCause) {
-		Intent intent = new Intent(CommonBehaviorActivity.this, SignInActivity.class);
-		EnumUtils.putValue(intent, IntentExtras.REASON_TO_SIGN_IN, authorizationCause);
-		startActivityForResult(intent, REQUESTCODE_SIGN_IN);
-	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setupTheme();
+		eventListener = new CommonBehaviorEventListener(this);
 		userHandle = UserAccount.getInstance().getUserHandle();
 		boolean unauthorizedAccess = isAuthorizationRequired() && !isUserAuthorized();
 		super.onCreate(unauthorizedAccess ? null : savedInstanceState); // pass null to avoid possible crashes after immediate finish

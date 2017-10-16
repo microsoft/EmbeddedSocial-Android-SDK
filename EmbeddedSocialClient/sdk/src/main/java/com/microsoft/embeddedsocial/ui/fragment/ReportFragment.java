@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class ReportFragment extends BaseFragment {
 	private ContentType contentType;
 	private View selectLayout;
 	private View resultLayout;
+	private View bottomBar;
 
 	@Override
 	protected int getLayoutId() {
@@ -48,10 +50,11 @@ public class ReportFragment extends BaseFragment {
 		setHasOptionsMenu(true);
 		initBaseView(view);
 
-		BaseActivity activity = (BaseActivity) getActivity();
-		activity.showBottomBar();
-		activity.setOnDoneClickListener(v -> {
-			UserActionProxy userActionProxy = new UserActionProxy(activity);
+		bottomBar = findView(view, R.id.es_bottomBar);
+		bottomBar.setVisibility(View.VISIBLE);
+		Button doneButton = findView(view, R.id.es_doneButton);
+		doneButton.setOnClickListener(v -> {
+				UserActionProxy userActionProxy = new UserActionProxy(getContext());
 			if (!TextUtils.isEmpty(reportUserHandle)) {
 				userActionProxy.reportUser(reportUserHandle, reason);
 			} else {
@@ -153,7 +156,7 @@ public class ReportFragment extends BaseFragment {
 	private void setDoneViewOnThePhone() {
 		selectLayout.setVisibility(View.GONE);
 		resultLayout.setVisibility(View.VISIBLE);
-		((BaseActivity) getActivity()).hideBottomBar();
+		bottomBar.setVisibility(View.GONE);
 	}
 
 	private void setDoneViewOnTheTablet() {

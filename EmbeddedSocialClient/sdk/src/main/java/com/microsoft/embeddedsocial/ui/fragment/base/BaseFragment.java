@@ -8,9 +8,7 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -37,16 +35,19 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
+import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
 import com.squareup.otto.Subscribe;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+import static com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener.REQUESTCODE_SIGN_IN;
+
 /**
  * Base fragment class.
  */
 public abstract class BaseFragment extends Fragment {
-
 	private List<Integer> themesToMerge = new LinkedList<>();
 
 	private final List<Module> modules = new LinkedList<>();
@@ -90,6 +91,16 @@ public abstract class BaseFragment extends Fragment {
 		eventListeners.add(actionEventListener);
 	}
 
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		Activity activity = getActivity();
+		if (!(activity instanceof BaseActivity)) {
+			CommonBehaviorEventListener eventListener = new CommonBehaviorEventListener(this);
+			eventListeners.add(eventListener);
+		}
+	}
+
 	/**
 	 * Registers a module. Call it only from a constructor.
 	 */
@@ -124,7 +135,12 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		int layoutId = getLayoutId();
-		return (layoutId == 0) ? null : inflater.inflate(layoutId, container, false);
+
+		// Load the layout with all necessary styles present
+		final Context contextThemeWrapper = getContext();
+		LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
+
+		return (layoutId == 0) ? null : localInflater.inflate(getLayoutId(), container, false);
 	}
 
 	private LayoutInflater getThemedLayoutInflater(LayoutInflater inflater) {
@@ -277,6 +293,19 @@ public abstract class BaseFragment extends Fragment {
 		for (Module module : modules) {
 			module.onActivityResult(requestCode, resultCode, data);
 		}
+
+		if (requestCode == REQUESTCODE_SIGN_IN && !(getActivity() instanceof BaseActivity)) {
+			if (resultCode == RESULT_OK) {
+				onUserSignedIn();
+			}
+		}
+	}
+
+	/**
+	 * Optional method to update the current fragment when the user signs in
+	 */
+	public void onUserSignedIn() {
+		// no default implementation
 	}
 
 	@Override
@@ -285,10 +314,6 @@ public abstract class BaseFragment extends Fragment {
 		for (Module module : modules) {
 			module.onCreate(savedInstanceState);
 		}
-	}
-
-	protected BaseActivity getOwner() {
-		return (BaseActivity) getActivity();
 	}
 
 	protected void hideView(@IdRes int viewId) {
@@ -345,6 +370,10 @@ public abstract class BaseFragment extends Fragment {
 	}
 
 	protected boolean isRestarting() {
-		return getOwner().isShuttingDown();
+		Activity activity = getActivity();
+		if (activity instanceof BaseActivity) {
+			return ((BaseActivity)activity).isShuttingDown();
+		}
+		return false;
 	}
 }
