@@ -138,16 +138,16 @@
 				android:layout_marginRight="@dimen/es_padding_large"
 				android:layout_marginTop="@dimen/es_padding_small"
 				>
-
-				<EditText
+        
+        <EditText
 					style="@style/EmbeddedSocialSdkEditTextStyle"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:hint="@string/es_hint_bio"
 					android:inputType="textMultiLine"
 					/>
-
-			</com.microsoft.embeddedsocial.ui.view.TextInput>
+        
+      </com.microsoft.embeddedsocial.ui.view.TextInput>
 
 			<TextView
 				style="@style/EmbeddedSocialSdkTextSubhead.Green"
