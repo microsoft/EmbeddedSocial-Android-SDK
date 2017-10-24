@@ -71,175 +71,237 @@
 
 		</android.support.v7.widget.CardView>
 
-		<android.support.v7.widget.CardView
+		<LinearLayout
+			android:id="@+id/es_optionsSignedIn"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="@dimen/es_padding_base"
-			android:layout_marginTop="@dimen/es_padding_large"
-			app:cardBackgroundColor="?attr/es_cardBackground"
+			android:orientation="vertical"
+			android:visibility="gone">
 			>
 
-			<TableLayout
+			<android.support.v7.widget.CardView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:paddingLeft="@dimen/es_padding_large"
-				android:paddingRight="@dimen/es_padding_large"
-				android:stretchColumns="*"
+				android:layout_marginLeft="@dimen/es_padding_base"
+				android:layout_marginTop="@dimen/es_padding_large"
+				app:cardBackgroundColor="?attr/es_cardBackground"
 				>
 
-				<TableRow>
+				<TableLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="@dimen/es_padding_large"
+					android:paddingRight="@dimen/es_padding_large"
+					android:stretchColumns="*"
+					>
 
-					<TextView
-						style="@style/EmbeddedSocialSdkOptionsHeader"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:text="@string/es_header_follow"
-						/>
+					<TableRow>
 
-				</TableRow>
+						<TextView
+							style="@style/EmbeddedSocialSdkOptionsHeader"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text="@string/es_header_follow"
+							/>
 
-				<TableRow>
+					</TableRow>
 
-					<TextView
-						android:id="@+id/es_findFacebookFriends"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginRight="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_find_friends_facebook"
-						/>
+					<TableRow>
 
-					<TextView
-						android:id="@+id/es_findMicrosoftContacts"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_find_friends_microsoft"
-						/>
+						<TextView
+							android:id="@+id/es_findFacebookFriends"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginRight="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_find_friends_facebook"
+							/>
 
-				</TableRow>
+						<TextView
+							android:id="@+id/es_findMicrosoftContacts"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_find_friends_microsoft"
+							/>
 
-				<TableRow>
+					</TableRow>
 
-					<View
-						style="@style/EmbeddedSocialSdkDivider.Tablet"
-						android:layout_marginRight="@dimen/es_padding_base"
-						/>
+					<TableRow>
 
-					<View
-						style="@style/EmbeddedSocialSdkDivider.Tablet"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						/>
+						<View
+							style="@style/EmbeddedSocialSdkDivider.Tablet"
+							android:layout_marginRight="@dimen/es_padding_base"
+							/>
 
-				</TableRow>
+						<View
+							style="@style/EmbeddedSocialSdkDivider.Tablet"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							/>
 
-				<TableRow>
+					</TableRow>
 
-					<TextView
-						android:id="@+id/es_findGooglePlusFriends"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginRight="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_find_friends_google_plus"
-						/>
+					<TableRow>
 
-					<TextView
-						android:id="@+id/es_findFriendsFromOtherApps"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_find_friends_other_apps"
-						/>
+						<TextView
+							android:id="@+id/es_findGooglePlusFriends"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginRight="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_find_friends_google_plus"
+							/>
 
-				</TableRow>
+						<TextView
+							android:id="@+id/es_findFriendsFromOtherApps"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_find_friends_other_apps"
+							/>
 
-			</TableLayout>
+					</TableRow>
 
-		</android.support.v7.widget.CardView>
+				</TableLayout>
 
-		<android.support.v7.widget.CardView
+			</android.support.v7.widget.CardView>
+
+			<android.support.v7.widget.CardView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/es_padding_base"
+				android:layout_marginTop="@dimen/es_padding_large"
+				app:cardBackgroundColor="?attr/es_cardBackground"
+				>
+
+				<TableLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="@dimen/es_padding_large"
+					android:paddingRight="@dimen/es_padding_large"
+					android:stretchColumns="*"
+					>
+
+					<TableRow>
+
+						<TextView
+							style="@style/EmbeddedSocialSdkOptionsHeader"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text="@string/es_account_header"
+							/>
+
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:id="@+id/es_linkedAccounts"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginRight="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_linked_accounts"
+							/>
+
+						<TextView
+							android:id="@+id/es_deleteSearchHistory"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_delete_search_history"
+							/>
+
+					</TableRow>
+
+					<TableRow>
+
+						<View
+							style="@style/EmbeddedSocialSdkDivider.Tablet"
+							android:layout_marginRight="@dimen/es_padding_base"
+							/>
+
+						<View
+							style="@style/EmbeddedSocialSdkDivider.Tablet"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							/>
+
+					</TableRow>
+
+					<TableRow>
+
+						<TextView
+							android:id="@+id/es_signOut"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginRight="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_sign_out"
+							/>
+
+						<TextView
+							android:id="@+id/es_deleteAccount"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_delete_account"
+							/>
+
+					</TableRow>
+
+				</TableLayout>
+
+			</android.support.v7.widget.CardView>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/es_optionsSignedOut"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="@dimen/es_padding_base"
-			android:layout_marginTop="@dimen/es_padding_large"
-			app:cardBackgroundColor="?attr/es_cardBackground"
+			android:orientation="vertical"
+			android:visibility="visible">
 			>
 
-			<TableLayout
+			<android.support.v7.widget.CardView
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:paddingLeft="@dimen/es_padding_large"
-				android:paddingRight="@dimen/es_padding_large"
-				android:stretchColumns="*"
+				android:layout_marginLeft="@dimen/es_padding_base"
+				android:layout_marginTop="@dimen/es_padding_large"
+				app:cardBackgroundColor="?attr/es_cardBackground"
 				>
+				<TableLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="@dimen/es_padding_large"
+					android:paddingRight="@dimen/es_padding_large"
+					android:stretchColumns="*"
+					>
 
-				<TableRow>
+					<TableRow>
+						<TextView
+							style="@style/EmbeddedSocialSdkOptionsHeader"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:text="@string/es_account_header"
+							/>
+					</TableRow>
 
-					<TextView
-						style="@style/EmbeddedSocialSdkOptionsHeader"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:text="@string/es_account_header"
-						/>
+					<TableRow>
+						<TextView
+							android:id="@+id/es_signIn"
+							style="@style/EmbeddedSocialSdkOptionsItem"
+							android:layout_marginRight="@dimen/es_padding_base"
+							android:layout_weight="1"
+							android:text="@string/es_button_sign_in"
+							/>
 
-				</TableRow>
+						<View
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="@dimen/es_padding_base"
+							android:layout_weight="1"
+							/>
+					</TableRow>
+				</TableLayout>
+			</android.support.v7.widget.CardView>
 
-				<TableRow>
-
-					<TextView
-						android:id="@+id/es_linkedAccounts"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginRight="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_linked_accounts"
-						/>
-
-					<TextView
-						android:id="@+id/es_deleteSearchHistory"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_delete_search_history"
-						/>
-
-				</TableRow>
-
-				<TableRow>
-
-					<View
-						style="@style/EmbeddedSocialSdkDivider.Tablet"
-						android:layout_marginRight="@dimen/es_padding_base"
-						/>
-
-					<View
-						style="@style/EmbeddedSocialSdkDivider.Tablet"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						/>
-
-				</TableRow>
-
-				<TableRow>
-
-					<TextView
-						android:id="@+id/es_signOut"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginRight="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_sign_out"
-						/>
-
-					<TextView
-						android:id="@+id/es_deleteAccount"
-						style="@style/EmbeddedSocialSdkOptionsItem"
-						android:layout_marginLeft="@dimen/es_padding_base"
-						android:layout_weight="1"
-						android:text="@string/es_button_delete_account"
-						/>
-
-				</TableRow>
-
-			</TableLayout>
-
-		</android.support.v7.widget.CardView>
+		</LinearLayout>
 
 		<android.support.v7.widget.CardView
 			android:layout_width="match_parent"
