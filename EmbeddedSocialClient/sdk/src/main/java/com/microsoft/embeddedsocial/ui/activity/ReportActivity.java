@@ -40,10 +40,4 @@ public class ReportActivity extends BaseActivity {
 	protected boolean isAuthorizationRequired() {
 		return true;
 	}
-
-	@Override
-	protected void initView(Bundle savedInstanceState) {
-		super.initView(savedInstanceState);
-		setNonNavDrawerToolbar();
-	}
 }

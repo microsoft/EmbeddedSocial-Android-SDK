@@ -120,6 +120,8 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 		if (hasNavigationMenu()) {
 			initDrawerLayout();
+		} else {
+			setNonNavDrawerToolbar();
 		}
 
 		setupLayout();

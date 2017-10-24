@@ -19,10 +19,4 @@ public class FollowingActivity extends BaseActivity {
 	protected void setupFragments() {
 		setActivityContent(new FollowingFragment());
 	}
-
-	@Override
-	protected void initView(Bundle savedInstanceState) {
-		super.initView(savedInstanceState);
-		setNonNavDrawerToolbar();
-	}
 }

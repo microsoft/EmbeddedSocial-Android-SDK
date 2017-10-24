@@ -35,10 +35,4 @@ public class DisplayNoteActivity extends BaseActivity {
 		noteFragment.setArguments(getIntent().getExtras());
 		setActivityContent(noteFragment);
 	}
-
-	@Override
-	protected void initView(Bundle savedInstanceState) {
-		super.initView(savedInstanceState);
-		setNonNavDrawerToolbar();
-	}
 }
