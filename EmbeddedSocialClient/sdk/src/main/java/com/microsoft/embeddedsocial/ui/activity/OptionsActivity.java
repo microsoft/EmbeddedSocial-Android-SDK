@@ -24,6 +24,6 @@ public class OptionsActivity extends BaseActivity {
 
 	@Override
 	protected boolean isAuthorizationRequired() {
-		return true;
+		return false;
 	}
 }

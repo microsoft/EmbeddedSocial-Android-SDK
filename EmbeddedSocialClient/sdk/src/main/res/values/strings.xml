@@ -136,6 +136,7 @@
 	<string name="es_message_failed_to_remove_reply">Failed to remove reply</string>
 	<string name="es_profile">Profile</string>
 	<string name="es_button_sign_out">Sign out</string>
+	<string name="es_button_sign_in">Sign in</string>
 	<string name="es_privacy_header">Privacy</string>
 	<string name="es_privacy_description">Only approved followers can see my posts &amp; comments</string>
 	<string name="es_account_header">Account</string>
