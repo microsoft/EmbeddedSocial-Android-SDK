@@ -95,7 +95,7 @@ public class NavigationFragment extends BaseFragment {
 		setupNavigationItem(R.id.es_navigationPopular, navigation::gotoPopular, true);
 		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins, signedIn);
 		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed, signedIn);
-		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions, signedIn);
+		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions, true);
 	}
 
 	private void setupNavigationProfile() {
