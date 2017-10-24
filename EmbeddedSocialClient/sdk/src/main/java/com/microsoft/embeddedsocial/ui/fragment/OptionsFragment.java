@@ -74,17 +74,17 @@ public class OptionsFragment extends BaseFragment {
 			}
 			setOnClickListener(view, R.id.es_signOut, v -> signOut());
 			setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
-
-			SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
-			if (lmSwitch != null) {
-				lmSwitch.setChecked(Preferences.getInstance().getUseStaggeredLayoutManager());
-				lmSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> Preferences.getInstance().setUseStaggeredLayoutManager(isChecked));
-			}
 		} else {
 			// User is signed out
 			signedInOptions.setVisibility(View.GONE);
 			signedOutOptions.setVisibility(View.VISIBLE);
 			setOnClickListener(view, R.id.es_signIn, v -> startActivity(SignInActivity.class));
+		}
+
+		SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
+		if (lmSwitch != null) {
+			lmSwitch.setChecked(Preferences.getInstance().getUseStaggeredLayoutManager());
+			lmSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> Preferences.getInstance().setUseStaggeredLayoutManager(isChecked));
 		}
 	}
 
