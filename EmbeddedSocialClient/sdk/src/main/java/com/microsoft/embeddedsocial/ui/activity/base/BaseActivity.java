@@ -281,8 +281,12 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	}
 
 	private boolean isNavigationDrawerDisabled() {
+		return isNavigationDrawerDisabled(getName());
+	}
+
+	public static boolean isNavigationDrawerDisabled(String name) {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
-		return options.disableNavigationDrawerForActivities().contains(getName());
+		return options.disableNavigationDrawerForActivities().contains(name);
 	}
 
 	public final boolean isTablet() {

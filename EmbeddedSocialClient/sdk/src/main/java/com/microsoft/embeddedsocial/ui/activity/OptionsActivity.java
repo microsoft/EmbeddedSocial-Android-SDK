@@ -13,7 +13,7 @@ import com.microsoft.embeddedsocial.ui.fragment.OptionsFragment;
  * Shows settings.
  */
 public class OptionsActivity extends BaseActivity {
-	private static final String NAME = "Options";
+	public static final String NAME = "Options";
 
 	public OptionsActivity() {
 		super(R.id.es_navigationOptions);

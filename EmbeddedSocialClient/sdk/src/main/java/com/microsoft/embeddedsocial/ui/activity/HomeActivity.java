@@ -17,6 +17,7 @@ import com.microsoft.embeddedsocial.ui.fragment.FollowingFeedFragment;
  * Activity to show feeds and profile.
  */
 public class HomeActivity extends BaseFeedActivity {
+	public static final String NAME = "Home";
 
 	public HomeActivity() {
 		super(R.id.es_navigationHome);
@@ -42,5 +43,10 @@ public class HomeActivity extends BaseFeedActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return true;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 }

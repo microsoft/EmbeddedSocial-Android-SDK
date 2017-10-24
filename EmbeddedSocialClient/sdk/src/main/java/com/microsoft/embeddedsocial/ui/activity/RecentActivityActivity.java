@@ -19,6 +19,7 @@ import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
  * Shows recent activity.
  */
 public class RecentActivityActivity extends BaseTabsActivity {
+	public static final String NAME = "ActivityFeed";
 
 	public RecentActivityActivity() {
 		super(R.id.es_navigationActivity);
@@ -44,5 +45,10 @@ public class RecentActivityActivity extends BaseTabsActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return true;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 }
