@@ -94,36 +94,58 @@
 			android:text="@string/es_account_header"
 			/>
 
-		<TextView
-			android:id="@+id/es_linkedAccounts"
-			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
-			android:text="@string/es_button_linked_accounts"
-			/>
+		<LinearLayout
+			android:id="@+id/es_optionsSignedIn"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:visibility="gone">
 
-		<View style="@style/EmbeddedSocialSdkDivider"/>
+			<TextView
+				android:id="@+id/es_linkedAccounts"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_linked_accounts"
+				/>
 
-		<TextView
-			android:id="@+id/es_deleteSearchHistory"
-			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
-			android:text="@string/es_button_delete_search_history"
-			/>
+			<View style="@style/EmbeddedSocialSdkDivider"/>
 
-		<View style="@style/EmbeddedSocialSdkDivider"/>
+			<TextView
+				android:id="@+id/es_deleteSearchHistory"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_delete_search_history"
+				/>
 
-		<TextView
-			android:id="@+id/es_signOut"
-			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
-			android:text="@string/es_button_sign_out"
-			/>
+			<View style="@style/EmbeddedSocialSdkDivider"/>
 
-		<View style="@style/EmbeddedSocialSdkDivider"/>
+			<TextView
+				android:id="@+id/es_signOut"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_sign_out"
+				/>
 
-		<TextView
-			android:id="@+id/es_deleteAccount"
-			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
-			android:text="@string/es_button_delete_account"
-			/>
+			<View style="@style/EmbeddedSocialSdkDivider"/>
 
+			<TextView
+				android:id="@+id/es_deleteAccount"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_delete_account"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/es_optionsSignedOut"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:visibility="gone"
+			>
+
+			<TextView
+				android:id="@+id/es_signIn"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_sign_in"
+				/>
+		</LinearLayout>
 	</LinearLayout>
 
 </ScrollView>
