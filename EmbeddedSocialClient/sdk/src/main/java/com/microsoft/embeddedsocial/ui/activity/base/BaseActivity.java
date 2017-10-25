@@ -339,7 +339,9 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 */
 	public void disableNavigationPanel() {
 		navigationLocked = true;
-		drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		if (drawerLayout != null) {
+			drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		}
 	}
 
 	@Override
