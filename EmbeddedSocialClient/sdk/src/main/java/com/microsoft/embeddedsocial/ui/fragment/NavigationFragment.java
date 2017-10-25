@@ -23,6 +23,13 @@ import com.microsoft.embeddedsocial.event.data.ProfileDataUpdatedEvent;
 import com.microsoft.embeddedsocial.event.data.UpdateNotificationCountEvent;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.sdk.NavigationProfileHelper;
+import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
+import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
+import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
+import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
+import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
+import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.util.NavigationIntentUtils;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
@@ -90,12 +97,18 @@ public class NavigationFragment extends BaseFragment {
 	private void setupNavigationView() {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		final boolean signedIn = UserAccount.getInstance().isSignedIn();
-		setupNavigationItem(R.id.es_navigationHome, navigation::gotoHome, signedIn);
-		setupNavigationItem(R.id.es_navigationSearch, navigation::gotoSearch, options.isSearchEnabled());
-		setupNavigationItem(R.id.es_navigationPopular, navigation::gotoPopular, true);
-		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins, signedIn);
-		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed, signedIn);
-		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions, true);
+		setupNavigationItem(R.id.es_navigationHome, navigation::gotoHome,
+				signedIn && !BaseActivity.isNavigationDrawerDisabled(HomeActivity.NAME));
+		setupNavigationItem(R.id.es_navigationSearch, navigation::gotoSearch,
+				options.isSearchEnabled() && !BaseActivity.isNavigationDrawerDisabled(SearchActivity.NAME));
+		setupNavigationItem(R.id.es_navigationPopular, navigation::gotoPopular,
+				!BaseActivity.isNavigationDrawerDisabled(PopularActivity.NAME));
+		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins,
+				signedIn && !BaseActivity.isNavigationDrawerDisabled(PinsActivity.NAME));
+		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed,
+				signedIn && !BaseActivity.isNavigationDrawerDisabled(RecentActivityActivity.NAME));
+		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions,
+				!BaseActivity.isNavigationDrawerDisabled(OptionsActivity.NAME));
 	}
 
 	private void setupNavigationProfile() {

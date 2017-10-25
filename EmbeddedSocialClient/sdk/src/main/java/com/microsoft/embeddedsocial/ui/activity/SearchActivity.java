@@ -48,6 +48,7 @@ import java.util.Map;
  * Activity to search topics by hashtags.
  */
 public class SearchActivity extends BaseTabsActivity implements SearchView.OnSuggestionListener, SearchTextHolder {
+	public static final String NAME = "Search";
 
 	private static final String PREF_SEARCH_TEXT_TOPICS = "topics";
 	private static final String PREF_SEARCH_TEXT_PEOPLE = "people";
@@ -302,5 +303,9 @@ public class SearchActivity extends BaseTabsActivity implements SearchView.OnSug
 		return !TextUtils.isEmpty(getSearchText(SearchType.TOPICS));
 	}
 
+	@Override
+	protected String getName() {
+		return NAME;
+	}
 }
 

@@ -25,9 +25,4 @@ public class EditProfileActivity extends BaseActivity {
 		return true;
 	}
 
-	@Override
-	protected void initView(Bundle savedInstanceState) {
-		super.initView(savedInstanceState);
-		setNonNavDrawerToolbar();
-	}
 }

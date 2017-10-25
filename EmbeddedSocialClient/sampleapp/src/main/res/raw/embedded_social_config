@@ -2,9 +2,10 @@
 	"application" : {
 		"serverUrl" : "https://dev-stefan.embeddedsocial.microsoft.com/",
 		"appKey" : "184577d3-c754-4330-a2c1-34bb2c0ae1ec",
-	    "numberOfCommentsToShow" : 20,
+		"numberOfCommentsToShow" : 20,
 		"numberOfRepliesToShow" : 20,
-		"searchEnabled" : "true"
+		"searchEnabled" : "true",
+		"disableNavigationDrawerForActivities" : []
 	},
 	"socialNetworks" : {
 		"facebook" : {

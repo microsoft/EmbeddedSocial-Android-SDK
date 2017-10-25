@@ -20,6 +20,7 @@ import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
  * Activity showing popular feeds.
  */
 public class PopularActivity extends BaseTabsActivity {
+	public static final String NAME = "Popular";
 
 	public PopularActivity() {
 		super(R.id.es_navigationPopular);
@@ -45,4 +46,8 @@ public class PopularActivity extends BaseTabsActivity {
 		return () -> PopularFeedFragment.createForFeedType(topicFeedType);
 	}
 
+	@Override
+	protected String getName() {
+		return NAME;
+	}
 }

@@ -13,6 +13,7 @@ import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
  * Shows pinned topics.
  */
 public class PinsActivity extends BaseFeedActivity {
+	public static final String NAME = "Pins";
 
 	public PinsActivity() {
 		super(R.id.es_navigationPins);
@@ -26,5 +27,10 @@ public class PinsActivity extends BaseFeedActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return true;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 }

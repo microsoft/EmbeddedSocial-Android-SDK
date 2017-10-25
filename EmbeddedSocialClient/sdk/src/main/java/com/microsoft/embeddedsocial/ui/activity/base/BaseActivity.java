@@ -36,6 +36,7 @@ import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
 import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.sdk.IDrawerState;
 import com.microsoft.embeddedsocial.sdk.INavigationDrawerHandler;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
 import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
@@ -120,6 +121,8 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 
 		if (hasNavigationMenu()) {
 			initDrawerLayout();
+		} else {
+			setNonNavDrawerToolbar();
 		}
 
 		setupLayout();
@@ -274,7 +277,16 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	}
 
 	protected boolean hasNavigationMenu() {
-		return activeNavigationItemId != 0;
+		return activeNavigationItemId != 0 && !isNavigationDrawerDisabled();
+	}
+
+	private boolean isNavigationDrawerDisabled() {
+		return isNavigationDrawerDisabled(getName());
+	}
+
+	public static boolean isNavigationDrawerDisabled(String name) {
+		Options options = GlobalObjectRegistry.getObject(Options.class);
+		return options.disableNavigationDrawerForActivities().contains(name);
 	}
 
 	public final boolean isTablet() {
@@ -327,7 +339,9 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 	 */
 	public void disableNavigationPanel() {
 		navigationLocked = true;
-		drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		if (drawerLayout != null) {
+			drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+		}
 	}
 
 	@Override
@@ -371,6 +385,10 @@ public abstract class BaseActivity extends CommonBehaviorActivity implements Act
 			return false;
 		}
 		return drawerLayout.isDrawerOpen(GravityCompat.START);
+	}
+
+	protected String getName() {
+		return null;
 	}
 }
 

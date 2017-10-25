@@ -9,6 +9,9 @@ import android.text.TextUtils;
 
 import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Embedded Social library options.
  */
@@ -115,6 +118,10 @@ public final class Options {
 
 	public boolean userRelationsEnabled() { return application.userRelationsEnabled; }
 
+	public List<String> disableNavigationDrawerForActivities() {
+		return application.disableNavigationDrawerForActivities;
+	}
+
 	public String getFacebookApplicationId() {
 		return socialNetworks.facebook.clientId;
 	}
@@ -148,6 +155,7 @@ public final class Options {
 		private boolean showGalleryView = true;
 		private boolean userTopicsEnabled = true;
 		private boolean userRelationsEnabled = true;
+		private List<String> disableNavigationDrawerForActivities = new ArrayList<>();
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 	}

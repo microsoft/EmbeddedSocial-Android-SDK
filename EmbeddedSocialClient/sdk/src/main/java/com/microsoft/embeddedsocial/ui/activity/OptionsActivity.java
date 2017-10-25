@@ -13,6 +13,8 @@ import com.microsoft.embeddedsocial.ui.fragment.OptionsFragment;
  * Shows settings.
  */
 public class OptionsActivity extends BaseActivity {
+	public static final String NAME = "Options";
+
 	public OptionsActivity() {
 		super(R.id.es_navigationOptions);
 	}
@@ -25,5 +27,10 @@ public class OptionsActivity extends BaseActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return false;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 }

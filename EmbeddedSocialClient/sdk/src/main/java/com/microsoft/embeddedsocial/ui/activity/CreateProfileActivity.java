@@ -21,10 +21,4 @@ public class CreateProfileActivity extends BaseActivity {
         setActivityContent(createProfileFragment);
         createProfileFragment.setArguments(getIntent().getExtras());
     }
-
-    @Override
-    protected void initView(Bundle savedInstanceState) {
-        super.initView(savedInstanceState);
-        setNonNavDrawerToolbar();
-    }
 }

@@ -50,10 +50,4 @@ public class AnotherUserProfileActivity extends BaseProfileActivity {
 			return super.getRestartIntent();
 		}
 	}
-
-	@Override
-	protected void initView(Bundle savedInstanceState) {
-		super.initView(savedInstanceState);
-		setNonNavDrawerToolbar();
-	}
 }
