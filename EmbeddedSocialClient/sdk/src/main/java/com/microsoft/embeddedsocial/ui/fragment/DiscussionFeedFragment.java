@@ -74,6 +74,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	private PhotoProviderModule photoProvider;
 	private Uri imageUri;
 	private Activity mActivity;
+	private boolean isSignedIn;
 
 	private ProfileInfoRenderer.ProfileViewHolder profileViewHolder;
 
@@ -91,6 +92,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mActivity = activity;
+		isSignedIn = UserAccount.getInstance().isSignedIn();
 	}
 
 	protected DiscussionFeedFragment() {
@@ -220,12 +222,17 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 	@Override
 	public void onResume() {
 		super.onResume();
+		// Check if the user has signed in since the last time this fragment was shown
+		if (!isSignedIn && UserAccount.getInstance().isSignedIn()) {
+			onUserSignedIn();
+		}
 		EventBus.register(eventListener);
 	}
 
 	@Override
 	public void onUserSignedIn() {
 		initRecyclerView();
+		isSignedIn = true;
 	}
 
 	@Override
