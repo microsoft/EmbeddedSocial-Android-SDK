@@ -28,6 +28,7 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.ui.activity.DeleteAccountActivity;
 import com.microsoft.embeddedsocial.ui.activity.FriendlistActivity;
 import com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity;
+import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
@@ -53,17 +54,33 @@ public class OptionsFragment extends BaseFragment {
 //		setOnClickListener(view, R.id.es_findGooglePlusFriends, v -> searchFriends(IdentityProvider.GOOGLE));
 //		setOnClickListener(view, R.id.es_findMicrosoftContacts, v -> searchFriends(IdentityProvider.MICROSOFT));
 //		setOnClickListener(view, R.id.es_findFriendsFromOtherApps, defaultListener);
+
 		setOnClickListener(view, R.id.es_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
 		setOnClickListener(view, R.id.es_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
-		setOnClickListener(view, R.id.es_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
-		if (options.isSearchEnabled()) {
-			setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
+
+		View signedInOptions = findView(view, R.id.es_optionsSignedIn);
+		View signedOutOptions = findView(view, R.id.es_optionsSignedOut);
+
+		if (UserAccount.getInstance().isSignedIn()) {
+			// User is signed in
+			signedInOptions.setVisibility(View.VISIBLE);
+			signedOutOptions.setVisibility(View.GONE);
+			setOnClickListener(view, R.id.es_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
+			if (options.isSearchEnabled()) {
+				setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
+			} else {
+				View deleteSearchHistoryView = findView(view, R.id.es_deleteSearchHistory);
+				deleteSearchHistoryView.setVisibility(View.GONE);
+			}
+			setOnClickListener(view, R.id.es_signOut, v -> signOut());
+			setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
 		} else {
-			View deleteSearchHistoryView = findView(view, R.id.es_deleteSearchHistory);
-			deleteSearchHistoryView.setVisibility(View.GONE);
+			// User is signed out
+			signedInOptions.setVisibility(View.GONE);
+			signedOutOptions.setVisibility(View.VISIBLE);
+			setOnClickListener(view, R.id.es_signIn, v -> startActivity(SignInActivity.class));
 		}
-		setOnClickListener(view, R.id.es_signOut, v -> signOut());
-		setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
+
 		SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
 		if (lmSwitch != null) {
 			lmSwitch.setChecked(Preferences.getInstance().getUseStaggeredLayoutManager());
