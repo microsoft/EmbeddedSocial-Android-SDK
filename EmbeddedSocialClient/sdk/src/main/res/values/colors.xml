@@ -58,4 +58,6 @@
 	<color name="es_sign_in_facebook">#3b5997</color>
 	<color name="es_sign_in_microsoft">#2a79d9</color>
 	<color name="es_sign_in_twitter">#1da1f2</color>
+
+	<color name="es_status_bar">@color/es_text_secondary_light</color>
 </resources>
