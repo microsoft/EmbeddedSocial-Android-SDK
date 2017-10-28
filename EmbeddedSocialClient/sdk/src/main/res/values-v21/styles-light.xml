@@ -11,6 +11,7 @@
 
 	<style name="EmbeddedSocialSdkAppTheme.Light" parent="EmbeddedSocialSdkAppTheme.LightBase">
 		<item name="es_navigationItemBackground">@drawable/es_navigation_item_background</item>
+		<item name="android:statusBarColor">@color/es_status_bar</item>
 	</style>
 
 </resources>
