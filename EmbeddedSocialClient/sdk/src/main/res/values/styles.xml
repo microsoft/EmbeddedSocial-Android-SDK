@@ -49,9 +49,9 @@
 		<item name="defaultQueryHint">@string/abc_search_hint</item>
 		<item name="searchIcon">@null</item>
 		<item name="layout">@layout/abc_search_view</item>
-		<item name="closeIcon">@drawable/abc_ic_clear_material</item>
-		<item name="goIcon">@drawable/abc_ic_go_search_api_material</item>
-		<item name="voiceIcon">@drawable/abc_ic_voice_search_api_material</item>
+		<item name="closeIcon">@drawable/abc_ic_clear_mtrl_alpha</item>
+		<item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>
+		<item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>
 		<item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
 		<item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line</item>
 	</style>
