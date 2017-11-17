@@ -11,7 +11,7 @@ import com.microsoft.embeddedsocial.data.model.CommentFeedType;
 import com.microsoft.embeddedsocial.fetcher.base.RequestType;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeedRequest;
-import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicNameRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicByNameRequest;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
 public class CommentFeedFetcherFromTopicName extends CommentFeedFetcher {
@@ -32,7 +32,7 @@ public class CommentFeedFetcherFromTopicName extends CommentFeedFetcher {
         if (topicHandle == null) {
             // topic handle is not known -- resolve it from topic name
             try {
-                final GetTopicNameRequest request = new GetTopicNameRequest(topicName, publisherType);
+                final GetTopicByNameRequest request = new GetTopicByNameRequest(topicName, publisherType);
                 topicHandle = contentService.getTopicName(request);
             } catch (NetworkRequestException e) {
                 setErrorCause(e);
