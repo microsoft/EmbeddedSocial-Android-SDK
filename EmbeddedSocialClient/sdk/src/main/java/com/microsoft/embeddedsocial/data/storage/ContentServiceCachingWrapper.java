@@ -35,7 +35,7 @@ import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicNameRequ
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
-import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicNameRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicByNameRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.HideTopicRequest;
@@ -193,7 +193,7 @@ public class ContentServiceCachingWrapper implements IContentService {
 	}
 
 	@Override
-	public String getTopicName(GetTopicNameRequest request) throws NetworkRequestException {
+	public String getTopicName(GetTopicByNameRequest request) throws NetworkRequestException {
 		return request.send();
 	}
 
