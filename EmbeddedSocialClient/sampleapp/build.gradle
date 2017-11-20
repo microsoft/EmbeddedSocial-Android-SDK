@@ -36,6 +36,11 @@ android {
         multiDexEnabled true
         signingConfig signingConfigs.debug
     }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
