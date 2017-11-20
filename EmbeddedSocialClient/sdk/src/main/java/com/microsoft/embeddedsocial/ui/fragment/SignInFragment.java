@@ -50,6 +50,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	private View progressView;
 	private View buttonsView;
 	private AbstractAuthenticator authenticator;
+	private boolean isGettingThirdPartyCredentials;
 
 	private Action signInAction;
 	private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(
@@ -66,6 +67,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 
 	public SignInFragment() {
 		addModule(slowConnectionMessageModule);
+		isGettingThirdPartyCredentials = false;
 	}
 
 	@Override
@@ -130,8 +132,13 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 		if (UserAccount.getInstance().isSignedIn()) {
 			onSignedIn();
 		} else {
-			setProgressVisible(UserAccount.getInstance().isSigningIn());
+			setProgressVisible(UserAccount.getInstance().isSigningIn() || isGettingThirdPartyCredentials);
+			setIsGettingThirdPartyCredentials(false);
 		}
+	}
+
+	public void setIsGettingThirdPartyCredentials(boolean isGettingThirdPartyCredentials) {
+		this.isGettingThirdPartyCredentials = isGettingThirdPartyCredentials;
 	}
 
 	@SuppressWarnings("unused")

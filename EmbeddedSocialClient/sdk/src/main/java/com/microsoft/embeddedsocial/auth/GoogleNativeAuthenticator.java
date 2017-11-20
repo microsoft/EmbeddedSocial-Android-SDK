@@ -20,7 +20,6 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.activity.GoogleCallbackActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import net.openid.appauth.AuthorizationException;
@@ -93,7 +92,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 				.setScopes(authMode.getPermissions())
 				.build();
 
-		PendingIntent pendingIntent = GoogleCallbackActivity.createPostAuthorizationIntent(context, request);
+		PendingIntent pendingIntent = GoogleResponseHandler.createPostAuthorizationIntent(context, request);
 		service.performAuthorizationRequest(request, pendingIntent);
 		service.dispose();
 	}
