@@ -43,6 +43,10 @@ android {
         multiDexEnabled true
     }
 
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     signingConfigs {
         develop.initWith(signingConfigs.debug)
         develop {
