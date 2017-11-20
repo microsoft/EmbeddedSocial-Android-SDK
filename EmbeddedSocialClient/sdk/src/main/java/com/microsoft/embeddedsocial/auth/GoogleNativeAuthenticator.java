@@ -56,6 +56,12 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	}
 
 	@Override
+	public void dispose() {
+		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
+		localBroadcastManager.unregisterReceiver(googleAuthReceiver);
+	}
+
+	@Override
 	protected void onAuthenticationStarted() throws AuthenticationException {
 		makeAuthRequest();
 	}

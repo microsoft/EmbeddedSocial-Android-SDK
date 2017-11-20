@@ -182,6 +182,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void startAuthentication(AbstractAuthenticator authenticator) {
+		clearAuthenticator();
 		this.authenticator = authenticator;
 		setProgressVisible(true);
 		authenticator.startAuthenticationAsync();
