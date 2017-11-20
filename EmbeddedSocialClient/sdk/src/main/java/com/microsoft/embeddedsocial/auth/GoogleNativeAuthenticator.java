@@ -20,7 +20,6 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.activity.GoogleCallbackActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import net.openid.appauth.AuthorizationException;
@@ -54,6 +53,12 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
 		localBroadcastManager.registerReceiver(googleAuthReceiver, new IntentFilter(GOOGLE_ACCOUNT_ACTION));
 		this.authMode = authMode;
+	}
+
+	@Override
+	public void dispose() {
+		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
+		localBroadcastManager.unregisterReceiver(googleAuthReceiver);
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 				.setScopes(authMode.getPermissions())
 				.build();
 
-		PendingIntent pendingIntent = GoogleCallbackActivity.createPostAuthorizationIntent(context, request);
+		PendingIntent pendingIntent = GoogleResponseHandler.createPostAuthorizationIntent(context, request);
 		service.performAuthorizationRequest(request, pendingIntent);
 		service.dispose();
 	}

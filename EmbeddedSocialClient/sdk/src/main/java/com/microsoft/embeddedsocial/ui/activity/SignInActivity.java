@@ -5,24 +5,29 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.auth.GoogleResponseHandler;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.SignInFragment;
 import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 
+import android.content.Intent;
+
 /**
  * Activity for sign-in.
  */
 public class SignInActivity extends BaseActivity {
+	private SignInFragment signInFragment;
 
 	public SignInActivity() {
 		super(R.id.es_navigationProfile);
+		signInFragment = new SignInFragment();
 	}
 
 	@Override
 	protected void setupFragments() {
-		setActivityContent(new SignInFragment());
+		setActivityContent(signInFragment);
 	}
 
 	@Override
@@ -35,5 +40,22 @@ public class SignInActivity extends BaseActivity {
 		super.onResume();
 		// XXX: keyboard is closed in a handler because of bugs on HTC devices
 		ThreadUtils.getMainThreadHandler().post(() -> ViewUtils.hideKeyboard(this));
+		checkIntent(getIntent());
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		setIntent(intent);
+		checkIntent(intent);
+	}
+
+	private void checkIntent(Intent intent) {
+		if (intent != null) {
+			String action = intent.getAction();
+			if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
+				signInFragment.setIsGettingThirdPartyCredentials(true);
+				new GoogleResponseHandler(this).handleAuthorizationResponse(intent);
+			}
+		}
 	}
 }

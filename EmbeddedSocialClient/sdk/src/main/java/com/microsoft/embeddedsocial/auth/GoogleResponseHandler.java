@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.ui.activity;
+package com.microsoft.embeddedsocial.auth;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -11,8 +11,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
-import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
@@ -24,7 +22,16 @@ import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.TokenResponse;
 
-public class GoogleCallbackActivity extends SignInActivity {
+/**
+ * Handles authorization responses from Google and retrieves the user access token
+ */
+public class GoogleResponseHandler {
+
+    private Context context;
+
+    public GoogleResponseHandler(Context context) {
+        this.context = context;
+    }
 
     public static PendingIntent createPostAuthorizationIntent(@NonNull Context context,
                                                               @NonNull AuthorizationRequest request) {
@@ -32,31 +39,6 @@ public class GoogleCallbackActivity extends SignInActivity {
         Intent intent = new Intent(action);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return PendingIntent.getActivity(context, request.hashCode(), intent, 0);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkIntent(getIntent());
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-        checkIntent(intent);
-    }
-
-    private void checkIntent(Intent intent) {
-        if (intent != null) {
-            String action = intent.getAction();
-            if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
-                handleAuthorizationResponse(intent);
-            } else {
-                finish();
-            }
-        } else {
-            finish();
-        }
     }
 
     public void handleAuthorizationResponse(Intent intent) {
@@ -67,11 +49,11 @@ public class GoogleCallbackActivity extends SignInActivity {
         } else {
             DebugLog.logException(ex);
             sendAuthFailure();
-       }
+        }
     }
 
-    public void getAccessToken(AuthorizationResponse authorizationResponse) {
-        AuthorizationService service = new AuthorizationService(this);
+    private void getAccessToken(AuthorizationResponse authorizationResponse) {
+        AuthorizationService service = new AuthorizationService(context);
         service.performTokenRequest(
                 authorizationResponse.createTokenExchangeRequest(),
                 new AuthorizationService.TokenResponseCallback() {
@@ -93,11 +75,11 @@ public class GoogleCallbackActivity extends SignInActivity {
     private void sendAuthSuccess(SocialNetworkAccount account) {
         Intent intent = new Intent(GoogleNativeAuthenticator.GOOGLE_ACCOUNT_ACTION);
         intent.putExtra(GoogleNativeAuthenticator.GOOGLE_ACCOUNT, account);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     private void sendAuthFailure() {
-        LocalBroadcastManager.getInstance(this).sendBroadcast(
+        LocalBroadcastManager.getInstance(context).sendBroadcast(
                 new Intent(GoogleNativeAuthenticator.GOOGLE_ACCOUNT_ACTION));
     }
 }
