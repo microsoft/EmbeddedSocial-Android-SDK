@@ -28,8 +28,8 @@ android {
         }
     }
     publishNonDefault true
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     resourcePrefix 'es_'
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -90,12 +90,12 @@ dependencies {
     compile 'com.squareup:otto:1.3.6'
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.android.support:cardview-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:cardview-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:support-annotations:26.1.0'
     compile 'de.hdodenhof:circleimageview:1.2.2'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'com.j256.ormlite:ormlite-android:4.48'
@@ -126,7 +126,7 @@ clearOutputFolder()
 
 def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
-def versionNum = '0.0.35'
+def versionNum = '0.0.36'
 group = "com.acrowntest.test"
 version = versionNum
 

@@ -25,5 +25,9 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            // for android support version 26
+            url "https://maven.google.com"
+        }
     }
 }
