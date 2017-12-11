@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.Options;
@@ -103,6 +104,8 @@ public class OptionsFragment extends BaseFragment {
 		progressBar.setVisibility(View.VISIBLE);
 		hideView(R.id.es_options);
 		UserAccount.getInstance().signOut();
+		Toast.makeText(getActivity(), R.string.es_msg_general_signout_success, Toast.LENGTH_LONG).show();
+
 		new AsyncTask<Void, Void, Void>() {
 
 			@Override
@@ -120,6 +123,6 @@ public class OptionsFragment extends BaseFragment {
 
 	private void deleteSearchHistory() {
 		WorkerService.getLauncher(getContext()).launchService(ServiceAction.DELETE_SEARCH_HISTORY);
-		showToast(R.string.es_search_history_deleted);
+		showToast(R.string.es_msg_general_search_history_deleted);
 	}
 }

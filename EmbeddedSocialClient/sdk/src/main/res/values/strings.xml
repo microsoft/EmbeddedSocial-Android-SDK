@@ -247,6 +247,9 @@
 	<string name="es_msg_general_create_user_success">Creating account</string>
 	<string name="es_msg_general_create_user_error">An error has occurred during user creation</string>
 	<string name="es_msg_general_operation_error">An error occurred during this operation</string>
+	<string name="es_msg_general_signout_success">Signing out</string>
+	<string name="es_msg_general_account_deleted">Account deleted</string>
+	<string name="es_msg_general_search_history_deleted">Search history deleted</string>
 
 	<string name="es_tab_topics">Topics</string>
 	<string name="es_tab_people">People</string>
@@ -273,8 +276,6 @@
 	<string name="es_privacy_policy_url">http://go.microsoft.com/fwlink/?LinkId=521839</string>
 	<string name="es_terms_url">http://go.microsoft.com/fwlink/?LinkID=206977</string>
 	<string name="es_delete_account_warning">This action will permanently delete your account and all associated information. The account deletion cannot be undone.\n\nDo you really want to do it?</string>
-	<string name="es_account_deleted">Account deleted</string>
-	<string name="es_search_history_deleted">Search history deleted</string>
 
 	<string name="es_action_cover_photo">Cover photo</string>
 	<string name="es_description_cover_photo">Portrait view only</string>
