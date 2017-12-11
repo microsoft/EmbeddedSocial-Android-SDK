@@ -69,7 +69,7 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
 	}
 
 	private void onAccountDeleted() {
-		showToast(R.string.es_account_deleted);
+		showToast(R.string.es_msg_general_account_deleted);
 		finishActivity();
 		updateActivitiesStackOnLogOut();
 	}
