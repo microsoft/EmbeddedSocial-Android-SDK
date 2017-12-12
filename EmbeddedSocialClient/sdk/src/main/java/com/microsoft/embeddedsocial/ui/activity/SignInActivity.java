@@ -18,6 +18,8 @@ import android.content.Intent;
  * Activity for sign-in.
  */
 public class SignInActivity extends BaseActivity {
+	public static final String NAME = "SignIn";
+
 	private SignInFragment signInFragment;
 
 	public SignInActivity() {
@@ -33,6 +35,11 @@ public class SignInActivity extends BaseActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return false;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 
 	@Override
