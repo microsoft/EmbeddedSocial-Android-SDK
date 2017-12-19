@@ -24,8 +24,12 @@
 -keep class com.microsoft.embeddedsocial.sdk.** { *; }
 
 # for extending BaseActivity
-
 -keepclasseswithmembers class com.microsoft.embeddedsocial.ui.activity.base.BaseActivity {
+  public <methods>;
+}
+
+# expose UI fragments
+-keep class com.microsoft.embeddedsocial.ui.fragment.** {
   public <methods>;
 }
 
