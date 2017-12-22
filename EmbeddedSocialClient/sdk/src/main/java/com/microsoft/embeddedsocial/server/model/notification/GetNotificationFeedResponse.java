@@ -22,16 +22,16 @@ public class GetNotificationFeedResponse extends FeedUserResponse implements Lis
 
 	public GetNotificationFeedResponse(List<ActivityView> activities) {
 		this.activities = activities;
-		this.deliveredActivityHandle = activities.get(0).getHandle();
+		this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
 	}
 
 	public GetNotificationFeedResponse (FeedResponseActivityView response) {
 		activities = new ArrayList<>();
 		for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
 			activities.add(new ActivityView(view));
-			// Update the deliveredActivityHandle to be the most recent activity handle
-			this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
 		}
+		// Update the deliveredActivityHandle to be the most recent activity handle
+		this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
         setContinuationKey(response.getCursor());
 	}
 
