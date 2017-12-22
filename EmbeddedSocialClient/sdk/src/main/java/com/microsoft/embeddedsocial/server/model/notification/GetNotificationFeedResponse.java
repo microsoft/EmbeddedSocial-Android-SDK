@@ -32,6 +32,7 @@ public class GetNotificationFeedResponse extends FeedUserResponse implements Lis
 			activities.add(new ActivityView(view));
 		}
 		this.deliveredActivityHandle = "";
+        setContinuationKey(response.getCursor());
 	}
 
 	@Override

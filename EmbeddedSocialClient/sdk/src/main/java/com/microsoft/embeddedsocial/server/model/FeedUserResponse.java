@@ -15,4 +15,9 @@ public class FeedUserResponse {
 	public String getContinuationKey() {
 		return continuationKey;
 	}
+	
+    public void setContinuationKey(String continuationKey) {
+		this.continuationKey = continuationKey;
+	}
+
 }
