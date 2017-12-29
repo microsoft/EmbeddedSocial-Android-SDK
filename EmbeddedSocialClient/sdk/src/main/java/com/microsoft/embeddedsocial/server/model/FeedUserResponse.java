@@ -10,14 +10,14 @@ package com.microsoft.embeddedsocial.server.model;
  */
 public class FeedUserResponse {
 
-	private String continuationKey;
+    private String continuationKey;
 
-	public String getContinuationKey() {
-		return continuationKey;
-	}
-	
+    public String getContinuationKey() {
+        return continuationKey;
+    }
+
     public void setContinuationKey(String continuationKey) {
-		this.continuationKey = continuationKey;
-	}
+        this.continuationKey = continuationKey;
+    }
 
 }

@@ -16,31 +16,31 @@ import java.util.List;
 
 public class GetNotificationFeedResponse extends FeedUserResponse implements ListResponse<ActivityView> {
 
-	private List<ActivityView> activities;
-	// Setting this handle is required to properly update the "last-read" notification
-	private String deliveredActivityHandle;
+    private List<ActivityView> activities;
+    // Setting this handle is required to properly update the "last-read" notification
+    private String deliveredActivityHandle;
 
-	public GetNotificationFeedResponse(List<ActivityView> activities) {
-		this.activities = activities;
-		this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
-	}
+    public GetNotificationFeedResponse(List<ActivityView> activities) {
+        this.activities = activities;
+        this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
+    }
 
-	public GetNotificationFeedResponse (FeedResponseActivityView response) {
-		activities = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
-			activities.add(new ActivityView(view));
-		}
-		// Update the deliveredActivityHandle to be the most recent activity handle
-		this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
+    public GetNotificationFeedResponse(FeedResponseActivityView response) {
+        activities = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
+            activities.add(new ActivityView(view));
+        }
+        // Update the deliveredActivityHandle to be the most recent activity handle
+        this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
         setContinuationKey(response.getCursor());
-	}
+    }
 
-	@Override
-	public List<ActivityView> getData() {
-		return activities != null ? activities : Collections.emptyList();
-	}
+    @Override
+    public List<ActivityView> getData() {
+        return activities != null ? activities : Collections.emptyList();
+    }
 
-	public String getDeliveredActivityHandle() {
-		return deliveredActivityHandle;
-	}
+    public String getDeliveredActivityHandle() {
+        return deliveredActivityHandle;
+    }
 }
