@@ -16,6 +16,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+/**
+ * Base class for fragments with embedded swipe views using tabs as headers
+ */
 public abstract class BaseTabsFragment extends BaseFragment {
     private ViewPager viewPager;
     private SlidingTabLayout slidingTabLayout;
@@ -45,11 +48,9 @@ public abstract class BaseTabsFragment extends BaseFragment {
         }
     };
 
-
     protected void onPageSelected(int position) {
         // do nothing
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

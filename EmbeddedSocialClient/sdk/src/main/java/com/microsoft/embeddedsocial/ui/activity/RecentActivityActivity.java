@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.ui.activity;
 
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
-import com.microsoft.embeddedsocial.ui.fragment.RecentActivityFragmentTabs;
+import com.microsoft.embeddedsocial.ui.fragment.RecentActivityFragment;
 import com.microsoft.embeddedsocial.sdk.R;
 
 /**
@@ -22,7 +22,7 @@ public class RecentActivityActivity extends BaseActivity {
 
 	@Override
 	protected void setupFragments() {
-		setActivityContent(new RecentActivityFragmentTabs());
+		setActivityContent(new RecentActivityFragment());
 		super.setupFragments();
 		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
 	}

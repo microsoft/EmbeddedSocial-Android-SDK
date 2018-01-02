@@ -5,40 +5,29 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.content.Context;
-import android.os.Bundle;
-
+import com.microsoft.embeddedsocial.base.function.Producer;
 import com.microsoft.embeddedsocial.data.model.TopicFeedType;
-import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
-import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFeedFragment;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseTabsFragment;
+import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 
 /**
- * Fragment showing the popular feed.
+ * Fragment showing the popular feeds displayed as tabbed views
  */
-public class PopularFeedFragment extends BaseFeedFragment {
+public class PopularFeedFragment extends BaseTabsFragment {
+    protected PagerAdapter createPagerAdapter() {
+        return new SimplePagerAdapter(getContext(), getChildFragmentManager(),
+                new SimplePagerAdapter.Page(R.string.es_menu_today, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_TODAY)),
+                new SimplePagerAdapter.Page(R.string.es_menu_week, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_WEEK)),
+                new SimplePagerAdapter.Page(R.string.es_menu_month, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_THIS_MONTH)),
+                new SimplePagerAdapter.Page(R.string.es_menu_all_time, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_ALL_TIME))
+        );
+    }
 
-	private TopicFeedType topicFeedType;
-
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		topicFeedType = EnumUtils.getValue(getArguments(), IntentExtras.FEED_TYPE, TopicFeedType.class);
-	}
-
-	@Override
-	protected Fetcher<TopicView> createFetcher() {
-		return FetchersFactory.createTopicFeedFetcher(topicFeedType);
-	}
-
-	public static PopularFeedFragment createForFeedType(TopicFeedType topicFeedType) {
-		PopularFeedFragment fragment = new PopularFeedFragment();
-		Bundle arguments = new Bundle();
-		EnumUtils.putValue(arguments, IntentExtras.FEED_TYPE, topicFeedType);
-		fragment.setArguments(arguments);
-		return fragment;
-	}
+    private Producer<Fragment> createFragmentProducer(TopicFeedType topicFeedType) {
+        return () -> PopularFeedFragmentTab.createForFeedType(topicFeedType);
+    }
 }
