@@ -53,18 +53,18 @@
 -dontwarn com.fasterxml.jackson.databind.**
 -keep class org.codehaus.** { *; }
 -keepclassmembers public final enum org.codehaus.jackson.annotate.JsonAutoDetect$Visibility {
-    public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
+  public static final org.codehaus.jackson.annotate.JsonAutoDetect$Visibility *;
 }
 
 # for otto event bus
 -keepattributes *Annotation*
 -keepclassmembers class ** {
-    @com.squareup.otto.Subscribe public *;
-    @com.squareup.otto.Produce public *;
+  @com.squareup.otto.Subscribe public *;
+  @com.squareup.otto.Produce public *;
 }
 
 # keep TAG class members
 -keepclassmembers class com.microsoft.embeddedsocial.ui.** {
-    public static final java.lang.String TAG;
+  public static final java.lang.String TAG;
 }
 
