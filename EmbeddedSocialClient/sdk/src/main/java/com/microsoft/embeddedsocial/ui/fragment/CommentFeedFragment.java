@@ -56,10 +56,6 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 		}
 	};
 
-	public CommentFeedFragment() {
-		addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
-	}
-
 	public static CommentFeedFragment getCommentFeedFragmentFromTopicHandle(String topicHandle, HashMap<Integer, Integer> errorMessages) {
 		CommentFeedFragment feedFragment = new CommentFeedFragment();
 		Bundle b = new Bundle();
