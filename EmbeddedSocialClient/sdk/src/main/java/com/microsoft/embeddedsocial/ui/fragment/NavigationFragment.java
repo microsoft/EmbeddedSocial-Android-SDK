@@ -27,7 +27,7 @@ import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
 import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
 import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
-import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
@@ -106,7 +106,7 @@ public class NavigationFragment extends BaseFragment {
 		setupNavigationItem(R.id.es_navigationPins, navigation::gotoPins,
 				signedIn && !BaseActivity.isNavigationDrawerDisabled(PinsActivity.NAME));
 		setupNavigationItem(R.id.es_navigationActivity, navigation::gotoActivityFeed,
-				signedIn && !BaseActivity.isNavigationDrawerDisabled(RecentActivityActivity.NAME));
+				signedIn && !BaseActivity.isNavigationDrawerDisabled(ActivityFeedActivity.NAME));
 		setupNavigationItem(R.id.es_navigationOptions, navigation::gotoOptions,
 				!BaseActivity.isNavigationDrawerDisabled(OptionsActivity.NAME));
 	}
