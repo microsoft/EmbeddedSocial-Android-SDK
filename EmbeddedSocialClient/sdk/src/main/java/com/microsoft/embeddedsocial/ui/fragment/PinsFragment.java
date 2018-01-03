@@ -14,6 +14,7 @@ import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
  * Shows pinned topics.
  */
 public class PinsFragment extends BaseFeedFragment {
+	public static final String TAG = "PinsFragment";
 
 	@Override
 	protected Fetcher<TopicView> createFetcher() {

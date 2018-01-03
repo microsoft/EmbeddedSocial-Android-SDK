@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
@@ -35,11 +34,10 @@ import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
 import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
 import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
-import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
 import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.notification.NotificationController;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.Preferences;
@@ -259,7 +257,7 @@ public final class EmbeddedSocial {
     }
 
     public static void launchActivityFeedActivity(Context context) {
-        Intent intent = new Intent(context, RecentActivityActivity.class);
+        Intent intent = new Intent(context, ActivityFeedActivity.class);
         context.startActivity(intent);
     }
 

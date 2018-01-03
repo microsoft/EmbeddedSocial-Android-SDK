@@ -7,24 +7,29 @@ package com.microsoft.embeddedsocial.ui.activity;
 
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
+import com.microsoft.embeddedsocial.ui.fragment.ActivityFeedFragment;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.PopularFeedFragment;
 
 /**
- * Activity showing popular feeds.
+ * Shows the recent activity feed.
  */
-public class PopularActivity extends BaseActivity {
-	public static final String NAME = "Popular";
+public class ActivityFeedActivity extends BaseActivity {
+	public static final String NAME = "ActivityFeed";
 
-	public PopularActivity() {
-		super(R.id.es_navigationPopular);
+	public ActivityFeedActivity() {
+		super(R.id.es_navigationActivity);
 	}
 
 	@Override
 	protected void setupFragments() {
-		setActivityContent(new PopularFeedFragment());
+		setActivityContent(new ActivityFeedFragment());
 		super.setupFragments();
 		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
+	}
+
+	@Override
+	protected boolean isAuthorizationRequired() {
+		return true;
 	}
 
 	@Override
