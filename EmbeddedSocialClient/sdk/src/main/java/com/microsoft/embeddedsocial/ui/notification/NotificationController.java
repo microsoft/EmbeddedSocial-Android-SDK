@@ -19,7 +19,7 @@ import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
 import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.RecentActivityActivity;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.squareup.otto.Subscribe;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -64,9 +64,9 @@ public class NotificationController {
 					.setOngoing(false).setAutoCancel(true);
 
 
-			Intent intent = new Intent(context, RecentActivityActivity.class);
+			Intent intent = new Intent(context, ActivityFeedActivity.class);
 			TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-			stackBuilder.addParentStack(RecentActivityActivity.class);
+			stackBuilder.addParentStack(ActivityFeedActivity.class);
 			stackBuilder.addNextIntent(intent);
 			PendingIntent pendingIntent = stackBuilder.getPendingIntent(pushNotificationId.get(),
 					PendingIntent.FLAG_UPDATE_CURRENT);

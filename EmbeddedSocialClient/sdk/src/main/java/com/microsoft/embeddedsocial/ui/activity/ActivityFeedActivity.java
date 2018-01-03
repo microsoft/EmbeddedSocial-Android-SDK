@@ -7,22 +7,22 @@ package com.microsoft.embeddedsocial.ui.activity;
 
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
-import com.microsoft.embeddedsocial.ui.fragment.RecentActivityFragment;
+import com.microsoft.embeddedsocial.ui.fragment.ActivityFeedFragment;
 import com.microsoft.embeddedsocial.sdk.R;
 
 /**
- * Shows recent activity.
+ * Shows the recent activity feed.
  */
-public class RecentActivityActivity extends BaseActivity {
+public class ActivityFeedActivity extends BaseActivity {
 	public static final String NAME = "ActivityFeed";
 
-	public RecentActivityActivity() {
+	public ActivityFeedActivity() {
 		super(R.id.es_navigationActivity);
 	}
 
 	@Override
 	protected void setupFragments() {
-		setActivityContent(new RecentActivityFragment());
+		setActivityContent(new ActivityFeedFragment());
 		super.setupFragments();
 		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
 	}
