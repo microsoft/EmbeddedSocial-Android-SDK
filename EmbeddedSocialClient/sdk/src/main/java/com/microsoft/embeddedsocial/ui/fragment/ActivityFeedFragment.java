@@ -17,6 +17,8 @@ import android.support.v4.view.PagerAdapter;
  * Fragment showing recent activity feeds displayed as tabbed views
  */
 public class ActivityFeedFragment extends BaseTabsFragment {
+    public static final String TAG = "ActivityFeedFragment";
+
     @Override
     protected PagerAdapter createPagerAdapter() {
         SimplePagerAdapter.Page userFeed = new SimplePagerAdapter.Page(R.string.es_activity_feed_user, UserActivityFeedFragment::new);

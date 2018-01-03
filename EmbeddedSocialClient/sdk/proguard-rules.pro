@@ -63,3 +63,8 @@
     @com.squareup.otto.Produce public *;
 }
 
+# keep TAG class members
+-keepclassmembers class com.microsoft.embeddedsocial.ui.** {
+    public static final java.lang.String TAG;
+}
+

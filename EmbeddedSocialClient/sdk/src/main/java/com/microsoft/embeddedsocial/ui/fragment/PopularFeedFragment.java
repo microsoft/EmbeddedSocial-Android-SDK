@@ -18,6 +18,8 @@ import android.support.v4.view.PagerAdapter;
  * Fragment showing the popular feeds displayed as tabbed views
  */
 public class PopularFeedFragment extends BaseTabsFragment {
+    public static final String TAG = "PopularFeedFragment";
+
     protected PagerAdapter createPagerAdapter() {
         return new SimplePagerAdapter(getContext(), getChildFragmentManager(),
                 new SimplePagerAdapter.Page(R.string.es_menu_today, createFragmentProducer(TopicFeedType.EVERYONE_POPULAR_TODAY)),
