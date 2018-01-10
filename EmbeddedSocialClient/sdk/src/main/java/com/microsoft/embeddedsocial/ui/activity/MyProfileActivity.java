@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
+import com.microsoft.embeddedsocial.ui.fragment.MyProfileFragment;
 
 /**
  * Activity shoving current user's feeds.
@@ -21,10 +22,9 @@ public class MyProfileActivity extends BaseProfileActivity {
 	}
 
 	@Override
-	protected void initExtraVariables() {
-		setUserHandle(UserAccount.getInstance().getUserHandle());
-		setIsCurrentUser(true);
-		setFeedIsReadable(true);
+	protected void setupFragments() {
+		setActivityContent(new MyProfileFragment());
+		super.setupFragments();
 	}
 
 	@Override

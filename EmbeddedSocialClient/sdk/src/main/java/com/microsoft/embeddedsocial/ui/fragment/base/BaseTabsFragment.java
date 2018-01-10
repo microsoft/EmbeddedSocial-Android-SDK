@@ -74,6 +74,10 @@ public abstract class BaseTabsFragment extends BaseFragment {
      */
     protected abstract PagerAdapter createPagerAdapter();
 
+    public int getCurrentPagePosition() {
+        return viewPager.getCurrentItem();
+    }
+
     /**
      * Set whether the tabs indicator is visible (we hide it when there is only one tab).
      */
