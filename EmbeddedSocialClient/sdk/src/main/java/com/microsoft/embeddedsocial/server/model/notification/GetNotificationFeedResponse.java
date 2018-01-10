@@ -10,6 +10,8 @@ import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
 import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,13 +22,21 @@ public class GetNotificationFeedResponse extends FeedUserResponse implements Lis
     // Setting this handle is required to properly update the "last-read" notification
     private String deliveredActivityHandle;
 
-    public GetNotificationFeedResponse(List<ActivityView> activities) {
+    public GetNotificationFeedResponse(@NotNull List<ActivityView> activities) {
         this.activities = activities;
+        if (activities == null) {
+            this.deliveredActivityHandle = "";
+            return;
+        }
         this.deliveredActivityHandle = (activities.isEmpty() ? "" : activities.get(0).getHandle());
     }
 
-    public GetNotificationFeedResponse(FeedResponseActivityView response) {
+    public GetNotificationFeedResponse(@NotNull FeedResponseActivityView response) {
         activities = new ArrayList<>();
+        if (response == null) {
+            this.deliveredActivityHandle = "";
+            return;
+        }
         for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
             activities.add(new ActivityView(view));
         }
