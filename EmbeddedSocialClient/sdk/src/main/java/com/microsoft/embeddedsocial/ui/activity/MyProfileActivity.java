@@ -5,12 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.support.v7.app.ActionBar;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
 import com.microsoft.embeddedsocial.ui.fragment.MyProfileFragment;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 
 /**
  * Activity shoving current user's feeds.
@@ -25,6 +26,12 @@ public class MyProfileActivity extends BaseProfileActivity {
 	protected void setupFragments() {
 		setActivityContent(new MyProfileFragment());
 		super.setupFragments();
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		userHandle = UserAccount.getInstance().getUserHandle();
 	}
 
 	@Override

@@ -5,22 +5,19 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
+import com.microsoft.embeddedsocial.ui.fragment.AnotherUserProfileFragment;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.fragment.AnotherUserProfileFragment;
 
 /**
  * Shows another user's profile.
  */
 public class AnotherUserProfileActivity extends BaseProfileActivity {
-
-	private String userHandle;
-
 	@Override
 	protected void setupFragments() {
 		setActivityContent(new AnotherUserProfileFragment());

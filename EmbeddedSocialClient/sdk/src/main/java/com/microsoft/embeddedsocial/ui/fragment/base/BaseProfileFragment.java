@@ -169,13 +169,6 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
                     notifyTabsChanged();
                     setTabsIndicatorVisible(feedIsReadable);
                 }
-                Activity activity = getActivity();
-                if (activity instanceof AppCompatActivity) {
-                    ActionBar actionBar = ((AppCompatActivity)activity).getSupportActionBar();
-                    if (actionBar != null) {
-                        actionBar.setTitle(event.getAccountData().getFullName());
-                    }
-                }
             }
         }
     };
