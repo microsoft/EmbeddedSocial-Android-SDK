@@ -59,6 +59,13 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
         this.userHandle = userHandle;
     }
 
+    /**
+     * Get the name of the user profile displayed in this fragment
+     */
+    public String getUserName() {
+        return userName;
+    }
+
     protected void setUserName(String userName) {
         this.userName = userName;
     }

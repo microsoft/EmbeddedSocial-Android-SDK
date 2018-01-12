@@ -12,10 +12,13 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseProfileFragment;
  * Fragment displaying the current user's profile
  */
 public class MyProfileFragment extends BaseProfileFragment {
+    public static final String TAG = "MyProfileFragment";
 
     @Override
     protected void initExtraVariables() {
-        setUserHandle(UserAccount.getInstance().getUserHandle());
+        UserAccount currentUser = UserAccount.getInstance();
+        setUserHandle(currentUser.getUserHandle());
+        setUserName(currentUser.getAccountDetails().getFullName());
         setIsCurrentUser(true);
         setFeedIsReadable(true);
     }
