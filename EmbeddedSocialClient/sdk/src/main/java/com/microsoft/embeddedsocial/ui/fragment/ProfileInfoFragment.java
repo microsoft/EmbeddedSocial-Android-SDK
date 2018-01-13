@@ -5,11 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.content.Context;
-import android.os.Bundle;
-
-import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.event.data.ProfileDataUpdatedEvent;
 import com.microsoft.embeddedsocial.event.relationship.UserFollowedStateChangedEvent;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
@@ -20,6 +17,9 @@ import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.adapter.ProfileInfoAdapter;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
 import com.squareup.otto.Subscribe;
+
+import android.content.Context;
+import android.os.Bundle;
 
 /**
  * Shows user's profile.
@@ -45,7 +45,7 @@ public class ProfileInfoFragment extends BaseListContentFragment<ProfileInfoAdap
 		if (fetcher == null) {
 			fetcher = FetchersFactory.createProfileFetcher(userHandle);
 		}
-		ProfileInfoAdapter adapter = new ProfileInfoAdapter(getActivity(), fetcher, userHandle);
+		ProfileInfoAdapter adapter = new ProfileInfoAdapter(getContext(), fetcher, userHandle);
 		adapter.addFetcherCallback(new Callback() {
 			@Override
 			public void onDataRequestSucceeded() {
