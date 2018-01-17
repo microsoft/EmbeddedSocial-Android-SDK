@@ -140,7 +140,7 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
         Fragment feedMenuFragment = fragmentManager.findFragmentByTag(FeedViewMenuFragment.TAG);
 
         if (getCurrentPagePosition() == 0) {
-            fragmentManager.beginTransaction().hide(feedMenuFragment).commit();
+            fragmentManager.beginTransaction().hide(feedMenuFragment).commitNow();
 
             if (isCurrentUser) {
                 if (BuildConfig.STANDALONE_APP) {
