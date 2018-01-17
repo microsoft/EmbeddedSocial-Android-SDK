@@ -24,7 +24,6 @@ public class ActivityFeedActivity extends BaseActivity {
 	protected void setupFragments() {
 		setActivityContent(new ActivityFeedFragment());
 		super.setupFragments();
-		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
 	}
 
 	@Override

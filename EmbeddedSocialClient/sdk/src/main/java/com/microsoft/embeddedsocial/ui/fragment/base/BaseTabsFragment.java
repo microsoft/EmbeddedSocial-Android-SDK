@@ -8,6 +8,7 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.base.view.SlidingTabLayout;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -55,6 +56,10 @@ public abstract class BaseTabsFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // add the list/gallery view options item to the action bar
+        getChildFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
+
         viewPager = view.findViewById(R.id.es_viewpager);
 
         PagerAdapter adapter = createPagerAdapter();

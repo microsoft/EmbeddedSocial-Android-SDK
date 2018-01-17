@@ -16,6 +16,7 @@ import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
+import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
 import com.microsoft.embeddedsocial.ui.fragment.ProfileFeedFragment;
 import com.microsoft.embeddedsocial.ui.fragment.ProfileInfoFragment;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
@@ -26,6 +27,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -134,7 +136,12 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         Options options = GlobalObjectRegistry.getObject(Options.class);
 
+        FragmentManager fragmentManager = getChildFragmentManager();
+        Fragment feedMenuFragment = fragmentManager.findFragmentByTag(FeedViewMenuFragment.TAG);
+
         if (getCurrentPagePosition() == 0) {
+            fragmentManager.beginTransaction().hide(feedMenuFragment).commit();
+
             if (isCurrentUser) {
                 if (BuildConfig.STANDALONE_APP) {
                     inflater.inflate(R.menu.es_my_profile, menu);
@@ -146,8 +153,8 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
                 }
                 inflater.inflate(R.menu.es_user_report, menu);
             }
-        } else if (options != null && options.showGalleryView()) {
-            inflater.inflate(R.menu.es_feed_display_method, menu);
+        } else if (feedMenuFragment.isHidden() && options.showGalleryView()) {
+            fragmentManager.beginTransaction().show(feedMenuFragment).commit();
         }
     }
 

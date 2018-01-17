@@ -5,18 +5,17 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.FollowingFeedFragment;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseFeedActivity;
-import com.microsoft.embeddedsocial.ui.fragment.FollowingFeedFragment;
-
 /**
  * Activity to show feeds and profile.
  */
-public class HomeActivity extends BaseFeedActivity {
+public class HomeActivity extends BaseActivity {
 	public static final String NAME = "Home";
 
 	public HomeActivity() {

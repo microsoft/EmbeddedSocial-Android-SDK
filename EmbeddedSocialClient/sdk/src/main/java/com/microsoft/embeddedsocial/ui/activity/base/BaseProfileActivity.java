@@ -7,7 +7,6 @@ package com.microsoft.embeddedsocial.ui.activity.base;
 
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.event.data.ProfileDataUpdatedEvent;
-import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuListenerFragment;
 import com.squareup.otto.Subscribe;
 
 import android.support.v7.app.ActionBar;
@@ -23,12 +22,6 @@ public abstract class BaseProfileActivity extends BaseActivity {
 
 	protected BaseProfileActivity(int activeNavigationItemId) {
 		super(activeNavigationItemId);
-	}
-
-	@Override
-	protected void setupFragments() {
-		super.setupFragments();
-		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuListenerFragment(), FeedViewMenuListenerFragment.TAG).commit();
 	}
 
 	/**
