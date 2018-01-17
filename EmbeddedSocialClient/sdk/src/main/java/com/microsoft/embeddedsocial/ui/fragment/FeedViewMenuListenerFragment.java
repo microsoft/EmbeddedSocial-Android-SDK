@@ -7,8 +7,9 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.fragment.module.FeedViewMenuModule;
+import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.fragment.module.FeedViewMenuModule;
 
 /**
  * This fragment listens to the menu actions for list/gallery switch.
@@ -19,6 +20,7 @@ public class FeedViewMenuListenerFragment extends BaseFragment {
 	private final FeedViewMenuModule menuModule = new FeedViewMenuModule(this);
 
 	public FeedViewMenuListenerFragment() {
+		addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
 		Options options = GlobalObjectRegistry.getObject(Options.class);
 		if (options != null && options.showGalleryView()) {
 			addModule(menuModule);
