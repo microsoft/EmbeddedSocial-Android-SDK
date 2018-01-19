@@ -15,8 +15,8 @@
 	<string name="es_hint_bio">Bio (optional)</string>
 	<string name="es_hint_title">Title (optional)</string>
 	<string name="es_hint_description">Description</string>
-	<string name="es_hint_add_comment">Type here to comment?</string>
-	<string name="es_hint_add_reply">Type here to reply?</string>
+	<string name="es_hint_add_comment">Type here to comment</string>
+	<string name="es_hint_add_reply">Type here to reply</string>
 	<string name="es_comment">Comment</string>
 	<string name="es_reply">Reply</string>
 	<string name="es_post">Post</string>
