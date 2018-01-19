@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.PopularFeedFragment;
 
 /**
