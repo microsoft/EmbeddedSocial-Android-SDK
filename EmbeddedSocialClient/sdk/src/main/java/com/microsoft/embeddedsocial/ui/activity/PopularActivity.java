@@ -5,9 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.PopularFeedFragment;
 
 /**
@@ -24,7 +23,6 @@ public class PopularActivity extends BaseActivity {
 	protected void setupFragments() {
 		setActivityContent(new PopularFeedFragment());
 		super.setupFragments();
-		getSupportFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
 	}
 
 	@Override

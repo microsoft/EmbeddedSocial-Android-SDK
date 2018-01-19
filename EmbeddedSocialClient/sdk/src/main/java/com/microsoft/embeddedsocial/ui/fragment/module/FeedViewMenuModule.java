@@ -5,13 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.module;
 
-import android.content.res.TypedArray;
-import android.graphics.PorterDuff;
-import android.support.v4.content.ContextCompat;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.data.display.DisplayMethod;
@@ -21,14 +14,23 @@ import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.fragment.base.Module;
+import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+
+import android.graphics.PorterDuff;
+import android.support.v4.content.ContextCompat;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 /**
  * Adds gallery/list switch to the options menu.
  */
 public class FeedViewMenuModule extends Module {
+	private BaseFragment owner;
 
 	public FeedViewMenuModule(BaseFragment owner) {
 		super(owner);
+		this.owner = owner;
 	}
 
 	public void inflateMenu(Menu menu, MenuInflater inflater) {
@@ -42,9 +44,7 @@ public class FeedViewMenuModule extends Module {
 			DisplayMethod displayMethod = Preferences.getInstance().getDisplayMethod();
 
 			int attrId = displayMethod == DisplayMethod.GALLERY ? R.styleable.es_AppTheme_es_listIndicator : R.styleable.es_AppTheme_es_galleryIndicator;
-			TypedArray typedArray = getContext().obtainStyledAttributes(R.styleable.es_AppTheme);
-			int iconId = typedArray.getResourceId(attrId, 0);
-			typedArray.recycle();
+			int iconId = ThemeAttributes.getResourceId(owner.getContext(), attrId);
 			viewSwitch.setIcon(iconId);
 			ToolbarColorizer colorizer = BaseActivity.getToolbarColorizer();
 			if (colorizer != null) {
