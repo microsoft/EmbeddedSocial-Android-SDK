@@ -51,7 +51,7 @@
 				android:id="@+id/es_commentRepliesCountButtonImage"
 				android:layout_width="@dimen/es_replies_button_image_size"
 				android:layout_height="@dimen/es_replies_button_image_size"
-				android:src="@drawable/es_ic_comment_green"
+				android:src="@drawable/es_ic_comment"
 		/>
 		<TextView
 				android:id="@+id/es_commentRepliesCountButtonText"
