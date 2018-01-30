@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBar;
  * Activity shoving current user's feeds.
  */
 public class MyProfileActivity extends BaseProfileActivity {
+	public static final String NAME = "MyProfile";
 
 	public MyProfileActivity() {
 		super(R.id.es_navigationProfile);
@@ -43,5 +44,10 @@ public class MyProfileActivity extends BaseProfileActivity {
 	@Override
 	protected boolean isAuthorizationRequired() {
 		return true;
+	}
+
+	@Override
+	protected String getName() {
+		return NAME;
 	}
 }
