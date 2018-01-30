@@ -109,6 +109,7 @@
 			android:clickable="true"
 			android:scaleType="center"
 			android:src="@drawable/es_ic_comment"
+			android:tint="@color/es_button_base_gray"
 			/>
 
 		<ImageView
