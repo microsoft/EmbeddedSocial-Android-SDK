@@ -107,24 +107,36 @@
 		android:background="?attr/es_buttonBackground"
 		android:clickable="true"
 		android:scaleType="center"
-		android:src="@drawable/es_ic_like_normal"
+		android:src="@drawable/es_ic_like"
 		/>
 
-	<TextView
-		android:id="@+id/es_replyLikesCountButton"
-		style="@style/EmbeddedSocialSdkTextCaption.Green"
-		android:layout_width="wrap_content"
-		android:layout_height="@dimen/es_button_base_size"
-		android:layout_below="@id/es_replyText"
-		android:layout_marginTop="@dimen/es_padding_small"
-		android:layout_marginRight="@dimen/es_padding_small"
-		android:layout_alignParentRight="true"
-		android:drawableLeft="@drawable/es_ic_like_green"
-		android:drawablePadding="@dimen/es_padding_small"
-		android:background="?attr/es_buttonBackground"
-		android:clickable="true"
-		android:gravity="center_vertical"
+	<LinearLayout
+			android:id="@+id/es_replyLikesCountButton"
+			android:layout_width="wrap_content"
+			android:layout_height="@dimen/es_button_base_size"
+			android:orientation="horizontal"
+			android:layout_marginTop="@dimen/es_padding_small"
+			android:layout_marginRight="@dimen/es_padding_small"
+			android:layout_alignParentRight="true"
+			android:layout_below="@id/es_replyText"
+			android:gravity="center_vertical"
+			android:clickable="true"
+			android:background="?attr/es_buttonBackground"
+	>
+		<ImageView
+				android:id="@+id/es_replyLikesCountButtonImage"
+				android:layout_width="@dimen/es_replies_button_image_size"
+				android:layout_height="@dimen/es_replies_button_image_size"
+				android:src="@drawable/es_ic_like"
 		/>
+		<TextView
+				android:id="@+id/es_replyLikesCountButtonText"
+				style="@style/EmbeddedSocialSdkTextCaption.Green"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:background="?attr/es_buttonBackground"
+				android:gravity="center_vertical"/>
+	</LinearLayout>
 
 	<View
 		android:id="@+id/es_dividerLayoutBottom"

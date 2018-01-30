@@ -130,7 +130,7 @@
 		<item name="android:textAllCaps">true</item>
 		<item name="android:singleLine">true</item>
 		<item name="android:textStyle">bold</item>
-		<item name="android:paddingLeft">@dimen/es_padding_base</item>
+		<item name="android:paddingLeft">@dimen/es_padding_small</item>
 		<item name="android:paddingRight">@dimen/es_padding_base</item>
 	</style>
 

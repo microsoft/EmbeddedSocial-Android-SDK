@@ -95,7 +95,7 @@
 			android:background="?attr/es_buttonBackground"
 			android:clickable="true"
 			android:scaleType="center"
-			android:src="@drawable/es_ic_like_normal"/>
+			android:src="@drawable/es_ic_like"/>
 
 		<ImageView
 			android:id="@+id/es_commentButton"
@@ -109,6 +109,7 @@
 			android:clickable="true"
 			android:scaleType="center"
 			android:src="@drawable/es_ic_comment"
+			android:tint="@color/es_button_base_gray"
 			/>
 
 		<ImageView
@@ -137,7 +138,7 @@
 					android:id="@+id/es_postCommentsCountButtonImage"
 					android:layout_width="@dimen/es_replies_button_image_size"
 					android:layout_height="@dimen/es_replies_button_image_size"
-					android:src="@drawable/es_ic_comment_green"
+					android:src="@drawable/es_ic_comment"
 			/>
 			<TextView
 					android:id="@+id/es_postCommentsCountButtonText"
@@ -148,19 +149,31 @@
 					android:gravity="center_vertical"/>
 		</LinearLayout>
 
-		<TextView
-			android:id="@+id/es_postLikesCountButton"
-			style="@style/EmbeddedSocialSdkTextCaption.Green"
-			android:layout_width="wrap_content"
-			android:layout_height="@dimen/es_button_base_size"
-			android:layout_alignBaseline="@id/es_postCommentsCountButton"
-			android:layout_toLeftOf="@id/es_postCommentsCountButton"
-			android:background="?attr/es_buttonBackground"
-			android:clickable="true"
-			android:drawableLeft="@drawable/es_ic_like_green"
-			android:drawablePadding="@dimen/es_counter_drawable_padding"
-			android:gravity="center_vertical"
+		<LinearLayout
+				android:id="@+id/es_postLikesCountButton"
+				android:layout_width="wrap_content"
+				android:layout_height="@dimen/es_button_base_size"
+				android:orientation="horizontal"
+				android:layout_alignBaseline="@id/es_postCommentsCountButton"
+				android:layout_toLeftOf="@id/es_postCommentsCountButton"
+				android:clickable="true"
+				android:background="?attr/es_buttonBackground"
+				android:gravity="center_vertical"
+		>
+			<ImageView
+					android:id="@+id/es_postLikesCountButtonImage"
+					android:layout_width="@dimen/es_replies_button_image_size"
+					android:layout_height="@dimen/es_replies_button_image_size"
+					android:src="@drawable/es_ic_like"
 			/>
+			<TextView
+					android:id="@+id/es_postLikesCountButtonText"
+					style="@style/EmbeddedSocialSdkTextCaption.Green"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:background="?attr/es_buttonBackground"
+					android:gravity="center_vertical"/>
+		</LinearLayout>
 
 	</RelativeLayout>
 

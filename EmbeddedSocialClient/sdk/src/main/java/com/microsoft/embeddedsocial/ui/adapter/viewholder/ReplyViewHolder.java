@@ -5,17 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
+import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
-import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.ReplyView;
-import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
 
 /**
  * Init reply view layout.
@@ -27,7 +28,7 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 
 	private TextView replyText;
 
-	private TextView replyLikesCountButton;
+	private LinearLayout replyLikesCountButton;
 	private ImageView likeButton;
 	private View dividerLayoutBottom;
 	private ButtonStyleHelper buttonStyleHelper;
@@ -63,7 +64,8 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 		replyText.setText(reply.getReplyText());
 
 		long totalLikes = reply.getTotalLikes();
-		replyLikesCountButton.setText(
+		TextView replyLikesCountButtonText = (TextView)replyLikesCountButton.findViewById(R.id.es_replyLikesCountButtonText);
+		replyLikesCountButtonText.setText(
 				replyLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
 						QuantityStringUtils.convertLongToInt(totalLikes),
 						totalLikes));
@@ -95,7 +97,8 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 		replyText.setText(reply.getReplyText());
 
 		long totalLikes = reply.getTotalLikes();
-		replyLikesCountButton.setText(
+		TextView replyLikesCountButtonText = (TextView)replyLikesCountButton.findViewById(R.id.es_replyLikesCountButtonText);
+		replyLikesCountButtonText.setText(
 				replyLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
 						QuantityStringUtils.convertLongToInt(totalLikes),
 						totalLikes));
@@ -112,8 +115,8 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 		setHeaderClickable(true);
 
 		replyText = (TextView) view.findViewById(R.id.es_replyText);
-		replyLikesCountButton = (TextView) view.findViewById(R.id.es_replyLikesCountButton);
-		buttonStyleHelper.applyAccentColor(replyLikesCountButton);
+		replyLikesCountButton = (LinearLayout) view.findViewById(R.id.es_replyLikesCountButton);
+		buttonStyleHelper.applyAccentColor(replyLikesCountButton, R.id.es_replyLikesCountButtonText, R.id.es_replyLikesCountButtonImage);
 		likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
 		dividerLayoutBottom = view.findViewById(R.id.es_dividerLayoutBottom);
 	}
