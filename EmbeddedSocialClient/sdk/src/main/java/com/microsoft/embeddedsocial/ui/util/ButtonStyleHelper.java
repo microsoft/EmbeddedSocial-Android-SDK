@@ -5,17 +5,19 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.IdRes;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.sdk.R;
 
 /**
  * Helps to apply styles to buttons.
@@ -76,5 +78,18 @@ public class ButtonStyleHelper {
 		if (leftDrawable != null) {
 			leftDrawable.setColorFilter(accentColor, PorterDuff.Mode.SRC_IN);
 		}
+	}
+
+	/**
+	 * Apply accent color to a button with both a text and image component
+	 * @param buttonLayout Layout containing the button components
+	 * @param textId resource id of the text portion
+	 * @param imageId resource id of the image portion
+	 */
+	public void applyAccentColor(LinearLayout buttonLayout, @IdRes int textId, @IdRes int imageId) {
+		TextView text = (TextView)buttonLayout.findViewById(textId);
+		ImageView image = (ImageView)buttonLayout.findViewById(imageId);
+		applyAccentColor(text);
+		applyAccentColor(image, true);
 	}
 }
