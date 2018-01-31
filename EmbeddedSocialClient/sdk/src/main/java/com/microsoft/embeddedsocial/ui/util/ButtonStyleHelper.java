@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 
 import android.content.Context;
@@ -36,7 +34,7 @@ public class ButtonStyleHelper {
 		greenColor = res.getColorStateList(R.color.es_button_text_green);
 		grayColor = res.getColorStateList(R.color.es_button_text_gray);
 		redColor = res.getColorStateList(R.color.es_pink_500);
-		accentColor = GlobalObjectRegistry.getObject(Options.class).getAccentColor();
+		accentColor = res.getColor(R.color.es_accent_color);
 	}
 
 	public void applyGreenCompletedStyle(TextView view) {

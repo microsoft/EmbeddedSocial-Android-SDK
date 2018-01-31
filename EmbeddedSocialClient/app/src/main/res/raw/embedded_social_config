@@ -27,7 +27,6 @@
 		}
 	},
 	"theme" : {
-		"accentColor" : "FF4CAF50",
 		"name" : "light"
 	}
 }

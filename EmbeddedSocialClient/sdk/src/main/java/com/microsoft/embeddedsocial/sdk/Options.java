@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.sdk;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
+
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,6 @@ public final class Options {
 	void verify() {
 		checkValueIsNotNull("application", application);
 		checkValueIsNotNull("socialNetworks", socialNetworks);
-		checkValueIsNotNull("name", theme);
 		checkValueIsNotNull("socialNetworks.facebook", socialNetworks.facebook);
 		checkValueIsNotNull("socialNetworks.twitter", socialNetworks.twitter);
 		checkValueIsNotNull("socialNetworks.google", socialNetworks.google);
@@ -38,7 +37,6 @@ public final class Options {
 		checkValueIsNotEmpty("socialNetworks.facebook.clientId", socialNetworks.facebook.clientId);
 		checkValueIsNotEmpty("socialNetworks.microsoft.clientId", socialNetworks.microsoft.clientId);
 		checkValueIsNotEmpty("socialNetworks.google.clientId", socialNetworks.google.clientId);
-		checkValueIsNotNull("theme.accentColor", theme.accentColor);
 
 		if (application.numberOfCommentsToShow <= 0) {
 			throwInvalidConfigException("application.numberOfCommentsToShow must be greater then 0");
@@ -134,12 +132,8 @@ public final class Options {
 		return socialNetworks.google.clientId;
 	}
 
-	public int getAccentColor() {
-		return (int) Long.parseLong(theme.accentColor, 16);
-	}
-
 	public ThemeGroup getThemeGroup() {
-		return theme.name == null ? ThemeGroup.LIGHT : theme.name;
+		return (theme == null || theme.name == null) ? ThemeGroup.LIGHT : theme.name;
 	}
 
 	/**
@@ -180,7 +174,6 @@ public final class Options {
 	}
 
 	private class DrawTheme {
-		private String accentColor;
 		private ThemeGroup name;
 	}
 }
