@@ -31,12 +31,12 @@
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="16dp"
 			android:inputType="textMultiLine|textCapSentences"
-		/>
+			/>
 		<ImageButton
 			android:id="@+id/es_attachImageButton"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/ic_image_black_36dp"
+			android:src="@drawable/es_ic_add_image"
 			android:background="?attr/es_buttonBackground"
 			/>
 		<Button
