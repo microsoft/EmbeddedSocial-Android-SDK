@@ -60,4 +60,5 @@
 	<color name="es_sign_in_twitter">#1da1f2</color>
 
 	<color name="es_status_bar">@color/es_text_secondary_light</color>
+	<color name="es_accent_color">#FF4CAF50</color>
 </resources>
