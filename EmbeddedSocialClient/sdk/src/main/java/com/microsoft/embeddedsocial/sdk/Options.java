@@ -155,22 +155,22 @@ public final class Options {
 	}
 
 	/**
-	 * Options for a social network authorization.
+	 * Configs for an Id provider.
 	 */
-	private static class SocialNetwork {
+	private static class IdProvider {
 		private boolean loginEnabled = true;
 		private String clientId = null;
 	}
 
 	/**
-	 * Options for a social networks.
+	 * Choices for a third party Id providers currently supported.
 	 */
 	@SuppressWarnings("unused")
 	private static class IdProviders {
-		private SocialNetwork facebook;
-		private SocialNetwork google;
-		private SocialNetwork microsoft;
-		private SocialNetwork twitter;
+		private IdProvider facebook;
+		private IdProvider google;
+		private IdProvider microsoft;
+		private IdProvider twitter;
 	}
 
 	private class DrawTheme {
