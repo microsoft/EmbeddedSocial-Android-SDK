@@ -19,7 +19,7 @@ import java.util.List;
 public final class Options {
 
 	private Application application = null;
-	private SocialNetworks socialNetworks = null;
+	private IdProviders idProviders = null;
 	private DrawTheme theme = null;
 
 	private Options() {
@@ -27,16 +27,16 @@ public final class Options {
 
 	void verify() {
 		checkValueIsNotNull("application", application);
-		checkValueIsNotNull("socialNetworks", socialNetworks);
-		checkValueIsNotNull("socialNetworks.facebook", socialNetworks.facebook);
-		checkValueIsNotNull("socialNetworks.twitter", socialNetworks.twitter);
-		checkValueIsNotNull("socialNetworks.google", socialNetworks.google);
-		checkValueIsNotNull("socialNetworks.microsoft", socialNetworks.microsoft);
+		checkValueIsNotNull("idProviders", idProviders);
+		checkValueIsNotNull("idProviders.facebook", idProviders.facebook);
+		checkValueIsNotNull("idProviders.twitter", idProviders.twitter);
+		checkValueIsNotNull("idProviders.google", idProviders.google);
+		checkValueIsNotNull("idProviders.microsoft", idProviders.microsoft);
 		checkValueIsNotEmpty("application.serverUrl", application.serverUrl);
 		checkValueIsNotEmpty("application.appKey", application.appKey);
-		checkValueIsNotEmpty("socialNetworks.facebook.clientId", socialNetworks.facebook.clientId);
-		checkValueIsNotEmpty("socialNetworks.microsoft.clientId", socialNetworks.microsoft.clientId);
-		checkValueIsNotEmpty("socialNetworks.google.clientId", socialNetworks.google.clientId);
+		checkValueIsNotEmpty("idProviders.facebook.clientId", idProviders.facebook.clientId);
+		checkValueIsNotEmpty("idProviders.microsoft.clientId", idProviders.microsoft.clientId);
+		checkValueIsNotEmpty("idProviders.google.clientId", idProviders.google.clientId);
 
 		if (application.numberOfCommentsToShow <= 0) {
 			throwInvalidConfigException("application.numberOfCommentsToShow must be greater then 0");
@@ -44,10 +44,10 @@ public final class Options {
 		if (application.numberOfRepliesToShow <= 0) {
 			throwInvalidConfigException("application.numberOfRepliesToShow must be greater then 0");
 		}
-		if (!(socialNetworks.facebook.loginEnabled
-			|| socialNetworks.google.loginEnabled
-			|| socialNetworks.microsoft.loginEnabled
-			|| socialNetworks.twitter.loginEnabled)) {
+		if (!(idProviders.facebook.loginEnabled
+			|| idProviders.google.loginEnabled
+			|| idProviders.microsoft.loginEnabled
+			|| idProviders.twitter.loginEnabled)) {
 			throwInvalidConfigException("login via at least one social network must be enabled");
 		}
 	}
@@ -77,19 +77,19 @@ public final class Options {
 	}
 
 	public boolean isFacebookLoginEnabled() {
-		return socialNetworks.facebook.loginEnabled;
+		return idProviders.facebook.loginEnabled;
 	}
 
 	public boolean isTwitterLoginEnabled() {
-		return socialNetworks.twitter.loginEnabled;
+		return idProviders.twitter.loginEnabled;
 	}
 
 	public boolean isMicrosoftLoginEnabled() {
-		return socialNetworks.microsoft.loginEnabled;
+		return idProviders.microsoft.loginEnabled;
 	}
 
 	public boolean isGoogleLoginEnabled() {
-		return socialNetworks.google.loginEnabled;
+		return idProviders.google.loginEnabled;
 	}
 
 	public String getServerUrl() {
@@ -121,15 +121,15 @@ public final class Options {
 	}
 
 	public String getFacebookApplicationId() {
-		return socialNetworks.facebook.clientId;
+		return idProviders.facebook.clientId;
 	}
 
 	public String getMicrosoftClientId() {
-		return socialNetworks.microsoft.clientId;
+		return idProviders.microsoft.clientId;
 	}
 
 	public String getGoogleClientId() {
-		return socialNetworks.google.clientId;
+		return idProviders.google.clientId;
 	}
 
 	public ThemeGroup getThemeGroup() {
@@ -166,7 +166,7 @@ public final class Options {
 	 * Options for a social networks.
 	 */
 	@SuppressWarnings("unused")
-	private static class SocialNetworks {
+	private static class IdProviders {
 		private SocialNetwork facebook;
 		private SocialNetwork google;
 		private SocialNetwork microsoft;
