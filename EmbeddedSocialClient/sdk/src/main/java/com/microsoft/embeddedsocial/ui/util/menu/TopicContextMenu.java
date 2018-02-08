@@ -5,20 +5,21 @@
 
 package com.microsoft.embeddedsocial.ui.util.menu;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.PopupMenu;
-import android.text.TextUtils;
-import android.view.Menu;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.IReportHandler;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.autorest.models.PublisherType;
-import com.microsoft.embeddedsocial.sdk.IReportHandler;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicRenderOptions;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
+import android.text.TextUtils;
+import android.view.Menu;
 
 /**
  * Contains common methods for topic context menus.
@@ -30,7 +31,7 @@ public class TopicContextMenu {
 	 *
 	 * @param topic the topic to generate context menu for
 	 */
-	public static void inflateContextMenu(@NonNull Context context, @NonNull PopupMenu menu, TopicView topic, TopicRenderOptions options) {
+	public static void inflateContextMenu(@NonNull Fragment fragment, @NonNull PopupMenu menu, TopicView topic, TopicRenderOptions options) {
 		if (topic.isLocal()) {
 			menu.inflate(R.menu.es_topic_pending);
 		} else {
@@ -47,9 +48,9 @@ public class TopicContextMenu {
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
 				menu.inflate(R.menu.es_topic_hide);
 			}
-			addCustomReportHandler(context, menu, topic);
+			addCustomReportHandler(fragment.getActivity(), menu, topic);
         }
-		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(context, topic));
+		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(fragment, topic));
 	}
 
 	private static boolean isOwnTopic(TopicView topic) {

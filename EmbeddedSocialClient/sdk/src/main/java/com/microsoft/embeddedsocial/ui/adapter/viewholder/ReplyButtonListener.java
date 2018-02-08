@@ -5,36 +5,39 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.PopupMenu;
-import android.view.View;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.activity.LikesActivity;
+import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.menu.ReplyContextMenuClickListener;
 import com.microsoft.embeddedsocial.ui.util.menu.UserContextMenuHelper;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
+import android.view.View;
 
 /**
  * Click listener for all reply buttons.
  */
 public class ReplyButtonListener {
 	private Context context;
+	private Fragment fragment;
 
-	public ReplyButtonListener(Context context) {
-		this.context = context;
+	public ReplyButtonListener(Fragment fragment) {
+		this.fragment = fragment;
+		this.context = fragment.getActivity();
 	}
 
 	public void onClickLike(View view) {
 		ContentUpdateHelper.launchLike(
-			context,
+			fragment,
 			(String) view.getTag(R.id.es_keyHandle),
 			ContentType.REPLY,
 			(boolean) view.getTag(R.id.es_keyIsAdd)
@@ -54,7 +57,7 @@ public class ReplyButtonListener {
 			menu.inflate(R.menu.es_reply);
 		}
 		menu.setOnMenuItemClickListener(new ReplyContextMenuClickListener(
-			context, (ReplyView) view.getTag(R.id.es_keyReply)));
+			fragment, (ReplyView) view.getTag(R.id.es_keyReply)));
 		menu.show();
 	}
 

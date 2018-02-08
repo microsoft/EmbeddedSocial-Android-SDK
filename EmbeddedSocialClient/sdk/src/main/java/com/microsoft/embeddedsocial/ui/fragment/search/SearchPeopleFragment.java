@@ -5,16 +5,16 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.search;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.data.model.SearchType;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
+
+import android.text.TextUtils;
 
 /**
  * Fragment for people search.
@@ -31,7 +31,7 @@ public class SearchPeopleFragment extends BaseUsersListFragment {
 
 	@Override
 	protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
-		return new UserRenderer(getContext());
+		return new UserRenderer(this);
 	}
 
 	@Override

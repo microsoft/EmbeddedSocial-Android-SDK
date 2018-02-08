@@ -5,32 +5,32 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ConditionVariable;
-import android.support.annotation.Nullable;
-
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
+import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
+import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.social.AuthorizationRequest;
 import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
-import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
-import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
-import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
-import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.activity.FriendlistActivity;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
+import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.ConditionVariable;
+import android.support.annotation.Nullable;
 
 /**
  * Search users from social networks.
@@ -49,7 +49,7 @@ public class FriendlistFragment extends BaseUsersListFragment {
 
 	@Override
 	protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
-		return new UserRenderer(getContext());
+		return new UserRenderer(this);
 	}
 
 	@Override

@@ -5,29 +5,9 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.provider.Browser;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.URLSpan;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
@@ -43,6 +23,27 @@ import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.activity.ReportActivity;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.Browser;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.URLSpan;
+import android.util.Patterns;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,16 +68,18 @@ public final class ContentUpdateHelper {
 		new UserActionProxy(context).removeReply(reply);
 	}
 
-	public static void launchLike(Context context, String contentHandle, ContentType contentType, boolean liked) {
-		if (UserAccount.getInstance().checkAuthorization(AuthorizationCause.LIKE)) {
+	public static void launchLike(Fragment fragment, String contentHandle, ContentType contentType, boolean liked) {
+		if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.LIKE)) {
+			Context context = fragment.getActivity();
 			new UserActionProxy(context).setLikeStatus(contentHandle, contentType, liked);
 		} else {
 			Preferences.getInstance().setPendingAction(new PendingLike(contentHandle, contentType, liked));
 		}
 	}
 
-	public static void launchPin(Context context, String topicHandle, boolean pinned) {
-		if (UserAccount.getInstance().checkAuthorization(AuthorizationCause.PIN)) {
+	public static void launchPin(Fragment fragment, String topicHandle, boolean pinned) {
+		if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.PIN)) {
+			Context context = fragment.getActivity();
 			new UserActionProxy(context).setPinStatus(topicHandle, pinned);
 		} else {
 			Preferences.getInstance().setPendingAction(new PendingPin(topicHandle, pinned));

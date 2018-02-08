@@ -5,20 +5,23 @@
 
 package com.microsoft.embeddedsocial.event.click;
 
-import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.event.BaseCommonBehaviorEvent;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Open selected user profile.
  */
 @HandlingThread(ThreadType.CALLING_MAIN)
-public class OpenUserProfileEvent extends AbstractEvent {
+public class OpenUserProfileEvent extends BaseCommonBehaviorEvent {
 
 	private final UserCompactView user;
 
-	public OpenUserProfileEvent(UserCompactView user) {
+	public OpenUserProfileEvent(Fragment source, UserCompactView user) {
+		super(source);
 		this.user = user;
 	}
 

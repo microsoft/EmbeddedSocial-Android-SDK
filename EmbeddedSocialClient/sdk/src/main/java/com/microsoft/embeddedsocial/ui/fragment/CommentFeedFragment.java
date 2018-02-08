@@ -5,11 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
@@ -17,6 +12,7 @@ import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
 import com.microsoft.embeddedsocial.event.content.CommentAddedEvent;
 import com.microsoft.embeddedsocial.event.content.CommentPostedToBackendEvent;
 import com.microsoft.embeddedsocial.event.content.CommentRemovedEvent;
+import com.microsoft.embeddedsocial.event.content.PinAddedEvent;
 import com.microsoft.embeddedsocial.event.content.PinRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.TopicRemovedEvent;
 import com.microsoft.embeddedsocial.event.relationship.UserFollowedStateChangedEvent;
@@ -29,10 +25,14 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
-import com.microsoft.embeddedsocial.event.content.PinAddedEvent;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
 import com.squareup.otto.Subscribe;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -100,7 +100,7 @@ public class CommentFeedFragment extends DiscussionFeedFragment {
 		}
 
 		DiscussionFeedAdapter adapter = new DiscussionFeedAdapter(
-			getActivity(),
+			this,
 			commentFeedFetcher,
 			DiscussionFeedAdapter.FeedType.COMMENT);
 

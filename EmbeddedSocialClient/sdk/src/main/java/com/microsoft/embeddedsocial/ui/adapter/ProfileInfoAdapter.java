@@ -5,14 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.adapter;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
@@ -22,9 +16,16 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.BlockedUsersActivity;
 import com.microsoft.embeddedsocial.ui.activity.FollowRequestsActivity;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.ProfileInfoRenderer;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
-import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -48,11 +49,11 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 	private final boolean isCurrentUser;
 	private ArrayList<Integer> itemTypes = new ArrayList<>();
 
-	public ProfileInfoAdapter(Context context, Fetcher<AccountData> fetcher, String userHandle) {
+	public ProfileInfoAdapter(Fragment fragment, Fetcher<AccountData> fetcher, String userHandle) {
 		super(fetcher);
 		isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
-
-		registerViewType(VIEW_TYPE_PROFILE, new ProfileInfoRenderer(context, userHandle, ProfileInfoRenderer.RenderType.LARGE));
+		Context context = fragment.getActivity();
+		registerViewType(VIEW_TYPE_PROFILE, new ProfileInfoRenderer(fragment, userHandle, ProfileInfoRenderer.RenderType.LARGE));
 		registerViewType(VIEW_TYPE_PRIVATE_USER_MESSAGE, PRIVATE_MESSAGE_RENDERER, dummyGetMethod());
 		registerViewType(VIEW_TYPE_BLOCKED_USERS, createBlockedUsersRenderer(context), dummyGetMethod());
 		registerViewType(VIEW_TYPE_FOLLOW_REQUESTS, createFollowRequestsRenderer(context), dummyGetMethod());

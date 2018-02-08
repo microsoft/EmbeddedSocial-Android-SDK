@@ -5,26 +5,26 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  * Renders my followers with context menu.
  */
 public class MyFollowersRenderer extends UserRenderer {
 
-    public MyFollowersRenderer(Context context) {
-        super(context);
+    public MyFollowersRenderer(Fragment fragment) {
+        super(fragment);
     }
 
     @Override

@@ -123,7 +123,7 @@ public abstract class BaseProfileFragment extends BaseTabsFragment {
             ContentUpdateHelper.startUserReport(getContext(), userHandle, userName);
             return true;
         } else if (itemId == R.id.es_actionBlockUser) {
-            UserAccount.getInstance().blockUser(userHandle);
+            UserAccount.getInstance().blockUser(this, userHandle);
             return true;
         } else if (itemId == R.id.es_addPost) {
             startActivity(new Intent(getContext(), AddPostActivity.class));

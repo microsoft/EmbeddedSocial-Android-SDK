@@ -5,22 +5,23 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.event.click.OpenTopicEvent;
+import com.microsoft.embeddedsocial.image.CoverLoader;
+import com.microsoft.embeddedsocial.image.ImageLocation;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
+
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.event.click.OpenTopicEvent;
-import com.microsoft.embeddedsocial.image.CoverLoader;
-import com.microsoft.embeddedsocial.image.ImageLocation;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
 
 /**
  * Renders topics in grid.
@@ -28,8 +29,11 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
 public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 
 	private int imageSize;
+	private Fragment fragment;
 
-	public GridRenderer(Context context) {
+	public GridRenderer(Fragment fragment) {
+		this.fragment = fragment;
+		Context context = fragment.getActivity();
 		imageSize = context.getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
 	}
 
@@ -37,7 +41,7 @@ public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 	public ViewHolder createViewHolder(ViewGroup parent) {
 		Context context = parent.getContext();
 		View itemView = LayoutInflater.from(context).inflate(R.layout.es_grid_item, parent, false);
-		return new ViewHolder(itemView);
+		return new ViewHolder(fragment, itemView);
 	}
 
 	@Override
@@ -64,21 +68,23 @@ public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 		final ImageView imageView;
 		final View noImageView;
 		final View uploadingIndicator;
+		final Fragment fragment;
 
 		TopicView topic;
 
-		public ViewHolder(View itemView) {
+		public ViewHolder(Fragment fragment, View itemView) {
 			super(itemView);
 			noImageView = ViewUtils.findView(itemView, R.id.es_noImage);
 			imageView = ViewUtils.findView(itemView, R.id.es_image);
 			imageViewContentLoader = new CoverLoader(imageView);
 			uploadingIndicator = ViewUtils.findView(itemView, R.id.es_uploadingIndicator);
+			this.fragment = fragment;
 			itemView.setOnClickListener(this);
 		}
 
 		@Override
 		public void onClick(View v) {
-			EventBus.post(new OpenTopicEvent(topic));
+			EventBus.post(new OpenTopicEvent(fragment, topic));
 		}
 	}
 }

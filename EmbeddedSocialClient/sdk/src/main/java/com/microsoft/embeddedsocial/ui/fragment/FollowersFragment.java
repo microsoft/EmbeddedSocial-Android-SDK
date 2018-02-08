@@ -23,9 +23,9 @@ public class FollowersFragment extends BaseFollowersFragment {
 		UserAccount userAccount = UserAccount.getInstance();
 		String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
 		if (userAccount.isCurrentUser(userHandle)) {
-			return new MyFollowersRenderer(getContext());
+			return new MyFollowersRenderer(this);
 		} else {
-			return new UserRenderer(getContext());
+			return new UserRenderer(this);
 		}
 	}
 

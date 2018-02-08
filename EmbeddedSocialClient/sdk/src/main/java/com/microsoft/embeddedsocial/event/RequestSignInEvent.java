@@ -5,20 +5,22 @@
 
 package com.microsoft.embeddedsocial.event;
 
-import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.account.AuthorizationCause;
-import com.microsoft.embeddedsocial.base.event.AbstractEvent;
+import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Event indicated that sign-in is required.
  */
 @HandlingThread(ThreadType.CALLING_MAIN)
-public class RequestSignInEvent extends AbstractEvent {
+public class RequestSignInEvent extends BaseCommonBehaviorEvent {
 
 	private final AuthorizationCause authorizationCause;
 
-	public RequestSignInEvent(AuthorizationCause authorizationCause) {
+	public RequestSignInEvent(Fragment source, AuthorizationCause authorizationCause) {
+		super(source);
 		this.authorizationCause = authorizationCause;
 	}
 

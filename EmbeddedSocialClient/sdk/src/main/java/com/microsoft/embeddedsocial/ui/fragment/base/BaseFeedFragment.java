@@ -5,6 +5,22 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.data.display.DisplayMethod;
+import com.microsoft.embeddedsocial.event.click.DisplayMethodChangedEvent;
+import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
+import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
+import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.ui.adapter.FetchableListAdapter;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.CardViewRenderer;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.GridRenderer;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+import com.microsoft.embeddedsocial.ui.fragment.module.CommonTopicFeedBehaviorModule;
+import com.microsoft.embeddedsocial.ui.util.DisplayParams;
+import com.squareup.otto.Subscribe;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
@@ -16,22 +32,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Display;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.data.display.DisplayMethod;
-import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
-import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.ui.adapter.FetchableListAdapter;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.CardViewRenderer;
-import com.microsoft.embeddedsocial.ui.fragment.module.CommonTopicFeedBehaviorModule;
-import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.event.click.DisplayMethodChangedEvent;
-import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.GridRenderer;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
-import com.microsoft.embeddedsocial.ui.util.DisplayParams;
-import com.squareup.otto.Subscribe;
 
 /**
  * Base class for fragments showing topic feed.
@@ -171,11 +171,11 @@ public abstract class BaseFeedFragment extends BaseContentFragment<FetchableAdap
 	}
 
 	protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
-		return new CardViewRenderer(getContext());
+		return new CardViewRenderer(this);
 	}
 
 	protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createGridRenderer() {
-		return new GridRenderer(getContext());
+		return new GridRenderer(this);
 	}
 
 	/**

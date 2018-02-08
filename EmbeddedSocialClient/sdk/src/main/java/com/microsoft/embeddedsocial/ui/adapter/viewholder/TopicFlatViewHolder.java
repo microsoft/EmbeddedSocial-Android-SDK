@@ -5,13 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
 /**
  * Init topic flat view layout.
@@ -22,13 +23,13 @@ public class TopicFlatViewHolder extends TopicViewHolder {
 	private FrameLayout contentButton;
 	private FrameLayout coverButton;
 
-	public static TopicFlatViewHolder create(TopicButtonsListener topicButtonsListener, ViewGroup parent) {
+	public static TopicFlatViewHolder create(Fragment fragment, TopicButtonsListener topicButtonsListener, ViewGroup parent) {
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_topic, parent, false);
-		return new TopicFlatViewHolder(topicButtonsListener, view);
+		return new TopicFlatViewHolder(fragment, topicButtonsListener, view);
 	}
 
-	protected TopicFlatViewHolder(TopicButtonsListener topicButtonsListener, View view) {
-		super(topicButtonsListener, view, true);
+	protected TopicFlatViewHolder(Fragment fragment, TopicButtonsListener topicButtonsListener, View view) {
+		super(fragment, topicButtonsListener, view, true);
 		topDivider = view.findViewById(R.id.es_dividerLayoutTop);
 		bottomDivider = view.findViewById(R.id.es_dividerLayoutBottom);
 		contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
