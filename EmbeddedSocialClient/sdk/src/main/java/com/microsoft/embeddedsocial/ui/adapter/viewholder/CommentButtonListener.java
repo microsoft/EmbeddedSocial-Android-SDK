@@ -39,7 +39,7 @@ public class CommentButtonListener {
 
 	public CommentButtonListener(Fragment fragment, Container container) {
 		this.fragment = fragment;
-		this.context = fragment.getActivity();
+		this.context = fragment.getContext();
 		this.container = container;
 	}
 

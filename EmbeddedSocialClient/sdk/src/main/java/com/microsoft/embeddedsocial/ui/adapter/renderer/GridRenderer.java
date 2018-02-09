@@ -33,7 +33,7 @@ public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 
 	public GridRenderer(Fragment fragment) {
 		this.fragment = fragment;
-		Context context = fragment.getActivity();
+		Context context = fragment.getContext();
 		imageSize = context.getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
 	}
 

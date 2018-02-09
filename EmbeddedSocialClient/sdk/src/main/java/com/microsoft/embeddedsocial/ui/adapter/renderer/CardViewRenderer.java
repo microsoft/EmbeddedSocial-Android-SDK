@@ -34,7 +34,7 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 	private final TopicRenderOptions options;
 
 	public CardViewRenderer(Fragment fragment) {
-		this(fragment, fragment.getActivity(), TopicRenderOptions.getDefault());
+		this(fragment, fragment.getContext(), TopicRenderOptions.getDefault());
 	}
 
 	public CardViewRenderer(Fragment fragment, Context context, TopicRenderOptions options) {

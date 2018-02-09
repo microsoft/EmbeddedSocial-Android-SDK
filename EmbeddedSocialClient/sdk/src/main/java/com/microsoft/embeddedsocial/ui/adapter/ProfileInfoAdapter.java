@@ -52,7 +52,7 @@ public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerVi
 	public ProfileInfoAdapter(Fragment fragment, Fetcher<AccountData> fetcher, String userHandle) {
 		super(fetcher);
 		isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
-		Context context = fragment.getActivity();
+		Context context = fragment.getContext();
 		registerViewType(VIEW_TYPE_PROFILE, new ProfileInfoRenderer(fragment, userHandle, ProfileInfoRenderer.RenderType.LARGE));
 		registerViewType(VIEW_TYPE_PRIVATE_USER_MESSAGE, PRIVATE_MESSAGE_RENDERER, dummyGetMethod());
 		registerViewType(VIEW_TYPE_BLOCKED_USERS, createBlockedUsersRenderer(context), dummyGetMethod());

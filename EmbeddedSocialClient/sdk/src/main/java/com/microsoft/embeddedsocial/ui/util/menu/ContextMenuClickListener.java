@@ -25,7 +25,7 @@ public class ContextMenuClickListener implements PopupMenu.OnMenuItemClickListen
 
 	public ContextMenuClickListener(Fragment fragment, UserCompactView user, String contentHandle) {
 		this.fragment = fragment;
-		this.context = fragment.getActivity();
+		this.context = fragment.getContext();
 		this.user = user;
 		this.contentHandle = contentHandle;
 	}

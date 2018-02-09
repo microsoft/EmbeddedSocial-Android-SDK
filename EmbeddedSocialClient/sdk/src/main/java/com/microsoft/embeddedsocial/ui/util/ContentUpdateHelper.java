@@ -70,7 +70,7 @@ public final class ContentUpdateHelper {
 
 	public static void launchLike(Fragment fragment, String contentHandle, ContentType contentType, boolean liked) {
 		if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.LIKE)) {
-			Context context = fragment.getActivity();
+			Context context = fragment.getContext();
 			new UserActionProxy(context).setLikeStatus(contentHandle, contentType, liked);
 		} else {
 			Preferences.getInstance().setPendingAction(new PendingLike(contentHandle, contentType, liked));
@@ -79,7 +79,7 @@ public final class ContentUpdateHelper {
 
 	public static void launchPin(Fragment fragment, String topicHandle, boolean pinned) {
 		if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.PIN)) {
-			Context context = fragment.getActivity();
+			Context context = fragment.getContext();
 			new UserActionProxy(context).setPinStatus(topicHandle, pinned);
 		} else {
 			Preferences.getInstance().setPendingAction(new PendingPin(topicHandle, pinned));

@@ -32,7 +32,7 @@ public class ReplyButtonListener {
 
 	public ReplyButtonListener(Fragment fragment) {
 		this.fragment = fragment;
-		this.context = fragment.getActivity();
+		this.context = fragment.getContext();
 	}
 
 	public void onClickLike(View view) {

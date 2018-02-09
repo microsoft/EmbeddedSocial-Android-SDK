@@ -29,7 +29,7 @@ public class FlatTopicButtonsListener extends TopicButtonsListener {
 	private final Fragment fragment;
 
 	public FlatTopicButtonsListener(Fragment fragment) {
-		super(fragment.getActivity());
+		super(fragment.getContext());
 		this.fragment = fragment;
 	}
 

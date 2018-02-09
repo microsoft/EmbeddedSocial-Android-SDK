@@ -48,7 +48,7 @@ public class TopicContextMenu {
 			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
 				menu.inflate(R.menu.es_topic_hide);
 			}
-			addCustomReportHandler(fragment.getActivity(), menu, topic);
+			addCustomReportHandler(fragment.getContext(), menu, topic);
         }
 		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(fragment, topic));
 	}

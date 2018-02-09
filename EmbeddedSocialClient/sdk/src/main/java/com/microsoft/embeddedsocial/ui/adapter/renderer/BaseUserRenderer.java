@@ -29,7 +29,7 @@ public abstract class BaseUserRenderer extends Renderer<UserCompactView, UserLis
 
 	public BaseUserRenderer(Fragment fragment) {
 		this.fragment = fragment;
-		this.context = fragment.getActivity();
+		this.context = fragment.getContext();
 		styleHelper = new ButtonStyleHelper(context);
 	}
 

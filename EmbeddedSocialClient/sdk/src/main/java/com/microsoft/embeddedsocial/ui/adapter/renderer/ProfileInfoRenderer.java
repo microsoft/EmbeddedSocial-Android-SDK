@@ -49,7 +49,7 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 
 	public ProfileInfoRenderer(Fragment fragment, String userHandle, RenderType renderType) {
 		this.fragment = fragment;
-		this.context = fragment.getActivity();
+		this.context = fragment.getContext();
 		this.userHandle = userHandle;
 		this.renderType = renderType;
 		isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
