@@ -9,6 +9,10 @@ import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 
 import android.support.v4.app.Fragment;
 
+/**
+ * Base class for events posted by a variety of fragments.
+ * Stores a reference to the fragment which posted the event so that events can be filtered by sender.
+ */
 public class BaseCommonBehaviorEvent extends AbstractEvent {
     private Fragment source;
 
