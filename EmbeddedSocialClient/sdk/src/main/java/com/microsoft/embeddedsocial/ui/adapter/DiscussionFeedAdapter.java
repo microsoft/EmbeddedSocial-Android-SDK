@@ -56,7 +56,6 @@ public class DiscussionFeedAdapter extends FetchableAdapter<Object, RecyclerView
 		this.fragment = fragment;
 		this.fetcher = fetcher;
 		this.feedType = feedType;
-		Context context = fragment.getActivity();
 		this.topicButtonsListener = new FlatTopicButtonsListener(fragment);
 		this.commentButtonListener = new CommentButtonListener(fragment,
 			feedType == FeedType.COMMENT
