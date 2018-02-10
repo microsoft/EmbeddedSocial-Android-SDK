@@ -11,6 +11,7 @@ import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
 import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,20 +35,21 @@ public class ReplyViewHolder extends UserHeaderViewHolder {
 	private ButtonStyleHelper buttonStyleHelper;
 
 	public static ReplyViewHolder create(
-		ReplyButtonListener replyButtonListener,
-		ViewGroup parent,
-		HolderType type) {
+			Fragment fragment,
+			ReplyButtonListener replyButtonListener,
+			ViewGroup parent,
+			HolderType type) {
 		View view;
 		if (type == HolderType.CONTENT) {
 			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_reply, parent, false);
 		} else {
 			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_feed_reply, parent, false);
 		}
-		return new ReplyViewHolder(replyButtonListener, view);
+		return new ReplyViewHolder(fragment, replyButtonListener, view);
 	}
 
-	public ReplyViewHolder(ReplyButtonListener replyButtonListener, View rootView) {
-		super(rootView);
+	public ReplyViewHolder(Fragment fragment, ReplyButtonListener replyButtonListener, View rootView) {
+		super(fragment, rootView);
 		this.replyButtonListener = replyButtonListener;
 		this.rootView = rootView;
 		this.buttonStyleHelper = new ButtonStyleHelper(rootView.getContext());

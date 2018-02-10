@@ -45,7 +45,7 @@ public class ProfileInfoFragment extends BaseListContentFragment<ProfileInfoAdap
 		if (fetcher == null) {
 			fetcher = FetchersFactory.createProfileFetcher(userHandle);
 		}
-		ProfileInfoAdapter adapter = new ProfileInfoAdapter(getContext(), fetcher, userHandle);
+		ProfileInfoAdapter adapter = new ProfileInfoAdapter(this, fetcher, userHandle);
 		adapter.addFetcherCallback(new Callback() {
 			@Override
 			public void onDataRequestSucceeded() {

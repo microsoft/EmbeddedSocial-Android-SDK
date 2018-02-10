@@ -5,18 +5,7 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
-import android.content.res.Resources;
-import android.support.annotation.DrawableRes;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
@@ -24,14 +13,27 @@ import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.event.click.OpenUserProfileEvent;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.TimeUtils;
+
+import android.content.res.Resources;
+import android.support.annotation.DrawableRes;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * ViewHolder part with user info layout
  */
 public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	protected final int profileImageWidth;
+	private final Fragment fragment;
 
 	private ImageView profileImage;
 	private ImageViewContentLoader profileContentLoader;
@@ -42,8 +44,9 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	private View userHeaderButton;
 	private static AppProfile appProfile;
 
-	public UserHeaderViewHolder(View view) {
+	public UserHeaderViewHolder(Fragment fragment, View view) {
 		super(view);
+		this.fragment = fragment;
 		this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.es_user_icon_size);
 		initViews(view);
 	}
@@ -122,7 +125,7 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	}
 
 	protected void setHeaderClickable(boolean clickable) {
-		userHeaderButton.setOnClickListener(clickable ? new UserHeaderClickListener() : null);
+		userHeaderButton.setOnClickListener(clickable ? new UserHeaderClickListener(fragment) : null);
 		userHeaderButton.setClickable(clickable);
 	}
 
@@ -143,10 +146,16 @@ public abstract class UserHeaderViewHolder extends BaseViewHolder {
 	}
 
 	private static class UserHeaderClickListener implements View.OnClickListener {
+		private final Fragment fragment;
+
+		public UserHeaderClickListener(Fragment fragment) {
+			this.fragment = fragment;
+		}
+
 		@Override
 		public void onClick(View view) {
 			UserCompactView user = (UserCompactView) view.getTag(R.id.es_keyUser);
-			EventBus.post(new OpenUserProfileEvent(user));
+			EventBus.post(new OpenUserProfileEvent(fragment, user));
 		}
 	}
 

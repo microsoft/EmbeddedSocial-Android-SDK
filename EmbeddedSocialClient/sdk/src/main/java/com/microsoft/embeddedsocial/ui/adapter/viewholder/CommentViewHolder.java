@@ -16,6 +16,7 @@ import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 
 import android.support.annotation.ColorInt;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,20 +45,21 @@ public class CommentViewHolder extends UserHeaderViewHolder {
 	private ButtonStyleHelper buttonStyleHelper;
 
 	public static CommentViewHolder create(
-		CommentButtonListener commentButtonListener,
-		ViewGroup parent,
-		HolderType holderType) {
+			Fragment fragment,
+			CommentButtonListener commentButtonListener,
+			ViewGroup parent,
+			HolderType holderType) {
 		View view;
 		if (holderType == HolderType.CONTENT) {
 			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_comment, parent, false);
 		} else {
 			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_feed_comment, parent, false);
 		}
-		return new CommentViewHolder(commentButtonListener, view);
+		return new CommentViewHolder(fragment, commentButtonListener, view);
 	}
 
-	public CommentViewHolder(CommentButtonListener commentButtonListener, View view) {
-		super(view);
+	public CommentViewHolder(Fragment fragment, CommentButtonListener commentButtonListener, View view) {
+		super(fragment, view);
 		this.commentRootView = view.findViewById(R.id.es_comment_root);
 		this.commentButtonListener = commentButtonListener;
 		this.buttonStyleHelper = new ButtonStyleHelper(view.getContext());

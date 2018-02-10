@@ -5,20 +5,16 @@
 
 package com.microsoft.embeddedsocial.account;
 
-import android.content.Context;
-import android.support.v4.app.NotificationManagerCompat;
-import android.text.TextUtils;
-
 import com.facebook.login.LoginManager;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionsLauncher;
+import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
 import com.microsoft.embeddedsocial.event.RequestSignInEvent;
@@ -34,6 +30,11 @@ import com.microsoft.embeddedsocial.pending.PendingFollow;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationManagerCompat;
+import android.text.TextUtils;
 
 /**
  * Manages functionality related to user account.
@@ -184,20 +185,20 @@ public class UserAccount {
 	 * Inits a follow request. If the user is not signed-in the sign-in page will be shown and the action will be executed after authorization or cancelled
 	 * if the user cancels authorization.
 	 */
-	public boolean followUser(String anotherUserHandle, AccountData user) {
-		return followUser(anotherUserHandle, user.isPrivate());
+	public boolean followUser(Fragment fragment, String anotherUserHandle, AccountData user) {
+		return followUser(fragment, anotherUserHandle, user.isPrivate());
 	}
 
 	/**
 	 * Inits a follow request. If the user is not signed-in the sign-in page will be shown and the action will be executed after authorization or cancelled
 	 * if the user cancels authorization.
 	 */
-	public boolean followUser(UserCompactView user) {
-		return followUser(user.getHandle(), user.isPrivate());
+	public boolean followUser(Fragment fragment, UserCompactView user) {
+		return followUser(fragment, user.getHandle(), user.isPrivate());
 	}
 
-	private boolean followUser(String anotherUserHandle, boolean isPrivate) {
-		if (checkAuthorization(AuthorizationCause.FOLLOW)) {
+	private boolean followUser(Fragment fragment, String anotherUserHandle, boolean isPrivate) {
+		if (checkAuthorization(fragment, AuthorizationCause.FOLLOW)) {
 			userActionProxy.followUser(anotherUserHandle);
 			EventBus.post(new UserFollowedStateChangedEvent(anotherUserHandle, isPrivate ? FollowerStatus.PENDING : FollowerStatus.FOLLOW));
 			return true;
@@ -219,8 +220,8 @@ public class UserAccount {
 	 * Blocks a user. If the user is not signed-in the sign-in page will be shown and the action will be executed after authorization or cancelled
 	 * if the user cancels authorization.
 	 */
-	public void blockUser(String anotherUserHandle) {
-		if (checkAuthorization(AuthorizationCause.BLOCK)) {
+	public void blockUser(Fragment fragment, String anotherUserHandle) {
+		if (checkAuthorization(fragment, AuthorizationCause.BLOCK)) {
 			userActionProxy.blockUser(anotherUserHandle);
 			EventBus.post(new UserBlockedEvent(anotherUserHandle));
 		} else {
@@ -251,12 +252,12 @@ public class UserAccount {
 	}
 
 	/**
-	 * Checks if the user is signed-in and launches sig-in if the user is not signed-in.
+	 * Checks if the user is signed-in and launches sign-in if the user is not signed-in.
 	 */
-	public boolean checkAuthorization(AuthorizationCause authorizationCause) {
+	public boolean checkAuthorization(Fragment fragment, AuthorizationCause authorizationCause) {
 		boolean signedIn = isSignedIn();
 		if (!signedIn) {
-			EventBus.post(new RequestSignInEvent(authorizationCause));
+			EventBus.post(new RequestSignInEvent(fragment, authorizationCause));
 		}
 		return signedIn;
 	}

@@ -5,21 +5,21 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
+import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 
 /**
  * Screen with users who liked a topic.
@@ -50,7 +50,7 @@ public class LikesFragment extends BaseUsersListFragment {
 
 	@Override
 	protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
-		return new UserRenderer(getContext());
+		return new UserRenderer(this);
 	}
 
 	@Override

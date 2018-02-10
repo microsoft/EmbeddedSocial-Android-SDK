@@ -5,20 +5,20 @@
 
 package com.microsoft.embeddedsocial.ui.util.menu;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.MenuItem;
-
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
+import com.microsoft.embeddedsocial.sdk.IReportHandler;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.activity.EditPostActivity;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.sdk.IReportHandler;
-import com.microsoft.embeddedsocial.service.IntentExtras;
+
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 
 /**
  * Menu listener for the topic layout
@@ -28,8 +28,8 @@ public class TopicContextMenuClickListener extends ContextMenuClickListener {
 	private final TopicView topic;
 	private final UserActionProxy userActionProxy;
 
-	public TopicContextMenuClickListener(Context context, TopicView topic) {
-		super(context, topic.getUser(), topic.getHandle());
+	public TopicContextMenuClickListener(Fragment fragment, TopicView topic) {
+		super(fragment, topic.getUser(), topic.getHandle());
 		this.topic = topic;
 		userActionProxy = new UserActionProxy(context);
 	}

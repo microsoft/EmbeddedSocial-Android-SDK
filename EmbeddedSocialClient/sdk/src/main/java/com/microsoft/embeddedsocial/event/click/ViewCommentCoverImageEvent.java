@@ -6,18 +6,21 @@
 package com.microsoft.embeddedsocial.event.click;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.server.model.view.CommentView;
-import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.event.BaseCommonBehaviorEvent;
+import com.microsoft.embeddedsocial.server.model.view.CommentView;
+
+import android.support.v4.app.Fragment;
 
 /**
  * View selected cover image.
  */
 @HandlingThread(ThreadType.MAIN)
-public class ViewCommentCoverImageEvent extends AbstractEvent {
+public class ViewCommentCoverImageEvent extends BaseCommonBehaviorEvent {
     private final CommentView comment;
 
-    public ViewCommentCoverImageEvent(CommentView comment) {
+    public ViewCommentCoverImageEvent(Fragment source, CommentView comment) {
+        super(source);
         this.comment = comment;
     }
 

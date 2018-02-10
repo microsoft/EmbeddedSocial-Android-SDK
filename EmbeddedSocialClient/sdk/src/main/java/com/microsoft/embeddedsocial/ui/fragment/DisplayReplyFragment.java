@@ -5,6 +5,19 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.actions.ActionsLauncher;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.event.content.GetReplyEvent;
+import com.microsoft.embeddedsocial.event.content.ReplyRemovedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyButtonListener;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyViewHolder;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.squareup.otto.Subscribe;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,19 +25,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.event.content.GetReplyEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyButtonListener;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyViewHolder;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.event.content.ReplyRemovedEvent;
-import com.microsoft.embeddedsocial.server.model.view.ReplyView;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.squareup.otto.Subscribe;
 
 /**
  * Fragment to display single reply.
@@ -74,7 +74,7 @@ public class DisplayReplyFragment extends BaseFragment {
 	}
 
 	private void initView(View rootView) {
-		replyButtonListener = new ReplyButtonListener(getActivity());
+		replyButtonListener = new ReplyButtonListener(this);
 
 		contentLayout = rootView.findViewById(R.id.es_contentLayout);
 		progressLayout = rootView.findViewById(R.id.es_progressLayout);
@@ -102,7 +102,7 @@ public class DisplayReplyFragment extends BaseFragment {
 		progressLayout.setVisibility(View.GONE);
 		messageLayout.setVisibility(View.GONE);
 
-		ReplyViewHolder replyViewHolder = new ReplyViewHolder(replyButtonListener, contentLayout);
+		ReplyViewHolder replyViewHolder = new ReplyViewHolder(this, replyButtonListener, contentLayout);
 		replyViewHolder.renderSingleItem(replyView);
 	}
 

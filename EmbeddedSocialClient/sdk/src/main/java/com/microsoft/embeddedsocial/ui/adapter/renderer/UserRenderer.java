@@ -5,24 +5,23 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-import android.view.View;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+
+import android.support.v4.app.Fragment;
+import android.view.View;
 
 /**
  * Renders users with context menu.
  */
 public class UserRenderer extends BaseUserRenderer {
-
-	public UserRenderer(Context context) {
-		super(context);
+	public UserRenderer(Fragment fragment) {
+		super(fragment);
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class UserRenderer extends BaseUserRenderer {
 	private void renderNotFollowingUser(UserCompactView user, UserListItemHolder holder) {
 		holder.actionButton.setEnabled(true);
 		holder.actionButton.setOnClickListener(v -> {
-			if (UserAccount.getInstance().followUser(user)) {
+			if (UserAccount.getInstance().followUser(fragment, user)) {
 				if (user.isPrivate()) {
 					renderPendingUser(holder);
 					user.setFollowerStatus(FollowerStatus.PENDING);

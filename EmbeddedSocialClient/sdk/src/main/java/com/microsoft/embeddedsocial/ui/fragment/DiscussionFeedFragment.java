@@ -5,6 +5,37 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.account.AuthorizationCause;
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
+import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.data.storage.PostStorage;
+import com.microsoft.embeddedsocial.event.ScrollPositionEvent;
+import com.microsoft.embeddedsocial.event.content.LikeAddedEvent;
+import com.microsoft.embeddedsocial.event.content.LikeRemovedEvent;
+import com.microsoft.embeddedsocial.event.relationship.UserFollowedStateChangedEvent;
+import com.microsoft.embeddedsocial.fetcher.base.Callback;
+import com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView;
+import com.microsoft.embeddedsocial.fetcher.base.ViewState;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
+import com.microsoft.embeddedsocial.ui.adapter.renderer.ProfileInfoRenderer;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
+import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
+import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
+import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
+import com.microsoft.embeddedsocial.ui.util.TextHelper;
+import com.squareup.otto.Subscribe;
+
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -22,37 +53,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
-import com.microsoft.embeddedsocial.account.AuthorizationCause;
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
-import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.event.ScrollPositionEvent;
-import com.microsoft.embeddedsocial.event.relationship.UserFollowedStateChangedEvent;
-import com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView;
-import com.microsoft.embeddedsocial.fetcher.base.ViewState;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
-import com.microsoft.embeddedsocial.ui.adapter.renderer.ProfileInfoRenderer;
-import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
-import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
-import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
-import com.microsoft.embeddedsocial.ui.util.TextHelper;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.data.storage.PostStorage;
-import com.microsoft.embeddedsocial.event.content.LikeAddedEvent;
-import com.microsoft.embeddedsocial.event.content.LikeRemovedEvent;
-import com.microsoft.embeddedsocial.fetcher.base.Callback;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
-import com.squareup.otto.Subscribe;
 
 import java.io.IOException;
 
@@ -282,7 +282,7 @@ public abstract class DiscussionFeedFragment extends BaseListContentFragment<Dis
 		synchronized (this) {
 			if (isAdded() && profileViewHolder != null && profile != null) {
 				UserCompactView author = getAuthor();
-				ProfileInfoRenderer renderer = new ProfileInfoRenderer(getContext(), author.getHandle(), ProfileInfoRenderer.RenderType.SMALL);
+				ProfileInfoRenderer renderer = new ProfileInfoRenderer(this, author.getHandle(), ProfileInfoRenderer.RenderType.SMALL);
 				renderer.inflatePhoto(profileViewHolder.getRootView());
 				profileViewHolder.initViews();
 				profileViewHolder.setUserHandle(author.getHandle());
