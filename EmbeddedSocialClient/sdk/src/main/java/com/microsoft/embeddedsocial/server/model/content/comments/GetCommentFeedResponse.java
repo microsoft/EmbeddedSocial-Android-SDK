@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.server.model.content.comments;
 
-import com.microsoft.embeddedsocial.server.model.ListResponse;
-import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseCommentView;
 import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
+import com.microsoft.embeddedsocial.server.model.ListResponse;
+import com.microsoft.embeddedsocial.server.model.view.CommentView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ public class GetCommentFeedResponse extends FeedUserResponse implements ListResp
 		for (com.microsoft.embeddedsocial.autorest.models.CommentView comment : response.getData()) {
 			comments.add(new CommentView(comment));
 		}
+		setContinuationKey(response.getCursor());
 	}
 
 	@Override

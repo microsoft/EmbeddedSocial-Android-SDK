@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.server.model;
 
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserCompactView;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserProfileView;
 import com.microsoft.embeddedsocial.autorest.models.UserProfileView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ public class UsersListResponse extends FeedUserResponse implements ListResponse<
 		for (com.microsoft.embeddedsocial.autorest.models.UserCompactView feedView : feed.getData()) {
 			users.add(new UserCompactView(feedView));
 		}
+		setContinuationKey(feed.getCursor());
 	}
 
 	public UsersListResponse(FeedResponseUserProfileView feed) {
