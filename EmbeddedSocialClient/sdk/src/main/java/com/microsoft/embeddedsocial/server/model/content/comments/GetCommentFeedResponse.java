@@ -6,14 +6,13 @@
 package com.microsoft.embeddedsocial.server.model.content.comments;
 
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseCommentView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetCommentFeedResponse extends FeedUserResponse implements ListResponse<CommentView> {
+public class GetCommentFeedResponse extends ListResponse<CommentView> {
 
 	private List<CommentView> comments;
 

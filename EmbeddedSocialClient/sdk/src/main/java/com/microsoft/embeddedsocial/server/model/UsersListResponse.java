@@ -13,7 +13,7 @@ import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersListResponse extends FeedUserResponse implements ListResponse<UserCompactView> {
+public class UsersListResponse extends ListResponse<UserCompactView> {
 
 	private List<UserCompactView> users;
 

@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.server.model.activity;
 
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 
@@ -16,7 +15,7 @@ import java.util.List;
 /**
  *
  */
-public class ActivityFeedResponse extends FeedUserResponse implements ListResponse<ActivityView> {
+public class ActivityFeedResponse extends ListResponse<ActivityView> {
 
 	private List<ActivityView> activities;
 

@@ -6,14 +6,13 @@
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseTopicView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicsListResponse extends FeedUserResponse implements ListResponse<TopicView> {
+public class TopicsListResponse extends ListResponse<TopicView> {
 
 	private List<TopicView> topics;
 
