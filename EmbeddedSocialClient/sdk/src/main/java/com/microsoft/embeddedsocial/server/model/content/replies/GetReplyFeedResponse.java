@@ -5,15 +5,14 @@
 
 package com.microsoft.embeddedsocial.server.model.content.replies;
 
-import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseReplyView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
+import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetReplyFeedResponse extends FeedUserResponse implements ListResponse<ReplyView> {
+public class GetReplyFeedResponse extends ListResponse<ReplyView> {
 
 	private List<ReplyView> replies;
 
@@ -26,6 +25,7 @@ public class GetReplyFeedResponse extends FeedUserResponse implements ListRespon
 		for (com.microsoft.embeddedsocial.autorest.models.ReplyView reply : response.getData()) {
 			replies.add(new ReplyView(reply));
 		}
+		setContinuationKey(response.getCursor());
 	}
 
 	@Override

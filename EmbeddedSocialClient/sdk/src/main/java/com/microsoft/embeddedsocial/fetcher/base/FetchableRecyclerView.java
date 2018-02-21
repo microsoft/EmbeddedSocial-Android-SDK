@@ -96,7 +96,7 @@ public class FetchableRecyclerView extends RecyclerView {
 	}
 
 	private void requestMoreDataIfNeeded() {
-		if (adapter != null && adapter.lastLoadAttemptFailed()) {
+		if (adapter != null && !adapter.lastLoadAttemptFailed()) {
 			LayoutManager layoutManager = getLayoutManager();
 			int totalItemCount = layoutManager.getItemCount();
 			int lastVisibleItemPosition = getLastVisibleItemPosition(layoutManager);

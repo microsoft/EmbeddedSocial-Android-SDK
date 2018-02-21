@@ -5,15 +5,14 @@
 
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
-import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseTopicView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
+import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopicsListResponse extends FeedUserResponse implements ListResponse<TopicView> {
+public class TopicsListResponse extends ListResponse<TopicView> {
 
 	private List<TopicView> topics;
 
@@ -26,6 +25,7 @@ public class TopicsListResponse extends FeedUserResponse implements ListResponse
 		for (com.microsoft.embeddedsocial.autorest.models.TopicView topic : response.getData()) {
 			topics.add(new TopicView(topic));
 		}
+		setContinuationKey(response.getCursor());
 	}
 
 	@Override
