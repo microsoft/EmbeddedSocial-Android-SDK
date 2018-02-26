@@ -7,7 +7,7 @@
 		"searchEnabled" : "true",
 		"disableNavigationDrawerForActivities" : []
 	},
-	"socialNetworks" : {
+	"idProviders" : {
 		"facebook" : {
 			"loginEnabled" : "true",
 			"clientId" : "552285811539105"
