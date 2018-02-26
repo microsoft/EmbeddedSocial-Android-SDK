@@ -9,7 +9,7 @@
 		"userRelationsEnabled" : "true",
 		"disableNavigationDrawerForActivities" : []
 	},
-	"idProviders    " : {
+	"idProviders" : {
 		"facebook" : {
 			"loginEnabled" : "true",
 			"clientId" : "552285811539105"
