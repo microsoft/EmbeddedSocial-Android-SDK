@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.util.menu;
 
-import android.content.Context;
-import android.view.MenuItem;
-
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
+
+import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 
 /**
  * Menu listener for the comment layout
@@ -20,8 +20,8 @@ public class CommentContextMenuClickListener extends ContextMenuClickListener {
 
 	private final CommentView comment;
 
-	public CommentContextMenuClickListener(Context context, CommentView comment) {
-		super(context, comment.getUser(), comment.getHandle());
+	public CommentContextMenuClickListener(Fragment fragment, CommentView comment) {
+		super(fragment, comment.getUser(), comment.getHandle());
 		this.comment = comment;
 	}
 

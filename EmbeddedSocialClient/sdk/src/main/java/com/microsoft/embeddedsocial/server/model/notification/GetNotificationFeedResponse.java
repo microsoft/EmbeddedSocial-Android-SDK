@@ -5,10 +5,9 @@
 
 package com.microsoft.embeddedsocial.server.model.notification;
 
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
 import com.microsoft.embeddedsocial.server.model.ListResponse;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
-import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
-import com.microsoft.embeddedsocial.server.model.FeedUserResponse;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GetNotificationFeedResponse extends FeedUserResponse implements ListResponse<ActivityView> {
+public class GetNotificationFeedResponse extends ListResponse<ActivityView> {
 
     private List<ActivityView> activities;
     // Setting this handle is required to properly update the "last-read" notification

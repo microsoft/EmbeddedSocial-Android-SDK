@@ -5,12 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
@@ -24,9 +18,15 @@ import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.adapter.DiscussionFeedAdapter;
 import com.squareup.otto.Subscribe;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class ReplyFeedFragment extends DiscussionFeedFragment {
 
@@ -43,7 +43,7 @@ public class ReplyFeedFragment extends DiscussionFeedFragment {
 				arguments.getParcelable(IntentExtras.COMMENT_EXTRA)
 			);
 		}
-		return new DiscussionFeedAdapter(getActivity(), commentFeedFetcher, DiscussionFeedAdapter.FeedType.REPLY);
+		return new DiscussionFeedAdapter(this, commentFeedFetcher, DiscussionFeedAdapter.FeedType.REPLY);
 	}
 
 	@Override

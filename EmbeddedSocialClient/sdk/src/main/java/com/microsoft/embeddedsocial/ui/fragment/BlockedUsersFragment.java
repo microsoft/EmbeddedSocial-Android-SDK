@@ -5,16 +5,16 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
 import com.microsoft.embeddedsocial.fetcher.FetchersFactory;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.BlockedUsersRenderer;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 /**
  * Shows the list of blocked users.
@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.BlockedUsersRenderer;
 public class BlockedUsersFragment extends BaseUsersListFragment {
 
 	protected BlockedUsersRenderer createRenderer() {
-		return new BlockedUsersRenderer(getContext());
+		return new BlockedUsersRenderer(this);
 	}
 
 	protected Fetcher<UserCompactView> createFetcher() {

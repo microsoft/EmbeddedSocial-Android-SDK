@@ -5,6 +5,19 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.actions.ActionFilter;
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
+import com.microsoft.embeddedsocial.event.action.ActionStartedEvent;
+import com.microsoft.embeddedsocial.sdk.BuildConfig;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
+import com.squareup.otto.Subscribe;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,19 +37,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionFilter;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.event.action.ActionStartedEvent;
-import com.microsoft.embeddedsocial.sdk.BuildConfig;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
-import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
-import com.squareup.otto.Subscribe;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -94,11 +94,8 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		Activity activity = getActivity();
-		if (!(activity instanceof BaseActivity)) {
-			CommonBehaviorEventListener eventListener = new CommonBehaviorEventListener(this);
-			eventListeners.add(eventListener);
-		}
+		CommonBehaviorEventListener eventListener = new CommonBehaviorEventListener(this);
+		eventListeners.add(eventListener);
 	}
 
 	/**

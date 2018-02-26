@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
-import com.microsoft.embeddedsocial.service.IntentExtras;
+
+import android.text.TextUtils;
 
 /**
  * Base functionality for following/followers fragments.
@@ -19,7 +19,7 @@ public abstract class BaseFollowersFragment extends BaseUsersListFragment {
 
 	@Override
 	protected UserRenderer createRenderer() {
-		return new UserRenderer(getContext());
+		return new UserRenderer(this);
 	}
 
 	protected String getUserHandleArgument() {

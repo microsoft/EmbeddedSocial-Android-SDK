@@ -5,19 +5,22 @@
 
 package com.microsoft.embeddedsocial.event.click;
 
-import com.microsoft.embeddedsocial.base.event.AbstractEvent;
+import com.microsoft.embeddedsocial.event.BaseCommonBehaviorEvent;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 
-public class OpenCommentEvent extends AbstractEvent {
+import android.support.v4.app.Fragment;
+
+public class OpenCommentEvent extends BaseCommonBehaviorEvent {
 
 	private final CommentView comment;
 	private final boolean jumpToEdit;
 
-	public OpenCommentEvent(CommentView comment) {
-		this(comment, false);
+	public OpenCommentEvent(Fragment source, CommentView comment) {
+		this(source, comment, false);
 	}
 
-	public OpenCommentEvent(CommentView comment, boolean jumpToEdit) {
+	public OpenCommentEvent(Fragment source, CommentView comment, boolean jumpToEdit) {
+		super(source);
 		this.comment = comment;
 		this.jumpToEdit = jumpToEdit;
 	}

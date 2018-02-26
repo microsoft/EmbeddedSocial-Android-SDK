@@ -5,21 +5,21 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-import android.view.ViewGroup;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+
+import android.support.v4.app.Fragment;
+import android.view.ViewGroup;
 
 /**
  * Renders blocked users.
  */
 public class BlockedUsersRenderer extends BaseUserRenderer {
 
-	public BlockedUsersRenderer(Context context) {
-		super(context);
+	public BlockedUsersRenderer(Fragment fragment) {
+		super(fragment);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class BlockedUsersRenderer extends BaseUserRenderer {
 	private void renderUnblockedUser(UserCompactView user, UserListItemHolder holder) {
 		holder.actionButton.setText(R.string.es_button_block);
 		holder.actionButton.setOnClickListener(v -> {
-			UserAccount.getInstance().blockUser(user.getHandle());
+			UserAccount.getInstance().blockUser(fragment, user.getHandle());
 			user.setUnblocked(false);
 			renderBlockedUser(user, holder);
 		});

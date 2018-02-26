@@ -5,17 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
+
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Base implementation of renderer for user list item.
@@ -23,10 +24,12 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 public abstract class BaseUserRenderer extends Renderer<UserCompactView, UserListItemHolder> {
 
 	private final ButtonStyleHelper styleHelper;
+	protected final Fragment fragment;
 	protected Context context;
 
-	public BaseUserRenderer(Context context) {
-		this.context = context;
+	public BaseUserRenderer(Fragment fragment) {
+		this.fragment = fragment;
+		this.context = fragment.getContext();
 		styleHelper = new ButtonStyleHelper(context);
 	}
 

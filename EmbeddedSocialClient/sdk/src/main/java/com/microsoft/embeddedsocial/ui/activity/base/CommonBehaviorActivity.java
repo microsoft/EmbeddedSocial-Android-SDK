@@ -5,6 +5,21 @@
 
 package com.microsoft.embeddedsocial.ui.activity.base;
 
+import com.microsoft.embeddedsocial.account.AuthorizationCause;
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.theme.Theme;
+import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -15,23 +30,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
-import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
-import com.microsoft.embeddedsocial.account.AuthorizationCause;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
-import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.microsoft.embeddedsocial.ui.theme.Theme;
 
 import java.util.List;
 
@@ -60,8 +58,6 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 	private String userHandle;
 	private AuthorizationCause ongoingAuthorizationCause;
 
-	private CommonBehaviorEventListener eventListener;
-
 	/**
 	 * Sets the theme. Call it only in a constructor.
 	 */
@@ -72,7 +68,6 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setupTheme();
-		eventListener = new CommonBehaviorEventListener(this);
 		userHandle = UserAccount.getInstance().getUserHandle();
 		boolean unauthorizedAccess = isAuthorizationRequired() && !isUserAuthorized();
 		super.onCreate(unauthorizedAccess ? null : savedInstanceState); // pass null to avoid possible crashes after immediate finish
@@ -150,18 +145,6 @@ abstract class CommonBehaviorActivity extends AppCompatActivity {
 
 	private boolean isUserAuthorized() {
 		return UserAccount.getInstance().isSignedIn();
-	}
-
-	@Override
-	protected void onPause() {
-		EventBus.unregister(eventListener);
-		super.onPause();
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		EventBus.register(eventListener);
 	}
 
 	@Override

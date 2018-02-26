@@ -5,12 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.event.click.OpenTopicEvent;
@@ -22,20 +16,29 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicViewHolder;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.menu.TopicContextMenu;
 
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+
 /**
  * Renders a topic as CardView.
  */
 public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 
 	private final Context context;
+	private final Fragment fragment;
 	private final CardViewTopicButtonsListener topicButtonsListener;
 	private final TopicRenderOptions options;
 
-	public CardViewRenderer(Context context) {
-		this(context, TopicRenderOptions.getDefault());
+	public CardViewRenderer(Fragment fragment) {
+		this(fragment, fragment.getContext(), TopicRenderOptions.getDefault());
 	}
 
-	public CardViewRenderer(Context context, TopicRenderOptions options) {
+	public CardViewRenderer(Fragment fragment, Context context, TopicRenderOptions options) {
+		this.fragment = fragment;
 		this.context = context;
 		this.topicButtonsListener = new CardViewTopicButtonsListener(context);
 		this.options = options;
@@ -44,17 +47,17 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 	private void showTopicContextMenu(View anchorView) {
 		PopupMenu menu = new PopupMenu(context, anchorView);
 		TopicView topic = (TopicView) anchorView.getTag(R.id.es_keyTopic);
-		TopicContextMenu.inflateContextMenu(context, menu, topic, options);
+		TopicContextMenu.inflateContextMenu(fragment, menu, topic, options);
 		menu.show();
 	}
 
 	private void openTopic(TopicView topic, boolean scrollDown) {
-		EventBus.post(new OpenTopicEvent(topic, scrollDown));
+		EventBus.post(new OpenTopicEvent(fragment, topic, scrollDown));
 	}
 
 	@Override
 	public TopicViewHolder createViewHolder(ViewGroup parent) {
-		return TopicViewHolder.create(topicButtonsListener, parent, options.isHeaderClickable());
+		return TopicViewHolder.create(fragment, topicButtonsListener, parent, options.isHeaderClickable());
 	}
 
 	@Override
@@ -96,7 +99,7 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 		@Override
 		public void onClickPin(View view) {
 			ContentUpdateHelper.launchPin(
-				context,
+				fragment,
 				(String) view.getTag(R.id.es_keyHandle),
 				(boolean) view.getTag(R.id.es_keyIsAdd)
 			);
@@ -105,7 +108,7 @@ public class CardViewRenderer extends Renderer<TopicView, TopicViewHolder> {
 		@Override
 		public void onClickLike(View view) {
 			ContentUpdateHelper.launchLike(
-				context,
+				fragment,
 				(String) view.getTag(R.id.es_keyHandle),
 				ContentType.TOPIC,
 				(boolean) view.getTag(R.id.es_keyIsAdd)

@@ -5,9 +5,29 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.image.ImageLocation;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.EditProfileActivity;
+import com.microsoft.embeddedsocial.ui.activity.FollowersActivity;
+import com.microsoft.embeddedsocial.ui.activity.FollowingActivity;
+import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
+import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,25 +36,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.activity.FollowersActivity;
-import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
-import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
-import com.microsoft.embeddedsocial.image.ImageLocation;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.activity.EditProfileActivity;
-import com.microsoft.embeddedsocial.ui.activity.FollowingActivity;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
-import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
-import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
-
 /**
  * Renderer for {@link AccountData}.
  */
@@ -42,11 +43,13 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 	private final String userHandle;
 	private final boolean isCurrentUser;
 	private final ButtonStyleHelper styleHelper;
+	private final Fragment fragment;
 	private final Context context;
 	private final RenderType renderType;
 
-	public ProfileInfoRenderer(Context context, String userHandle, RenderType renderType) {
-		this.context = context;
+	public ProfileInfoRenderer(Fragment fragment, String userHandle, RenderType renderType) {
+		this.fragment = fragment;
+		this.context = fragment.getContext();
 		this.userHandle = userHandle;
 		this.renderType = renderType;
 		isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
@@ -129,7 +132,7 @@ public class ProfileInfoRenderer extends Renderer<AccountData, ProfileInfoRender
 				case NONE:
 					viewHolder.followingStatus.setText(R.string.es_button_follow);
 					viewHolder.followingStatus.setEnabled(true);
-					viewHolder.followingStatus.setOnClickListener(v -> UserAccount.getInstance().followUser(userHandle, account));
+					viewHolder.followingStatus.setOnClickListener(v -> UserAccount.getInstance().followUser(fragment, userHandle, account));
 					styleHelper.applyGreenStyle(viewHolder.followingStatus);
 					break;
 			}

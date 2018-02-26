@@ -5,29 +5,30 @@
 
 package com.microsoft.embeddedsocial.ui.adapter;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
-
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.UniqueItem;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
+import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentButtonListener;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.FlatTopicButtonsListener;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyButtonListener;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicFlatViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
-import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
-import com.microsoft.embeddedsocial.server.model.UniqueItem;
-import com.microsoft.embeddedsocial.server.model.view.ReplyView;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentButtonListener;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentViewHolder;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 
 import java.util.List;
 
@@ -43,31 +44,34 @@ public class DiscussionFeedAdapter extends FetchableAdapter<Object, RecyclerView
 	private static final int POSITION_FIRST_ITEM = 0;
 	private static final int LOAD_MORE_VIEW_POSITION = 1;
 
+	private final Fragment fragment;
 	private final FeedType feedType;
 	private final FlatTopicButtonsListener topicButtonsListener;
 	private final CommentButtonListener commentButtonListener;
 	private final ReplyButtonListener replyButtonListener;
 	private Fetcher<Object> fetcher;
 
-	public DiscussionFeedAdapter(Context context, Fetcher<Object> fetcher, FeedType feedType) {
+	public DiscussionFeedAdapter(Fragment fragment, Fetcher<Object> fetcher, FeedType feedType) {
 		super(fetcher, true);
+		this.fragment = fragment;
 		this.fetcher = fetcher;
 		this.feedType = feedType;
-		this.topicButtonsListener = new FlatTopicButtonsListener(context);
-		this.commentButtonListener = new CommentButtonListener(context,
+		this.topicButtonsListener = new FlatTopicButtonsListener(fragment);
+		this.commentButtonListener = new CommentButtonListener(fragment,
 			feedType == FeedType.COMMENT
 				? CommentButtonListener.Container.TOPIC
 				: CommentButtonListener.Container.COMMENT);
-		this.replyButtonListener = new ReplyButtonListener(context);
+		this.replyButtonListener = new ReplyButtonListener(fragment);
 	}
 
 	@Override
 	public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		switch (viewType) {
 			case VIEW_TYPE_TOPIC:
-				return TopicFlatViewHolder.create(topicButtonsListener, parent);
+				return TopicFlatViewHolder.create(fragment, topicButtonsListener, parent);
 			case VIEW_TYPE_COMMENT:
 				return CommentViewHolder.create(
+					fragment,
 					commentButtonListener,
 					parent,
 					feedType == FeedType.COMMENT
@@ -75,6 +79,7 @@ public class DiscussionFeedAdapter extends FetchableAdapter<Object, RecyclerView
 						: UserHeaderViewHolder.HolderType.CONTENT);
 			case VIEW_TYPE_REPLY:
 				return ReplyViewHolder.create(
+					fragment,
 					replyButtonListener,
 					parent,
 					feedType == FeedType.REPLY

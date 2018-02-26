@@ -39,7 +39,7 @@ public class FollowingFeedFragment extends BaseFeedFragment {
 	protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
 		TopicRenderOptions topicRenderOptions = new TopicRenderOptions();
 		topicRenderOptions.setShouldShowHideTopicItem(true);
-		return new CardViewRenderer(getContext(), topicRenderOptions);
+		return new CardViewRenderer(this, getContext(), topicRenderOptions);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.server.model.ListResponse;
 import java.util.Collections;
 import java.util.List;
 
-public class GetTrendingHashtagsResponse implements ListResponse<String> {
+public class GetTrendingHashtagsResponse extends ListResponse<String> {
 
 	private List<String> hashtags;
 
@@ -25,6 +25,7 @@ public class GetTrendingHashtagsResponse implements ListResponse<String> {
 
 	@Override
 	public String getContinuationKey() {
+		// The hashtags API does not support continuation tokens
 		return null;
 	}
 }

@@ -9,7 +9,7 @@ import com.microsoft.embeddedsocial.server.model.ListResponse;
 
 import java.util.List;
 
-public class AutocompletedHashtagsResponse implements ListResponse<String> {
+public class AutocompletedHashtagsResponse extends ListResponse<String> {
 
 	private List<String> suggestions;
 
@@ -24,6 +24,7 @@ public class AutocompletedHashtagsResponse implements ListResponse<String> {
 
 	@Override
 	public String getContinuationKey() {
+		// The hashtags API does not support continuation tokens
 		return null;
 	}
 }

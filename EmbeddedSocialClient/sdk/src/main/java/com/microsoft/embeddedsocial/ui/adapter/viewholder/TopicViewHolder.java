@@ -16,6 +16,7 @@ import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,13 +50,13 @@ public class TopicViewHolder extends UserHeaderViewHolder {
 
 	private final TopicButtonsListener topicButtonsListener;
 
-	public static TopicViewHolder create(TopicButtonsListener topicButtonsListener, ViewGroup parent, boolean headerClickable) {
+	public static TopicViewHolder create(Fragment fragment, TopicButtonsListener topicButtonsListener, ViewGroup parent, boolean headerClickable) {
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_card, parent, false);
-		return new TopicViewHolder(topicButtonsListener, view, headerClickable);
+		return new TopicViewHolder(fragment, topicButtonsListener, view, headerClickable);
 	}
 
-	protected TopicViewHolder(TopicButtonsListener topicButtonsListener, View view, boolean headerClickable) {
-		super(view);
+	protected TopicViewHolder(Fragment fragment, TopicButtonsListener topicButtonsListener, View view, boolean headerClickable) {
+		super(fragment, view);
 		this.topicButtonsListener = topicButtonsListener;
 		this.headerClickable = headerClickable;
 		this.buttonStyleHelper = new ButtonStyleHelper(view.getContext());
