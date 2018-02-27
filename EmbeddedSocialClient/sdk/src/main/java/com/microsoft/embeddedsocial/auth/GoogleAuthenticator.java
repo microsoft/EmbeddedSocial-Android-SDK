@@ -30,8 +30,10 @@ import android.support.v4.app.Fragment;
  */
 public class GoogleAuthenticator extends AbstractAuthenticator {
     public static final int RC_SIGN_IN = 100;
+    private final AuthenticationMode authMode;
 
-    GoogleSignInClient signInClient;
+
+    private GoogleSignInClient signInClient;
 
     public GoogleAuthenticator(Fragment fragment, IAuthenticationCallback authCallback,
                                GoogleAuthenticator.AuthenticationMode authMode) {
@@ -40,6 +42,7 @@ public class GoogleAuthenticator extends AbstractAuthenticator {
         // ensure the client id provided in the config is the web client in the API console
         String clientId = options.getGoogleClientId();
         // TODO use authmode
+        this.authMode = authMode;
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestScopes(new Scope(Scopes.PROFILE))
@@ -72,8 +75,12 @@ public class GoogleAuthenticator extends AbstractAuthenticator {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try {
             GoogleSignInAccount gsa = task.getResult(ApiException.class);
+            String idToken = gsa.getIdToken();
+            if (authMode.canStoreToken()) {
+                SocialNetworkTokens.google().storeToken(idToken);
+            }
             SocialNetworkAccount account = new SocialNetworkAccount(IdentityProvider.GOOGLE,
-                    gsa.getIdToken(), gsa.getGivenName(), gsa.getFamilyName());
+                    idToken, gsa.getGivenName(), gsa.getFamilyName());
             onAuthenticationSuccess(account);
         } catch (ApiException e) {
             DebugLog.logException(e);
