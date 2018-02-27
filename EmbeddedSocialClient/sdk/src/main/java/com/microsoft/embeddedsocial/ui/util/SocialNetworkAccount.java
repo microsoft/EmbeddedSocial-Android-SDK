@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 /**
  * Model for social network data
@@ -43,6 +43,9 @@ public class SocialNetworkAccount implements Parcelable {
 		this(identityProvider, thirdPartyAccountHandle, thirdPartyAccessToken, null, null, null);
 	}
 
+	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken, String firstName, String lastName) {
+		this(identityProvider, "", accessToken, null, firstName, lastName);
+	}
 	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken) {
 		this(identityProvider, "", accessToken, null, null, null);
 	}

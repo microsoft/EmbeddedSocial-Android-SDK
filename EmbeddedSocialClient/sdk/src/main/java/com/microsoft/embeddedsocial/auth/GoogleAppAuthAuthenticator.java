@@ -5,6 +5,19 @@
 
 package com.microsoft.embeddedsocial.auth;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+
+import net.openid.appauth.AuthorizationException;
+import net.openid.appauth.AuthorizationRequest;
+import net.openid.appauth.AuthorizationService;
+import net.openid.appauth.AuthorizationServiceConfiguration;
+import net.openid.appauth.ResponseTypeValues;
+
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,24 +28,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-
-import net.openid.appauth.AuthorizationException;
-import net.openid.appauth.AuthorizationRequest;
-import net.openid.appauth.AuthorizationService;
-import net.openid.appauth.AuthorizationServiceConfiguration;
-import net.openid.appauth.ResponseTypeValues;
-
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * Implements Google authentication process using Google Play Services SDK.
+ * Implements Google authentication process using AppAuth.
  */
 public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 	public static final String GOOGLE_ACCOUNT_ACTION = "googleAccountAction";
@@ -85,6 +85,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
 		Options options = GlobalObjectRegistry.getObject(Options.class);
+		// ensure the client id provided in the config is the android client in the API console
 		String clientId = options.getGoogleClientId();
 		String authRedirect = String.format("%s:/oauth2redirect", context.getPackageName());
 
