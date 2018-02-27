@@ -14,19 +14,19 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationRequest;
+import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ResponseTypeValues;
+import net.openid.appauth.TokenResponse;
 
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,11 +35,9 @@ import java.util.List;
  * Implements Google authentication process using AppAuth.
  */
 public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
-	public static final String GOOGLE_ACCOUNT_ACTION = "googleAccountAction";
-	public static final String GOOGLE_ACCOUNT = "googleAccount";
-	private final AuthenticationMode authMode;
-
 	private static final Uri ISSUER_URI = Uri.parse("https://accounts.google.com");
+
+	private final AuthenticationMode authMode;
 	private AuthorizationService service;
 	private Context context;
 
@@ -49,24 +47,11 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 
 		context = getFragment().getContext();
 		service = new AuthorizationService(context);
-
-		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
-		localBroadcastManager.registerReceiver(googleAuthReceiver, new IntentFilter(GOOGLE_ACCOUNT_ACTION));
 		this.authMode = authMode;
 	}
 
 	@Override
-	public void dispose() {
-		LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getFragment().getContext());
-		localBroadcastManager.unregisterReceiver(googleAuthReceiver);
-	}
-
-	@Override
 	protected void onAuthenticationStarted() throws AuthenticationException {
-		makeAuthRequest();
-	}
-
-	public void makeAuthRequest() {
 		AuthorizationServiceConfiguration.fetchFromIssuer(
 				ISSUER_URI,
 				(@Nullable AuthorizationServiceConfiguration serviceConfiguration,
@@ -74,7 +59,6 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 						if (ex != null) {
 							DebugLog.logException(ex);
 							service.dispose();
-							LocalBroadcastManager.getInstance(context).unregisterReceiver(googleAuthReceiver);
 							onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
 						} else {
 							// service configuration retrieved, proceed to authorization...'
@@ -99,28 +83,54 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 				.setScopes(authMode.getPermissions())
 				.build();
 
-		PendingIntent pendingIntent = GoogleResponseHandler.createPostAuthorizationIntent(context, request);
+		PendingIntent pendingIntent = createPostAuthorizationIntent(context, request);
 		service.performAuthorizationRequest(request, pendingIntent);
+	}
+
+	public static PendingIntent createPostAuthorizationIntent(@NonNull Context context,
+															  @NonNull AuthorizationRequest request) {
+		String action = context.getString(R.string.es_google_auth_response);
+		Intent intent = new Intent(action);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		return PendingIntent.getActivity(context, request.hashCode(), intent, 0);
+	}
+
+	public void handleAuthorizationResponse(Intent intent) {
+		AuthorizationResponse resp = AuthorizationResponse.fromIntent(intent);
+		AuthorizationException ex = AuthorizationException.fromIntent(intent);
+		if (resp != null) {
+			getAccessToken(resp);
+		} else {
+			DebugLog.logException(ex);
+			onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
+		}
+	}
+
+	private void getAccessToken(AuthorizationResponse authorizationResponse) {
+		service.performTokenRequest(
+				authorizationResponse.createTokenExchangeRequest(),
+				new AuthorizationService.TokenResponseCallback() {
+					@Override public void onTokenRequestCompleted(
+							TokenResponse resp, AuthorizationException ex) {
+						if (ex == null && resp != null) {
+							onTokenRequestSuccess(resp);
+						} else {
+							DebugLog.logException(ex);
+							onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
+						}
+					}
+				});
 		service.dispose();
 	}
 
-	private BroadcastReceiver googleAuthReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			SocialNetworkAccount account = intent.getParcelableExtra(GOOGLE_ACCOUNT);
-			intent.removeExtra(GOOGLE_ACCOUNT);
-			if (account != null) {
-				if (authMode.canStoreToken()) {
-					SocialNetworkTokens.google().storeToken(account.getThirdPartyAccessToken());
-				}
-				onAuthenticationSuccess(account);
-			} else {
-				onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
-			}
-
-			LocalBroadcastManager.getInstance(context).unregisterReceiver(this);
+	public void onTokenRequestSuccess(TokenResponse response) {
+		SocialNetworkAccount account = new SocialNetworkAccount(
+				IdentityProvider.GOOGLE, response.accessToken);
+		if (authMode.canStoreToken()) {
+			SocialNetworkTokens.google().storeToken(response.accessToken);
 		}
-	};
+		onAuthenticationSuccess(account);
+	}
 
 	/**
 	 * Google authentication mode.
