@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
-import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
+import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -168,8 +168,8 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void signInWithGoogle() {
-		startAuthentication(new GoogleNativeAuthenticator(this, this,
-				GoogleNativeAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
+		startAuthentication(new GoogleAppAuthAuthenticator(this, this,
+				GoogleAppAuthAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
 	}
 
 	private void signInWithTwitter() {

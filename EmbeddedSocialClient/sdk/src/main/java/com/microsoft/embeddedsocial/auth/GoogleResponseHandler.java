@@ -73,13 +73,13 @@ public class GoogleResponseHandler {
     }
 
     private void sendAuthSuccess(SocialNetworkAccount account) {
-        Intent intent = new Intent(GoogleNativeAuthenticator.GOOGLE_ACCOUNT_ACTION);
-        intent.putExtra(GoogleNativeAuthenticator.GOOGLE_ACCOUNT, account);
+        Intent intent = new Intent(GoogleAppAuthAuthenticator.GOOGLE_ACCOUNT_ACTION);
+        intent.putExtra(GoogleAppAuthAuthenticator.GOOGLE_ACCOUNT, account);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     private void sendAuthFailure() {
         LocalBroadcastManager.getInstance(context).sendBroadcast(
-                new Intent(GoogleNativeAuthenticator.GOOGLE_ACCOUNT_ACTION));
+                new Intent(GoogleAppAuthAuthenticator.GOOGLE_ACCOUNT_ACTION));
     }
 }

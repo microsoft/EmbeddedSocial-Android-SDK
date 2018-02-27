@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * Implements Google authentication process using Google Play Services SDK.
  */
-public class GoogleNativeAuthenticator extends AbstractAuthenticator {
+public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 	public static final String GOOGLE_ACCOUNT_ACTION = "googleAccountAction";
 	public static final String GOOGLE_ACCOUNT = "googleAccount";
 	private final AuthenticationMode authMode;
@@ -43,8 +43,8 @@ public class GoogleNativeAuthenticator extends AbstractAuthenticator {
 	private AuthorizationService service;
 	private Context context;
 
-	public GoogleNativeAuthenticator(Fragment fragment, IAuthenticationCallback authCallback,
-									 AuthenticationMode authMode) {
+	public GoogleAppAuthAuthenticator(Fragment fragment, IAuthenticationCallback authCallback,
+									  AuthenticationMode authMode) {
 		super(IdentityProvider.GOOGLE, fragment, authCallback);
 
 		context = getFragment().getContext();
