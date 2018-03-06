@@ -25,6 +25,8 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import static com.microsoft.embeddedsocial.auth.AuthUtils.hashString;
+
 /**
  * Implements Google authentication process using GMS sign in API.
  */
@@ -81,6 +83,8 @@ public class GoogleAuthenticator extends AbstractAuthenticator {
             }
             SocialNetworkAccount account = new SocialNetworkAccount(IdentityProvider.GOOGLE,
                     idToken, gsa.getGivenName(), gsa.getFamilyName());
+            account.setEmail(hashString(gsa.getEmail()));
+
             onAuthenticationSuccess(account);
         } catch (ApiException e) {
             DebugLog.logException(e);

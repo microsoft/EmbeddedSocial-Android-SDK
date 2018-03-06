@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.account;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 /**
  * Stores {@link AccountData} permanently.
@@ -26,6 +26,8 @@ final class AccountDataStorage {
 	private static final String PRIVATE = "private";
 	private static final String IDENTITY_PROVIDER = "accountType";
 	private static final String PHOTO_URL = "photoUrl";
+	private static final String EMAIL = "email";
+	private static final String DEVICE_ACCOUNT = "device_account";
 
 	private AccountDataStorage() {
 	}
@@ -51,6 +53,31 @@ final class AccountDataStorage {
 	}
 
 	/**
+	 * Saves the current user's hashed email to the disk.
+	 * @param context runtime context
+	 * @param email hash of email
+	 */
+	static void storeEmail(Context context, String email) {
+		SharedPreferences prefs = getPrefs(context);
+		prefs.edit()
+				.putString(EMAIL, email)
+			.apply();
+	}
+
+	/**
+	 * Saves to disk whether or not the user account used to authenticate is a device account
+	 * @param context runtime context
+	 * @param isDeviceAccount true if the account is a device account, false otherwise
+	 */
+	static void storeIsDeviceAccount(Context context, boolean isDeviceAccount) {
+		SharedPreferences prefs = getPrefs(context);
+		prefs.edit()
+				.putBoolean(DEVICE_ACCOUNT, isDeviceAccount)
+			.apply();
+	}
+
+
+	/**
 	 * Returns the user's account data previously stored on the disk
 	 * @param context context
 	 */
@@ -65,6 +92,8 @@ final class AccountDataStorage {
 		accountData.setIsPrivate(prefs.getBoolean(PRIVATE, false));
 		accountData.setIdentityProvider(IdentityProvider.fromValue(prefs.getString(IDENTITY_PROVIDER, "")));
 		accountData.setUserPhotoUrl(prefs.getString(PHOTO_URL, ""));
+		accountData.setEmail(prefs.getString(EMAIL, ""));
+		accountData.setIsDeviceAccount(prefs.getBoolean(DEVICE_ACCOUNT, false));
 		return accountData;
 	}
 
