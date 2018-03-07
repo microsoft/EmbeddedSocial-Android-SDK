@@ -22,6 +22,11 @@ repositories {
     }
 }
 android {
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+    }
     publishNonDefault true
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
@@ -36,12 +41,10 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField "com.microsoft.embeddedsocial.server.ServerConfig", "SERVER", "com.microsoft.embeddedsocial.server.ServerConfig.STAGING"
-        signingConfig signingConfigs.debug
     }
     buildTypes {
         debug {
             buildConfigField "boolean", "STANDALONE_APP", "false"
-            signingConfig signingConfigs.debug
         }
         release {
             buildConfigField "boolean", "STANDALONE_APP", "false"
