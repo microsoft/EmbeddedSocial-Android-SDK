@@ -173,7 +173,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 
 						SocialNetworkAccount account = new SocialNetworkAccount(
 								IdentityProvider.GOOGLE, authState.getAccessToken(), givenName, familyName);
-						account.setEmail(hashString(email));
+						account.setHashedEmail(hashString(email));
 						notifySuccess(account);
 					}
 				}.execute(idToken, accessToken);

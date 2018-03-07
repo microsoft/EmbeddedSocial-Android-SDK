@@ -33,12 +33,12 @@ public class AccountData implements Parcelable {
 	private long followingCount;
 	private boolean isPrivate;
 	private FollowerStatus followedStatus = FollowerStatus.NONE;
-	private String email;
+	private String hashedEmail;
 	private boolean isDeviceAccount;
 
 	public AccountData() {
 		identityProvider = IdentityProvider.MICROSOFT; // TODO verify this default value is OK
-		email = null;
+		hashedEmail = null;
 		isDeviceAccount = false;
 	}
 
@@ -176,12 +176,12 @@ public class AccountData implements Parcelable {
 		this.followedStatus = followedStatus;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getHashedEmail() {
+		return hashedEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setHashedEmail(String hashedEmail) {
+		this.hashedEmail = hashedEmail;
 	}
 
 	public boolean getIsDeviceAccount() {

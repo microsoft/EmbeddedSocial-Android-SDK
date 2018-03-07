@@ -26,7 +26,7 @@ final class AccountDataStorage {
 	private static final String PRIVATE = "private";
 	private static final String IDENTITY_PROVIDER = "accountType";
 	private static final String PHOTO_URL = "photoUrl";
-	private static final String EMAIL = "email";
+	private static final String HASHED_EMAIL = "hashed_email";
 	private static final String DEVICE_ACCOUNT = "device_account";
 
 	private AccountDataStorage() {
@@ -55,12 +55,12 @@ final class AccountDataStorage {
 	/**
 	 * Saves the current user's hashed email to the disk.
 	 * @param context runtime context
-	 * @param email hash of email
+	 * @param hashedEmail hash of email
 	 */
-	static void storeEmail(Context context, String email) {
+	static void storeHashedEmail(Context context, String hashedEmail) {
 		SharedPreferences prefs = getPrefs(context);
 		prefs.edit()
-				.putString(EMAIL, email)
+				.putString(HASHED_EMAIL, hashedEmail)
 			.apply();
 	}
 
@@ -92,7 +92,7 @@ final class AccountDataStorage {
 		accountData.setIsPrivate(prefs.getBoolean(PRIVATE, false));
 		accountData.setIdentityProvider(IdentityProvider.fromValue(prefs.getString(IDENTITY_PROVIDER, "")));
 		accountData.setUserPhotoUrl(prefs.getString(PHOTO_URL, ""));
-		accountData.setEmail(prefs.getString(EMAIL, ""));
+		accountData.setHashedEmail(prefs.getString(HASHED_EMAIL, ""));
 		accountData.setIsDeviceAccount(prefs.getBoolean(DEVICE_ACCOUNT, false));
 		return accountData;
 	}

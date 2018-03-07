@@ -64,9 +64,9 @@ public class UserAccount {
 		IdentityProvider accountType = thirdPartyAccount.getAccountType();
 		if (accountType == IdentityProvider.GOOGLE) {
 			// Update relevant state to detect if the google account is removed from the device
-			String email = thirdPartyAccount.getEmail();
-			AccountDataStorage.storeEmail(context, email);
-			updateIsDeviceAccount(isDeviceAccount(context, accountType, email));
+			String hashedEmail = thirdPartyAccount.getHashedEmail();
+			AccountDataStorage.storeHashedEmail(context, hashedEmail);
+			updateIsDeviceAccount(isDeviceAccount(context, accountType, hashedEmail));
 		}
 		return ActionsLauncher.signInUsingThirdParty(context, thirdPartyAccount);
 	}

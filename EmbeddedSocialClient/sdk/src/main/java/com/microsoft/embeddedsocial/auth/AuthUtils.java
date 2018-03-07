@@ -42,7 +42,7 @@ public class AuthUtils {
     public static void checkAccountStatus(Context context) {
         UserAccount account = UserAccount.getInstance();
         AccountData data = account.getAccountDetails();
-        boolean isDeviceAccount = isDeviceAccount(context, data.getIdentityProvider(), data.getEmail());
+        boolean isDeviceAccount = isDeviceAccount(context, data.getIdentityProvider(), data.getHashedEmail());
         if (isDeviceAccount) {
             account.updateIsDeviceAccount(true);
         } else if (data.getIsDeviceAccount()) {
@@ -54,17 +54,17 @@ public class AuthUtils {
      * Determines if the provided email is a google account on the device
      * @param context runtime context
      * @param accountType Identity provider for the account associated with the email
-     * @param emailHash Hashed email address used to authenticate the user
+     * @param hashedEmail Hashed email address used to authenticate the user
      * @return true if the provided email exists as a google account on the device, false otherwise
      */
-    public static boolean isDeviceAccount(Context context, IdentityProvider accountType, String emailHash) {
-        if (accountType == IdentityProvider.GOOGLE && emailHash != null) {
+    public static boolean isDeviceAccount(Context context, IdentityProvider accountType, String hashedEmail) {
+        if (accountType == IdentityProvider.GOOGLE && hashedEmail != null) {
             AccountManager am = AccountManager.get(context);
             Account[] accounts = am.getAccounts();
 
             for (Account googleAccount : accounts) {
                 String hash = hashString(googleAccount.name);
-                if (emailHash.equals(hash)) {
+                if (hashedEmail.equals(hash)) {
                     return true;
                 }
             }
