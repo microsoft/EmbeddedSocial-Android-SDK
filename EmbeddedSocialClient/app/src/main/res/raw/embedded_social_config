@@ -7,7 +7,8 @@
 		"searchEnabled" : "true",
 		"showGalleryView" : "true",
 		"userRelationsEnabled" : "true",
-		"disableNavigationDrawerForActivities" : []
+		"disableNavigationDrawerForActivities" : [],
+		"checkDeviceAccounts" : "false"
 	},
 	"idProviders" : {
 		"facebook" : {
