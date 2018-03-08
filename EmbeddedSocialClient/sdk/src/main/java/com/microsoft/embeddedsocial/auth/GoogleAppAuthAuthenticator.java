@@ -48,6 +48,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 	private static final Uri ISSUER_URI = Uri.parse("https://accounts.google.com");
 
 	private final AuthenticationMode authMode;
+	private final Options options;
 	private AuthorizationService service;
 	private Context context;
 
@@ -57,6 +58,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 
 		context = getFragment().getContext();
 		service = new AuthorizationService(context);
+		options = GlobalObjectRegistry.getObject(Options.class);
 		this.authMode = authMode;
 	}
 
@@ -78,7 +80,6 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 	}
 
 	private void sendAuthRequest(AuthorizationServiceConfiguration serviceConfiguration) {
-		Options options = GlobalObjectRegistry.getObject(Options.class);
 		// ensure the client id provided in the config is the android client in the API console
 		String clientId = options.getGoogleClientId();
 		String authRedirect = String.format("%s:/oauth2redirect", context.getPackageName());
@@ -173,7 +174,9 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 
 						SocialNetworkAccount account = new SocialNetworkAccount(
 								IdentityProvider.GOOGLE, authState.getAccessToken(), givenName, familyName);
-						account.setHashedEmail(hashString(email));
+						if (options.checkDeviceAccounts()) {
+							account.setHashedEmail(hashString(email));
+						}
 						notifySuccess(account);
 					}
 				}.execute(idToken, accessToken);

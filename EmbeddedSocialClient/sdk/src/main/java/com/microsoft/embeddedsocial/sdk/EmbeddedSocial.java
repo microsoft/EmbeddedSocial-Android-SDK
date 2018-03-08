@@ -106,7 +106,7 @@ public final class EmbeddedSocial {
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
 
         // Check if the current user needs to be signed out
-        if (isSignedIn()) {
+        if (options.checkDeviceAccounts() && isSignedIn()) {
             checkAccountStatus(application);
         }
     }

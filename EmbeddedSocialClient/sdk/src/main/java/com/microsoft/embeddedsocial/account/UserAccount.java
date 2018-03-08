@@ -28,6 +28,7 @@ import com.microsoft.embeddedsocial.event.signin.UserSignedInEvent;
 import com.microsoft.embeddedsocial.pending.PendingAction;
 import com.microsoft.embeddedsocial.pending.PendingBlock;
 import com.microsoft.embeddedsocial.pending.PendingFollow;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
@@ -61,8 +62,9 @@ public class UserAccount {
 	 * Launches sign-in process via third party account.
 	 */
 	public Action signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
+		Options options = GlobalObjectRegistry.getObject(Options.class);
 		IdentityProvider accountType = thirdPartyAccount.getAccountType();
-		if (accountType == IdentityProvider.GOOGLE) {
+		if (options.checkDeviceAccounts() && accountType == IdentityProvider.GOOGLE) {
 			// Update relevant state to detect if the google account is removed from the device
 			String hashedEmail = thirdPartyAccount.getHashedEmail();
 			AccountDataStorage.storeHashedEmail(context, hashedEmail);
