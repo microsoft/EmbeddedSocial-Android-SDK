@@ -5,6 +5,46 @@
 
 package com.microsoft.embeddedsocial.sdk;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import com.facebook.FacebookSdk;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
+import com.microsoft.embeddedsocial.image.ImageLoader;
+import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
+import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
+import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.NetworkAvailability;
+import com.microsoft.embeddedsocial.server.RequestInfoProvider;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.ServiceAction;
+import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
+import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
+import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
+import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
+import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
+import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
+import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
+import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
+import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
+import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
+import com.microsoft.embeddedsocial.ui.fragment.AddPostFragment;
+import com.microsoft.embeddedsocial.ui.fragment.CommentFeedFragment;
+import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
+import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
+import com.microsoft.embeddedsocial.ui.notification.NotificationController;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
@@ -16,49 +56,12 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
-import com.facebook.FacebookSdk;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.autorest.models.PublisherType;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.image.ImageLoader;
-import com.microsoft.embeddedsocial.sdk.ui.AppProfile;
-import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
-import com.microsoft.embeddedsocial.server.NetworkAvailability;
-import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
-import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
-import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
-import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
-import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
-import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserHeaderViewHolder;
-import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
-import com.microsoft.embeddedsocial.ui.notification.NotificationController;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
-import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
-import com.microsoft.embeddedsocial.server.RequestInfoProvider;
-import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
-import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
-import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
-import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
-import com.microsoft.embeddedsocial.ui.fragment.AddPostFragment;
-import com.microsoft.embeddedsocial.ui.fragment.CommentFeedFragment;
-import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
+
+import static com.microsoft.embeddedsocial.auth.AuthUtils.checkAccountStatus;
 
 /**
  * Embedded Social SDK facade.
@@ -101,6 +104,11 @@ public final class EmbeddedSocial {
         WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
         // TODO: Added to main activity access token tracking
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
+
+        // Check if the current user needs to be signed out
+        if (isSignedIn()) {
+            checkAccountStatus(application);
+        }
     }
 
 	/**

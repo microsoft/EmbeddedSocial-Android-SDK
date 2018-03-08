@@ -18,7 +18,7 @@ import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
-import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
+import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
@@ -118,7 +118,7 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
 				authenticator = new MicrosoftLiveAuthenticator(this, this, MicrosoftLiveAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
 				break;
 			case GOOGLE:
-				authenticator = new GoogleNativeAuthenticator(this, this, GoogleNativeAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
+				authenticator = new GoogleAppAuthAuthenticator(this, this, GoogleAppAuthAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
 				break;
 			case TWITTER:
 				authenticator = new TwitterWebAuthenticator(this, this);

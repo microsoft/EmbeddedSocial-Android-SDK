@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import com.microsoft.embeddedsocial.auth.GoogleResponseHandler;
+import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.SignInFragment;
-import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 
 import android.content.Intent;
 
@@ -61,7 +61,9 @@ public class SignInActivity extends BaseActivity {
 			String action = intent.getAction();
 			if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
 				signInFragment.setIsGettingThirdPartyCredentials(true);
-				new GoogleResponseHandler(this).handleAuthorizationResponse(intent);
+				GoogleAppAuthAuthenticator authenticator = signInFragment.createGoogleAuthenticator();
+				signInFragment.setAuthenticator(authenticator);
+				authenticator.handleAuthorizationResponse(intent);
 			}
 		}
 	}

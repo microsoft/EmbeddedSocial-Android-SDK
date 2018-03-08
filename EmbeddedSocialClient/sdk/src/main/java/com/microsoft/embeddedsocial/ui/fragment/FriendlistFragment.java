@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
-import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
+import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
@@ -82,8 +82,8 @@ public class FriendlistFragment extends BaseUsersListFragment {
 						FacebookAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
 
 			case GOOGLE:
-				return new GoogleNativeAuthenticator(this, authorizationRequest,
-						GoogleNativeAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
+				return new GoogleAppAuthAuthenticator(this, authorizationRequest,
+						GoogleAppAuthAuthenticator.AuthenticationMode.OBTAIN_FRIENDS);
 
 			case MICROSOFT:
 				return new MicrosoftLiveAuthenticator(this, authorizationRequest,

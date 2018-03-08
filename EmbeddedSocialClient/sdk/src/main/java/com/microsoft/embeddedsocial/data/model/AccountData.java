@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.data.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.image.ImageLocation;
+import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.server.model.view.UserProfileView;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.List;
 
@@ -33,9 +33,13 @@ public class AccountData implements Parcelable {
 	private long followingCount;
 	private boolean isPrivate;
 	private FollowerStatus followedStatus = FollowerStatus.NONE;
+	private String hashedEmail;
+	private boolean isDeviceAccount;
 
 	public AccountData() {
 		identityProvider = IdentityProvider.MICROSOFT; // TODO verify this default value is OK
+		hashedEmail = null;
+		isDeviceAccount = false;
 	}
 
 	/**
@@ -170,6 +174,22 @@ public class AccountData implements Parcelable {
 
 	public void setFollowedStatus(FollowerStatus followedStatus) {
 		this.followedStatus = followedStatus;
+	}
+
+	public String getHashedEmail() {
+		return hashedEmail;
+	}
+
+	public void setHashedEmail(String hashedEmail) {
+		this.hashedEmail = hashedEmail;
+	}
+
+	public boolean getIsDeviceAccount() {
+		return isDeviceAccount;
+	}
+
+	public void setIsDeviceAccount(boolean isDeviceAccount) {
+		this.isDeviceAccount = isDeviceAccount;
 	}
 
 	public void setAccountTypeFromThirdPartyAccounts(List<ThirdPartyAccountView> thirdPartyAccounts) {

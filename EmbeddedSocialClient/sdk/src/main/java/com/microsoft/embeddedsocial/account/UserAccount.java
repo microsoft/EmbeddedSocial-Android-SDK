@@ -11,6 +11,7 @@ import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.data.Preferences;
@@ -36,6 +37,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
 
+import static com.microsoft.embeddedsocial.auth.AuthUtils.isDeviceAccount;
+
 /**
  * Manages functionality related to user account.
  */
@@ -58,6 +61,13 @@ public class UserAccount {
 	 * Launches sign-in process via third party account.
 	 */
 	public Action signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
+		IdentityProvider accountType = thirdPartyAccount.getAccountType();
+		if (accountType == IdentityProvider.GOOGLE) {
+			// Update relevant state to detect if the google account is removed from the device
+			String hashedEmail = thirdPartyAccount.getHashedEmail();
+			AccountDataStorage.storeHashedEmail(context, hashedEmail);
+			updateIsDeviceAccount(isDeviceAccount(context, accountType, hashedEmail));
+		}
 		return ActionsLauncher.signInUsingThirdParty(context, thirdPartyAccount);
 	}
 
@@ -146,6 +156,14 @@ public class UserAccount {
 	public void updateAccountDetails(AccountData newAccountDetails) {
 		accountDetails = newAccountDetails;
 		AccountDataStorage.store(context, newAccountDetails);
+	}
+
+	/**
+	 * Updates the user's account details to reflect whether or not
+	 * the email used to authenticate the user is a device account
+	 */
+	public void updateIsDeviceAccount(boolean isDeviceAccount) {
+		AccountDataStorage.storeIsDeviceAccount(context, isDeviceAccount);
 	}
 
 	/**

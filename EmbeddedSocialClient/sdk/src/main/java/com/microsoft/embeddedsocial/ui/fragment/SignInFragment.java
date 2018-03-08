@@ -5,6 +5,27 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
+import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
+import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
+import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
+import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
+import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
+import com.microsoft.embeddedsocial.event.signin.SignInWithThirdPartyFailedEvent;
+import com.microsoft.embeddedsocial.event.signin.UserSignedInEvent;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
+import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
+import com.squareup.otto.Subscribe;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -18,27 +39,6 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
-import com.microsoft.embeddedsocial.auth.GoogleNativeAuthenticator;
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
-import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.event.signin.SignInWithThirdPartyFailedEvent;
-import com.microsoft.embeddedsocial.event.signin.UserSignedInEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
-import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
-import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
-import com.squareup.otto.Subscribe;
 
 /**
  * Sign-in fragment.
@@ -168,8 +168,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 	}
 
 	private void signInWithGoogle() {
-		startAuthentication(new GoogleNativeAuthenticator(this, this,
-				GoogleNativeAuthenticator.AuthenticationMode.SIGN_IN_ONLY));
+		startAuthentication(createGoogleAuthenticator());
 	}
 
 	private void signInWithTwitter() {
@@ -223,6 +222,15 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
 			authenticator.dispose();
 		}
 		authenticator = null;
+	}
+
+	public GoogleAppAuthAuthenticator createGoogleAuthenticator() {
+		return new GoogleAppAuthAuthenticator(this, this,
+				GoogleAppAuthAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
+	}
+
+	public void setAuthenticator(AbstractAuthenticator authenticator) {
+		this.authenticator = authenticator;
 	}
 
 	@Override

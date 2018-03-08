@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 /**
  * Model for social network data
@@ -21,6 +21,7 @@ public class SocialNetworkAccount implements Parcelable {
 	private String thirdPartyRequestToken;
 	private final String firstName;
 	private final String lastName;
+	private String hashedEmail;
 
 	public SocialNetworkAccount(IdentityProvider identityProvider, String thirdPartyAccountHandle,
 								String thirdPartyAccessToken, String thirdPartyRequestToken,
@@ -43,6 +44,9 @@ public class SocialNetworkAccount implements Parcelable {
 		this(identityProvider, thirdPartyAccountHandle, thirdPartyAccessToken, null, null, null);
 	}
 
+	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken, String firstName, String lastName) {
+		this(identityProvider, "", accessToken, null, firstName, lastName);
+	}
 	public SocialNetworkAccount(IdentityProvider identityProvider, String accessToken) {
 		this(identityProvider, "", accessToken, null, null, null);
 	}
@@ -91,6 +95,14 @@ public class SocialNetworkAccount implements Parcelable {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public void setHashedEmail(String hashedEmail) {
+		this.hashedEmail = hashedEmail;
+	}
+
+	public String getHashedEmail() {
+		return hashedEmail;
 	}
 
 	public void clearTokens() {
