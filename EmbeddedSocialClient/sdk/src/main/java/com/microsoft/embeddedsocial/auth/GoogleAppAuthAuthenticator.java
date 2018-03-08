@@ -210,7 +210,9 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 		/**
 		 * Allow sign-in only.
 		 */
-		SIGN_IN_ONLY(false, "profile", "email"),
+		SIGN_IN_ONLY(false, GlobalObjectRegistry.getObject(Options.class).checkDeviceAccounts()
+				? new String[] {"profile", "email"}
+				: new String[] {"profile"}),
 
 		/**
 		 * Allow sign-in and obtaining friend list.
