@@ -33,7 +33,7 @@
 			android:windowSoftInputMode="stateHidden"
 			android:theme="@style/EmbeddedSocialSdkAppTheme.Stub">
 			<intent-filter>
-				<action android:name="com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE"/>
+				<action android:name="${applicationId}.HANDLE_AUTHORIZATION_RESPONSE"/>
 				<category android:name="android.intent.category.DEFAULT"/>
 			</intent-filter>
 		</activity>

@@ -59,7 +59,7 @@ public class SignInActivity extends BaseActivity {
 	private void checkIntent(Intent intent) {
 		if (intent != null) {
 			String action = intent.getAction();
-			if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
+			if (action != null && action.equals(getString(R.string.es_google_auth_response, getPackageName()))) {
 				signInFragment.setIsGettingThirdPartyCredentials(true);
 				GoogleAppAuthAuthenticator authenticator = signInFragment.createGoogleAuthenticator();
 				signInFragment.setAuthenticator(authenticator);
