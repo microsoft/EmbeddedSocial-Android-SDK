@@ -39,8 +39,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static com.microsoft.embeddedsocial.auth.AuthUtils.hashString;
-
 /**
  * Implements Google authentication process using AppAuth.
  */
@@ -165,18 +163,13 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 					protected void onPostExecute(JSONObject userInfo) {
 						String givenName = null;
 						String familyName = null;
-						String email = null;
 						if (userInfo != null) {
 							givenName = userInfo.optString("given_name", null);
 							familyName = userInfo.optString("family_name", null);
-							email = userInfo.optString("email", null);
 						}
 
 						SocialNetworkAccount account = new SocialNetworkAccount(
 								IdentityProvider.GOOGLE, authState.getAccessToken(), givenName, familyName);
-						if (options.checkDeviceAccounts()) {
-							account.setHashedEmail(hashString(email));
-						}
 						notifySuccess(account);
 					}
 				}.execute(idToken, accessToken);
@@ -210,9 +203,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
 		/**
 		 * Allow sign-in only.
 		 */
-		SIGN_IN_ONLY(false, GlobalObjectRegistry.getObject(Options.class).checkDeviceAccounts()
-				? new String[] {"profile", "email"}
-				: new String[] {"profile"}),
+		SIGN_IN_ONLY(false, "profile"),
 
 		/**
 		 * Allow sign-in and obtaining friend list.

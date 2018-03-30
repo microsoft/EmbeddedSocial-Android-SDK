@@ -61,8 +61,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
 
-import static com.microsoft.embeddedsocial.auth.AuthUtils.checkAccountStatus;
-
 /**
  * Embedded Social SDK facade.
  */
@@ -104,11 +102,6 @@ public final class EmbeddedSocial {
         WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
         // TODO: Added to main activity access token tracking
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
-
-        // Check if the current user needs to be signed out
-        if (options.checkDeviceAccounts() && isSignedIn()) {
-            checkAccountStatus(application);
-        }
     }
 
 	/**
