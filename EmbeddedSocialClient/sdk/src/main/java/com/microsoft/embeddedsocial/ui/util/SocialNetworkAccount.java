@@ -21,7 +21,6 @@ public class SocialNetworkAccount implements Parcelable {
 	private String thirdPartyRequestToken;
 	private final String firstName;
 	private final String lastName;
-	private String hashedEmail;
 
 	public SocialNetworkAccount(IdentityProvider identityProvider, String thirdPartyAccountHandle,
 								String thirdPartyAccessToken, String thirdPartyRequestToken,
@@ -95,14 +94,6 @@ public class SocialNetworkAccount implements Parcelable {
 
 	public String getLastName() {
 		return lastName;
-	}
-
-	public void setHashedEmail(String hashedEmail) {
-		this.hashedEmail = hashedEmail;
-	}
-
-	public String getHashedEmail() {
-		return hashedEmail;
 	}
 
 	public void clearTokens() {

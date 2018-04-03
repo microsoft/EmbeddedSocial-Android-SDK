@@ -116,8 +116,6 @@ public final class Options {
 
 	public boolean userRelationsEnabled() { return application.userRelationsEnabled; }
 
-	public boolean checkDeviceAccounts() { return application.checkDeviceAccounts; }
-
 	public List<String> disableNavigationDrawerForActivities() {
 		return application.disableNavigationDrawerForActivities;
 	}
@@ -151,7 +149,6 @@ public final class Options {
 		private boolean showGalleryView = true;
 		private boolean userTopicsEnabled = true;
 		private boolean userRelationsEnabled = true;
-		private boolean checkDeviceAccounts = false;
 		private List<String> disableNavigationDrawerForActivities = new ArrayList<>();
 		private int numberOfCommentsToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;
 		private int numberOfRepliesToShow = DEFAULT_NUMBER_OF_DISCUSSION_ITEMS;

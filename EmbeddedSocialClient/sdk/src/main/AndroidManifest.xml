@@ -7,8 +7,6 @@
 		  package="com.microsoft.embeddedsocial.sdk"
 	>
 
-	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
 	<application>
 
 		<activity
