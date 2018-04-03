@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<resources>
+
+	<declare-styleable name="es_AspectRatioImageView">
+		<!-- height/width ratio -->
+		<attr name="es_aspectRatio" format="float"/>
+	</declare-styleable>
+
+	<declare-styleable name="es_NavigationItemView">
+		<attr name="es_icon_normal" format="reference"/>
+		<attr name="es_icon_highlight" format="reference"/>
+		<attr name="es_name" format="string"/>
+	</declare-styleable>
+
+	<declare-styleable name="es_AppTheme">
+
+		<!-- default style of items in the navigation menu -->
+		<attr name="es_navigationItemStyle" format="reference"/>
+
+		<!-- background of clickable elements -->
+		<attr name="es_buttonBackground" format="reference|color"/>
+
+		<!-- background of items in list -->
+		<attr name="es_listItemBackground" format="reference"/>
+
+		<!-- background of items in the navigation menu -->
+		<attr name="es_navigationItemBackground" format="reference"/>
+
+		<!-- background of tabs layout -->
+		<attr name="es_tabIndicatorBackground" format="reference"/>
+
+		<!-- text color for the active tab indicator -->
+		<attr name="es_tabIndicatorTextColorActive" format="color"/>
+
+		<!-- text color for an inactive tab indicator -->
+		<attr name="es_tabIndicatorTextColorNotActive" format="color"/>
+
+		<!-- drawable representing "list" mode for topics feed -->
+		<attr name="es_listIndicator" format="reference"/>
+
+		<!-- drawable representing "gallery" mode for topics feed -->
+		<attr name="es_galleryIndicator" format="reference"/>
+
+		<!-- background color for CardView's -->
+		<attr name="es_cardBackground" format="color"/>
+
+		<!-- background color for activity content -->
+		<attr name="es_contentBackground" format="color"/>
+
+		<!-- background color for topic feeds -->
+		<attr name="es_topicFeedBackground" format="color"/>
+
+		<!-- background color for gallery items -->
+		<attr name="es_galleryItemBackground" format="color"/>
+
+		<!-- background color for topic's cover image in "list" display mode -->
+		<attr name="es_topicCoverBackground" format="color"/>
+
+		<!-- drawable for context menu (three dots); doesn't affect drawable in actionbar -->
+		<attr name="es_contextMenuIcon" format="reference"/>
+
+		<!-- drawable to use if a user doesn't have a photo; doesn't affect navigation menu -->
+		<attr name="es_userNoPhotoIcon" format="reference"/>
+
+		<!-- style for activity toolbar/actionbar -->
+		<attr name="es_toolbarStyle" format="reference"/>
+
+		<!-- color to show during photo loading as a placeholder -->
+		<attr name="es_photoPlaceholder" format="color"/>
+
+		<!-- primary text color -->
+		<attr name="es_textColorPrimary" format="color"/>
+
+		<!-- secondary text color -->
+		<attr name="es_textColorSecondary" format="color"/>
+
+		<!-- text color for EditText's hint -->
+		<attr name="es_textColorHint" format="color"/>
+
+		<!-- background color for items topics/comments/replies that are not uploaded to the server yet -->
+		<attr name="es_uploadingItemColor" format="color"/>
+
+		<!-- color of dividers -->
+		<attr name="es_dividerColor" format="color"/>
+
+		<!-- drawable to use as EditText's cursor -->
+		<attr name="es_cursorDrawable" format="reference"/>
+
+		<!-- reference to Embedded Social logo drawable for Sign-in page -->
+		<attr name="es_largeLogo" format="reference"/>
+
+		<!-- color of the bottom line in the tabs indicator layout; actually it's used to hide it -->
+		<attr name="es_tabsBottomLineColor" format="color"/>
+
+	</declare-styleable>
+
+	<!-- inner attributes, not for customization in app theme -->
+	<declare-styleable name="es_ThemeOverlay">
+		<!-- Background for RecyclerView in BaseContentFragment. -->
+		<attr name="es_recyclerViewBackground" format="reference"/>
+
+		<!-- Reference to a layout resource of the content view in BaseContentFragment. -->
+		<attr name="es_baseContentLayout" format="reference"/>
+
+		<!-- Id of the content view in BaseContentFragment. -->
+		<attr name="es_baseContentViewId" format="reference"/>
+	</declare-styleable>
+</resources>

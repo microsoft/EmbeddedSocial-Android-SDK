@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/es_editPostLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingLeft="@dimen/es_activity_horizontal_margin"
+	android:paddingRight="@dimen/es_activity_horizontal_margin"
+	>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@id/es_bottomBar"
+		>
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+
+			<LinearLayout
+				android:id="@+id/es_userLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?attr/es_buttonBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:paddingBottom="@dimen/es_padding_large"
+				android:paddingTop="@dimen/es_padding_large"
+				>
+
+				<de.hdodenhof.circleimageview.CircleImageView
+					android:id="@+id/es_profileImage"
+					android:layout_width="@dimen/es_user_icon_size"
+					android:layout_height="@dimen/es_user_icon_size"
+					android:background="?attr/es_photoPlaceholder"
+					app:border_width="0px"
+					/>
+
+				<TextView
+					android:id="@+id/es_username"
+					style="@style/EmbeddedSocialSdkTextSubhead"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="@dimen/es_padding_large"
+					android:singleLine="true"
+					/>
+
+			</LinearLayout>
+
+			<FrameLayout
+				android:id="@+id/es_addPhotoButton"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/es_userLayout"
+				android:layout_toLeftOf="@+id/es_titleLayout"
+				android:foreground="?attr/es_buttonBackground"
+				>
+
+				<TextView
+					android:id="@+id/es_imageMessage"
+					style="@style/EmbeddedSocialSdkTextAddPhotoCaption"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/es_add_post_photo_height"
+					android:layout_gravity="center"
+					/>
+
+				<ImageView
+					android:id="@+id/es_postImage"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:focusable="true"
+					android:focusableInTouchMode="true"
+					/>
+
+			</FrameLayout>
+
+			<com.microsoft.embeddedsocial.ui.view.TextInput
+				android:id="@+id/es_titleLayout"
+				android:layout_width="@dimen/es_add_post_edit_text_width"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/es_userLayout"
+				android:layout_marginLeft="@dimen/es_padding_large"
+				>
+
+				<EditText
+					style="@style/EmbeddedSocialSdkEditTextStyle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/es_hint_title"
+					android:inputType="text|textCapSentences"
+					android:textStyle="bold"
+					/>
+
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
+
+			<com.microsoft.embeddedsocial.ui.view.TextInput
+				android:id="@+id/es_description"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignLeft="@id/es_titleLayout"
+				android:layout_below="@id/es_titleLayout"
+				app:errorEnabled="false"
+				>
+
+				<EditText
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/es_hint_description"
+					android:inputType="textMultiLine|textCapSentences"
+					/>
+
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
+
+
+		</RelativeLayout>
+
+	</ScrollView>
+
+	<include layout="@layout/es_progressbar"/>
+
+	<include layout="@layout/es_bottom_bar"
+			 android:layout_height="wrap_content"
+			 android:layout_width="match_parent"
+			 android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+

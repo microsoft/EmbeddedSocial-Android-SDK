@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		>
+
+		<!--<TextView-->
+			<!--style="@style/EmbeddedSocialSdkOptionsHeader.Phone"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:text="@string/es_applications_header"-->
+			<!--/>-->
+
+		<!--<TextView-->
+			<!--android:id="@+id/es_applications"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
+			<!--android:text="@string/es_muted_apps"-->
+			<!--/>-->
+
+		<!--<TextView-->
+			<!--style="@style/EmbeddedSocialSdkOptionsHeader.Phone"-->
+			<!--android:layout_width="match_parent"-->
+			<!--android:layout_height="wrap_content"-->
+			<!--android:text="@string/es_header_follow"-->
+			<!--/>-->
+
+		<!--<TextView-->
+			<!--android:id="@+id/es_findFacebookFriends"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
+			<!--android:text="@string/es_button_find_friends_facebook"-->
+			<!--/>-->
+
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
+
+		<!--<TextView-->
+			<!--android:id="@+id/es_findGooglePlusFriends"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
+			<!--android:text="@string/es_button_find_friends_google_plus"-->
+			<!--/>-->
+
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
+
+		<!--<TextView-->
+			<!--android:id="@+id/es_findMicrosoftContacts"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
+			<!--android:text="@string/es_button_find_friends_microsoft"-->
+			<!--/>-->
+
+		<!--<View style="@style/EmbeddedSocialSdkDivider"/>-->
+
+		<!--<TextView-->
+			<!--android:id="@+id/es_findFriendsFromOtherApps"-->
+			<!--style="@style/EmbeddedSocialSdkOptionsItem.Phone"-->
+			<!--android:text="@string/es_button_find_friends_other_apps"-->
+			<!--/>-->
+
+		<TextView
+			style="@style/EmbeddedSocialSdkOptionsHeader.Phone"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/es_header_about"
+			/>
+
+		<TextView
+			android:id="@+id/es_privacyPolicy"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+			android:text="@string/es_button_privacy_policy"
+			/>
+
+		<View style="@style/EmbeddedSocialSdkDivider"/>
+
+		<TextView
+			android:id="@+id/es_terms"
+			style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+			android:text="@string/es_button_terms_and_conditions"
+			/>
+
+		<TextView
+			style="@style/EmbeddedSocialSdkOptionsHeader.Phone"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/es_account_header"
+			/>
+
+		<LinearLayout
+			android:id="@+id/es_optionsSignedIn"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/es_linkedAccounts"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_linked_accounts"
+				/>
+
+			<View style="@style/EmbeddedSocialSdkDivider"/>
+
+			<TextView
+				android:id="@+id/es_deleteSearchHistory"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_delete_search_history"
+				/>
+
+			<View style="@style/EmbeddedSocialSdkDivider"/>
+
+			<TextView
+				android:id="@+id/es_signOut"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_sign_out"
+				/>
+
+			<View style="@style/EmbeddedSocialSdkDivider"/>
+
+			<TextView
+				android:id="@+id/es_deleteAccount"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_delete_account"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/es_optionsSignedOut"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:visibility="gone"
+			>
+
+			<TextView
+				android:id="@+id/es_signIn"
+				style="@style/EmbeddedSocialSdkOptionsItem.Phone"
+				android:text="@string/es_button_sign_in"
+				/>
+		</LinearLayout>
+	</LinearLayout>
+
+</ScrollView>

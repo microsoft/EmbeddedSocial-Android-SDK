@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<LinearLayout
+		android:id="@+id/es_result_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="@dimen/es_padding_base"
+		android:orientation="vertical"
+		android:visibility="gone"
+		>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			style="@style/EmbeddedSocialSdkGreenTextStyle"
+			android:paddingBottom="@dimen/es_padding_base"
+			android:text="@string/es_report_result_title"
+			/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="@dimen/es_text_body2"
+			android:text="@string/es_report_result_text"
+			/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/es_select_layout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		>
+
+		<TextView
+			android:id="@+id/es_text_report_question"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="@dimen/es_padding_base"
+			style="@style/EmbeddedSocialSdkGreenTextStyle"
+			/>
+
+		<ListView
+			android:id="@+id/es_list_report_reason"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
+
+	</LinearLayout>
+
+	<include layout="@layout/es_bottom_bar"
+			 android:layout_height="wrap_content"
+			 android:layout_width="match_parent"
+			 android:layout_gravity="bottom"/>
+</FrameLayout>

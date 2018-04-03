@@ -1,0 +1,125 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+apply plugin: 'com.android.application'
+
+apply plugin: 'me.tatarka.retrolambda'
+//apply plugin: 'com.google.gms.google-services'
+
+repositories {
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/acrowntest/test"
+    }
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.microsoft.embeddedsocial"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionName computeVersionName()
+        multiDexEnabled true
+        signingConfig signingConfigs.debug
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+        develop.initWith(signingConfigs.debug)
+        develop {
+            storeFile file('debug.keystore')
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.develop
+        }
+        debug {
+            versionNameSuffix "d"
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File((File) outputFolder, "EmbeddedSocial_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/NOTICE.txt'
+    }
+}
+
+retrolambda {
+    jvmArgs '-noverify'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    releaseCompile project(path: ':sdk', configuration: 'releaseStandalone')
+    debugCompile project(path: ':sdk', configuration: 'debugStandalone')
+    compile 'com.android.support:multidex:1.0.1'
+}
+
+def getBuildNumber() {
+    System.env.BUILD_NUMBER == null ? '0' : System.env.BUILD_NUMBER
+}
+
+def computeVersionName() {
+    return "${buildVersion}.${getBuildNumber()}"
+}
+
+def computeVersionCode() {
+    return buildVersionCode.toInteger()
+}
+
+ext {
+    outputFolder = new File((File) project.getProjectDir(), "apk")
+}
+
+def clearOutputFolder() {
+    File[] files = outputFolder.listFiles()
+    if (files != null) {
+        for (File file : files) {
+            file.delete()
+        }
+    }
+}
+
+clearOutputFolder()
+
+apply plugin: 'com.google.gms.google-services'

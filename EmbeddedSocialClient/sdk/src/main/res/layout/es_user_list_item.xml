@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	>
+
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?attr/es_listItemBackground"
+		android:gravity="center_vertical"
+		android:orientation="horizontal"
+		android:paddingLeft="16dp"
+		android:paddingRight="16dp"
+		>
+
+		<de.hdodenhof.circleimageview.CircleImageView
+			android:id="@+id/es_photo"
+			android:layout_width="@dimen/es_user_icon_size"
+			android:layout_height="@dimen/es_user_icon_size"
+			android:layout_marginBottom="8dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginTop="8dp"
+			android:background="?attr/es_photoPlaceholder"
+			android:scaleType="centerCrop"
+			android:src="?attr/es_userNoPhotoIcon"
+			/>
+
+		<TextView
+			android:id="@+id/es_fullName"
+			android:layout_width="0px"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:singleLine="true"
+			android:textColor="?attr/es_textColorPrimary"
+			/>
+
+		<TextView
+			android:id="@+id/es_removeFollowerButton"
+			style="@style/EmbeddedSocialSdkBoundedButton"
+			android:visibility="gone"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			/>
+
+		<TextView
+			android:id="@+id/es_actionButton"
+			style="@style/EmbeddedSocialSdkBoundedButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			/>
+
+	</LinearLayout>
+
+	<View style="@style/EmbeddedSocialSdkDivider.List"/>
+
+</LinearLayout>

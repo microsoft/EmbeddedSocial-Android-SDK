@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+
+<resources
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:ignore="ResourceName"
+	>
+
+	<style name="EmbeddedSocialSdkAppTheme.LightBase" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="es_buttonBackground">@android:color/transparent</item>
+		<item name="colorButtonNormal">@color/es_button_color_light</item>
+		<item name="android:windowBackground">@color/es_window_background_light</item>
+		<item name="colorControlNormal">#42000000</item>
+		<item name="android:editTextStyle">@style/EmbeddedSocialSdkEditTextStyle</item>
+		<item name="textAppearanceLargePopupMenu">@style/EmbeddedSocialSdkMenuTextStyle.Light</item>
+		<item name="searchViewStyle">@style/EmbeddedSocialSdkSearchViewStyle</item>
+		<item name="es_navigationItemStyle">@style/EmbeddedSocialSdkNavigationItem</item>
+		<item name="es_tabIndicatorBackground">@drawable/es_toolbar_background</item>
+		<item name="es_tabIndicatorTextColorActive">@color/es_tab_text_active</item>
+		<item name="es_tabsBottomLineColor">@color/es_tab_bottom_line</item>
+		<item name="es_tabIndicatorTextColorNotActive">@color/es_tab_text_not_active</item>
+		<item name="es_listIndicator">@drawable/es_list</item>
+		<item name="es_galleryIndicator">@drawable/es_gallery</item>
+		<item name="es_cardBackground">@color/es_default_card_background</item>
+		<item name="es_contentBackground">@color/es_white</item>
+		<item name="es_topicFeedBackground">@color/es_feed_background_light</item>
+		<item name="es_galleryItemBackground">@color/es_placeholder</item>
+		<item name="es_topicCoverBackground">@color/es_image_holder</item>
+		<item name="es_contextMenuIcon">@drawable/es_ic_more_light</item>
+		<item name="es_userNoPhotoIcon">@drawable/es_user_no_pic_black</item>
+		<item name="es_toolbarStyle">@style/EmbeddedSocialSdkToolbarStyleLight</item>
+		<item name="es_photoPlaceholder">@drawable/es_photo_placeholder_light</item>
+		<item name="es_textColorPrimary">@color/es_text_primary_light</item>
+		<item name="es_textColorSecondary">@color/es_text_secondary_light</item>
+		<item name="es_textColorHint">@color/es_text_hint_light</item>
+		<item name="es_uploadingItemColor">@color/es_lightblue_50</item>
+		<item name="es_dividerColor">@color/es_text_hint_light</item>
+		<item name="es_cursorDrawable">@drawable/es_cursor_light</item>
+		<item name="es_largeLogo">@drawable/es_logo</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkAppTheme.Light" parent="EmbeddedSocialSdkAppTheme.LightBase">
+		<item name="es_navigationItemBackground">?attr/es_buttonBackground</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkAppTheme.Light.Search">
+		<item name="es_tabIndicatorBackground">@color/es_white</item>
+		<item name="es_tabIndicatorTextColorActive">#212121</item>
+		<item name="es_tabIndicatorTextColorNotActive">#bdbdbd</item>
+		<item name="android:colorForeground">#42000000</item>
+		<item name="es_listIndicator">@drawable/es_list_dark</item>
+		<item name="es_galleryIndicator">@drawable/es_gallery_dark</item>
+		<item name="es_toolbarStyle">@style/EmbeddedSocialSdkToolbarStyleLightSearch</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkToolbarStyleLight">
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+		<item name="titleTextAppearance">@style/EmbeddedSocialSdkTextAppearance.Widget.Toolbar.Title.Light</item>
+		<item name="android:background">@drawable/es_toolbar_background</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkToolbarStyleLightSearch">
+		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+		<item name="android:background">@color/es_white</item>
+		<item name="titleTextAppearance">@style/EmbeddedSocialSdkTextAppearance.Widget.Toolbar.Title.Light</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkTextAppearance.Widget.Toolbar.Title.Light" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textStyle">normal</item>
+		<item name="android:textSize">20dp</item>
+		<item name="android:textColor">@color/es_white</item>
+	</style>
+
+	<style name="EmbeddedSocialSdkMenuTextStyle.Light" parent="@style/TextAppearance.AppCompat.Widget.PopupMenu.Large">
+		<item name="android:textColor">@color/es_menu_item_color</item>
+	</style>
+
+</resources>

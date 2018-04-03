@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:fillViewport="true">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:orientation="vertical"
+		android:paddingLeft="16dp"
+		android:paddingRight="16dp"
+		android:gravity="center_horizontal">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+
+
+			<ProgressBar
+				android:id="@+id/es_progress"
+				android:layout_width="80dp"
+				android:layout_height="80dp"
+				android:layout_gravity="center_horizontal|top"
+				android:layout_marginTop="15dp"
+				android:indeterminateTint="@color/es_progressbar"
+				android:indeterminateTintMode="src_in"
+				android:visibility="gone"
+				tools:ignore="UnusedAttribute"
+				/>
+
+			<LinearLayout
+				android:id="@+id/es_buttons"
+				android:orientation="vertical"
+				android:layout_marginTop="40dp"
+				style="@style/EmbeddedSocialSdkSignInButtonsLayout"
+				android:layout_gravity="center_horizontal"
+				>
+
+				<LinearLayout
+					android:id="@+id/es_signInGoogle"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/es_sign_in_button_height"
+					android:background="@drawable/es_google_button_background"
+					style="@style/EmbeddedSocialSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/es_google_logo"
+						style="@style/EmbeddedSocialSignInImage"
+						/>
+
+					<include layout="@layout/es_vertical_bar"/>
+
+					<TextView
+						android:text="@string/es_google"
+						style="@style/EmbeddedSocialSignInText"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/es_signInFacebook"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/es_sign_in_button_height"
+					android:background="@drawable/es_facebook_button_background"
+					style="@style/EmbeddedSocialSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/es_facebook_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/es_vertical_bar"/>
+
+					<TextView
+						android:text="@string/es_facebook"
+						style="@style/EmbeddedSocialSignInText"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/es_signInMicrosoft"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/es_sign_in_button_height"
+					android:background="@drawable/es_microsoft_button_background"
+					style="@style/EmbeddedSocialSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/es_microsoft_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/es_vertical_bar"/>
+
+					<TextView
+						android:text="@string/es_microsoft"
+						style="@style/EmbeddedSocialSignInText"/>
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/es_signInTwitter"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/es_sign_in_button_height"
+					android:background="@drawable/es_twitter_button_background"
+					style="@style/EmbeddedSocialSdkSignInButton">
+					<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:src="@drawable/es_twitter_logo"
+						android:layout_margin="4dp"
+						/>
+
+					<include layout="@layout/es_vertical_bar"/>
+
+					<TextView
+						android:text="@string/es_twitter"
+						style="@style/EmbeddedSocialSignInText"/>
+				</LinearLayout>
+			</LinearLayout>
+		</FrameLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:orientation="vertical">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Powered by Microsoft Embedded Social"
+				android:textSize="18dp"
+				android:layout_gravity="center"
+				android:paddingBottom="90dp"
+				/>
+
+			<TextView
+				android:id="@+id/es_policyText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+			/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+				android:text="@string/es_additional_app_terms"
+				android:layout_marginBottom="20dp"
+				/>
+		</LinearLayout>
+	</RelativeLayout>
+</ScrollView>

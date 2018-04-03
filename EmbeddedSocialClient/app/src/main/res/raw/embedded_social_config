@@ -1,0 +1,32 @@
+{
+	"application" : {
+	  	"serverUrl" : "https://ppe.embeddedsocial.microsoft.com/",
+	  	"appKey" : "44314868-309a-4b72-9a27-15827b9b0d50",
+		"numberOfCommentsToShow" : 20,
+		"numberOfRepliesToShow" : 20,
+		"searchEnabled" : "true",
+		"showGalleryView" : "true",
+		"userRelationsEnabled" : "true",
+		"disableNavigationDrawerForActivities" : []
+	},
+	"idProviders" : {
+		"facebook" : {
+			"loginEnabled" : "true",
+			"clientId" : "552285811539105"
+		},
+		"google" : {
+			"loginEnabled" : "true",
+			"clientId" : "297287630784-d5746daa88gg5or91jn9pantuoa2ro2i.apps.googleusercontent.com"
+		},
+		"microsoft" : {
+			"loginEnabled" : "true",
+			"clientId" : "000000004413B70D"
+		},
+		"twitter" : {
+			"loginEnabled" : "false"
+		}
+	},
+	"theme" : {
+		"name" : "light"
+	}
+}

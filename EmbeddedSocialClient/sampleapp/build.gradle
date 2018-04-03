@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+
+apply plugin: 'com.android.application'
+
+repositories {
+    jcenter()
+    maven {
+        url "http://dl.bintray.com/acrowntest/test"
+    }
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.microsoft.navigationdrawerstudio"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        signingConfig signingConfigs.debug
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    releaseCompile project(path: ':sdk', configuration: 'releaseStandalone')
+    debugCompile project(path: ':sdk', configuration: 'debugStandalone')
+}
+
+apply plugin: 'com.google.gms.google-services'

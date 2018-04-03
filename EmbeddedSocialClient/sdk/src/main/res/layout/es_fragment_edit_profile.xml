@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  -->
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@id/es_bottomBar"
+		>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			>
+
+			<LinearLayout
+				android:id="@+id/es_uploadPhotoLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="?attr/es_buttonBackground"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:padding="@dimen/es_padding_large"
+				>
+
+				<de.hdodenhof.circleimageview.CircleImageView
+					android:id="@+id/es_profileImage"
+					android:layout_width="@dimen/es_user_icon_size"
+					android:layout_height="@dimen/es_user_icon_size"
+					android:src="?attr/es_userNoPhotoIcon"
+					app:border_width="0px"
+					/>
+
+				<TextView
+					style="@style/EmbeddedSocialSdkTextSubhead"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="16dp"
+					android:text="@string/es_action_upload_photo"
+					/>
+
+			</LinearLayout>
+
+			<FrameLayout
+				android:id="@+id/es_photoLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="@dimen/es_padding_large"
+				>
+
+				<com.microsoft.embeddedsocial.ui.view.AspectRatioImageView
+					android:id="@+id/es_largePhoto"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@color/es_placeholder"
+					android:scaleType="centerCrop"
+					app:es_aspectRatio="0.66"
+					/>
+
+				<ImageView
+					android:id="@+id/es_editPhoto"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="top|right"
+					android:background="?attr/es_buttonBackground"
+					android:clickable="true"
+					android:padding="@dimen/es_padding_large"
+					android:src="@drawable/es_ic_edit"
+					/>
+
+			</FrameLayout>
+
+			<TextView
+				style="@style/EmbeddedSocialSdkTextSubhead.Green"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="@dimen/es_padding_large"
+				android:layout_marginLeft="@dimen/es_profile_margin_text"
+				android:layout_marginRight="@dimen/es_profile_margin_text"
+				android:layout_marginTop="@dimen/es_padding_small"
+				android:text="@string/es_account_info_header"
+				/>
+
+			<com.microsoft.embeddedsocial.ui.view.TextInput
+				android:id="@+id/es_firstNameLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/es_padding_large"
+				android:layout_marginRight="@dimen/es_padding_large"
+				android:layout_marginTop="@dimen/es_padding_small"
+				>
+
+				<EditText
+					style="@style/EmbeddedSocialSdkEditTextStyle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/es_hint_first_name"
+					android:inputType="textPersonName|textCapWords"
+					android:maxLength="16"
+					/>
+
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
+
+			<com.microsoft.embeddedsocial.ui.view.TextInput
+				android:id="@+id/es_lastNameLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/es_padding_large"
+				android:layout_marginRight="@dimen/es_padding_large"
+				android:layout_marginTop="@dimen/es_padding_small"
+				>
+
+			<EditText
+				style="@style/EmbeddedSocialSdkEditTextStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/es_hint_last_name"
+				android:inputType="textPersonName|textCapWords"
+				android:maxLength="16"
+				/>
+
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
+
+			<com.microsoft.embeddedsocial.ui.view.TextInput
+				android:id="@+id/es_bioLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="@dimen/es_padding_large"
+				android:layout_marginRight="@dimen/es_padding_large"
+				android:layout_marginTop="@dimen/es_padding_small"
+				>
+        
+        	<EditText
+				style="@style/EmbeddedSocialSdkEditTextStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/es_hint_bio"
+				android:inputType="textMultiLine"
+				/>
+
+			</com.microsoft.embeddedsocial.ui.view.TextInput>
+
+			<LinearLayout
+				android:id="@+id/es_editPrivacy"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+
+				<TextView
+					style="@style/EmbeddedSocialSdkTextSubhead.Green"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/es_padding_large"
+					android:layout_marginLeft="@dimen/es_profile_margin_text"
+					android:layout_marginRight="@dimen/es_profile_margin_text"
+					android:layout_marginTop="@dimen/es_padding_large"
+					android:text="@string/es_privacy_header"
+					/>
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="@dimen/es_profile_row_margin"
+					android:layout_marginLeft="@dimen/es_profile_margin_text"
+					android:layout_marginRight="@dimen/es_profile_margin_text"
+					>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerVertical="true"
+						android:layout_marginRight="@dimen/es_profile_margin_text"
+						android:layout_toLeftOf="@+id/es_privacySwitch"
+						android:paddingBottom="@dimen/es_padding_small"
+						android:text="@string/es_privacy_description"
+						/>
+
+					<android.support.v7.widget.SwitchCompat
+						android:id="@+id/es_privacySwitch"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_centerVertical="true"
+						/>
+
+				</RelativeLayout>
+			</LinearLayout>
+		</LinearLayout>
+
+	</ScrollView>
+
+	<include layout="@layout/es_bottom_bar"
+			 android:layout_height="wrap_content"
+			 android:layout_width="match_parent"
+			 android:layout_alignParentBottom="true"/>
+</RelativeLayout>
