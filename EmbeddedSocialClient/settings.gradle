@@ -4,4 +4,4 @@
  *
  */
 
-include ':app', ':sdk', ':sampleapp'
+include ':app', ':sdk', ':sampleapp', ':demogenerator'
