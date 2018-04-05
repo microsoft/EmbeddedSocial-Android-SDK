@@ -135,7 +135,7 @@ public class UserRelationTriggers {
 		new TriggerGenerator.TriggerBuilder("update_blocked_user_status", DbSchemas.UserRelationOperation.TABLE_NAME)
 			.setAction(TriggerGenerator.DatabaseAction.AFTER_INSERT)
 			.setStatements(
-				new Template("update ${user_profile} set ${following_status} = ${blocked}"
+				new Template("update ${user_profile} set ${following_status} = '${blocked}'"
 					+ " where ${user_handle} = new.${user_handle}")
 					.var("user_profile", DbSchemas.UserProfile.TABLE_NAME)
 					.var("following_status", DbSchemas.UserProfile.FOLLOWING_STATUS)
@@ -227,13 +227,13 @@ public class UserRelationTriggers {
 					.var("a_value", action.name())
 					.render()
 			).setStatements(
-				new Template("update ${users} set ${f_status} = ${status_value} where ${u_handle} = new.${u_handle}")
+				new Template("update ${users} set ${f_status} = '${status_value}' where ${u_handle} = new.${u_handle}")
 					.var("users", DbSchemas.CompactUserData.TABLE_NAME)
 					.var("f_status", DbSchemas.CompactUserData.FOLLOWER_STATUS)
 					.var("status_value", newStatus.toValue())
 					.var("u_handle", DbSchemas.UserFeeds.USER_HANDLE)
 					.render(),
-				new Template("update ${user_profile} set ${f_status} = ${status_value} where ${u_handle} = new.${u_handle}")
+				new Template("update ${user_profile} set ${f_status} = '${status_value}' where ${u_handle} = new.${u_handle}")
 					.var("user_profile", DbSchemas.UserProfile.TABLE_NAME)
 					.var("f_status", DbSchemas.CompactUserData.FOLLOWER_STATUS)
 					.var("status_value", newStatus.toValue())
