@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.relationship;
 
-import com.microsoft.embeddedsocial.server.model.UsersListResponse;
-import com.microsoft.embeddedsocial.server.model.relationship.GetFollowerFeedRequest;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.embeddedsocial.server.model.relationship.GetFollowerFeedRequest;
 
 import java.sql.SQLException;
 

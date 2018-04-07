@@ -5,6 +5,25 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.ServiceAction;
+import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.ui.activity.DeleteAccountActivity;
+import com.microsoft.embeddedsocial.ui.activity.FriendlistActivity;
+import com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity;
+import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -14,25 +33,6 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.data.Preferences;
-import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.ui.activity.DeleteAccountActivity;
-import com.microsoft.embeddedsocial.ui.activity.FriendlistActivity;
-import com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity;
-import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
 
 /**
  * Settings fragment.

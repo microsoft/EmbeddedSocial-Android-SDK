@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
-import com.microsoft.embeddedsocial.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.model.UserRelationOperation;
-import com.microsoft.embeddedsocial.server.IRelationshipService;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IRelationshipService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.BlockUserRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.RejectFollowRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.UnblockUserRequest;

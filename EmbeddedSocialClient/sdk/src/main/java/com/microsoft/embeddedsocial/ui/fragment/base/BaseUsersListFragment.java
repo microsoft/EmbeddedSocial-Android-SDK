@@ -5,11 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
-import android.os.Bundle;
-import android.support.annotation.DimenRes;
-import android.support.annotation.Nullable;
-import android.view.View;
-
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
@@ -17,6 +12,11 @@ import com.microsoft.embeddedsocial.ui.adapter.FetchableListAdapter;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
+
+import android.os.Bundle;
+import android.support.annotation.DimenRes;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 /**
  * Base class for fragments showing users list.

@@ -5,10 +5,6 @@
 
 package com.microsoft.embeddedsocial.data;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.TypeSafeJsonSerializer;
@@ -18,6 +14,10 @@ import com.microsoft.embeddedsocial.event.data.UpdateNotificationCountEvent;
 import com.microsoft.embeddedsocial.pending.PendingAction;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.server.model.BaseRequest;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 /**
  * Contains application preferences and config values. Encapsulates the work with SharedPreferences in the app.

@@ -9,6 +9,7 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.embeddedsocial.server.model.relationship.AcceptFollowRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.BlockUserRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.FollowUserRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.FollowUserResponse;
 import com.microsoft.embeddedsocial.server.model.relationship.GetBlockedUsersRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.GetFollowerFeedRequest;
@@ -16,9 +17,8 @@ import com.microsoft.embeddedsocial.server.model.relationship.GetFollowingFeedRe
 import com.microsoft.embeddedsocial.server.model.relationship.GetFollowingInOtherAppsRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.GetMyFollowerFeedRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.GetMyFollowingUsersFeedRequest;
-import com.microsoft.embeddedsocial.server.model.relationship.RejectFollowRequest;
-import com.microsoft.embeddedsocial.server.model.relationship.FollowUserRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
+import com.microsoft.embeddedsocial.server.model.relationship.RejectFollowRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.RemoveFollowerRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.UnblockUserRequest;
 import com.microsoft.embeddedsocial.server.model.relationship.UnfollowUserRequest;

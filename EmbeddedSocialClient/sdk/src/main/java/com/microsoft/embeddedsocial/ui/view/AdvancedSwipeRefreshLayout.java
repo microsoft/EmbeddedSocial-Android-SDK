@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 /**
  * Extension of {@link SwipeRefreshLayout} working if {@link RecyclerView} is not a direct child of it.

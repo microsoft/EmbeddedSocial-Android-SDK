@@ -5,31 +5,31 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-import android.net.Uri;
-import android.support.annotation.Nullable;
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.expression.Template;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AddPostData;
 import com.microsoft.embeddedsocial.data.model.DiscussionItem;
+import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
+import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
+import com.microsoft.embeddedsocial.data.storage.syncadapter.DiscussionItemSyncAdapter;
 import com.microsoft.embeddedsocial.data.storage.syncadapter.EditedTopicSyncAdapter;
 import com.microsoft.embeddedsocial.data.storage.syncadapter.PostSyncAdapter;
 import com.microsoft.embeddedsocial.data.storage.transaction.DbTransaction;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.autorest.models.BlobType;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.autorest.models.PublisherType;
-import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
-import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
-import com.microsoft.embeddedsocial.data.storage.syncadapter.DiscussionItemSyncAdapter;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
+
+import android.content.Context;
+import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import java.io.File;
 import java.io.IOException;

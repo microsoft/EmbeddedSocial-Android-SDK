@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 /**
  * Consists of a single web view used for web authentication process.

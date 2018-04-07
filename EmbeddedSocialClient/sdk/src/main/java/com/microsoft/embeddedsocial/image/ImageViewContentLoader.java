@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.image;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-
 import com.microsoft.embeddedsocial.base.LimitedSizeHashMap;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
 import java.util.Map;
 

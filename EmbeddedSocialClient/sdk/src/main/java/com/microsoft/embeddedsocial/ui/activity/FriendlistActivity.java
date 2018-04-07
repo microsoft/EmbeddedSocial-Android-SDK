@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.FriendlistFragment;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.fragment.FriendlistFragment;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
-import com.microsoft.embeddedsocial.base.utils.EnumUtils;
-import com.microsoft.embeddedsocial.service.IntentExtras;
 
 /**
  * Search users from social networks.

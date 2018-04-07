@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.data.storage.model;
 
-import android.text.TextUtils;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
+
+import android.text.TextUtils;
 
 /**
  * Persistent relation binding users to user feed types.

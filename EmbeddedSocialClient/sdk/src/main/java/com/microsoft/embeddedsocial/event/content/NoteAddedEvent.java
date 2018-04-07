@@ -7,8 +7,8 @@ package com.microsoft.embeddedsocial.event.content;
 
 import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 
 /**
  * Base class to add comments and replies.

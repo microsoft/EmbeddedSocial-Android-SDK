@@ -5,18 +5,18 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
-import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
-import com.microsoft.embeddedsocial.server.INotificationService;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.models.CountResponse;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.INotificationService;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.notification.GetNotificationCountRequest;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Updates notification count from the server.

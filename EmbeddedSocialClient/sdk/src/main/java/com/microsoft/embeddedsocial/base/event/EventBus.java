@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.base.event;
 
-import android.os.Handler;
-import android.os.Looper;
-
 import com.microsoft.embeddedsocial.base.utils.thread.BackgroundThreadFactory;
 import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
+
+import android.os.Handler;
+import android.os.Looper;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.relationship;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.models.PostBlockedUserRequest;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

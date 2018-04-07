@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.DisplayCommentFragment;
+import com.microsoft.embeddedsocial.ui.fragment.DisplayReplyFragment;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.fragment.DisplayReplyFragment;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.fragment.DisplayCommentFragment;
 
 /**
  * Activity to display a single comment or reply.

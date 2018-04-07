@@ -6,6 +6,7 @@
 package com.microsoft.embeddedsocial.service;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
+
 import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
 
 /**

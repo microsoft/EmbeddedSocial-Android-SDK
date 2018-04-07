@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.content.replies;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.models.ReplyView;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

@@ -5,6 +5,16 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.autorest.models.Reason;
+import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
+import com.microsoft.embeddedsocial.event.dialog.OnPositiveButtonClickedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.squareup.otto.Subscribe;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,17 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.autorest.models.Reason;
-import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
-import com.microsoft.embeddedsocial.event.dialog.OnPositiveButtonClickedEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.squareup.otto.Subscribe;
 
 /**
  * Fragment for reporting content or user.

@@ -5,6 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.event.dialog.OnNegativeButtonClickedEvent;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
+import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
+import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
+import com.microsoft.embeddedsocial.ui.view.TextInput;
+import com.squareup.otto.Subscribe;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -12,18 +24,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.event.dialog.OnNegativeButtonClickedEvent;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
-import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
-import com.microsoft.embeddedsocial.ui.view.TextInput;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
-import com.squareup.otto.Subscribe;
 
 /**
  * Base class for Add post / Edit post fragments.

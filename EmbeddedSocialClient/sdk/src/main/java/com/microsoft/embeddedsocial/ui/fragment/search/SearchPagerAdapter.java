@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.search;
 
-import android.content.Context;
-import android.support.v4.app.FragmentManager;
-
 import com.microsoft.embeddedsocial.data.model.SearchType;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
+
+import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 /**
  * {@link android.support.v4.view.PagerAdapter} implementation for {@link SearchActivity}.

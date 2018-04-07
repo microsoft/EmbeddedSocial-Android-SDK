@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.ui.activity.base;
 
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.service.IntentExtras;
+
+import android.content.Intent;
 
 /**
  * Base class for activities with discussion feed.

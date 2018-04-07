@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
+import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
+
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
-
-import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
 
 public class SingleDrawerHandler extends DrawerHandler {
     public SingleDrawerHandler(@NonNull AppCompatActivity activity) {

@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.storage.ContentCache;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
@@ -14,6 +12,8 @@ import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNe
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedResponse;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+
+import android.content.Context;
 
 import java.sql.SQLException;
 import java.util.Collections;

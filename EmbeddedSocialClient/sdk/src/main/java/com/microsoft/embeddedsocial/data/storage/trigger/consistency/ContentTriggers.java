@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.storage.trigger.consistency;
 
-import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.embeddedsocial.data.storage.trigger.ISqlTrigger;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.base.expression.Template;
+import com.microsoft.embeddedsocial.data.storage.DbSchemas;
+import com.microsoft.embeddedsocial.data.storage.trigger.ISqlTrigger;
 import com.microsoft.embeddedsocial.data.storage.trigger.TriggerGenerator;
 
 /**

@@ -5,28 +5,30 @@
 
 package com.microsoft.embeddedsocial.social;
 
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookRequestError;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokenHolder;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.social.exception.NotAuthorizedToSocialNetworkException;
 import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+
+import android.os.Bundle;
+import android.text.TextUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Loads Facebook friends.

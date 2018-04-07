@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.view.TextInput;
+
+import android.content.Context;
 
 /**
  * Checks that the field is not empty.

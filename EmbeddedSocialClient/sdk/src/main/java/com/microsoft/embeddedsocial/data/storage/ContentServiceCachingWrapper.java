@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.content.CommentFeedRequestWrapper;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.content.CommentRequestWrapper;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.content.LikeFeedRequestWrapper;
@@ -27,6 +25,7 @@ import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentResp
 import com.microsoft.embeddedsocial.server.model.content.comments.RemoveCommentRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.AddReplyRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.AddReplyResponse;
+import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedResponse;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyResponse;
@@ -34,8 +33,8 @@ import com.microsoft.embeddedsocial.server.model.content.replies.RemoveReplyRequ
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicNameRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.AddTopicResponse;
-import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicByNameRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.HideTopicRequest;
@@ -50,7 +49,8 @@ import com.microsoft.embeddedsocial.server.model.like.RemoveLikeRequest;
 import com.microsoft.embeddedsocial.server.model.pin.AddPinRequest;
 import com.microsoft.embeddedsocial.server.model.pin.GetPinFeedRequest;
 import com.microsoft.embeddedsocial.server.model.pin.RemovePinRequest;
-import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
+
+import android.content.Context;
 
 import retrofit2.Response;
 

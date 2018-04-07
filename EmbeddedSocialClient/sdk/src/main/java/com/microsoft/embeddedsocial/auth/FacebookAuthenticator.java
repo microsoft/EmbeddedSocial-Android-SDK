@@ -5,9 +5,6 @@
 
 package com.microsoft.embeddedsocial.auth;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -17,11 +14,14 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.utils.ConnectionUtils;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 
 import java.util.Arrays;
 import java.util.List;

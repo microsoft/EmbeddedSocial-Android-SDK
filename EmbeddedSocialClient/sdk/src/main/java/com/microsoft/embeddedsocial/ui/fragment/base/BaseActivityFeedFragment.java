@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-
-import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
 import com.microsoft.embeddedsocial.data.display.DisplayMethod;
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
+import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 /**
  * Base class for fragments showing an activity feed.

@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity;
 import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 
 /**
  * OnClickListener for activity feed items.

@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
+import com.microsoft.embeddedsocial.sdk.IDrawerState;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.squareup.otto.Subscribe;
+
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.ViewGroup;
-
-import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
-import com.microsoft.embeddedsocial.sdk.IDrawerState;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.squareup.otto.Subscribe;
 
 public abstract class EmbeddedSocialNavigationActivity extends EmbeddedSocialActivity implements IDrawerState {
     protected static final String DISPLAY_MENU_EXTRA = "DISPLAY_MENU_EXTRA";

@@ -5,19 +5,19 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.search;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-
-import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
 import com.microsoft.embeddedsocial.data.model.SearchType;
+import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseContentFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.squareup.otto.Subscribe;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 /**
  * Encapsulates the behavior of search fragments.

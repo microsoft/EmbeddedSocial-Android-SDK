@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.fetcher;
 
-import com.microsoft.embeddedsocial.fetcher.base.RequestType;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.model.FollowRequest;
 import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
-import com.microsoft.embeddedsocial.server.IRelationshipService;
+import com.microsoft.embeddedsocial.fetcher.base.RequestType;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IRelationshipService;
 import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 import java.util.List;
 

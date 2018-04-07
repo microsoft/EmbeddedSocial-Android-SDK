@@ -5,6 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.dialog;
 
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.event.dialog.OnDialogItemSelectedEvent;
+import com.microsoft.embeddedsocial.event.dialog.OnNegativeButtonClickedEvent;
+import com.microsoft.embeddedsocial.event.dialog.OnPositiveButtonClickedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,13 +26,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.event.dialog.OnDialogItemSelectedEvent;
-import com.microsoft.embeddedsocial.event.dialog.OnNegativeButtonClickedEvent;
-import com.microsoft.embeddedsocial.event.dialog.OnPositiveButtonClickedEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.base.event.EventBus;
 
 /**
  * Wraps {@link AlertDialog} in a fragment. Imitates a {@link android.app.AlertDialog.Builder} functionality.

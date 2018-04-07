@@ -5,6 +5,9 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
@@ -13,9 +16,6 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
-
-import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 
 /**
  * Extension of {@link TextInputLayout} allowing a validation of the input.

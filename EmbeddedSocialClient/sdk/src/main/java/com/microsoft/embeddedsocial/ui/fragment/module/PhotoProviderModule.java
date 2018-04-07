@@ -5,6 +5,20 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.module;
 
+import com.microsoft.embeddedsocial.base.IDisposable;
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.data.storage.ImageStorage;
+import com.microsoft.embeddedsocial.event.PermissionRequestResultEvent;
+import com.microsoft.embeddedsocial.event.dialog.OnDialogItemSelectedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.Module;
+import com.squareup.otto.Subscribe;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -24,20 +38,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.base.IDisposable;
-import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.data.storage.ImageStorage;
-import com.microsoft.embeddedsocial.event.dialog.OnDialogItemSelectedEvent;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
-import com.microsoft.embeddedsocial.ui.fragment.base.Module;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.event.PermissionRequestResultEvent;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
-import com.squareup.otto.Subscribe;
 
 import java.io.File;
 

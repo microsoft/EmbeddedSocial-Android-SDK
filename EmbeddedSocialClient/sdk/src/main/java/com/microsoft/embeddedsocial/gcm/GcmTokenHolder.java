@@ -5,12 +5,13 @@
 
 package com.microsoft.embeddedsocial.gcm;
 
+import com.google.gson.Gson;
+
+import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-
-import com.google.gson.Gson;
-import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 
 import java.util.Collections;
 import java.util.List;

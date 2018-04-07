@@ -6,14 +6,14 @@
 package com.microsoft.embeddedsocial.fetcher;
 
 import com.microsoft.embeddedsocial.base.function.Predicate;
-import com.microsoft.embeddedsocial.fetcher.base.RequestType;
-import com.microsoft.embeddedsocial.server.ServerMethod;
-import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
-import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.fetcher.base.RequestType;
+import com.microsoft.embeddedsocial.server.ServerMethod;
 import com.microsoft.embeddedsocial.server.model.ListResponse;
+import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
+import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 
 import java.util.ArrayList;
 import java.util.List;

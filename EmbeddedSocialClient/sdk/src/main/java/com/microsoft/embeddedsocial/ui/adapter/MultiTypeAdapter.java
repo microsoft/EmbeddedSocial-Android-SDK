@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
-import android.view.ViewGroup;
-
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
+
+import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 /**
  * Base class for adapters dealing with multiple view types, delegates the rendering routine to {@link Renderer}'s.

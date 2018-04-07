@@ -5,35 +5,35 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.data.model.DiscussionItem;
-import com.microsoft.embeddedsocial.data.model.LikeContentData;
-import com.microsoft.embeddedsocial.data.model.PinData;
-import com.microsoft.embeddedsocial.data.model.RemoveContentData;
-import com.microsoft.embeddedsocial.event.content.CommentAddedEvent;
-import com.microsoft.embeddedsocial.event.content.CommentRemovedEvent;
-import com.microsoft.embeddedsocial.event.content.ReplyAddedEvent;
-import com.microsoft.embeddedsocial.sdk.BuildConfig;
-import com.microsoft.embeddedsocial.server.model.view.CommentView;
-import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.service.WorkerService;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.autorest.models.Reason;
 import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.data.model.DiscussionItem;
+import com.microsoft.embeddedsocial.data.model.LikeContentData;
+import com.microsoft.embeddedsocial.data.model.PinData;
+import com.microsoft.embeddedsocial.data.model.RemoveContentData;
 import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
+import com.microsoft.embeddedsocial.event.content.CommentAddedEvent;
+import com.microsoft.embeddedsocial.event.content.CommentRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.LikeAddedEvent;
 import com.microsoft.embeddedsocial.event.content.LikeRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.PinAddedEvent;
 import com.microsoft.embeddedsocial.event.content.PinRemovedEvent;
+import com.microsoft.embeddedsocial.event.content.ReplyAddedEvent;
 import com.microsoft.embeddedsocial.event.content.ReplyRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.TopicRemovedEvent;
+import com.microsoft.embeddedsocial.sdk.BuildConfig;
+import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+import com.microsoft.embeddedsocial.service.WorkerService;
+
+import android.content.Context;
 
 import java.sql.SQLException;
 

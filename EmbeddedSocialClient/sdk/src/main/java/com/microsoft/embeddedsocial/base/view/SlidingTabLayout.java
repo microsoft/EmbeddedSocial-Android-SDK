@@ -16,6 +16,8 @@
 
 package com.microsoft.embeddedsocial.base.view;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -31,8 +33,6 @@ import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to

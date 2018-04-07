@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.fetcher.base;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.base.utils.Values;
+
+import android.text.TextUtils;
 
 /**
  * State of a data requests sequence.

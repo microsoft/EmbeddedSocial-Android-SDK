@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 
 /**

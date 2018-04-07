@@ -5,9 +5,6 @@
 
 package com.microsoft.embeddedsocial.service;
 
-import android.content.Context;
-
-import com.microsoft.embeddedsocial.service.handler.UpdateAccountHandler;
 import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.IntentProcessor;
 import com.microsoft.embeddedsocial.service.handler.BackgroundInitializationHandler;
@@ -23,7 +20,10 @@ import com.microsoft.embeddedsocial.service.handler.SignInHandler;
 import com.microsoft.embeddedsocial.service.handler.SignOutHandler;
 import com.microsoft.embeddedsocial.service.handler.SynchronizationHandler;
 import com.microsoft.embeddedsocial.service.handler.UnlinkUserThirdPartyAccountHandler;
+import com.microsoft.embeddedsocial.service.handler.UpdateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UpdateNotificationCountHandler;
+
+import android.content.Context;
 
 /**
  * Builds intents processor.

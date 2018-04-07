@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.base.function.Producer;
+
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
-import com.microsoft.embeddedsocial.base.function.Producer;
 
 /**
  * Simple implementation of {@link android.support.v4.view.PagerAdapter}.

@@ -5,12 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.TextView;
-
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
 import com.microsoft.embeddedsocial.image.CoverLoader;
@@ -18,9 +12,15 @@ import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
+import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseEditPostFragment;
 import com.microsoft.embeddedsocial.ui.util.TextHelper;
-import com.microsoft.embeddedsocial.service.IntentExtras;
+
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  * Post editing.

@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.ui.activity.LikesActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.LikesActivity;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.service.IntentExtras;
 
 /**
  * Click listener for all topic buttons.

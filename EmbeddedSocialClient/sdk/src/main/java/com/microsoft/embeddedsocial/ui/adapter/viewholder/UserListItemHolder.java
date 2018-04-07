@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 
 /**
  * View holder for user list item.

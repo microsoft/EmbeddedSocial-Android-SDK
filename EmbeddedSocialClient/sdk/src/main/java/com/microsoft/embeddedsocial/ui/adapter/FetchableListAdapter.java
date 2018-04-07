@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.ui.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
+
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * <p>Simple {@link FetchableAdapter}'s extension showing a simple list of items (optionally with a header)

@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.image;
 
-import android.widget.ImageView;
-
 import com.microsoft.embeddedsocial.sdk.R;
+
+import android.widget.ImageView;
 
 /**
  * Implementation of {@link ImageViewContentLoader} for wide image views.

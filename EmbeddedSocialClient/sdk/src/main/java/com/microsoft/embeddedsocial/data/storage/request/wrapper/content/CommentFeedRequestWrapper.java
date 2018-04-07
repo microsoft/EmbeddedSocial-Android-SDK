@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.ContentCache;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeedResponse;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
+
+import android.content.Context;
 
 import java.sql.SQLException;
 import java.util.Collections;

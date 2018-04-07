@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.fetcher;
 
-import com.microsoft.embeddedsocial.fetcher.base.DataState;
-import com.microsoft.embeddedsocial.fetcher.base.RequestType;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.social.AuthorizationRequest;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.fetcher.base.RequestType;
 import com.microsoft.embeddedsocial.server.ISearchService;
 import com.microsoft.embeddedsocial.server.model.discover.FindUsersWithThirdPartyAccountsRequest;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.social.AuthorizationRequest;
 import com.microsoft.embeddedsocial.social.FriendlistLoader;
 import com.microsoft.embeddedsocial.social.FriendlistLoaders;
 

@@ -5,6 +5,9 @@
 
 package com.microsoft.embeddedsocial.fetcher.base;
 
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
+
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
@@ -13,9 +16,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 
 import java.util.LinkedList;
 import java.util.List;

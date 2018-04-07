@@ -6,19 +6,19 @@
 package com.microsoft.embeddedsocial.server;
 
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.AccountServiceCachingWrapper;
 import com.microsoft.embeddedsocial.data.storage.ActivityServiceCachingWrapper;
 import com.microsoft.embeddedsocial.data.storage.AuthenticationServiceWrapper;
 import com.microsoft.embeddedsocial.data.storage.BlobServiceWrapper;
-import com.microsoft.embeddedsocial.data.storage.ImageServiceWrapper;
-import com.microsoft.embeddedsocial.data.storage.RelationshipServiceCachingWrapper;
-import com.microsoft.embeddedsocial.data.storage.SearchServiceCachingWrapper;
 import com.microsoft.embeddedsocial.data.storage.BuildServiceWrapper;
 import com.microsoft.embeddedsocial.data.storage.ContentServiceCachingWrapper;
+import com.microsoft.embeddedsocial.data.storage.ImageServiceWrapper;
 import com.microsoft.embeddedsocial.data.storage.NotificationServiceCachingWrapper;
+import com.microsoft.embeddedsocial.data.storage.RelationshipServiceCachingWrapper;
 import com.microsoft.embeddedsocial.data.storage.ReportServiceWrapper;
+import com.microsoft.embeddedsocial.data.storage.SearchServiceCachingWrapper;
+
+import android.content.Context;
 
 /**
  * Wrapper for interactions with REST-services

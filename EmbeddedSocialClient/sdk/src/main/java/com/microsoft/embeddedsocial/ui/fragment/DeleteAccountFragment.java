@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-
+import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionTagFilter;
+import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 import java.util.List;
 

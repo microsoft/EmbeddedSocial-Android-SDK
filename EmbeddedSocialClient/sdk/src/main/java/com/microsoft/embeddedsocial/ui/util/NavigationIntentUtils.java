@@ -5,20 +5,20 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.app.Activity;
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.sdk.ui.EmbeddedSocialNavigationActivity;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.microsoft.embeddedsocial.ui.activity.GateActivity;
 import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
 import com.microsoft.embeddedsocial.ui.activity.MyProfileActivity;
+import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
 import com.microsoft.embeddedsocial.ui.activity.PinsActivity;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
-import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
+import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.activity.SignInActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.activity.OptionsActivity;
-import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
+
+import android.app.Activity;
+import android.content.Intent;
 
 /**
  * Contains methods for navigation in Embedded Social sdk.

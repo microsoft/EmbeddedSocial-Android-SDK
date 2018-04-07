@@ -8,10 +8,10 @@ package com.microsoft.embeddedsocial.server.model.relationship;
 import com.microsoft.embeddedsocial.autorest.UserFollowingOperations;
 import com.microsoft.embeddedsocial.autorest.UserFollowingOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserCompactView;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 

@@ -5,17 +5,18 @@
 
 package com.microsoft.embeddedsocial.server;
 
+import com.google.common.io.Files;
+
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.image.AddImageRequest;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-
-import com.google.common.io.Files;
-import com.microsoft.embeddedsocial.server.model.image.AddImageRequest;
-import com.microsoft.embeddedsocial.autorest.models.ImageType;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.server.model.discover;
 
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
-
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.util.List;

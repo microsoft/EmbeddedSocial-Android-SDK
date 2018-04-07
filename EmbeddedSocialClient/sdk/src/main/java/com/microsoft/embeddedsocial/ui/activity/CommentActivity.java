@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
 import com.microsoft.embeddedsocial.ui.activity.base.BaseDiscussionActivity;
 import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
 

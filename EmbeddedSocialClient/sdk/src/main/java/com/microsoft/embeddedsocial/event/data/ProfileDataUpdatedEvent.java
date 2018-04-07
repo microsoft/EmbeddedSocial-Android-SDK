@@ -6,9 +6,9 @@
 package com.microsoft.embeddedsocial.event.data;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
+import com.microsoft.embeddedsocial.base.event.ThreadType;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.event.BaseUserEvent;
-import com.microsoft.embeddedsocial.base.event.ThreadType;
 
 
 /**

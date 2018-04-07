@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 public class WebPageHelper {
     public static void openPrivacyPolicy(Context context) {

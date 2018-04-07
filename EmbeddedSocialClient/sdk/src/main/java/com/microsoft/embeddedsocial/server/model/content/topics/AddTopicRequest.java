@@ -9,10 +9,10 @@ import com.microsoft.embeddedsocial.autorest.models.BlobType;
 import com.microsoft.embeddedsocial.autorest.models.PostTopicRequest;
 import com.microsoft.embeddedsocial.autorest.models.PostTopicResponse;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 

@@ -5,16 +5,16 @@
 
 package com.microsoft.embeddedsocial.image;
 
+import com.microsoft.embeddedsocial.sdk.BuildConfig;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.ConditionVariable;
 import android.widget.ImageView;
-
-import com.microsoft.embeddedsocial.sdk.BuildConfig;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;

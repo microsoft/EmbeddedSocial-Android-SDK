@@ -5,34 +5,34 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.fetcher.UserAccountFetcher;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.server.exception.ConflictException;
-import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
-import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.auth.IAuthenticationCallback;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.TwitterWebAuthenticator;
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
 import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
+import com.microsoft.embeddedsocial.fetcher.UserAccountFetcher;
 import com.microsoft.embeddedsocial.fetcher.base.Callback;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.exception.ConflictException;
+import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
 import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import com.squareup.otto.Subscribe;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;

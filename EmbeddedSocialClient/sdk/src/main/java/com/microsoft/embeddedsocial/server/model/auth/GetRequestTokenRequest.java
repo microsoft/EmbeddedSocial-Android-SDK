@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.server.model.auth;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.RequestTokensOperations;
 import com.microsoft.embeddedsocial.autorest.RequestTokensOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.GetRequestTokenResponse;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.io.IOException;
 

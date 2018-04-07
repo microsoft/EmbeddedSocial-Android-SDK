@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.module;
 
-import android.support.annotation.NonNull;
-
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.event.content.CommentAddedEvent;
 import com.microsoft.embeddedsocial.event.content.LikeAddedEvent;
@@ -20,6 +18,8 @@ import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFeedFragment;
 import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.squareup.otto.Subscribe;
+
+import android.support.annotation.NonNull;
 
 import java.util.List;
 

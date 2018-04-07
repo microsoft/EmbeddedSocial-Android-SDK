@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
-import android.view.View;
-
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
+
+import android.view.View;
 
 /**
  * View holder for follow requests.

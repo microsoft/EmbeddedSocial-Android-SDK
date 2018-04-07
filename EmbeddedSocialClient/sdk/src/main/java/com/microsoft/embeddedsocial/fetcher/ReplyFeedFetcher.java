@@ -5,19 +5,19 @@
 
 package com.microsoft.embeddedsocial.fetcher;
 
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.fetcher.base.PartiallyLoadedDataException;
-import com.microsoft.embeddedsocial.fetcher.base.RequestType;
-import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
-import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentResponse;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
+import com.microsoft.embeddedsocial.fetcher.base.PartiallyLoadedDataException;
+import com.microsoft.embeddedsocial.fetcher.base.RequestType;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.IContentService;
-import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentRequest;
+import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentResponse;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;

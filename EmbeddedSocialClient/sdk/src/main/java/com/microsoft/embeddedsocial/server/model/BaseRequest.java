@@ -5,23 +5,20 @@
 
 package com.microsoft.embeddedsocial.server.model;
 
-import android.text.TextUtils;
-
-import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.autorest.CommentLikesOperations;
 import com.microsoft.embeddedsocial.autorest.CommentLikesOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.CommentRepliesOperations;
 import com.microsoft.embeddedsocial.autorest.CommentRepliesOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.CommentsOperations;
 import com.microsoft.embeddedsocial.autorest.CommentsOperationsImpl;
+import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClient;
+import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClientImpl;
 import com.microsoft.embeddedsocial.autorest.MyFollowingOperations;
 import com.microsoft.embeddedsocial.autorest.MyFollowingOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.RepliesOperations;
 import com.microsoft.embeddedsocial.autorest.RepliesOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.ReplyLikesOperations;
 import com.microsoft.embeddedsocial.autorest.ReplyLikesOperationsImpl;
-import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClient;
-import com.microsoft.embeddedsocial.autorest.EmbeddedSocialClientImpl;
 import com.microsoft.embeddedsocial.autorest.TopicCommentsOperations;
 import com.microsoft.embeddedsocial.autorest.TopicCommentsOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.TopicLikesOperations;
@@ -29,12 +26,15 @@ import com.microsoft.embeddedsocial.autorest.TopicLikesOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.TopicsOperations;
 import com.microsoft.embeddedsocial.autorest.TopicsOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.Platform;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.server.RequestInfoProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
+
+import android.text.TextUtils;
 
 import java.io.IOException;
 import java.util.Locale;

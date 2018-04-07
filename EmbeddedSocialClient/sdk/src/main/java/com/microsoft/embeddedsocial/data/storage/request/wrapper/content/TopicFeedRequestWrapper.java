@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.data.model.TopicFeedType;
 import com.microsoft.embeddedsocial.data.storage.ContentCache;
@@ -14,6 +12,8 @@ import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.TopicsListResponse;
+
+import android.text.TextUtils;
 
 import java.sql.SQLException;
 

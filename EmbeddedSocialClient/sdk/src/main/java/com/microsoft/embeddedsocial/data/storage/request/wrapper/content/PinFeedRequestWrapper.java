@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import com.microsoft.embeddedsocial.server.model.content.topics.TopicsListResponse;
-import com.microsoft.embeddedsocial.server.model.pin.GetPinFeedRequest;
 import com.microsoft.embeddedsocial.data.storage.ContentCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.content.topics.TopicsListResponse;
+import com.microsoft.embeddedsocial.server.model.pin.GetPinFeedRequest;
 
 import java.sql.SQLException;
 

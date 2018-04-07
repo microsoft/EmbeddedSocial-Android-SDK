@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.base.utils.debug;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

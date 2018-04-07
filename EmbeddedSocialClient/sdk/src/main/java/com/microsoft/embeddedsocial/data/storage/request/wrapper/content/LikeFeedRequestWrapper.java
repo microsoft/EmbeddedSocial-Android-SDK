@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import com.microsoft.embeddedsocial.server.model.UsersListResponse;
-import com.microsoft.embeddedsocial.server.model.like.GetLikeFeedRequest;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.embeddedsocial.server.model.like.GetLikeFeedRequest;
 
 import java.sql.SQLException;
 

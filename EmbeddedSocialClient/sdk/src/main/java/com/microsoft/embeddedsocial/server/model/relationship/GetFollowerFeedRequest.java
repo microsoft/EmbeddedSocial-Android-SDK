@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.server.model.relationship;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.embeddedsocial.autorest.UserFollowersOperations;
 import com.microsoft.embeddedsocial.autorest.UserFollowersOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseUserCompactView;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

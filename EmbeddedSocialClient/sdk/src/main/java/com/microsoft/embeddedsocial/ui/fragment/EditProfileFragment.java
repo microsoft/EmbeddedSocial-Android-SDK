@@ -5,6 +5,32 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.actions.ActionTagFilter;
+import com.microsoft.embeddedsocial.actions.ActionsLauncher;
+import com.microsoft.embeddedsocial.actions.OngoingActions;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
+import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.data.model.AccountDataDifference;
+import com.microsoft.embeddedsocial.image.CoverLoader;
+import com.microsoft.embeddedsocial.image.ImageLoader;
+import com.microsoft.embeddedsocial.image.ImageLocation;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
+import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
+import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
+import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
+import com.microsoft.embeddedsocial.ui.view.TextInput;
+
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,33 +42,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.ActionTagFilter;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.data.model.AccountDataDifference;
-import com.microsoft.embeddedsocial.image.ImageLoader;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
-import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
-import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
-import com.microsoft.embeddedsocial.ui.view.TextInput;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
-import com.microsoft.embeddedsocial.image.CoverLoader;
-import com.microsoft.embeddedsocial.image.ImageLocation;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
-import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
-import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
-import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
 
 import java.util.LinkedList;
 import java.util.List;

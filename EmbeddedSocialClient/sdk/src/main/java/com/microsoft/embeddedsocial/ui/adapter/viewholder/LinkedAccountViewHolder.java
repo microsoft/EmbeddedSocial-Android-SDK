@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
+
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
-import com.microsoft.embeddedsocial.sdk.R;
 
 /**
  * Init linked account layout.

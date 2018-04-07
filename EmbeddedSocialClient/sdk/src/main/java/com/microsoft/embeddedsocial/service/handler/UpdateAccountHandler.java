@@ -5,28 +5,28 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-
-import com.microsoft.embeddedsocial.autorest.models.ImageType;
-import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.autorest.models.ImageType;
+import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.AccountDataDifference;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.ImageUploader;
-import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserVisibilityRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 
 import java.io.IOException;
 

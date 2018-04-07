@@ -5,20 +5,20 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
-import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyResponse;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.content.GetReplyEvent;
-import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyRequest;
+import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyResponse;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Get single reply.

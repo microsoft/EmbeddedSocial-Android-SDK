@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.account.DeleteUserRequest;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Sends a delete account request to the server.

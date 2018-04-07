@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.data.storage.SearchHistory;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Deletes the search history.

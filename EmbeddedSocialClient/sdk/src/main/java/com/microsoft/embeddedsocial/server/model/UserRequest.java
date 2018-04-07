@@ -6,9 +6,6 @@
 package com.microsoft.embeddedsocial.server.model;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.exception.UnauthorizedException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.autorest.HashtagsOperations;
 import com.microsoft.embeddedsocial.autorest.HashtagsOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.MyBlockedUsersOperations;
@@ -37,6 +34,9 @@ import com.microsoft.embeddedsocial.autorest.UsersOperations;
 import com.microsoft.embeddedsocial.autorest.UsersOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.data.Preferences;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.exception.UnauthorizedException;
+import com.microsoft.rest.ServiceResponse;
 
 public class UserRequest extends BaseRequest {
     public static final String ANONYMOUS = "Anon AK=%s";

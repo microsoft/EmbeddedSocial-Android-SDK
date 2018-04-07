@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.base.service;
 
+import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor.IQueueStateListener;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
-
-import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor.IQueueStateListener;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 
 /**
  * Base class for intent processing services.

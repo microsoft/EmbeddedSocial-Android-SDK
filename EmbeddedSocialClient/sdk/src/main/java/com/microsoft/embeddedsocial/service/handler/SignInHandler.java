@@ -5,33 +5,33 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.server.IAuthenticationService;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.exception.NotFoundException;
-import com.microsoft.embeddedsocial.server.model.auth.CreateSessionRequest;
-import com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IAccountService;
+import com.microsoft.embeddedsocial.server.IAuthenticationService;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.exception.NotFoundException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetMyProfileRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountResponse;
 import com.microsoft.embeddedsocial.server.model.account.GetUserProfileResponse;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
+import com.microsoft.embeddedsocial.server.model.auth.CreateSessionRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 
 /**
  * Sends sign-in requests.

@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.base.utils;
 
+import com.microsoft.embeddedsocial.image.ImageLoader;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Point;
 import android.net.Uri;
-
-import com.microsoft.embeddedsocial.image.ImageLoader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

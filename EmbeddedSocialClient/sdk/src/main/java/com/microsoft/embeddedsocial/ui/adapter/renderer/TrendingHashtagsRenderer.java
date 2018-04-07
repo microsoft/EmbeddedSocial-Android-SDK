@@ -5,17 +5,17 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.event.click.OnTrendingHashtagSelectedEvent;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.TrendingHashtagsRenderer.ViewHolder;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Renders trending hashtags.

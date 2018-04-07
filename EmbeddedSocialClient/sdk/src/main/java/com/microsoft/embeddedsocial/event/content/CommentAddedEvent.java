@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.content;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 
 /**
  * Result of add comment.

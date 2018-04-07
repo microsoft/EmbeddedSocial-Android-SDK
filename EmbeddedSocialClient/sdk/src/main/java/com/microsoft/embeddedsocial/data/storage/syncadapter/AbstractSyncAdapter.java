@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.exception.BadRequestException;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedException;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Base class for synchronization adapters.

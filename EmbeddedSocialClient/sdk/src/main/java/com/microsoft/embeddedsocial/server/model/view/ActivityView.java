@@ -7,11 +7,11 @@ package com.microsoft.embeddedsocial.server.model.view;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.autorest.models.ActivityType;
 import com.microsoft.embeddedsocial.autorest.models.BlobType;
 import com.microsoft.embeddedsocial.autorest.models.ContentCompactView;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
+import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.server.model.TimedItem;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 import com.microsoft.embeddedsocial.ui.util.TimeUtils;

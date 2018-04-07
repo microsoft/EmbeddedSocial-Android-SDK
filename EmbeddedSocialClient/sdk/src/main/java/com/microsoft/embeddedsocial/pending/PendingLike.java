@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.pending;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
+
+import android.content.Context;
 
 /**
  * Pending "like" or "dislike" action.

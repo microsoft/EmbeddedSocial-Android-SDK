@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.action;
 
 
-import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
 
 /**

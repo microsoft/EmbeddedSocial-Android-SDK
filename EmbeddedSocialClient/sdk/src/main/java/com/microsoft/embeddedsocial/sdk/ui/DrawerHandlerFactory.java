@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.NavigationMenuDescription;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.NavigationMenuDescription;
 
 /**
  * Generate DrawerHandler for specific mode

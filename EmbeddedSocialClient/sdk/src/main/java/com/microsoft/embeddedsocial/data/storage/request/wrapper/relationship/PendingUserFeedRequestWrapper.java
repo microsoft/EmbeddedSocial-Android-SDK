@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.relationship;
 
-import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
 import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
 
 import java.sql.SQLException;

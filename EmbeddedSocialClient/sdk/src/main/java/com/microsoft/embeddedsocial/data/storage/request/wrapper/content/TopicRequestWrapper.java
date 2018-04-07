@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.data.storage.ContentCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 
 import java.sql.SQLException;
 

@@ -5,7 +5,6 @@
 
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.model.UserRelationOperation;
 import com.microsoft.embeddedsocial.server.exception.BadRequestException;
@@ -13,6 +12,7 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.relationship.UserRelationshipRequest;
 import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedException;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Base class for user relationship operation sync adapters.

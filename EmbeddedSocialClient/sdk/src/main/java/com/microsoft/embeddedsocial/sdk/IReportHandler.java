@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.sdk;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
+
+import android.content.Context;
 
 public interface IReportHandler {
     /**

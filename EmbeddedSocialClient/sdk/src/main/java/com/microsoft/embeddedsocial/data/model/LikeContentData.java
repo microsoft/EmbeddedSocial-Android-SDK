@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.data.model;
 
-import android.os.Parcel;
-
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
+
+import android.os.Parcel;
 
 /**
  * Encapsulates data for like content.

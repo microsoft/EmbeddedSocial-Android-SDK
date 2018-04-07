@@ -5,20 +5,20 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
-import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
-import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
-import com.microsoft.embeddedsocial.server.exception.StatusException;
-import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAccountRequest;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.server.IAccountService;
+import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IAccountService;
+import com.microsoft.embeddedsocial.server.exception.StatusException;
+import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAccountRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Sends a unlink user third party account request to the server.

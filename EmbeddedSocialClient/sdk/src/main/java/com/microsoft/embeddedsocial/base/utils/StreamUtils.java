@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.base.utils;
 
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
-
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

@@ -5,14 +5,14 @@
 
 package com.microsoft.embeddedsocial.base.service;
 
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.base.utils.thread.BackgroundThreadFactory;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.base.utils.thread.BackgroundThreadFactory;
 
 import java.util.EnumMap;
 import java.util.Map;

@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchRequestWrapper;
 import com.microsoft.embeddedsocial.server.IActivityService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
 import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedResponse;
+
+import android.content.Context;
 
 import java.sql.SQLException;
 

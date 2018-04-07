@@ -5,11 +5,12 @@
 
 package com.microsoft.embeddedsocial.service;
 
-import android.os.Bundle;
-
 import com.google.android.gms.gcm.GcmListenerService;
-import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
+
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
+
+import android.os.Bundle;
 
 /**
  * Is used to receive GCM push notifications.

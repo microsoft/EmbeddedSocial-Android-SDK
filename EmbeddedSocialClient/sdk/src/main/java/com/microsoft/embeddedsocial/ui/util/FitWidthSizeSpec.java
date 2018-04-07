@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.app.Activity;
-import android.graphics.Point;
-
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+
+import android.app.Activity;
+import android.graphics.Point;
 
 /**
  * Image transformation to fit all available width.

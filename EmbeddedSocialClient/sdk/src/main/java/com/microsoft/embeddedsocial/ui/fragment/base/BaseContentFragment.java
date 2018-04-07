@@ -5,6 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.fetcher.base.Callback;
+import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
+import com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView;
+import com.microsoft.embeddedsocial.fetcher.base.FetcherState;
+import com.microsoft.embeddedsocial.fetcher.base.ViewState;
+import com.microsoft.embeddedsocial.fetcher.base.ViewStateListener;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.NetworkAvailability;
+import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -19,18 +31,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
-import com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView;
-import com.microsoft.embeddedsocial.fetcher.base.FetcherState;
-import com.microsoft.embeddedsocial.fetcher.base.ViewState;
-import com.microsoft.embeddedsocial.fetcher.base.ViewStateListener;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.NetworkAvailability;
-import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
-import com.microsoft.embeddedsocial.fetcher.base.Callback;
 
 /**
  * Base class for fragments loading and displaying data. It contains a RecyclerView to show data, empty data message view,

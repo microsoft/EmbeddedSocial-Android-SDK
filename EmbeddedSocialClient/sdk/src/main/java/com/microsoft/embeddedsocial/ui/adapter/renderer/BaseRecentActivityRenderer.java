@@ -5,6 +5,22 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
+import com.microsoft.embeddedsocial.autorest.models.ActivityType;
+import com.microsoft.embeddedsocial.autorest.models.BlobType;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.image.ImageLoader;
+import com.microsoft.embeddedsocial.image.ImageLocation;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.ActivityView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
+import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
+import com.microsoft.embeddedsocial.ui.util.OnActivityItemClickListener;
+import com.microsoft.embeddedsocial.ui.util.TimeUtils;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -13,22 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.image.ImageLoader;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.server.model.view.ActivityView;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.embeddedsocial.autorest.models.ActivityType;
-import com.microsoft.embeddedsocial.autorest.models.BlobType;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.image.ImageLocation;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.BaseViewHolder;
-import com.microsoft.embeddedsocial.ui.util.OnActivityItemClickListener;
-import com.microsoft.embeddedsocial.ui.util.TimeUtils;
 
 import java.util.HashMap;
 import java.util.List;

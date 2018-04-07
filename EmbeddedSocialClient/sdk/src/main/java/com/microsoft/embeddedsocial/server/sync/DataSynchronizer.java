@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.server.sync;
 
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedException;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 import java.util.LinkedHashSet;
 import java.util.List;

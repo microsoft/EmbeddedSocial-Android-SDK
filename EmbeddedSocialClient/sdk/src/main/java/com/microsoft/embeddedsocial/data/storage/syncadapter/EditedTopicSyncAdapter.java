@@ -6,10 +6,10 @@
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.topics.UpdateTopicRequest;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Sync adapter for edited topics.

@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.server.model.content.comments;
 
+import com.microsoft.embeddedsocial.autorest.models.FeedResponseCommentView;
+import com.microsoft.embeddedsocial.data.model.CommentFeedType;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
-import com.microsoft.embeddedsocial.autorest.models.FeedResponseCommentView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.embeddedsocial.data.model.CommentFeedType;
 
 import java.io.IOException;
 

@@ -5,6 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.theme.Theme;
+import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,13 +24,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.theme.Theme;
 
 /**
  * Navigation item view.

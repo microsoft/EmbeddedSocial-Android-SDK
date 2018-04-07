@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.server;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.data.Preferences;
+
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.data.Preferences;
 
 import java.util.UUID;
 

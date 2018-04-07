@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.activity.base;
 
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.view.SlidingTabLayout;
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.base.view.SlidingTabLayout;
 
 /**
  * Base class for activities with tabs.

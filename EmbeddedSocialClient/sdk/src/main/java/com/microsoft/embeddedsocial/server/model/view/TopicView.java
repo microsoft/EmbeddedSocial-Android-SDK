@@ -5,20 +5,20 @@
 
 package com.microsoft.embeddedsocial.server.model.view;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.embeddedsocial.data.model.AccountData;
-import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.autorest.models.BlobType;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
 import com.microsoft.embeddedsocial.base.utils.EnumUtils;
+import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.server.model.TimedItem;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
 import com.microsoft.embeddedsocial.ui.util.TimeUtils;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 @DatabaseTable(tableName = DbSchemas.Topics.TABLE_NAME)
 public class TopicView implements Parcelable, UniqueItem, TimedItem {

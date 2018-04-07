@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.account;
 
-import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserProfileResponse;
 
 import java.sql.SQLException;

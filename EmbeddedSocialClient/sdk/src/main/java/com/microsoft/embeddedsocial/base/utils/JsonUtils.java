@@ -7,6 +7,7 @@ package com.microsoft.embeddedsocial.base.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 
 /**

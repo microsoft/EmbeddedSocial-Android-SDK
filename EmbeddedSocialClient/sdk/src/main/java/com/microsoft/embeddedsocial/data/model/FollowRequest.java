@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.data.model;
 
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 import java.util.ArrayList;
 import java.util.Collections;

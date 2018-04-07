@@ -5,21 +5,21 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
+import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
+import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IAuthenticationService;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
+import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.ServiceAction;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.webkit.CookieManager;
-
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
-import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.server.IAuthenticationService;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
 /**
  * Performs sign-out.

@@ -7,9 +7,9 @@ package com.microsoft.embeddedsocial.data.storage.model;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.autorest.models.Reason;
+import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 
 /**
  * Represents persistent 'report content' operation.

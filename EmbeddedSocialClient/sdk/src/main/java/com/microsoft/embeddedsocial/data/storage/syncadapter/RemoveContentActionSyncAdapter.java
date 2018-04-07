@@ -6,13 +6,13 @@
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.embeddedsocial.server.model.content.replies.RemoveReplyRequest;
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.data.storage.UserActionCache;
 import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.comments.RemoveCommentRequest;
+import com.microsoft.embeddedsocial.server.model.content.replies.RemoveReplyRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.RemoveTopicRequest;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Contains base functionality related to removing content from the server.

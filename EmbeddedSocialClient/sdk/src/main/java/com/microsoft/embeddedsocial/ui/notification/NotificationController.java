@@ -5,6 +5,14 @@
 
 package com.microsoft.embeddedsocial.ui.notification;
 
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.event.sync.PostUploadFailedEvent;
+import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
+import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
+import com.squareup.otto.Subscribe;
+
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,14 +21,6 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
-
-import com.microsoft.embeddedsocial.event.sync.PostUploadFailedEvent;
-import com.microsoft.embeddedsocial.event.sync.PostUploadedEvent;
-import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
-import com.squareup.otto.Subscribe;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

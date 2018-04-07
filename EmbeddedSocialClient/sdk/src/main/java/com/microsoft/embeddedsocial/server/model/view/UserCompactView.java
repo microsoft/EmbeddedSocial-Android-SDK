@@ -5,14 +5,15 @@
 
 package com.microsoft.embeddedsocial.server.model.view;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
+import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.data.storage.DbSchemas;
-import com.microsoft.embeddedsocial.autorest.models.*;
 import com.microsoft.embeddedsocial.server.model.UniqueItem;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  *

@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+
+import android.content.Context;
 
 /**
  * Renders activity items for following tab.

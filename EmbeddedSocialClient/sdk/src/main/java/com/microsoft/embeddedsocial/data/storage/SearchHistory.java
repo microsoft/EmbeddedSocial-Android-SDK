@@ -14,8 +14,8 @@ import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.expression.Template;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.SearchType;
-import com.microsoft.embeddedsocial.data.storage.transaction.DbTransaction;
 import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
+import com.microsoft.embeddedsocial.data.storage.transaction.DbTransaction;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

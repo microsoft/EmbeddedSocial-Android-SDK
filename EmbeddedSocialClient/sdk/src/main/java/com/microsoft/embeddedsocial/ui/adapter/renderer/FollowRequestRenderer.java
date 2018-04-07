@@ -5,18 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.adapter.renderer;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.data.model.FollowRequest;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.ui.adapter.viewholder.FollowRequestHolder;
+import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
+import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
-import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
-import com.microsoft.embeddedsocial.data.model.FollowRequest;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.adapter.viewholder.FollowRequestHolder;
 
 /**
  * Renders follow requests.

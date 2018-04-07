@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
-import android.content.res.Resources;
-
 import com.microsoft.embeddedsocial.sdk.R;
+
+import android.content.res.Resources;
 
 import java.util.concurrent.TimeUnit;
 

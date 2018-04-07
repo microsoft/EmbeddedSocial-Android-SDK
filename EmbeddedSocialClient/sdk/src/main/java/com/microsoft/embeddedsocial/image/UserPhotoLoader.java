@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.image;
 
-import android.widget.ImageView;
-
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
+
+import android.widget.ImageView;
 
 
 /**

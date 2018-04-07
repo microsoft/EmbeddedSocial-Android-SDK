@@ -6,13 +6,13 @@
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
+import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.data.storage.model.ReportContentOperation;
+import com.microsoft.embeddedsocial.server.IReportService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.report.ReportContentRequest;
 import com.microsoft.embeddedsocial.server.model.report.ReportUserRequest;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
-import com.microsoft.embeddedsocial.autorest.models.ContentType;
-import com.microsoft.embeddedsocial.server.IReportService;
 
 /**
  * Uploads operations that report content or users as inappropriate.

@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.ui.util;
 
+import com.microsoft.embeddedsocial.account.UserAccount;
+import com.microsoft.embeddedsocial.service.ServiceAction;
+import com.microsoft.embeddedsocial.service.WorkerService;
+
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
-
-import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
 /**
  * Periodically updates notification count.

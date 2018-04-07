@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.data.model;
 
+import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 
 /**
  * Information needed to create an account.

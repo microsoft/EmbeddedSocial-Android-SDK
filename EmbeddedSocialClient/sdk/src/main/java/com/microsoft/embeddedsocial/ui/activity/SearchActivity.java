@@ -5,6 +5,23 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.data.model.SearchType;
+import com.microsoft.embeddedsocial.data.storage.SearchHistory;
+import com.microsoft.embeddedsocial.event.click.OnTrendingHashtagSelectedEvent;
+import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
+import com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
+import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuListenerFragment;
+import com.microsoft.embeddedsocial.ui.fragment.search.SearchPagerAdapter;
+import com.microsoft.embeddedsocial.ui.fragment.search.SearchTextHolder;
+import com.microsoft.embeddedsocial.ui.theme.Theme;
+import com.squareup.otto.Subscribe;
+
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ContentProviderClient;
@@ -23,23 +40,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.data.model.SearchType;
-import com.microsoft.embeddedsocial.data.storage.SearchHistory;
-import com.microsoft.embeddedsocial.event.click.OnTrendingHashtagSelectedEvent;
-import com.microsoft.embeddedsocial.event.data.SearchTextChangedEvent;
-import com.microsoft.embeddedsocial.provider.AbstractEmbeddedSocialSearchSuggestionProvider;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseTabsActivity;
-import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuListenerFragment;
-import com.microsoft.embeddedsocial.ui.fragment.search.SearchPagerAdapter;
-import com.microsoft.embeddedsocial.ui.fragment.search.SearchTextHolder;
-import com.microsoft.embeddedsocial.ui.theme.Theme;
-import com.squareup.otto.Subscribe;
 
 import java.util.EnumMap;
 import java.util.Map;

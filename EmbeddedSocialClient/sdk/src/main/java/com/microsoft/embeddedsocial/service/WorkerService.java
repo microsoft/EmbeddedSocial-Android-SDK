@@ -5,11 +5,11 @@
 
 package com.microsoft.embeddedsocial.service;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.base.service.AbstractProcessingService;
 import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.ServiceLauncher;
+
+import android.content.Context;
 
 /**
  * Worker service.

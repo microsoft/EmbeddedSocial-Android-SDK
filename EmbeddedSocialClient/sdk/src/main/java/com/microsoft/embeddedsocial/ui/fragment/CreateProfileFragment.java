@@ -5,30 +5,23 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.Layout;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
+import com.microsoft.embeddedsocial.data.model.CreateAccountData;
 import com.microsoft.embeddedsocial.event.signin.CreateUserFailedEvent;
 import com.microsoft.embeddedsocial.event.signin.UserSignedInEvent;
 import com.microsoft.embeddedsocial.image.CoverLoader;
 import com.microsoft.embeddedsocial.image.ImageLoader;
 import com.microsoft.embeddedsocial.image.ImageLocation;
 import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
@@ -36,11 +29,16 @@ import com.microsoft.embeddedsocial.ui.util.FieldNotEmptyValidator;
 import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import com.microsoft.embeddedsocial.ui.view.TextInput;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.data.model.CreateAccountData;
-import com.microsoft.embeddedsocial.image.UserPhotoLoader;
-import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.squareup.otto.Subscribe;
+
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;

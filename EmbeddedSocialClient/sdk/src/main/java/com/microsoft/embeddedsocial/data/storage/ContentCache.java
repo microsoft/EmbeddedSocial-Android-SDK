@@ -5,37 +5,37 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.text.TextUtils;
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugTimer;
 import com.microsoft.embeddedsocial.data.model.TopicFeedType;
+import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
 import com.microsoft.embeddedsocial.data.storage.model.CommentFeedRelation;
+import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
 import com.microsoft.embeddedsocial.data.storage.model.TopicFeedRelation;
 import com.microsoft.embeddedsocial.data.storage.transaction.DbTransaction;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
+import com.microsoft.embeddedsocial.server.model.TimedItem;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.comments.GetCommentFeedResponse;
+import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedResponse;
+import com.microsoft.embeddedsocial.server.model.content.topics.GenericTopicRequest;
+import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse;
 import com.microsoft.embeddedsocial.server.model.content.topics.TopicsListResponse;
 import com.microsoft.embeddedsocial.server.model.view.AppCompactView;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
+import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.data.storage.exception.FatalDatabaseException;
-import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
-import com.microsoft.embeddedsocial.server.model.TimedItem;
-import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyFeedRequest;
-import com.microsoft.embeddedsocial.server.model.content.topics.GenericTopicRequest;
-import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicFeedRequest;
-import com.microsoft.embeddedsocial.server.model.view.ReplyView;
+
+import android.text.TextUtils;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

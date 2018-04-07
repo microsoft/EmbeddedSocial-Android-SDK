@@ -5,6 +5,22 @@
 
 package com.microsoft.embeddedsocial.ui.activity.base;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.event.PermissionRequestResultEvent;
+import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
+import com.microsoft.embeddedsocial.sdk.BuildConfig;
+import com.microsoft.embeddedsocial.sdk.IDrawerState;
+import com.microsoft.embeddedsocial.sdk.INavigationDrawerHandler;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.sdk.ui.DrawerHandler;
+import com.microsoft.embeddedsocial.sdk.ui.DrawerHandlerFactory;
+import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
+import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
+import com.squareup.otto.Subscribe;
+
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
@@ -29,23 +45,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
-
-import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.event.click.NavigationItemClickedEvent;
-import com.microsoft.embeddedsocial.sdk.BuildConfig;
-import com.microsoft.embeddedsocial.sdk.IDrawerState;
-import com.microsoft.embeddedsocial.sdk.INavigationDrawerHandler;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.sdk.ui.ToolbarColorizer;
-import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.event.PermissionRequestResultEvent;
-import com.microsoft.embeddedsocial.sdk.ui.DrawerHandler;
-import com.microsoft.embeddedsocial.sdk.ui.DrawerHandlerFactory;
-import com.squareup.otto.Subscribe;
 
 /**
  * Base activity class.

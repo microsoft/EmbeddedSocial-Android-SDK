@@ -5,17 +5,18 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Context;
-import android.content.Intent;
-
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
+
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.service.WorkerService;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+import com.microsoft.embeddedsocial.service.WorkerService;
+
+import android.content.Context;
+import android.content.Intent;
 
 import java.io.IOException;
 

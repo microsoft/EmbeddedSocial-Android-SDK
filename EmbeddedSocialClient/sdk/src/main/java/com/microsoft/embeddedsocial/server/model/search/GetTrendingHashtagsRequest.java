@@ -6,9 +6,9 @@
 package com.microsoft.embeddedsocial.server.model.search;
 
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.io.IOException;
 import java.util.List;

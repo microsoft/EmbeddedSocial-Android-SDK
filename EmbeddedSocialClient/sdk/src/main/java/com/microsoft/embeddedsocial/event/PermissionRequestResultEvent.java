@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.event;
 
-import android.content.pm.PackageManager;
-
 import com.microsoft.embeddedsocial.base.event.AbstractEvent;
+
+import android.content.pm.PackageManager;
 
 import java.util.HashMap;
 import java.util.Map;

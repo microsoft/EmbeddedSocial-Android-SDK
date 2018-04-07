@@ -5,18 +5,18 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.module;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.server.NetworkAvailability;
+import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
+import com.microsoft.embeddedsocial.ui.fragment.base.Module;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.text.format.DateUtils;
-
-import com.microsoft.embeddedsocial.server.NetworkAvailability;
-import com.microsoft.embeddedsocial.ui.fragment.base.Module;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 
 /**
  * Display message about slow connection.

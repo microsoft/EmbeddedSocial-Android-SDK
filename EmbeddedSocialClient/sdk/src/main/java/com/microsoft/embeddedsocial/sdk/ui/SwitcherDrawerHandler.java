@@ -5,6 +5,16 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
+import com.microsoft.embeddedsocial.sdk.NavigationProfileHelper;
+import com.microsoft.embeddedsocial.sdk.Options;
+import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
+import com.microsoft.embeddedsocial.ui.theme.Theme;
+import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
+import com.microsoft.embeddedsocial.ui.view.NavigationItemView;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,16 +24,6 @@ import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-
-import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
-import com.microsoft.embeddedsocial.ui.theme.ThemeGroup;
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
-import com.microsoft.embeddedsocial.sdk.NavigationProfileHelper;
-import com.microsoft.embeddedsocial.sdk.Options;
-import com.microsoft.embeddedsocial.ui.theme.Theme;
-import com.microsoft.embeddedsocial.ui.view.NavigationItemView;
 
 public class SwitcherDrawerHandler extends DrawerHandler {
     private final LayoutInflater themedInflater;

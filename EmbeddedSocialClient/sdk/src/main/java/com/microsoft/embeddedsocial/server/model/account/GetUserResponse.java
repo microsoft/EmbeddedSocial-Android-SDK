@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.account;
 
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.autorest.models.UserProfileView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 /**
  *

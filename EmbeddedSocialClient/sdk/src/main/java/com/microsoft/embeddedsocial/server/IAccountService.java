@@ -5,6 +5,8 @@
 
 package com.microsoft.embeddedsocial.server;
 
+import com.microsoft.embeddedsocial.autorest.models.AppCompactView;
+import com.microsoft.embeddedsocial.autorest.models.LinkedAccountView;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.account.CreateUserRequest;
 import com.microsoft.embeddedsocial.server.model.account.DeleteUserRequest;
@@ -20,11 +22,9 @@ import com.microsoft.embeddedsocial.server.model.account.GetUserResponse;
 import com.microsoft.embeddedsocial.server.model.account.LinkThirdPartyRequest;
 import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAccountRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPhotoRequest;
+import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserVisibilityRequest;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
-import com.microsoft.embeddedsocial.autorest.models.AppCompactView;
-import com.microsoft.embeddedsocial.autorest.models.LinkedAccountView;
-import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
 
 import java.util.List;
 

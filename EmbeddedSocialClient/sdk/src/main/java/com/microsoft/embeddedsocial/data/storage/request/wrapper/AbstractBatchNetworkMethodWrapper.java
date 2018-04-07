@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
+
+import android.text.TextUtils;
 
 /**
  * An {@linkplain AbstractNetworkMethodWrapper} implementation for network methods that
