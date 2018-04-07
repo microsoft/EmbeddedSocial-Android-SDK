@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
  */
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class UserBlockedEvent extends BaseUserEvent {
-	public UserBlockedEvent(String userHandle) {
-		super(userHandle);
-	}
+    public UserBlockedEvent(String userHandle) {
+        super(userHandle);
+    }
 }

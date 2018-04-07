@@ -12,10 +12,10 @@ import com.microsoft.embeddedsocial.ui.fragment.ReplyFeedFragment;
 
 public class CommentActivity extends BaseDiscussionActivity {
 
-	@Override
-	protected void setupFragments() {
-		final ReplyFeedFragment feedFragment = new ReplyFeedFragment();
-		feedFragment.setArguments(getIntent().getExtras());
-		setActivityContent(feedFragment);
-	}
+    @Override
+    protected void setupFragments() {
+        final ReplyFeedFragment feedFragment = new ReplyFeedFragment();
+        feedFragment.setArguments(getIntent().getExtras());
+        setActivityContent(feedFragment);
+    }
 }

@@ -14,15 +14,15 @@ import java.util.List;
  */
 public abstract class ListResponse<T> {
 
-	private String continuationKey;
+    private String continuationKey;
 
-	public String getContinuationKey() {
-		return continuationKey;
-	}
+    public String getContinuationKey() {
+        return continuationKey;
+    }
 
-	public void setContinuationKey(String continuationKey) {
-		this.continuationKey = continuationKey;
-	}
+    public void setContinuationKey(String continuationKey) {
+        this.continuationKey = continuationKey;
+    }
 
-	public abstract List<T> getData();
+    public abstract List<T> getData();
 }

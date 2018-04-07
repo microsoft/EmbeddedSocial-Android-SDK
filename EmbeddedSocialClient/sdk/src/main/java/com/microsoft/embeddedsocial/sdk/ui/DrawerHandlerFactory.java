@@ -18,27 +18,27 @@ import com.microsoft.embeddedsocial.sdk.NavigationMenuDescription;
  */
 public class DrawerHandlerFactory {
 
-	private DrawerHandlerFactory() {  }
+    private DrawerHandlerFactory() {  }
 
-	public static DrawerHandler createHandler(@NonNull AppCompatActivity activity, Bundle args) {
-		DrawerHandler drawerHandler = null;
-		NavigationMenuDescription navigationMenu = GlobalObjectRegistry.getObject(NavigationMenuDescription.class);
-		if (navigationMenu != null) {
-			final Fragment hostingAppMenuFragment = navigationMenu.getDrawerFactory().createMenuFragment();
-			hostingAppMenuFragment.setArguments(args);
+    public static DrawerHandler createHandler(@NonNull AppCompatActivity activity, Bundle args) {
+        DrawerHandler drawerHandler = null;
+        NavigationMenuDescription navigationMenu = GlobalObjectRegistry.getObject(NavigationMenuDescription.class);
+        if (navigationMenu != null) {
+            final Fragment hostingAppMenuFragment = navigationMenu.getDrawerFactory().createMenuFragment();
+            hostingAppMenuFragment.setArguments(args);
 
-			switch (navigationMenu.getDisplayMode()) {
-				case TABS:
-					drawerHandler = new TabbedDrawerHandler(activity, hostingAppMenuFragment, navigationMenu.getTabTitle());
-					break;
-				case SWITCHER:
-					drawerHandler = new SwitcherDrawerHandler(activity, hostingAppMenuFragment, navigationMenu.getTabTitle());
-					break;
-			}
-		} else {
-			drawerHandler = new SingleDrawerHandler(activity);
-		}
+            switch (navigationMenu.getDisplayMode()) {
+                case TABS:
+                    drawerHandler = new TabbedDrawerHandler(activity, hostingAppMenuFragment, navigationMenu.getTabTitle());
+                    break;
+                case SWITCHER:
+                    drawerHandler = new SwitcherDrawerHandler(activity, hostingAppMenuFragment, navigationMenu.getTabTitle());
+                    break;
+            }
+        } else {
+            drawerHandler = new SingleDrawerHandler(activity);
+        }
 
-		return drawerHandler;
-	}
+        return drawerHandler;
+    }
 }

@@ -19,45 +19,45 @@ import java.sql.SQLException;
 
 public class TopicFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<GetTopicFeedRequest, TopicsListResponse> {
 
-	private final ContentCache contentCache;
-	private final PostStorage postStorage;
+    private final ContentCache contentCache;
+    private final PostStorage postStorage;
 
-	public TopicFeedRequestWrapper(INetworkMethod<GetTopicFeedRequest, TopicsListResponse> networkMethod,
-	                               PostStorage postStorage, ContentCache contentCache) {
+    public TopicFeedRequestWrapper(INetworkMethod<GetTopicFeedRequest, TopicsListResponse> networkMethod,
+                                   PostStorage postStorage, ContentCache contentCache) {
 
-		super(networkMethod);
-		this.postStorage = postStorage;
-		this.contentCache = contentCache;
-	}
+        super(networkMethod);
+        this.postStorage = postStorage;
+        this.contentCache = contentCache;
+    }
 
-	private void addPendingPosts(GetTopicFeedRequest request, TopicsListResponse topicFeed) {
-		if (TextUtils.isEmpty(request.getCursor()) && shouldFeedContainPendingPosts(request)) {
-			topicFeed.getData().addAll(0, postStorage.getPendingPostsForDisplay());
-		}
-	}
+    private void addPendingPosts(GetTopicFeedRequest request, TopicsListResponse topicFeed) {
+        if (TextUtils.isEmpty(request.getCursor()) && shouldFeedContainPendingPosts(request)) {
+            topicFeed.getData().addAll(0, postStorage.getPendingPostsForDisplay());
+        }
+    }
 
-	private boolean shouldFeedContainPendingPosts(GetTopicFeedRequest request) {
-		TopicFeedType feedType = request.getTopicFeedType();
-		return feedType == TopicFeedType.FOLLOWING_RECENT
-			|| (feedType == TopicFeedType.USER_RECENT && UserAccount.getInstance().isCurrentUser(request.getQuery()));
-	}
+    private boolean shouldFeedContainPendingPosts(GetTopicFeedRequest request) {
+        TopicFeedType feedType = request.getTopicFeedType();
+        return feedType == TopicFeedType.FOLLOWING_RECENT
+            || (feedType == TopicFeedType.USER_RECENT && UserAccount.getInstance().isCurrentUser(request.getQuery()));
+    }
 
-	@Override
-	protected void storeResponse(GetTopicFeedRequest request, TopicsListResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetTopicFeedRequest request, TopicsListResponse response)
+        throws SQLException {
 
-		contentCache.storeFeed(request, response);
-	}
+        contentCache.storeFeed(request, response);
+    }
 
-	@Override
-	protected TopicsListResponse getCachedResponse(GetTopicFeedRequest request) throws SQLException {
-		return contentCache.getResponse(request);
-	}
+    @Override
+    protected TopicsListResponse getCachedResponse(GetTopicFeedRequest request) throws SQLException {
+        return contentCache.getResponse(request);
+    }
 
-	@Override
-	protected void onResponseIsReady(GetTopicFeedRequest request, TopicsListResponse response,
-	                                 boolean cachedResponseUsed) {
+    @Override
+    protected void onResponseIsReady(GetTopicFeedRequest request, TopicsListResponse response,
+                                     boolean cachedResponseUsed) {
 
-		addPendingPosts(request, response);
-	}
+        addPendingPosts(request, response);
+    }
 }

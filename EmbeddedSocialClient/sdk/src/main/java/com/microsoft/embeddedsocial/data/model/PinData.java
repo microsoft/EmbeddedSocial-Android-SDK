@@ -11,21 +11,21 @@ import android.os.Parcel;
  * Encapsulates data for pin topic.
  */
 public class PinData extends ContentOperationData {
-	public PinData(String handle) {
-		super(handle);
-	}
+    public PinData(String handle) {
+        super(handle);
+    }
 
-	public PinData(Parcel in) {
-		super(in);
-	}
+    public PinData(Parcel in) {
+        super(in);
+    }
 
-	public static final Creator<PinData> CREATOR = new Creator<PinData>() {
-		public PinData createFromParcel(Parcel source) {
-			return new PinData(source);
-		}
+    public static final Creator<PinData> CREATOR = new Creator<PinData>() {
+        public PinData createFromParcel(Parcel source) {
+            return new PinData(source);
+        }
 
-		public PinData[] newArray(int size) {
-			return new PinData[size];
-		}
-	};
+        public PinData[] newArray(int size) {
+            return new PinData[size];
+        }
+    };
 }

@@ -10,7 +10,7 @@ package com.microsoft.embeddedsocial.fetcher;
  */
 public class EmptyDataException extends Exception {
 
-	public EmptyDataException(String message) {
-		super(message);
-	}
+    public EmptyDataException(String message) {
+        super(message);
+    }
 }

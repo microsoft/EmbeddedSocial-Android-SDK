@@ -4,8 +4,8 @@
   -->
 
 <resources
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:ignore="ResourceName"
-	>
-	<public type="style" name="EmbeddedSocialSdkAppTheme"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
+    <public type="style" name="EmbeddedSocialSdkAppTheme"/>
 </resources>

@@ -12,17 +12,17 @@ import com.microsoft.embeddedsocial.server.model.view.UserProfileView;
  */
 public class GetUserProfileResponse {
 
-	private UserProfileView user;
+    private UserProfileView user;
 
-	public GetUserProfileResponse(UserProfileView user) {
-		this.user = user;
-	}
+    public GetUserProfileResponse(UserProfileView user) {
+        this.user = user;
+    }
 
-	public GetUserProfileResponse(com.microsoft.embeddedsocial.autorest.models.UserProfileView response) {
-		user = new UserProfileView(response);
-	}
+    public GetUserProfileResponse(com.microsoft.embeddedsocial.autorest.models.UserProfileView response) {
+        user = new UserProfileView(response);
+    }
 
-	public UserProfileView getUser() {
-		return user;
-	}
+    public UserProfileView getUser() {
+        return user;
+    }
 }

@@ -15,13 +15,13 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
  */
 public class LinkedAccountsActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new LinkedAccountsFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new LinkedAccountsFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

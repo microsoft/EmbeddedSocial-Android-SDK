@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class LikeRemovedEvent extends LikeEvent {
 
-	public LikeRemovedEvent(LikeContentData data, boolean result) {
-		super(data, result);
-	}
+    public LikeRemovedEvent(LikeContentData data, boolean result) {
+        super(data, result);
+    }
 }

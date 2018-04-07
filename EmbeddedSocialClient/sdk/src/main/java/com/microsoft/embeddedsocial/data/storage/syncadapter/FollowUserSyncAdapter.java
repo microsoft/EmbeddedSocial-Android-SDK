@@ -19,21 +19,21 @@ import com.microsoft.embeddedsocial.server.model.relationship.FollowUserRequest;
  */
 public class FollowUserSyncAdapter extends AbstractUserRelationSyncAdapter<FollowUserResponse> {
 
-	public FollowUserSyncAdapter(UserRelationOperation operation, UserCache userCache) {
-		super(operation, userCache);
-	}
+    public FollowUserSyncAdapter(UserRelationOperation operation, UserCache userCache) {
+        super(operation, userCache);
+    }
 
-	@Override
-	protected FollowUserResponse performNetworkRequest(UserRelationshipRequest request)
-		throws NetworkRequestException {
+    @Override
+    protected FollowUserResponse performNetworkRequest(UserRelationshipRequest request)
+        throws NetworkRequestException {
 
-		return GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
-			.getRelationshipService()
-			.followUser(new FollowUserRequest(request.getRelationshipUserHandle()));
-	}
+        return GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
+            .getRelationshipService()
+            .followUser(new FollowUserRequest(request.getRelationshipUserHandle()));
+    }
 
-	@Override
-	protected void onSynchronizationCompleted(FollowUserResponse followUserResponse) {
-		userCache.deleteOperation(operation);
-	}
+    @Override
+    protected void onSynchronizationCompleted(FollowUserResponse followUserResponse) {
+        userCache.deleteOperation(operation);
+    }
 }

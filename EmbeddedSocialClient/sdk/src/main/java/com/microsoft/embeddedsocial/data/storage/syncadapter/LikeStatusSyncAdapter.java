@@ -18,22 +18,22 @@ import com.microsoft.embeddedsocial.server.IContentService;
  */
 public class LikeStatusSyncAdapter extends AbstractAutoCleanupSyncAdapter<UserActionCache.LikeChangedAction> {
 
-	public LikeStatusSyncAdapter(Dao<UserActionCache.LikeChangedAction, Integer> likeDao,
-	                             UserActionCache.LikeChangedAction likeAction) {
+    public LikeStatusSyncAdapter(Dao<UserActionCache.LikeChangedAction, Integer> likeDao,
+                                 UserActionCache.LikeChangedAction likeAction) {
 
-		super(likeAction, likeDao);
-	}
+        super(likeAction, likeDao);
+    }
 
-	@Override
-	protected void onSynchronize(UserActionCache.LikeChangedAction item)
-		throws NetworkRequestException, SynchronizationException {
+    @Override
+    protected void onSynchronize(UserActionCache.LikeChangedAction item)
+        throws NetworkRequestException, SynchronizationException {
 
-		IContentService contentService = getServiceProvider().getContentService();
+        IContentService contentService = getServiceProvider().getContentService();
 
-		if (item.getStatus()) {
-			contentService.addLike(new AddLikeRequest(item.getContentHandle(), item.getContentType()));
-		} else {
-			contentService.removeLike(new RemoveLikeRequest(item.getContentHandle(), item.getContentType()));
-		}
-	}
+        if (item.getStatus()) {
+            contentService.addLike(new AddLikeRequest(item.getContentHandle(), item.getContentType()));
+        } else {
+            contentService.removeLike(new RemoveLikeRequest(item.getContentHandle(), item.getContentType()));
+        }
+    }
 }

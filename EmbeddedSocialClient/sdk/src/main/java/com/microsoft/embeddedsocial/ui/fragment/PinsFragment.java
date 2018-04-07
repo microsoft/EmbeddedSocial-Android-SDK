@@ -18,22 +18,22 @@ import android.view.View;
  * Shows pinned topics.
  */
 public class PinsFragment extends BaseFeedFragment {
-	public static final String TAG = "PinsFragment";
+    public static final String TAG = "PinsFragment";
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		getChildFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getChildFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
+    }
 
-	@Override
-	protected Fetcher<TopicView> createFetcher() {
-		return FetchersFactory.createPinsFeedFetcher();
-	}
+    @Override
+    protected Fetcher<TopicView> createFetcher() {
+        return FetchersFactory.createPinsFeedFetcher();
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		onRefresh();
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        onRefresh();
+    }
 }

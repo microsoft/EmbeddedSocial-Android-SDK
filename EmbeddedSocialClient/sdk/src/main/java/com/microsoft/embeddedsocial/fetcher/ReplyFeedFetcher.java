@@ -26,61 +26,61 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ReplyFeedFetcher extends Fetcher<Object> {
-	private static final String COMMENT_LOADED = "commentLoaded";
+    private static final String COMMENT_LOADED = "commentLoaded";
 
-	private final CommentView commentView;
-	private final String commentHandle;
-	private final IContentService contentService;
-	private final DataRequestExecutor<ReplyView, ?> replyFeedRequestExecutor;
+    private final CommentView commentView;
+    private final String commentHandle;
+    private final IContentService contentService;
+    private final DataRequestExecutor<ReplyView, ?> replyFeedRequestExecutor;
 
-	public ReplyFeedFetcher(String commentHandle, CommentView commentView) {
-		this.commentHandle = commentHandle;
-		this.commentView = commentView;
+    public ReplyFeedFetcher(String commentHandle, CommentView commentView) {
+        this.commentHandle = commentHandle;
+        this.commentView = commentView;
 
-		contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
-		replyFeedRequestExecutor = new BatchDataRequestExecutor<>(
-				contentService::getReplyFeed,
-				() -> new GetReplyFeedRequest(commentHandle)
-		);
-	}
+        contentService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
+        replyFeedRequestExecutor = new BatchDataRequestExecutor<>(
+                contentService::getReplyFeed,
+                () -> new GetReplyFeedRequest(commentHandle)
+        );
+    }
 
-	private CommentView readComment(RequestType requestType) throws NetworkRequestException {
-		GetCommentRequest request = new GetCommentRequest(commentHandle);
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			request.forceCacheUsage();
-		}
-		GetCommentResponse response = contentService.getComment(request);
-		return response.getComment();
-	}
+    private CommentView readComment(RequestType requestType) throws NetworkRequestException {
+        GetCommentRequest request = new GetCommentRequest(commentHandle);
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            request.forceCacheUsage();
+        }
+        GetCommentResponse response = contentService.getComment(request);
+        return response.getComment();
+    }
 
-	@Override
-	protected List<Object> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		List<Object> result = new ArrayList<>();
-		boolean readComment = !dataState.getBooleanValue(COMMENT_LOADED);
-		if (readComment) {
-			result.add(getComment(requestType));
-		}
-		try {
-			List<ReplyView> topics = replyFeedRequestExecutor.fetchData(dataState, requestType, pageSize);
-			result.addAll(topics);
-			return result;
-		} catch (NetworkRequestException e) {
-			throw readComment ? new PartiallyLoadedDataException(result, e) : e;
-		} finally {
-			dataState.setValue(COMMENT_LOADED, true);
-		}
-	}
+    @Override
+    protected List<Object> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        List<Object> result = new ArrayList<>();
+        boolean readComment = !dataState.getBooleanValue(COMMENT_LOADED);
+        if (readComment) {
+            result.add(getComment(requestType));
+        }
+        try {
+            List<ReplyView> topics = replyFeedRequestExecutor.fetchData(dataState, requestType, pageSize);
+            result.addAll(topics);
+            return result;
+        } catch (NetworkRequestException e) {
+            throw readComment ? new PartiallyLoadedDataException(result, e) : e;
+        } finally {
+            dataState.setValue(COMMENT_LOADED, true);
+        }
+    }
 
-	private CommentView getComment(RequestType requestType) throws NetworkRequestException {
-		CommentView result = (commentView == null || requestType.isFullDataReloadRequired()) ? readComment(requestType) : commentView;
-		IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-		GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			request.forceCacheUsage();
-		}
-		AccountData profile = new AccountData(accountService.getUserProfile(request).getUser());
-		result.setUserProfile(profile);
-		return result;
+    private CommentView getComment(RequestType requestType) throws NetworkRequestException {
+        CommentView result = (commentView == null || requestType.isFullDataReloadRequired()) ? readComment(requestType) : commentView;
+        IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+        GetUserProfileRequest request = new GetUserProfileRequest(result.getUser().getHandle());
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            request.forceCacheUsage();
+        }
+        AccountData profile = new AccountData(accountService.getUserProfile(request).getUser());
+        result.setUserProfile(profile);
+        return result;
 
-	}
+    }
 }

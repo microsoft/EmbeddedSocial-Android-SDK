@@ -5,22 +5,22 @@
   -->
 
 <FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-	<include
-		android:id="@+id/es_options"
-		layout="@layout/es_fragment_options_inner"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		/>
+    <include
+        android:id="@+id/es_options"
+        layout="@layout/es_fragment_options_inner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
-	<include
-		android:id="@+id/es_progress"
-		layout="@layout/es_progressbar"
-		android:visibility="gone"
-		/>
+    <include
+        android:id="@+id/es_progress"
+        layout="@layout/es_progressbar"
+        android:visibility="gone"
+        />
 
 </FrameLayout>

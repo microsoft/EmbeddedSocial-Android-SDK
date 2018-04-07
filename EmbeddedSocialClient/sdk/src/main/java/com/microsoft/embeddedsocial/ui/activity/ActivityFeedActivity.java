@@ -14,25 +14,25 @@ import com.microsoft.embeddedsocial.sdk.R;
  * Shows the recent activity feed.
  */
 public class ActivityFeedActivity extends BaseActivity {
-	public static final String NAME = "ActivityFeed";
+    public static final String NAME = "ActivityFeed";
 
-	public ActivityFeedActivity() {
-		super(R.id.es_navigationActivity);
-	}
+    public ActivityFeedActivity() {
+        super(R.id.es_navigationActivity);
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new ActivityFeedFragment());
-		super.setupFragments();
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new ActivityFeedFragment());
+        super.setupFragments();
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 }

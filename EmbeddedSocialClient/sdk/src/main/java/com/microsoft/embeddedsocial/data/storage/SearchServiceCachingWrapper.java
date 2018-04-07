@@ -26,69 +26,69 @@ import java.sql.SQLException;
  */
 public class SearchServiceCachingWrapper implements ISearchService {
 
-	private final TrendingHashtagsRequestWrapper hashtagsRequestWrapper = new TrendingHashtagsRequestWrapper();
-	private final SearchHistory searchHistory = new SearchHistory();
+    private final TrendingHashtagsRequestWrapper hashtagsRequestWrapper = new TrendingHashtagsRequestWrapper();
+    private final SearchHistory searchHistory = new SearchHistory();
 
-	@Override
-	public UsersListResponse findUsersWithThirdPartyAccounts(FindUsersWithThirdPartyAccountsRequest request)
-		throws NetworkRequestException {
+    @Override
+    public UsersListResponse findUsersWithThirdPartyAccounts(FindUsersWithThirdPartyAccountsRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public GetTrendingHashtagsResponse getTrendingHashtags(GetTrendingHashtagsRequest request)
-		throws NetworkRequestException {
+    @Override
+    public GetTrendingHashtagsResponse getTrendingHashtags(GetTrendingHashtagsRequest request)
+        throws NetworkRequestException {
 
-		return hashtagsRequestWrapper.getResponse(request);
-	}
+        return hashtagsRequestWrapper.getResponse(request);
+    }
 
-	@Override
-	public TopicsListResponse searchTopics(SearchTopicsRequest request)
-		throws NetworkRequestException {
+    @Override
+    public TopicsListResponse searchTopics(SearchTopicsRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public AutocompletedHashtagsResponse searchHashtagsAutocomplete(GetAutocompletedHashtagsRequest request)
-		throws NetworkRequestException {
+    @Override
+    public AutocompletedHashtagsResponse searchHashtagsAutocomplete(GetAutocompletedHashtagsRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public UsersListResponse searchUsers(SearchUsersRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public UsersListResponse searchUsers(SearchUsersRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public UsersListResponse getPopularUsers(GetPopularUsersRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public UsersListResponse getPopularUsers(GetPopularUsersRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	private class TrendingHashtagsRequestWrapper extends
-			AbstractRequestWrapper<GetTrendingHashtagsRequest, GetTrendingHashtagsResponse> {
+    private class TrendingHashtagsRequestWrapper extends
+            AbstractRequestWrapper<GetTrendingHashtagsRequest, GetTrendingHashtagsResponse> {
 
-		@Override
-		protected GetTrendingHashtagsResponse getNetworkResponse(GetTrendingHashtagsRequest request)
-			throws NetworkRequestException {
+        @Override
+        protected GetTrendingHashtagsResponse getNetworkResponse(GetTrendingHashtagsRequest request)
+            throws NetworkRequestException {
 
-			return request.send();
-		}
+            return request.send();
+        }
 
-		@Override
-		protected void storeResponse(GetTrendingHashtagsRequest request, GetTrendingHashtagsResponse response)
-			throws SQLException {
+        @Override
+        protected void storeResponse(GetTrendingHashtagsRequest request, GetTrendingHashtagsResponse response)
+            throws SQLException {
 
-			searchHistory.storeTrendingHashtags(response.getData());
-		}
+            searchHistory.storeTrendingHashtags(response.getData());
+        }
 
-		@Override
-		protected GetTrendingHashtagsResponse getCachedResponse(GetTrendingHashtagsRequest request)
-			throws SQLException {
+        @Override
+        protected GetTrendingHashtagsResponse getCachedResponse(GetTrendingHashtagsRequest request)
+            throws SQLException {
 
-			return new GetTrendingHashtagsResponse(searchHistory.getTrendingHashtags());
-		}
-	}
+            return new GetTrendingHashtagsResponse(searchHistory.getTrendingHashtags());
+        }
+    }
 }

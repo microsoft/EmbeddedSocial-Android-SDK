@@ -12,21 +12,21 @@ import android.os.Parcel;
  */
 public class RemoveContentData extends ContentOperationData {
 
-	public RemoveContentData(String handle) {
-		super(handle);
-	}
+    public RemoveContentData(String handle) {
+        super(handle);
+    }
 
-	public RemoveContentData(Parcel in) {
-		super(in);
-	}
+    public RemoveContentData(Parcel in) {
+        super(in);
+    }
 
-	public static final Creator<RemoveContentData> CREATOR = new Creator<RemoveContentData>() {
-		public RemoveContentData createFromParcel(Parcel source) {
-			return new RemoveContentData(source);
-		}
+    public static final Creator<RemoveContentData> CREATOR = new Creator<RemoveContentData>() {
+        public RemoveContentData createFromParcel(Parcel source) {
+            return new RemoveContentData(source);
+        }
 
-		public RemoveContentData[] newArray(int size) {
-			return new RemoveContentData[size];
-		}
-	};
+        public RemoveContentData[] newArray(int size) {
+            return new RemoveContentData[size];
+        }
+    };
 }

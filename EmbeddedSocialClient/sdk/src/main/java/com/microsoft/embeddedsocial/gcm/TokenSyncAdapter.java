@@ -20,54 +20,54 @@ import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
  */
 class TokenSyncAdapter implements ISynchronizable {
 
-	private final GcmTokenHolder tokenHolder;
-	private boolean launched;
+    private final GcmTokenHolder tokenHolder;
+    private boolean launched;
 
-	TokenSyncAdapter(GcmTokenHolder tokenHolder) {
-		this.tokenHolder = tokenHolder;
-	}
+    TokenSyncAdapter(GcmTokenHolder tokenHolder) {
+        this.tokenHolder = tokenHolder;
+    }
 
-	@Override
-	public void synchronize() throws SynchronizationException {
-		if (!validatePreconditions()) {
-			return;
-		}
-		INotificationService notificationService = GlobalObjectRegistry
-			.getObject(EmbeddedSocialServiceProvider.class)
-			.getNotificationService();
+    @Override
+    public void synchronize() throws SynchronizationException {
+        if (!validatePreconditions()) {
+            return;
+        }
+        INotificationService notificationService = GlobalObjectRegistry
+            .getObject(EmbeddedSocialServiceProvider.class)
+            .getNotificationService();
 
-		RegisterPushNotificationRequest request = new RegisterPushNotificationRequest(
-			tokenHolder.getToken(),
-			tokenHolder.getTokenTimestamp()
-		);
-		try {
-			notificationService.registerPushNotification(request);
-			launched = true;
-		} catch (NetworkRequestException e) {
-			throw new SynchronizationException(e);
-		}
-	}
+        RegisterPushNotificationRequest request = new RegisterPushNotificationRequest(
+            tokenHolder.getToken(),
+            tokenHolder.getTokenTimestamp()
+        );
+        try {
+            notificationService.registerPushNotification(request);
+            launched = true;
+        } catch (NetworkRequestException e) {
+            throw new SynchronizationException(e);
+        }
+    }
 
-	private boolean validatePreconditions() throws SynchronizationException {
-		boolean result = true;
+    private boolean validatePreconditions() throws SynchronizationException {
+        boolean result = true;
 
-		if (tokenHolder.isTokenSynchronized()) {
-			DebugLog.w("GCM token has already been synchronized");
-			result = false;
-		} else if (!tokenHolder.hasValidToken()) {
-			DebugLog.w("GCM token is not valid");
-			result = false;
-		} else if (!UserAccount.getInstance().isSignedIn()) {
-			throw new SynchronizationException("User is not signed in");
-		}
+        if (tokenHolder.isTokenSynchronized()) {
+            DebugLog.w("GCM token has already been synchronized");
+            result = false;
+        } else if (!tokenHolder.hasValidToken()) {
+            DebugLog.w("GCM token is not valid");
+            result = false;
+        } else if (!UserAccount.getInstance().isSignedIn()) {
+            throw new SynchronizationException("User is not signed in");
+        }
 
-		return result;
-	}
+        return result;
+    }
 
-	@Override
-	public void onSynchronizationSuccess() {
-		if (launched) {
-			tokenHolder.markTokenSynchronized();
-		}
-	}
+    @Override
+    public void onSynchronizationSuccess() {
+        if (launched) {
+            tokenHolder.markTokenSynchronized();
+        }
+    }
 }

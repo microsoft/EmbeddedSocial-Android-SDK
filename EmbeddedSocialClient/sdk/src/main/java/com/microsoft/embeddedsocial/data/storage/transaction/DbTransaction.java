@@ -14,24 +14,24 @@ import java.sql.SQLException;
  */
 public class DbTransaction {
 
-	/**
-	 * Performs a transaction on the specified dao.
-	 * @param dao           the dao to perform the transaction on
-	 * @param transaction   the transaction to perform
-	 * @throws SQLException if any exception happens during the transaction.
-	 */
-	public static synchronized void performTransaction(Dao<?, ?> dao, ISqlTransaction transaction)
-		throws SQLException {
+    /**
+     * Performs a transaction on the specified dao.
+     * @param dao           the dao to perform the transaction on
+     * @param transaction   the transaction to perform
+     * @throws SQLException if any exception happens during the transaction.
+     */
+    public static synchronized void performTransaction(Dao<?, ?> dao, ISqlTransaction transaction)
+        throws SQLException {
 
-		try {
-			dao.callBatchTasks(() -> {
-				transaction.performTransaction();
-				return null;
-			});
-		} catch (SQLException e) {
-			throw e;
-		} catch (Exception e) {
-			throw new SQLException(e);
-		}
-	}
+        try {
+            dao.callBatchTasks(() -> {
+                transaction.performTransaction();
+                return null;
+            });
+        } catch (SQLException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new SQLException(e);
+        }
+    }
 }

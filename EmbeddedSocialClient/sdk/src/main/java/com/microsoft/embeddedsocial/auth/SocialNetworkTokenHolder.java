@@ -11,39 +11,39 @@ package com.microsoft.embeddedsocial.auth;
  */
 public class SocialNetworkTokenHolder<T> {
 
-	private T token;
+    private T token;
 
-	SocialNetworkTokenHolder() {  }
+    SocialNetworkTokenHolder() {  }
 
-	/**
-	 * Checks if this holder has a valid access token.
-	 * @return true if a valid access token is present
-	 */
-	public boolean hasToken() {
-		return token != null;
-	}
+    /**
+     * Checks if this holder has a valid access token.
+     * @return true if a valid access token is present
+     */
+    public boolean hasToken() {
+        return token != null;
+    }
 
-	/**
-	 * Gets current access token.
-	 * @return  access token instance.
-	 * @see     {@link #hasToken()}.
-	 */
-	public T getToken() {
-		return token;
-	}
+    /**
+     * Gets current access token.
+     * @return  access token instance.
+     * @see     {@link #hasToken()}.
+     */
+    public T getToken() {
+        return token;
+    }
 
-	/**
-	 * Stores an access token.
-	 * @param token access token
-	 */
-	public void storeToken(T token) {
-		this.token = token;
-	}
+    /**
+     * Stores an access token.
+     * @param token access token
+     */
+    public void storeToken(T token) {
+        this.token = token;
+    }
 
-	/**
-	 * Clears currently stored token.
-	 */
-	public void clearToken() {
-		storeToken(null);
-	}
+    /**
+     * Clears currently stored token.
+     */
+    public void clearToken() {
+        storeToken(null);
+    }
 }

@@ -15,29 +15,29 @@ import java.util.List;
  */
 public abstract class FriendlistLoader {
 
-	private final IdentityProvider identityProvider;
+    private final IdentityProvider identityProvider;
 
-	protected FriendlistLoader(IdentityProvider identityProvider) {
-		this.identityProvider = identityProvider;
-	}
+    protected FriendlistLoader(IdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
 
-	/**
-	 * Gets the list of friend ids from a social network supported by this friend loader.
-	 *
-	 * @return list of friend ids.
-	 * @throws SocialNetworkException if anything goes wrong.
-	 */
-	public abstract List<String> getThirdPartyFriendIds() throws SocialNetworkException;
+    /**
+     * Gets the list of friend ids from a social network supported by this friend loader.
+     *
+     * @return list of friend ids.
+     * @throws SocialNetworkException if anything goes wrong.
+     */
+    public abstract List<String> getThirdPartyFriendIds() throws SocialNetworkException;
 
-	/**
-	 * Gets social network account type supported by this friend loader.
-	 *
-	 * @return one of {@link IdentityProvider} values.
-	 */
-	public final IdentityProvider getAccountType() {
-		return identityProvider;
-	}
+    /**
+     * Gets social network account type supported by this friend loader.
+     *
+     * @return one of {@link IdentityProvider} values.
+     */
+    public final IdentityProvider getAccountType() {
+        return identityProvider;
+    }
 
-	public abstract boolean isAuthorizedToSocialNetwork();
+    public abstract boolean isAuthorizedToSocialNetwork();
 
 }

@@ -15,8 +15,8 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
  */
 public class FollowersActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowersFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowersFragment());
+    }
 }

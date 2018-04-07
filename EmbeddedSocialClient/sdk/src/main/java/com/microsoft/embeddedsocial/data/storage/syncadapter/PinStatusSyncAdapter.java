@@ -18,22 +18,22 @@ import com.microsoft.embeddedsocial.server.model.pin.AddPinRequest;
  */
 public class PinStatusSyncAdapter extends AbstractAutoCleanupSyncAdapter<UserActionCache.PinChangedAction> {
 
-	public PinStatusSyncAdapter(Dao<UserActionCache.PinChangedAction, Integer> pinDao,
-	                            UserActionCache.PinChangedAction pinAction) {
+    public PinStatusSyncAdapter(Dao<UserActionCache.PinChangedAction, Integer> pinDao,
+                                UserActionCache.PinChangedAction pinAction) {
 
-		super(pinAction, pinDao);
-	}
+        super(pinAction, pinDao);
+    }
 
-	@Override
-	protected void onSynchronize(UserActionCache.PinChangedAction item)
-		throws NetworkRequestException, SynchronizationException {
+    @Override
+    protected void onSynchronize(UserActionCache.PinChangedAction item)
+        throws NetworkRequestException, SynchronizationException {
 
-		IContentService contentService = getServiceProvider().getContentService();
+        IContentService contentService = getServiceProvider().getContentService();
 
-		if (item.getStatus()) {
-			contentService.addPin(new AddPinRequest(item.getTopicHandle()));
-		} else {
-			contentService.removePin(new RemovePinRequest(item.getTopicHandle()));
-		}
-	}
+        if (item.getStatus()) {
+            contentService.addPin(new AddPinRequest(item.getTopicHandle()));
+        } else {
+            contentService.removePin(new RemovePinRequest(item.getTopicHandle()));
+        }
+    }
 }

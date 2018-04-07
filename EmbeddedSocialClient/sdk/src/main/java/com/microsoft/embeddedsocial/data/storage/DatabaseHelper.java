@@ -33,127 +33,127 @@ import java.util.Set;
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
-	private static final int DB_VERSION = 17;
-	private static final String DB_NAME = "local_content";
+    private static final int DB_VERSION = 17;
+    private static final String DB_NAME = "local_content";
 
-	private Dao<TopicView, String> topicDao;
-	private Dao<CommentView, String> commentDao;
-	private Dao<ReplyView, String> replyDao;
-	private Dao<UserCompactView, String> userDao;
-	private Dao<UserProfileView, String> userProfileDao;
-	private Dao<AddPostData, Integer> postDao;
-	private Dao<AppCompactView, String> appDao;
-	private Dao<UserRelationOperation, Integer> userOperationDao;
-	private Dao<UserAccountView, String> userAccountDao;
+    private Dao<TopicView, String> topicDao;
+    private Dao<CommentView, String> commentDao;
+    private Dao<ReplyView, String> replyDao;
+    private Dao<UserCompactView, String> userDao;
+    private Dao<UserProfileView, String> userProfileDao;
+    private Dao<AddPostData, Integer> postDao;
+    private Dao<AppCompactView, String> appDao;
+    private Dao<UserRelationOperation, Integer> userOperationDao;
+    private Dao<UserAccountView, String> userAccountDao;
 
-	/**
-	 * Used by ORMLite reflection.
-	 */
-	public DatabaseHelper(Context context) {
-		super(context, DB_NAME, null, DB_VERSION);
-		try {
-			this.topicDao = getDao(TopicView.class);
-			this.commentDao = getDao(CommentView.class);
-			this.replyDao = getDao(ReplyView.class);
-			this.userDao = getDao(UserCompactView.class);
-			this.userProfileDao = getDao(UserProfileView.class);
-			this.postDao = getDao(AddPostData.class);
-			this.appDao = getDao(AppCompactView.class);
-			this.userOperationDao = getDao(UserRelationOperation.class);
-			this.userAccountDao = getDao(UserAccountView.class);
-		} catch (SQLException e) {
-			DebugLog.logException(e);
-			throw new FatalDatabaseException(e);
-		}
-	}
+    /**
+     * Used by ORMLite reflection.
+     */
+    public DatabaseHelper(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
+        try {
+            this.topicDao = getDao(TopicView.class);
+            this.commentDao = getDao(CommentView.class);
+            this.replyDao = getDao(ReplyView.class);
+            this.userDao = getDao(UserCompactView.class);
+            this.userProfileDao = getDao(UserProfileView.class);
+            this.postDao = getDao(AddPostData.class);
+            this.appDao = getDao(AppCompactView.class);
+            this.userOperationDao = getDao(UserRelationOperation.class);
+            this.userAccountDao = getDao(UserAccountView.class);
+        } catch (SQLException e) {
+            DebugLog.logException(e);
+            throw new FatalDatabaseException(e);
+        }
+    }
 
-	public Dao<UserAccountView, String> getUserAccountDao() {
-		return userAccountDao;
-	}
+    public Dao<UserAccountView, String> getUserAccountDao() {
+        return userAccountDao;
+    }
 
-	public Dao<UserCompactView, String> getUserDao() {
-		return userDao;
-	}
+    public Dao<UserCompactView, String> getUserDao() {
+        return userDao;
+    }
 
-	public Dao<ReplyView, String> getReplyDao() {
-		return replyDao;
-	}
+    public Dao<ReplyView, String> getReplyDao() {
+        return replyDao;
+    }
 
-	public Dao<TopicView, String> getTopicDao() {
-		return topicDao;
-	}
+    public Dao<TopicView, String> getTopicDao() {
+        return topicDao;
+    }
 
-	public Dao<CommentView, String> getCommentDao() {
-		return commentDao;
-	}
+    public Dao<CommentView, String> getCommentDao() {
+        return commentDao;
+    }
 
-	public Dao<AddPostData, Integer> getPostDao() {
-		return postDao;
-	}
+    public Dao<AddPostData, Integer> getPostDao() {
+        return postDao;
+    }
 
-	public Dao<AppCompactView, String> getAppDao() {
-		return appDao;
-	}
+    public Dao<AppCompactView, String> getAppDao() {
+        return appDao;
+    }
 
-	public Dao<UserRelationOperation, Integer> getUserOperationDao() {
-		return userOperationDao;
-	}
+    public Dao<UserRelationOperation, Integer> getUserOperationDao() {
+        return userOperationDao;
+    }
 
-	public Dao<UserProfileView, String> getUserProfileDao() {
-		return userProfileDao;
-	}
+    public Dao<UserProfileView, String> getUserProfileDao() {
+        return userProfileDao;
+    }
 
-	@Override
-	public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
-		try {
-			createAllTables(connectionSource);
-			createAllTriggers(database);
-		} catch (SQLException e) {
-			DebugLog.logException(e);
-		}
-	}
+    @Override
+    public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
+        try {
+            createAllTables(connectionSource);
+            createAllTriggers(database);
+        } catch (SQLException e) {
+            DebugLog.logException(e);
+        }
+    }
 
-	private void createAllTriggers(SQLiteDatabase database) {
-		for (ISqlTrigger trigger : DbModelRegistry.getRegisteredTriggers()) {
-			database.execSQL(trigger.toSqlCreateStatement());
-		}
-	}
+    private void createAllTriggers(SQLiteDatabase database) {
+        for (ISqlTrigger trigger : DbModelRegistry.getRegisteredTriggers()) {
+            database.execSQL(trigger.toSqlCreateStatement());
+        }
+    }
 
-	/**
-	 * Deletes all data from the DB.
-	 */
-	public void clearData() {
-		Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
-		for (Class<?> registeredModel : registeredModels) {
-			try {
-				TableUtils.clearTable(connectionSource, registeredModel);
-			} catch (SQLException e) {
-				DebugLog.logException(e);
-			}
-		}
-	}
+    /**
+     * Deletes all data from the DB.
+     */
+    public void clearData() {
+        Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
+        for (Class<?> registeredModel : registeredModels) {
+            try {
+                TableUtils.clearTable(connectionSource, registeredModel);
+            } catch (SQLException e) {
+                DebugLog.logException(e);
+            }
+        }
+    }
 
-	private void createAllTables(ConnectionSource connectionSource) throws SQLException {
-		Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
-		for (Class<?> registeredModel : registeredModels) {
-			TableUtils.createTableIfNotExists(connectionSource, registeredModel);
-		}
-	}
+    private void createAllTables(ConnectionSource connectionSource) throws SQLException {
+        Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
+        for (Class<?> registeredModel : registeredModels) {
+            TableUtils.createTableIfNotExists(connectionSource, registeredModel);
+        }
+    }
 
-	private void dropAllTables() throws SQLException {
-		Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
-		for (Class<?> registeredModel : registeredModels) {
-			TableUtils.dropTable(getConnectionSource(), registeredModel, true);
-		}
-	}
+    private void dropAllTables() throws SQLException {
+        Set<Class<?>> registeredModels = DbModelRegistry.getRegisteredModels();
+        for (Class<?> registeredModel : registeredModels) {
+            TableUtils.dropTable(getConnectionSource(), registeredModel, true);
+        }
+    }
 
-	@Override
-	public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-		try {
-			dropAllTables();
-		} catch (SQLException e) {
-			DebugLog.logException(e);
-		}
-		onCreate(database, connectionSource);
-	}
+    @Override
+    public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
+        try {
+            dropAllTables();
+        } catch (SQLException e) {
+            DebugLog.logException(e);
+        }
+        onCreate(database, connectionSource);
+    }
 }

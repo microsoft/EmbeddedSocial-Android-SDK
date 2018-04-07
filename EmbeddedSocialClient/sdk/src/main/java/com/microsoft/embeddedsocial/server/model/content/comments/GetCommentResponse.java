@@ -12,13 +12,13 @@ import com.microsoft.embeddedsocial.server.model.view.CommentView;
  */
 public class GetCommentResponse {
 
-	private CommentView comment;
+    private CommentView comment;
 
-	public GetCommentResponse(CommentView comment) {
-		this.comment = comment;
-	}
+    public GetCommentResponse(CommentView comment) {
+        this.comment = comment;
+    }
 
-	public CommentView getComment() {
-		return comment;
-	}
+    public CommentView getComment() {
+        return comment;
+    }
 }

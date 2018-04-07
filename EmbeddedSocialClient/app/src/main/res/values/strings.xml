@@ -6,5 +6,5 @@
   -->
 
 <resources>
-	<string name="app_name">EmbeddedSocial</string>
+    <string name="app_name">EmbeddedSocial</string>
 </resources>

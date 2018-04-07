@@ -9,22 +9,22 @@ package com.microsoft.embeddedsocial.fetcher.base;
  * Type of request.
  */
 public enum RequestType {
-	/**
-	 * Regular request.
-	 */
-	REGULAR,
+    /**
+     * Regular request.
+     */
+    REGULAR,
 
-	/**
-	 * Should read from the beginning (for pull-to-refresh functionality)
-	 */
-	FORCE_REFRESH,
+    /**
+     * Should read from the beginning (for pull-to-refresh functionality)
+     */
+    FORCE_REFRESH,
 
-	/**
-	 * Request to update data from the cache.
-	 */
-	SYNC_WITH_CACHE;
+    /**
+     * Request to update data from the cache.
+     */
+    SYNC_WITH_CACHE;
 
-	public boolean isFullDataReloadRequired() {
-		return this != REGULAR;
-	}
+    public boolean isFullDataReloadRequired() {
+        return this != REGULAR;
+    }
 }

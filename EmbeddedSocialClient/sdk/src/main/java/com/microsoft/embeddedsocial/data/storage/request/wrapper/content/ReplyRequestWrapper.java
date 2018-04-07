@@ -14,24 +14,24 @@ import java.sql.SQLException;
 
 public class ReplyRequestWrapper extends AbstractNetworkMethodWrapper<GetReplyRequest, GetReplyResponse> {
 
-	private final ContentCache contentCache;
+    private final ContentCache contentCache;
 
-	public ReplyRequestWrapper(INetworkMethod<GetReplyRequest, GetReplyResponse> networkMethod,
-							   ContentCache contentCache) {
+    public ReplyRequestWrapper(INetworkMethod<GetReplyRequest, GetReplyResponse> networkMethod,
+                               ContentCache contentCache) {
 
-		super(networkMethod);
-		this.contentCache = contentCache;
-	}
+        super(networkMethod);
+        this.contentCache = contentCache;
+    }
 
-	@Override
-	protected void storeResponse(GetReplyRequest request, GetReplyResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetReplyRequest request, GetReplyResponse response)
+        throws SQLException {
 
-		contentCache.storeReply(response.getReply());
-	}
+        contentCache.storeReply(response.getReply());
+    }
 
-	@Override
-	protected GetReplyResponse getCachedResponse(GetReplyRequest request) throws SQLException {
-		return new GetReplyResponse(contentCache.getReply(request.getReplyHandle()));
-	}
+    @Override
+    protected GetReplyResponse getCachedResponse(GetReplyRequest request) throws SQLException {
+        return new GetReplyResponse(contentCache.getReply(request.getReplyHandle()));
+    }
 }

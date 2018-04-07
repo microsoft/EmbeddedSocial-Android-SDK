@@ -20,15 +20,15 @@ import com.microsoft.embeddedsocial.server.model.view.ActivityView;
  */
 public abstract class BaseActivityFeedFragment extends BaseListContentFragment<FetchableAdapter<ActivityView, ?>> {
 
-	protected BaseActivityFeedFragment() {
-		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
-	}
+    protected BaseActivityFeedFragment() {
+        addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		setSidePadding(DisplayMethod.LIST.getHorizontalPadding(getContext())); // TODO: check if it's needed
-		int padding = getResources().getDimensionPixelOffset(R.dimen.es_card_list_padding_ver);
-		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(padding));
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setSidePadding(DisplayMethod.LIST.getHorizontalPadding(getContext())); // TODO: check if it's needed
+        int padding = getResources().getDimensionPixelOffset(R.dimen.es_card_list_padding_ver);
+        getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(padding));
+    }
 }

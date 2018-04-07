@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class CommentAddedEvent extends NoteAddedEvent {
 
-	public CommentAddedEvent(DiscussionItem data, String handle, boolean result) {
-		super(data, handle, result);
-	}
+    public CommentAddedEvent(DiscussionItem data, String handle, boolean result) {
+        super(data, handle, result);
+    }
 }

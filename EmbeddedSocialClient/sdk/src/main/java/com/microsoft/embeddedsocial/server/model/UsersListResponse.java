@@ -15,29 +15,29 @@ import java.util.List;
 
 public class UsersListResponse extends ListResponse<UserCompactView> {
 
-	private List<UserCompactView> users;
+    private List<UserCompactView> users;
 
-	public UsersListResponse(List<UserCompactView> users) {
-		this.users = users;
-	}
+    public UsersListResponse(List<UserCompactView> users) {
+        this.users = users;
+    }
 
-	public UsersListResponse(FeedResponseUserCompactView feed) {
-		users = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.UserCompactView feedView : feed.getData()) {
-			users.add(new UserCompactView(feedView));
-		}
-		setContinuationKey(feed.getCursor());
-	}
+    public UsersListResponse(FeedResponseUserCompactView feed) {
+        users = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.UserCompactView feedView : feed.getData()) {
+            users.add(new UserCompactView(feedView));
+        }
+        setContinuationKey(feed.getCursor());
+    }
 
-	public UsersListResponse(FeedResponseUserProfileView feed) {
-		users = new ArrayList<>();
-		for (UserProfileView feedView : feed.getData()) {
-			users.add(new UserCompactView(feedView));
-		}
-	}
+    public UsersListResponse(FeedResponseUserProfileView feed) {
+        users = new ArrayList<>();
+        for (UserProfileView feedView : feed.getData()) {
+            users.add(new UserCompactView(feedView));
+        }
+    }
 
-	@Override
-	public List<UserCompactView> getData() {
-		return users;
-	}
+    @Override
+    public List<UserCompactView> getData() {
+        return users;
+    }
 }

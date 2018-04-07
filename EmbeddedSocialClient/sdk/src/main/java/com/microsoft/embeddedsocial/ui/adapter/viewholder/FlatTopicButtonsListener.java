@@ -25,60 +25,60 @@ import android.view.View;
  */
 public class FlatTopicButtonsListener extends TopicButtonsListener {
 
-	private final TopicRenderOptions options = TopicRenderOptions.getDefault();
-	private final Fragment fragment;
+    private final TopicRenderOptions options = TopicRenderOptions.getDefault();
+    private final Fragment fragment;
 
-	public FlatTopicButtonsListener(Fragment fragment) {
-		super(fragment.getContext());
-		this.fragment = fragment;
-	}
+    public FlatTopicButtonsListener(Fragment fragment) {
+        super(fragment.getContext());
+        this.fragment = fragment;
+    }
 
-	@Override
-	public void onClickContextMenu(View view) {
-		PopupMenu menu = new PopupMenu(context, view);
-		TopicView topic = (TopicView) view.getTag(R.id.es_keyTopic);
-		TopicContextMenu.inflateContextMenu(fragment, menu, topic, options);
-		menu.show();
-	}
+    @Override
+    public void onClickContextMenu(View view) {
+        PopupMenu menu = new PopupMenu(context, view);
+        TopicView topic = (TopicView) view.getTag(R.id.es_keyTopic);
+        TopicContextMenu.inflateContextMenu(fragment, menu, topic, options);
+        menu.show();
+    }
 
-	@Override
-	public void onClickCommentsCount(View view) {
-		EventBus.post(new ScrollPositionEvent((Integer) view.getTag(R.id.es_keyPosition)));
-	}
+    @Override
+    public void onClickCommentsCount(View view) {
+        EventBus.post(new ScrollPositionEvent((Integer) view.getTag(R.id.es_keyPosition)));
+    }
 
-	@Override
-	public void onClickComment(View view) {
-		if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.COMMENT)) {
-			EventBus.post(new ScrollPositionEvent(ScrollPositionEvent.EDIT_POSITION));
-		}
-	}
+    @Override
+    public void onClickComment(View view) {
+        if (UserAccount.getInstance().checkAuthorization(fragment, AuthorizationCause.COMMENT)) {
+            EventBus.post(new ScrollPositionEvent(ScrollPositionEvent.EDIT_POSITION));
+        }
+    }
 
-	@Override
-	public void onClickPin(View view) {
-		ContentUpdateHelper.launchPin(
-			fragment,
-			(String) view.getTag(R.id.es_keyHandle),
-			(boolean) view.getTag(R.id.es_keyIsAdd)
-		);
-	}
+    @Override
+    public void onClickPin(View view) {
+        ContentUpdateHelper.launchPin(
+            fragment,
+            (String) view.getTag(R.id.es_keyHandle),
+            (boolean) view.getTag(R.id.es_keyIsAdd)
+        );
+    }
 
-	@Override
-	public void onClickContent(View view) {
-		// Not used
-	}
+    @Override
+    public void onClickContent(View view) {
+        // Not used
+    }
 
-	@Override
-	public void onClickCover(View view) {
-		EventBus.post(new ViewCoverImageEvent(fragment, (TopicView) view.getTag(R.id.es_keyTopic)));
-	}
+    @Override
+    public void onClickCover(View view) {
+        EventBus.post(new ViewCoverImageEvent(fragment, (TopicView) view.getTag(R.id.es_keyTopic)));
+    }
 
-	@Override
-	public void onClickLike(View view) {
-		ContentUpdateHelper.launchLike(
-			fragment,
-			(String) view.getTag(R.id.es_keyHandle),
-			ContentType.TOPIC,
-			(boolean) view.getTag(R.id.es_keyIsAdd)
-		);
-	}
+    @Override
+    public void onClickLike(View view) {
+        ContentUpdateHelper.launchLike(
+            fragment,
+            (String) view.getTag(R.id.es_keyHandle),
+            ContentType.TOPIC,
+            (boolean) view.getTag(R.id.es_keyIsAdd)
+        );
+    }
 }

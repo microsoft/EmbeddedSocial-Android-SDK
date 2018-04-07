@@ -16,23 +16,23 @@ import java.util.Map;
  */
 public enum ThemeGroup {
 
-	@SerializedName("light")
-	LIGHT,
+    @SerializedName("light")
+    LIGHT,
 
-	@SerializedName("dark")
-	DARK;
+    @SerializedName("dark")
+    DARK;
 
-	static {
-		LIGHT.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Light);
-		LIGHT.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Light_Search);
-		DARK.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Dark);
-		DARK.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Dark);
-	}
+    static {
+        LIGHT.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Light);
+        LIGHT.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Light_Search);
+        DARK.themeResIds.put(Theme.REGULAR, R.style.EmbeddedSocialSdkAppTheme_Dark);
+        DARK.themeResIds.put(Theme.SEARCH, R.style.EmbeddedSocialSdkAppTheme_Dark);
+    }
 
-	private final Map<Theme, Integer> themeResIds = new HashMap<>();
+    private final Map<Theme, Integer> themeResIds = new HashMap<>();
 
-	public int getThemeResId(Theme theme) {
-		return themeResIds.get(theme);
-	}
+    public int getThemeResId(Theme theme) {
+        return themeResIds.get(theme);
+    }
 
 }

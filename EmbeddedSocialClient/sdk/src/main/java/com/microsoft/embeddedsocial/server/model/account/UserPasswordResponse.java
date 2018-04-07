@@ -7,14 +7,14 @@ package com.microsoft.embeddedsocial.server.model.account;
 
 public class UserPasswordResponse {
 
-	private String userHandle;
-	private String accessToken;
+    private String userHandle;
+    private String accessToken;
 
-	public String getUserHandle() {
-		return userHandle;
-	}
+    public String getUserHandle() {
+        return userHandle;
+    }
 
-	public String getAccessToken() {
-		return accessToken;
-	}
+    public String getAccessToken() {
+        return accessToken;
+    }
 }

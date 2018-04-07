@@ -15,19 +15,19 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
  */
 @HandlingThread(ThreadType.MAIN)
 public class GetCommentEvent extends AbstractEvent {
-	private final CommentView commentView;
-	private final boolean result;
+    private final CommentView commentView;
+    private final boolean result;
 
-	public GetCommentEvent(CommentView commentView, boolean result) {
-		this.commentView = commentView;
-		this.result = result;
-	}
+    public GetCommentEvent(CommentView commentView, boolean result) {
+        this.commentView = commentView;
+        this.result = result;
+    }
 
-	public CommentView getCommentView() {
-		return commentView;
-	}
+    public CommentView getCommentView() {
+        return commentView;
+    }
 
-	public boolean isResult() {
-		return result;
-	}
+    public boolean isResult() {
+        return result;
+    }
 }

@@ -13,32 +13,32 @@ import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersReq
 import java.sql.SQLException;
 
 public class PendingUserFeedRequestWrapper
-	extends AbstractBatchNetworkMethodWrapper<GetPendingUsersRequest, UsersListResponse> {
+    extends AbstractBatchNetworkMethodWrapper<GetPendingUsersRequest, UsersListResponse> {
 
-	protected final UserCache userCache;
-	protected final UserCache.UserFeedType feedType;
+    protected final UserCache userCache;
+    protected final UserCache.UserFeedType feedType;
 
-	public PendingUserFeedRequestWrapper(
-		INetworkMethod<GetPendingUsersRequest, UsersListResponse> networkMethod,
-		UserCache userCache,
-		UserCache.UserFeedType feedType) {
+    public PendingUserFeedRequestWrapper(
+        INetworkMethod<GetPendingUsersRequest, UsersListResponse> networkMethod,
+        UserCache userCache,
+        UserCache.UserFeedType feedType) {
 
-		super(networkMethod);
-		this.userCache = userCache;
-		this.feedType = feedType;
-	}
+        super(networkMethod);
+        this.userCache = userCache;
+        this.feedType = feedType;
+    }
 
-	@Override
-	protected void storeResponse(GetPendingUsersRequest batchUserRequest,
-	                             UsersListResponse usersListResponse) throws SQLException {
+    @Override
+    protected void storeResponse(GetPendingUsersRequest batchUserRequest,
+                                 UsersListResponse usersListResponse) throws SQLException {
 
-		userCache.storeUserFeed(batchUserRequest, feedType, usersListResponse);
-	}
+        userCache.storeUserFeed(batchUserRequest, feedType, usersListResponse);
+    }
 
-	@Override
-	protected UsersListResponse getCachedResponse(GetPendingUsersRequest batchUserRequest)
-		throws SQLException {
+    @Override
+    protected UsersListResponse getCachedResponse(GetPendingUsersRequest batchUserRequest)
+        throws SQLException {
 
-		return userCache.getResponse(feedType);
-	}
+        return userCache.getResponse(feedType);
+    }
 }

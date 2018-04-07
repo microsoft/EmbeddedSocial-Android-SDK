@@ -24,32 +24,32 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Sends a unlink user third party account request to the server.
  */
 public class UnlinkUserThirdPartyAccountHandler implements IServiceIntentHandler<ServiceAction> {
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		final IdentityProvider accountType = IdentityProvider.fromValue(intent.getExtras().getString(IntentExtras.IDENTITY_PROVIDER));
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        final IdentityProvider accountType = IdentityProvider.fromValue(intent.getExtras().getString(IntentExtras.IDENTITY_PROVIDER));
 
-		IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-		UnlinkUserThirdPartyAccountRequest unlinkUserThirdPartyAccountRequest
-				= new UnlinkUserThirdPartyAccountRequest(accountType);
+        IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+        UnlinkUserThirdPartyAccountRequest unlinkUserThirdPartyAccountRequest
+                = new UnlinkUserThirdPartyAccountRequest(accountType);
 
-		try {
-			accountService.unlinkUserThirdPartyAccount(unlinkUserThirdPartyAccountRequest);
-			EventBus.post(LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType));
-		} catch (Exception e) {
-			DebugLog.logException(e);
-			LinkUserThirdPartyAccountEvent event;
-			if (e instanceof StatusException) {
-				event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage(),
-						((StatusException)e).getStatusCode());
-			} else {
-				event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage());
-			}
-			EventBus.post(event);
-		}
-	}
+        try {
+            accountService.unlinkUserThirdPartyAccount(unlinkUserThirdPartyAccountRequest);
+            EventBus.post(LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType));
+        } catch (Exception e) {
+            DebugLog.logException(e);
+            LinkUserThirdPartyAccountEvent event;
+            if (e instanceof StatusException) {
+                event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage(),
+                        ((StatusException)e).getStatusCode());
+            } else {
+                event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage());
+            }
+            EventBus.post(event);
+        }
+    }
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

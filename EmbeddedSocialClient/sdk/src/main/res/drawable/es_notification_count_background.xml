@@ -5,11 +5,11 @@
   -->
 
 <shape
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:shape="oval">
-	<size
-		android:height="@dimen/es_notification_icon_size"
-		android:width="@dimen/es_notification_icon_size"
-		/>
-	<solid android:color="@color/es_green_500"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <size
+        android:height="@dimen/es_notification_icon_size"
+        android:width="@dimen/es_notification_icon_size"
+        />
+    <solid android:color="@color/es_green_500"/>
 </shape>

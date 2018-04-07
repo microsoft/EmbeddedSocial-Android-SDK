@@ -14,20 +14,20 @@ import java.io.IOException;
 
 public class GetCommentRequest extends GenericCommentRequest {
 
-	public GetCommentRequest(String commentHandle) {
-		super(commentHandle);
-	}
+    public GetCommentRequest(String commentHandle) {
+        super(commentHandle);
+    }
 
-	@Override
-	public GetCommentResponse send() throws NetworkRequestException {
-		ServiceResponse<CommentView> serviceResponse;
-		try {
-			serviceResponse = COMMENTS.getComment(commentHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetCommentResponse send() throws NetworkRequestException {
+        ServiceResponse<CommentView> serviceResponse;
+        try {
+            serviceResponse = COMMENTS.getComment(commentHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new GetCommentResponse(new com.microsoft.embeddedsocial.server.model.view.CommentView(serviceResponse.getBody()));
-	}
+        return new GetCommentResponse(new com.microsoft.embeddedsocial.server.model.view.CommentView(serviceResponse.getBody()));
+    }
 }

@@ -13,20 +13,20 @@ import com.microsoft.embeddedsocial.ui.fragment.PopularFeedFragment;
  * Activity showing popular feeds.
  */
 public class PopularActivity extends BaseActivity {
-	public static final String NAME = "Popular";
+    public static final String NAME = "Popular";
 
-	public PopularActivity() {
-		super(R.id.es_navigationPopular);
-	}
+    public PopularActivity() {
+        super(R.id.es_navigationPopular);
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new PopularFeedFragment());
-		super.setupFragments();
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new PopularFeedFragment());
+        super.setupFragments();
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 }

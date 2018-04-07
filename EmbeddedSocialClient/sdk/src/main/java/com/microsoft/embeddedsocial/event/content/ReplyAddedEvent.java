@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class ReplyAddedEvent extends NoteAddedEvent {
 
-	public ReplyAddedEvent(DiscussionItem data, String handle, boolean result) {
-		super(data, handle, result);
-	}
+    public ReplyAddedEvent(DiscussionItem data, String handle, boolean result) {
+        super(data, handle, result);
+    }
 }

@@ -29,80 +29,80 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class NotificationController {
 
-	private static final int BASE_PUSH_NOTIFICATION_ID = 0xCEEF_0;
-	private static final int POST_UPLOAD_NOTIFICATION_ID = 0xBEEF_0;
+    private static final int BASE_PUSH_NOTIFICATION_ID = 0xCEEF_0;
+    private static final int POST_UPLOAD_NOTIFICATION_ID = 0xBEEF_0;
 
-	private final Context context;
-	private final NotificationManagerCompat notificationManager;
-	private final PendingIntent appLaunchIntent;
+    private final Context context;
+    private final NotificationManagerCompat notificationManager;
+    private final PendingIntent appLaunchIntent;
 
-	private final Object eventListener = new Object() {
+    private final Object eventListener = new Object() {
 
-		private final AtomicInteger pushNotificationId = new AtomicInteger(BASE_PUSH_NOTIFICATION_ID);
+        private final AtomicInteger pushNotificationId = new AtomicInteger(BASE_PUSH_NOTIFICATION_ID);
 
-		@SuppressWarnings("unused")
-		@Subscribe
-		public void onPostUploadFailed(PostUploadFailedEvent event) {
-			int messageId = R.string.es_message_failed_to_publish_post;
-			Notification notification = buildBaseNotification(messageId)
-					.setAutoCancel(true)
-					.setOngoing(false)
-					.build();
-			notificationManager.notify(POST_UPLOAD_NOTIFICATION_ID, notification);
-		}
+        @SuppressWarnings("unused")
+        @Subscribe
+        public void onPostUploadFailed(PostUploadFailedEvent event) {
+            int messageId = R.string.es_message_failed_to_publish_post;
+            Notification notification = buildBaseNotification(messageId)
+                    .setAutoCancel(true)
+                    .setOngoing(false)
+                    .build();
+            notificationManager.notify(POST_UPLOAD_NOTIFICATION_ID, notification);
+        }
 
-		@SuppressWarnings("unused")
-		@Subscribe
-		public void onPostUploadSucceeded(PostUploadedEvent event) {
-			notificationManager.cancel(POST_UPLOAD_NOTIFICATION_ID);
-		}
+        @SuppressWarnings("unused")
+        @Subscribe
+        public void onPostUploadSucceeded(PostUploadedEvent event) {
+            notificationManager.cancel(POST_UPLOAD_NOTIFICATION_ID);
+        }
 
-		@SuppressWarnings("unused")
-		@Subscribe
-		public void onPushNotificationReceived(PushNotificationReceivedEvent event) {
-			NotificationCompat.Builder mBuilder = buildBaseNotification(event.getText())
-					.setOngoing(false).setAutoCancel(true);
+        @SuppressWarnings("unused")
+        @Subscribe
+        public void onPushNotificationReceived(PushNotificationReceivedEvent event) {
+            NotificationCompat.Builder mBuilder = buildBaseNotification(event.getText())
+                    .setOngoing(false).setAutoCancel(true);
 
 
-			Intent intent = new Intent(context, ActivityFeedActivity.class);
-			TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-			stackBuilder.addParentStack(ActivityFeedActivity.class);
-			stackBuilder.addNextIntent(intent);
-			PendingIntent pendingIntent = stackBuilder.getPendingIntent(pushNotificationId.get(),
-					PendingIntent.FLAG_UPDATE_CURRENT);
-			mBuilder.setContentIntent(pendingIntent);
+            Intent intent = new Intent(context, ActivityFeedActivity.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+            stackBuilder.addParentStack(ActivityFeedActivity.class);
+            stackBuilder.addNextIntent(intent);
+            PendingIntent pendingIntent = stackBuilder.getPendingIntent(pushNotificationId.get(),
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            mBuilder.setContentIntent(pendingIntent);
 
-			notificationManager.notify(pushNotificationId.incrementAndGet(), mBuilder.build());
-		}
-	};
+            notificationManager.notify(pushNotificationId.incrementAndGet(), mBuilder.build());
+        }
+    };
 
-	/**
-	 * Creates an instance.
-	 *
-	 * @param context valid context
-	 */
-	public NotificationController(Context context) {
-		this.context = context;
-		this.notificationManager = NotificationManagerCompat.from(context);
-		Intent intent = context.getPackageManager()
-			.getLaunchIntentForPackage(context.getPackageName())
-			.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-		this.appLaunchIntent = PendingIntent.getActivity(context, POST_UPLOAD_NOTIFICATION_ID, intent,
-			PendingIntent.FLAG_UPDATE_CURRENT);
+    /**
+     * Creates an instance.
+     *
+     * @param context valid context
+     */
+    public NotificationController(Context context) {
+        this.context = context;
+        this.notificationManager = NotificationManagerCompat.from(context);
+        Intent intent = context.getPackageManager()
+            .getLaunchIntentForPackage(context.getPackageName())
+            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        this.appLaunchIntent = PendingIntent.getActivity(context, POST_UPLOAD_NOTIFICATION_ID, intent,
+            PendingIntent.FLAG_UPDATE_CURRENT);
 
-		EventBus.register(eventListener);
-	}
+        EventBus.register(eventListener);
+    }
 
-	private NotificationCompat.Builder buildBaseNotification(@StringRes int textId) {
-		return buildBaseNotification(context.getString(textId));
-	}
+    private NotificationCompat.Builder buildBaseNotification(@StringRes int textId) {
+        return buildBaseNotification(context.getString(textId));
+    }
 
-	private NotificationCompat.Builder buildBaseNotification(String text) {
-		return new NotificationCompat.Builder(context)
-			.setContentTitle(context.getString(R.string.app_name))
-			.setContentText(text)
-			.setTicker(text)
-			.setContentIntent(appLaunchIntent)
-			.setSmallIcon(R.drawable.es_ic_bar_notification);
-	}
+    private NotificationCompat.Builder buildBaseNotification(String text) {
+        return new NotificationCompat.Builder(context)
+            .setContentTitle(context.getString(R.string.app_name))
+            .setContentText(text)
+            .setTicker(text)
+            .setContentIntent(appLaunchIntent)
+            .setSmallIcon(R.drawable.es_ic_bar_notification);
+    }
 }

@@ -18,18 +18,18 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseFeedFragment;
  */
 public class SearchTopicsFragment extends BaseFeedFragment {
 
-	private final SearchModule searchModule = new SearchModule(this, SearchType.TOPICS);
+    private final SearchModule searchModule = new SearchModule(this, SearchType.TOPICS);
 
-	public SearchTopicsFragment() {
-		addModule(searchModule);
-	}
+    public SearchTopicsFragment() {
+        addModule(searchModule);
+    }
 
-	@Override
-	protected Fetcher<TopicView> createFetcher() {
-		String query = searchModule.getQuery();
-		return TextUtils.isEmpty(query)
-			? FetchersFactory.createDummyFetcher()
-			: FetchersFactory.createSearchTopicsFetcher(query);
-	}
+    @Override
+    protected Fetcher<TopicView> createFetcher() {
+        String query = searchModule.getQuery();
+        return TextUtils.isEmpty(query)
+            ? FetchersFactory.createDummyFetcher()
+            : FetchersFactory.createSearchTopicsFetcher(query);
+    }
 
 }

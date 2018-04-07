@@ -22,40 +22,40 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.TrendingHashtagsRenderer
  */
 public class TrendingHashtagsRenderer extends Renderer<String, ViewHolder> {
 
-	private final View.OnClickListener onTrendingHashtagClickListener;
+    private final View.OnClickListener onTrendingHashtagClickListener;
 
-	public TrendingHashtagsRenderer() {
-		onTrendingHashtagClickListener = new OnTrendingHashtagClickListener();
-	}
+    public TrendingHashtagsRenderer() {
+        onTrendingHashtagClickListener = new OnTrendingHashtagClickListener();
+    }
 
-	@Override
-	public ViewHolder createViewHolder(ViewGroup parent) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_trending_hashtag_list_item, parent, false);
-		return new ViewHolder(view);
-	}
+    @Override
+    public ViewHolder createViewHolder(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_trending_hashtag_list_item, parent, false);
+        return new ViewHolder(view);
+    }
 
-	@Override
-	protected void onItemRendered(String item, ViewHolder holder) {
-		holder.text1.setText(item);
-	}
+    @Override
+    protected void onItemRendered(String item, ViewHolder holder) {
+        holder.text1.setText(item);
+    }
 
-	/**
-	 * View holder.
-	 */
-	final class ViewHolder extends BaseViewHolder {
-		private final TextView text1;
+    /**
+     * View holder.
+     */
+    final class ViewHolder extends BaseViewHolder {
+        private final TextView text1;
 
-		private ViewHolder(View itemView) {
-			super(itemView);
-			text1 = ViewUtils.findView(itemView, android.R.id.text1);
-			text1.setOnClickListener(onTrendingHashtagClickListener);
-		}
-	}
+        private ViewHolder(View itemView) {
+            super(itemView);
+            text1 = ViewUtils.findView(itemView, android.R.id.text1);
+            text1.setOnClickListener(onTrendingHashtagClickListener);
+        }
+    }
 
-	private static class OnTrendingHashtagClickListener implements View.OnClickListener {
-		@Override
-		public void onClick(View v) {
-			EventBus.post(new OnTrendingHashtagSelectedEvent(((TextView) v).getText().toString()));
-		}
-	}
+    private static class OnTrendingHashtagClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            EventBus.post(new OnTrendingHashtagSelectedEvent(((TextView) v).getText().toString()));
+        }
+    }
 }

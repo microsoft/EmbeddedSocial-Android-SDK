@@ -14,33 +14,33 @@ import java.sql.SQLException;
 
 public class TopicRequestWrapper extends AbstractNetworkMethodWrapper<GetTopicRequest, GetTopicResponse> {
 
-	private final ContentCache contentCache;
+    private final ContentCache contentCache;
 
-	public TopicRequestWrapper(INetworkMethod<GetTopicRequest, GetTopicResponse> networkMethod,
-							   ContentCache contentCache) {
+    public TopicRequestWrapper(INetworkMethod<GetTopicRequest, GetTopicResponse> networkMethod,
+                               ContentCache contentCache) {
 
-		super(networkMethod);
-		this.contentCache = contentCache;
-	}
+        super(networkMethod);
+        this.contentCache = contentCache;
+    }
 
-	@Override
-	protected void storeResponse(GetTopicRequest request, GetTopicResponse response)
-			throws SQLException {
+    @Override
+    protected void storeResponse(GetTopicRequest request, GetTopicResponse response)
+            throws SQLException {
 
-		if (response.getTopic() == null) {
-			return;
-		}
-		contentCache.storeTopic(response.getTopic());
-	}
+        if (response.getTopic() == null) {
+            return;
+        }
+        contentCache.storeTopic(response.getTopic());
+    }
 
-	@Override
-	protected GetTopicResponse getCachedResponse(GetTopicRequest request) throws SQLException {
-		GetTopicResponse response = contentCache.getSingleTopicResponse(request);
+    @Override
+    protected GetTopicResponse getCachedResponse(GetTopicRequest request) throws SQLException {
+        GetTopicResponse response = contentCache.getSingleTopicResponse(request);
 
-		if (response.getTopic() == null) {
-			throw new SQLException("Couldn't find cached topic " + request.getTopicHandle());
-		}
+        if (response.getTopic() == null) {
+            throw new SQLException("Couldn't find cached topic " + request.getTopicHandle());
+        }
 
-		return response;
-	}
+        return response;
+    }
 }

@@ -5,8 +5,8 @@
   -->
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-	<solid
-		android:color="@color/es_button_base_gray"
-		/>
-	<corners android:radius="@dimen/es_button_corner_radius"/>
+    <solid
+        android:color="@color/es_button_base_gray"
+        />
+    <corners android:radius="@dimen/es_button_corner_radius"/>
 </shape>

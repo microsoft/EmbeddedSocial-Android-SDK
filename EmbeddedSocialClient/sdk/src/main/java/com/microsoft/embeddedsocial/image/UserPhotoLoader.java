@@ -16,19 +16,19 @@ import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
  */
 public class UserPhotoLoader extends ImageViewContentLoader {
 
-	private final int errorDrawableId;
+    private final int errorDrawableId;
 
-	public UserPhotoLoader(ImageView imageView) {
-		this(imageView, ThemeAttributes.getResourceId(imageView.getContext(), R.styleable.es_AppTheme_es_userNoPhotoIcon));
-	}
+    public UserPhotoLoader(ImageView imageView) {
+        this(imageView, ThemeAttributes.getResourceId(imageView.getContext(), R.styleable.es_AppTheme_es_userNoPhotoIcon));
+    }
 
-	public UserPhotoLoader(ImageView imageView, int errorDrawableId) {
-		super(imageView);
-		this.errorDrawableId = errorDrawableId;
-	}
+    public UserPhotoLoader(ImageView imageView, int errorDrawableId) {
+        super(imageView);
+        this.errorDrawableId = errorDrawableId;
+    }
 
-	@Override
-	protected void onBitmapFailed() {
-		getImageView().setImageResource(errorDrawableId);
-	}
+    @Override
+    protected void onBitmapFailed() {
+        getImageView().setImageResource(errorDrawableId);
+    }
 }

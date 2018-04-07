@@ -21,22 +21,22 @@ import retrofit2.Response;
  */
 public class UpdateUserVisibilityRequest extends UserRequest {
 
-	private PutUserVisibilityRequest request;
+    private PutUserVisibilityRequest request;
 
-	public UpdateUserVisibilityRequest(Visibility visibility) {
-		request = new PutUserVisibilityRequest();
-		request.setVisibility(visibility);
-	}
+    public UpdateUserVisibilityRequest(Visibility visibility) {
+        request = new PutUserVisibilityRequest();
+        request.setVisibility(visibility);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = USERS.putUserVisibility(request, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
-		return serviceResponse.getResponse();
-	}
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = USERS.putUserVisibility(request, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+        return serviceResponse.getResponse();
+    }
 }

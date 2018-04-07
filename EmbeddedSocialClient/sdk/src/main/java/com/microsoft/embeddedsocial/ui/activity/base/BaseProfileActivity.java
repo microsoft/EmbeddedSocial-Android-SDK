@@ -15,39 +15,39 @@ import android.support.v7.app.ActionBar;
  * Base class for activities showing a profile.
  */
 public abstract class BaseProfileActivity extends BaseActivity {
-	protected String userHandle;
+    protected String userHandle;
 
-	protected BaseProfileActivity() {
-	}
+    protected BaseProfileActivity() {
+    }
 
-	protected BaseProfileActivity(int activeNavigationItemId) {
-		super(activeNavigationItemId);
-	}
+    protected BaseProfileActivity(int activeNavigationItemId) {
+        super(activeNavigationItemId);
+    }
 
-	/**
-	 * Update the activity title in the action bar when the user name is updated
-	 */
-	private final Object eventListener = new Object() {
-		@Subscribe
-		public void onProfileLoaded(ProfileDataUpdatedEvent event) {
-			if (event.isForUser(userHandle)) {
-				ActionBar actionBar = getSupportActionBar();
-				if (actionBar != null) {
-					actionBar.setTitle(event.getAccountData().getFullName());
-				}
-			}
-		}
-	};
+    /**
+     * Update the activity title in the action bar when the user name is updated
+     */
+    private final Object eventListener = new Object() {
+        @Subscribe
+        public void onProfileLoaded(ProfileDataUpdatedEvent event) {
+            if (event.isForUser(userHandle)) {
+                ActionBar actionBar = getSupportActionBar();
+                if (actionBar != null) {
+                    actionBar.setTitle(event.getAccountData().getFullName());
+                }
+            }
+        }
+    };
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		EventBus.register(eventListener);
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        EventBus.register(eventListener);
+    }
 
-	@Override
-	public void onPause() {
-		EventBus.unregister(eventListener);
-		super.onPause();
-	}
+    @Override
+    public void onPause() {
+        EventBus.unregister(eventListener);
+        super.onPause();
+    }
 }

@@ -18,25 +18,25 @@ import java.io.IOException;
 
 public class GetRequestTokenRequest extends UserRequest {
 
-	private static final RequestTokensOperations REQUEST_TOKENS
-			= new RequestTokensOperationsImpl(RETROFIT, CLIENT);
+    private static final RequestTokensOperations REQUEST_TOKENS
+            = new RequestTokensOperationsImpl(RETROFIT, CLIENT);
 
-	private IdentityProvider identityProvider;
+    private IdentityProvider identityProvider;
 
-	public GetRequestTokenRequest(IdentityProvider identityProvider) {
-		this.identityProvider = identityProvider;
-	}
+    public GetRequestTokenRequest(IdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
 
-	@Override
-	public GetRequestTokenResponse send() throws NetworkRequestException {
-		ServiceResponse<GetRequestTokenResponse> serviceResponse;
-		try {
-			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetRequestTokenResponse send() throws NetworkRequestException {
+        ServiceResponse<GetRequestTokenResponse> serviceResponse;
+        try {
+            serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getBody();
-	}
+        return serviceResponse.getBody();
+    }
 }

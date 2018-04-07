@@ -12,13 +12,13 @@ import com.microsoft.embeddedsocial.base.event.AbstractEvent;
  */
 public class OnDialogButtonClickedEvent extends AbstractEvent {
 
-	private final String dialogId;
+    private final String dialogId;
 
-	protected OnDialogButtonClickedEvent(String dialogId) {
-		this.dialogId = dialogId;
-	}
+    protected OnDialogButtonClickedEvent(String dialogId) {
+        this.dialogId = dialogId;
+    }
 
-	public String getDialogId() {
-		return dialogId;
-	}
+    public String getDialogId() {
+        return dialogId;
+    }
 }

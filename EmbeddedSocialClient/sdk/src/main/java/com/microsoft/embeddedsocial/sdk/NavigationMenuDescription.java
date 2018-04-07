@@ -12,27 +12,27 @@ import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
  */
 public class NavigationMenuDescription {
 
-	private final INavigationDrawerFactory drawerFactory;
-	private final DrawerDisplayMode displayMode;
-	private final CharSequence tabTitle;
+    private final INavigationDrawerFactory drawerFactory;
+    private final DrawerDisplayMode displayMode;
+    private final CharSequence tabTitle;
 
-	public NavigationMenuDescription(INavigationDrawerFactory drawerFactory,
-	                                 DrawerDisplayMode displayMode, CharSequence tabTitle) {
+    public NavigationMenuDescription(INavigationDrawerFactory drawerFactory,
+                                     DrawerDisplayMode displayMode, CharSequence tabTitle) {
 
-		this.drawerFactory = drawerFactory;
-		this.displayMode = displayMode;
-		this.tabTitle = tabTitle;
-	}
+        this.drawerFactory = drawerFactory;
+        this.displayMode = displayMode;
+        this.tabTitle = tabTitle;
+    }
 
-	public INavigationDrawerFactory getDrawerFactory() {
-		return drawerFactory;
-	}
+    public INavigationDrawerFactory getDrawerFactory() {
+        return drawerFactory;
+    }
 
-	public DrawerDisplayMode getDisplayMode() {
-		return displayMode;
-	}
+    public DrawerDisplayMode getDisplayMode() {
+        return displayMode;
+    }
 
-	public CharSequence getTabTitle() {
-		return tabTitle;
-	}
+    public CharSequence getTabTitle() {
+        return tabTitle;
+    }
 }

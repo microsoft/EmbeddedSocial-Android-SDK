@@ -13,24 +13,24 @@ import com.microsoft.embeddedsocial.ui.fragment.PinsFragment;
  * Shows pinned topics.
  */
 public class PinsActivity extends BaseActivity {
-	public static final String NAME = "Pins";
+    public static final String NAME = "Pins";
 
-	public PinsActivity() {
-		super(R.id.es_navigationPins);
-	}
+    public PinsActivity() {
+        super(R.id.es_navigationPins);
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new PinsFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new PinsFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 }

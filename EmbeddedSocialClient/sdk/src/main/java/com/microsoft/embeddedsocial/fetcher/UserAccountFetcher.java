@@ -22,18 +22,18 @@ import java.util.List;
  * Fetches the user account info.
  */
 public class UserAccountFetcher extends Fetcher<UserAccountView> {
-	@Override
-	protected List<UserAccountView> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		UserAccountView userAccount;
-		IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-		GetUserAccountRequest userRequest = new GetUserAccountRequest();
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			userRequest.forceCacheUsage();
-		}
-		GetUserAccountResponse userAccountResponse = accountService.getUserAccount(userRequest);
-		userAccount = userAccountResponse.getUser();
+    @Override
+    protected List<UserAccountView> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        UserAccountView userAccount;
+        IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+        GetUserAccountRequest userRequest = new GetUserAccountRequest();
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            userRequest.forceCacheUsage();
+        }
+        GetUserAccountResponse userAccountResponse = accountService.getUserAccount(userRequest);
+        userAccount = userAccountResponse.getUser();
 
-		dataState.markDataEnded();
-		return Collections.singletonList(userAccount);
-	}
+        dataState.markDataEnded();
+        return Collections.singletonList(userAccount);
+    }
 }

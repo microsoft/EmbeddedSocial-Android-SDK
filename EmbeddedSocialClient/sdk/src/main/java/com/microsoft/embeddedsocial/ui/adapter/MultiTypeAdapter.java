@@ -21,80 +21,80 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
  */
 public abstract class MultiTypeAdapter<T, VH extends RecyclerView.ViewHolder> extends FetchableAdapter<T, VH> {
 
-	private final SparseArray<ViewType<?, ? extends VH>> viewTypes = new SparseArray<>();
+    private final SparseArray<ViewType<?, ? extends VH>> viewTypes = new SparseArray<>();
 
-	protected MultiTypeAdapter(Fetcher<T> fetcher) {
-		super(fetcher);
-	}
+    protected MultiTypeAdapter(Fetcher<T> fetcher) {
+        super(fetcher);
+    }
 
-	/**
-	 * Register a renderer for the view type.
-	 *
-	 * @param viewType     int code for the view type, unique in the adapter
-	 * @param renderer     renderer
-	 * @param getter       object responsible for getting objects for rendering by its position, can be null
-	 * @param <ObjectType> type of objects to render for this view type
-	 */
-	protected <ObjectType> void registerViewType(int viewType, Renderer<? super ObjectType, ? extends VH> renderer, GetMethod<? extends ObjectType> getter) {
-		viewTypes.append(viewType, new ViewType<>(renderer, getter));
-	}
+    /**
+     * Register a renderer for the view type.
+     *
+     * @param viewType     int code for the view type, unique in the adapter
+     * @param renderer     renderer
+     * @param getter       object responsible for getting objects for rendering by its position, can be null
+     * @param <ObjectType> type of objects to render for this view type
+     */
+    protected <ObjectType> void registerViewType(int viewType, Renderer<? super ObjectType, ? extends VH> renderer, GetMethod<? extends ObjectType> getter) {
+        viewTypes.append(viewType, new ViewType<>(renderer, getter));
+    }
 
-	/**
-	 * Register a renderer for the view type. {@link #getItem(int)} method will be used to get objects to render.
-	 *
-	 * @param viewType int code for the view type, unique in the adapter
-	 * @param renderer renderer
-	 */
-	protected void registerViewType(int viewType, Renderer<? super T, ? extends VH> renderer) {
-		viewTypes.append(viewType, new ViewType<>(renderer, this::getItem));
-	}
+    /**
+     * Register a renderer for the view type. {@link #getItem(int)} method will be used to get objects to render.
+     *
+     * @param viewType int code for the view type, unique in the adapter
+     * @param renderer renderer
+     */
+    protected void registerViewType(int viewType, Renderer<? super T, ? extends VH> renderer) {
+        viewTypes.append(viewType, new ViewType<>(renderer, this::getItem));
+    }
 
-	@Override
-	public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-		return viewTypes.get(viewType).createViewHolder(parent);
-	}
+    @Override
+    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
+        return viewTypes.get(viewType).createViewHolder(parent);
+    }
 
-	@Override
-	public void onBindViewHolder(VH holder, int position) {
-		int viewType = holder.getItemViewType();
-		viewTypes.get(viewType).render(holder, position);
-	}
+    @Override
+    public void onBindViewHolder(VH holder, int position) {
+        int viewType = holder.getItemViewType();
+        viewTypes.get(viewType).render(holder, position);
+    }
 
-	/**
-	 * Encapsulates an information about view type.
-	 *
-	 * @param <ObjectType>     type of objects to render
-	 * @param <ViewHolderType> type of view holder
-	 */
-	private static class ViewType<ObjectType, ViewHolderType extends RecyclerView.ViewHolder> {
-		private final Renderer<? super ObjectType, ViewHolderType> renderer;
-		private final GetMethod<? extends ObjectType> getter;
+    /**
+     * Encapsulates an information about view type.
+     *
+     * @param <ObjectType>     type of objects to render
+     * @param <ViewHolderType> type of view holder
+     */
+    private static class ViewType<ObjectType, ViewHolderType extends RecyclerView.ViewHolder> {
+        private final Renderer<? super ObjectType, ViewHolderType> renderer;
+        private final GetMethod<? extends ObjectType> getter;
 
-		ViewType(Renderer<? super ObjectType, ViewHolderType> renderer, GetMethod<? extends ObjectType> getter) {
-			this.renderer = renderer;
-			this.getter = getter;
-		}
+        ViewType(Renderer<? super ObjectType, ViewHolderType> renderer, GetMethod<? extends ObjectType> getter) {
+            this.renderer = renderer;
+            this.getter = getter;
+        }
 
-		void render(RecyclerView.ViewHolder holder, int position) {
-			renderer.renderItem(getter.get(position), holder);
-		}
+        void render(RecyclerView.ViewHolder holder, int position) {
+            renderer.renderItem(getter.get(position), holder);
+        }
 
-		ViewHolderType createViewHolder(ViewGroup parent) {
-			return renderer.createViewHolder(parent);
-		}
-	}
+        ViewHolderType createViewHolder(ViewGroup parent) {
+            return renderer.createViewHolder(parent);
+        }
+    }
 
-	/**
-	 * Object responsible for getting an object for rendering by its position.
-	 *
-	 * @param <ObjectType> type of objects.
-	 */
-	public interface GetMethod<ObjectType> {
-		ObjectType get(int position);
-	}
+    /**
+     * Object responsible for getting an object for rendering by its position.
+     *
+     * @param <ObjectType> type of objects.
+     */
+    public interface GetMethod<ObjectType> {
+        ObjectType get(int position);
+    }
 
-	public static <T> GetMethod<T> dummyGetMethod() {
-		return position -> null;
-	}
+    public static <T> GetMethod<T> dummyGetMethod() {
+        return position -> null;
+    }
 
 }

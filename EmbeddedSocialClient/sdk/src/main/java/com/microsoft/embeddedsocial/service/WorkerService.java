@@ -16,14 +16,14 @@ import com.microsoft.embeddedsocial.base.service.ServiceLauncher;
  */
 public class WorkerService extends AbstractProcessingService {
 
-	IntentProcessorFactory factory = new IntentProcessorFactory(this);
+    IntentProcessorFactory factory = new IntentProcessorFactory(this);
 
-	@Override
-	protected IServiceIntentProcessor createIntentProcessor() {
-		return factory.createIntentProcessor();
-	}
+    @Override
+    protected IServiceIntentProcessor createIntentProcessor() {
+        return factory.createIntentProcessor();
+    }
 
-	public static ServiceLauncher<ServiceAction> getLauncher(Context context) {
-		return new ServiceLauncher<>(context, WorkerService.class);
-	}
+    public static ServiceLauncher<ServiceAction> getLauncher(Context context) {
+        return new ServiceLauncher<>(context, WorkerService.class);
+    }
 }

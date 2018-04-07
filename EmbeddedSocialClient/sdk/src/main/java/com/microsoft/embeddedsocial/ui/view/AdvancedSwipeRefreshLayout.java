@@ -18,26 +18,26 @@ import com.microsoft.embeddedsocial.sdk.R;
  */
 public class AdvancedSwipeRefreshLayout extends SwipeRefreshLayout {
 
-	private RecyclerView innerRecyclerView;
+    private RecyclerView innerRecyclerView;
 
-	public AdvancedSwipeRefreshLayout(Context context) {
-		super(context);
-	}
+    public AdvancedSwipeRefreshLayout(Context context) {
+        super(context);
+    }
 
-	public AdvancedSwipeRefreshLayout(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public AdvancedSwipeRefreshLayout(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	@Override
-	public boolean canChildScrollUp() {
-		boolean superValue = super.canChildScrollUp();
-		if (superValue) {
-			return true;
-		} else {
-			if (innerRecyclerView == null) {
-				innerRecyclerView = (RecyclerView) findViewById(R.id.es_recyclerView);
-			}
-			return innerRecyclerView.getVisibility() == View.VISIBLE && innerRecyclerView.canScrollVertically(-1);
-		}
-	}
+    @Override
+    public boolean canChildScrollUp() {
+        boolean superValue = super.canChildScrollUp();
+        if (superValue) {
+            return true;
+        } else {
+            if (innerRecyclerView == null) {
+                innerRecyclerView = (RecyclerView) findViewById(R.id.es_recyclerView);
+            }
+            return innerRecyclerView.getVisibility() == View.VISIBLE && innerRecyclerView.canScrollVertically(-1);
+        }
+    }
 }

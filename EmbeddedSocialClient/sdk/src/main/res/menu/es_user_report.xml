@@ -5,8 +5,8 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item
-		android:id="@+id/es_actionReportUser"
-		android:title="@string/es_menu_report_user"
-		/>
+    <item
+        android:id="@+id/es_actionReportUser"
+        android:title="@string/es_menu_report_user"
+        />
 </menu>

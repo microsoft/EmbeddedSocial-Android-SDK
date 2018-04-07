@@ -16,24 +16,24 @@ import com.microsoft.embeddedsocial.ui.fragment.module.FeedViewMenuModule;
  */
 public class FeedViewMenuListenerFragment extends BaseFragment {
 
-	public static final String TAG = "feedViewMenu";
-	private final FeedViewMenuModule menuModule = new FeedViewMenuModule(this);
+    public static final String TAG = "feedViewMenu";
+    private final FeedViewMenuModule menuModule = new FeedViewMenuModule(this);
 
-	public FeedViewMenuListenerFragment() {
-		addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
-		Options options = GlobalObjectRegistry.getObject(Options.class);
-		if (options != null && options.showGalleryView()) {
-			addModule(menuModule);
-			setHasOptionsMenu(true);
-		}
-	}
+    public FeedViewMenuListenerFragment() {
+        addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
+        Options options = GlobalObjectRegistry.getObject(Options.class);
+        if (options != null && options.showGalleryView()) {
+            addModule(menuModule);
+            setHasOptionsMenu(true);
+        }
+    }
 
-	@Override
-	protected int getLayoutId() {
-		return 0;
-	}
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
 
-	protected FeedViewMenuModule getMenuModule() {
-		return menuModule;
-	}
+    protected FeedViewMenuModule getMenuModule() {
+        return menuModule;
+    }
 }

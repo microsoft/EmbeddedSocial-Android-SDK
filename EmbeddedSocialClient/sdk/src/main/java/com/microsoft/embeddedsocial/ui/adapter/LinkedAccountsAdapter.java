@@ -25,76 +25,76 @@ import java.util.List;
  * Adapter for the linked accounts screen.
  */
 public class LinkedAccountsAdapter extends FetchableAdapter<UserAccountView, LinkedAccountViewHolder> {
-	private final List<ThirdPartyAccountView> items;
-	private SwitchOnClickListener switchOnClickListener;
-	private IChangeAccountState changeAccountStateListener;
+    private final List<ThirdPartyAccountView> items;
+    private SwitchOnClickListener switchOnClickListener;
+    private IChangeAccountState changeAccountStateListener;
 
-	public LinkedAccountsAdapter(IChangeAccountState changeAccountStateListener, Fetcher<UserAccountView> fetcher) {
-		super(fetcher);
-		this.changeAccountStateListener = changeAccountStateListener;
-		this.items = new ArrayList<>();
-		this.switchOnClickListener = new SwitchOnClickListener();
-	}
+    public LinkedAccountsAdapter(IChangeAccountState changeAccountStateListener, Fetcher<UserAccountView> fetcher) {
+        super(fetcher);
+        this.changeAccountStateListener = changeAccountStateListener;
+        this.items = new ArrayList<>();
+        this.switchOnClickListener = new SwitchOnClickListener();
+    }
 
-	public void add(ThirdPartyAccountView value) {
-		items.add(value);
-	}
+    public void add(ThirdPartyAccountView value) {
+        items.add(value);
+    }
 
-	public void clear() {
-		items.clear();
-	}
+    public void clear() {
+        items.clear();
+    }
 
-	@Override
-	public LinkedAccountViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_view_account, parent, false);
-		return new LinkedAccountViewHolder(itemView);
-	}
+    @Override
+    public LinkedAccountViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_view_account, parent, false);
+        return new LinkedAccountViewHolder(itemView);
+    }
 
-	@Override
-	public void onBindViewHolder(LinkedAccountViewHolder holder, int position) {
-		holder.renderItem(items.get(position), switchOnClickListener);
-	}
+    @Override
+    public void onBindViewHolder(LinkedAccountViewHolder holder, int position) {
+        holder.renderItem(items.get(position), switchOnClickListener);
+    }
 
-	@Override
-	public int getItemCount() {
-		return items.size();
-	}
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
 
-	public int getCountConnectedAccounts() {
-		int connectedAccounts = 0;
-		for (ThirdPartyAccountView existAccount : items) {
-			if (existAccount.hasAccountHandle()) {
-				connectedAccounts++;
-			}
-		}
+    public int getCountConnectedAccounts() {
+        int connectedAccounts = 0;
+        for (ThirdPartyAccountView existAccount : items) {
+            if (existAccount.hasAccountHandle()) {
+                connectedAccounts++;
+            }
+        }
 
-		return connectedAccounts;
-	}
+        return connectedAccounts;
+    }
 
-	public ThirdPartyAccountView getAccountByType(IdentityProvider identityProvider) {
-		for (ThirdPartyAccountView account : items) {
-			if (account.getIdentityProvider() == identityProvider) {
-				return account;
-			}
-		}
+    public ThirdPartyAccountView getAccountByType(IdentityProvider identityProvider) {
+        for (ThirdPartyAccountView account : items) {
+            if (account.getIdentityProvider() == identityProvider) {
+                return account;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	public void updateAccountState(IdentityProvider identityProvider, String accountHandle) {
-		ThirdPartyAccountView listAccount = getAccountByType(identityProvider);
-		listAccount.setAccountHandle(accountHandle);
-		notifyDataSetChanged();
-	}
+    public void updateAccountState(IdentityProvider identityProvider, String accountHandle) {
+        ThirdPartyAccountView listAccount = getAccountByType(identityProvider);
+        listAccount.setAccountHandle(accountHandle);
+        notifyDataSetChanged();
+    }
 
-	public interface IChangeAccountState {
-		void onChangeAccountState(IdentityProvider identityProvider);
-	}
+    public interface IChangeAccountState {
+        void onChangeAccountState(IdentityProvider identityProvider);
+    }
 
-	private class SwitchOnClickListener implements LinkedAccountViewHolder.IOnCheckedListener {
-		@Override
-		public void onCheckedChanged(SwitchCompat switchCompat, boolean isChecked) {
-			changeAccountStateListener.onChangeAccountState((IdentityProvider) switchCompat.getTag());
-		}
-	}
+    private class SwitchOnClickListener implements LinkedAccountViewHolder.IOnCheckedListener {
+        @Override
+        public void onCheckedChanged(SwitchCompat switchCompat, boolean isChecked) {
+            changeAccountStateListener.onChangeAccountState((IdentityProvider) switchCompat.getTag());
+        }
+    }
 }

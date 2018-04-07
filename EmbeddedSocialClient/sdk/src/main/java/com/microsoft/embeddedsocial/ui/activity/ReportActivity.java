@@ -18,26 +18,26 @@ import com.microsoft.embeddedsocial.ui.fragment.ReportFragment;
  */
 public class ReportActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		final ReportFragment reportFragment = new ReportFragment();
-		reportFragment.setArguments(getIntent().getExtras());
-		setActivityContent(reportFragment);
+    @Override
+    protected void setupFragments() {
+        final ReportFragment reportFragment = new ReportFragment();
+        reportFragment.setArguments(getIntent().getExtras());
+        setActivityContent(reportFragment);
 
-	}
+    }
 
-	@Override
-	protected void setupActionBar(ActionBar actionBar) {
-		super.setupActionBar(actionBar);
-		Bundle extras = getIntent().getExtras();
-		if (extras.containsKey(IntentExtras.NAME)) {
-			String title = getString(R.string.es_report_user, extras.getString(IntentExtras.NAME));
-			actionBar.setTitle(title);
-		}
-	}
+    @Override
+    protected void setupActionBar(ActionBar actionBar) {
+        super.setupActionBar(actionBar);
+        Bundle extras = getIntent().getExtras();
+        if (extras.containsKey(IntentExtras.NAME)) {
+            String title = getString(R.string.es_report_user, extras.getString(IntentExtras.NAME));
+            actionBar.setTitle(title);
+        }
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

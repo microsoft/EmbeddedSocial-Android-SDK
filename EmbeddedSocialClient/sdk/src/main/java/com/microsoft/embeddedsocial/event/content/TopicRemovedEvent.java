@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class TopicRemovedEvent extends ContentRemovedEvent {
 
-	public TopicRemovedEvent(RemoveContentData data, boolean result) {
-		super(data, result);
-	}
+    public TopicRemovedEvent(RemoveContentData data, boolean result) {
+        super(data, result);
+    }
 }

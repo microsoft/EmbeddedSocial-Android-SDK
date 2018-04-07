@@ -17,12 +17,12 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRecentActivityRender
  */
 public class UserActivityFeedFragment extends BaseActivityFeedFragment {
 
-	@Override
-	protected FetchableAdapter<ActivityView, ?> createInitialAdapter() {
-		return new FetchableListAdapter<>(
-			FetchersFactory.createNotificationFeedFetcher(),
-			new UserRecentActivityRenderer()
-		);
-	}
+    @Override
+    protected FetchableAdapter<ActivityView, ?> createInitialAdapter() {
+        return new FetchableListAdapter<>(
+            FetchersFactory.createNotificationFeedFetcher(),
+            new UserRecentActivityRenderer()
+        );
+    }
 
 }

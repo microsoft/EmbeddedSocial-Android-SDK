@@ -15,13 +15,13 @@ import android.os.Bundle;
  */
 public class BlockedUsersActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new BlockedUsersFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new BlockedUsersFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

@@ -23,32 +23,32 @@ import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
  */
 public abstract class BaseUsersListFragment extends BaseListContentFragment<FetchableListAdapter<UserCompactView, ?>> {
 
-	@DimenRes
-	private final int verticalPaddingRes;
+    @DimenRes
+    private final int verticalPaddingRes;
 
-	protected BaseUsersListFragment() {
-		this(R.dimen.es_users_list_vertical_padding);
-	}
+    protected BaseUsersListFragment() {
+        this(R.dimen.es_users_list_vertical_padding);
+    }
 
-	protected BaseUsersListFragment(@DimenRes int verticalPaddingRes) {
-		this.verticalPaddingRes = verticalPaddingRes;
-	}
+    protected BaseUsersListFragment(@DimenRes int verticalPaddingRes) {
+        this.verticalPaddingRes = verticalPaddingRes;
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		int verticalPadding = view.getResources().getDimensionPixelOffset(verticalPaddingRes);
-		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
-		setEmptyDataMessage(R.string.es_message_no_people);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        int verticalPadding = view.getResources().getDimensionPixelOffset(verticalPaddingRes);
+        getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
+        setEmptyDataMessage(R.string.es_message_no_people);
+    }
 
-	@Override
-	protected FetchableListAdapter<UserCompactView, ?> createInitialAdapter() {
-		return new FetchableListAdapter<>(createFetcher(), createRenderer());
-	}
+    @Override
+    protected FetchableListAdapter<UserCompactView, ?> createInitialAdapter() {
+        return new FetchableListAdapter<>(createFetcher(), createRenderer());
+    }
 
-	protected abstract Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer();
+    protected abstract Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer();
 
-	protected abstract Fetcher<UserCompactView> createFetcher();
+    protected abstract Fetcher<UserCompactView> createFetcher();
 
 }

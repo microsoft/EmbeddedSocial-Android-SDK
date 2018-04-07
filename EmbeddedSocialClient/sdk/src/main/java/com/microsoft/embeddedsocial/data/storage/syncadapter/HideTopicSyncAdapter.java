@@ -17,17 +17,17 @@ import com.microsoft.embeddedsocial.server.IContentService;
  */
 public class HideTopicSyncAdapter extends AbstractAutoCleanupSyncAdapter<UserActionCache.HideTopicAction> {
 
-	public HideTopicSyncAdapter(UserActionCache.HideTopicAction item,
-	                               Dao<UserActionCache.HideTopicAction, ?> itemDao) {
+    public HideTopicSyncAdapter(UserActionCache.HideTopicAction item,
+                                   Dao<UserActionCache.HideTopicAction, ?> itemDao) {
 
-		super(item, itemDao);
-	}
+        super(item, itemDao);
+    }
 
-	@Override
-	protected void onSynchronize(UserActionCache.HideTopicAction item) throws NetworkRequestException,
-			SynchronizationException {
+    @Override
+    protected void onSynchronize(UserActionCache.HideTopicAction item) throws NetworkRequestException,
+            SynchronizationException {
 
-		IContentService service = getServiceProvider().getContentService();
-		service.hideTopic(new HideTopicRequest(item.getTopicHandle()));
-	}
+        IContentService service = getServiceProvider().getContentService();
+        service.hideTopic(new HideTopicRequest(item.getTopicHandle()));
+    }
 }

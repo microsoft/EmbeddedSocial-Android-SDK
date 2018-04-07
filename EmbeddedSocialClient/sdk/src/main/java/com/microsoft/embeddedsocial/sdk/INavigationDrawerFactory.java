@@ -12,9 +12,9 @@ import android.support.v4.app.Fragment;
  */
 public interface INavigationDrawerFactory {
 
-	/**
-	 * Creates navigation menu fragment.
-	 * @return  {@link Fragment} instance.
-	 */
-	Fragment createMenuFragment();
+    /**
+     * Creates navigation menu fragment.
+     * @return  {@link Fragment} instance.
+     */
+    Fragment createMenuFragment();
 }

@@ -5,12 +5,12 @@
   -->
 
 <resources
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:ignore="ResourceName"
-	>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
 
-	<style name="EmbeddedSocialSdkThemeOverlayBaseFragment">
-		<item name="es_listItemBackground">?attr/es_buttonBackground</item>
-	</style>
+    <style name="EmbeddedSocialSdkThemeOverlayBaseFragment">
+        <item name="es_listItemBackground">?attr/es_buttonBackground</item>
+    </style>
 
 </resources>

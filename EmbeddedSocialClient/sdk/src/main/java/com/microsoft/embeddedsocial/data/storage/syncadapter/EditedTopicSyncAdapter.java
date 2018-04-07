@@ -16,20 +16,20 @@ import com.microsoft.embeddedsocial.server.model.content.topics.UpdateTopicReque
  */
 public class EditedTopicSyncAdapter extends AbstractAutoCleanupSyncAdapter<EditedTopic> {
 
-	public EditedTopicSyncAdapter(EditedTopic item, Dao<EditedTopic, ?> itemDao) {
-		super(item, itemDao);
-	}
+    public EditedTopicSyncAdapter(EditedTopic item, Dao<EditedTopic, ?> itemDao) {
+        super(item, itemDao);
+    }
 
-	@Override
-	protected void onSynchronize(EditedTopic item) throws NetworkRequestException,
-			SynchronizationException {
+    @Override
+    protected void onSynchronize(EditedTopic item) throws NetworkRequestException,
+            SynchronizationException {
 
-		UpdateTopicRequest request = new UpdateTopicRequest(
-			item.getTopicHandle(),
-			item.getTopicTitle(),
-			item.getTopicText(),
-			item.getTopicCategories()
-		);
-		getServiceProvider().getContentService().updateTopic(request);
-	}
+        UpdateTopicRequest request = new UpdateTopicRequest(
+            item.getTopicHandle(),
+            item.getTopicTitle(),
+            item.getTopicText(),
+            item.getTopicCategories()
+        );
+        getServiceProvider().getContentService().updateTopic(request);
+    }
 }

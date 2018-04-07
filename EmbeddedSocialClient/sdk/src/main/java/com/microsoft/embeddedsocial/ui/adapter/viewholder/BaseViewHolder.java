@@ -14,15 +14,15 @@ import android.view.View;
  * Base view holder.
  */
 public class BaseViewHolder extends RecyclerView.ViewHolder {
-	public BaseViewHolder(View itemView) {
-		super(itemView);
-	}
+    public BaseViewHolder(View itemView) {
+        super(itemView);
+    }
 
-	public Context getContext() {
-		return itemView.getContext();
-	}
+    public Context getContext() {
+        return itemView.getContext();
+    }
 
-	public Resources getResources() {
-		return itemView.getResources();
-	}
+    public Resources getResources() {
+        return itemView.getResources();
+    }
 }

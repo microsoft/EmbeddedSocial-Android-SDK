@@ -34,112 +34,112 @@ import java.util.ArrayList;
  */
 public class ProfileInfoAdapter extends MultiTypeAdapter<AccountData, RecyclerView.ViewHolder> {
 
-	private static final int VIEW_TYPE_PROFILE = 0;
-	private static final int VIEW_TYPE_PRIVATE_USER_MESSAGE = 1;
-	private static final int VIEW_TYPE_BLOCKED_USERS = 2;
-	private static final int VIEW_TYPE_FOLLOW_REQUESTS = 3;
+    private static final int VIEW_TYPE_PROFILE = 0;
+    private static final int VIEW_TYPE_PRIVATE_USER_MESSAGE = 1;
+    private static final int VIEW_TYPE_BLOCKED_USERS = 2;
+    private static final int VIEW_TYPE_FOLLOW_REQUESTS = 3;
 
-	private static final Renderer<Object, SingleViewHolder> PRIVATE_MESSAGE_RENDERER = new Renderer<Object, SingleViewHolder>() {
-		@Override
-		public SingleViewHolder createViewHolder(ViewGroup parent) {
-			return SingleViewHolder.create(R.layout.es_private_user_message, parent);
-		}
-	};
+    private static final Renderer<Object, SingleViewHolder> PRIVATE_MESSAGE_RENDERER = new Renderer<Object, SingleViewHolder>() {
+        @Override
+        public SingleViewHolder createViewHolder(ViewGroup parent) {
+            return SingleViewHolder.create(R.layout.es_private_user_message, parent);
+        }
+    };
 
-	private final boolean isCurrentUser;
-	private ArrayList<Integer> itemTypes = new ArrayList<>();
+    private final boolean isCurrentUser;
+    private ArrayList<Integer> itemTypes = new ArrayList<>();
 
-	public ProfileInfoAdapter(Fragment fragment, Fetcher<AccountData> fetcher, String userHandle) {
-		super(fetcher);
-		isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
-		Context context = fragment.getContext();
-		registerViewType(VIEW_TYPE_PROFILE, new ProfileInfoRenderer(fragment, userHandle, ProfileInfoRenderer.RenderType.LARGE));
-		registerViewType(VIEW_TYPE_PRIVATE_USER_MESSAGE, PRIVATE_MESSAGE_RENDERER, dummyGetMethod());
-		registerViewType(VIEW_TYPE_BLOCKED_USERS, createBlockedUsersRenderer(context), dummyGetMethod());
-		registerViewType(VIEW_TYPE_FOLLOW_REQUESTS, createFollowRequestsRenderer(context), dummyGetMethod());
+    public ProfileInfoAdapter(Fragment fragment, Fetcher<AccountData> fetcher, String userHandle) {
+        super(fetcher);
+        isCurrentUser = UserAccount.getInstance().isCurrentUser(userHandle);
+        Context context = fragment.getContext();
+        registerViewType(VIEW_TYPE_PROFILE, new ProfileInfoRenderer(fragment, userHandle, ProfileInfoRenderer.RenderType.LARGE));
+        registerViewType(VIEW_TYPE_PRIVATE_USER_MESSAGE, PRIVATE_MESSAGE_RENDERER, dummyGetMethod());
+        registerViewType(VIEW_TYPE_BLOCKED_USERS, createBlockedUsersRenderer(context), dummyGetMethod());
+        registerViewType(VIEW_TYPE_FOLLOW_REQUESTS, createFollowRequestsRenderer(context), dummyGetMethod());
 
-		initItemTypes();
-		registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-			@Override
-			public void onChanged() {
-				initItemTypes();
-			}
-		});
-	}
+        initItemTypes();
+        registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                initItemTypes();
+            }
+        });
+    }
 
-	private ButtonRenderer createBlockedUsersRenderer(Context context) {
-		return new ButtonRenderer(
-			R.string.es_blocked_users_header,
-			v -> context.startActivity(new Intent(context, BlockedUsersActivity.class))
-		);
-	}
+    private ButtonRenderer createBlockedUsersRenderer(Context context) {
+        return new ButtonRenderer(
+            R.string.es_blocked_users_header,
+            v -> context.startActivity(new Intent(context, BlockedUsersActivity.class))
+        );
+    }
 
-	private ButtonRenderer createFollowRequestsRenderer(Context context) {
-		return new ButtonRenderer(
-			R.string.es_title_follow_requests,
-			v -> context.startActivity(new Intent(context, FollowRequestsActivity.class))
-		);
-	}
+    private ButtonRenderer createFollowRequestsRenderer(Context context) {
+        return new ButtonRenderer(
+            R.string.es_title_follow_requests,
+            v -> context.startActivity(new Intent(context, FollowRequestsActivity.class))
+        );
+    }
 
-	private void initItemTypes() {
-		boolean userRelationsEnabled = GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled();
-		itemTypes.clear();
-		if (getDataSize() > 0) {
-			itemTypes.add(VIEW_TYPE_PROFILE);
-			AccountData accountData = getItem(0);
+    private void initItemTypes() {
+        boolean userRelationsEnabled = GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled();
+        itemTypes.clear();
+        if (getDataSize() > 0) {
+            itemTypes.add(VIEW_TYPE_PROFILE);
+            AccountData accountData = getItem(0);
 
-			// Only show blocked users, follow requests, and private profiles if user relations are enabled
-			if (userRelationsEnabled) {
-				if (isCurrentUser) {
-					itemTypes.add(VIEW_TYPE_BLOCKED_USERS);
-					if (accountData.isPrivate()) {
-						itemTypes.add(VIEW_TYPE_FOLLOW_REQUESTS);
-					}
-				} else if (accountData.isPrivate() && accountData.getFollowedStatus() != FollowerStatus.FOLLOW) {
-					itemTypes.add(VIEW_TYPE_PRIVATE_USER_MESSAGE);
-				}
-			}
-		}
-	}
+            // Only show blocked users, follow requests, and private profiles if user relations are enabled
+            if (userRelationsEnabled) {
+                if (isCurrentUser) {
+                    itemTypes.add(VIEW_TYPE_BLOCKED_USERS);
+                    if (accountData.isPrivate()) {
+                        itemTypes.add(VIEW_TYPE_FOLLOW_REQUESTS);
+                    }
+                } else if (accountData.isPrivate() && accountData.getFollowedStatus() != FollowerStatus.FOLLOW) {
+                    itemTypes.add(VIEW_TYPE_PRIVATE_USER_MESSAGE);
+                }
+            }
+        }
+    }
 
-	public void onFollowedStatusChanged(FollowerStatus followedStatus) {
-		if (getDataSize() >= 1) {
-			AccountData accountData = getItem(0);
-			accountData.setFollowedStatus(followedStatus);
-			notifyDataSetChanged();
-		}
-	}
+    public void onFollowedStatusChanged(FollowerStatus followedStatus) {
+        if (getDataSize() >= 1) {
+            AccountData accountData = getItem(0);
+            accountData.setFollowedStatus(followedStatus);
+            notifyDataSetChanged();
+        }
+    }
 
-	@Override
-	public int getItemCount() {
-		return itemTypes.size();
-	}
+    @Override
+    public int getItemCount() {
+        return itemTypes.size();
+    }
 
-	@Override
-	public int getItemViewType(int position) {
-		return itemTypes.get(position);
-	}
+    @Override
+    public int getItemViewType(int position) {
+        return itemTypes.get(position);
+    }
 
-	/**
-	 * Renderer for buttons.
-	 */
-	private static class ButtonRenderer extends Renderer<Object, RecyclerView.ViewHolder> {
+    /**
+     * Renderer for buttons.
+     */
+    private static class ButtonRenderer extends Renderer<Object, RecyclerView.ViewHolder> {
 
-		private final int textId;
-		private final View.OnClickListener onClickListener;
+        private final int textId;
+        private final View.OnClickListener onClickListener;
 
-		ButtonRenderer(int textId, View.OnClickListener onClickListener) {
-			this.onClickListener = onClickListener;
-			this.textId = textId;
-		}
+        ButtonRenderer(int textId, View.OnClickListener onClickListener) {
+            this.onClickListener = onClickListener;
+            this.textId = textId;
+        }
 
-		@Override
-		public RecyclerView.ViewHolder createViewHolder(ViewGroup parent) {
-			Button button = (Button) ViewUtils.inflateLayout(R.layout.es_profile_button, parent);
-			button.setOnClickListener(onClickListener);
-			button.setText(textId);
-			return new SingleViewHolder(button);
-		}
-	}
+        @Override
+        public RecyclerView.ViewHolder createViewHolder(ViewGroup parent) {
+            Button button = (Button) ViewUtils.inflateLayout(R.layout.es_profile_button, parent);
+            button.setOnClickListener(onClickListener);
+            button.setText(textId);
+            return new SingleViewHolder(button);
+        }
+    }
 
 }

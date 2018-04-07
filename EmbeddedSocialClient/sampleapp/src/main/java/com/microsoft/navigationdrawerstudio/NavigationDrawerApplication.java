@@ -6,25 +6,25 @@
 
 package com.microsoft.navigationdrawerstudio;
 
+import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
+import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
+
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
-import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
-
 public class NavigationDrawerApplication extends Application {
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		EmbeddedSocial.init(this, R.raw.embedded_social_config);
-		EmbeddedSocial.initDrawer(this, new DrawerFactory(), DrawerDisplayMode.TABS, "STUDIO");
-	}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        EmbeddedSocial.init(this, R.raw.embedded_social_config);
+        EmbeddedSocial.initDrawer(this, new DrawerFactory(), DrawerDisplayMode.TABS, "STUDIO");
+    }
 
-	@Override
-	protected void attachBaseContext(Context base) {
-		super.attachBaseContext(base);
-		MultiDex.install(this);
-	}
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 }

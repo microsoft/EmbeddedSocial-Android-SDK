@@ -12,27 +12,27 @@ import android.os.Parcelable;
  * Encapsulates base data to any operation with content.
  */
 public abstract class ContentOperationData implements Parcelable {
-	private final String handle;
+    private final String handle;
 
-	public ContentOperationData(String handle) {
-		this.handle = handle;
-	}
+    public ContentOperationData(String handle) {
+        this.handle = handle;
+    }
 
-	public ContentOperationData(Parcel in) {
-		this.handle = in.readString();
-	}
+    public ContentOperationData(Parcel in) {
+        this.handle = in.readString();
+    }
 
-	public String getHandle() {
-		return handle;
-	}
+    public String getHandle() {
+        return handle;
+    }
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeString(this.handle);
-	}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.handle);
+    }
 }

@@ -18,32 +18,32 @@ import com.microsoft.embeddedsocial.service.IntentExtras;
  * Click listener for all topic buttons.
  */
 public abstract class TopicButtonsListener {
-	protected Context context;
+    protected Context context;
 
-	public TopicButtonsListener(Context context) {
-		this.context = context;
-	}
+    public TopicButtonsListener(Context context) {
+        this.context = context;
+    }
 
-	public void onClickLikesCount(View view) {
-		Intent intent = new Intent(context, LikesActivity.class);
-		intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.es_keyHandle));
-		intent.putExtra(IntentExtras.CONTENT_TYPE, ContentType.TOPIC.toValue());
+    public void onClickLikesCount(View view) {
+        Intent intent = new Intent(context, LikesActivity.class);
+        intent.putExtra(IntentExtras.CONTENT_EXTRA, (String) view.getTag(R.id.es_keyHandle));
+        intent.putExtra(IntentExtras.CONTENT_TYPE, ContentType.TOPIC.toValue());
 
-		context.startActivity(intent);
-	}
+        context.startActivity(intent);
+    }
 
-	public abstract void onClickContent(View view);
+    public abstract void onClickContent(View view);
 
-	public abstract void onClickCover(View view);
+    public abstract void onClickCover(View view);
 
-	public abstract void onClickLike(View view);
+    public abstract void onClickLike(View view);
 
-	public abstract void onClickContextMenu(View view);
+    public abstract void onClickContextMenu(View view);
 
-	public abstract void onClickCommentsCount(View view);
+    public abstract void onClickCommentsCount(View view);
 
-	public abstract void onClickComment(View view);
+    public abstract void onClickComment(View view);
 
-	public abstract void onClickPin(View view);
+    public abstract void onClickPin(View view);
 
 }

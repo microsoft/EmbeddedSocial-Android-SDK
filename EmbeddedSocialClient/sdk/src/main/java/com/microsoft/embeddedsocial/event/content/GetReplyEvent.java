@@ -15,19 +15,19 @@ import com.microsoft.embeddedsocial.server.model.view.ReplyView;
  */
 @HandlingThread(ThreadType.MAIN)
 public class GetReplyEvent extends AbstractEvent {
-	private final ReplyView replyView;
-	private final boolean result;
+    private final ReplyView replyView;
+    private final boolean result;
 
-	public GetReplyEvent(ReplyView replyView, boolean result) {
-		this.replyView = replyView;
-		this.result = result;
-	}
+    public GetReplyEvent(ReplyView replyView, boolean result) {
+        this.replyView = replyView;
+        this.result = result;
+    }
 
-	public ReplyView getReplyView() {
-		return replyView;
-	}
+    public ReplyView getReplyView() {
+        return replyView;
+    }
 
-	public boolean isResult() {
-		return result;
-	}
+    public boolean isResult() {
+        return result;
+    }
 }

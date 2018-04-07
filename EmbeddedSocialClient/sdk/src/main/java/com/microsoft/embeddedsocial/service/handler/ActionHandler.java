@@ -19,27 +19,27 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  */
 public abstract class ActionHandler implements IServiceIntentHandler<ServiceAction> {
 
-	@Override
-	public final void handleIntent(ServiceAction serviceAction, Intent intent) {
-		long actionId = intent.getLongExtra(IntentExtras.ACTION_ID, -1);
-		Action action = OngoingActions.findActionById(actionId);
-		if (action == null) {
-			DebugLog.e("Action is null");
-			return;
-		}
-		try {
-			handleAction(action, serviceAction, intent);
-		} finally {
-			if (!action.isCompleted()) {
-				action.complete();
-			}
-		}
-	}
+    @Override
+    public final void handleIntent(ServiceAction serviceAction, Intent intent) {
+        long actionId = intent.getLongExtra(IntentExtras.ACTION_ID, -1);
+        Action action = OngoingActions.findActionById(actionId);
+        if (action == null) {
+            DebugLog.e("Action is null");
+            return;
+        }
+        try {
+            handleAction(action, serviceAction, intent);
+        } finally {
+            if (!action.isCompleted()) {
+                action.complete();
+            }
+        }
+    }
 
-	protected abstract void handleAction(Action action, ServiceAction serviceAction, Intent intent);
+    protected abstract void handleAction(Action action, ServiceAction serviceAction, Intent intent);
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

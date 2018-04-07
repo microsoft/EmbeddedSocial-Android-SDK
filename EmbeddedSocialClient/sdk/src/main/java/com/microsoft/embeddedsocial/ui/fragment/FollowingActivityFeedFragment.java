@@ -17,12 +17,12 @@ import com.microsoft.embeddedsocial.server.model.view.ActivityView;
  */
 public class FollowingActivityFeedFragment extends BaseActivityFeedFragment {
 
-	@Override
-	protected FetchableAdapter<ActivityView, ?> createInitialAdapter() {
-		return new FetchableListAdapter<>(
-			FetchersFactory.createFollowingActivityFeedFetcher(),
-			new FollowingRecentActivityRenderer()
-		);
-	}
+    @Override
+    protected FetchableAdapter<ActivityView, ?> createInitialAdapter() {
+        return new FetchableListAdapter<>(
+            FetchersFactory.createFollowingActivityFeedFetcher(),
+            new FollowingRecentActivityRenderer()
+        );
+    }
 
 }

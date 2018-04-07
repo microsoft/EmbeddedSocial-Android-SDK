@@ -20,24 +20,24 @@ import retrofit2.Response;
  */
 public class UpdateUserPublicAccountInfoRequest extends UserRequest {
 
-	private PutUserInfoRequest request;
+    private PutUserInfoRequest request;
 
-	public UpdateUserPublicAccountInfoRequest(String firstName, String lastName, String bio) {
-		request = new PutUserInfoRequest();
-		request.setFirstName(firstName);
-		request.setLastName(lastName);
-		request.setBio(bio);
-	}
+    public UpdateUserPublicAccountInfoRequest(String firstName, String lastName, String bio) {
+        request = new PutUserInfoRequest();
+        request.setFirstName(firstName);
+        request.setLastName(lastName);
+        request.setBio(bio);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = USERS.putUserInfo(request, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
-		return serviceResponse.getResponse();
-	}
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = USERS.putUserInfo(request, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+        return serviceResponse.getResponse();
+    }
 }

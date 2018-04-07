@@ -22,17 +22,17 @@ import com.microsoft.embeddedsocial.data.model.FollowRequest;
  */
 public class FollowRequestsFragment extends BaseListContentFragment<FetchableListAdapter<FollowRequest, ?>> {
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		int verticalPadding = getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding_large);
-		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
-		setEmptyDataMessage(R.string.es_message_no_people);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        int verticalPadding = getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding_large);
+        getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(verticalPadding));
+        setEmptyDataMessage(R.string.es_message_no_people);
+    }
 
-	@Override
-	protected FetchableListAdapter<FollowRequest, ?> createInitialAdapter() {
-		return new FetchableListAdapter<>(FetchersFactory.createFollowRequestFetcher(), new FollowRequestRenderer(getContext()));
-	}
+    @Override
+    protected FetchableListAdapter<FollowRequest, ?> createInitialAdapter() {
+        return new FetchableListAdapter<>(FetchersFactory.createFollowRequestFetcher(), new FollowRequestRenderer(getContext()));
+    }
 
 }

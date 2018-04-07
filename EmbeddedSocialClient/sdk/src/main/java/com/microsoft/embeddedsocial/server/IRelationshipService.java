@@ -30,45 +30,45 @@ import retrofit2.Response;
  */
 public interface IRelationshipService {
 
-	Response acceptUser(AcceptFollowRequest request)
-			throws NetworkRequestException;
+    Response acceptUser(AcceptFollowRequest request)
+            throws NetworkRequestException;
 
-	Response blockUser(BlockUserRequest request)
-			throws NetworkRequestException;
+    Response blockUser(BlockUserRequest request)
+            throws NetworkRequestException;
 
-	FollowUserResponse followUser(FollowUserRequest request)
-			throws NetworkRequestException;
+    FollowUserResponse followUser(FollowUserRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getUserBlockedFeed(GetBlockedUsersRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getUserBlockedFeed(GetBlockedUsersRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getMyFollowerFeed(GetMyFollowerFeedRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getMyFollowerFeed(GetMyFollowerFeedRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getUserFollowerFeed(GetFollowerFeedRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getMyFollowingUsersFeed(GetMyFollowingUsersFeedRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getMyFollowingUsersFeed(GetMyFollowingUsersFeedRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getUserFollowingFeed(GetFollowingFeedRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getUserPendingFeed(GetPendingUsersRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getUserPendingFeed(GetPendingUsersRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getUserFollowingInOtherAppsFeed(GetFollowingInOtherAppsRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getUserFollowingInOtherAppsFeed(GetFollowingInOtherAppsRequest request)
+            throws NetworkRequestException;
 
-	Response rejectUser(RejectFollowRequest request)
-			throws NetworkRequestException;
+    Response rejectUser(RejectFollowRequest request)
+            throws NetworkRequestException;
 
-	Response unblockUser(UnblockUserRequest request)
-			throws NetworkRequestException;
+    Response unblockUser(UnblockUserRequest request)
+            throws NetworkRequestException;
 
-	Response unfollowUser(UnfollowUserRequest request)
-			throws NetworkRequestException;
+    Response unfollowUser(UnfollowUserRequest request)
+            throws NetworkRequestException;
 
-	Response removeFollower(RemoveFollowerRequest request)
-		throws NetworkRequestException;
+    Response removeFollower(RemoveFollowerRequest request)
+        throws NetworkRequestException;
 }

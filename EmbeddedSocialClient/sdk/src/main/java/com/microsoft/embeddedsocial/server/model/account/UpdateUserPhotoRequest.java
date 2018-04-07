@@ -20,22 +20,22 @@ import retrofit2.Response;
  */
 public class UpdateUserPhotoRequest extends UserRequest {
 
-	private PutUserPhotoRequest request;
+    private PutUserPhotoRequest request;
 
-	public UpdateUserPhotoRequest(String userPhotoHandle) {
-		request = new PutUserPhotoRequest();
-		request.setPhotoHandle(userPhotoHandle);
-	}
+    public UpdateUserPhotoRequest(String userPhotoHandle) {
+        request = new PutUserPhotoRequest();
+        request.setPhotoHandle(userPhotoHandle);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = USERS.putUserPhoto(request, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
-		return serviceResponse.getResponse();
-	}
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = USERS.putUserPhoto(request, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+        return serviceResponse.getResponse();
+    }
 }

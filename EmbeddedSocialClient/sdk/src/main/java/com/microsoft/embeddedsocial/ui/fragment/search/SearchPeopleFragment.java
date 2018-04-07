@@ -21,33 +21,33 @@ import android.text.TextUtils;
  */
 public class SearchPeopleFragment extends BaseUsersListFragment {
 
-	private final SearchModule searchModule = new SearchModule(this, SearchType.PEOPLE);
+    private final SearchModule searchModule = new SearchModule(this, SearchType.PEOPLE);
 
-	private Fetcher<UserCompactView> fetcher;
+    private Fetcher<UserCompactView> fetcher;
 
-	public SearchPeopleFragment() {
-		addModule(searchModule);
-	}
+    public SearchPeopleFragment() {
+        addModule(searchModule);
+    }
 
-	@Override
-	protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
-		return new UserRenderer(this);
-	}
+    @Override
+    protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
+        return new UserRenderer(this);
+    }
 
-	@Override
-	protected Fetcher<UserCompactView> createFetcher() {
-		String query = searchModule.getQuery();
-		if (fetcher == null) {
-			fetcher = TextUtils.isEmpty(query)
-			? FetchersFactory.createDummyFetcher()
-			: FetchersFactory.createSearchUsersFetcher(query);
-		}
-		return fetcher;
-	}
+    @Override
+    protected Fetcher<UserCompactView> createFetcher() {
+        String query = searchModule.getQuery();
+        if (fetcher == null) {
+            fetcher = TextUtils.isEmpty(query)
+            ? FetchersFactory.createDummyFetcher()
+            : FetchersFactory.createSearchUsersFetcher(query);
+        }
+        return fetcher;
+    }
 
-	@Override
-	public void resetAdapter() {
-		fetcher = null;
-		super.resetAdapter();
-	}
+    @Override
+    public void resetAdapter() {
+        fetcher = null;
+        super.resetAdapter();
+    }
 }

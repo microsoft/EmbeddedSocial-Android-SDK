@@ -18,35 +18,35 @@ import com.microsoft.embeddedsocial.data.storage.UserCache;
 @DatabaseTable(tableName = DbSchemas.UserRelationOperation.TABLE_NAME)
 public class UserRelationOperation {
 
-	@DatabaseField(generatedId = true)
-	private int id;
+    @DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.UserRelationOperation.OWNER_HANDLE)
-	private String ownerHandle;
+    @DatabaseField(columnName = DbSchemas.UserRelationOperation.OWNER_HANDLE)
+    private String ownerHandle;
 
-	@DatabaseField(columnName = DbSchemas.UserRelationOperation.USER_HANDLE)
-	private String targetUserHandle;
+    @DatabaseField(columnName = DbSchemas.UserRelationOperation.USER_HANDLE)
+    private String targetUserHandle;
 
-	@DatabaseField(columnName = DbSchemas.UserRelationOperation.ACTION)
-	private UserCache.UserRelationAction action;
+    @DatabaseField(columnName = DbSchemas.UserRelationOperation.ACTION)
+    private UserCache.UserRelationAction action;
 
-	/**
-	 * For ORM.
-	 */
-	UserRelationOperation() {
-	}
+    /**
+     * For ORM.
+     */
+    UserRelationOperation() {
+    }
 
-	public UserRelationOperation(UserCache.UserRelationAction action, String targetUserHandle) {
-		this.action = action;
-		this.targetUserHandle = targetUserHandle;
-		this.ownerHandle = UserAccount.getInstance().getUserHandle();
-	}
+    public UserRelationOperation(UserCache.UserRelationAction action, String targetUserHandle) {
+        this.action = action;
+        this.targetUserHandle = targetUserHandle;
+        this.ownerHandle = UserAccount.getInstance().getUserHandle();
+    }
 
-	public UserCache.UserRelationAction getAction() {
-		return action;
-	}
+    public UserCache.UserRelationAction getAction() {
+        return action;
+    }
 
-	public String getTargetUserHandle() {
-		return targetUserHandle;
-	}
+    public String getTargetUserHandle() {
+        return targetUserHandle;
+    }
 }

@@ -24,35 +24,35 @@ import java.io.IOException;
  */
 public class GetGcmIdHandler implements IServiceIntentHandler<ServiceAction> {
 
-	private final Context context;
-	private final GcmTokenHolder tokenHolder;
+    private final Context context;
+    private final GcmTokenHolder tokenHolder;
 
-	public GetGcmIdHandler(Context context) {
-		this.context = context;
-		this.tokenHolder = GcmTokenHolder.create(context);
-	}
+    public GetGcmIdHandler(Context context) {
+        this.context = context;
+        this.tokenHolder = GcmTokenHolder.create(context);
+    }
 
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		if (!tokenHolder.hasValidToken()) {
-			DebugLog.i("obtaining new GCM token");
-			InstanceID instanceID = InstanceID.getInstance(context);
-			try {
-				String token = instanceID.getToken(
-					context.getString(R.string.gcm_defaultSenderId),
-					GoogleCloudMessaging.INSTANCE_ID_SCOPE,
-					null
-				);
-				GcmTokenHolder.create(context).storeToken(token);
-				DebugLog.i("GCM token obtained successfully");
-			} catch (IOException e) {
-				DebugLog.logException(e);
-			}
-		}
-		WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
-	}
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        if (!tokenHolder.hasValidToken()) {
+            DebugLog.i("obtaining new GCM token");
+            InstanceID instanceID = InstanceID.getInstance(context);
+            try {
+                String token = instanceID.getToken(
+                    context.getString(R.string.gcm_defaultSenderId),
+                    GoogleCloudMessaging.INSTANCE_ID_SCOPE,
+                    null
+                );
+                GcmTokenHolder.create(context).storeToken(token);
+                DebugLog.i("GCM token obtained successfully");
+            } catch (IOException e) {
+                DebugLog.logException(e);
+            }
+        }
+        WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+    }
 
-	@Override
-	public void dispose() {
-	}
+    @Override
+    public void dispose() {
+    }
 }

@@ -16,9 +16,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface HandlingThread {
-	
-	/**
-	 * Desired thread type.
-	 */
-	ThreadType value();
+    
+    /**
+     * Desired thread type.
+     */
+    ThreadType value();
 }

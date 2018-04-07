@@ -19,49 +19,49 @@ import com.microsoft.embeddedsocial.sdk.R;
  * Init linked account layout.
  */
 public class LinkedAccountViewHolder extends RecyclerView.ViewHolder {
-	private TextView accountName;
-	private SwitchCompat accountState;
+    private TextView accountName;
+    private SwitchCompat accountState;
 
-	public LinkedAccountViewHolder(View itemView) {
-		super(itemView);
-		accountName = (TextView) itemView.findViewById(R.id.es_account_name);
-		accountState = (SwitchCompat) itemView.findViewById(R.id.es_account_state);
-	}
+    public LinkedAccountViewHolder(View itemView) {
+        super(itemView);
+        accountName = (TextView) itemView.findViewById(R.id.es_account_name);
+        accountState = (SwitchCompat) itemView.findViewById(R.id.es_account_state);
+    }
 
-	public void renderItem(ThirdPartyAccountView account, IOnCheckedListener onCheckedListener) {
-		accountName.setText(account.getThirdPartyName());
-		accountState.setEnabled(true);
-		accountState.setTag(account.getIdentityProvider());
-		accountState.setChecked(account.hasAccountHandle());
-		// Fixed undefined switch state after swipe
-		accountState.setOnTouchListener((v, event) -> {
-			if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-				final CompoundButton button = (CompoundButton) v;
-				button.setChecked(button.isChecked());
-			}
-			return false;
-		});
-		accountState.setOnCheckedChangeListener(new InternalOnCheckedChangeListener(onCheckedListener));
-	}
+    public void renderItem(ThirdPartyAccountView account, IOnCheckedListener onCheckedListener) {
+        accountName.setText(account.getThirdPartyName());
+        accountState.setEnabled(true);
+        accountState.setTag(account.getIdentityProvider());
+        accountState.setChecked(account.hasAccountHandle());
+        // Fixed undefined switch state after swipe
+        accountState.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+                final CompoundButton button = (CompoundButton) v;
+                button.setChecked(button.isChecked());
+            }
+            return false;
+        });
+        accountState.setOnCheckedChangeListener(new InternalOnCheckedChangeListener(onCheckedListener));
+    }
 
-	public interface IOnCheckedListener {
-		void onCheckedChanged(SwitchCompat switchCompat, boolean isChecked);
-	}
+    public interface IOnCheckedListener {
+        void onCheckedChanged(SwitchCompat switchCompat, boolean isChecked);
+    }
 
-	private static class InternalOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
-		private final IOnCheckedListener onCheckedListener;
+    private static class InternalOnCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
+        private final IOnCheckedListener onCheckedListener;
 
-		public InternalOnCheckedChangeListener(IOnCheckedListener onCheckedListener) {
-			this.onCheckedListener = onCheckedListener;
-		}
+        public InternalOnCheckedChangeListener(IOnCheckedListener onCheckedListener) {
+            this.onCheckedListener = onCheckedListener;
+        }
 
-		@Override
-		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-			// Possible skipped state changed after swipe
-			if (buttonView.isPressed()) {
-				buttonView.setEnabled(false);
-				onCheckedListener.onCheckedChanged((SwitchCompat) buttonView, isChecked);
-			}
-		}
-	}
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            // Possible skipped state changed after swipe
+            if (buttonView.isPressed()) {
+                buttonView.setEnabled(false);
+                onCheckedListener.onCheckedChanged((SwitchCompat) buttonView, isChecked);
+            }
+        }
+    }
 }

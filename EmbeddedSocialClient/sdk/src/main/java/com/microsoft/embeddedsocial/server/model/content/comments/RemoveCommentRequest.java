@@ -15,20 +15,20 @@ import retrofit2.Response;
 
 public class RemoveCommentRequest extends GenericCommentRequest {
 
-	public RemoveCommentRequest(String commentHandle) {
-		super(commentHandle);
-	}
+    public RemoveCommentRequest(String commentHandle) {
+        super(commentHandle);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = COMMENTS.deleteComment(commentHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = COMMENTS.deleteComment(commentHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getResponse();
-	}
+        return serviceResponse.getResponse();
+    }
 }

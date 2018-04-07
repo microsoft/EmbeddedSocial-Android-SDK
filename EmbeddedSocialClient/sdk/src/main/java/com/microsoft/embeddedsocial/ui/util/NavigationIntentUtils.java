@@ -25,105 +25,105 @@ import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
  */
 public class NavigationIntentUtils {
 
-	private final Activity activity;
-	private final boolean isOutsideSdk;
+    private final Activity activity;
+    private final boolean isOutsideSdk;
 
-	public NavigationIntentUtils(Activity activity) {
-		this.activity = activity;
-		isOutsideSdk = !(activity instanceof BaseActivity);
-	}
+    public NavigationIntentUtils(Activity activity) {
+        this.activity = activity;
+        isOutsideSdk = !(activity instanceof BaseActivity);
+    }
 
-	/**
-	 * Launches the Home activity.
-	 */
-	public void gotoHome() {
-		launchActivity(HomeActivity.class);
-	}
+    /**
+     * Launches the Home activity.
+     */
+    public void gotoHome() {
+        launchActivity(HomeActivity.class);
+    }
 
-	/**
-	 * Launches the Sign-in activity.
-	 */
-	public void gotoSignIn() {
-		launchActivity(SignInActivity.class);
-	}
+    /**
+     * Launches the Sign-in activity.
+     */
+    public void gotoSignIn() {
+        launchActivity(SignInActivity.class);
+    }
 
-	/**
-	 * Launches the user's profile activity.
-	 */
-	public void gotoProfile() {
-		launchGateActivityIfNeeded();
-		Intent intent = new Intent(activity, MyProfileActivity.class);
-		setupHostActivity(intent);
-		activity.startActivity(intent);
+    /**
+     * Launches the user's profile activity.
+     */
+    public void gotoProfile() {
+        launchGateActivityIfNeeded();
+        Intent intent = new Intent(activity, MyProfileActivity.class);
+        setupHostActivity(intent);
+        activity.startActivity(intent);
 
-	}
+    }
 
-	/**
-	 * Launches the Search activity.
-	 */
-	public void gotoSearch() {
-		launchActivity(SearchActivity.class);
-	}
+    /**
+     * Launches the Search activity.
+     */
+    public void gotoSearch() {
+        launchActivity(SearchActivity.class);
+    }
 
-	/**
-	 * Launches the Popular activity.
-	 */
-	public void gotoPopular() {
-		launchActivity(PopularActivity.class);
-	}
+    /**
+     * Launches the Popular activity.
+     */
+    public void gotoPopular() {
+        launchActivity(PopularActivity.class);
+    }
 
-	/**
-	 * Launches the My Pins activity.
-	 */
-	public void gotoPins() {
-		launchActivity(PinsActivity.class);
-	}
+    /**
+     * Launches the My Pins activity.
+     */
+    public void gotoPins() {
+        launchActivity(PinsActivity.class);
+    }
 
-	/**
-	 * Launches the Activity Feed activity.
-	 */
-	public void gotoActivityFeed() {
-		launchActivity(ActivityFeedActivity.class);
-	}
+    /**
+     * Launches the Activity Feed activity.
+     */
+    public void gotoActivityFeed() {
+        launchActivity(ActivityFeedActivity.class);
+    }
 
-	/**
-	 * Launches the Options activity.
-	 */
-	public void gotoOptions() {
-		launchActivity(OptionsActivity.class);
-	}
+    /**
+     * Launches the Options activity.
+     */
+    public void gotoOptions() {
+        launchActivity(OptionsActivity.class);
+    }
 
-	/**
-	 * Closes all Embedded Social sdk activities.
-	 */
-	public void closeSdkActivities() {
-		Intent intent = new Intent(activity, GateActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		if (!isOutsideSdk) {
-			activity.finish();
-		}
-		activity.startActivity(intent);
-	}
+    /**
+     * Closes all Embedded Social sdk activities.
+     */
+    public void closeSdkActivities() {
+        Intent intent = new Intent(activity, GateActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if (!isOutsideSdk) {
+            activity.finish();
+        }
+        activity.startActivity(intent);
+    }
 
-	private void launchActivity(Class<? extends Activity> activityClass) {
-		launchGateActivityIfNeeded();
-		Intent intent = new Intent(activity, activityClass);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		setupHostActivity(intent);
-		activity.startActivity(intent);
-	}
+    private void launchActivity(Class<? extends Activity> activityClass) {
+        launchGateActivityIfNeeded();
+        Intent intent = new Intent(activity, activityClass);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        setupHostActivity(intent);
+        activity.startActivity(intent);
+    }
 
-	private void launchGateActivityIfNeeded() {
-		if (isOutsideSdk) {
-			activity.startActivity(new Intent(activity, GateActivity.class));
-		}
-	}
+    private void launchGateActivityIfNeeded() {
+        if (isOutsideSdk) {
+            activity.startActivity(new Intent(activity, GateActivity.class));
+        }
+    }
 
-	private void setupHostActivity(Intent intent) {
-		if (activity instanceof EmbeddedSocialNavigationActivity) {
-			intent.putExtra(
-					BaseActivity.HOST_MENU_BUNDLE_EXTRA,
-					((EmbeddedSocialNavigationActivity) activity).getHostAppExtras());
-		}
-	}
+    private void setupHostActivity(Intent intent) {
+        if (activity instanceof EmbeddedSocialNavigationActivity) {
+            intent.putExtra(
+                    BaseActivity.HOST_MENU_BUNDLE_EXTRA,
+                    ((EmbeddedSocialNavigationActivity) activity).getHostAppExtras());
+        }
+    }
 }

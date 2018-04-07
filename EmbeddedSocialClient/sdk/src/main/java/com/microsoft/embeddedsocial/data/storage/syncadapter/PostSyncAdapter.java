@@ -45,84 +45,84 @@ import java.sql.SQLException;
  */
 public class PostSyncAdapter implements ISynchronizable {
 
-	private final PostStorage storage;
-	private final AddPostData postData;
-	private final Dao<TopicFeedRelation, Integer> topicFeedDao;
+    private final PostStorage storage;
+    private final AddPostData postData;
+    private final Dao<TopicFeedRelation, Integer> topicFeedDao;
 
-	public PostSyncAdapter(PostStorage storage, AddPostData postData) {
-		this.storage = storage;
-		this.postData = postData;
-		try {
-			this.topicFeedDao = GlobalObjectRegistry.getObject(DatabaseHelper.class)
-				.getDao(TopicFeedRelation.class);
-		} catch (SQLException e) {
-			throw new FatalDatabaseException(e);
-		}
-	}
+    public PostSyncAdapter(PostStorage storage, AddPostData postData) {
+        this.storage = storage;
+        this.postData = postData;
+        try {
+            this.topicFeedDao = GlobalObjectRegistry.getObject(DatabaseHelper.class)
+                .getDao(TopicFeedRelation.class);
+        } catch (SQLException e) {
+            throw new FatalDatabaseException(e);
+        }
+    }
 
-	@Override
-	public void synchronize() throws SynchronizationException {
-		IContentService contentService = GlobalObjectRegistry
-			.getObject(EmbeddedSocialServiceProvider.class)
-			.getContentService();
+    @Override
+    public void synchronize() throws SynchronizationException {
+        IContentService contentService = GlobalObjectRegistry
+            .getObject(EmbeddedSocialServiceProvider.class)
+            .getContentService();
 
-		AddTopicRequest.Builder requestBuilder = new AddTopicRequest.Builder()
-			.setTopicTitle(postData.getTitle())
-			.setTopicText(postData.getDescription())
-			.setPublisherType(postData.getPublisherType());
+        AddTopicRequest.Builder requestBuilder = new AddTopicRequest.Builder()
+            .setTopicTitle(postData.getTitle())
+            .setTopicText(postData.getDescription())
+            .setPublisherType(postData.getPublisherType());
 
-		try {
-			String imagePath = postData.getImagePath();
-			if (!TextUtils.isEmpty(imagePath)) {
-				String imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.CONTENTBLOB);
-				requestBuilder.setTopicBlobType(BlobType.IMAGE);
-				requestBuilder.setTopicBlobHandle(imageUrl);
-			} else {
-				imagePath = null;
-			}
-			AddTopicResponse response = contentService.addTopic(requestBuilder.build());
-			loadTopicToCache(contentService, response.getTopicHandle(), imagePath);
-		} catch (BadRequestException e) {
-			throw new OperationRejectedException(e);
-		} catch (IOException | NetworkRequestException e) {
-			DebugLog.logException(e);
-			new PostUploadFailedEvent().submit();
-			throw new SynchronizationException("Post sync failed: " + e.getMessage(), e);
-		}
-	}
+        try {
+            String imagePath = postData.getImagePath();
+            if (!TextUtils.isEmpty(imagePath)) {
+                String imageUrl = ImageUploader.uploadImage(new File(imagePath), ImageType.CONTENTBLOB);
+                requestBuilder.setTopicBlobType(BlobType.IMAGE);
+                requestBuilder.setTopicBlobHandle(imageUrl);
+            } else {
+                imagePath = null;
+            }
+            AddTopicResponse response = contentService.addTopic(requestBuilder.build());
+            loadTopicToCache(contentService, response.getTopicHandle(), imagePath);
+        } catch (BadRequestException e) {
+            throw new OperationRejectedException(e);
+        } catch (IOException | NetworkRequestException e) {
+            DebugLog.logException(e);
+            new PostUploadFailedEvent().submit();
+            throw new SynchronizationException("Post sync failed: " + e.getMessage(), e);
+        }
+    }
 
-	private void loadTopicToCache(IContentService contentService, String topicHandle, String imagePath) {
-		try {
-			// by requesting the topic it is stored to cache automatically
-			boolean loadFromCache = false;
-			GetTopicResponse response = contentService.getTopic(new GetTopicRequest(topicHandle, imagePath));
-			TopicView topic = response.getTopic();
-			if (topic != null) {
-				TopicFeedRelation userRecentRelation = new TopicFeedRelation(
-					UserAccount.getInstance().getUserHandle(),
-					TopicFeedType.USER_RECENT.ordinal(),
-					topicHandle
-				);
-				TopicFeedRelation homeFeedRelation = new TopicFeedRelation(
-					"",
-					TopicFeedType.FOLLOWING_RECENT.ordinal(),
-					topicHandle
-				);
-				DbTransaction.performTransaction(topicFeedDao, () -> {
-					topicFeedDao.create(homeFeedRelation);
-					topicFeedDao.create(userRecentRelation);
-				});
-			}
-		} catch (NetworkRequestException | SQLException e) {
-			DebugLog.logException(e);
-			// can't rethrow this exception here, cause this operation is optional
-			// and should not lead to sync failure
-		}
-	}
+    private void loadTopicToCache(IContentService contentService, String topicHandle, String imagePath) {
+        try {
+            // by requesting the topic it is stored to cache automatically
+            boolean loadFromCache = false;
+            GetTopicResponse response = contentService.getTopic(new GetTopicRequest(topicHandle, imagePath));
+            TopicView topic = response.getTopic();
+            if (topic != null) {
+                TopicFeedRelation userRecentRelation = new TopicFeedRelation(
+                    UserAccount.getInstance().getUserHandle(),
+                    TopicFeedType.USER_RECENT.ordinal(),
+                    topicHandle
+                );
+                TopicFeedRelation homeFeedRelation = new TopicFeedRelation(
+                    "",
+                    TopicFeedType.FOLLOWING_RECENT.ordinal(),
+                    topicHandle
+                );
+                DbTransaction.performTransaction(topicFeedDao, () -> {
+                    topicFeedDao.create(homeFeedRelation);
+                    topicFeedDao.create(userRecentRelation);
+                });
+            }
+        } catch (NetworkRequestException | SQLException e) {
+            DebugLog.logException(e);
+            // can't rethrow this exception here, cause this operation is optional
+            // and should not lead to sync failure
+        }
+    }
 
-	@Override
-	public void onSynchronizationSuccess() {
-		storage.removePost(postData);
-		new PostUploadedEvent().submit();
-	}
+    @Override
+    public void onSynchronizationSuccess() {
+        storage.removePost(postData);
+        new PostUploadedEvent().submit();
+    }
 }

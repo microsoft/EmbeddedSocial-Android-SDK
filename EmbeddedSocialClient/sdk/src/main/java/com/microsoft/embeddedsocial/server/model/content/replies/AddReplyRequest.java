@@ -16,26 +16,26 @@ import java.io.IOException;
 
 public class AddReplyRequest extends UserRequest {
 
-	private final String commentHandle;
-	private final PostReplyRequest request;
+    private final String commentHandle;
+    private final PostReplyRequest request;
 
-	public AddReplyRequest(String commentHandle, String contentText) {
-		this.commentHandle = commentHandle;
-		request = new PostReplyRequest();
-		request.setText(contentText);
-		request.setLanguage(language);
-	}
+    public AddReplyRequest(String commentHandle, String contentText) {
+        this.commentHandle = commentHandle;
+        request = new PostReplyRequest();
+        request.setText(contentText);
+        request.setLanguage(language);
+    }
 
-	@Override
-	public AddReplyResponse send() throws NetworkRequestException {
-		ServiceResponse<PostReplyResponse> serviceResponse;
-		try {
-			serviceResponse = COMMENT_REPLIES.postReply(commentHandle, request, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public AddReplyResponse send() throws NetworkRequestException {
+        ServiceResponse<PostReplyResponse> serviceResponse;
+        try {
+            serviceResponse = COMMENT_REPLIES.postReply(commentHandle, request, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new AddReplyResponse(serviceResponse.getBody().getReplyHandle());
-	}
+        return new AddReplyResponse(serviceResponse.getBody().getReplyHandle());
+    }
 }

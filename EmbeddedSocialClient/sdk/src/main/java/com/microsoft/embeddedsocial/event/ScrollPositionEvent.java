@@ -14,14 +14,14 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
  */
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class ScrollPositionEvent extends AbstractEvent {
-	public static final int EDIT_POSITION = -1;
-	final int position;
+    public static final int EDIT_POSITION = -1;
+    final int position;
 
-	public ScrollPositionEvent(int position) {
-		this.position = position;
-	}
+    public ScrollPositionEvent(int position) {
+        this.position = position;
+    }
 
-	public int getPosition() {
-		return position;
-	}
+    public int getPosition() {
+        return position;
+    }
 }

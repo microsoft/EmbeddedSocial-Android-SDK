@@ -26,51 +26,51 @@ import android.view.Menu;
  */
 public class TopicContextMenu {
 
-	/**
-	 * Inflate context menu to topic properties.
-	 *
-	 * @param topic the topic to generate context menu for
-	 */
-	public static void inflateContextMenu(@NonNull Fragment fragment, @NonNull PopupMenu menu, TopicView topic, TopicRenderOptions options) {
-		if (topic.isLocal()) {
-			menu.inflate(R.menu.es_topic_pending);
-		} else {
-			if (isOwnTopic(topic)) {
-				menu.inflate(R.menu.es_topic_own);
-			} else {
-				if (topic.getPublisherType() != PublisherType.APP &&
-						GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
-					// Inflate the relation options if this is a user other than the signed in user and user relations are enabled
-					UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
-				}
-				menu.inflate(R.menu.es_topic);
-			}
-			if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
-				menu.inflate(R.menu.es_topic_hide);
-			}
-			addCustomReportHandler(fragment.getContext(), menu, topic);
+    /**
+     * Inflate context menu to topic properties.
+     *
+     * @param topic the topic to generate context menu for
+     */
+    public static void inflateContextMenu(@NonNull Fragment fragment, @NonNull PopupMenu menu, TopicView topic, TopicRenderOptions options) {
+        if (topic.isLocal()) {
+            menu.inflate(R.menu.es_topic_pending);
+        } else {
+            if (isOwnTopic(topic)) {
+                menu.inflate(R.menu.es_topic_own);
+            } else {
+                if (topic.getPublisherType() != PublisherType.APP &&
+                        GlobalObjectRegistry.getObject(Options.class).userRelationsEnabled()) {
+                    // Inflate the relation options if this is a user other than the signed in user and user relations are enabled
+                    UserContextMenuHelper.inflateUserRelationshipContextMenu(menu, topic.getUser().getFollowerStatus());
+                }
+                menu.inflate(R.menu.es_topic);
+            }
+            if (UserAccount.getInstance().isSignedIn() && options.shouldShowHideTopicItem()) {
+                menu.inflate(R.menu.es_topic_hide);
+            }
+            addCustomReportHandler(fragment.getContext(), menu, topic);
         }
-		menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(fragment, topic));
-	}
+        menu.setOnMenuItemClickListener(new TopicContextMenuClickListener(fragment, topic));
+    }
 
-	private static boolean isOwnTopic(TopicView topic) {
-		if (topic.getPublisherType() == PublisherType.APP) {
-			return false;
-		}
-		return UserAccount.getInstance().isCurrentUser(topic.getUser().getHandle());
-	}
+    private static boolean isOwnTopic(TopicView topic) {
+        if (topic.getPublisherType() == PublisherType.APP) {
+            return false;
+        }
+        return UserAccount.getInstance().isCurrentUser(topic.getUser().getHandle());
+    }
 
     /**
      * Adds a custom report handler if one was provided
      */
-	private static void addCustomReportHandler(Context context, @NonNull PopupMenu menu, TopicView topic) {
-		IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
-		if (reportHandler != null) {
-			String displayString = reportHandler.getDisplayString(context, topic);
-			if (!TextUtils.isEmpty(displayString)) {
+    private static void addCustomReportHandler(Context context, @NonNull PopupMenu menu, TopicView topic) {
+        IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
+        if (reportHandler != null) {
+            String displayString = reportHandler.getDisplayString(context, topic);
+            if (!TextUtils.isEmpty(displayString)) {
                 // create an item with the a known ID and the provided title
                 menu.getMenu().add(Menu.NONE, R.id.es_reportCustom, Menu.NONE, displayString);
             }
         }
-	}
+    }
 }

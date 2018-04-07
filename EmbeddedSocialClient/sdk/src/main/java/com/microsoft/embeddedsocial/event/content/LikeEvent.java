@@ -15,19 +15,19 @@ import com.microsoft.embeddedsocial.data.model.LikeContentData;
  */
 @HandlingThread(ThreadType.MAIN)
 abstract class LikeEvent extends AbstractEvent {
-	private final LikeContentData data;
-	private final boolean result;
+    private final LikeContentData data;
+    private final boolean result;
 
-	public LikeEvent(LikeContentData data, boolean result) {
-		this.data = data;
-		this.result = result;
-	}
+    public LikeEvent(LikeContentData data, boolean result) {
+        this.data = data;
+        this.result = result;
+    }
 
-	public LikeContentData getData() {
-		return data;
-	}
+    public LikeContentData getData() {
+        return data;
+    }
 
-	public boolean isResult() {
-		return result;
-	}
+    public boolean isResult() {
+        return result;
+    }
 }

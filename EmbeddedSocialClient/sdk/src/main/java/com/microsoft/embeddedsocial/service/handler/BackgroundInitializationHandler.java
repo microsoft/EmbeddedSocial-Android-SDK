@@ -14,17 +14,17 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
 
 public class BackgroundInitializationHandler implements IServiceIntentHandler<ServiceAction> {
 
-	private final Context context;
+    private final Context context;
 
-	public BackgroundInitializationHandler(Context context) {
-		this.context = context;
-	}
+    public BackgroundInitializationHandler(Context context) {
+        this.context = context;
+    }
 
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
-	}
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
+    }
 
-	@Override
-	public void dispose() {  }
+    @Override
+    public void dispose() {  }
 }

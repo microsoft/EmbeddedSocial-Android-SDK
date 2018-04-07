@@ -10,13 +10,13 @@ package com.microsoft.embeddedsocial.server.model.content.replies;
  */
 public class AddReplyResponse {
 
-	private String replyHandle;
+    private String replyHandle;
 
-	public AddReplyResponse(String replyHandle) {
-		this.replyHandle = replyHandle;
-	}
+    public AddReplyResponse(String replyHandle) {
+        this.replyHandle = replyHandle;
+    }
 
-	public String getReplyHandle() {
-		return replyHandle;
-	}
+    public String getReplyHandle() {
+        return replyHandle;
+    }
 }

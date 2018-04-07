@@ -28,48 +28,48 @@ import okio.Okio;
 
 public class ImageUploader {
 
-	public static synchronized String uploadImage(Context context, Uri imageUri, ImageType imageType)
-			throws IOException, NetworkRequestException {
+    public static synchronized String uploadImage(Context context, Uri imageUri, ImageType imageType)
+            throws IOException, NetworkRequestException {
 
-		ContentResolver contentResolver = context.getContentResolver();
-		String mimeType = contentResolver.getType(imageUri);
+        ContentResolver contentResolver = context.getContentResolver();
+        String mimeType = contentResolver.getType(imageUri);
 
-		File outputDir = context.getCacheDir();
-		MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-		File outputFile = File.createTempFile(
-				"img",
-				TextUtils.isEmpty(mimeType) ? null : "." + mimeTypeMap.getExtensionFromMimeType(mimeType),
-				outputDir);
-		try {
-			InputStream inputStream = contentResolver.openInputStream(imageUri);
-			BufferedSource source = Okio.buffer(Okio.source(inputStream));
-			BufferedSink destination = Okio.buffer(Okio.sink(outputFile));
-			try {
-				destination.writeAll(source);
-			} finally {
-				source.close();
-				destination.close();
-			}
-			return uploadImageInternal(outputFile, imageType);
-		} finally {
-			outputFile.delete();
-		}
-	}
+        File outputDir = context.getCacheDir();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        File outputFile = File.createTempFile(
+                "img",
+                TextUtils.isEmpty(mimeType) ? null : "." + mimeTypeMap.getExtensionFromMimeType(mimeType),
+                outputDir);
+        try {
+            InputStream inputStream = contentResolver.openInputStream(imageUri);
+            BufferedSource source = Okio.buffer(Okio.source(inputStream));
+            BufferedSink destination = Okio.buffer(Okio.sink(outputFile));
+            try {
+                destination.writeAll(source);
+            } finally {
+                source.close();
+                destination.close();
+            }
+            return uploadImageInternal(outputFile, imageType);
+        } finally {
+            outputFile.delete();
+        }
+    }
 
-	public static synchronized String uploadImage(File image, ImageType imageType)
-			throws IOException, NetworkRequestException {
-		if (!image.exists()) {
-			throw new FileNotFoundException();
-		}
-		return uploadImageInternal(image, imageType);
-	}
+    public static synchronized String uploadImage(File image, ImageType imageType)
+            throws IOException, NetworkRequestException {
+        if (!image.exists()) {
+            throw new FileNotFoundException();
+        }
+        return uploadImageInternal(image, imageType);
+    }
 
-	private static String uploadImageInternal(File image, ImageType imageType)
-			throws NetworkRequestException, IOException {
+    private static String uploadImageInternal(File image, ImageType imageType)
+            throws NetworkRequestException, IOException {
 
-		IImageService imageService
-				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getImageService();
-		AddImageRequest addImageRequest = new AddImageRequest(Files.toByteArray(image), imageType);
-		return imageService.addImage(addImageRequest);
-	}
+        IImageService imageService
+                = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getImageService();
+        AddImageRequest addImageRequest = new AddImageRequest(Files.toByteArray(image), imageType);
+        return imageService.addImage(addImageRequest);
+    }
 }

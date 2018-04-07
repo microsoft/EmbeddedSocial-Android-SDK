@@ -14,17 +14,17 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
  */
 public interface IAuthenticationCallback {
 
-	/**
-	 * Is called when 3rd party authentication succeeds.
-	 * @param account   user account data
-	 */
-	@UiThread
-	void onAuthenticationSuccess(SocialNetworkAccount account);
+    /**
+     * Is called when 3rd party authentication succeeds.
+     * @param account   user account data
+     */
+    @UiThread
+    void onAuthenticationSuccess(SocialNetworkAccount account);
 
-	/**
-	 * Is called when 3rd party authentication fails.
-	 * @param errorMessage  failure reason
-	 */
-	@UiThread
-	void onAuthenticationError(String errorMessage);
+    /**
+     * Is called when 3rd party authentication fails.
+     * @param errorMessage  failure reason
+     */
+    @UiThread
+    void onAuthenticationError(String errorMessage);
 }

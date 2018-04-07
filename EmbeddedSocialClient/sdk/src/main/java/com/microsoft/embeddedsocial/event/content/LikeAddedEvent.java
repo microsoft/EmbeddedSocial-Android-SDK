@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class LikeAddedEvent extends LikeEvent {
 
-	public LikeAddedEvent(LikeContentData data, boolean result) {
-		super(data, result);
-	}
+    public LikeAddedEvent(LikeContentData data, boolean result) {
+        super(data, result);
+    }
 }

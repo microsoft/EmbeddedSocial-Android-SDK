@@ -25,60 +25,60 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  */
 public class ViewImageFragment extends BaseFragment {
 
-	private PhotoViewAttacher photoViewAttacher;
-	private FullImageViewContentLoader coverContentLoader;
-	private ImageView coverImage;
-	private ProgressBar progressBar;
+    private PhotoViewAttacher photoViewAttacher;
+    private FullImageViewContentLoader coverContentLoader;
+    private ImageView coverImage;
+    private ProgressBar progressBar;
 
-	@Override
-	protected int getLayoutId() {
-		return R.layout.es_fragment_view_image;
-	}
+    @Override
+    protected int getLayoutId() {
+        return R.layout.es_fragment_view_image;
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-		Bundle arguments = getArguments();
-		String coverImageUrl = arguments.getString(IntentExtras.COVER_IMAGE_URL_EXTRA);
+        Bundle arguments = getArguments();
+        String coverImageUrl = arguments.getString(IntentExtras.COVER_IMAGE_URL_EXTRA);
 
-		progressBar = (ProgressBar) view.findViewById(R.id.es_progress);
-		coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
-		coverContentLoader = new FullImageViewContentLoader(coverImage);
-		if (savedInstanceState == null) {
-			coverImage.setVisibility(View.GONE);
-			progressBar.setVisibility(View.VISIBLE);
-		}
+        progressBar = (ProgressBar) view.findViewById(R.id.es_progress);
+        coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
+        coverContentLoader = new FullImageViewContentLoader(coverImage);
+        if (savedInstanceState == null) {
+            coverImage.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
-		ImageLocation imageLocation = ImageLocation.createTopicImageLocation(coverImageUrl);
-		coverContentLoader.load(imageLocation, ImageLocation.TOPIC_SIZE_MAX);
-	}
+        ImageLocation imageLocation = ImageLocation.createTopicImageLocation(coverImageUrl);
+        coverContentLoader.load(imageLocation, ImageLocation.TOPIC_SIZE_MAX);
+    }
 
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		if (photoViewAttacher != null) {
-			photoViewAttacher.cleanup();
-		}
-	}
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (photoViewAttacher != null) {
+            photoViewAttacher.cleanup();
+        }
+    }
 
-	private class FullImageViewContentLoader extends ImageViewContentLoader {
+    private class FullImageViewContentLoader extends ImageViewContentLoader {
 
-		public FullImageViewContentLoader(ImageView imageView) {
-			super(imageView);
-		}
+        public FullImageViewContentLoader(ImageView imageView) {
+            super(imageView);
+        }
 
-		@Override
-		protected void onBitmapLoaded(Bitmap bitmap) {
-			super.onBitmapLoaded(bitmap);
-			progressBar.setVisibility(View.GONE);
-			coverImage.setVisibility(View.VISIBLE);
-			photoViewAttacher = new PhotoViewAttacher(coverImage);
-		}
+        @Override
+        protected void onBitmapLoaded(Bitmap bitmap) {
+            super.onBitmapLoaded(bitmap);
+            progressBar.setVisibility(View.GONE);
+            coverImage.setVisibility(View.VISIBLE);
+            photoViewAttacher = new PhotoViewAttacher(coverImage);
+        }
 
-		@Override
-		protected void onBitmapFailed() {
-			progressBar.setVisibility(View.GONE);
-		}
-	}
+        @Override
+        protected void onBitmapFailed() {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
 }

@@ -18,42 +18,42 @@ import android.view.ViewGroup;
  */
 public class BlockedUsersRenderer extends BaseUserRenderer {
 
-	public BlockedUsersRenderer(Fragment fragment) {
-		super(fragment);
-	}
+    public BlockedUsersRenderer(Fragment fragment) {
+        super(fragment);
+    }
 
-	@Override
-	protected void onItemRendered(UserCompactView user, UserListItemHolder holder) {
-		super.onItemRendered(user, holder);
-		if (user.isUnblocked()) {
-			renderUnblockedUser(user, holder);
-		} else {
-			renderBlockedUser(user, holder);
-		}
-	}
+    @Override
+    protected void onItemRendered(UserCompactView user, UserListItemHolder holder) {
+        super.onItemRendered(user, holder);
+        if (user.isUnblocked()) {
+            renderUnblockedUser(user, holder);
+        } else {
+            renderBlockedUser(user, holder);
+        }
+    }
 
-	private void renderBlockedUser(UserCompactView user, UserListItemHolder holder) {
-		holder.actionButton.setText(R.string.es_button_unblock);
-		holder.actionButton.setOnClickListener(v -> {
-			UserAccount.getInstance().unblockUser(user.getHandle());
-			user.setUnblocked(true);
-			renderUnblockedUser(user, holder);
-		});
-	}
+    private void renderBlockedUser(UserCompactView user, UserListItemHolder holder) {
+        holder.actionButton.setText(R.string.es_button_unblock);
+        holder.actionButton.setOnClickListener(v -> {
+            UserAccount.getInstance().unblockUser(user.getHandle());
+            user.setUnblocked(true);
+            renderUnblockedUser(user, holder);
+        });
+    }
 
-	private void renderUnblockedUser(UserCompactView user, UserListItemHolder holder) {
-		holder.actionButton.setText(R.string.es_button_block);
-		holder.actionButton.setOnClickListener(v -> {
-			UserAccount.getInstance().blockUser(fragment, user.getHandle());
-			user.setUnblocked(false);
-			renderBlockedUser(user, holder);
-		});
-	}
+    private void renderUnblockedUser(UserCompactView user, UserListItemHolder holder) {
+        holder.actionButton.setText(R.string.es_button_block);
+        holder.actionButton.setOnClickListener(v -> {
+            UserAccount.getInstance().blockUser(fragment, user.getHandle());
+            user.setUnblocked(false);
+            renderBlockedUser(user, holder);
+        });
+    }
 
-	@Override
-	public UserListItemHolder createViewHolder(ViewGroup parent) {
-		UserListItemHolder holder = super.createViewHolder(parent);
-		getStyleHelper().applyGrayStyle(holder.actionButton);
-		return holder;
-	}
+    @Override
+    public UserListItemHolder createViewHolder(ViewGroup parent) {
+        UserListItemHolder holder = super.createViewHolder(parent);
+        getStyleHelper().applyGrayStyle(holder.actionButton);
+        return holder;
+    }
 }

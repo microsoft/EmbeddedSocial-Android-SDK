@@ -15,12 +15,12 @@ import com.microsoft.embeddedsocial.sdk.R;
  */
 public class FollowRequestHolder extends UserListItemHolder {
 
-	public final View acceptButton;
-	public final View rejectButton;
+    public final View acceptButton;
+    public final View rejectButton;
 
-	public FollowRequestHolder(View itemView) {
-		super(itemView);
-		acceptButton = ViewUtils.findView(itemView, R.id.es_acceptButton);
-		rejectButton = ViewUtils.findView(itemView, R.id.es_rejectButton);
-	}
+    public FollowRequestHolder(View itemView) {
+        super(itemView);
+        acceptButton = ViewUtils.findView(itemView, R.id.es_acceptButton);
+        rejectButton = ViewUtils.findView(itemView, R.id.es_rejectButton);
+    }
 }

@@ -16,14 +16,14 @@ import com.microsoft.embeddedsocial.event.BaseUserEvent;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class UserFollowedStateChangedEvent extends BaseUserEvent {
 
-	private final FollowerStatus followedState;
+    private final FollowerStatus followedState;
 
-	public UserFollowedStateChangedEvent(String userHandle, FollowerStatus followedState) {
-		super(userHandle);
-		this.followedState = followedState;
-	}
+    public UserFollowedStateChangedEvent(String userHandle, FollowerStatus followedState) {
+        super(userHandle);
+        this.followedState = followedState;
+    }
 
-	public FollowerStatus getFollowedStatus() {
-		return followedState;
-	}
+    public FollowerStatus getFollowedStatus() {
+        return followedState;
+    }
 }

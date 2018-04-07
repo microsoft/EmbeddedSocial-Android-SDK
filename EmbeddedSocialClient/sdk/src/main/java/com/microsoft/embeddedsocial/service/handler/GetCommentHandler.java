@@ -24,21 +24,21 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Get single comment.
  */
 public class GetCommentHandler extends ActionHandler {
-	@Override
-	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		IContentService contentService
-				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
+    @Override
+    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+        IContentService contentService
+                = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 
-		final String commentHandle = intent.getExtras().getString(IntentExtras.COMMENT_HANDLE);
+        final String commentHandle = intent.getExtras().getString(IntentExtras.COMMENT_HANDLE);
 
-		try {
-			final GetCommentRequest request = new GetCommentRequest(commentHandle);
-			GetCommentResponse response = contentService.getComment(request);
-			EventBus.post(new GetCommentEvent(response.getComment(), response.getComment() != null));
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-			action.fail(e.getMessage());
-			EventBus.post(new GetCommentEvent(null, false));
-		}
-	}
+        try {
+            final GetCommentRequest request = new GetCommentRequest(commentHandle);
+            GetCommentResponse response = contentService.getComment(request);
+            EventBus.post(new GetCommentEvent(response.getComment(), response.getComment() != null));
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+            action.fail(e.getMessage());
+            EventBus.post(new GetCommentEvent(null, false));
+        }
+    }
 }

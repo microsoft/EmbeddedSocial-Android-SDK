@@ -10,8 +10,8 @@ package com.microsoft.embeddedsocial.base;
  */
 public interface IDisposable {
 
-	/**
-	 * Disposes the object.
-	 */
-	void dispose();
+    /**
+     * Disposes the object.
+     */
+    void dispose();
 }

@@ -10,14 +10,14 @@ import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 public class GenericLikeRequest extends UserRequest {
 
-	protected final String contentHandle;
-	protected final ContentType contentType;
+    protected final String contentHandle;
+    protected final ContentType contentType;
 
-	public GenericLikeRequest(String contentHandle, ContentType contentType) {
-		if (contentType == ContentType.UNKNOWN) {
-			throw new IllegalArgumentException("Content type cannot be unknown");
-		}
-		this.contentHandle = contentHandle;
-		this.contentType = contentType;
-	}
+    public GenericLikeRequest(String contentHandle, ContentType contentType) {
+        if (contentType == ContentType.UNKNOWN) {
+            throw new IllegalArgumentException("Content type cannot be unknown");
+        }
+        this.contentHandle = contentHandle;
+        this.contentType = contentType;
+    }
 }

@@ -10,13 +10,13 @@ package com.microsoft.embeddedsocial.server.model.content.comments;
  */
 public class AddCommentResponse {
 
-	private String commentHandle;
+    private String commentHandle;
 
-	public AddCommentResponse(String commentHandle) {
-		this.commentHandle = commentHandle;
-	}
+    public AddCommentResponse(String commentHandle) {
+        this.commentHandle = commentHandle;
+    }
 
-	public String getCommentHandle() {
-		return commentHandle;
-	}
+    public String getCommentHandle() {
+        return commentHandle;
+    }
 }

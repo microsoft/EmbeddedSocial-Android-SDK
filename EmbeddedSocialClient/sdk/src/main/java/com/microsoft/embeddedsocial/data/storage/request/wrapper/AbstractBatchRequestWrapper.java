@@ -15,10 +15,10 @@ import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
  * @param <Response>    network response type
  */
 public abstract class AbstractBatchRequestWrapper<Request extends FeedUserRequest, Response>
-	extends AbstractRequestWrapper<Request, Response> {
+    extends AbstractRequestWrapper<Request, Response> {
 
-	@Override
-	protected boolean isFirstDataRequest(Request request) {
-		return TextUtils.isEmpty(request.getCursor());
-	}
+    @Override
+    protected boolean isFirstDataRequest(Request request) {
+        return TextUtils.isEmpty(request.getCursor());
+    }
 }

@@ -9,8 +9,8 @@ package com.microsoft.embeddedsocial.fetcher.base;
  * State of fetcher.
  */
 public enum FetcherState {
-	HAS_MORE_DATA,
-	LAST_ATTEMPT_FAILED,
-	LOADING,
-	DATA_ENDED
+    HAS_MORE_DATA,
+    LAST_ATTEMPT_FAILED,
+    LOADING,
+    DATA_ENDED
 }

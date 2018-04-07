@@ -35,57 +35,57 @@ import java.io.IOException;
  */
 public class UpdateAccountHandler extends ActionHandler {
 
-	private final Context context;
-	private final IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+    private final Context context;
+    private final IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 
-	public UpdateAccountHandler(Context context) {
-		this.context = context;
-	}
+    public UpdateAccountHandler(Context context) {
+        this.context = context;
+    }
 
-	@Override
-	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		Bundle extras = intent.getExtras();
-		AccountDataDifference difference = extras.getParcelable(IntentExtras.ACCOUNT_DATA_DIFFERENCE);
-		AccountData accountData = UserAccount.getInstance().getAccountDetails();
-		try {
-			updatePhotoIfNeeded(difference, accountData);
-			updatePublicInfoIfNeeded(difference, accountData);
-			updatePrivacyIfNeeded(difference, accountData);
-		} catch (IOException | NetworkRequestException e) {
-			DebugLog.logException(e);
-			action.fail();
-		} finally {
-			UserAccount.getInstance().updateAccountDetails(accountData);
-		}
-	}
+    @Override
+    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+        Bundle extras = intent.getExtras();
+        AccountDataDifference difference = extras.getParcelable(IntentExtras.ACCOUNT_DATA_DIFFERENCE);
+        AccountData accountData = UserAccount.getInstance().getAccountDetails();
+        try {
+            updatePhotoIfNeeded(difference, accountData);
+            updatePublicInfoIfNeeded(difference, accountData);
+            updatePrivacyIfNeeded(difference, accountData);
+        } catch (IOException | NetworkRequestException e) {
+            DebugLog.logException(e);
+            action.fail();
+        } finally {
+            UserAccount.getInstance().updateAccountDetails(accountData);
+        }
+    }
 
-	private void updatePrivacyIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
-		if (difference.isPrivacyChanged()) {
-			Visibility visibility = difference.isPrivate() ? Visibility.PRIVATE : Visibility.PUBLIC;
-			server.updateUserVisibility(new UpdateUserVisibilityRequest(visibility));
-			accountData.setIsPrivate(difference.isPrivate());
-		}
-	}
+    private void updatePrivacyIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
+        if (difference.isPrivacyChanged()) {
+            Visibility visibility = difference.isPrivate() ? Visibility.PRIVATE : Visibility.PUBLIC;
+            server.updateUserVisibility(new UpdateUserVisibilityRequest(visibility));
+            accountData.setIsPrivate(difference.isPrivate());
+        }
+    }
 
-	private void updatePublicInfoIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
-		if (difference.isPublicInfoChanged()) {
-			server.updateUserPublicAccountInfo(new UpdateUserPublicAccountInfoRequest(
-				difference.getFirstName(),
-				difference.getLastName(),
-				difference.getBio()));
-			accountData.setFirstName(difference.getFirstName());
-			accountData.setLastName(difference.getLastName());
-			accountData.setBio(difference.getBio());
-		}
-	}
+    private void updatePublicInfoIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
+        if (difference.isPublicInfoChanged()) {
+            server.updateUserPublicAccountInfo(new UpdateUserPublicAccountInfoRequest(
+                difference.getFirstName(),
+                difference.getLastName(),
+                difference.getBio()));
+            accountData.setFirstName(difference.getFirstName());
+            accountData.setLastName(difference.getLastName());
+            accountData.setBio(difference.getBio());
+        }
+    }
 
-	private void updatePhotoIfNeeded(AccountDataDifference difference, AccountData accountData) throws IOException, NetworkRequestException {
-		if (difference.isPhotoUriChanged()) {
-			Uri photoUri = difference.getPhotoUri();
-			String photoUrl = photoUri != null ? ImageUploader.uploadImage(context, photoUri, ImageType.USERPHOTO) : null;
-			server.updateUserPhoto(new UpdateUserPhotoRequest(photoUrl));
-			accountData.setUserPhotoUrl(photoUrl);
-		}
-	}
+    private void updatePhotoIfNeeded(AccountDataDifference difference, AccountData accountData) throws IOException, NetworkRequestException {
+        if (difference.isPhotoUriChanged()) {
+            Uri photoUri = difference.getPhotoUri();
+            String photoUrl = photoUri != null ? ImageUploader.uploadImage(context, photoUri, ImageType.USERPHOTO) : null;
+            server.updateUserPhoto(new UpdateUserPhotoRequest(photoUrl));
+            accountData.setUserPhotoUrl(photoUrl);
+        }
+    }
 
 }

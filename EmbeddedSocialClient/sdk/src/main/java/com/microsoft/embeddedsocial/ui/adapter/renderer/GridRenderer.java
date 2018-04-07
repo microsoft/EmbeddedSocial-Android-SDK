@@ -28,63 +28,63 @@ import android.widget.ImageView;
  */
 public class GridRenderer extends Renderer<TopicView, GridRenderer.ViewHolder> {
 
-	private int imageSize;
-	private Fragment fragment;
+    private int imageSize;
+    private Fragment fragment;
 
-	public GridRenderer(Fragment fragment) {
-		this.fragment = fragment;
-		Context context = fragment.getContext();
-		imageSize = context.getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
-	}
+    public GridRenderer(Fragment fragment) {
+        this.fragment = fragment;
+        Context context = fragment.getContext();
+        imageSize = context.getResources().getDimensionPixelSize(R.dimen.es_grid_cell_size);
+    }
 
-	@Override
-	public ViewHolder createViewHolder(ViewGroup parent) {
-		Context context = parent.getContext();
-		View itemView = LayoutInflater.from(context).inflate(R.layout.es_grid_item, parent, false);
-		return new ViewHolder(fragment, itemView);
-	}
+    @Override
+    public ViewHolder createViewHolder(ViewGroup parent) {
+        Context context = parent.getContext();
+        View itemView = LayoutInflater.from(context).inflate(R.layout.es_grid_item, parent, false);
+        return new ViewHolder(fragment, itemView);
+    }
 
-	@Override
-	protected void onItemRendered(TopicView topic, ViewHolder viewHolder) {
-		ImageLocation imageLocation = topic.getImageLocation();
-		viewHolder.imageViewContentLoader.cancel();
-		if (imageLocation != null) {
-			viewHolder.imageViewContentLoader.load(imageLocation, imageSize);
-			viewHolder.noImageView.setVisibility(View.GONE);
-		} else {
-			viewHolder.imageView.setImageBitmap(null);
-			viewHolder.noImageView.setVisibility(View.VISIBLE);
-		}
-		ViewUtils.setVisible(viewHolder.uploadingIndicator, topic.isLocal());
-		viewHolder.topic = topic;
-	}
+    @Override
+    protected void onItemRendered(TopicView topic, ViewHolder viewHolder) {
+        ImageLocation imageLocation = topic.getImageLocation();
+        viewHolder.imageViewContentLoader.cancel();
+        if (imageLocation != null) {
+            viewHolder.imageViewContentLoader.load(imageLocation, imageSize);
+            viewHolder.noImageView.setVisibility(View.GONE);
+        } else {
+            viewHolder.imageView.setImageBitmap(null);
+            viewHolder.noImageView.setVisibility(View.VISIBLE);
+        }
+        ViewUtils.setVisible(viewHolder.uploadingIndicator, topic.isLocal());
+        viewHolder.topic = topic;
+    }
 
-	/**
-	 * View holder.
-	 */
-	static class ViewHolder extends BaseViewHolder implements OnClickListener {
+    /**
+     * View holder.
+     */
+    static class ViewHolder extends BaseViewHolder implements OnClickListener {
 
-		final ImageViewContentLoader imageViewContentLoader;
-		final ImageView imageView;
-		final View noImageView;
-		final View uploadingIndicator;
-		final Fragment fragment;
+        final ImageViewContentLoader imageViewContentLoader;
+        final ImageView imageView;
+        final View noImageView;
+        final View uploadingIndicator;
+        final Fragment fragment;
 
-		TopicView topic;
+        TopicView topic;
 
-		public ViewHolder(Fragment fragment, View itemView) {
-			super(itemView);
-			noImageView = ViewUtils.findView(itemView, R.id.es_noImage);
-			imageView = ViewUtils.findView(itemView, R.id.es_image);
-			imageViewContentLoader = new CoverLoader(imageView);
-			uploadingIndicator = ViewUtils.findView(itemView, R.id.es_uploadingIndicator);
-			this.fragment = fragment;
-			itemView.setOnClickListener(this);
-		}
+        public ViewHolder(Fragment fragment, View itemView) {
+            super(itemView);
+            noImageView = ViewUtils.findView(itemView, R.id.es_noImage);
+            imageView = ViewUtils.findView(itemView, R.id.es_image);
+            imageViewContentLoader = new CoverLoader(imageView);
+            uploadingIndicator = ViewUtils.findView(itemView, R.id.es_uploadingIndicator);
+            this.fragment = fragment;
+            itemView.setOnClickListener(this);
+        }
 
-		@Override
-		public void onClick(View v) {
-			EventBus.post(new OpenTopicEvent(fragment, topic));
-		}
-	}
+        @Override
+        public void onClick(View v) {
+            EventBus.post(new OpenTopicEvent(fragment, topic));
+        }
+    }
 }

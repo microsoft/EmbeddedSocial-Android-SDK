@@ -12,21 +12,21 @@ import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
  */
 public final class FriendlistLoaders {
 
-	private FriendlistLoaders() {  }
+    private FriendlistLoaders() {  }
 
-	public static FriendlistLoader newFriendlistLoader(IdentityProvider accountType) {
-		switch (accountType) {
-			case FACEBOOK:
-				return new FacebookFriendlistLoader();
+    public static FriendlistLoader newFriendlistLoader(IdentityProvider accountType) {
+        switch (accountType) {
+            case FACEBOOK:
+                return new FacebookFriendlistLoader();
 
-			case GOOGLE:
-				return new GooglePlusFriendlistLoader();
+            case GOOGLE:
+                return new GooglePlusFriendlistLoader();
 
-			case MICROSOFT:
-				return new MicrosoftLiveFriendlistLoader();
+            case MICROSOFT:
+                return new MicrosoftLiveFriendlistLoader();
 
-			default:
-				throw new RuntimeException("account type is not supported");
-		}
-	}
+            default:
+                throw new RuntimeException("account type is not supported");
+        }
+    }
 }

@@ -17,22 +17,22 @@ import java.util.List;
  */
 public class ActivityFeedResponse extends ListResponse<ActivityView> {
 
-	private List<ActivityView> activities;
+    private List<ActivityView> activities;
 
-	public ActivityFeedResponse(List<ActivityView> activities) {
-		this.activities = activities;
-	}
+    public ActivityFeedResponse(List<ActivityView> activities) {
+        this.activities = activities;
+    }
 
-	public ActivityFeedResponse(FeedResponseActivityView response) {
-		activities = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
-			activities.add(new ActivityView(view));
-		}
-		setContinuationKey(response.getCursor());
-	}
+    public ActivityFeedResponse(FeedResponseActivityView response) {
+        activities = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.ActivityView view : response.getData()) {
+            activities.add(new ActivityView(view));
+        }
+        setContinuationKey(response.getCursor());
+    }
 
-	@Override
-	public List<ActivityView> getData() {
-		return activities;
-	}
+    @Override
+    public List<ActivityView> getData() {
+        return activities;
+    }
 }

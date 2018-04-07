@@ -5,18 +5,18 @@
   -->
 
 <FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/es_black"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/es_black"
+    >
 
-	<ImageView
-		android:id="@+id/es_coverImage"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		/>
+    <ImageView
+        android:id="@+id/es_coverImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
-	<include layout="@layout/es_progressbar"/>
+    <include layout="@layout/es_progressbar"/>
 
 </FrameLayout>

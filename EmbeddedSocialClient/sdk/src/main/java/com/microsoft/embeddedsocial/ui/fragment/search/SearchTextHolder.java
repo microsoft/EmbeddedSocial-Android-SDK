@@ -12,8 +12,8 @@ import com.microsoft.embeddedsocial.data.model.SearchType;
  */
 public interface SearchTextHolder {
 
-	String getSearchText(SearchType searchType);
+    String getSearchText(SearchType searchType);
 
-	boolean isSearchTextEmpty(SearchType searchType);
+    boolean isSearchTextEmpty(SearchType searchType);
 
 }

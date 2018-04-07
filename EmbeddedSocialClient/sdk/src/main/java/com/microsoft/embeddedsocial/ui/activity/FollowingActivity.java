@@ -15,8 +15,8 @@ import com.microsoft.embeddedsocial.ui.fragment.FollowingFragment;
  */
 public class FollowingActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowingFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowingFragment());
+    }
 }

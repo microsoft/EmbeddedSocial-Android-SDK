@@ -22,18 +22,18 @@ import retrofit2.Response;
 public interface INotificationService {
 
 
-	CountResponse getNotificationCount(GetNotificationCountRequest request)
-			throws NetworkRequestException;
+    CountResponse getNotificationCount(GetNotificationCountRequest request)
+            throws NetworkRequestException;
 
-	GetNotificationFeedResponse getNotificationFeed(GetNotificationFeedRequest request)
-			throws NetworkRequestException;
+    GetNotificationFeedResponse getNotificationFeed(GetNotificationFeedRequest request)
+            throws NetworkRequestException;
 
-	Response registerPushNotification(RegisterPushNotificationRequest request)
-			throws NetworkRequestException;
+    Response registerPushNotification(RegisterPushNotificationRequest request)
+            throws NetworkRequestException;
 
-	Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
-			throws NetworkRequestException;
+    Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
+            throws NetworkRequestException;
 
-	Response updateNotificationStatus(UpdateNotificationStatusRequest request)
-			throws NetworkRequestException;
+    Response updateNotificationStatus(UpdateNotificationStatusRequest request)
+            throws NetworkRequestException;
 }

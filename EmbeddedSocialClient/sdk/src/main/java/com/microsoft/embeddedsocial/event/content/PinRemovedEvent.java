@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class PinRemovedEvent extends PinEvent {
 
-	public PinRemovedEvent(PinData data, boolean result) {
-		super(data, result);
-	}
+    public PinRemovedEvent(PinData data, boolean result) {
+        super(data, result);
+    }
 }

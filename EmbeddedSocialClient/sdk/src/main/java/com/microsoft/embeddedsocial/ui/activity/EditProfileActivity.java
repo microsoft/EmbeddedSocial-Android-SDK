@@ -15,14 +15,14 @@ import android.os.Bundle;
  */
 public class EditProfileActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new EditProfileFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new EditProfileFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 
 }

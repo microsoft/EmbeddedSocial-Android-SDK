@@ -26,34 +26,34 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  */
 public class SignOutHandler extends ActionHandler {
 
-	private final Context context;
+    private final Context context;
 
-	public SignOutHandler(Context context) {
-		this.context = context;
-	}
+    public SignOutHandler(Context context) {
+        this.context = context;
+    }
 
-	@Override
-	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		String authorization = intent.getStringExtra(IntentExtras.AUTHORIZATION);
-		IAuthenticationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAuthenticationService();
-		try {
-			SignOutRequest request = new SignOutRequest(authorization);
-			server.signOut(request);
-		} catch (NetworkRequestException e) {
-			// ignore server errors
-			DebugLog.logException(e);
-		}
-		MicrosoftLiveAuthenticator.signOut(context);
-		clearCookies();
-	}
+    @Override
+    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+        String authorization = intent.getStringExtra(IntentExtras.AUTHORIZATION);
+        IAuthenticationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAuthenticationService();
+        try {
+            SignOutRequest request = new SignOutRequest(authorization);
+            server.signOut(request);
+        } catch (NetworkRequestException e) {
+            // ignore server errors
+            DebugLog.logException(e);
+        }
+        MicrosoftLiveAuthenticator.signOut(context);
+        clearCookies();
+    }
 
-	private void clearCookies() {
-		CookieManager cookieManager = CookieManager.getInstance();
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			cookieManager.removeAllCookies(null);
-		} else {
-			//noinspection deprecation
-			cookieManager.removeAllCookie();
-		}
-	}
+    private void clearCookies() {
+        CookieManager cookieManager = CookieManager.getInstance();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.removeAllCookies(null);
+        } else {
+            //noinspection deprecation
+            cookieManager.removeAllCookie();
+        }
+    }
 }

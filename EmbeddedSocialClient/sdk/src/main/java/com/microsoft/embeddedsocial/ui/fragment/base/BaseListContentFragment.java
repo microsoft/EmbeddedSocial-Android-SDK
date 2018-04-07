@@ -17,9 +17,9 @@ import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
  */
 public abstract class BaseListContentFragment<AT extends FetchableAdapter<?, ?>> extends BaseContentFragment<AT> {
 
-	@Override
-	protected RecyclerView.LayoutManager createInitialContentLayoutManager() {
-		return new LinearLayoutManager(getContext());
-	}
+    @Override
+    protected RecyclerView.LayoutManager createInitialContentLayoutManager() {
+        return new LinearLayoutManager(getContext());
+    }
 
 }

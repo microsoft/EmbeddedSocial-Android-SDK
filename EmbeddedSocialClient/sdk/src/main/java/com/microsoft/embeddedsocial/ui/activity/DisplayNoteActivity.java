@@ -19,20 +19,20 @@ import com.microsoft.embeddedsocial.ui.fragment.DisplayCommentFragment;
  */
 public class DisplayNoteActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		Bundle extras = getIntent().getExtras();
-		if (extras == null ||
-			(!extras.containsKey(IntentExtras.COMMENT_HANDLE) && !extras.containsKey(IntentExtras.REPLY_HANDLE))) {
-			DebugLog.e(
-				String.format("DisplayNoteActivity should contains one of the extras [\"%s\", \"%s\"] to right work.",
-					IntentExtras.COMMENT_HANDLE, IntentExtras.REPLY_HANDLE));
-			return;
-		}
+    @Override
+    protected void setupFragments() {
+        Bundle extras = getIntent().getExtras();
+        if (extras == null ||
+            (!extras.containsKey(IntentExtras.COMMENT_HANDLE) && !extras.containsKey(IntentExtras.REPLY_HANDLE))) {
+            DebugLog.e(
+                String.format("DisplayNoteActivity should contains one of the extras [\"%s\", \"%s\"] to right work.",
+                    IntentExtras.COMMENT_HANDLE, IntentExtras.REPLY_HANDLE));
+            return;
+        }
 
-		final Fragment noteFragment = (extras.containsKey(IntentExtras.COMMENT_HANDLE)) ?
-			new DisplayCommentFragment() : new DisplayReplyFragment();
-		noteFragment.setArguments(getIntent().getExtras());
-		setActivityContent(noteFragment);
-	}
+        final Fragment noteFragment = (extras.containsKey(IntentExtras.COMMENT_HANDLE)) ?
+            new DisplayCommentFragment() : new DisplayReplyFragment();
+        noteFragment.setArguments(getIntent().getExtras());
+        setActivityContent(noteFragment);
+    }
 }

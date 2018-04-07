@@ -14,22 +14,22 @@ import java.util.List;
 
 public class GetReplyFeedResponse extends ListResponse<ReplyView> {
 
-	private List<ReplyView> replies;
+    private List<ReplyView> replies;
 
-	public GetReplyFeedResponse(List<ReplyView> replies) {
-		this.replies = replies;
-	}
+    public GetReplyFeedResponse(List<ReplyView> replies) {
+        this.replies = replies;
+    }
 
-	public GetReplyFeedResponse(FeedResponseReplyView response) {
-		replies = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.ReplyView reply : response.getData()) {
-			replies.add(new ReplyView(reply));
-		}
-		setContinuationKey(response.getCursor());
-	}
+    public GetReplyFeedResponse(FeedResponseReplyView response) {
+        replies = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.ReplyView reply : response.getData()) {
+            replies.add(new ReplyView(reply));
+        }
+        setContinuationKey(response.getCursor());
+    }
 
-	@Override
-	public List<ReplyView> getData() {
-		return replies;
-	}
+    @Override
+    public List<ReplyView> getData() {
+        return replies;
+    }
 }

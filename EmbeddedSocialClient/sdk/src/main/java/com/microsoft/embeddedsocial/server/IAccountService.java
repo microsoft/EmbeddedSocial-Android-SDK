@@ -35,43 +35,43 @@ import retrofit2.Response;
  */
 public interface IAccountService {
 
-	// for tests only
-	AuthenticationResponse createUser(CreateUserRequest request)
-			throws NetworkRequestException;
+    // for tests only
+    AuthenticationResponse createUser(CreateUserRequest request)
+            throws NetworkRequestException;
 
-	Response deleteUser(DeleteUserRequest request)
-			throws NetworkRequestException;
+    Response deleteUser(DeleteUserRequest request)
+            throws NetworkRequestException;
 
-	GetUserResponse getUser(GetUserRequest request)
-			throws NetworkRequestException;
+    GetUserResponse getUser(GetUserRequest request)
+            throws NetworkRequestException;
 
-	GetUserAccountResponse getUserAccount(GetUserAccountRequest request)
-			throws NetworkRequestException;
+    GetUserAccountResponse getUserAccount(GetUserAccountRequest request)
+            throws NetworkRequestException;
 
-	GetUserProfileResponse getUserProfile(GetUserProfileRequest request)
-			throws NetworkRequestException;
+    GetUserProfileResponse getUserProfile(GetUserProfileRequest request)
+            throws NetworkRequestException;
 
-	GetUserProfileResponse getMyProfile(GetMyProfileRequest request)
-			throws NetworkRequestException;
+    GetUserProfileResponse getMyProfile(GetMyProfileRequest request)
+            throws NetworkRequestException;
 
-	List<LinkedAccountView> getLinkedAccounts(GetLinkedAccountsRequest request)
-			throws NetworkRequestException;
+    List<LinkedAccountView> getLinkedAccounts(GetLinkedAccountsRequest request)
+            throws NetworkRequestException;
 
-	Response linkUserThirdPartyAccount(LinkThirdPartyRequest request)
-			throws NetworkRequestException;
+    Response linkUserThirdPartyAccount(LinkThirdPartyRequest request)
+            throws NetworkRequestException;
 
-	Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request)
-			throws NetworkRequestException;
+    Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request)
+            throws NetworkRequestException;
 
-	Response updateUserPhoto(UpdateUserPhotoRequest request)
-			throws NetworkRequestException;
+    Response updateUserPhoto(UpdateUserPhotoRequest request)
+            throws NetworkRequestException;
 
-	Response updateUserPublicAccountInfo(UpdateUserPublicAccountInfoRequest request)
-			throws NetworkRequestException;
+    Response updateUserPublicAccountInfo(UpdateUserPublicAccountInfoRequest request)
+            throws NetworkRequestException;
 
-	Response updateUserVisibility(UpdateUserVisibilityRequest request)
-			throws NetworkRequestException;
+    Response updateUserVisibility(UpdateUserVisibilityRequest request)
+            throws NetworkRequestException;
 
-	List<AppCompactView> getMyApps(GetMyAppsRequest request)
-			throws NetworkRequestException;
+    List<AppCompactView> getMyApps(GetMyAppsRequest request)
+            throws NetworkRequestException;
 }

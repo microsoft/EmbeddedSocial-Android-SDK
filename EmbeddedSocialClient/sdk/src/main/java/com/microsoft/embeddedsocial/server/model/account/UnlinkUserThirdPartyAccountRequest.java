@@ -17,21 +17,21 @@ import retrofit2.Response;
 
 public class UnlinkUserThirdPartyAccountRequest extends UserRequest {
 
-	private IdentityProvider identityProvider;
+    private IdentityProvider identityProvider;
 
-	public UnlinkUserThirdPartyAccountRequest(IdentityProvider identityProvider) {
-		this.identityProvider = identityProvider;
-	}
+    public UnlinkUserThirdPartyAccountRequest(IdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
-		return serviceResponse.getResponse();
-	}
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = LINKED_ACCOUNTS.deleteLinkedAccount(identityProvider, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
+        return serviceResponse.getResponse();
+    }
 }

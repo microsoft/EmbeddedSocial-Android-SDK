@@ -14,32 +14,32 @@ import com.microsoft.embeddedsocial.sdk.R;
  * Feeds display method
  */
 public enum DisplayMethod {
-	LIST,
-	GALLERY;
+    LIST,
+    GALLERY;
 
-	public DisplayMethod next() {
-		switch (this) {
-			case GALLERY:
-				return LIST;
-			default:
-				return GALLERY;
-		}
-	}
+    public DisplayMethod next() {
+        switch (this) {
+            case GALLERY:
+                return LIST;
+            default:
+                return GALLERY;
+        }
+    }
 
-	/**
-	 * Gets the left and right padding for feed item with this display method.
-	 */
-	public int getHorizontalPadding(Context context) {
-		return context.getResources()
-			.getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_hor);
-	}
+    /**
+     * Gets the left and right padding for feed item with this display method.
+     */
+    public int getHorizontalPadding(Context context) {
+        return context.getResources()
+            .getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_hor);
+    }
 
-	/**
-	 * Gets the top and bottom padding for feed item with this display method.
-	 */
-	public int getVerticalPadding(Context context) {
-		return context.getResources()
-			.getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_ver);
-	}
+    /**
+     * Gets the top and bottom padding for feed item with this display method.
+     */
+    public int getVerticalPadding(Context context) {
+        return context.getResources()
+            .getDimensionPixelOffset(this == GALLERY ? R.dimen.es_grid_half_padding : R.dimen.es_card_list_padding_ver);
+    }
 
 }

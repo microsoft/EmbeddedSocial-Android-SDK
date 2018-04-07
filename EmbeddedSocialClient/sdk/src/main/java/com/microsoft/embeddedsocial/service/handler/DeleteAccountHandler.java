@@ -21,16 +21,16 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Sends a delete account request to the server.
  */
 public class DeleteAccountHandler extends ActionHandler {
-	@Override
-	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-		try {
-			server.deleteUser(new DeleteUserRequest());
-			UserAccount.getInstance().signOut();
-			action.complete();
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-			action.fail();
-		}
-	}
+    @Override
+    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+        IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+        try {
+            server.deleteUser(new DeleteUserRequest());
+            UserAccount.getInstance().signOut();
+            action.complete();
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+            action.fail();
+        }
+    }
 }

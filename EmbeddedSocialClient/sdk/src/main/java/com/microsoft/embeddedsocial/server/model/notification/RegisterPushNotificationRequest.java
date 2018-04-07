@@ -21,27 +21,27 @@ import retrofit2.Response;
 
 public class RegisterPushNotificationRequest extends UserRequest {
 
-	private final String registrationID;
-	private final PutPushRegistrationRequest request;
+    private final String registrationID;
+    private final PutPushRegistrationRequest request;
 
-	public RegisterPushNotificationRequest(String registrationID, long lastUpdatedTime) {
-		this.registrationID = registrationID;
-		request = new PutPushRegistrationRequest();
-		DateTimeFormatter fmt = ISODateTimeFormat.dateTime();
-		request.setLastUpdatedTime(fmt.print(lastUpdatedTime));
-		request.setLanguage(language);
-	}
+    public RegisterPushNotificationRequest(String registrationID, long lastUpdatedTime) {
+        this.registrationID = registrationID;
+        request = new PutPushRegistrationRequest();
+        DateTimeFormatter fmt = ISODateTimeFormat.dateTime();
+        request.setLastUpdatedTime(fmt.print(lastUpdatedTime));
+        request.setLanguage(language);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = PUSH_REGISTRATION.putPushRegistration(platform, registrationID, request, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = PUSH_REGISTRATION.putPushRegistration(platform, registrationID, request, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getResponse();
-	}
+        return serviceResponse.getResponse();
+    }
 }

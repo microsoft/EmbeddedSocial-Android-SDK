@@ -16,14 +16,14 @@ import android.view.ViewGroup;
  */
 public abstract class Renderer<T, V extends ViewHolder> {
 
-	public abstract V createViewHolder(ViewGroup parent);
+    public abstract V createViewHolder(ViewGroup parent);
 
-	protected void onItemRendered(T item, V holder) {
-	}
+    protected void onItemRendered(T item, V holder) {
+    }
 
-	public final void renderItem(T topic, ViewHolder holder) {
-		//noinspection unchecked
-		onItemRendered(topic, (V) holder);
-	}
+    public final void renderItem(T topic, ViewHolder holder) {
+        //noinspection unchecked
+        onItemRendered(topic, (V) holder);
+    }
 
 }

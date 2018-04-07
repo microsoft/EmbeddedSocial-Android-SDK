@@ -10,23 +10,23 @@ package com.microsoft.embeddedsocial.base.utils;
  */
 public final class ObjectUtils {
 
-	private ObjectUtils() {
-	}
+    private ObjectUtils() {
+    }
 
-	public static boolean equal(Object first, Object second) {
-		if (first == null) {
-			return second == null;
-		} else {
-			return first.equals(second);
-		}
-	}
+    public static boolean equal(Object first, Object second) {
+        if (first == null) {
+            return second == null;
+        } else {
+            return first.equals(second);
+        }
+    }
 
-	public static boolean isOneOf(Object value, Object... valuesOfInterest) {
-		for (Object valueOfInterest : valuesOfInterest) {
-			if (equal(value, valueOfInterest)) {
-				return true;
-			}
-		}
-		return false;
-	}
+    public static boolean isOneOf(Object value, Object... valuesOfInterest) {
+        for (Object valueOfInterest : valuesOfInterest) {
+            if (equal(value, valueOfInterest)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

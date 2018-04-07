@@ -11,23 +11,23 @@ import android.text.TextUtils;
  * Helper class to work with strings.
  */
 public final class TextHelper {
-	private TextHelper() { /* cannot be instantiated */ }
+    private TextHelper() { /* cannot be instantiated */ }
 
-	/**
-	 * Returns true if the string is null or 0-length when spaces and control
-	 * characters were trimmed from the start and end.
-	 * @param str the string to be examined
-	 * @return true if str is null or zero length
-	 */
-	public static boolean isEmpty(CharSequence str) {
-		return str == null || TextUtils.getTrimmedLength(str) == 0;
-	}
+    /**
+     * Returns true if the string is null or 0-length when spaces and control
+     * characters were trimmed from the start and end.
+     * @param str the string to be examined
+     * @return true if str is null or zero length
+     */
+    public static boolean isEmpty(CharSequence str) {
+        return str == null || TextUtils.getTrimmedLength(str) == 0;
+    }
 
-	public static boolean areEqual(String s1, String s2) {
-		if (isEmpty(s1)) {
-			return isEmpty(s2);
-		} else {
-			return s1.trim().equals(s2.trim());
-		}
-	}
+    public static boolean areEqual(String s1, String s2) {
+        if (isEmpty(s1)) {
+            return isEmpty(s2);
+        } else {
+            return s1.trim().equals(s2.trim());
+        }
+    }
 }

@@ -25,41 +25,41 @@ import android.support.v7.widget.RecyclerView;
  */
 public class ProfileFeedFragment extends BaseFeedFragment {
 
-	private String userHandle;
-	private TopicFeedType topicFeedType;
+    private String userHandle;
+    private TopicFeedType topicFeedType;
 
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		Bundle arguments = getArguments();
-		userHandle = arguments.getString(IntentExtras.USER_HANDLE);
-		topicFeedType = EnumUtils.getValue(arguments, IntentExtras.FEED_TYPE, TopicFeedType.class);
-	}
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Bundle arguments = getArguments();
+        userHandle = arguments.getString(IntentExtras.USER_HANDLE);
+        topicFeedType = EnumUtils.getValue(arguments, IntentExtras.FEED_TYPE, TopicFeedType.class);
+    }
 
-	@Override
-	protected Fetcher<TopicView> createFetcher() {
-		return FetchersFactory.createProfileFeedFetcher(userHandle, topicFeedType);
-	}
+    @Override
+    protected Fetcher<TopicView> createFetcher() {
+        return FetchersFactory.createProfileFeedFetcher(userHandle, topicFeedType);
+    }
 
-	@Override
-	protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
-		TopicRenderOptions options = new TopicRenderOptions();
-		options.setHeaderClickable(false);
-		return new CardViewRenderer(this, getContext(), options);
-	}
+    @Override
+    protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
+        TopicRenderOptions options = new TopicRenderOptions();
+        options.setHeaderClickable(false);
+        return new CardViewRenderer(this, getContext(), options);
+    }
 
-	@Override
-	protected boolean canContainLocalPosts() {
-		return topicFeedType == TopicFeedType.USER_RECENT;
-	}
+    @Override
+    protected boolean canContainLocalPosts() {
+        return topicFeedType == TopicFeedType.USER_RECENT;
+    }
 
-	public static ProfileFeedFragment create(String userHandle, TopicFeedType topicFeedType) {
-		ProfileFeedFragment fragment = new ProfileFeedFragment();
-		Bundle arguments = new Bundle();
-		arguments.putString(IntentExtras.USER_HANDLE, userHandle);
-		EnumUtils.putValue(arguments, IntentExtras.FEED_TYPE, topicFeedType);
-		fragment.setArguments(arguments);
-		return fragment;
-	}
+    public static ProfileFeedFragment create(String userHandle, TopicFeedType topicFeedType) {
+        ProfileFeedFragment fragment = new ProfileFeedFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString(IntentExtras.USER_HANDLE, userHandle);
+        EnumUtils.putValue(arguments, IntentExtras.FEED_TYPE, topicFeedType);
+        fragment.setArguments(arguments);
+        return fragment;
+    }
 
 }

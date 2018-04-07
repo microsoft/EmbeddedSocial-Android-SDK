@@ -13,17 +13,17 @@ import com.microsoft.embeddedsocial.autorest.models.UserProfileView;
  */
 public class GetUserResponse {
 
-	private UserCompactView user;
+    private UserCompactView user;
 
-	public GetUserResponse(UserCompactView user) {
-		this.user = user;
-	}
+    public GetUserResponse(UserCompactView user) {
+        this.user = user;
+    }
 
-	public GetUserResponse(UserProfileView view) {
-		user = new UserCompactView(view);
-	}
+    public GetUserResponse(UserProfileView view) {
+        user = new UserCompactView(view);
+    }
 
-	public UserCompactView getUser() {
-		return user;
-	}
+    public UserCompactView getUser() {
+        return user;
+    }
 }

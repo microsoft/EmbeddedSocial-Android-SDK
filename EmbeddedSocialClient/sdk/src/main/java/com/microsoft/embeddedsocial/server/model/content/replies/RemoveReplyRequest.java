@@ -15,20 +15,20 @@ import retrofit2.Response;
 
 public class RemoveReplyRequest extends GenericReplyRequest {
 
-	public RemoveReplyRequest(String replyHandle) {
-		super(replyHandle);
-	}
+    public RemoveReplyRequest(String replyHandle) {
+        super(replyHandle);
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = REPLIES.deleteReply(replyHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = REPLIES.deleteReply(replyHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getResponse();
-	}
+        return serviceResponse.getResponse();
+    }
 }

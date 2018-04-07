@@ -16,19 +16,19 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 abstract class ContentRemovedEvent extends AbstractEvent {
 
-	private final RemoveContentData data;
-	private final boolean success;
+    private final RemoveContentData data;
+    private final boolean success;
 
-	public ContentRemovedEvent(RemoveContentData data, boolean success) {
-		this.data = data;
-		this.success = success;
-	}
+    public ContentRemovedEvent(RemoveContentData data, boolean success) {
+        this.data = data;
+        this.success = success;
+    }
 
-	public RemoveContentData getData() {
-		return data;
-	}
+    public RemoveContentData getData() {
+        return data;
+    }
 
-	public boolean isSuccessful() {
-		return success;
-	}
+    public boolean isSuccessful() {
+        return success;
+    }
 }

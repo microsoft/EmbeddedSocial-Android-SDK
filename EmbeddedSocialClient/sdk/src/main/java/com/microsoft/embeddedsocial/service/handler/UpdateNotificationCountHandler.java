@@ -22,20 +22,20 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Updates notification count from the server.
  */
 public class UpdateNotificationCountHandler implements IServiceIntentHandler<ServiceAction> {
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		INotificationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getNotificationService();
-		try {
-			CountResponse response = server.getNotificationCount(new GetNotificationCountRequest());
-			long notificationCount = response.getCount();
-			Preferences.getInstance().setNotificationCount(notificationCount);
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-		}
-	}
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        INotificationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getNotificationService();
+        try {
+            CountResponse response = server.getNotificationCount(new GetNotificationCountRequest());
+            long notificationCount = response.getCount();
+            Preferences.getInstance().setNotificationCount(notificationCount);
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+        }
+    }
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

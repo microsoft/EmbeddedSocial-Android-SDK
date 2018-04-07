@@ -15,13 +15,13 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Deletes the search history.
  */
 public class DeleteSearchHistoryHandler implements IServiceIntentHandler<ServiceAction> {
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		new SearchHistory().clear();
-	}
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        new SearchHistory().clear();
+    }
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

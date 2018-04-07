@@ -14,26 +14,26 @@ import java.sql.SQLException;
 
 public class LikeFeedRequestWrapper extends AbstractNetworkMethodWrapper<GetLikeFeedRequest, UsersListResponse> {
 
-	private final UserCache userCache;
+    private final UserCache userCache;
 
-	public LikeFeedRequestWrapper(INetworkMethod<GetLikeFeedRequest, UsersListResponse> networkMethod,
-	                              UserCache userCache) {
+    public LikeFeedRequestWrapper(INetworkMethod<GetLikeFeedRequest, UsersListResponse> networkMethod,
+                                  UserCache userCache) {
 
-		super(networkMethod);
-		this.userCache = userCache;
-	}
+        super(networkMethod);
+        this.userCache = userCache;
+    }
 
-	@Override
-	protected void storeResponse(GetLikeFeedRequest request, UsersListResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetLikeFeedRequest request, UsersListResponse response)
+        throws SQLException {
 
-		userCache.storeLikeFeed(request, response);
-	}
+        userCache.storeLikeFeed(request, response);
+    }
 
-	@Override
-	protected UsersListResponse getCachedResponse(GetLikeFeedRequest request)
-		throws SQLException {
+    @Override
+    protected UsersListResponse getCachedResponse(GetLikeFeedRequest request)
+        throws SQLException {
 
-		return userCache.getResponse(UserCache.UserFeedType.LIKED, request.getContentHandle());
-	}
+        return userCache.getResponse(UserCache.UserFeedType.LIKED, request.getContentHandle());
+    }
 }

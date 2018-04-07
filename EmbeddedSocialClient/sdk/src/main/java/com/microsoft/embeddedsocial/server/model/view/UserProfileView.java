@@ -19,100 +19,100 @@ import com.microsoft.embeddedsocial.autorest.models.Visibility;
 @DatabaseTable(tableName = DbSchemas.UserProfile.TABLE_NAME)
 public class UserProfileView implements UniqueItem {
 
-	@DatabaseField(id = true, columnName = DbSchemas.UserProfile.USER_HANDLE)
-	private String userHandle;
+    @DatabaseField(id = true, columnName = DbSchemas.UserProfile.USER_HANDLE)
+    private String userHandle;
 
-	@DatabaseField
-	private String firstName;
+    @DatabaseField
+    private String firstName;
 
-	@DatabaseField
-	private String lastName;
+    @DatabaseField
+    private String lastName;
 
-	@DatabaseField
-	private String userPhotoUrl;
+    @DatabaseField
+    private String userPhotoUrl;
 
-	@DatabaseField
-	private String bio;
+    @DatabaseField
+    private String bio;
 
-	@DatabaseField
-	private boolean isPrivate;
+    @DatabaseField
+    private boolean isPrivate;
 
-	@DatabaseField
-	private long totalTopics;
+    @DatabaseField
+    private long totalTopics;
 
-	@DatabaseField
-	private long totalFollowers;
+    @DatabaseField
+    private long totalFollowers;
 
-	@DatabaseField
-	private long totalFollowings;
+    @DatabaseField
+    private long totalFollowings;
 
-	@DatabaseField(columnName = DbSchemas.UserProfile.FOLLOWER_STATUS)
-	private String followerStatus;
+    @DatabaseField(columnName = DbSchemas.UserProfile.FOLLOWER_STATUS)
+    private String followerStatus;
 
-	@DatabaseField(columnName = DbSchemas.UserProfile.FOLLOWING_STATUS)
-	private String followingStatus;
+    @DatabaseField(columnName = DbSchemas.UserProfile.FOLLOWING_STATUS)
+    private String followingStatus;
 
-	/**
-	 * For ORM.
-	 */
-	UserProfileView() {
-	}
+    /**
+     * For ORM.
+     */
+    UserProfileView() {
+    }
 
-	public UserProfileView(com.microsoft.embeddedsocial.autorest.models.UserProfileView view) {
-		userHandle = view.getUserHandle();
-		firstName = view.getFirstName();
-		lastName = view.getLastName();
-		userPhotoUrl = view.getPhotoUrl();
-		bio = view.getBio();
-		isPrivate = view.getVisibility() == Visibility.PRIVATE;
-		totalTopics = view.getTotalTopics();
-		totalFollowers = view.getTotalFollowers();
-		totalFollowings = view.getTotalFollowing();
-		followerStatus = view.getFollowerStatus().toValue();
-		followingStatus = view.getFollowingStatus().toValue();
-	}
+    public UserProfileView(com.microsoft.embeddedsocial.autorest.models.UserProfileView view) {
+        userHandle = view.getUserHandle();
+        firstName = view.getFirstName();
+        lastName = view.getLastName();
+        userPhotoUrl = view.getPhotoUrl();
+        bio = view.getBio();
+        isPrivate = view.getVisibility() == Visibility.PRIVATE;
+        totalTopics = view.getTotalTopics();
+        totalFollowers = view.getTotalFollowers();
+        totalFollowings = view.getTotalFollowing();
+        followerStatus = view.getFollowerStatus().toValue();
+        followingStatus = view.getFollowingStatus().toValue();
+    }
 
-	public String getHandle() {
-		return userHandle;
-	}
+    public String getHandle() {
+        return userHandle;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getUserPhotoUrl() {
-		return userPhotoUrl;
-	}
+    public String getUserPhotoUrl() {
+        return userPhotoUrl;
+    }
 
-	public String getBio() {
-		return bio;
-	}
+    public String getBio() {
+        return bio;
+    }
 
-	public boolean isPrivate() {
-		return isPrivate;
-	}
+    public boolean isPrivate() {
+        return isPrivate;
+    }
 
-	public long getTotalTopics() {
-		return totalTopics;
-	}
+    public long getTotalTopics() {
+        return totalTopics;
+    }
 
-	public long getTotalFollowers() {
-		return totalFollowers;
-	}
+    public long getTotalFollowers() {
+        return totalFollowers;
+    }
 
-	public long getTotalFollowings() {
-		return totalFollowings;
-	}
+    public long getTotalFollowings() {
+        return totalFollowings;
+    }
 
-	public FollowerStatus getFollowerStatus() {
-		return FollowerStatus.fromValue(followerStatus);
-	}
+    public FollowerStatus getFollowerStatus() {
+        return FollowerStatus.fromValue(followerStatus);
+    }
 
-	public FollowingStatus getFollowingStatus() {
-		return FollowingStatus.fromValue(followingStatus);
-	}
+    public FollowingStatus getFollowingStatus() {
+        return FollowingStatus.fromValue(followingStatus);
+    }
 }

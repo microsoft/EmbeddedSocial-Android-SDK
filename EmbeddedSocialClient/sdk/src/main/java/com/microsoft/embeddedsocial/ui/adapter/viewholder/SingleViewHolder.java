@@ -16,13 +16,13 @@ import android.view.ViewGroup;
  */
 public class SingleViewHolder extends BaseViewHolder {
 
-	public SingleViewHolder(View itemView) {
-		super(itemView);
-	}
+    public SingleViewHolder(View itemView) {
+        super(itemView);
+    }
 
-	public static SingleViewHolder create(@LayoutRes int layoutId, ViewGroup parent) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-		return new SingleViewHolder(view);
-	}
+    public static SingleViewHolder create(@LayoutRes int layoutId, ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
+        return new SingleViewHolder(view);
+    }
 
 }

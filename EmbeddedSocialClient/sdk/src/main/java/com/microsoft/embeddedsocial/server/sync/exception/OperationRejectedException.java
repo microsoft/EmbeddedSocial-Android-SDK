@@ -10,15 +10,15 @@ package com.microsoft.embeddedsocial.server.sync.exception;
  */
 public class OperationRejectedException extends SynchronizationException {
 
-	public OperationRejectedException(String detailMessage) {
-		super(detailMessage);
-	}
+    public OperationRejectedException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public OperationRejectedException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public OperationRejectedException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public OperationRejectedException(Throwable throwable) {
-		super(throwable);
-	}
+    public OperationRejectedException(Throwable throwable) {
+        super(throwable);
+    }
 }

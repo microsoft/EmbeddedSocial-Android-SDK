@@ -32,141 +32,141 @@ import android.widget.TextView;
  * ViewHolder part with user info layout
  */
 public abstract class UserHeaderViewHolder extends BaseViewHolder {
-	protected final int profileImageWidth;
-	private final Fragment fragment;
+    protected final int profileImageWidth;
+    private final Fragment fragment;
 
-	private ImageView profileImage;
-	private ImageViewContentLoader profileContentLoader;
-	private TextView profileName;
-	protected TextView elapsedTime;
-	protected View contextMenuButton;
+    private ImageView profileImage;
+    private ImageViewContentLoader profileContentLoader;
+    private TextView profileName;
+    protected TextView elapsedTime;
+    protected View contextMenuButton;
 
-	private View userHeaderButton;
-	private static AppProfile appProfile;
+    private View userHeaderButton;
+    private static AppProfile appProfile;
 
-	public UserHeaderViewHolder(Fragment fragment, View view) {
-		super(view);
-		this.fragment = fragment;
-		this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.es_user_icon_size);
-		initViews(view);
-	}
+    public UserHeaderViewHolder(Fragment fragment, View view) {
+        super(view);
+        this.fragment = fragment;
+        this.profileImageWidth = view.getResources().getDimensionPixelSize(R.dimen.es_user_icon_size);
+        initViews(view);
+    }
 
-	public static void setAppProfile(AppProfile customAppProfile) {
-		appProfile = customAppProfile;
-	}
+    public static void setAppProfile(AppProfile customAppProfile) {
+        appProfile = customAppProfile;
+    }
 
-	private void initViews(View view) {
-		userHeaderButton = view.findViewById(R.id.es_userHeaderButton);
-		profileImage = (ImageView) view.findViewById(R.id.es_profileImage);
-		profileContentLoader = new UserPhotoLoader(profileImage);
-		profileName = (TextView) view.findViewById(R.id.es_profileName);
-		elapsedTime = (TextView) view.findViewById(R.id.es_postTime);
+    private void initViews(View view) {
+        userHeaderButton = view.findViewById(R.id.es_userHeaderButton);
+        profileImage = (ImageView) view.findViewById(R.id.es_profileImage);
+        profileContentLoader = new UserPhotoLoader(profileImage);
+        profileName = (TextView) view.findViewById(R.id.es_profileName);
+        elapsedTime = (TextView) view.findViewById(R.id.es_postTime);
 
-		contextMenuButton = view.findViewById(R.id.es_contextMenuButton);
-	}
+        contextMenuButton = view.findViewById(R.id.es_contextMenuButton);
+    }
 
-	protected void renderUserHeader(TopicView topic) {
-		if (topic.getPublisherType() == PublisherType.USER) {
-			setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
-			setProfileImage(topic.getUser().getUserPhotoUrl());
-			contextMenuButton.setTag(R.id.es_keyIsOwnContent,
-					topic.getUser().getHandle().equals(Preferences.getInstance().getUserHandle()));
-			contextMenuButton.setTag(R.id.es_keyFollowerStatus, topic.getUser().getFollowerStatus());
-			contextMenuButton.setTag(R.id.es_keyUser, topic.getUser());
-			userHeaderButton.setTag(R.id.es_keyUser, topic.getUser());
-		} else if (appProfile != null) { // PublisherType.APP
-			try {
-				profileName.setText(getContext().getString(appProfile.getName()));
-			} catch (Resources.NotFoundException e) {
-				DebugLog.logException(e);
-			}
-			try {
-				int imageId = appProfile.getImage();
-				// Test to ensure the resource exists
-				getResources().getResourceName(imageId);
-				setProfileImage(imageId);
-			} catch (Resources.NotFoundException e) {
-				DebugLog.logException(e);
-			}
-		}
-		setTime(topic.getElapsedSeconds());
+    protected void renderUserHeader(TopicView topic) {
+        if (topic.getPublisherType() == PublisherType.USER) {
+            setName(topic.getUser().getFirstName(), topic.getUser().getLastName());
+            setProfileImage(topic.getUser().getUserPhotoUrl());
+            contextMenuButton.setTag(R.id.es_keyIsOwnContent,
+                    topic.getUser().getHandle().equals(Preferences.getInstance().getUserHandle()));
+            contextMenuButton.setTag(R.id.es_keyFollowerStatus, topic.getUser().getFollowerStatus());
+            contextMenuButton.setTag(R.id.es_keyUser, topic.getUser());
+            userHeaderButton.setTag(R.id.es_keyUser, topic.getUser());
+        } else if (appProfile != null) { // PublisherType.APP
+            try {
+                profileName.setText(getContext().getString(appProfile.getName()));
+            } catch (Resources.NotFoundException e) {
+                DebugLog.logException(e);
+            }
+            try {
+                int imageId = appProfile.getImage();
+                // Test to ensure the resource exists
+                getResources().getResourceName(imageId);
+                setProfileImage(imageId);
+            } catch (Resources.NotFoundException e) {
+                DebugLog.logException(e);
+            }
+        }
+        setTime(topic.getElapsedSeconds());
 
-		contextMenuButton.setTag(R.id.es_keyTopic, topic);
-	}
+        contextMenuButton.setTag(R.id.es_keyTopic, topic);
+    }
 
-	protected void renderUserHeader(ReplyView reply) {
-		UserCompactView user = reply.getUser();
-		setName(user.getFirstName(), user.getLastName());
-		setTime(reply.getElapsedSeconds());
-		setProfileImage(user.getUserPhotoUrl());
+    protected void renderUserHeader(ReplyView reply) {
+        UserCompactView user = reply.getUser();
+        setName(user.getFirstName(), user.getLastName());
+        setTime(reply.getElapsedSeconds());
+        setProfileImage(user.getUserPhotoUrl());
 
-		contextMenuButton.setTag(R.id.es_keyHandle, reply.getHandle());
-		contextMenuButton.setTag(R.id.es_keyIsOwnContent,
-			user.getHandle().equals(Preferences.getInstance().getUserHandle()));
-		contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
-		contextMenuButton.setTag(R.id.es_keyUser, user);
-		userHeaderButton.setTag(R.id.es_keyUser, user);
-	}
+        contextMenuButton.setTag(R.id.es_keyHandle, reply.getHandle());
+        contextMenuButton.setTag(R.id.es_keyIsOwnContent,
+            user.getHandle().equals(Preferences.getInstance().getUserHandle()));
+        contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
+        contextMenuButton.setTag(R.id.es_keyUser, user);
+        userHeaderButton.setTag(R.id.es_keyUser, user);
+    }
 
-	protected void renderUserHeader(UserCompactView user, String topicHandle, long elapsedTime) {
-		setName(user.getFirstName(), user.getLastName());
-		setTime(elapsedTime);
-		setProfileImage(user.getUserPhotoUrl());
+    protected void renderUserHeader(UserCompactView user, String topicHandle, long elapsedTime) {
+        setName(user.getFirstName(), user.getLastName());
+        setTime(elapsedTime);
+        setProfileImage(user.getUserPhotoUrl());
 
-		contextMenuButton.setTag(R.id.es_keyHandle, topicHandle);
-		contextMenuButton.setTag(R.id.es_keyIsOwnContent, UserAccount.getInstance().isCurrentUser(user.getHandle()));
-		contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
-		contextMenuButton.setTag(R.id.es_keyUser, user);
-		userHeaderButton.setTag(R.id.es_keyUser, user);
-	}
+        contextMenuButton.setTag(R.id.es_keyHandle, topicHandle);
+        contextMenuButton.setTag(R.id.es_keyIsOwnContent, UserAccount.getInstance().isCurrentUser(user.getHandle()));
+        contextMenuButton.setTag(R.id.es_keyFollowerStatus, user.getFollowerStatus());
+        contextMenuButton.setTag(R.id.es_keyUser, user);
+        userHeaderButton.setTag(R.id.es_keyUser, user);
+    }
 
-	protected void setContextMenuClickListener(View.OnClickListener contextMenuClickListener) {
-		contextMenuButton.setOnClickListener(contextMenuClickListener);
-	}
+    protected void setContextMenuClickListener(View.OnClickListener contextMenuClickListener) {
+        contextMenuButton.setOnClickListener(contextMenuClickListener);
+    }
 
-	protected void setHeaderClickable(boolean clickable) {
-		userHeaderButton.setOnClickListener(clickable ? new UserHeaderClickListener(fragment) : null);
-		userHeaderButton.setClickable(clickable);
-	}
+    protected void setHeaderClickable(boolean clickable) {
+        userHeaderButton.setOnClickListener(clickable ? new UserHeaderClickListener(fragment) : null);
+        userHeaderButton.setClickable(clickable);
+    }
 
-	private void setName(String firstName, String lastName) {
-		profileName.setText(String.format("%s %s", firstName, lastName));
-	}
+    private void setName(String firstName, String lastName) {
+        profileName.setText(String.format("%s %s", firstName, lastName));
+    }
 
-	private void setTime(long elapsedSeconds) {
-		this.elapsedTime.setText(TimeUtils.secondsToText(this.elapsedTime.getResources(), elapsedSeconds));
-	}
+    private void setTime(long elapsedSeconds) {
+        this.elapsedTime.setText(TimeUtils.secondsToText(this.elapsedTime.getResources(), elapsedSeconds));
+    }
 
-	private void setProfileImage(String photoUrl) {
-		ContentUpdateHelper.setProfileImage(getContext(), profileContentLoader, photoUrl);
-	}
+    private void setProfileImage(String photoUrl) {
+        ContentUpdateHelper.setProfileImage(getContext(), profileContentLoader, photoUrl);
+    }
 
-	private void setProfileImage(@DrawableRes int imageResId) {
-		ContentUpdateHelper.setProfileImage(profileContentLoader, imageResId);
-	}
+    private void setProfileImage(@DrawableRes int imageResId) {
+        ContentUpdateHelper.setProfileImage(profileContentLoader, imageResId);
+    }
 
-	private static class UserHeaderClickListener implements View.OnClickListener {
-		private final Fragment fragment;
+    private static class UserHeaderClickListener implements View.OnClickListener {
+        private final Fragment fragment;
 
-		public UserHeaderClickListener(Fragment fragment) {
-			this.fragment = fragment;
-		}
+        public UserHeaderClickListener(Fragment fragment) {
+            this.fragment = fragment;
+        }
 
-		@Override
-		public void onClick(View view) {
-			UserCompactView user = (UserCompactView) view.getTag(R.id.es_keyUser);
-			EventBus.post(new OpenUserProfileEvent(fragment, user));
-		}
-	}
+        @Override
+        public void onClick(View view) {
+            UserCompactView user = (UserCompactView) view.getTag(R.id.es_keyUser);
+            EventBus.post(new OpenUserProfileEvent(fragment, user));
+        }
+    }
 
-	public enum HolderType {
-		/**
-		 * For the main page content (top of the page)
-		 */
-		CONTENT,
-		/**
-		 * for feed content
-		 */
-		FEED
-	}
+    public enum HolderType {
+        /**
+         * For the main page content (top of the page)
+         */
+        CONTENT,
+        /**
+         * for feed content
+         */
+        FEED
+    }
 }

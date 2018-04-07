@@ -20,46 +20,46 @@ import com.microsoft.embeddedsocial.server.sync.exception.OperationRejectedExcep
  */
 public abstract class AbstractUserRelationSyncAdapter<Response> implements ISynchronizable {
 
-	protected final UserRelationOperation operation;
-	protected final UserCache userCache;
-	protected Response response;
+    protected final UserRelationOperation operation;
+    protected final UserCache userCache;
+    protected Response response;
 
-	protected AbstractUserRelationSyncAdapter(UserRelationOperation operation,
-	                                          UserCache userCache) {
+    protected AbstractUserRelationSyncAdapter(UserRelationOperation operation,
+                                              UserCache userCache) {
 
-		this.operation = operation;
-		this.userCache = userCache;
-	}
+        this.operation = operation;
+        this.userCache = userCache;
+    }
 
-	@Override
-	public void synchronize() throws SynchronizationException {
-		try {
-			UserRelationshipRequest request = new UserRelationshipRequest(operation.getTargetUserHandle());
-			response = performNetworkRequest(request);
-		} catch (BadRequestException e) {
-			throw new OperationRejectedException(e);
-		} catch (NetworkRequestException e) {
-			throw new SynchronizationException(e);
-		}
-	}
+    @Override
+    public void synchronize() throws SynchronizationException {
+        try {
+            UserRelationshipRequest request = new UserRelationshipRequest(operation.getTargetUserHandle());
+            response = performNetworkRequest(request);
+        } catch (BadRequestException e) {
+            throw new OperationRejectedException(e);
+        } catch (NetworkRequestException e) {
+            throw new SynchronizationException(e);
+        }
+    }
 
-	/**
-	 * Performs network request to sync the operation with the server.
-	 * @param   request   request to execute
-	 * @return  Response instance.
-	 * @throws NetworkRequestException  if request execution fails
-	 */
-	protected abstract Response performNetworkRequest(UserRelationshipRequest request)
-		throws NetworkRequestException;
+    /**
+     * Performs network request to sync the operation with the server.
+     * @param   request   request to execute
+     * @return  Response instance.
+     * @throws NetworkRequestException  if request execution fails
+     */
+    protected abstract Response performNetworkRequest(UserRelationshipRequest request)
+        throws NetworkRequestException;
 
-	/**
-	 * Is called when synchronization is completed and server response is obtained.
-	 * @param response  server response
-	 */
-	protected abstract void onSynchronizationCompleted(Response response);
+    /**
+     * Is called when synchronization is completed and server response is obtained.
+     * @param response  server response
+     */
+    protected abstract void onSynchronizationCompleted(Response response);
 
-	@Override
-	public void onSynchronizationSuccess() {
-		onSynchronizationCompleted(response);
-	}
+    @Override
+    public void onSynchronizationSuccess() {
+        onSynchronizationCompleted(response);
+    }
 }

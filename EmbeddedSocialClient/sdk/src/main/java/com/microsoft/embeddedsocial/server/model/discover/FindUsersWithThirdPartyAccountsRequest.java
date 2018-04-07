@@ -13,11 +13,11 @@ import java.util.List;
 
 public class FindUsersWithThirdPartyAccountsRequest extends UserRequest {
 
-	private final IdentityProvider identityProvider;
-	private final List<String> accountHandles;
+    private final IdentityProvider identityProvider;
+    private final List<String> accountHandles;
 
-	public FindUsersWithThirdPartyAccountsRequest(IdentityProvider identityProvider, List<String> accountHandles) {
-		this.identityProvider = identityProvider;
-		this.accountHandles = accountHandles;
-	}
+    public FindUsersWithThirdPartyAccountsRequest(IdentityProvider identityProvider, List<String> accountHandles) {
+        this.identityProvider = identityProvider;
+        this.accountHandles = accountHandles;
+    }
 }

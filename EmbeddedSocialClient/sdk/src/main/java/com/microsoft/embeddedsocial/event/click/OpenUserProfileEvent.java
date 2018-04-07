@@ -18,15 +18,15 @@ import android.support.v4.app.Fragment;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class OpenUserProfileEvent extends BaseCommonBehaviorEvent {
 
-	private final UserCompactView user;
+    private final UserCompactView user;
 
-	public OpenUserProfileEvent(Fragment source, UserCompactView user) {
-		super(source);
-		this.user = user;
-	}
+    public OpenUserProfileEvent(Fragment source, UserCompactView user) {
+        super(source);
+        this.user = user;
+    }
 
-	public UserCompactView getUser() {
-		return user;
-	}
+    public UserCompactView getUser() {
+        return user;
+    }
 
 }

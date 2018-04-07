@@ -19,19 +19,19 @@ import com.microsoft.embeddedsocial.image.UserPhotoLoader;
  */
 public class UserListItemHolder extends BaseViewHolder {
 
-	public final ImageView photoView;
-	public final ImageViewContentLoader photoContentLoader;
-	public final TextView fullNameView;
-	public final TextView actionButton;
-	public final TextView removeFollowerButton;
+    public final ImageView photoView;
+    public final ImageViewContentLoader photoContentLoader;
+    public final TextView fullNameView;
+    public final TextView actionButton;
+    public final TextView removeFollowerButton;
 
-	public UserListItemHolder(View itemView) {
-		super(itemView);
-		photoView = ViewUtils.findView(itemView, R.id.es_photo);
-		photoContentLoader = new UserPhotoLoader(photoView);
-		fullNameView = ViewUtils.findView(itemView, R.id.es_fullName);
-		actionButton = ViewUtils.findView(itemView, R.id.es_actionButton);
-		removeFollowerButton = ViewUtils.findView(itemView, R.id.es_removeFollowerButton);
-	}
+    public UserListItemHolder(View itemView) {
+        super(itemView);
+        photoView = ViewUtils.findView(itemView, R.id.es_photo);
+        photoContentLoader = new UserPhotoLoader(photoView);
+        fullNameView = ViewUtils.findView(itemView, R.id.es_fullName);
+        actionButton = ViewUtils.findView(itemView, R.id.es_actionButton);
+        removeFollowerButton = ViewUtils.findView(itemView, R.id.es_removeFollowerButton);
+    }
 
 }

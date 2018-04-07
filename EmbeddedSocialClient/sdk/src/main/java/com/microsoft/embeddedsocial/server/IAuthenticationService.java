@@ -19,12 +19,12 @@ import retrofit2.Response;
  */
 public interface IAuthenticationService {
 
-	AuthenticationResponse signInWithThirdParty(CreateSessionRequest request)
-			throws NetworkRequestException;
+    AuthenticationResponse signInWithThirdParty(CreateSessionRequest request)
+            throws NetworkRequestException;
 
-	Response signOut(SignOutRequest request)
-			throws NetworkRequestException;
+    Response signOut(SignOutRequest request)
+            throws NetworkRequestException;
 
-	GetRequestTokenResponse getThirdPartyRequestToken(GetRequestTokenRequest request)
-		throws NetworkRequestException;
+    GetRequestTokenResponse getThirdPartyRequestToken(GetRequestTokenRequest request)
+        throws NetworkRequestException;
 }

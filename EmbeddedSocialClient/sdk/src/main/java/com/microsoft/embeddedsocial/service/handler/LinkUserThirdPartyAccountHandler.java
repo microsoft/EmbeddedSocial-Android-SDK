@@ -27,35 +27,35 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
  */
 public class LinkUserThirdPartyAccountHandler implements IServiceIntentHandler<ServiceAction> {
 
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		final SocialNetworkAccount account = intent.getExtras().getParcelable(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        final SocialNetworkAccount account = intent.getExtras().getParcelable(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
 
-		IAccountService service = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-		LinkThirdPartyRequest linkUserThirdPartyAccountRequest = new LinkThirdPartyRequest(
-				account.getAccountType(),
-				account.getThirdPartyAccessToken());
+        IAccountService service = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+        LinkThirdPartyRequest linkUserThirdPartyAccountRequest = new LinkThirdPartyRequest(
+                account.getAccountType(),
+                account.getThirdPartyAccessToken());
 
-		intent.removeExtra(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
-		account.clearTokens();
-		try {
-			service.linkUserThirdPartyAccount(linkUserThirdPartyAccountRequest);
-			EventBus.post(LinkUserThirdPartyAccountEvent.createLinkEvent(account));
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-			LinkUserThirdPartyAccountEvent event;
-			if (e instanceof StatusException) {
-				event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage(),
-						((StatusException)e).getStatusCode());
-			} else {
-				event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage());
-			}
-			EventBus.post(event);
-		}
-	}
+        intent.removeExtra(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
+        account.clearTokens();
+        try {
+            service.linkUserThirdPartyAccount(linkUserThirdPartyAccountRequest);
+            EventBus.post(LinkUserThirdPartyAccountEvent.createLinkEvent(account));
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+            LinkUserThirdPartyAccountEvent event;
+            if (e instanceof StatusException) {
+                event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage(),
+                        ((StatusException)e).getStatusCode());
+            } else {
+                event = LinkUserThirdPartyAccountEvent.createLinkEvent(account, e.getMessage());
+            }
+            EventBus.post(event);
+        }
+    }
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

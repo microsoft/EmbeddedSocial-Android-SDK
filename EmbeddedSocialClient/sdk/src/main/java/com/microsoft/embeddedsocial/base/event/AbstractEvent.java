@@ -11,16 +11,16 @@ package com.microsoft.embeddedsocial.base.event;
  */
 public abstract class AbstractEvent {
 
-	/**
-	 * Empty constructor.
-	 */
-	protected AbstractEvent() {
-	}
+    /**
+     * Empty constructor.
+     */
+    protected AbstractEvent() {
+    }
 
-	/**
-	 * Submits the event.
-	 */
-	public final void submit() {
-		EventBus.post(this);
-	}
+    /**
+     * Submits the event.
+     */
+    public final void submit() {
+        EventBus.post(this);
+    }
 }

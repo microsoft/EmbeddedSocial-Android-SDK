@@ -19,43 +19,43 @@ import com.microsoft.embeddedsocial.server.IReportService;
  */
 public class ReportContentSyncAdapter extends AbstractAutoCleanupSyncAdapter<ReportContentOperation> {
 
-	public ReportContentSyncAdapter(ReportContentOperation operation,
-	                                Dao<ReportContentOperation, ?> dao) {
+    public ReportContentSyncAdapter(ReportContentOperation operation,
+                                    Dao<ReportContentOperation, ?> dao) {
 
-		super(operation, dao);
-	}
+        super(operation, dao);
+    }
 
-	@Override
-	protected void onSynchronize(ReportContentOperation item)
-		throws NetworkRequestException, SynchronizationException {
+    @Override
+    protected void onSynchronize(ReportContentOperation item)
+        throws NetworkRequestException, SynchronizationException {
 
-		IReportService service = getServiceProvider().getReportService();
+        IReportService service = getServiceProvider().getReportService();
 
-		if (item.isForUser()) {
-			reportUser(service, item);
-		} else {
-			reportContent(service, item);
-		}
-	}
+        if (item.isForUser()) {
+            reportUser(service, item);
+        } else {
+            reportContent(service, item);
+        }
+    }
 
-	private void reportContent(IReportService service, ReportContentOperation item)
-		throws NetworkRequestException {
+    private void reportContent(IReportService service, ReportContentOperation item)
+        throws NetworkRequestException {
 
-		ReportContentRequest request = new ReportContentRequest(
-			ContentType.fromValue(item.getContentType()),
-			item.getContentHandle(),
-			item.getReason()
-		);
-		service.reportContent(request);
-	}
+        ReportContentRequest request = new ReportContentRequest(
+            ContentType.fromValue(item.getContentType()),
+            item.getContentHandle(),
+            item.getReason()
+        );
+        service.reportContent(request);
+    }
 
-	private void reportUser(IReportService service, ReportContentOperation item)
-		throws NetworkRequestException {
+    private void reportUser(IReportService service, ReportContentOperation item)
+        throws NetworkRequestException {
 
-		ReportUserRequest request = new ReportUserRequest(
-			item.getContentHandle(),
-			item.getReason()
-		);
-		service.reportUser(request);
-	}
+        ReportUserRequest request = new ReportUserRequest(
+            item.getContentHandle(),
+            item.getReason()
+        );
+        service.reportUser(request);
+    }
 }

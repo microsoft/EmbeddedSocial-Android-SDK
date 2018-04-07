@@ -27,52 +27,52 @@ import com.microsoft.embeddedsocial.service.IntentExtras;
  */
 public class EditPostFragment extends BaseEditPostFragment {
 
-	private TopicView topic;
-	@SuppressWarnings("FieldCanBeLocal")
-	private ImageViewContentLoader coverLoader;
+    private TopicView topic;
+    @SuppressWarnings("FieldCanBeLocal")
+    private ImageViewContentLoader coverLoader;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		topic = getActivity().getIntent().getParcelableExtra(IntentExtras.TOPIC_EXTRA);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        topic = getActivity().getIntent().getParcelableExtra(IntentExtras.TOPIC_EXTRA);
+    }
 
-	@Override
-	protected boolean isInputEmpty() {
-		return TextHelper.areEqual(topic.getTopicTitle(), getTitle()) && TextHelper.areEqual(topic.getTopicText(), getDescription());
-	}
+    @Override
+    protected boolean isInputEmpty() {
+        return TextHelper.areEqual(topic.getTopicTitle(), getTitle()) && TextHelper.areEqual(topic.getTopicText(), getDescription());
+    }
 
-	@Override
-	protected void onFinishedEditing() {
-		if (!isInputEmpty()) {
-			topic.setTopicTitle(getTitle());
-			topic.setTopicText(getDescription());
-			new UserActionProxy(getContext()).updateTopic(topic);
-		}
-		finishActivity();
-	}
+    @Override
+    protected void onFinishedEditing() {
+        if (!isInputEmpty()) {
+            topic.setTopicTitle(getTitle());
+            topic.setTopicText(getDescription());
+            new UserActionProxy(getContext()).updateTopic(topic);
+        }
+        finishActivity();
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		if (savedInstanceState == null) {
-			setTitle(topic.getTopicTitle());
-			setDescription(topic.getTopicText());
-		}
-		TextView imageMessageView = getImageMessageView();
-		ImageLocation imageLocation = topic.getImageLocation();
-		if (imageLocation != null) {
-			coverLoader = new CoverLoader(getCoverView()) {
-				@Override
-				protected void onBitmapLoaded(Bitmap bitmap) {
-					super.onBitmapLoaded(bitmap);
-					getImageMessageView().setVisibility(View.GONE);
-				}
-			};
-			coverLoader.load(imageLocation, ViewUtils.getDisplayWidth(getActivity()));
-			imageMessageView.setText("");
-		} else {
-			imageMessageView.setText(R.string.es_no_image);
-		}
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (savedInstanceState == null) {
+            setTitle(topic.getTopicTitle());
+            setDescription(topic.getTopicText());
+        }
+        TextView imageMessageView = getImageMessageView();
+        ImageLocation imageLocation = topic.getImageLocation();
+        if (imageLocation != null) {
+            coverLoader = new CoverLoader(getCoverView()) {
+                @Override
+                protected void onBitmapLoaded(Bitmap bitmap) {
+                    super.onBitmapLoaded(bitmap);
+                    getImageMessageView().setVisibility(View.GONE);
+                }
+            };
+            coverLoader.load(imageLocation, ViewUtils.getDisplayWidth(getActivity()));
+            imageMessageView.setText("");
+        } else {
+            imageMessageView.setText(R.string.es_no_image);
+        }
+    }
 }

@@ -24,21 +24,21 @@ import com.microsoft.embeddedsocial.service.ServiceAction;
  * Get single reply.
  */
 public class GetReplyHandler extends ActionHandler {
-	@Override
-	protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-		IContentService contentService
-				= GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
+    @Override
+    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+        IContentService contentService
+                = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 
-		final String replyHandle = intent.getExtras().getString(IntentExtras.REPLY_HANDLE);
+        final String replyHandle = intent.getExtras().getString(IntentExtras.REPLY_HANDLE);
 
-		try {
-			final GetReplyRequest request = new GetReplyRequest(replyHandle);
-			GetReplyResponse response = contentService.getReply(request);
-			EventBus.post(new GetReplyEvent(response.getReply(), response.getReply() != null));
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-			action.fail(e.getMessage());
-			EventBus.post(new GetReplyEvent(null, false));
-		}
-	}
+        try {
+            final GetReplyRequest request = new GetReplyRequest(replyHandle);
+            GetReplyResponse response = contentService.getReply(request);
+            EventBus.post(new GetReplyEvent(response.getReply(), response.getReply() != null));
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+            action.fail(e.getMessage());
+            EventBus.post(new GetReplyEvent(null, false));
+        }
+    }
 }

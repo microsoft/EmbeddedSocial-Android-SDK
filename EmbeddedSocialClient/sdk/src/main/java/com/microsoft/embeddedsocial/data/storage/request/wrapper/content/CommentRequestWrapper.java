@@ -14,24 +14,24 @@ import java.sql.SQLException;
 
 public class CommentRequestWrapper extends AbstractNetworkMethodWrapper<GetCommentRequest, GetCommentResponse> {
 
-	private final ContentCache contentCache;
+    private final ContentCache contentCache;
 
-	public CommentRequestWrapper(INetworkMethod<GetCommentRequest, GetCommentResponse> networkMethod,
-								 ContentCache contentCache) {
+    public CommentRequestWrapper(INetworkMethod<GetCommentRequest, GetCommentResponse> networkMethod,
+                                 ContentCache contentCache) {
 
-		super(networkMethod);
-		this.contentCache = contentCache;
-	}
+        super(networkMethod);
+        this.contentCache = contentCache;
+    }
 
-	@Override
-	protected void storeResponse(GetCommentRequest request, GetCommentResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetCommentRequest request, GetCommentResponse response)
+        throws SQLException {
 
-		contentCache.storeComment(response.getComment());
-	}
+        contentCache.storeComment(response.getComment());
+    }
 
-	@Override
-	protected GetCommentResponse getCachedResponse(GetCommentRequest request) throws SQLException {
-		return new GetCommentResponse(contentCache.getComment(request.getCommentHandle()));
-	}
+    @Override
+    protected GetCommentResponse getCachedResponse(GetCommentRequest request) throws SQLException {
+        return new GetCommentResponse(contentCache.getComment(request.getCommentHandle()));
+    }
 }

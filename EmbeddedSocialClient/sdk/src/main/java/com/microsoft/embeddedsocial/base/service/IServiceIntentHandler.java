@@ -15,10 +15,10 @@ import com.microsoft.embeddedsocial.base.IDisposable;
  */
 public interface IServiceIntentHandler<T extends Enum<T>> extends IDisposable {
 
-	/**
-	 * Processes the intent.
-	 * @param	action	the action
-	 * @param	intent	the intent to process
-	 */
-	void handleIntent(T action, Intent intent);
+    /**
+     * Processes the intent.
+     * @param	action	the action
+     * @param	intent	the intent to process
+     */
+    void handleIntent(T action, Intent intent);
 }

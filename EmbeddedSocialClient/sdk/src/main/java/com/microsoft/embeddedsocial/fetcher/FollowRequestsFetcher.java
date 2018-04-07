@@ -22,17 +22,17 @@ import java.util.List;
  */
 class FollowRequestsFetcher extends Fetcher<FollowRequest> {
 
-	private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
+    private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
 
-	public FollowRequestsFetcher() {
-		IRelationshipService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getRelationshipService();
-		requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
-	}
+    public FollowRequestsFetcher() {
+        IRelationshipService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getRelationshipService();
+        requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
+    }
 
-	@Override
-	protected List<FollowRequest> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		// just wrap the response in a list of our models
-		List<UserCompactView> users = requestExecutor.fetchData(dataState, requestType, pageSize);
-		return FollowRequest.wrap(users);
-	}
+    @Override
+    protected List<FollowRequest> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        // just wrap the response in a list of our models
+        List<UserCompactView> users = requestExecutor.fetchData(dataState, requestType, pageSize);
+        return FollowRequest.wrap(users);
+    }
 }

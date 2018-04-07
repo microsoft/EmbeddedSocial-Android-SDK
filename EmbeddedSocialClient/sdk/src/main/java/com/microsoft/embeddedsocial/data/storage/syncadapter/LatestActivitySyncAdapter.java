@@ -20,30 +20,30 @@ import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationExcepti
  */
 public class LatestActivitySyncAdapter implements ISynchronizable {
 
-	private final ActivityCache.MetadataStorage metadataStorage;
+    private final ActivityCache.MetadataStorage metadataStorage;
 
-	public LatestActivitySyncAdapter(ActivityCache.MetadataStorage metadataStorage) {
-		this.metadataStorage = metadataStorage;
-	}
+    public LatestActivitySyncAdapter(ActivityCache.MetadataStorage metadataStorage) {
+        this.metadataStorage = metadataStorage;
+    }
 
-	@Override
-	public void synchronize() throws SynchronizationException {
-		String lastActivityHandle = metadataStorage.getLastActivityHandle();
-		UpdateNotificationStatusRequest request = new UpdateNotificationStatusRequest(lastActivityHandle);
-		try {
-			GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
-				.getNotificationService()
-				.updateNotificationStatus(request);
-		} catch (BadRequestException e) {
-			metadataStorage.clearLastActivityHandle();
-			throw new OperationRejectedException(e);
-		} catch (NetworkRequestException e) {
-			throw new SynchronizationException(e);
-		}
-	}
+    @Override
+    public void synchronize() throws SynchronizationException {
+        String lastActivityHandle = metadataStorage.getLastActivityHandle();
+        UpdateNotificationStatusRequest request = new UpdateNotificationStatusRequest(lastActivityHandle);
+        try {
+            GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class)
+                .getNotificationService()
+                .updateNotificationStatus(request);
+        } catch (BadRequestException e) {
+            metadataStorage.clearLastActivityHandle();
+            throw new OperationRejectedException(e);
+        } catch (NetworkRequestException e) {
+            throw new SynchronizationException(e);
+        }
+    }
 
-	@Override
-	public void onSynchronizationSuccess() {
-		metadataStorage.markActivityHandleSynchronized();
-	}
+    @Override
+    public void onSynchronizationSuccess() {
+        metadataStorage.markActivityHandleSynchronized();
+    }
 }

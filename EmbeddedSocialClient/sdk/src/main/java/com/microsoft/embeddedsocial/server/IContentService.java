@@ -48,82 +48,82 @@ import retrofit2.Response;
  */
 public interface IContentService {
 
-	// CONTENT
+    // CONTENT
 
-	AddCommentResponse addComment(AddCommentRequest request)
-			throws NetworkRequestException;
+    AddCommentResponse addComment(AddCommentRequest request)
+            throws NetworkRequestException;
 
-	AddReplyResponse addReply(AddReplyRequest request)
-			throws NetworkRequestException;
+    AddReplyResponse addReply(AddReplyRequest request)
+            throws NetworkRequestException;
 
-	AddTopicResponse addTopic(AddTopicRequest request)
-			throws NetworkRequestException;
+    AddTopicResponse addTopic(AddTopicRequest request)
+            throws NetworkRequestException;
 
-	GetCommentResponse getComment(GetCommentRequest request)
-			throws NetworkRequestException;
+    GetCommentResponse getComment(GetCommentRequest request)
+            throws NetworkRequestException;
 
-	GetCommentFeedResponse getCommentFeed(GetCommentFeedRequest request)
-			throws NetworkRequestException;
+    GetCommentFeedResponse getCommentFeed(GetCommentFeedRequest request)
+            throws NetworkRequestException;
 
-	GetReplyResponse getReply(GetReplyRequest request)
-			throws NetworkRequestException;
+    GetReplyResponse getReply(GetReplyRequest request)
+            throws NetworkRequestException;
 
-	GetReplyFeedResponse getReplyFeed(GetReplyFeedRequest request)
-			throws NetworkRequestException;
+    GetReplyFeedResponse getReplyFeed(GetReplyFeedRequest request)
+            throws NetworkRequestException;
 
-	GetTopicResponse getTopic(GetTopicRequest request)
-			throws NetworkRequestException;
+    GetTopicResponse getTopic(GetTopicRequest request)
+            throws NetworkRequestException;
 
-	TopicsListResponse getTopicFeed(GetTopicFeedRequest request)
-			throws NetworkRequestException;
+    TopicsListResponse getTopicFeed(GetTopicFeedRequest request)
+            throws NetworkRequestException;
 
-	Response removeComment(RemoveCommentRequest request)
-			throws NetworkRequestException;
+    Response removeComment(RemoveCommentRequest request)
+            throws NetworkRequestException;
 
-	Response removeReply(RemoveReplyRequest request)
-			throws NetworkRequestException;
+    Response removeReply(RemoveReplyRequest request)
+            throws NetworkRequestException;
 
-	Response removeTopic(RemoveTopicRequest request)
-			throws NetworkRequestException;
+    Response removeTopic(RemoveTopicRequest request)
+            throws NetworkRequestException;
 
-	Response updateTopic(UpdateTopicRequest request)
-			throws NetworkRequestException;
+    Response updateTopic(UpdateTopicRequest request)
+            throws NetworkRequestException;
 
-	// NAMES
-	Response addTopicName(AddTopicNameRequest request)
-			throws NetworkRequestException;
+    // NAMES
+    Response addTopicName(AddTopicNameRequest request)
+            throws NetworkRequestException;
 
-	String getTopicName(GetTopicByNameRequest request)
-			throws NetworkRequestException;
+    String getTopicName(GetTopicByNameRequest request)
+            throws NetworkRequestException;
 
-	Response updateTopicName(UpdateTopicNameRequest request)
-			throws NetworkRequestException;
+    Response updateTopicName(UpdateTopicNameRequest request)
+            throws NetworkRequestException;
 
-	Response removeTopicName(RemoveTopicNameRequest request)
-			throws NetworkRequestException;
+    Response removeTopicName(RemoveTopicNameRequest request)
+            throws NetworkRequestException;
 
-	// LIKE
+    // LIKE
 
-	Response addLike(AddLikeRequest request)
-			throws NetworkRequestException;
+    Response addLike(AddLikeRequest request)
+            throws NetworkRequestException;
 
-	UsersListResponse getLikeFeed(GetLikeFeedRequest request)
-			throws NetworkRequestException;
+    UsersListResponse getLikeFeed(GetLikeFeedRequest request)
+            throws NetworkRequestException;
 
-	Response removeLike(RemoveLikeRequest request)
-			throws NetworkRequestException;
+    Response removeLike(RemoveLikeRequest request)
+            throws NetworkRequestException;
 
-	// PIN
+    // PIN
 
-	Response addPin(AddPinRequest request)
-			throws NetworkRequestException;
+    Response addPin(AddPinRequest request)
+            throws NetworkRequestException;
 
-	TopicsListResponse getPinFeed(GetPinFeedRequest request)
-			throws NetworkRequestException;
+    TopicsListResponse getPinFeed(GetPinFeedRequest request)
+            throws NetworkRequestException;
 
-	Response removePin(RemovePinRequest request)
-			throws NetworkRequestException;
+    Response removePin(RemovePinRequest request)
+            throws NetworkRequestException;
 
-	Response hideTopic(HideTopicRequest request)
-			throws NetworkRequestException;
+    Response hideTopic(HideTopicRequest request)
+            throws NetworkRequestException;
 }

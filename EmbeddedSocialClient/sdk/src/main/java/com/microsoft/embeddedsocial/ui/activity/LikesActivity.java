@@ -15,8 +15,8 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
  */
 public class LikesActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new LikesFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new LikesFragment());
+    }
 }

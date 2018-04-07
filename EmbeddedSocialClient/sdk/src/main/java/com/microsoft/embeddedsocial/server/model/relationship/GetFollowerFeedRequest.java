@@ -16,24 +16,24 @@ import com.microsoft.rest.ServiceResponse;
 import java.io.IOException;
 
 public final class GetFollowerFeedRequest extends GetFollowFeedRequest {
-	private static final UserFollowersOperations USER_FOLLOWERS =
-			new UserFollowersOperationsImpl(RETROFIT, CLIENT);
+    private static final UserFollowersOperations USER_FOLLOWERS =
+            new UserFollowersOperationsImpl(RETROFIT, CLIENT);
 
-	public GetFollowerFeedRequest(String queryUserHandle) {
-		super(queryUserHandle);
-	}
+    public GetFollowerFeedRequest(String queryUserHandle) {
+        super(queryUserHandle);
+    }
 
-	@Override
-	public UsersListResponse send() throws NetworkRequestException {
-		ServiceResponse<FeedResponseUserCompactView> serviceResponse;
-		try {
-			serviceResponse = USER_FOLLOWERS.getFollowers(getQueryUserHandle(), authorization,
-					getCursor(), getBatchSize());
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public UsersListResponse send() throws NetworkRequestException {
+        ServiceResponse<FeedResponseUserCompactView> serviceResponse;
+        try {
+            serviceResponse = USER_FOLLOWERS.getFollowers(getQueryUserHandle(), authorization,
+                    getCursor(), getBatchSize());
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new UsersListResponse(serviceResponse.getBody());
-	}
+        return new UsersListResponse(serviceResponse.getBody());
+    }
 }

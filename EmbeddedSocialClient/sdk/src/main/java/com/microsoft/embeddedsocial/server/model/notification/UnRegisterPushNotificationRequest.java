@@ -16,22 +16,22 @@ import retrofit2.Response;
 
 public class UnRegisterPushNotificationRequest extends UserRequest {
 
-	private final String registrationID;
+    private final String registrationID;
 
-	public UnRegisterPushNotificationRequest(String registrationID) {
-		this.registrationID = registrationID;
-	}
+    public UnRegisterPushNotificationRequest(String registrationID) {
+        this.registrationID = registrationID;
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			serviceResponse = PUSH_REGISTRATION.deletePushRegistration(platform, registrationID, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            serviceResponse = PUSH_REGISTRATION.deletePushRegistration(platform, registrationID, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getResponse();
-	}
+        return serviceResponse.getResponse();
+    }
 }

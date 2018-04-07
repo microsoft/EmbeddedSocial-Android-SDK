@@ -14,22 +14,22 @@ import java.util.List;
 
 public class TopicsListResponse extends ListResponse<TopicView> {
 
-	private List<TopicView> topics;
+    private List<TopicView> topics;
 
-	public TopicsListResponse(List<TopicView> topics) {
-		this.topics = topics;
-	}
+    public TopicsListResponse(List<TopicView> topics) {
+        this.topics = topics;
+    }
 
-	public TopicsListResponse(FeedResponseTopicView response) {
-		topics = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.TopicView topic : response.getData()) {
-			topics.add(new TopicView(topic));
-		}
-		setContinuationKey(response.getCursor());
-	}
+    public TopicsListResponse(FeedResponseTopicView response) {
+        topics = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.TopicView topic : response.getData()) {
+            topics.add(new TopicView(topic));
+        }
+        setContinuationKey(response.getCursor());
+    }
 
-	@Override
-	public List<TopicView> getData() {
-		return topics;
-	}
+    @Override
+    public List<TopicView> getData() {
+        return topics;
+    }
 }

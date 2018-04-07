@@ -13,20 +13,20 @@ import java.util.Collection;
  */
 public class ActionTagFilter implements ActionFilter {
 
-	private final Collection<String> tags;
+    private final Collection<String> tags;
 
-	public ActionTagFilter(String... tags) {
-		this.tags = Arrays.asList(tags);
-	}
+    public ActionTagFilter(String... tags) {
+        this.tags = Arrays.asList(tags);
+    }
 
-	@Override
-	public boolean filter(Action action) {
-		String actionTag = action.getTag();
-		for (String tag : tags) {
-			if (actionTag.equals(tag)) {
-				return true;
-			}
-		}
-		return false;
-	}
+    @Override
+    public boolean filter(Action action) {
+        String actionTag = action.getTag();
+        for (String tag : tags) {
+            if (actionTag.equals(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

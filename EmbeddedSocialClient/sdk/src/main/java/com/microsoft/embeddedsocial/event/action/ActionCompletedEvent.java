@@ -15,8 +15,8 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class ActionCompletedEvent extends ActionEvent {
 
-	public ActionCompletedEvent(Action action) {
-		super(action);
-	}
+    public ActionCompletedEvent(Action action) {
+        super(action);
+    }
 
 }

@@ -14,38 +14,38 @@ import com.microsoft.embeddedsocial.base.utils.Values;
  */
 public class DataState extends Values {
 
-	private static final String DATA_ENDED = "dataEnded";
-	private static final String CURSOR = "continuationKey";
+    private static final String DATA_ENDED = "dataEnded";
+    private static final String CURSOR = "continuationKey";
 
-	/**
-	 * Marks that there is no more data.
-	 */
-	public void markDataEnded() {
-		setValue(DATA_ENDED, true);
-	}
+    /**
+     * Marks that there is no more data.
+     */
+    public void markDataEnded() {
+        setValue(DATA_ENDED, true);
+    }
 
-	/**
-	 * Whether the data was marked as ended.
-	 */
-	public boolean isDataEnded() {
-		return getBooleanValue(DATA_ENDED);
-	}
+    /**
+     * Whether the data was marked as ended.
+     */
+    public boolean isDataEnded() {
+        return getBooleanValue(DATA_ENDED);
+    }
 
-	/**
-	 * Stores the continuation key returned by the server during the last data request.
-	 */
-	public void setContinuationKey(String continuationKey) {
-		setValue(CURSOR, continuationKey);
-		if (TextUtils.isEmpty(continuationKey)) {
-			markDataEnded();
-		}
-	}
+    /**
+     * Stores the continuation key returned by the server during the last data request.
+     */
+    public void setContinuationKey(String continuationKey) {
+        setValue(CURSOR, continuationKey);
+        if (TextUtils.isEmpty(continuationKey)) {
+            markDataEnded();
+        }
+    }
 
-	/**
-	 * Returns the continuation key returned by the server during the last data request (<code>null</code> if there was no requests).
-	 */
-	public String getContinuationKey() {
-		return getValue(CURSOR);
-	}
+    /**
+     * Returns the continuation key returned by the server during the last data request (<code>null</code> if there was no requests).
+     */
+    public String getContinuationKey() {
+        return getValue(CURSOR);
+    }
 
 }

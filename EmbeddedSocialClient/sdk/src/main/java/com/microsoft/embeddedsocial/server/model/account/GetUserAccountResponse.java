@@ -12,13 +12,13 @@ import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
  */
 public class GetUserAccountResponse {
 
-	private UserAccountView user;
+    private UserAccountView user;
 
-	public GetUserAccountResponse(UserAccountView user) {
-		this.user = user;
-	}
+    public GetUserAccountResponse(UserAccountView user) {
+        this.user = user;
+    }
 
-	public UserAccountView getUser() {
-		return user;
-	}
+    public UserAccountView getUser() {
+        return user;
+    }
 }

@@ -39,90 +39,90 @@ import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
  */
 public class OptionsFragment extends BaseFragment {
 
-	@Override
-	protected int getLayoutId() {
-		return R.layout.es_fragment_options;
-	}
+    @Override
+    protected int getLayoutId() {
+        return R.layout.es_fragment_options;
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		Options options = GlobalObjectRegistry.getObject(Options.class);
-		View.OnClickListener defaultListener = v -> showToast("Not implemented");
-		// TODO: hide it in not "master app"
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Options options = GlobalObjectRegistry.getObject(Options.class);
+        View.OnClickListener defaultListener = v -> showToast("Not implemented");
+        // TODO: hide it in not "master app"
 //		setOnClickListener(view, R.id.es_applications, defaultListener);
 //		setOnClickListener(view, R.id.es_findFacebookFriends, v -> searchFriends(IdentityProvider.FACEBOOK));
 //		setOnClickListener(view, R.id.es_findGooglePlusFriends, v -> searchFriends(IdentityProvider.GOOGLE));
 //		setOnClickListener(view, R.id.es_findMicrosoftContacts, v -> searchFriends(IdentityProvider.MICROSOFT));
 //		setOnClickListener(view, R.id.es_findFriendsFromOtherApps, defaultListener);
 
-		setOnClickListener(view, R.id.es_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
-		setOnClickListener(view, R.id.es_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
+        setOnClickListener(view, R.id.es_privacyPolicy, v -> WebPageHelper.openPrivacyPolicy(getContext()));
+        setOnClickListener(view, R.id.es_terms, v -> WebPageHelper.openTermsAndConditions(getContext()));
 
-		View signedInOptions = findView(view, R.id.es_optionsSignedIn);
-		View signedOutOptions = findView(view, R.id.es_optionsSignedOut);
+        View signedInOptions = findView(view, R.id.es_optionsSignedIn);
+        View signedOutOptions = findView(view, R.id.es_optionsSignedOut);
 
-		if (UserAccount.getInstance().isSignedIn()) {
-			// User is signed in
-			signedInOptions.setVisibility(View.VISIBLE);
-			signedOutOptions.setVisibility(View.GONE);
-			setOnClickListener(view, R.id.es_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
-			if (options.isSearchEnabled()) {
-				setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
-			} else {
-				View deleteSearchHistoryView = findView(view, R.id.es_deleteSearchHistory);
-				deleteSearchHistoryView.setVisibility(View.GONE);
-			}
-			setOnClickListener(view, R.id.es_signOut, v -> signOut());
-			setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
-		} else {
-			// User is signed out
-			signedInOptions.setVisibility(View.GONE);
-			signedOutOptions.setVisibility(View.VISIBLE);
-			setOnClickListener(view, R.id.es_signIn, v -> startActivity(SignInActivity.class));
-		}
+        if (UserAccount.getInstance().isSignedIn()) {
+            // User is signed in
+            signedInOptions.setVisibility(View.VISIBLE);
+            signedOutOptions.setVisibility(View.GONE);
+            setOnClickListener(view, R.id.es_linkedAccounts, v -> startActivity(LinkedAccountsActivity.class));
+            if (options.isSearchEnabled()) {
+                setOnClickListener(view, R.id.es_deleteSearchHistory, v -> deleteSearchHistory());
+            } else {
+                View deleteSearchHistoryView = findView(view, R.id.es_deleteSearchHistory);
+                deleteSearchHistoryView.setVisibility(View.GONE);
+            }
+            setOnClickListener(view, R.id.es_signOut, v -> signOut());
+            setOnClickListener(view, R.id.es_deleteAccount, v -> startActivity(DeleteAccountActivity.class));
+        } else {
+            // User is signed out
+            signedInOptions.setVisibility(View.GONE);
+            signedOutOptions.setVisibility(View.VISIBLE);
+            setOnClickListener(view, R.id.es_signIn, v -> startActivity(SignInActivity.class));
+        }
 
-		SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
-		if (lmSwitch != null) {
-			lmSwitch.setChecked(Preferences.getInstance().getUseStaggeredLayoutManager());
-			lmSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> Preferences.getInstance().setUseStaggeredLayoutManager(isChecked));
-		}
-	}
+        SwitchCompat lmSwitch = findView(view, R.id.es_layoutSwitch);
+        if (lmSwitch != null) {
+            lmSwitch.setChecked(Preferences.getInstance().getUseStaggeredLayoutManager());
+            lmSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> Preferences.getInstance().setUseStaggeredLayoutManager(isChecked));
+        }
+    }
 
-	private void searchFriends(IdentityProvider identityProvider) {
-		Intent intent = new Intent(getContext(), FriendlistActivity.class);
-		EnumUtils.putValue(intent, IntentExtras.IDENTITY_PROVIDER, identityProvider);
-		startActivity(intent);
-	}
+    private void searchFriends(IdentityProvider identityProvider) {
+        Intent intent = new Intent(getContext(), FriendlistActivity.class);
+        EnumUtils.putValue(intent, IntentExtras.IDENTITY_PROVIDER, identityProvider);
+        startActivity(intent);
+    }
 
-	private void signOut() {
-		Activity activity = getActivity();
-		if (activity instanceof BaseActivity) {
-			((BaseActivity)activity).disableNavigationPanel();
-		}
-		ProgressBar progressBar = findView(getView(), R.id.es_progress);
-		progressBar.setVisibility(View.VISIBLE);
-		hideView(R.id.es_options);
-		UserAccount.getInstance().signOut();
-		Toast.makeText(getActivity(), R.string.es_msg_general_signout_success, Toast.LENGTH_LONG).show();
+    private void signOut() {
+        Activity activity = getActivity();
+        if (activity instanceof BaseActivity) {
+            ((BaseActivity)activity).disableNavigationPanel();
+        }
+        ProgressBar progressBar = findView(getView(), R.id.es_progress);
+        progressBar.setVisibility(View.VISIBLE);
+        hideView(R.id.es_options);
+        UserAccount.getInstance().signOut();
+        Toast.makeText(getActivity(), R.string.es_msg_general_signout_success, Toast.LENGTH_LONG).show();
 
-		new AsyncTask<Void, Void, Void>() {
+        new AsyncTask<Void, Void, Void>() {
 
-			@Override
-			protected Void doInBackground(Void... params) {
-				GlobalObjectRegistry.getObject(DatabaseHelper.class).clearData();
-				return null;
-			}
+            @Override
+            protected Void doInBackground(Void... params) {
+                GlobalObjectRegistry.getObject(DatabaseHelper.class).clearData();
+                return null;
+            }
 
-			@Override
-			protected void onPostExecute(Void result) {
-				updateActivitiesStackOnLogOut();
-			}
-		}.execute();
-	}
+            @Override
+            protected void onPostExecute(Void result) {
+                updateActivitiesStackOnLogOut();
+            }
+        }.execute();
+    }
 
-	private void deleteSearchHistory() {
-		WorkerService.getLauncher(getContext()).launchService(ServiceAction.DELETE_SEARCH_HISTORY);
-		showToast(R.string.es_msg_general_search_history_deleted);
-	}
+    private void deleteSearchHistory() {
+        WorkerService.getLauncher(getContext()).launchService(ServiceAction.DELETE_SEARCH_HISTORY);
+        showToast(R.string.es_msg_general_search_history_deleted);
+    }
 }

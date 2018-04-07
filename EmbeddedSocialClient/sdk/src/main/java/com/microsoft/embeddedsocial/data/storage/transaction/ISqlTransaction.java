@@ -12,9 +12,9 @@ import java.sql.SQLException;
  */
 public interface ISqlTransaction {
 
-	/**
-	 * Performs the transaction.
-	 * @throws SQLException if something goes wrong.
-	 */
-	void performTransaction() throws SQLException;
+    /**
+     * Performs the transaction.
+     * @throws SQLException if something goes wrong.
+     */
+    void performTransaction() throws SQLException;
 }

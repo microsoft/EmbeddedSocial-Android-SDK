@@ -19,36 +19,36 @@ import com.microsoft.embeddedsocial.data.storage.UserCache;
 @DatabaseTable(tableName = DbSchemas.UserFeeds.TABLE_NAME)
 public class UserFeedRelation {
 
-	@DatabaseField(generatedId = true)
-	private int id;
+    @DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.UserFeeds.USER_HANDLE)
-	private String userHandle;
+    @DatabaseField(columnName = DbSchemas.UserFeeds.USER_HANDLE)
+    private String userHandle;
 
-	@DatabaseField(columnName = DbSchemas.UserFeeds.FEED_TYPE)
-	private UserCache.UserFeedType feedType;
+    @DatabaseField(columnName = DbSchemas.UserFeeds.FEED_TYPE)
+    private UserCache.UserFeedType feedType;
 
-	@DatabaseField(columnName = DbSchemas.UserFeeds.QUERIED_USER_HANDLE, defaultValue = UserCache.NO_HANDLE)
-	private String queriedUserHandle;
+    @DatabaseField(columnName = DbSchemas.UserFeeds.QUERIED_USER_HANDLE, defaultValue = UserCache.NO_HANDLE)
+    private String queriedUserHandle;
 
-	/**
-	 * For ORM.
-	 */
-	UserFeedRelation() {
-	}
+    /**
+     * For ORM.
+     */
+    UserFeedRelation() {
+    }
 
-	public UserFeedRelation(UserCache.UserFeedType feedType, String userHandle, String queriedUserHandle) {
-		this.feedType = feedType;
-		this.queriedUserHandle = !TextUtils.isEmpty(queriedUserHandle)
-			? queriedUserHandle : UserCache.NO_HANDLE;
-		this.userHandle = userHandle;
-	}
+    public UserFeedRelation(UserCache.UserFeedType feedType, String userHandle, String queriedUserHandle) {
+        this.feedType = feedType;
+        this.queriedUserHandle = !TextUtils.isEmpty(queriedUserHandle)
+            ? queriedUserHandle : UserCache.NO_HANDLE;
+        this.userHandle = userHandle;
+    }
 
-	public String getQueriedUserHandle() {
-		return queriedUserHandle;
-	}
+    public String getQueriedUserHandle() {
+        return queriedUserHandle;
+    }
 
-	public String getUserHandle() {
-		return userHandle;
-	}
+    public String getUserHandle() {
+        return userHandle;
+    }
 }

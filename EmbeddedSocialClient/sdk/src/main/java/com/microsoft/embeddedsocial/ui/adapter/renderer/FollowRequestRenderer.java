@@ -23,78 +23,78 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.FollowRequestHolder;
  */
 public class FollowRequestRenderer extends Renderer<FollowRequest, FollowRequestHolder> {
 
-	public static final float INACTIVE_ALPHA = 0.5f;
+    public static final float INACTIVE_ALPHA = 0.5f;
 
-	private final Context context;
+    private final Context context;
 
-	public FollowRequestRenderer(Context context) {
-		this.context = context;
-	}
+    public FollowRequestRenderer(Context context) {
+        this.context = context;
+    }
 
-	@Override
-	public FollowRequestHolder createViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.es_follow_request_list_item, parent);
-		return new FollowRequestHolder(view);
-	}
+    @Override
+    public FollowRequestHolder createViewHolder(ViewGroup parent) {
+        View view = ViewUtils.inflateLayout(R.layout.es_follow_request_list_item, parent);
+        return new FollowRequestHolder(view);
+    }
 
-	@Override
-	protected void onItemRendered(FollowRequest followRequest, FollowRequestHolder holder) {
-		UserCompactView user = followRequest.getUser();
-		ContentUpdateHelper.setProfileImage(context, holder.photoContentLoader, user.getUserPhotoUrl());
-		holder.fullNameView.setText(user.getFullName());
-		holder.itemView.setOnClickListener(v -> ProfileOpenHelper.openUserProfile(v.getContext(), user));
-		updateButtonsState(followRequest, holder);
-	}
+    @Override
+    protected void onItemRendered(FollowRequest followRequest, FollowRequestHolder holder) {
+        UserCompactView user = followRequest.getUser();
+        ContentUpdateHelper.setProfileImage(context, holder.photoContentLoader, user.getUserPhotoUrl());
+        holder.fullNameView.setText(user.getFullName());
+        holder.itemView.setOnClickListener(v -> ProfileOpenHelper.openUserProfile(v.getContext(), user));
+        updateButtonsState(followRequest, holder);
+    }
 
-	private void updateButtonsState(FollowRequest followRequest, FollowRequestHolder holder) {
-		switch (followRequest.getStatus()) {
-			case PENDING:
-				setButtonActive(holder.rejectButton, v -> {
-					followRequest.setStatus(FollowRequest.Status.REJECTED);
-					renderRejectedRequest(holder);
-					UserAccount.getInstance().rejectFollowRequest(followRequest.getUser().getHandle());
-				});
-				setButtonActive(holder.acceptButton, v -> {
-					followRequest.setStatus(FollowRequest.Status.ACCEPTED);
-					renderAcceptedRequest(holder);
-					UserAccount.getInstance().acceptFollowRequest(followRequest.getUser().getHandle());
-				});
-				break;
-			case ACCEPTED:
-				renderAcceptedRequest(holder);
-				break;
-			case REJECTED:
-				renderRejectedRequest(holder);
-				break;
-		}
-	}
+    private void updateButtonsState(FollowRequest followRequest, FollowRequestHolder holder) {
+        switch (followRequest.getStatus()) {
+            case PENDING:
+                setButtonActive(holder.rejectButton, v -> {
+                    followRequest.setStatus(FollowRequest.Status.REJECTED);
+                    renderRejectedRequest(holder);
+                    UserAccount.getInstance().rejectFollowRequest(followRequest.getUser().getHandle());
+                });
+                setButtonActive(holder.acceptButton, v -> {
+                    followRequest.setStatus(FollowRequest.Status.ACCEPTED);
+                    renderAcceptedRequest(holder);
+                    UserAccount.getInstance().acceptFollowRequest(followRequest.getUser().getHandle());
+                });
+                break;
+            case ACCEPTED:
+                renderAcceptedRequest(holder);
+                break;
+            case REJECTED:
+                renderRejectedRequest(holder);
+                break;
+        }
+    }
 
-	private void renderRejectedRequest(FollowRequestHolder holder) {
-		setButtonInactive(holder.rejectButton);
-		setButtonHidden(holder.acceptButton);
-	}
+    private void renderRejectedRequest(FollowRequestHolder holder) {
+        setButtonInactive(holder.rejectButton);
+        setButtonHidden(holder.acceptButton);
+    }
 
-	private void renderAcceptedRequest(FollowRequestHolder holder) {
-		setButtonInactive(holder.acceptButton);
-		setButtonHidden(holder.rejectButton);
-	}
+    private void renderAcceptedRequest(FollowRequestHolder holder) {
+        setButtonInactive(holder.acceptButton);
+        setButtonHidden(holder.rejectButton);
+    }
 
-	private void setButtonActive(View button, View.OnClickListener onClickListener) {
-		button.setVisibility(View.VISIBLE);
-		button.setAlpha(1);
-		button.setEnabled(true);
-		button.setOnClickListener(onClickListener);
-	}
+    private void setButtonActive(View button, View.OnClickListener onClickListener) {
+        button.setVisibility(View.VISIBLE);
+        button.setAlpha(1);
+        button.setEnabled(true);
+        button.setOnClickListener(onClickListener);
+    }
 
-	private void setButtonInactive(View button) {
-		button.setVisibility(View.VISIBLE);
-		button.setAlpha(INACTIVE_ALPHA);
-		button.setOnClickListener(null);
-		button.setEnabled(false);
-	}
+    private void setButtonInactive(View button) {
+        button.setVisibility(View.VISIBLE);
+        button.setAlpha(INACTIVE_ALPHA);
+        button.setOnClickListener(null);
+        button.setEnabled(false);
+    }
 
-	private void setButtonHidden(View button) {
-		button.setVisibility(View.GONE);
-	}
+    private void setButtonHidden(View button) {
+        button.setVisibility(View.GONE);
+    }
 
 }

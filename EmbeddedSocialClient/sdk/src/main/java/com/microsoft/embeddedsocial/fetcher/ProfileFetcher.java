@@ -29,60 +29,60 @@ import java.util.List;
  */
 class ProfileFetcher extends Fetcher<AccountData> {
 
-	private final String userHandle;
+    private final String userHandle;
 
-	public ProfileFetcher(String userHandle) {
-		this.userHandle = userHandle;
-	}
+    public ProfileFetcher(String userHandle) {
+        this.userHandle = userHandle;
+    }
 
-	@Override
-	protected List<AccountData> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		AccountData profile;
-		if (requestType == RequestType.SYNC_WITH_CACHE && UserAccount.getInstance().isCurrentUser(userHandle)) {
-			profile = UserAccount.getInstance().getAccountDetails();
-		} else {
-			profile = readProfile(requestType);
-		}
-		dataState.markDataEnded();
-		return Collections.singletonList(profile);
-	}
+    @Override
+    protected List<AccountData> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        AccountData profile;
+        if (requestType == RequestType.SYNC_WITH_CACHE && UserAccount.getInstance().isCurrentUser(userHandle)) {
+            profile = UserAccount.getInstance().getAccountDetails();
+        } else {
+            profile = readProfile(requestType);
+        }
+        dataState.markDataEnded();
+        return Collections.singletonList(profile);
+    }
 
-	private AccountData readProfile(RequestType requestType) throws NetworkRequestException {
-		try {
-			IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
-			UserProfileView userProfile = getUserProfile(accountService, requestType);
-			AccountData accountData = new AccountData(userProfile);
-			if (UserAccount.getInstance().isCurrentUser(userHandle)) {
-				// TODO: check if these data are still needed
-				UserAccountView user = getUserAccount(accountService, requestType);
-				accountData.setAccountTypeFromThirdPartyAccounts(user.getThirdPartyAccounts());
-				UserAccount.getInstance().updateAccountDetails(accountData);
-			}
-			return accountData;
-		} catch (NetworkRequestException e) {
-			DebugLog.logException(e);
-			if (UserAccount.getInstance().isCurrentUser(userHandle)) {
-				return UserAccount.getInstance().getAccountDetails();
-			} else {
-				throw e;
-			}
-		}
-	}
+    private AccountData readProfile(RequestType requestType) throws NetworkRequestException {
+        try {
+            IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
+            UserProfileView userProfile = getUserProfile(accountService, requestType);
+            AccountData accountData = new AccountData(userProfile);
+            if (UserAccount.getInstance().isCurrentUser(userHandle)) {
+                // TODO: check if these data are still needed
+                UserAccountView user = getUserAccount(accountService, requestType);
+                accountData.setAccountTypeFromThirdPartyAccounts(user.getThirdPartyAccounts());
+                UserAccount.getInstance().updateAccountDetails(accountData);
+            }
+            return accountData;
+        } catch (NetworkRequestException e) {
+            DebugLog.logException(e);
+            if (UserAccount.getInstance().isCurrentUser(userHandle)) {
+                return UserAccount.getInstance().getAccountDetails();
+            } else {
+                throw e;
+            }
+        }
+    }
 
-	private UserAccountView getUserAccount(IAccountService accountService, RequestType requestType) throws NetworkRequestException {
-		GetUserAccountRequest userRequest = new GetUserAccountRequest();
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			userRequest.forceCacheUsage();
-		}
-		GetUserAccountResponse userAccount = accountService.getUserAccount(userRequest);
-		return userAccount.getUser();
-	}
+    private UserAccountView getUserAccount(IAccountService accountService, RequestType requestType) throws NetworkRequestException {
+        GetUserAccountRequest userRequest = new GetUserAccountRequest();
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            userRequest.forceCacheUsage();
+        }
+        GetUserAccountResponse userAccount = accountService.getUserAccount(userRequest);
+        return userAccount.getUser();
+    }
 
-	private UserProfileView getUserProfile(IAccountService accountService, RequestType requestType) throws NetworkRequestException {
-		GetUserProfileRequest profileRequest = new GetUserProfileRequest(userHandle);
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			profileRequest.forceCacheUsage();
-		}
-		return accountService.getUserProfile(profileRequest).getUser();
-	}
+    private UserProfileView getUserProfile(IAccountService accountService, RequestType requestType) throws NetworkRequestException {
+        GetUserProfileRequest profileRequest = new GetUserProfileRequest(userHandle);
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            profileRequest.forceCacheUsage();
+        }
+        return accountService.getUserProfile(profileRequest).getUser();
+    }
 }

@@ -15,32 +15,32 @@ import java.io.IOException;
 
 public class GetUserProfileRequest extends UserRequest {
 
-	private final String queryUserHandle;
-	private final String queryUsername;
+    private final String queryUserHandle;
+    private final String queryUsername;
 
-	public GetUserProfileRequest(String queryUserHandle) {
-		this(queryUserHandle, null);
-	}
+    public GetUserProfileRequest(String queryUserHandle) {
+        this(queryUserHandle, null);
+    }
 
-	public GetUserProfileRequest(String queryUserHandle, String queryUsername) {
-		this.queryUserHandle = queryUserHandle;
-		this.queryUsername = queryUsername;
-	}
+    public GetUserProfileRequest(String queryUserHandle, String queryUsername) {
+        this.queryUserHandle = queryUserHandle;
+        this.queryUsername = queryUsername;
+    }
 
-	public String getQueryUserHandle() {
-		return queryUserHandle;
-	}
+    public String getQueryUserHandle() {
+        return queryUserHandle;
+    }
 
-	@Override
-	public GetUserProfileResponse send() throws NetworkRequestException {
-		ServiceResponse<UserProfileView> serviceResponse;
-		try {
-			serviceResponse = USERS.getUser(queryUserHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetUserProfileResponse send() throws NetworkRequestException {
+        ServiceResponse<UserProfileView> serviceResponse;
+        try {
+            serviceResponse = USERS.getUser(queryUserHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new GetUserProfileResponse(serviceResponse.getBody());
-	}
+        return new GetUserProfileResponse(serviceResponse.getBody());
+    }
 }

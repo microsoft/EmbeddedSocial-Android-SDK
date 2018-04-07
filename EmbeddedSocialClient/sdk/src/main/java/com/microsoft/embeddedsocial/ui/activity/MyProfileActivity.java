@@ -17,37 +17,37 @@ import android.support.v7.app.ActionBar;
  * Activity shoving current user's feeds.
  */
 public class MyProfileActivity extends BaseProfileActivity {
-	public static final String NAME = "MyProfile";
+    public static final String NAME = "MyProfile";
 
-	public MyProfileActivity() {
-		super(R.id.es_navigationProfile);
-	}
+    public MyProfileActivity() {
+        super(R.id.es_navigationProfile);
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new MyProfileFragment());
-		super.setupFragments();
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new MyProfileFragment());
+        super.setupFragments();
+    }
 
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		userHandle = UserAccount.getInstance().getUserHandle();
-	}
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        userHandle = UserAccount.getInstance().getUserHandle();
+    }
 
-	@Override
-	protected void setupActionBar(ActionBar actionBar) {
-		super.setupActionBar(actionBar);
-		actionBar.setTitle(UserAccount.getInstance().getAccountDetails().getFullName());
-	}
+    @Override
+    protected void setupActionBar(ActionBar actionBar) {
+        super.setupActionBar(actionBar);
+        actionBar.setTitle(UserAccount.getInstance().getAccountDetails().getFullName());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 }
