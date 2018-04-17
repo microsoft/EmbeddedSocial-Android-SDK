@@ -18,28 +18,28 @@ import android.view.MenuItem;
  */
 public class CommentContextMenuClickListener extends ContextMenuClickListener {
 
-	private final CommentView comment;
+    private final CommentView comment;
 
-	public CommentContextMenuClickListener(Fragment fragment, CommentView comment) {
-		super(fragment, comment.getUser(), comment.getHandle());
-		this.comment = comment;
-	}
+    public CommentContextMenuClickListener(Fragment fragment, CommentView comment) {
+        super(fragment, comment.getUser(), comment.getHandle());
+        this.comment = comment;
+    }
 
-	@Override
-	public boolean onMenuItemClick(MenuItem item) {
-		if (super.onMenuItemClick(item)) {
-			return true;
-		}
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (super.onMenuItemClick(item)) {
+            return true;
+        }
 
-		int i = item.getItemId();
-		if (i == R.id.es_actionReportComment) {
-			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.COMMENT);
-			return true;
-		} else if (i == R.id.es_actionRemove) {
-			ContentUpdateHelper.launchRemoveComment(context, comment);
-			return true;
-		} else {
-			return false;
-		}
-	}
+        int i = item.getItemId();
+        if (i == R.id.es_actionReportComment) {
+            ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.COMMENT);
+            return true;
+        } else if (i == R.id.es_actionRemove) {
+            ContentUpdateHelper.launchRemoveComment(context, comment);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

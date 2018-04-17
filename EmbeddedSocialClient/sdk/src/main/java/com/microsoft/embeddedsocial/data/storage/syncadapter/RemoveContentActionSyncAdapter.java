@@ -6,67 +6,67 @@
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.embeddedsocial.server.model.content.replies.RemoveReplyRequest;
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.data.storage.UserActionCache;
 import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.comments.RemoveCommentRequest;
+import com.microsoft.embeddedsocial.server.model.content.replies.RemoveReplyRequest;
 import com.microsoft.embeddedsocial.server.model.content.topics.RemoveTopicRequest;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Contains base functionality related to removing content from the server.
  */
 public class RemoveContentActionSyncAdapter extends AbstractAutoCleanupSyncAdapter<UserActionCache.ContentRemovedAction> {
 
-	private final INetworkOperation operation;
+    private final INetworkOperation operation;
 
-	private RemoveContentActionSyncAdapter(
-		Dao<UserActionCache.ContentRemovedAction, Integer> removeActionDao,
-		UserActionCache.ContentRemovedAction action, INetworkOperation operation) {
+    private RemoveContentActionSyncAdapter(
+        Dao<UserActionCache.ContentRemovedAction, Integer> removeActionDao,
+        UserActionCache.ContentRemovedAction action, INetworkOperation operation) {
 
-		super(action, removeActionDao);
-		this.operation = operation;
-	}
+        super(action, removeActionDao);
+        this.operation = operation;
+    }
 
-	@Override
-	protected void onSynchronize(UserActionCache.ContentRemovedAction item)
-		throws NetworkRequestException, SynchronizationException {
+    @Override
+    protected void onSynchronize(UserActionCache.ContentRemovedAction item)
+        throws NetworkRequestException, SynchronizationException {
 
-		operation.performNetworkOperation(getServiceProvider().getContentService());
-	}
+        operation.performNetworkOperation(getServiceProvider().getContentService());
+    }
 
-	/**
-	 * Creates appropriate adapter for the specified action.
-	 * @param removeActionDao   content removal action DAO
-	 * @param action            removal action
-	 * @return  {@linkplain RemoveContentActionSyncAdapter} instance.
-	 */
-	public static RemoveContentActionSyncAdapter createAdapter(
-		Dao<UserActionCache.ContentRemovedAction, Integer> removeActionDao,
-		UserActionCache.ContentRemovedAction action) {
+    /**
+     * Creates appropriate adapter for the specified action.
+     * @param removeActionDao   content removal action DAO
+     * @param action            removal action
+     * @return  {@linkplain RemoveContentActionSyncAdapter} instance.
+     */
+    public static RemoveContentActionSyncAdapter createAdapter(
+        Dao<UserActionCache.ContentRemovedAction, Integer> removeActionDao,
+        UserActionCache.ContentRemovedAction action) {
 
-		INetworkOperation operation;
+        INetworkOperation operation;
 
-		switch (action.getContentType()) {
-			case COMMENT:
-				operation = (service) -> service.removeComment(new RemoveCommentRequest(action.getContentHandle()));
-				break;
+        switch (action.getContentType()) {
+            case COMMENT:
+                operation = (service) -> service.removeComment(new RemoveCommentRequest(action.getContentHandle()));
+                break;
 
-			case REPLY:
-				operation = (service) -> service.removeReply(new RemoveReplyRequest(action.getContentHandle()));
-				break;
+            case REPLY:
+                operation = (service) -> service.removeReply(new RemoveReplyRequest(action.getContentHandle()));
+                break;
 
-			case TOPIC:
-			default:
-				operation = (service) -> service.removeTopic(new RemoveTopicRequest(action.getContentHandle()));
-		}
+            case TOPIC:
+            default:
+                operation = (service) -> service.removeTopic(new RemoveTopicRequest(action.getContentHandle()));
+        }
 
-		return new RemoveContentActionSyncAdapter(removeActionDao, action, operation);
-	}
+        return new RemoveContentActionSyncAdapter(removeActionDao, action, operation);
+    }
 
-	private interface INetworkOperation {
-		void performNetworkOperation(IContentService service)
-			throws SynchronizationException, NetworkRequestException;
-	}
+    private interface INetworkOperation {
+        void performNetworkOperation(IContentService service)
+            throws SynchronizationException, NetworkRequestException;
+    }
 }

@@ -12,17 +12,17 @@ import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
  * Base class for events related to a user.
  */
 public abstract class BaseUserEvent extends AbstractEvent {
-	final String userHandle;
+    final String userHandle;
 
-	public BaseUserEvent(String userHandle) {
-		this.userHandle = userHandle;
-	}
+    public BaseUserEvent(String userHandle) {
+        this.userHandle = userHandle;
+    }
 
-	public String getUserHandle() {
-		return userHandle;
-	}
+    public String getUserHandle() {
+        return userHandle;
+    }
 
-	public boolean isForUser(String anotherUserHandle) {
-		return ObjectUtils.equal(userHandle, anotherUserHandle);
-	}
+    public boolean isForUser(String anotherUserHandle) {
+        return ObjectUtils.equal(userHandle, anotherUserHandle);
+    }
 }

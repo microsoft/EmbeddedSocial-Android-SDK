@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.sdk.ui;
 
 import android.support.annotation.DrawableRes;
-import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
 public interface AppProfile {

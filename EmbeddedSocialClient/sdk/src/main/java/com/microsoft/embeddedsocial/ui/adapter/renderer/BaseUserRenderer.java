@@ -23,32 +23,32 @@ import android.view.ViewGroup;
  */
 public abstract class BaseUserRenderer extends Renderer<UserCompactView, UserListItemHolder> {
 
-	private final ButtonStyleHelper styleHelper;
-	protected final Fragment fragment;
-	protected Context context;
+    private final ButtonStyleHelper styleHelper;
+    protected final Fragment fragment;
+    protected Context context;
 
-	public BaseUserRenderer(Fragment fragment) {
-		this.fragment = fragment;
-		this.context = fragment.getContext();
-		styleHelper = new ButtonStyleHelper(context);
-	}
+    public BaseUserRenderer(Fragment fragment) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
+        styleHelper = new ButtonStyleHelper(context);
+    }
 
-	protected ButtonStyleHelper getStyleHelper() {
-		return styleHelper;
-	}
+    protected ButtonStyleHelper getStyleHelper() {
+        return styleHelper;
+    }
 
-	@Override
-	protected void onItemRendered(UserCompactView user, UserListItemHolder holder) {
-		ContentUpdateHelper.setProfileImage(context, holder.photoContentLoader, user.getUserPhotoUrl());
-		holder.fullNameView.setText(user.getFullName());
-		holder.itemView.setOnClickListener(v -> ProfileOpenHelper.openUserProfile(v.getContext(), user));
-	}
+    @Override
+    protected void onItemRendered(UserCompactView user, UserListItemHolder holder) {
+        ContentUpdateHelper.setProfileImage(context, holder.photoContentLoader, user.getUserPhotoUrl());
+        holder.fullNameView.setText(user.getFullName());
+        holder.itemView.setOnClickListener(v -> ProfileOpenHelper.openUserProfile(v.getContext(), user));
+    }
 
-	@Override
-	public UserListItemHolder createViewHolder(ViewGroup parent) {
-		View view = ViewUtils.inflateLayout(R.layout.es_user_list_item, parent);
-		return new UserListItemHolder(view);
-	}
+    @Override
+    public UserListItemHolder createViewHolder(ViewGroup parent) {
+        View view = ViewUtils.inflateLayout(R.layout.es_user_list_item, parent);
+        return new UserListItemHolder(view);
+    }
 
 }
 

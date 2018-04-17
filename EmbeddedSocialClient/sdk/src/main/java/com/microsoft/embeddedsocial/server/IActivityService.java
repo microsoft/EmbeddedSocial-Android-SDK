@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
 import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedResponse;
 
 public interface IActivityService {
-	ActivityFeedResponse getFollowingActivityFeed(ActivityFeedRequest request)
-			throws NetworkRequestException;
+    ActivityFeedResponse getFollowingActivityFeed(ActivityFeedRequest request)
+            throws NetworkRequestException;
 
 }

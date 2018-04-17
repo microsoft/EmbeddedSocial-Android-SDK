@@ -17,16 +17,16 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
  */
 public class TrendingHashtagsFragment extends BaseListContentFragment<FetchableListAdapter<?, ?>> {
 
-	private Fetcher<String> fetcher;
+    private Fetcher<String> fetcher;
 
-	@Override
-	protected FetchableListAdapter<?, ?> createInitialAdapter() {
-		if (fetcher == null) {
-			fetcher = FetchersFactory.createTrendingHashtagsFetcher();
-		}
-		return new FetchableListAdapter.Builder<>(fetcher, new TrendingHashtagsRenderer())
-			.setTitle(getString(R.string.es_trending_hashtags))
-			.build();
-	}
+    @Override
+    protected FetchableListAdapter<?, ?> createInitialAdapter() {
+        if (fetcher == null) {
+            fetcher = FetchersFactory.createTrendingHashtagsFetcher();
+        }
+        return new FetchableListAdapter.Builder<>(fetcher, new TrendingHashtagsRenderer())
+            .setTitle(getString(R.string.es_trending_hashtags))
+            .build();
+    }
 
 }

@@ -9,5 +9,5 @@ package com.microsoft.embeddedsocial.server.model;
  * Unique item of some type.
  */
 public interface UniqueItem {
-	String getHandle();
+    String getHandle();
 }

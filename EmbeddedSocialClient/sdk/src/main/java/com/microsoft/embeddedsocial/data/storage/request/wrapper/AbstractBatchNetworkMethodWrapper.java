@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper;
 
-import android.text.TextUtils;
-
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
+
+import android.text.TextUtils;
 
 /**
  * An {@linkplain AbstractNetworkMethodWrapper} implementation for network methods that
@@ -16,18 +16,18 @@ import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
  * @param <Response>    type of server response
  */
 public abstract class AbstractBatchNetworkMethodWrapper<Request extends FeedUserRequest, Response>
-	extends AbstractNetworkMethodWrapper<Request, Response> {
+    extends AbstractNetworkMethodWrapper<Request, Response> {
 
-	/**
-	 * Base constructor.
-	 * @param networkMethod     network method that should be called to obtain server response
-	 */
-	protected AbstractBatchNetworkMethodWrapper(INetworkMethod<Request, Response> networkMethod) {
-		super(networkMethod);
-	}
+    /**
+     * Base constructor.
+     * @param networkMethod     network method that should be called to obtain server response
+     */
+    protected AbstractBatchNetworkMethodWrapper(INetworkMethod<Request, Response> networkMethod) {
+        super(networkMethod);
+    }
 
-	@Override
-	protected boolean isFirstDataRequest(Request request) {
-		return TextUtils.isEmpty(request.getCursor());
-	}
+    @Override
+    protected boolean isFirstDataRequest(Request request) {
+        return TextUtils.isEmpty(request.getCursor());
+    }
 }

@@ -7,15 +7,15 @@ package com.microsoft.embeddedsocial.auth;
 
 public class AuthenticationException extends Exception {
 
-	public AuthenticationException(String detailMessage) {
-		super(detailMessage);
-	}
+    public AuthenticationException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public AuthenticationException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public AuthenticationException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public AuthenticationException(Throwable throwable) {
-		super(throwable);
-	}
+    public AuthenticationException(Throwable throwable) {
+        super(throwable);
+    }
 }

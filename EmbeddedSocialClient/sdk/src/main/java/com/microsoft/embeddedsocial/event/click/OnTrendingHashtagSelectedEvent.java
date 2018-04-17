@@ -14,13 +14,13 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
  */
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class OnTrendingHashtagSelectedEvent extends AbstractEvent {
-	private final String trendingHashtag;
+    private final String trendingHashtag;
 
-	public OnTrendingHashtagSelectedEvent(String trendingHashtag) {
-		this.trendingHashtag = trendingHashtag;
-	}
+    public OnTrendingHashtagSelectedEvent(String trendingHashtag) {
+        this.trendingHashtag = trendingHashtag;
+    }
 
-	public String getTrendingHashtag() {
-		return trendingHashtag;
-	}
+    public String getTrendingHashtag() {
+        return trendingHashtag;
+    }
 }

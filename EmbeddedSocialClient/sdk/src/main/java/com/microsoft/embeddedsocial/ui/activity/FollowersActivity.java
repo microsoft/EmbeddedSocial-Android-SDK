@@ -5,18 +5,16 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
-import com.microsoft.embeddedsocial.ui.fragment.FollowersFragment;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.FollowersFragment;
 
 /**
  * Activity showing user's followers.
  */
 public class FollowersActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowersFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowersFragment());
+    }
 }

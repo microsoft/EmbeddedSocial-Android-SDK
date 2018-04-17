@@ -23,31 +23,31 @@ import java.util.List;
  */
 class DataRequestExecutor<T, R extends BaseRequest> {
 
-	private final ServerMethod<? super R, ? extends ListResponse<T>> serverMethod;
-	private final Producer<? extends R> requestProducer;
+    private final ServerMethod<? super R, ? extends ListResponse<T>> serverMethod;
+    private final Producer<? extends R> requestProducer;
 
-	DataRequestExecutor(ServerMethod<? super R, ? extends ListResponse<T>> serverMethod, Producer<? extends R> requestProducer) {
-		this.requestProducer = requestProducer;
-		this.serverMethod = serverMethod;
-	}
+    DataRequestExecutor(ServerMethod<? super R, ? extends ListResponse<T>> serverMethod, Producer<? extends R> requestProducer) {
+        this.requestProducer = requestProducer;
+        this.serverMethod = serverMethod;
+    }
 
-	ListResponse<T> fetchRawResponse(DataState dataState, RequestType requestType, int pageSize) throws NetworkRequestException {
-		R request = createRequest(dataState, requestType, pageSize);
-		ListResponse<T> response = serverMethod.call(request);
-		dataState.setContinuationKey(response.getContinuationKey());
-		return response;
-	}
+    ListResponse<T> fetchRawResponse(DataState dataState, RequestType requestType, int pageSize) throws NetworkRequestException {
+        R request = createRequest(dataState, requestType, pageSize);
+        ListResponse<T> response = serverMethod.call(request);
+        dataState.setContinuationKey(response.getContinuationKey());
+        return response;
+    }
 
-	List<T> fetchData(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		ListResponse<T> response = fetchRawResponse(dataState, requestType, pageSize);
-		return response.getData();
-	}
+    List<T> fetchData(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        ListResponse<T> response = fetchRawResponse(dataState, requestType, pageSize);
+        return response.getData();
+    }
 
-	protected R createRequest(DataState dataState, RequestType requestType, int pageSize) {
-		R request = requestProducer.createNew();
-		if (requestType == RequestType.SYNC_WITH_CACHE) {
-			request.forceCacheUsage();
-		}
-		return request;
-	}
+    protected R createRequest(DataState dataState, RequestType requestType, int pageSize) {
+        R request = requestProducer.createNew();
+        if (requestType == RequestType.SYNC_WITH_CACHE) {
+            request.forceCacheUsage();
+        }
+        return request;
+    }
 }

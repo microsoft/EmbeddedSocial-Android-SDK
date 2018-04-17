@@ -5,9 +5,9 @@
   -->
 
 <com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@id/es_recyclerView"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="?attr/es_recyclerViewBackground"
-	/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/es_recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/es_recyclerViewBackground"
+    />

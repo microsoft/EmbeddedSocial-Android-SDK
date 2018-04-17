@@ -6,10 +6,10 @@
 package com.microsoft.embeddedsocial.server.model.activity;
 
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 

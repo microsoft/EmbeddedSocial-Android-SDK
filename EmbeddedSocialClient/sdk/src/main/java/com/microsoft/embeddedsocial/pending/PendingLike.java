@@ -5,28 +5,28 @@
 
 package com.microsoft.embeddedsocial.pending;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
+
+import android.content.Context;
 
 /**
  * Pending "like" or "dislike" action.
  */
 public class PendingLike implements PendingAction {
 
-	private final String contentHandle;
-	private final boolean liked;
-	private final ContentType contentType;
+    private final String contentHandle;
+    private final boolean liked;
+    private final ContentType contentType;
 
-	public PendingLike(String contentHandle, ContentType contentType, boolean liked) {
-		this.contentHandle = contentHandle;
-		this.liked = liked;
-		this.contentType = contentType;
-	}
+    public PendingLike(String contentHandle, ContentType contentType, boolean liked) {
+        this.contentHandle = contentHandle;
+        this.liked = liked;
+        this.contentType = contentType;
+    }
 
-	@Override
-	public void execute(Context context) {
-		new UserActionProxy(context).setLikeStatus(contentHandle, contentType, liked);
-	}
+    @Override
+    public void execute(Context context) {
+        new UserActionProxy(context).setLikeStatus(contentHandle, contentType, liked);
+    }
 }

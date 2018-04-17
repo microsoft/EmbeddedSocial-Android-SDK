@@ -12,14 +12,14 @@ import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationExcepti
  */
 public interface ISynchronizable {
 
-	/**
-	 * Uploads entity contents to the server.
-	 * @throws SynchronizationException if synchronization fails
-	 */
-	void synchronize() throws SynchronizationException;
+    /**
+     * Uploads entity contents to the server.
+     * @throws SynchronizationException if synchronization fails
+     */
+    void synchronize() throws SynchronizationException;
 
-	/**
-	 * Is called if synchronization is performed successfully.
-	 */
-	void onSynchronizationSuccess();
+    /**
+     * Is called if synchronization is performed successfully.
+     */
+    void onSynchronizationSuccess();
 }

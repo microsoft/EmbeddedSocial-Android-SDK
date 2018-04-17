@@ -13,28 +13,28 @@ import android.view.View;
  * Adds padding for the top and bottom items in RecyclerView.
  */
 public class VerticalPaddingDecoration extends RecyclerView.ItemDecoration {
-	private final int topPadding;
-	private final int bottomPadding;
+    private final int topPadding;
+    private final int bottomPadding;
 
-	public VerticalPaddingDecoration(int verticalPadding) {
-		this(verticalPadding, verticalPadding);
-	}
+    public VerticalPaddingDecoration(int verticalPadding) {
+        this(verticalPadding, verticalPadding);
+    }
 
-	public VerticalPaddingDecoration(int bottomPadding, int topPadding) {
-		this.bottomPadding = bottomPadding;
-		this.topPadding = topPadding;
-	}
+    public VerticalPaddingDecoration(int bottomPadding, int topPadding) {
+        this.bottomPadding = bottomPadding;
+        this.topPadding = topPadding;
+    }
 
-	@Override
-	public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-		int position = parent.getChildAdapterPosition(view);
-		if (position == 0) {
-			outRect.top = topPadding;
-		} else {
-			int itemCount = parent.getAdapter().getItemCount();
-			if (position == itemCount - 1) {
-				outRect.bottom = bottomPadding;
-			}
-		}
-	}
+    @Override
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        int position = parent.getChildAdapterPosition(view);
+        if (position == 0) {
+            outRect.top = topPadding;
+        } else {
+            int itemCount = parent.getAdapter().getItemCount();
+            if (position == itemCount - 1) {
+                outRect.bottom = bottomPadding;
+            }
+        }
+    }
 }

@@ -10,8 +10,8 @@ package com.microsoft.embeddedsocial.base.utils;
  */
 public interface ReadOnlyValues {
 
-	<T> T getValue(String name);
+    <T> T getValue(String name);
 
-	boolean getBooleanValue(String name);
+    boolean getBooleanValue(String name);
 
 }

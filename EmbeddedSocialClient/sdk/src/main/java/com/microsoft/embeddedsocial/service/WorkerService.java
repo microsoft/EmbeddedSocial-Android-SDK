@@ -5,25 +5,25 @@
 
 package com.microsoft.embeddedsocial.service;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.base.service.AbstractProcessingService;
 import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.ServiceLauncher;
+
+import android.content.Context;
 
 /**
  * Worker service.
  */
 public class WorkerService extends AbstractProcessingService {
 
-	IntentProcessorFactory factory = new IntentProcessorFactory(this);
+    IntentProcessorFactory factory = new IntentProcessorFactory(this);
 
-	@Override
-	protected IServiceIntentProcessor createIntentProcessor() {
-		return factory.createIntentProcessor();
-	}
+    @Override
+    protected IServiceIntentProcessor createIntentProcessor() {
+        return factory.createIntentProcessor();
+    }
 
-	public static ServiceLauncher<ServiceAction> getLauncher(Context context) {
-		return new ServiceLauncher<>(context, WorkerService.class);
-	}
+    public static ServiceLauncher<ServiceAction> getLauncher(Context context) {
+        return new ServiceLauncher<>(context, WorkerService.class);
+    }
 }

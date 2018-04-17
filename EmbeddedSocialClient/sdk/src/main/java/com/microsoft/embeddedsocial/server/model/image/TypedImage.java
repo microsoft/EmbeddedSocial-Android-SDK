@@ -19,44 +19,44 @@ import okio.Okio;
 
 public class TypedImage /*implements TypedOutput*/ {
 
-	private final File image;
+    private final File image;
 
-	public TypedImage(File image) {
-		this.image = image;
-	}
+    public TypedImage(File image) {
+        this.image = image;
+    }
 
-	public String fileName() {
-		return image.getName();
-	}
+    public String fileName() {
+        return image.getName();
+    }
 
-	public String mimeType() {
-		return detectMimeType();
-	}
+    public String mimeType() {
+        return detectMimeType();
+    }
 
-	public long length() {
-		return -1;
-	}
+    public long length() {
+        return -1;
+    }
 
-	@SuppressLint("NewApi")
-	public void writeTo(OutputStream out) throws IOException {
-		BufferedSink bufferedSink = Okio.buffer(Okio.sink(out));
-		try (BufferedSource bufferedSource = Okio.buffer(Okio.source(image))) {
-			bufferedSink.writeAll(bufferedSource);
-			bufferedSink.flush();
-		}
-	}
+    @SuppressLint("NewApi")
+    public void writeTo(OutputStream out) throws IOException {
+        BufferedSink bufferedSink = Okio.buffer(Okio.sink(out));
+        try (BufferedSource bufferedSource = Okio.buffer(Okio.source(image))) {
+            bufferedSink.writeAll(bufferedSource);
+            bufferedSink.flush();
+        }
+    }
 
-	private String detectMimeType() {
-		String mimeType = "image/*";
-		String fileName = image.getName();
-		int periodIndex = fileName.lastIndexOf(".");
-		if (periodIndex != -1) {
-			String fileExtension = fileName.substring(periodIndex + 1);
-			String resolvedMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(fileExtension);
-			if (resolvedMimeType != null) {
-				mimeType = resolvedMimeType;
-			}
-		}
-		return mimeType;
-	}
+    private String detectMimeType() {
+        String mimeType = "image/*";
+        String fileName = image.getName();
+        int periodIndex = fileName.lastIndexOf(".");
+        if (periodIndex != -1) {
+            String fileExtension = fileName.substring(periodIndex + 1);
+            String resolvedMimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(fileExtension);
+            if (resolvedMimeType != null) {
+                mimeType = resolvedMimeType;
+            }
+        }
+        return mimeType;
+    }
 }

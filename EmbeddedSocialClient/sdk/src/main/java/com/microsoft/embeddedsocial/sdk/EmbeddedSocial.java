@@ -66,10 +66,10 @@ import java.util.HashMap;
  */
 public final class EmbeddedSocial {
 
-	/**
-	 * Private constructor to forbid instantiation.
-	 */
-	private EmbeddedSocial() {  }
+    /**
+     * Private constructor to forbid instantiation.
+     */
+    private EmbeddedSocial() {  }
 
     /**
      * Initializes Embedded Social SDK.
@@ -104,53 +104,53 @@ public final class EmbeddedSocial {
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
     }
 
-	/**
-	 * Initializes navigation drawer.
-	 * @param application               application instance
-	 * @param fragmentFactory           the factory that produces navigation fragments
-	 * @param drawerDisplayMode         display mode of the drawer
-	 * @param hostingAppMenuTitleId     resource id of the title of hosting app navigation menu
-	 */
-	public static void initDrawer(Application application, INavigationDrawerFactory fragmentFactory,
-	                              DrawerDisplayMode drawerDisplayMode, @StringRes int hostingAppMenuTitleId) {
+    /**
+     * Initializes navigation drawer.
+     * @param application               application instance
+     * @param fragmentFactory           the factory that produces navigation fragments
+     * @param drawerDisplayMode         display mode of the drawer
+     * @param hostingAppMenuTitleId     resource id of the title of hosting app navigation menu
+     */
+    public static void initDrawer(Application application, INavigationDrawerFactory fragmentFactory,
+                                  DrawerDisplayMode drawerDisplayMode, @StringRes int hostingAppMenuTitleId) {
 
-		initDrawer(application, fragmentFactory, drawerDisplayMode, application.getString(hostingAppMenuTitleId));
-	}
+        initDrawer(application, fragmentFactory, drawerDisplayMode, application.getString(hostingAppMenuTitleId));
+    }
 
-	/**
-	 * Initializes navigation drawer.
-	 * @param application               application instance
-	 * @param fragmentFactory           the factory that produces navigation fragments
-	 * @param drawerDisplayMode         display mode of the drawer
-	 * @param hostingAppMenuTitle       the title of hosting app navigation menu
-	 */
-	public static void initDrawer(Application application, INavigationDrawerFactory fragmentFactory,
-	                              DrawerDisplayMode drawerDisplayMode,
-	                              @Nullable CharSequence hostingAppMenuTitle) {
+    /**
+     * Initializes navigation drawer.
+     * @param application               application instance
+     * @param fragmentFactory           the factory that produces navigation fragments
+     * @param drawerDisplayMode         display mode of the drawer
+     * @param hostingAppMenuTitle       the title of hosting app navigation menu
+     */
+    public static void initDrawer(Application application, INavigationDrawerFactory fragmentFactory,
+                                  DrawerDisplayMode drawerDisplayMode,
+                                  @Nullable CharSequence hostingAppMenuTitle) {
 
-		GlobalObjectRegistry.addObject(
+        GlobalObjectRegistry.addObject(
                 new NavigationMenuDescription(fragmentFactory, drawerDisplayMode, hostingAppMenuTitle));
-	}
+    }
 
-	private static void initGlobalObjects(Context context, Options options) {
-		GlobalObjectRegistry.addObject(OpenHelperManager.getHelper(context, DatabaseHelper.class));
-		Gson gson = new GsonBuilder()
-			.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-			.create();
-		GlobalObjectRegistry.addObject(gson);
-		ImageLoader.init(context);
-		EmbeddedSocialServiceProvider serviceProvider = new EmbeddedSocialServiceProvider(context);
-		GlobalObjectRegistry.addObject(EmbeddedSocialServiceProvider.class, serviceProvider);
-		GlobalObjectRegistry.addObject(new Preferences(context));
-		GlobalObjectRegistry.addObject(new RequestInfoProvider(context));
-		GlobalObjectRegistry.addObject(new UserAccount(context));
-		GlobalObjectRegistry.addObject(new NotificationController(context));
-		NetworkAvailability networkAccessibility = new NetworkAvailability();
-		networkAccessibility.startMonitoring(context);
-		GlobalObjectRegistry.addObject(networkAccessibility);
-		FacebookSdk.sdkInitialize(context);
-		FacebookSdk.setApplicationId(options.getFacebookApplicationId());
-	}
+    private static void initGlobalObjects(Context context, Options options) {
+        GlobalObjectRegistry.addObject(OpenHelperManager.getHelper(context, DatabaseHelper.class));
+        Gson gson = new GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+            .create();
+        GlobalObjectRegistry.addObject(gson);
+        ImageLoader.init(context);
+        EmbeddedSocialServiceProvider serviceProvider = new EmbeddedSocialServiceProvider(context);
+        GlobalObjectRegistry.addObject(EmbeddedSocialServiceProvider.class, serviceProvider);
+        GlobalObjectRegistry.addObject(new Preferences(context));
+        GlobalObjectRegistry.addObject(new RequestInfoProvider(context));
+        GlobalObjectRegistry.addObject(new UserAccount(context));
+        GlobalObjectRegistry.addObject(new NotificationController(context));
+        NetworkAvailability networkAccessibility = new NetworkAvailability();
+        networkAccessibility.startMonitoring(context);
+        GlobalObjectRegistry.addObject(networkAccessibility);
+        FacebookSdk.sdkInitialize(context);
+        FacebookSdk.setApplicationId(options.getFacebookApplicationId());
+    }
 
     /**
      * Sets the background color and text color of the toolbar
@@ -163,28 +163,28 @@ public final class EmbeddedSocial {
         UserHeaderViewHolder.setAppProfile(appProfile);
     }
 
-	private static void initLogging(Context context) {
-		if (BuildConfig.DEBUG) {
-			DebugLog.setEchoLevel(DebugLog.Level.Debug);
-			DebugLog.setEchoEnabled(true);
-			DebugLog.setLogSavingLevel(DebugLog.Level.Debug);
-			DebugLog.setLogSavingEnabled(true);
-			DebugLog.prepare(context);
-		}
-	}
+    private static void initLogging(Context context) {
+        if (BuildConfig.DEBUG) {
+            DebugLog.setEchoLevel(DebugLog.Level.Debug);
+            DebugLog.setEchoEnabled(true);
+            DebugLog.setLogSavingLevel(DebugLog.Level.Debug);
+            DebugLog.setLogSavingEnabled(true);
+            DebugLog.prepare(context);
+        }
+    }
 
-	/**
-	 * Starts an activity to add a new post.
-	 * @param context           valid context
-	 * @param title             new post title (optional, pass null or an empty string
-	 *                             if not needed)
-	 * @param description       new post description (optional, pass null or an empty string
-	 *                             if not needed)
-	 * @param imageUri          image URI (optional, pass null or {@linkplain Uri#EMPTY}
-	 *                             if not needed)
+    /**
+     * Starts an activity to add a new post.
+     * @param context           valid context
+     * @param title             new post title (optional, pass null or an empty string
+     *                             if not needed)
+     * @param description       new post description (optional, pass null or an empty string
+     *                             if not needed)
+     * @param imageUri          image URI (optional, pass null or {@linkplain Uri#EMPTY}
+     *                             if not needed)
      * @return the handle of the new topic
-	 */
-	public static void launchAddPostActivity(Context context, String title, String description,
+     */
+    public static void launchAddPostActivity(Context context, String title, String description,
                                               Uri imageUri, boolean automatic) {
         Intent intent = new Intent(context, AddPostActivity.class);
         if (!TextUtils.isEmpty(title)) {

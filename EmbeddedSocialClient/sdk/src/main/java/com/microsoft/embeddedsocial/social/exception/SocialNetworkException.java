@@ -7,15 +7,15 @@ package com.microsoft.embeddedsocial.social.exception;
 
 public class SocialNetworkException extends Exception {
 
-	public SocialNetworkException(String detailMessage) {
-		super(detailMessage);
-	}
+    public SocialNetworkException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public SocialNetworkException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public SocialNetworkException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public SocialNetworkException(Throwable throwable) {
-		super(throwable);
-	}
+    public SocialNetworkException(Throwable throwable) {
+        super(throwable);
+    }
 }

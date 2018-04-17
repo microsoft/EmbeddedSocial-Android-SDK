@@ -14,26 +14,26 @@ import java.sql.SQLException;
 
 public class UserLikeFeedRequestWrapper extends AbstractBatchNetworkMethodWrapper<FeedUserRequest, TopicsListResponse> {
 
-	private final ContentCache contentCache;
+    private final ContentCache contentCache;
 
-	public UserLikeFeedRequestWrapper(INetworkMethod<FeedUserRequest, TopicsListResponse> networkMethod,
-									  ContentCache contentCache) {
+    public UserLikeFeedRequestWrapper(INetworkMethod<FeedUserRequest, TopicsListResponse> networkMethod,
+                                      ContentCache contentCache) {
 
-		super(networkMethod);
-		this.contentCache = contentCache;
-	}
+        super(networkMethod);
+        this.contentCache = contentCache;
+    }
 
-	@Override
-	protected void storeResponse(FeedUserRequest request, TopicsListResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(FeedUserRequest request, TopicsListResponse response)
+        throws SQLException {
 
-		contentCache.storeLikeFeed(request, response);
-	}
+        contentCache.storeLikeFeed(request, response);
+    }
 
-	@Override
-	protected TopicsListResponse getCachedResponse(FeedUserRequest request)
-		throws SQLException {
+    @Override
+    protected TopicsListResponse getCachedResponse(FeedUserRequest request)
+        throws SQLException {
 
-		return contentCache.getLikeFeedResponse();
-	}
+        return contentCache.getLikeFeedResponse();
+    }
 }

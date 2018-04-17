@@ -26,61 +26,61 @@ import android.os.Bundle;
  */
 public class ProfileInfoFragment extends BaseListContentFragment<ProfileInfoAdapter> {
 
-	private String userHandle;
-	private Fetcher<AccountData> fetcher;
+    private String userHandle;
+    private Fetcher<AccountData> fetcher;
 
-	public ProfileInfoFragment() {
-		addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
-	}
+    public ProfileInfoFragment() {
+        addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayFeed);
+    }
 
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		Bundle arguments = getArguments();
-		userHandle = arguments.getString(IntentExtras.USER_HANDLE);
-	}
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Bundle arguments = getArguments();
+        userHandle = arguments.getString(IntentExtras.USER_HANDLE);
+    }
 
-	@Override
-	protected ProfileInfoAdapter createInitialAdapter() {
-		if (fetcher == null) {
-			fetcher = FetchersFactory.createProfileFetcher(userHandle);
-		}
-		ProfileInfoAdapter adapter = new ProfileInfoAdapter(this, fetcher, userHandle);
-		adapter.addFetcherCallback(new Callback() {
-			@Override
-			public void onDataRequestSucceeded() {
-				notifyDataUpdatedIfNeeded();
-			}
-		});
-		return adapter;
-	}
+    @Override
+    protected ProfileInfoAdapter createInitialAdapter() {
+        if (fetcher == null) {
+            fetcher = FetchersFactory.createProfileFetcher(userHandle);
+        }
+        ProfileInfoAdapter adapter = new ProfileInfoAdapter(this, fetcher, userHandle);
+        adapter.addFetcherCallback(new Callback() {
+            @Override
+            public void onDataRequestSucceeded() {
+                notifyDataUpdatedIfNeeded();
+            }
+        });
+        return adapter;
+    }
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		notifyDataUpdatedIfNeeded();
-	}
+    @Override
+    public void onResume() {
+        super.onResume();
+        notifyDataUpdatedIfNeeded();
+    }
 
-	protected void notifyDataUpdatedIfNeeded() {
-		ProfileInfoAdapter adapter = getAdapter();
-		if (adapter.getDataSize() > 0) {
-			EventBus.post(new ProfileDataUpdatedEvent(userHandle, adapter.getItem(0)));
-		}
-	}
+    protected void notifyDataUpdatedIfNeeded() {
+        ProfileInfoAdapter adapter = getAdapter();
+        if (adapter.getDataSize() > 0) {
+            EventBus.post(new ProfileDataUpdatedEvent(userHandle, adapter.getItem(0)));
+        }
+    }
 
-	@Subscribe
-	public void onFollowedStatusChanged(UserFollowedStateChangedEvent event) {
-		if (event.isForUser(userHandle)) {
-			getAdapter().onFollowedStatusChanged(event.getFollowedStatus());
-		}
-	}
+    @Subscribe
+    public void onFollowedStatusChanged(UserFollowedStateChangedEvent event) {
+        if (event.isForUser(userHandle)) {
+            getAdapter().onFollowedStatusChanged(event.getFollowedStatus());
+        }
+    }
 
-	public static ProfileInfoFragment create(String userHandle) {
-		ProfileInfoFragment fragment = new ProfileInfoFragment();
-		Bundle arguments = new Bundle();
-		arguments.putString(IntentExtras.USER_HANDLE, userHandle);
-		fragment.setArguments(arguments);
-		return fragment;
-	}
+    public static ProfileInfoFragment create(String userHandle) {
+        ProfileInfoFragment fragment = new ProfileInfoFragment();
+        Bundle arguments = new Bundle();
+        arguments.putString(IntentExtras.USER_HANDLE, userHandle);
+        fragment.setArguments(arguments);
+        return fragment;
+    }
 
 }

@@ -15,15 +15,15 @@ import java.util.LinkedHashMap;
  */
 public class LimitedSizeHashMap<K, V> extends LinkedHashMap<K, V> {
 
-	private final int maxSize;
+    private final int maxSize;
 
-	public LimitedSizeHashMap(int maxSize) {
-		super(maxSize);
-		this.maxSize = maxSize;
-	}
+    public LimitedSizeHashMap(int maxSize) {
+        super(maxSize);
+        this.maxSize = maxSize;
+    }
 
-	@Override
-	protected boolean removeEldestEntry(Entry<K, V> eldest) {
-		return size() > maxSize;
-	}
+    @Override
+    protected boolean removeEldestEntry(Entry<K, V> eldest) {
+        return size() > maxSize;
+    }
 }

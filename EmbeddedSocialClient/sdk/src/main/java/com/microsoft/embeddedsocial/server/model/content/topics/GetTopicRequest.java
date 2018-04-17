@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
+import com.microsoft.embeddedsocial.autorest.models.TopicView;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.BaseRequest;
-import com.microsoft.embeddedsocial.autorest.models.TopicView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 
@@ -20,32 +20,32 @@ import java.io.IOException;
  */
 public class GetTopicRequest extends GenericTopicRequest {
 
-	private String existingImagePath;
+    private String existingImagePath;
 
-	public GetTopicRequest(String topicHandle) {
-		this(topicHandle, null);
-	}
+    public GetTopicRequest(String topicHandle) {
+        this(topicHandle, null);
+    }
 
-	public GetTopicRequest(String topicHandle, String existingImagePath) {
-		super(topicHandle);
-		this.existingImagePath = existingImagePath;
-	}
+    public GetTopicRequest(String topicHandle, String existingImagePath) {
+        super(topicHandle);
+        this.existingImagePath = existingImagePath;
+    }
 
-	@Override
-	public GetTopicResponse send() throws NetworkRequestException {
-		ServiceResponse<TopicView> serviceResponse;
-		try {
-			serviceResponse = BaseRequest.TOPICS.getTopic(topicHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetTopicResponse send() throws NetworkRequestException {
+        ServiceResponse<TopicView> serviceResponse;
+        try {
+            serviceResponse = BaseRequest.TOPICS.getTopic(topicHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		com.microsoft.embeddedsocial.server.model.view.TopicView topic =
-				new com.microsoft.embeddedsocial.server.model.view.TopicView(serviceResponse.getBody());
-		if (existingImagePath != null) {
-			topic.setLocalImage(existingImagePath);
-		}
-		return new GetTopicResponse(topic);
-	}
+        com.microsoft.embeddedsocial.server.model.view.TopicView topic =
+                new com.microsoft.embeddedsocial.server.model.view.TopicView(serviceResponse.getBody());
+        if (existingImagePath != null) {
+            topic.setLocalImage(existingImagePath);
+        }
+        return new GetTopicResponse(topic);
+    }
 }

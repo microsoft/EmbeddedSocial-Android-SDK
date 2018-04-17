@@ -20,15 +20,15 @@ import com.microsoft.embeddedsocial.server.model.ListResponse;
  */
 class BatchDataRequestExecutor<T, R extends FeedUserRequest> extends DataRequestExecutor<T, R> {
 
-	public BatchDataRequestExecutor(ServerMethod<R, ? extends ListResponse<T>> serverMethod, Producer<R> requestProducer) {
-		super(serverMethod, requestProducer);
-	}
+    public BatchDataRequestExecutor(ServerMethod<R, ? extends ListResponse<T>> serverMethod, Producer<R> requestProducer) {
+        super(serverMethod, requestProducer);
+    }
 
-	@Override
-	protected R createRequest(DataState dataState, RequestType requestType, int pageSize) {
-		R request = super.createRequest(dataState, requestType, pageSize);
-		request.setBatchSize(pageSize);
-		request.setCursor(dataState.getContinuationKey());
-		return request;
-	}
+    @Override
+    protected R createRequest(DataState dataState, RequestType requestType, int pageSize) {
+        R request = super.createRequest(dataState, requestType, pageSize);
+        request.setBatchSize(pageSize);
+        request.setCursor(dataState.getContinuationKey());
+        return request;
+    }
 }

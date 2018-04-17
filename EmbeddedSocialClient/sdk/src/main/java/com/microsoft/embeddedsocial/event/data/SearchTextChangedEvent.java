@@ -13,19 +13,19 @@ import com.microsoft.embeddedsocial.data.model.SearchType;
  */
 public class SearchTextChangedEvent extends AbstractEvent {
 
-	private final SearchType searchType;
-	private final String text;
+    private final SearchType searchType;
+    private final String text;
 
-	public SearchTextChangedEvent(SearchType searchType, String text) {
-		this.searchType = searchType;
-		this.text = text;
-	}
+    public SearchTextChangedEvent(SearchType searchType, String text) {
+        this.searchType = searchType;
+        this.text = text;
+    }
 
-	public SearchType getSearchType() {
-		return searchType;
-	}
+    public SearchType getSearchType() {
+        return searchType;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 }

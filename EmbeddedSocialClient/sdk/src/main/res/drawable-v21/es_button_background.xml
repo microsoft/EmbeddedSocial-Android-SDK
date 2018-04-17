@@ -5,8 +5,8 @@
   -->
 
 <ripple
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:color="?android:attr/colorControlHighlight"
-	>
-	<item android:drawable="?attr/es_contentBackground"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:attr/colorControlHighlight"
+    >
+    <item android:drawable="?attr/es_contentBackground"/>
 </ripple>

@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface ISynchronizableProducer {
 
-	/**
-	 * Gets the list of synchronizable entities provided by this producer.
-	 * @return  the list of entities
-	 */
-	List<ISynchronizable> getSynchronizableEntities();
+    /**
+     * Gets the list of synchronizable entities provided by this producer.
+     * @return  the list of entities
+     */
+    List<ISynchronizable> getSynchronizableEntities();
 }

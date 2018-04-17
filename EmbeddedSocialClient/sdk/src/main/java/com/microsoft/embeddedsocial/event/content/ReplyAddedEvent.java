@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.content;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.data.model.DiscussionItem;
 
 /**
  * Result of add comment.
@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class ReplyAddedEvent extends NoteAddedEvent {
 
-	public ReplyAddedEvent(DiscussionItem data, String handle, boolean result) {
-		super(data, handle, result);
-	}
+    public ReplyAddedEvent(DiscussionItem data, String handle, boolean result) {
+        super(data, handle, result);
+    }
 }

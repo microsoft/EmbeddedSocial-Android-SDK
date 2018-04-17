@@ -18,59 +18,59 @@ import java.util.List;
 @SuppressWarnings("UnusedParameters")
 public abstract class ActionListener {
 
-	private List<Action> ongoingActions = new LinkedList<>();
+    private List<Action> ongoingActions = new LinkedList<>();
 
-	protected void onActionStarted(Action action) {
-	}
+    protected void onActionStarted(Action action) {
+    }
 
-	protected void onActionCompleted(Action action) {
-	}
+    protected void onActionCompleted(Action action) {
+    }
 
-	protected void onActionSucceeded(Action action) {
-	}
+    protected void onActionSucceeded(Action action) {
+    }
 
-	protected void onActionFailed(Action action, String error) {
-	}
+    protected void onActionFailed(Action action, String error) {
+    }
 
-	protected void onActionsCompletionMissed(List<Action> completedActions, List<Action> succeededActions, List<Action> failedActions) {
-	}
+    protected void onActionsCompletionMissed(List<Action> completedActions, List<Action> succeededActions, List<Action> failedActions) {
+    }
 
-	void notifyActionStarted(Action action) {
-		ongoingActions.add(action);
-		onActionStarted(action);
-	}
+    void notifyActionStarted(Action action) {
+        ongoingActions.add(action);
+        onActionStarted(action);
+    }
 
-	void notifyActionCompleted(Action action) {
-		ongoingActions.remove(action);
-		if (action.isFailed()) {
-			onActionFailed(action, action.getError());
-		} else {
-			onActionSucceeded(action);
-		}
-		onActionCompleted(action);
-	}
+    void notifyActionCompleted(Action action) {
+        ongoingActions.remove(action);
+        if (action.isFailed()) {
+            onActionFailed(action, action.getError());
+        } else {
+            onActionSucceeded(action);
+        }
+        onActionCompleted(action);
+    }
 
-	void notifyOnResume() {
-		if (!ongoingActions.isEmpty()) {
-			List<Action> completedActions = new ArrayList<>();
-			List<Action> succeededActions = new ArrayList<>();
-			List<Action> failedActions = new ArrayList<>();
-			Iterator<Action> iterator = ongoingActions.iterator();
-			while (iterator.hasNext()) {
-				Action action = iterator.next();
-				if (action.isCompleted()) {
-					completedActions.add(action);
-					if (action.isFailed()) {
-						failedActions.add(action);
-					} else {
-						succeededActions.add(action);
-					}
-					iterator.remove();
-				}
-			}
-			if (!completedActions.isEmpty()) {
-				onActionsCompletionMissed(completedActions, succeededActions, failedActions);
-			}
-		}
-	}
+    void notifyOnResume() {
+        if (!ongoingActions.isEmpty()) {
+            List<Action> completedActions = new ArrayList<>();
+            List<Action> succeededActions = new ArrayList<>();
+            List<Action> failedActions = new ArrayList<>();
+            Iterator<Action> iterator = ongoingActions.iterator();
+            while (iterator.hasNext()) {
+                Action action = iterator.next();
+                if (action.isCompleted()) {
+                    completedActions.add(action);
+                    if (action.isFailed()) {
+                        failedActions.add(action);
+                    } else {
+                        succeededActions.add(action);
+                    }
+                    iterator.remove();
+                }
+            }
+            if (!completedActions.isEmpty()) {
+                onActionsCompletionMissed(completedActions, succeededActions, failedActions);
+            }
+        }
+    }
 }

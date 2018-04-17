@@ -10,9 +10,9 @@ package com.microsoft.embeddedsocial.actions;
  */
 public interface ActionFilter {
 
-	/**
-	 * Whether the action is interesting for a component.
-	 */
-	boolean filter(Action action);
+    /**
+     * Whether the action is interesting for a component.
+     */
+    boolean filter(Action action);
 
 }

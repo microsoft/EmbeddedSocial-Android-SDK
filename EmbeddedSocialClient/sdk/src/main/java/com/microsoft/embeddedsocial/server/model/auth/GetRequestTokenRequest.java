@@ -5,38 +5,38 @@
 
 package com.microsoft.embeddedsocial.server.model.auth;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.RequestTokensOperations;
 import com.microsoft.embeddedsocial.autorest.RequestTokensOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.GetRequestTokenResponse;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.io.IOException;
 
 public class GetRequestTokenRequest extends UserRequest {
 
-	private static final RequestTokensOperations REQUEST_TOKENS
-			= new RequestTokensOperationsImpl(RETROFIT, CLIENT);
+    private static final RequestTokensOperations REQUEST_TOKENS
+            = new RequestTokensOperationsImpl(RETROFIT, CLIENT);
 
-	private IdentityProvider identityProvider;
+    private IdentityProvider identityProvider;
 
-	public GetRequestTokenRequest(IdentityProvider identityProvider) {
-		this.identityProvider = identityProvider;
-	}
+    public GetRequestTokenRequest(IdentityProvider identityProvider) {
+        this.identityProvider = identityProvider;
+    }
 
-	@Override
-	public GetRequestTokenResponse send() throws NetworkRequestException {
-		ServiceResponse<GetRequestTokenResponse> serviceResponse;
-		try {
-			serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetRequestTokenResponse send() throws NetworkRequestException {
+        ServiceResponse<GetRequestTokenResponse> serviceResponse;
+        try {
+            serviceResponse = REQUEST_TOKENS.getRequestToken(identityProvider, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getBody();
-	}
+        return serviceResponse.getBody();
+    }
 }

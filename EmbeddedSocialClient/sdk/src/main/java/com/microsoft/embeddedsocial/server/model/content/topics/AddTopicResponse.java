@@ -10,13 +10,13 @@ package com.microsoft.embeddedsocial.server.model.content.topics;
  */
 public class AddTopicResponse {
 
-	private String topicHandle;
+    private String topicHandle;
 
-	public AddTopicResponse(String topicHandle) {
-		this.topicHandle = topicHandle;
-	}
+    public AddTopicResponse(String topicHandle) {
+        this.topicHandle = topicHandle;
+    }
 
-	public String getTopicHandle() {
-		return topicHandle;
-	}
+    public String getTopicHandle() {
+        return topicHandle;
+    }
 }

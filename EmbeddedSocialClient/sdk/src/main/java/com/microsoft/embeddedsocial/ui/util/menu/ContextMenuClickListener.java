@@ -18,35 +18,35 @@ import android.view.MenuItem;
  * Context menu for any content
  */
 public class ContextMenuClickListener implements PopupMenu.OnMenuItemClickListener {
-	private Fragment fragment;
-	protected Context context;
-	protected UserCompactView user;
-	protected String contentHandle;
+    private Fragment fragment;
+    protected Context context;
+    protected UserCompactView user;
+    protected String contentHandle;
 
-	public ContextMenuClickListener(Fragment fragment, UserCompactView user, String contentHandle) {
-		this.fragment = fragment;
-		this.context = fragment.getContext();
-		this.user = user;
-		this.contentHandle = contentHandle;
-	}
+    public ContextMenuClickListener(Fragment fragment, UserCompactView user, String contentHandle) {
+        this.fragment = fragment;
+        this.context = fragment.getContext();
+        this.user = user;
+        this.contentHandle = contentHandle;
+    }
 
-	@Override
-	public boolean onMenuItemClick(MenuItem item) {
-		int i = item.getItemId();
-		if (i == R.id.es_actionFollow) {
-			UserAccount.getInstance().followUser(fragment, user);
-			return true;
-		} else if (i == R.id.es_actionUnfollow) {
-			UserAccount.getInstance().unfollowUser(user.getHandle());
-			return true;
-		} else if (i == R.id.es_actionBlockUser) {
-			UserAccount.getInstance().blockUser(fragment, user.getHandle());
-			return true;
-		} else if (i == R.id.es_actionUnblockUser) {
-			UserAccount.getInstance().unblockUser(user.getHandle());
-			return true;
-		} else {
-			return false;
-		}
-	}
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        int i = item.getItemId();
+        if (i == R.id.es_actionFollow) {
+            UserAccount.getInstance().followUser(fragment, user);
+            return true;
+        } else if (i == R.id.es_actionUnfollow) {
+            UserAccount.getInstance().unfollowUser(user.getHandle());
+            return true;
+        } else if (i == R.id.es_actionBlockUser) {
+            UserAccount.getInstance().blockUser(fragment, user.getHandle());
+            return true;
+        } else if (i == R.id.es_actionUnblockUser) {
+            UserAccount.getInstance().unblockUser(user.getHandle());
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

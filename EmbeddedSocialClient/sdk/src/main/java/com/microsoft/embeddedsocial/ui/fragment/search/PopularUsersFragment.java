@@ -23,23 +23,23 @@ import android.view.View;
  */
 public class PopularUsersFragment extends BaseListContentFragment<FetchableListAdapter<UserCompactView, ?>> {
 
-	private Fetcher<UserCompactView> fetcher;
+    private Fetcher<UserCompactView> fetcher;
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		int bottomPadding = view.getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding);
-		getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(bottomPadding, 0));
-		setEmptyDataMessage(R.string.es_message_no_people);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        int bottomPadding = view.getResources().getDimensionPixelOffset(R.dimen.es_users_list_vertical_padding);
+        getRecyclerView().addItemDecoration(new VerticalPaddingDecoration(bottomPadding, 0));
+        setEmptyDataMessage(R.string.es_message_no_people);
+    }
 
-	@Override
-	protected FetchableListAdapter<UserCompactView, ?> createInitialAdapter() {
-		if (fetcher == null) {
-			fetcher = FetchersFactory.createPopularUsersFetcher();
-		}
-		return new FetchableListAdapter.Builder<>(fetcher, new UserRenderer(this))
-			.setTitle(getString(R.string.es_suggested_users))
-			.build();
-	}
+    @Override
+    protected FetchableListAdapter<UserCompactView, ?> createInitialAdapter() {
+        if (fetcher == null) {
+            fetcher = FetchersFactory.createPopularUsersFetcher();
+        }
+        return new FetchableListAdapter.Builder<>(fetcher, new UserRenderer(this))
+            .setTitle(getString(R.string.es_suggested_users))
+            .build();
+    }
 }

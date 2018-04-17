@@ -9,6 +9,6 @@ package com.microsoft.embeddedsocial.data.model;
  * Type of topic's comment feed.
  */
 public enum CommentFeedType {
-	RECENT, // only this type is used now
-	POPULAR
+    RECENT, // only this type is used now
+    POPULAR
 }

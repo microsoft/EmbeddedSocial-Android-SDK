@@ -16,36 +16,36 @@ import android.support.v7.app.ActionBar;
  * Activity to show feeds and profile.
  */
 public class HomeActivity extends BaseActivity {
-	public static final String NAME = "Home";
+    public static final String NAME = "Home";
 
-	public HomeActivity() {
-		super(R.id.es_navigationHome);
-	}
+    public HomeActivity() {
+        super(R.id.es_navigationHome);
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowingFeedFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowingFeedFragment());
+    }
 
-	@Override
-	protected void setupActionBar(ActionBar actionBar) {
-		super.setupActionBar(actionBar);
-		actionBar.setTitle(R.string.es_navigation_home);
-	}
+    @Override
+    protected void setupActionBar(ActionBar actionBar) {
+        super.setupActionBar(actionBar);
+        actionBar.setTitle(R.string.es_navigation_home);
+    }
 
-	@Override
-	protected void onUnauthorizedAccess() {
-		startActivity(new Intent(this, PopularActivity.class));
-		finish();
-	}
+    @Override
+    protected void onUnauthorizedAccess() {
+        startActivity(new Intent(this, PopularActivity.class));
+        finish();
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 }

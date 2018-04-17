@@ -13,13 +13,13 @@ import com.microsoft.embeddedsocial.ui.fragment.AddPostFragment;
  */
 public class AddPostActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(AddPostFragment.newInstance());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(AddPostFragment.newInstance());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

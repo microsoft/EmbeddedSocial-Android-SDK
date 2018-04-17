@@ -12,11 +12,11 @@ import com.microsoft.embeddedsocial.data.display.DisplayMethod;
  */
 public class DisplayParams {
 
-	public final DisplayMethod method;
-	public final int spanCount;
+    public final DisplayMethod method;
+    public final int spanCount;
 
-	public DisplayParams(DisplayMethod method, int spanCount) {
-		this.method = method;
-		this.spanCount = spanCount;
-	}
+    public DisplayParams(DisplayMethod method, int spanCount) {
+        this.method = method;
+        this.spanCount = spanCount;
+    }
 }

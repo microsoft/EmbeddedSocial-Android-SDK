@@ -5,18 +5,16 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
-import com.microsoft.embeddedsocial.ui.fragment.LikesFragment;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.LikesFragment;
 
 /**
  * Screen with users who liked a topic.
  */
 public class LikesActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new LikesFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new LikesFragment());
+    }
 }

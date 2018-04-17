@@ -18,53 +18,53 @@ import android.content.Intent;
  * Activity for sign-in.
  */
 public class SignInActivity extends BaseActivity {
-	public static final String NAME = "SignIn";
+    public static final String NAME = "SignIn";
 
-	private SignInFragment signInFragment;
+    private SignInFragment signInFragment;
 
-	public SignInActivity() {
-		super(R.id.es_navigationProfile);
-		signInFragment = new SignInFragment();
-	}
+    public SignInActivity() {
+        super(R.id.es_navigationProfile);
+        signInFragment = new SignInFragment();
+    }
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(signInFragment);
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(signInFragment);
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return false;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return false;
+    }
 
-	@Override
-	protected String getName() {
-		return NAME;
-	}
+    @Override
+    protected String getName() {
+        return NAME;
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		// XXX: keyboard is closed in a handler because of bugs on HTC devices
-		ThreadUtils.getMainThreadHandler().post(() -> ViewUtils.hideKeyboard(this));
-		checkIntent(getIntent());
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // XXX: keyboard is closed in a handler because of bugs on HTC devices
+        ThreadUtils.getMainThreadHandler().post(() -> ViewUtils.hideKeyboard(this));
+        checkIntent(getIntent());
+    }
 
-	@Override
-	protected void onNewIntent(Intent intent) {
-		setIntent(intent);
-		checkIntent(intent);
-	}
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        checkIntent(intent);
+    }
 
-	private void checkIntent(Intent intent) {
-		if (intent != null) {
-			String action = intent.getAction();
-			if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
-				signInFragment.setIsGettingThirdPartyCredentials(true);
-				GoogleAppAuthAuthenticator authenticator = signInFragment.createGoogleAuthenticator();
-				signInFragment.setAuthenticator(authenticator);
-				authenticator.handleAuthorizationResponse(intent);
-			}
-		}
-	}
+    private void checkIntent(Intent intent) {
+        if (intent != null) {
+            String action = intent.getAction();
+            if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
+                signInFragment.setIsGettingThirdPartyCredentials(true);
+                GoogleAppAuthAuthenticator authenticator = signInFragment.createGoogleAuthenticator();
+                signInFragment.setAuthenticator(authenticator);
+                authenticator.handleAuthorizationResponse(intent);
+            }
+        }
+    }
 }

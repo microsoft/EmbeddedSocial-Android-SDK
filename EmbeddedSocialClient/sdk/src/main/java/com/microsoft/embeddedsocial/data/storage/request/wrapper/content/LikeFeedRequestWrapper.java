@@ -5,35 +5,35 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.content;
 
-import com.microsoft.embeddedsocial.server.model.UsersListResponse;
-import com.microsoft.embeddedsocial.server.model.like.GetLikeFeedRequest;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.UsersListResponse;
+import com.microsoft.embeddedsocial.server.model.like.GetLikeFeedRequest;
 
 import java.sql.SQLException;
 
 public class LikeFeedRequestWrapper extends AbstractNetworkMethodWrapper<GetLikeFeedRequest, UsersListResponse> {
 
-	private final UserCache userCache;
+    private final UserCache userCache;
 
-	public LikeFeedRequestWrapper(INetworkMethod<GetLikeFeedRequest, UsersListResponse> networkMethod,
-	                              UserCache userCache) {
+    public LikeFeedRequestWrapper(INetworkMethod<GetLikeFeedRequest, UsersListResponse> networkMethod,
+                                  UserCache userCache) {
 
-		super(networkMethod);
-		this.userCache = userCache;
-	}
+        super(networkMethod);
+        this.userCache = userCache;
+    }
 
-	@Override
-	protected void storeResponse(GetLikeFeedRequest request, UsersListResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetLikeFeedRequest request, UsersListResponse response)
+        throws SQLException {
 
-		userCache.storeLikeFeed(request, response);
-	}
+        userCache.storeLikeFeed(request, response);
+    }
 
-	@Override
-	protected UsersListResponse getCachedResponse(GetLikeFeedRequest request)
-		throws SQLException {
+    @Override
+    protected UsersListResponse getCachedResponse(GetLikeFeedRequest request)
+        throws SQLException {
 
-		return userCache.getResponse(UserCache.UserFeedType.LIKED, request.getContentHandle());
-	}
+        return userCache.getResponse(UserCache.UserFeedType.LIKED, request.getContentHandle());
+    }
 }

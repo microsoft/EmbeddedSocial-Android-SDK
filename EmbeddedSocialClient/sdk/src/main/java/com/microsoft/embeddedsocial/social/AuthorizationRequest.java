@@ -11,5 +11,5 @@ import com.microsoft.embeddedsocial.social.exception.SocialNetworkException;
  * A synchronous request to authorize in a social network.
  */
 public interface AuthorizationRequest {
-	void call() throws SocialNetworkException;
+    void call() throws SocialNetworkException;
 }

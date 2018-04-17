@@ -13,22 +13,22 @@ import android.os.Parcelable;
  */
 public final class ParcelUtils {
 
-	private ParcelUtils() {
-	}
+    private ParcelUtils() {
+    }
 
-	public static <T extends Parcelable> T readParcelable(Parcel p, Class<T> clazz) {
-		return p.readParcelable(clazz.getClassLoader());
-	}
+    public static <T extends Parcelable> T readParcelable(Parcel p, Class<T> clazz) {
+        return p.readParcelable(clazz.getClassLoader());
+    }
 
-	public static <T> T readValue(Parcel p, Class<T> valueType) {
-		return valueType.cast(p.readValue(valueType.getClassLoader()));
-	}
+    public static <T> T readValue(Parcel p, Class<T> valueType) {
+        return valueType.cast(p.readValue(valueType.getClassLoader()));
+    }
 
-	public static void writeBoolean(Parcel p, boolean value) {
-		p.writeByte((byte) (value ? 1 : 0));
-	}
+    public static void writeBoolean(Parcel p, boolean value) {
+        p.writeByte((byte) (value ? 1 : 0));
+    }
 
-	public static boolean readBoolean(Parcel p) {
-		return p.readByte() != 0;
-	}
+    public static boolean readBoolean(Parcel p) {
+        return p.readByte() != 0;
+    }
 }

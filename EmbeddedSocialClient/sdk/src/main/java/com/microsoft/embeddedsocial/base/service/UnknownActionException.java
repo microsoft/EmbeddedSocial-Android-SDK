@@ -10,16 +10,16 @@ package com.microsoft.embeddedsocial.base.service;
  */
 public class UnknownActionException extends Exception {
 
-	/**
-	 * Serial Version UID.
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * Serial Version UID.
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Creates an instance.
-	 * @param action	the action that is unknown to the service.
-	 */
-	public UnknownActionException(String action) {
-		super("Unknown action: " + action);
-	}
+    /**
+     * Creates an instance.
+     * @param action	the action that is unknown to the service.
+     */
+    public UnknownActionException(String action) {
+        super("Unknown action: " + action);
+    }
 }

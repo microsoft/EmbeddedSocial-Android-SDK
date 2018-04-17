@@ -14,9 +14,9 @@ import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
  */
 public class FollowingFragment extends BaseFollowersFragment {
 
-	@Override
-	protected Fetcher<UserCompactView> createFetcher() {
-		return FetchersFactory.createFollowingFetcher(getUserHandleArgument());
-	}
+    @Override
+    protected Fetcher<UserCompactView> createFetcher() {
+        return FetchersFactory.createFollowingFetcher(getUserHandleArgument());
+    }
 
 }

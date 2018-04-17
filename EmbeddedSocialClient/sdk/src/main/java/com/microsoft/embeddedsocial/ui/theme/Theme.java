@@ -9,6 +9,6 @@ package com.microsoft.embeddedsocial.ui.theme;
  * App's theme.
  */
 public enum Theme {
-	REGULAR,
-	SEARCH
+    REGULAR,
+    SEARCH
 }

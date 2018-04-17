@@ -5,23 +5,23 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.data.storage.SearchHistory;
 import com.microsoft.embeddedsocial.service.ServiceAction;
+
+import android.content.Intent;
 
 /**
  * Deletes the search history.
  */
 public class DeleteSearchHistoryHandler implements IServiceIntentHandler<ServiceAction> {
-	@Override
-	public void handleIntent(ServiceAction action, Intent intent) {
-		new SearchHistory().clear();
-	}
+    @Override
+    public void handleIntent(ServiceAction action, Intent intent) {
+        new SearchHistory().clear();
+    }
 
-	@Override
-	public void dispose() {
+    @Override
+    public void dispose() {
 
-	}
+    }
 }

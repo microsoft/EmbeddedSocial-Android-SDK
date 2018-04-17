@@ -9,14 +9,14 @@ package com.microsoft.embeddedsocial.data.socialnetwork;
 * Encapsulates part of error response from Microsoft Live social network.
 */
 public class MicrosoftLiveError {
-	private String code;
-	private String message;
+    private String code;
+    private String message;
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public String getMessage() {
-		return message;
-	}
+    public String getMessage() {
+        return message;
+    }
 }

@@ -5,29 +5,29 @@
 
 package com.microsoft.embeddedsocial.event.content;
 
-import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.base.event.AbstractEvent;
+import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.server.model.view.CommentView;
 
 /**
  * Single comment was loaded.
  */
 @HandlingThread(ThreadType.MAIN)
 public class GetCommentEvent extends AbstractEvent {
-	private final CommentView commentView;
-	private final boolean result;
+    private final CommentView commentView;
+    private final boolean result;
 
-	public GetCommentEvent(CommentView commentView, boolean result) {
-		this.commentView = commentView;
-		this.result = result;
-	}
+    public GetCommentEvent(CommentView commentView, boolean result) {
+        this.commentView = commentView;
+        this.result = result;
+    }
 
-	public CommentView getCommentView() {
-		return commentView;
-	}
+    public CommentView getCommentView() {
+        return commentView;
+    }
 
-	public boolean isResult() {
-		return result;
-	}
+    public boolean isResult() {
+        return result;
+    }
 }

@@ -18,24 +18,24 @@ import java.sql.SQLException;
  */
 public abstract class AbstractAutoCleanupSyncAdapter<T> extends AbstractSyncAdapter<T> {
 
-	private final Dao<T, ?> itemDao;
+    private final Dao<T, ?> itemDao;
 
-	/**
-	 * Creates an instance.
-	 * @param item      the item to synchronize
-	 * @param itemDao   the DAO corresponding to the item
-	 */
-	protected AbstractAutoCleanupSyncAdapter(T item, Dao<T, ?> itemDao) {
-		super(item);
-		this.itemDao = itemDao;
-	}
+    /**
+     * Creates an instance.
+     * @param item      the item to synchronize
+     * @param itemDao   the DAO corresponding to the item
+     */
+    protected AbstractAutoCleanupSyncAdapter(T item, Dao<T, ?> itemDao) {
+        super(item);
+        this.itemDao = itemDao;
+    }
 
-	@Override
-	protected void onSynchronizationSuccess(T item) {
-		try {
-			DbTransaction.performTransaction(itemDao, () -> itemDao.delete(item));
-		} catch (SQLException e) {
-			DebugLog.logException(e);
-		}
-	}
+    @Override
+    protected void onSynchronizationSuccess(T item) {
+        try {
+            DbTransaction.performTransaction(itemDao, () -> itemDao.delete(item));
+        } catch (SQLException e) {
+            DebugLog.logException(e);
+        }
+    }
 }

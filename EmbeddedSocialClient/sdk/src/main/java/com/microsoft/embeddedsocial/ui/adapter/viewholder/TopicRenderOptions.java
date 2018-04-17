@@ -10,26 +10,26 @@ package com.microsoft.embeddedsocial.ui.adapter.viewholder;
  */
 public class TopicRenderOptions {
 
-	private boolean shouldShowHideTopicItem = false;
-	private boolean headerClickable = true;
+    private boolean shouldShowHideTopicItem = false;
+    private boolean headerClickable = true;
 
-	public boolean shouldShowHideTopicItem() {
-		return shouldShowHideTopicItem;
-	}
+    public boolean shouldShowHideTopicItem() {
+        return shouldShowHideTopicItem;
+    }
 
-	public void setShouldShowHideTopicItem(boolean shouldShowHideTopicItem) {
-		this.shouldShowHideTopicItem = shouldShowHideTopicItem;
-	}
+    public void setShouldShowHideTopicItem(boolean shouldShowHideTopicItem) {
+        this.shouldShowHideTopicItem = shouldShowHideTopicItem;
+    }
 
-	public static TopicRenderOptions getDefault() {
-		return new TopicRenderOptions();
-	}
+    public static TopicRenderOptions getDefault() {
+        return new TopicRenderOptions();
+    }
 
-	public boolean isHeaderClickable() {
-		return headerClickable;
-	}
+    public boolean isHeaderClickable() {
+        return headerClickable;
+    }
 
-	public void setHeaderClickable(boolean headerClickable) {
-		this.headerClickable = headerClickable;
-	}
+    public void setHeaderClickable(boolean headerClickable) {
+        this.headerClickable = headerClickable;
+    }
 }

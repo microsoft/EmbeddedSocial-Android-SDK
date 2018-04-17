@@ -13,38 +13,38 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class GlobalObjectRegistry {
 
-	private static final Map<Class<?>, Object> OBJECTS_MAP = new ConcurrentHashMap<>();
+    private static final Map<Class<?>, Object> OBJECTS_MAP = new ConcurrentHashMap<>();
 
-	private GlobalObjectRegistry() {
-	}
+    private GlobalObjectRegistry() {
+    }
 
-	/**
-	 * Saves global object to the registry
-	 *
-	 * @param cls    object class
-	 * @param object object itself
-	 */
-	public static <T> void addObject(Class<T> cls, T object) {
-		OBJECTS_MAP.put(cls, object);
-	}
+    /**
+     * Saves global object to the registry
+     *
+     * @param cls    object class
+     * @param object object itself
+     */
+    public static <T> void addObject(Class<T> cls, T object) {
+        OBJECTS_MAP.put(cls, object);
+    }
 
-	/**
-	 * Saves global object to the registry
-	 *
-	 * @param object object itself
-	 */
-	public static void addObject(Object object) {
-		OBJECTS_MAP.put(object.getClass(), object);
-	}
+    /**
+     * Saves global object to the registry
+     *
+     * @param object object itself
+     */
+    public static void addObject(Object object) {
+        OBJECTS_MAP.put(object.getClass(), object);
+    }
 
-	/**
-	 * Retrieves saved object from registry
-	 *
-	 * @param cls object class
-	 * @return saved object or <code>null</code>
-	 */
-	public static <T> T getObject(Class<T> cls) {
-		return cls.cast(OBJECTS_MAP.get(cls));
-	}
+    /**
+     * Retrieves saved object from registry
+     *
+     * @param cls object class
+     * @return saved object or <code>null</code>
+     */
+    public static <T> T getObject(Class<T> cls) {
+        return cls.cast(OBJECTS_MAP.get(cls));
+    }
 
 }

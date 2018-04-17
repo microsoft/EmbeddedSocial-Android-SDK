@@ -5,29 +5,29 @@
   -->
 
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-	<include layout="@layout/es_navigation_profile"/>
+    <include layout="@layout/es_navigation_profile"/>
 
-	<com.microsoft.embeddedsocial.ui.view.NavigationItemView
-		android:id="@+id/es_navigationFirstMenu"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:paddingLeft="@dimen/es_padding_large"/>
+    <com.microsoft.embeddedsocial.ui.view.NavigationItemView
+        android:id="@+id/es_navigationFirstMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/es_padding_large"/>
 
-	<com.microsoft.embeddedsocial.ui.view.NavigationItemView
-		android:id="@+id/es_navigationSecondMenu"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:clickable="true"
-		android:paddingLeft="@dimen/es_padding_large"/>
+    <com.microsoft.embeddedsocial.ui.view.NavigationItemView
+        android:id="@+id/es_navigationSecondMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:paddingLeft="@dimen/es_padding_large"/>
 
-	<FrameLayout
-		android:id="@+id/es_menu_container"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/es_menu_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

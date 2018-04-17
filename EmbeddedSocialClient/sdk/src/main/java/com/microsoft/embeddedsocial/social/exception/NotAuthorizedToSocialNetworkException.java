@@ -7,19 +7,19 @@ package com.microsoft.embeddedsocial.social.exception;
 
 public class NotAuthorizedToSocialNetworkException extends SocialNetworkException {
 
-	public NotAuthorizedToSocialNetworkException(String detailMessage) {
-		super(detailMessage);
-	}
+    public NotAuthorizedToSocialNetworkException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public NotAuthorizedToSocialNetworkException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public NotAuthorizedToSocialNetworkException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public NotAuthorizedToSocialNetworkException(Throwable throwable) {
-		super(throwable);
-	}
+    public NotAuthorizedToSocialNetworkException(Throwable throwable) {
+        super(throwable);
+    }
 
-	public NotAuthorizedToSocialNetworkException() {
-		super("Not authorized");
-	}
+    public NotAuthorizedToSocialNetworkException() {
+        super("Not authorized");
+    }
 }

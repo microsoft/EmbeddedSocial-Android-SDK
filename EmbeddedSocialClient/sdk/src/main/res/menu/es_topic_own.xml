@@ -5,12 +5,12 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item
-		android:id="@+id/es_actionEdit"
-		android:title="@string/es_menu_edit_post"
-		/>
-	<item
-		android:id="@+id/es_actionRemove"
-		android:title="@string/es_menu_remove_post"
-		/>
+    <item
+        android:id="@+id/es_actionEdit"
+        android:title="@string/es_menu_edit_post"
+        />
+    <item
+        android:id="@+id/es_actionRemove"
+        android:title="@string/es_menu_remove_post"
+        />
 </menu>

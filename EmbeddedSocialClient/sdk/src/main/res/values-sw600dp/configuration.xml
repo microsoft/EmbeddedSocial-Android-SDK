@@ -5,5 +5,5 @@
   -->
 
 <resources>
-	<bool name="es_isTablet">true</bool>
+    <bool name="es_isTablet">true</bool>
 </resources>

@@ -10,9 +10,9 @@ package com.microsoft.embeddedsocial.data.storage.trigger;
  */
 public interface ISqlTrigger {
 
-	/**
-	 * Gets SQL create statement for the trigger
-	 * @return  SQL statement.
-	 */
-	String toSqlCreateStatement();
+    /**
+     * Gets SQL create statement for the trigger
+     * @return  SQL statement.
+     */
+    String toSqlCreateStatement();
 }

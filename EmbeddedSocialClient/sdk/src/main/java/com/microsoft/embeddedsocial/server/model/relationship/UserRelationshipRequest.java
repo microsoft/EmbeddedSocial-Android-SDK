@@ -9,13 +9,13 @@ import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 public class UserRelationshipRequest extends UserRequest {
 
-	protected final String relationshipUserHandle;
+    protected final String relationshipUserHandle;
 
-	public UserRelationshipRequest(String relationshipUserHandle) {
-		this.relationshipUserHandle = relationshipUserHandle;
-	}
+    public UserRelationshipRequest(String relationshipUserHandle) {
+        this.relationshipUserHandle = relationshipUserHandle;
+    }
 
-	public String getRelationshipUserHandle() {
-		return relationshipUserHandle;
-	}
+    public String getRelationshipUserHandle() {
+        return relationshipUserHandle;
+    }
 }

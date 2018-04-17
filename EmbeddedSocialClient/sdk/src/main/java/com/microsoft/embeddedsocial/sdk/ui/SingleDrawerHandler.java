@@ -5,26 +5,26 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
+import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
+
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
-import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
-
 public class SingleDrawerHandler extends DrawerHandler {
-	public SingleDrawerHandler(@NonNull AppCompatActivity activity) {
-		super(activity, null, null);
-	}
+    public SingleDrawerHandler(@NonNull AppCompatActivity activity) {
+        super(activity, null, null);
+    }
 
-	@Override
-	public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
-		super.inflate(drawerContainer, embeddedSocialMenuActiveItemId);
+    @Override
+    public void inflate(ViewGroup drawerContainer, int embeddedSocialMenuActiveItemId) {
+        super.inflate(drawerContainer, embeddedSocialMenuActiveItemId);
 
-		embeddedSocialMenuFragment = NavigationFragment.create(embeddedSocialMenuActiveItemId);
+        embeddedSocialMenuFragment = NavigationFragment.create(embeddedSocialMenuActiveItemId);
 
-		FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-		fragmentTransaction.replace(drawerContainer.getId(), embeddedSocialMenuFragment, SOCIAL_TAG);
-		fragmentTransaction.commit();
-	}
+        FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(drawerContainer.getId(), embeddedSocialMenuFragment, SOCIAL_TAG);
+        fragmentTransaction.commit();
+    }
 }

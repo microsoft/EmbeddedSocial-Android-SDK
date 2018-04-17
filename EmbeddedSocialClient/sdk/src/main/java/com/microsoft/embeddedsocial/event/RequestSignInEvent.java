@@ -17,14 +17,14 @@ import android.support.v4.app.Fragment;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class RequestSignInEvent extends BaseCommonBehaviorEvent {
 
-	private final AuthorizationCause authorizationCause;
+    private final AuthorizationCause authorizationCause;
 
-	public RequestSignInEvent(Fragment source, AuthorizationCause authorizationCause) {
-		super(source);
-		this.authorizationCause = authorizationCause;
-	}
+    public RequestSignInEvent(Fragment source, AuthorizationCause authorizationCause) {
+        super(source);
+        this.authorizationCause = authorizationCause;
+    }
 
-	public AuthorizationCause getAuthorizationCause() {
-		return authorizationCause;
-	}
+    public AuthorizationCause getAuthorizationCause() {
+        return authorizationCause;
+    }
 }

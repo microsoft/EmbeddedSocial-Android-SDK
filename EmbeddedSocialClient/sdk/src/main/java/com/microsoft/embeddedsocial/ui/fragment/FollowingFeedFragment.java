@@ -24,26 +24,26 @@ import android.view.View;
  */
 public class FollowingFeedFragment extends BaseFeedFragment {
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		getChildFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getChildFragmentManager().beginTransaction().add(new FeedViewMenuFragment(), FeedViewMenuFragment.TAG).commit();
+    }
 
-	@Override
-	protected Fetcher<TopicView> createFetcher() {
-		return FetchersFactory.createTopicFeedFetcher(TopicFeedType.FOLLOWING_RECENT);
-	}
+    @Override
+    protected Fetcher<TopicView> createFetcher() {
+        return FetchersFactory.createTopicFeedFetcher(TopicFeedType.FOLLOWING_RECENT);
+    }
 
-	@Override
-	protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
-		TopicRenderOptions topicRenderOptions = new TopicRenderOptions();
-		topicRenderOptions.setShouldShowHideTopicItem(true);
-		return new CardViewRenderer(this, getContext(), topicRenderOptions);
-	}
+    @Override
+    protected Renderer<TopicView, ? extends RecyclerView.ViewHolder> createCardRenderer() {
+        TopicRenderOptions topicRenderOptions = new TopicRenderOptions();
+        topicRenderOptions.setShouldShowHideTopicItem(true);
+        return new CardViewRenderer(this, getContext(), topicRenderOptions);
+    }
 
-	@Override
-	protected boolean canContainLocalPosts() {
-		return true;
-	}
+    @Override
+    protected boolean canContainLocalPosts() {
+        return true;
+    }
 }

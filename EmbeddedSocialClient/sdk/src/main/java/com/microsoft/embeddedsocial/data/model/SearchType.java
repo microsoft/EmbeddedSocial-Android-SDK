@@ -9,6 +9,6 @@ package com.microsoft.embeddedsocial.data.model;
  * Type of search.
  */
 public enum SearchType {
-	TOPICS,
-	PEOPLE
+    TOPICS,
+    PEOPLE
 }

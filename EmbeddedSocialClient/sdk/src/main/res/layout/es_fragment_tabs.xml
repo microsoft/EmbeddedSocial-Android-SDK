@@ -5,27 +5,27 @@
   -->
 
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:orientation="vertical"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
 
-	<com.microsoft.embeddedsocial.base.view.SlidingTabLayout
-		android:id="@+id/es_slidingTabs"
-		android:background="?attr/es_tabIndicatorBackground"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:theme="@style/EmbeddedSocialSdkTabsStyle"
-		/>
+    <com.microsoft.embeddedsocial.base.view.SlidingTabLayout
+        android:id="@+id/es_slidingTabs"
+        android:background="?attr/es_tabIndicatorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:theme="@style/EmbeddedSocialSdkTabsStyle"
+        />
 
-	<android.support.v4.view.ViewPager
-		android:id="@+id/es_viewpager"
-		android:layout_width="match_parent"
-		android:layout_height="0px"
-		android:layout_weight="1"
-		android:background="@android:color/white"
-		/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/es_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        />
 
 </LinearLayout>

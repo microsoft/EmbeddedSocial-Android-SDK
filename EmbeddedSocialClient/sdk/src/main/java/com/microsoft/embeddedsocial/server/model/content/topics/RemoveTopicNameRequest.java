@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.server.model.content.topics;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.embeddedsocial.autorest.models.DeleteTopicNameRequest;
 import com.microsoft.embeddedsocial.autorest.models.PublisherType;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 

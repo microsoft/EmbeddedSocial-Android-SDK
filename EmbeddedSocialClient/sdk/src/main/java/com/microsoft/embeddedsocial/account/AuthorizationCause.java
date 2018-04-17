@@ -10,28 +10,28 @@ package com.microsoft.embeddedsocial.account;
  */
 public enum AuthorizationCause {
 
-	/**
-	 * Caused by "Follow" option
-	 */
-	FOLLOW,
+    /**
+     * Caused by "Follow" option
+     */
+    FOLLOW,
 
-	/**
-	 * Caused by "Block user" option.
-	 */
-	BLOCK,
+    /**
+     * Caused by "Block user" option.
+     */
+    BLOCK,
 
-	/**
-	 * Caused by "Like" button
-	 */
-	LIKE,
+    /**
+     * Caused by "Like" button
+     */
+    LIKE,
 
-	/**
-	 * Caused by "Pin" button
-	 */
-	PIN,
+    /**
+     * Caused by "Pin" button
+     */
+    PIN,
 
-	/**
-	 * Caused by "Add comment" button
-	 */
-	COMMENT
+    /**
+     * Caused by "Add comment" button
+     */
+    COMMENT
 }

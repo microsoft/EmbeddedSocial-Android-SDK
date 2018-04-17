@@ -5,35 +5,35 @@
 
 package com.microsoft.embeddedsocial.data.storage.request.wrapper.account;
 
-import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractNetworkMethodWrapper;
+import com.microsoft.embeddedsocial.server.model.account.GetUserProfileRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserProfileResponse;
 
 import java.sql.SQLException;
 
 public class GetUserProfileWrapper extends AbstractNetworkMethodWrapper<GetUserProfileRequest, GetUserProfileResponse> {
 
-	private final UserCache userCache;
+    private final UserCache userCache;
 
-	public GetUserProfileWrapper(INetworkMethod<GetUserProfileRequest, GetUserProfileResponse> networkMethod,
-	                             UserCache userCache) {
+    public GetUserProfileWrapper(INetworkMethod<GetUserProfileRequest, GetUserProfileResponse> networkMethod,
+                                 UserCache userCache) {
 
-		super(networkMethod);
-		this.userCache = userCache;
-	}
+        super(networkMethod);
+        this.userCache = userCache;
+    }
 
-	@Override
-	protected void storeResponse(GetUserProfileRequest request, GetUserProfileResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetUserProfileRequest request, GetUserProfileResponse response)
+        throws SQLException {
 
-		userCache.storeUserProfile(response.getUser());
-	}
+        userCache.storeUserProfile(response.getUser());
+    }
 
-	@Override
-	protected GetUserProfileResponse getCachedResponse(GetUserProfileRequest request)
-		throws SQLException {
+    @Override
+    protected GetUserProfileResponse getCachedResponse(GetUserProfileRequest request)
+        throws SQLException {
 
-		return new GetUserProfileResponse(userCache.getUserProfile(request.getQueryUserHandle()));
-	}
+        return new GetUserProfileResponse(userCache.getUserProfile(request.getQueryUserHandle()));
+    }
 }

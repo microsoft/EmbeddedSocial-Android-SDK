@@ -8,10 +8,10 @@ package com.microsoft.embeddedsocial.server.model.auth;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.autorest.models.PostSessionRequest;
 import com.microsoft.embeddedsocial.autorest.models.PostSessionResponse;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 
@@ -20,30 +20,30 @@ import java.io.IOException;
  */
 public class CreateSessionRequest extends UserRequest {
 
-	private final PostSessionRequest request;
+    private final PostSessionRequest request;
 
-	public CreateSessionRequest(IdentityProvider identityProvider, String accessToken, String requestToken) {
-		request = new PostSessionRequest();
-		request.setUserHandle(getUserHandle());
-		request.setInstanceId(instanceId);
+    public CreateSessionRequest(IdentityProvider identityProvider, String accessToken, String requestToken) {
+        request = new PostSessionRequest();
+        request.setUserHandle(getUserHandle());
+        request.setInstanceId(instanceId);
 
-		authorization = createThirdPartyAuthorization(identityProvider, accessToken, requestToken);
-	}
+        authorization = createThirdPartyAuthorization(identityProvider, accessToken, requestToken);
+    }
 
-	public void setRequestUserHandle(String userHandle) {
-		request.setUserHandle(userHandle);
-	}
+    public void setRequestUserHandle(String userHandle) {
+        request.setUserHandle(userHandle);
+    }
 
-	@Override
-	public AuthenticationResponse send() throws NetworkRequestException {
-		ServiceResponse<PostSessionResponse> serviceResponse;
-		try {
-			serviceResponse = SESSION.postSession(request, authorization);
+    @Override
+    public AuthenticationResponse send() throws NetworkRequestException {
+        ServiceResponse<PostSessionResponse> serviceResponse;
+        try {
+            serviceResponse = SESSION.postSession(request, authorization);
         } catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
+            throw new NetworkRequestException(e.getMessage());
+        }
 
-		checkResponseCode(serviceResponse);
+        checkResponseCode(serviceResponse);
 
         return new AuthenticationResponse(serviceResponse.getBody());
     }

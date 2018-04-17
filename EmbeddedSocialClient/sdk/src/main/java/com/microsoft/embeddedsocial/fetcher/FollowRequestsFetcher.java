@@ -5,15 +5,15 @@
 
 package com.microsoft.embeddedsocial.fetcher;
 
-import com.microsoft.embeddedsocial.fetcher.base.RequestType;
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.data.model.FollowRequest;
 import com.microsoft.embeddedsocial.fetcher.base.DataState;
 import com.microsoft.embeddedsocial.fetcher.base.Fetcher;
-import com.microsoft.embeddedsocial.server.IRelationshipService;
+import com.microsoft.embeddedsocial.fetcher.base.RequestType;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
+import com.microsoft.embeddedsocial.server.IRelationshipService;
 import com.microsoft.embeddedsocial.server.model.relationship.GetPendingUsersRequest;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 import java.util.List;
 
@@ -22,17 +22,17 @@ import java.util.List;
  */
 class FollowRequestsFetcher extends Fetcher<FollowRequest> {
 
-	private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
+    private final BatchDataRequestExecutor<UserCompactView, GetPendingUsersRequest> requestExecutor;
 
-	public FollowRequestsFetcher() {
-		IRelationshipService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getRelationshipService();
-		requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
-	}
+    public FollowRequestsFetcher() {
+        IRelationshipService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getRelationshipService();
+        requestExecutor = new BatchDataRequestExecutor<>(server::getUserPendingFeed, GetPendingUsersRequest::new);
+    }
 
-	@Override
-	protected List<FollowRequest> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		// just wrap the response in a list of our models
-		List<UserCompactView> users = requestExecutor.fetchData(dataState, requestType, pageSize);
-		return FollowRequest.wrap(users);
-	}
+    @Override
+    protected List<FollowRequest> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        // just wrap the response in a list of our models
+        List<UserCompactView> users = requestExecutor.fetchData(dataState, requestType, pageSize);
+        return FollowRequest.wrap(users);
+    }
 }

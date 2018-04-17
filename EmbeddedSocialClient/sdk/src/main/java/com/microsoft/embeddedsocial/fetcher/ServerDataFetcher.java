@@ -20,15 +20,15 @@ import java.util.List;
  */
 class ServerDataFetcher<T, R extends BaseRequest> extends Fetcher<T> {
 
-	private final DataRequestExecutor<T, R> requestExecutor;
+    private final DataRequestExecutor<T, R> requestExecutor;
 
-	ServerDataFetcher(DataRequestExecutor<T, R> requestExecutor) {
-		this.requestExecutor = requestExecutor;
-	}
+    ServerDataFetcher(DataRequestExecutor<T, R> requestExecutor) {
+        this.requestExecutor = requestExecutor;
+    }
 
-	@Override
-	protected List<T> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
-		return requestExecutor.fetchData(dataState, requestType, pageSize);
-	}
+    @Override
+    protected List<T> fetchDataPage(DataState dataState, RequestType requestType, int pageSize) throws Exception {
+        return requestExecutor.fetchData(dataState, requestType, pageSize);
+    }
 
 }

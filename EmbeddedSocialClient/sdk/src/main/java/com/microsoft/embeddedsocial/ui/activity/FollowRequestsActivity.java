@@ -13,13 +13,13 @@ import com.microsoft.embeddedsocial.ui.fragment.FollowRequestsFragment;
  */
 public class FollowRequestsActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowRequestsFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowRequestsFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

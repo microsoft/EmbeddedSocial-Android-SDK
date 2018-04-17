@@ -22,72 +22,72 @@ import android.widget.TextView;
  */
 public class ButtonStyleHelper {
 
-	private final int completedColor;
-	private final int accentColor;
-	private final ColorStateList greenColor;
-	private final ColorStateList grayColor;
-	private final ColorStateList redColor;
+    private final int completedColor;
+    private final int accentColor;
+    private final ColorStateList greenColor;
+    private final ColorStateList grayColor;
+    private final ColorStateList redColor;
 
-	public ButtonStyleHelper(Context context) {
-		Resources res = context.getResources();
-		completedColor = res.getColor(R.color.es_button_completed_text);
-		greenColor = res.getColorStateList(R.color.es_button_text_green);
-		grayColor = res.getColorStateList(R.color.es_button_text_gray);
-		redColor = res.getColorStateList(R.color.es_pink_500);
-		accentColor = res.getColor(R.color.es_accent_color);
-	}
+    public ButtonStyleHelper(Context context) {
+        Resources res = context.getResources();
+        completedColor = res.getColor(R.color.es_button_completed_text);
+        greenColor = res.getColorStateList(R.color.es_button_text_green);
+        grayColor = res.getColorStateList(R.color.es_button_text_gray);
+        redColor = res.getColorStateList(R.color.es_pink_500);
+        accentColor = res.getColor(R.color.es_accent_color);
+    }
 
-	public void applyGreenCompletedStyle(TextView view) {
-		view.setTextColor(completedColor);
-		view.setBackgroundResource(R.drawable.es_button_green_completed);
-	}
+    public void applyGreenCompletedStyle(TextView view) {
+        view.setTextColor(completedColor);
+        view.setBackgroundResource(R.drawable.es_button_green_completed);
+    }
 
-	public void applyGreenStyle(TextView view) {
-		view.setTextColor(greenColor);
-		view.setBackgroundResource(R.drawable.es_button_green);
-	}
+    public void applyGreenStyle(TextView view) {
+        view.setTextColor(greenColor);
+        view.setBackgroundResource(R.drawable.es_button_green);
+    }
 
-	public void applyGrayStyle(TextView view) {
-		view.setTextColor(grayColor);
-		view.setBackgroundResource(R.drawable.es_button_gray);
-	}
+    public void applyGrayStyle(TextView view) {
+        view.setTextColor(grayColor);
+        view.setBackgroundResource(R.drawable.es_button_gray);
+    }
 
-	public void applyRedStyle(TextView view) {
-		view.setTextColor(redColor);
-		view.setBackgroundResource(R.drawable.es_button_red);
-	}
+    public void applyRedStyle(TextView view) {
+        view.setTextColor(redColor);
+        view.setBackgroundResource(R.drawable.es_button_red);
+    }
 
-	public void applyRedCompletedStyle(TextView view) {
-		view.setTextColor(completedColor);
-		view.setBackgroundResource(R.drawable.es_button_red_completed);
-	}
+    public void applyRedCompletedStyle(TextView view) {
+        view.setTextColor(completedColor);
+        view.setBackgroundResource(R.drawable.es_button_red_completed);
+    }
 
-	public void applyAccentColor(ImageView imageView, boolean isApply) {
-		if (isApply) {
-			imageView.setColorFilter(accentColor);
-		} else {
-			imageView.setColorFilter(null);
-		}
-	}
+    public void applyAccentColor(ImageView imageView, boolean isApply) {
+        if (isApply) {
+            imageView.setColorFilter(accentColor);
+        } else {
+            imageView.setColorFilter(null);
+        }
+    }
 
-	public void applyAccentColor(TextView textView) {
-		textView.setTextColor(accentColor);
-		final Drawable leftDrawable = textView.getCompoundDrawables()[0];
-		if (leftDrawable != null) {
-			leftDrawable.setColorFilter(accentColor, PorterDuff.Mode.SRC_IN);
-		}
-	}
+    public void applyAccentColor(TextView textView) {
+        textView.setTextColor(accentColor);
+        final Drawable leftDrawable = textView.getCompoundDrawables()[0];
+        if (leftDrawable != null) {
+            leftDrawable.setColorFilter(accentColor, PorterDuff.Mode.SRC_IN);
+        }
+    }
 
-	/**
-	 * Apply accent color to a button with both a text and image component
-	 * @param buttonLayout Layout containing the button components
-	 * @param textId resource id of the text portion
-	 * @param imageId resource id of the image portion
-	 */
-	public void applyAccentColor(LinearLayout buttonLayout, @IdRes int textId, @IdRes int imageId) {
-		TextView text = (TextView)buttonLayout.findViewById(textId);
-		ImageView image = (ImageView)buttonLayout.findViewById(imageId);
-		applyAccentColor(text);
-		applyAccentColor(image, true);
-	}
+    /**
+     * Apply accent color to a button with both a text and image component
+     * @param buttonLayout Layout containing the button components
+     * @param textId resource id of the text portion
+     * @param imageId resource id of the image portion
+     */
+    public void applyAccentColor(LinearLayout buttonLayout, @IdRes int textId, @IdRes int imageId) {
+        TextView text = (TextView)buttonLayout.findViewById(textId);
+        ImageView image = (ImageView)buttonLayout.findViewById(imageId);
+        applyAccentColor(text);
+        applyAccentColor(image, true);
+    }
 }

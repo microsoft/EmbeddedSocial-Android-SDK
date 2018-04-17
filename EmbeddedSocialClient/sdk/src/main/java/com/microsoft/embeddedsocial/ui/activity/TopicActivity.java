@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
 import com.microsoft.embeddedsocial.ui.activity.base.BaseDiscussionActivity;
 import com.microsoft.embeddedsocial.ui.fragment.CommentFeedFragment;
 
@@ -15,10 +13,10 @@ import com.microsoft.embeddedsocial.ui.fragment.CommentFeedFragment;
  */
 public class TopicActivity extends BaseDiscussionActivity {
 
-	@Override
-	protected void setupFragments() {
-		final CommentFeedFragment feedFragment = new CommentFeedFragment();
-		feedFragment.setArguments(getIntent().getExtras());
-		setActivityContent(feedFragment);
-	}
+    @Override
+    protected void setupFragments() {
+        final CommentFeedFragment feedFragment = new CommentFeedFragment();
+        feedFragment.setArguments(getIntent().getExtras());
+        setActivityContent(feedFragment);
+    }
 }

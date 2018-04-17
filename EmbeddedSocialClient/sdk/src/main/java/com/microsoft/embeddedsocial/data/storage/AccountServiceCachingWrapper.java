@@ -40,81 +40,81 @@ import retrofit2.Response;
  */
 public class AccountServiceCachingWrapper implements IAccountService {
 
-	private final GetUserWrapper getUserWrapper;
-	private final GetUserProfileWrapper getUserProfileWrapper;
-	private final GetMyProfileWrapper getMyProfileWrapper;
-	private final GetUserAccountWrapper getUserAccountWrapper;
+    private final GetUserWrapper getUserWrapper;
+    private final GetUserProfileWrapper getUserProfileWrapper;
+    private final GetMyProfileWrapper getMyProfileWrapper;
+    private final GetUserAccountWrapper getUserAccountWrapper;
 
-	public AccountServiceCachingWrapper() {
-		UserCache userCache = new UserCache();
-		getUserWrapper = new GetUserWrapper(this::getUser, userCache);
-		getUserProfileWrapper = new GetUserProfileWrapper(this::getUserProfile, userCache);
-		getMyProfileWrapper = new GetMyProfileWrapper(this::getMyProfile, userCache);
-		getUserAccountWrapper = new GetUserAccountWrapper(this::getUserAccount, userCache);
-	}
+    public AccountServiceCachingWrapper() {
+        UserCache userCache = new UserCache();
+        getUserWrapper = new GetUserWrapper(this::getUser, userCache);
+        getUserProfileWrapper = new GetUserProfileWrapper(this::getUserProfile, userCache);
+        getMyProfileWrapper = new GetMyProfileWrapper(this::getMyProfile, userCache);
+        getUserAccountWrapper = new GetUserAccountWrapper(this::getUserAccount, userCache);
+    }
 
-	@Override
-	public AuthenticationResponse createUser(CreateUserRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public AuthenticationResponse createUser(CreateUserRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response deleteUser(DeleteUserRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response deleteUser(DeleteUserRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public GetUserResponse getUser(GetUserRequest request) throws NetworkRequestException {
-		return getUserWrapper.getResponse(request);
-	}
+    @Override
+    public GetUserResponse getUser(GetUserRequest request) throws NetworkRequestException {
+        return getUserWrapper.getResponse(request);
+    }
 
-	@Override
-	public GetUserAccountResponse getUserAccount(GetUserAccountRequest request) throws NetworkRequestException {
-		return getUserAccountWrapper.getResponse(request);
-	}
+    @Override
+    public GetUserAccountResponse getUserAccount(GetUserAccountRequest request) throws NetworkRequestException {
+        return getUserAccountWrapper.getResponse(request);
+    }
 
-	@Override
-	public GetUserProfileResponse getUserProfile(GetUserProfileRequest request) throws NetworkRequestException {
-		return getUserProfileWrapper.getResponse(request);
-	}
+    @Override
+    public GetUserProfileResponse getUserProfile(GetUserProfileRequest request) throws NetworkRequestException {
+        return getUserProfileWrapper.getResponse(request);
+    }
 
-	@Override
-	public GetUserProfileResponse getMyProfile(GetMyProfileRequest request) throws NetworkRequestException {
-		return getMyProfileWrapper.getResponse(request);
-	}
+    @Override
+    public GetUserProfileResponse getMyProfile(GetMyProfileRequest request) throws NetworkRequestException {
+        return getMyProfileWrapper.getResponse(request);
+    }
 
-	@Override
-	public List<LinkedAccountView> getLinkedAccounts(GetLinkedAccountsRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public List<LinkedAccountView> getLinkedAccounts(GetLinkedAccountsRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response linkUserThirdPartyAccount(LinkThirdPartyRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response linkUserThirdPartyAccount(LinkThirdPartyRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response unlinkUserThirdPartyAccount(UnlinkUserThirdPartyAccountRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response updateUserPhoto(UpdateUserPhotoRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response updateUserPhoto(UpdateUserPhotoRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response updateUserPublicAccountInfo(UpdateUserPublicAccountInfoRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response updateUserPublicAccountInfo(UpdateUserPublicAccountInfoRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public Response updateUserVisibility(UpdateUserVisibilityRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public Response updateUserVisibility(UpdateUserVisibilityRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 
-	@Override
-	public List<AppCompactView> getMyApps(GetMyAppsRequest request) throws NetworkRequestException {
-		return request.send();
-	}
+    @Override
+    public List<AppCompactView> getMyApps(GetMyAppsRequest request) throws NetworkRequestException {
+        return request.send();
+    }
 }

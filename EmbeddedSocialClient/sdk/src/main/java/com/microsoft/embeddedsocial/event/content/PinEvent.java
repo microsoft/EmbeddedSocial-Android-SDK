@@ -15,19 +15,19 @@ import com.microsoft.embeddedsocial.data.model.PinData;
  */
 @HandlingThread(ThreadType.MAIN)
 abstract class PinEvent extends AbstractEvent {
-	private final PinData data;
-	private final boolean result;
+    private final PinData data;
+    private final boolean result;
 
-	public PinEvent(PinData data, boolean result) {
-		this.data = data;
-		this.result = result;
-	}
+    public PinEvent(PinData data, boolean result) {
+        this.data = data;
+        this.result = result;
+    }
 
-	public PinData getData() {
-		return data;
-	}
+    public PinData getData() {
+        return data;
+    }
 
-	public boolean isResult() {
-		return result;
-	}
+    public boolean isResult() {
+        return result;
+    }
 }

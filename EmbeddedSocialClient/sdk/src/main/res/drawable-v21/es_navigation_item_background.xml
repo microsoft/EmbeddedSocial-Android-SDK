@@ -5,8 +5,8 @@
   -->
 
 <ripple
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:color="#55ffffff"
-	>
-	<item android:drawable="@color/es_gray_900"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#55ffffff"
+    >
+    <item android:drawable="@color/es_gray_900"/>
 </ripple>

@@ -16,38 +16,38 @@ import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 @DatabaseTable(tableName = DbSchemas.CommentFeedRelation.TABLE_NAME)
 public class CommentFeedRelation {
 
-	@DatabaseField(generatedId = true)
-	private int id;
+    @DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.CommentFeedRelation.FEED_TYPE)
-	private int feedType;
+    @DatabaseField(columnName = DbSchemas.CommentFeedRelation.FEED_TYPE)
+    private int feedType;
 
-	@DatabaseField(columnName = DbSchemas.CommentFeedRelation.TOPIC_HANDLE)
-	private String topicHandle;
+    @DatabaseField(columnName = DbSchemas.CommentFeedRelation.TOPIC_HANDLE)
+    private String topicHandle;
 
-	@DatabaseField(columnName = DbSchemas.CommentFeedRelation.COMMENT_HANDLE)
-	private String commentHandle;
+    @DatabaseField(columnName = DbSchemas.CommentFeedRelation.COMMENT_HANDLE)
+    private String commentHandle;
 
-	/**
-	 * For ORM.
-	 */
-	CommentFeedRelation() {  }
+    /**
+     * For ORM.
+     */
+    CommentFeedRelation() {  }
 
-	public CommentFeedRelation(int feedType, String topicHandle, String commentHandle) {
-		this.feedType = feedType;
-		this.topicHandle = topicHandle;
-		this.commentHandle = commentHandle;
-	}
+    public CommentFeedRelation(int feedType, String topicHandle, String commentHandle) {
+        this.feedType = feedType;
+        this.topicHandle = topicHandle;
+        this.commentHandle = commentHandle;
+    }
 
-	public String getCommentHandle() {
-		return commentHandle;
-	}
+    public String getCommentHandle() {
+        return commentHandle;
+    }
 
-	public int getFeedType() {
-		return feedType;
-	}
+    public int getFeedType() {
+        return feedType;
+    }
 
-	public String getTopicHandle() {
-		return topicHandle;
-	}
+    public String getTopicHandle() {
+        return topicHandle;
+    }
 }

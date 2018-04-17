@@ -5,25 +5,25 @@
   -->
 
 <RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/es_black"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/es_black"
+    >
 
-	<FrameLayout
-		android:id="@+id/es_content"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		/>
+    <FrameLayout
+        android:id="@+id/es_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
-	<android.support.v7.widget.Toolbar
-		android:id="@+id/es_toolbar"
-		style="@style/EmbeddedSocialSdkToolbarStyleImage"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:elevation="0dp"
-		android:minHeight="?attr/actionBarSize"
-		/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/es_toolbar"
+        style="@style/EmbeddedSocialSdkToolbarStyleImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        android:minHeight="?attr/actionBarSize"
+        />
 
 </RelativeLayout>

@@ -5,13 +5,13 @@
   -->
 
 <resources
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:ignore="ResourceName"
-	>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
 
-	<style name="EmbeddedSocialSdkAppTheme.Dark" parent="EmbeddedSocialSdkAppTheme.Dark.Base">
-		<item name="es_navigationItemBackground">@drawable/es_navigation_item_background</item>
-		<item name="android:statusBarColor">@color/es_status_bar</item>
-	</style>
+    <style name="EmbeddedSocialSdkAppTheme.Dark" parent="EmbeddedSocialSdkAppTheme.Dark.Base">
+        <item name="es_navigationItemBackground">@drawable/es_navigation_item_background</item>
+        <item name="android:statusBarColor">@color/es_status_bar</item>
+    </style>
 
 </resources>

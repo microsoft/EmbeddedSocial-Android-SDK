@@ -5,12 +5,12 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-	  xmlns:app="http://schemas.android.com/apk/res-auto"
-	>
-	<item
-		android:id="@+id/es_viewSwitch"
-		android:icon="?attr/es_galleryIndicator"
-		android:title="@string/es_menu_gallery"
-		app:showAsAction="always"
-		/>
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/es_viewSwitch"
+        android:icon="?attr/es_galleryIndicator"
+        android:title="@string/es_menu_gallery"
+        app:showAsAction="always"
+        />
 </menu>

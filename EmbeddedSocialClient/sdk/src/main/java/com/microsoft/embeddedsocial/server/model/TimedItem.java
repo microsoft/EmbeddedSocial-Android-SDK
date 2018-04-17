@@ -10,9 +10,9 @@ package com.microsoft.embeddedsocial.server.model;
  */
 public interface TimedItem {
 
-	/**
-	 * Gets time elapsed since entity creation in seconds.
-	 * @return  elapsed time.
-	 */
-	long getElapsedSeconds();
+    /**
+     * Gets time elapsed since entity creation in seconds.
+     * @return  elapsed time.
+     */
+    long getElapsedSeconds();
 }

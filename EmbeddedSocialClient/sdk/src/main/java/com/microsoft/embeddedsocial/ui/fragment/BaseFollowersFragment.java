@@ -17,13 +17,13 @@ import android.text.TextUtils;
  */
 public abstract class BaseFollowersFragment extends BaseUsersListFragment {
 
-	@Override
-	protected UserRenderer createRenderer() {
-		return new UserRenderer(this);
-	}
+    @Override
+    protected UserRenderer createRenderer() {
+        return new UserRenderer(this);
+    }
 
-	protected String getUserHandleArgument() {
-		String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
-		return TextUtils.isEmpty(userHandle) ? UserAccount.getInstance().getUserHandle() : userHandle;
-	}
+    protected String getUserHandleArgument() {
+        String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
+        return TextUtils.isEmpty(userHandle) ? UserAccount.getInstance().getUserHandle() : userHandle;
+    }
 }

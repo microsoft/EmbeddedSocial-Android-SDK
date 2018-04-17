@@ -14,8 +14,8 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class OnPositiveButtonClickedEvent extends OnDialogButtonClickedEvent {
 
-	public OnPositiveButtonClickedEvent(String dialogId) {
-		super(dialogId);
-	}
+    public OnPositiveButtonClickedEvent(String dialogId) {
+        super(dialogId);
+    }
 
 }

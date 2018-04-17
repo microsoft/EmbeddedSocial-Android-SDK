@@ -17,27 +17,27 @@ import android.net.NetworkInfo;
  */
 public class NetworkAvailability {
 
-	private boolean networkAvailable = true;
+    private boolean networkAvailable = true;
 
-	public void startMonitoring(Context context) {
-		context.registerReceiver(
-				new BroadcastReceiver() {
-					@Override
-					public void onReceive(Context context, Intent intent) {
-						checkActiveNetwork(context);
-					}
-				},
-				new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
-		checkActiveNetwork(context);
-	}
+    public void startMonitoring(Context context) {
+        context.registerReceiver(
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        checkActiveNetwork(context);
+                    }
+                },
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        checkActiveNetwork(context);
+    }
 
-	private void checkActiveNetwork(Context context) {
-		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-		networkAvailable = activeNetworkInfo != null && activeNetworkInfo.isConnected();
-	}
+    private void checkActiveNetwork(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        networkAvailable = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 
-	public boolean isNetworkAvailable() {
-		return networkAvailable;
-	}
+    public boolean isNetworkAvailable() {
+        return networkAvailable;
+    }
 }

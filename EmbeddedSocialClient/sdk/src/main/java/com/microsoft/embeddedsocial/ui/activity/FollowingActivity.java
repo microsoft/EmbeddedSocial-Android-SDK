@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FollowingFragment;
 
@@ -15,8 +13,8 @@ import com.microsoft.embeddedsocial.ui.fragment.FollowingFragment;
  */
 public class FollowingActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new FollowingFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new FollowingFragment());
+    }
 }

@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.server;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
+import com.microsoft.embeddedsocial.data.Preferences;
+
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-
-import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
-import com.microsoft.embeddedsocial.data.Preferences;
 
 import java.util.UUID;
 
@@ -19,45 +19,45 @@ import java.util.UUID;
  */
 public class RequestInfoProvider {
 
-	private final TelephonyManager telephonyManager;
+    private final TelephonyManager telephonyManager;
 
-	/**
-	 * Create instance
-	 * @param context
-	 */
-	public RequestInfoProvider(Context context) {
-		telephonyManager = (TelephonyManager)context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-	}
+    /**
+     * Create instance
+     * @param context
+     */
+    public RequestInfoProvider(Context context) {
+        telephonyManager = (TelephonyManager)context.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+    }
 
-	/**
-	 * returns instance id value (saved or newly generated)
-	 * @return
-	 */
-	public String getInstanceId() {
-		return InstanceHandleHolder.INSTANCE_ID;
-	}
+    /**
+     * returns instance id value (saved or newly generated)
+     * @return
+     */
+    public String getInstanceId() {
+        return InstanceHandleHolder.INSTANCE_ID;
+    }
 
-	/**
-	 * returns current Telephony manager network type
-	 * @return
-	 */
-	public int getNetworkType() {
-		return telephonyManager.getNetworkType();
-	}
+    /**
+     * returns current Telephony manager network type
+     * @return
+     */
+    public int getNetworkType() {
+        return telephonyManager.getNetworkType();
+    }
 
-	private static class InstanceHandleHolder {
+    private static class InstanceHandleHolder {
 
-		private static final String INSTANCE_ID = getInstanceId();
+        private static final String INSTANCE_ID = getInstanceId();
 
-		private static String getInstanceId() {
-			Preferences preferences = GlobalObjectRegistry.getObject(Preferences.class);
-			String instanceId = preferences.getInstanceId();
-			if (TextUtils.isEmpty(instanceId)) {
-				instanceId = UUID.randomUUID().toString();
-				preferences.setInstanceId(instanceId);
-			}
-			return instanceId;
-		}
-	}
+        private static String getInstanceId() {
+            Preferences preferences = GlobalObjectRegistry.getObject(Preferences.class);
+            String instanceId = preferences.getInstanceId();
+            if (TextUtils.isEmpty(instanceId)) {
+                instanceId = UUID.randomUUID().toString();
+                preferences.setInstanceId(instanceId);
+            }
+            return instanceId;
+        }
+    }
 
 }

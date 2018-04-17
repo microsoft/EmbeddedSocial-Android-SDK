@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 
 /**
  * {@link BaseContentFragment} with a {@link LinearLayoutManager} set as layout manager.
@@ -17,9 +17,9 @@ import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
  */
 public abstract class BaseListContentFragment<AT extends FetchableAdapter<?, ?>> extends BaseContentFragment<AT> {
 
-	@Override
-	protected RecyclerView.LayoutManager createInitialContentLayoutManager() {
-		return new LinearLayoutManager(getContext());
-	}
+    @Override
+    protected RecyclerView.LayoutManager createInitialContentLayoutManager() {
+        return new LinearLayoutManager(getContext());
+    }
 
 }

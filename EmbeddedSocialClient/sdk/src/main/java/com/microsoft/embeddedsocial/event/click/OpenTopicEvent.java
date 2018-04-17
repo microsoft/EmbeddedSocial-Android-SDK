@@ -18,24 +18,24 @@ import android.support.v4.app.Fragment;
 @HandlingThread(ThreadType.MAIN)
 public class OpenTopicEvent extends BaseCommonBehaviorEvent {
 
-	private final TopicView topic;
-	private final boolean jumpToEdit;
+    private final TopicView topic;
+    private final boolean jumpToEdit;
 
-	public OpenTopicEvent(Fragment source, TopicView topic) {
-		this(source, topic, false);
-	}
+    public OpenTopicEvent(Fragment source, TopicView topic) {
+        this(source, topic, false);
+    }
 
-	public OpenTopicEvent(Fragment source, TopicView topic, boolean jumpToEdit) {
-		super(source);
-		this.topic = topic;
-		this.jumpToEdit = jumpToEdit;
-	}
+    public OpenTopicEvent(Fragment source, TopicView topic, boolean jumpToEdit) {
+        super(source);
+        this.topic = topic;
+        this.jumpToEdit = jumpToEdit;
+    }
 
-	public TopicView getTopic() {
-		return topic;
-	}
+    public TopicView getTopic() {
+        return topic;
+    }
 
-	public boolean jumpToEdit() {
-		return jumpToEdit;
-	}
+    public boolean jumpToEdit() {
+        return jumpToEdit;
+    }
 }

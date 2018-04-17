@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.data.model.PinData;
 @HandlingThread(ThreadType.MAIN)
 public class PinAddedEvent extends PinEvent {
 
-	public PinAddedEvent(PinData data, boolean result) {
-		super(data, result);
-	}
+    public PinAddedEvent(PinData data, boolean result) {
+        super(data, result);
+    }
 }

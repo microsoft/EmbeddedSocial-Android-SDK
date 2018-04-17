@@ -5,12 +5,12 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.microsoft.embeddedsocial.sdk.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
-import com.microsoft.embeddedsocial.sdk.R;
 
 
 /**
@@ -18,34 +18,34 @@ import com.microsoft.embeddedsocial.sdk.R;
  */
 public class AspectRatioImageView extends ImageView {
 
-	private float ratio = 1;
+    private float ratio = 1;
 
-	public AspectRatioImageView(Context context) {
-		super(context);
-	}
+    public AspectRatioImageView(Context context) {
+        super(context);
+    }
 
-	public AspectRatioImageView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		init(attrs);
-	}
+    public AspectRatioImageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(attrs);
+    }
 
-	public AspectRatioImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		init(attrs);
-	}
+    public AspectRatioImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(attrs);
+    }
 
-	private void init(AttributeSet attrs) {
-		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.es_AspectRatioImageView);
-		ratio = a.getFloat(R.styleable.es_AspectRatioImageView_es_aspectRatio, 1);
-		a.recycle();
-	}
+    private void init(AttributeSet attrs) {
+        TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.es_AspectRatioImageView);
+        ratio = a.getFloat(R.styleable.es_AspectRatioImageView_es_aspectRatio, 1);
+        a.recycle();
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		int newWidth = getMeasuredWidth();
-		int newHeight = (int) (newWidth * ratio);
-		setMeasuredDimension(newWidth, newHeight);
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int newWidth = getMeasuredWidth();
+        int newHeight = (int) (newWidth * ratio);
+        setMeasuredDimension(newWidth, newHeight);
+    }
 
 }

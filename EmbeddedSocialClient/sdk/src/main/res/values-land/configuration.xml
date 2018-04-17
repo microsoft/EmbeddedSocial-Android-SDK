@@ -5,5 +5,5 @@
   -->
 
 <resources>
-	<bool name="es_isLandscape">true</bool>
+    <bool name="es_isLandscape">true</bool>
 </resources>

@@ -14,26 +14,26 @@ import java.sql.SQLException;
 
 public class GetUserAccountWrapper extends AbstractNetworkMethodWrapper<GetUserAccountRequest, GetUserAccountResponse> {
 
-	private final UserCache userCache;
+    private final UserCache userCache;
 
-	public GetUserAccountWrapper(INetworkMethod<GetUserAccountRequest, GetUserAccountResponse> networkMethod,
-	                             UserCache userCache) {
+    public GetUserAccountWrapper(INetworkMethod<GetUserAccountRequest, GetUserAccountResponse> networkMethod,
+                                 UserCache userCache) {
 
-		super(networkMethod);
-		this.userCache = userCache;
-	}
+        super(networkMethod);
+        this.userCache = userCache;
+    }
 
-	@Override
-	protected void storeResponse(GetUserAccountRequest request, GetUserAccountResponse response)
-		throws SQLException {
+    @Override
+    protected void storeResponse(GetUserAccountRequest request, GetUserAccountResponse response)
+        throws SQLException {
 
-		userCache.storeUserAccount(response.getUser());
-	}
+        userCache.storeUserAccount(response.getUser());
+    }
 
-	@Override
-	protected GetUserAccountResponse getCachedResponse(GetUserAccountRequest request)
-		throws SQLException {
+    @Override
+    protected GetUserAccountResponse getCachedResponse(GetUserAccountRequest request)
+        throws SQLException {
 
-		return new GetUserAccountResponse(userCache.getUserAccount(request.getUserHandle()));
-	}
+        return new GetUserAccountResponse(userCache.getUserAccount(request.getUserHandle()));
+    }
 }
