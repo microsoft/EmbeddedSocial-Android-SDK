@@ -4,7 +4,7 @@
   -->
 
 <resources>
-	<string name="es_app_name">Embedded Social</string>
+	<string name="app_name">Embedded Social</string>
 	<string name="es_lib_name">Embedded Social SDK</string>
 	<string name="es_lib_title">Microsoft Embedded Social</string>
 
