@@ -100,8 +100,7 @@ dependencies {
     compile 'com.floreysoft:jmte:3.1.1'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    compile 'com.microsoft.rest:client-runtime:1.0.0-beta1'
-    compile 'com.acrowntest.test:autorest:0.7.2'
+    compile 'com.acrowntest.test:autorest:0.7.3'
     compile 'org.jetbrains:annotations:15.0'
 }
 
