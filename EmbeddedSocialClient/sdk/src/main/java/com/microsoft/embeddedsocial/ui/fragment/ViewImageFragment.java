@@ -21,7 +21,7 @@ import android.widget.ProgressBar;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * Settings fragment.
+ * Fragment used to display an image
  */
 public class ViewImageFragment extends BaseFragment {
 
