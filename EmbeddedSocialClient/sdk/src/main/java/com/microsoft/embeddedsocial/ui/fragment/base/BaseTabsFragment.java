@@ -5,8 +5,10 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.base.view.SlidingTabLayout;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
 
@@ -25,8 +27,9 @@ public abstract class BaseTabsFragment extends BaseFragment {
     private SlidingTabLayout slidingTabLayout;
 
     public BaseTabsFragment() {
+        Options options = GlobalObjectRegistry.getObject(Options.class);
         addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayContentFragment);
-        addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
+        addThemeToMerge(options.getBaseTheme());
     }
 
     @Override

@@ -136,6 +136,16 @@ public final class Options {
         return (theme == null || theme.name == null) ? ThemeGroup.LIGHT : theme.name;
     }
 
+    public int getBaseTheme() {
+        switch (getThemeGroup()) {
+            case DARK:
+                return R.style.EmbeddedSocialSdkAppTheme_Dark_Base;
+            case LIGHT:
+            default:
+                return R.style.EmbeddedSocialSdkAppTheme_LightBase;
+        }
+    }
+
     /**
      * General application's options.
      */
