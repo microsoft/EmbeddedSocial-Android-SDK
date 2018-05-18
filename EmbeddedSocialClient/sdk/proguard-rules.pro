@@ -15,7 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
+-dontobfuscate
 
 # for Java lambdas
 -dontwarn java.lang.invoke.**
