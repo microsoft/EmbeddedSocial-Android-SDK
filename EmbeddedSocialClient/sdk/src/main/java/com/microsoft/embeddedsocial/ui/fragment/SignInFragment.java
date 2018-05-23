@@ -27,6 +27,7 @@ import com.microsoft.embeddedsocial.ui.util.WebPageHelper;
 import com.squareup.otto.Subscribe;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -51,6 +52,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
     private View buttonsView;
     private AbstractAuthenticator authenticator;
     private boolean isGettingThirdPartyCredentials;
+    private Context context;
 
     private Action signInAction;
     private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(
@@ -73,6 +75,12 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
     @Override
     protected int getLayoutId() {
         return R.layout.es_fragment_signin;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -101,14 +109,14 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
         spannableText.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                WebPageHelper.openPrivacyPolicy(getContext());
+                WebPageHelper.openPrivacyPolicy(context);
             }
         }, privacyIndexStart, privacyIndexEnd, 0);
 
         spannableText.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                WebPageHelper.openTermsAndConditions(getContext());
+                WebPageHelper.openTermsAndConditions(context);
             }
         }, termsIndexStart, termsIndexEnd, 0);
 
@@ -248,7 +256,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
         DebugLog.i(errorMessage);
         ThreadUtils.runOnMainThread(() -> {
             onSignInFinished();
-            Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+            Toast.makeText(context.getApplicationContext(), errorMessage, Toast.LENGTH_LONG).show();
         });
     }
 }

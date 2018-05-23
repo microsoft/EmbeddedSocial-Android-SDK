@@ -69,7 +69,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
                         if (ex != null) {
                             DebugLog.logException(ex);
                             service.dispose();
-                            onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
+                            onAuthenticationError(context.getApplicationContext().getString(R.string.es_msg_google_signin_failed));
                         } else {
                             // service configuration retrieved, proceed to authorization...'
                             sendAuthRequest(serviceConfiguration);
@@ -111,7 +111,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
             getAccessToken(resp);
         } else {
             DebugLog.logException(ex);
-            onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
+            onAuthenticationError(context.getApplicationContext().getString(R.string.es_msg_google_signin_failed));
         }
     }
 
@@ -126,7 +126,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
                             onTokenRequestSuccess(authState);
                         } else {
                             DebugLog.logException(ex);
-                            onAuthenticationError(getFragment().getString(R.string.es_msg_google_signin_failed));
+                            onAuthenticationError(context.getApplicationContext().getString(R.string.es_msg_google_signin_failed));
                         }
                     }
                 });
