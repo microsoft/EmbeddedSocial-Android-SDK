@@ -13,6 +13,7 @@ import com.microsoft.embeddedsocial.fetcher.base.FetchableRecyclerView;
 import com.microsoft.embeddedsocial.fetcher.base.FetcherState;
 import com.microsoft.embeddedsocial.fetcher.base.ViewState;
 import com.microsoft.embeddedsocial.fetcher.base.ViewStateListener;
+import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.NetworkAvailability;
 import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
@@ -75,8 +76,9 @@ public abstract class BaseContentFragment<AT extends FetchableAdapter<?, ?>> ext
     };
 
     public BaseContentFragment() {
+        Options options = GlobalObjectRegistry.getObject(Options.class);
         addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayContentFragment);
-        addThemeToMerge(R.style.EmbeddedSocialSdkAppTheme_LightBase);
+        addThemeToMerge(options.getBaseTheme());
         addModule(slowConnectionMessageModule);
     }
 
