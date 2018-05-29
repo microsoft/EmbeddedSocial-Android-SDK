@@ -9,12 +9,12 @@ import com.microsoft.embeddedsocial.autorest.models.FollowingStatus;
 
 public class FollowUserResponse {
 
-	private FollowingStatus followingStatus;
+    private FollowingStatus followingStatus;
 
-	public FollowUserResponse(FollowingStatus followingStatus) {
-		this.followingStatus = followingStatus;
-	}
-	public FollowingStatus getFollowingStatus() {
-		return followingStatus;
-	}
+    public FollowUserResponse(FollowingStatus followingStatus) {
+        this.followingStatus = followingStatus;
+    }
+    public FollowingStatus getFollowingStatus() {
+        return followingStatus;
+    }
 }

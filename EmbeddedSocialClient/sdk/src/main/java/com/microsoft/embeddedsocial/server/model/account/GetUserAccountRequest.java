@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.server.model.account;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.autorest.models.LinkedAccountView;
 import com.microsoft.embeddedsocial.autorest.models.UserProfileView;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
+import com.microsoft.embeddedsocial.server.model.UserRequest;
+import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
-import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 import java.io.IOException;
 import java.util.List;

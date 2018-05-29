@@ -10,27 +10,27 @@ package com.microsoft.embeddedsocial.server.exception;
  */
 public class StatusException extends NetworkRequestException {
 
-	private final int statusCode;
+    private final int statusCode;
 
-	public StatusException(int statusCode, String message) {
-		super(message);
-		this.statusCode = statusCode;
-	}
+    public StatusException(int statusCode, String message) {
+        super(message);
+        this.statusCode = statusCode;
+    }
 
-	public StatusException(int statusCode, String message, Throwable cause) {
-		super(message, cause);
-		this.statusCode = statusCode;
-	}
+    public StatusException(int statusCode, String message, Throwable cause) {
+        super(message, cause);
+        this.statusCode = statusCode;
+    }
 
-	public StatusException(int statusCode, Throwable cause) {
-		super(cause);
-		this.statusCode = statusCode;
-	}
+    public StatusException(int statusCode, Throwable cause) {
+        super(cause);
+        this.statusCode = statusCode;
+    }
 
-	/**
-	 * HTTP status code returned by server
-	 */
-	public int getStatusCode() {
-		return statusCode;
-	}
+    /**
+     * HTTP status code returned by server
+     */
+    public int getStatusCode() {
+        return statusCode;
+    }
 }

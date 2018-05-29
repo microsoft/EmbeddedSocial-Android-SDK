@@ -6,18 +6,18 @@
 
 package com.microsoft.navigationdrawerstudio;
 
-import android.support.v4.app.Fragment;
-
 import com.microsoft.embeddedsocial.sdk.INavigationDrawerFactory;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Create navigation menu to inflate to the Social+ SDK.
  */
 public class DrawerFactory implements INavigationDrawerFactory {
 
-	@Override
-	public Fragment createMenuFragment() {
-		NavigationDrawerFragment navigationDrawerFragment = new NavigationDrawerFragment();
-		return navigationDrawerFragment;
-	}
+    @Override
+    public Fragment createMenuFragment() {
+        NavigationDrawerFragment navigationDrawerFragment = new NavigationDrawerFragment();
+        return navigationDrawerFragment;
+    }
 }

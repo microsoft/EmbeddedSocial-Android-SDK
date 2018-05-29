@@ -5,8 +5,8 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item
-		android:id="@+id/es_actionBlockUser"
-		android:title="@string/es_menu_block_user"
-		/>
+    <item
+        android:id="@+id/es_actionBlockUser"
+        android:title="@string/es_menu_block_user"
+        />
 </menu>

@@ -18,28 +18,28 @@ import android.view.MenuItem;
  */
 public class ReplyContextMenuClickListener extends ContextMenuClickListener {
 
-	private ReplyView replyView;
+    private ReplyView replyView;
 
-	public ReplyContextMenuClickListener(Fragment fragment, ReplyView replyView) {
-		super(fragment, replyView.getUser(), replyView.getHandle());
-		this.replyView = replyView;
-	}
+    public ReplyContextMenuClickListener(Fragment fragment, ReplyView replyView) {
+        super(fragment, replyView.getUser(), replyView.getHandle());
+        this.replyView = replyView;
+    }
 
-	@Override
-	public boolean onMenuItemClick(MenuItem item) {
-		if (super.onMenuItemClick(item)) {
-			return true;
-		}
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (super.onMenuItemClick(item)) {
+            return true;
+        }
 
-		int i = item.getItemId();
-		if (i == R.id.es_actionReportReply) {
-			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.REPLY);
-			return true;
-		} else if (i == R.id.es_actionRemove) {
-			ContentUpdateHelper.launchRemoveReply(context, replyView);
-			return true;
-		} else {
-			return false;
-		}
-	}
+        int i = item.getItemId();
+        if (i == R.id.es_actionReportReply) {
+            ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.REPLY);
+            return true;
+        } else if (i == R.id.es_actionRemove) {
+            ContentUpdateHelper.launchRemoveReply(context, replyView);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

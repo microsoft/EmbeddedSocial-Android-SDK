@@ -11,5 +11,5 @@ import android.content.Context;
  * An action postponed until the user is signed-in.
  */
 public interface PendingAction {
-	void execute(Context context);
+    void execute(Context context);
 }

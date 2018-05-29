@@ -14,22 +14,22 @@ import java.util.List;
 
 public class GetCommentFeedResponse extends ListResponse<CommentView> {
 
-	private List<CommentView> comments;
+    private List<CommentView> comments;
 
-	public GetCommentFeedResponse(List<CommentView> comments) {
-		this.comments = comments;
-	}
+    public GetCommentFeedResponse(List<CommentView> comments) {
+        this.comments = comments;
+    }
 
-	public GetCommentFeedResponse(FeedResponseCommentView response) {
-		comments = new ArrayList<>();
-		for (com.microsoft.embeddedsocial.autorest.models.CommentView comment : response.getData()) {
-			comments.add(new CommentView(comment));
-		}
-		setContinuationKey(response.getCursor());
-	}
+    public GetCommentFeedResponse(FeedResponseCommentView response) {
+        comments = new ArrayList<>();
+        for (com.microsoft.embeddedsocial.autorest.models.CommentView comment : response.getData()) {
+            comments.add(new CommentView(comment));
+        }
+        setContinuationKey(response.getCursor());
+    }
 
-	@Override
-	public List<CommentView> getData() {
-		return comments;
-	}
+    @Override
+    public List<CommentView> getData() {
+        return comments;
+    }
 }

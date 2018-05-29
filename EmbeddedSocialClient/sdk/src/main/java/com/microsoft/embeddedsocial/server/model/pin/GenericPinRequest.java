@@ -8,9 +8,9 @@ package com.microsoft.embeddedsocial.server.model.pin;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 
 public class GenericPinRequest extends UserRequest {
-	protected final String topicHandle;
+    protected final String topicHandle;
 
-	public GenericPinRequest(String topicHandle) {
-		this.topicHandle = topicHandle;
-	}
+    public GenericPinRequest(String topicHandle) {
+        this.topicHandle = topicHandle;
+    }
 }

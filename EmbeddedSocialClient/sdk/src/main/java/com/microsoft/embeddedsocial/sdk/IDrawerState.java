@@ -9,7 +9,7 @@ package com.microsoft.embeddedsocial.sdk;
  * Control drawer layout state
  */
 public interface IDrawerState {
-	void openDrawer();
-	void closeDrawer();
-	boolean isDrawerOpen();
+    void openDrawer();
+    void closeDrawer();
+    boolean isDrawerOpen();
 }

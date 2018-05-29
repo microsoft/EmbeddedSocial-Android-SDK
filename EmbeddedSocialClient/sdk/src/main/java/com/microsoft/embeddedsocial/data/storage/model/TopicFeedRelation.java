@@ -16,37 +16,37 @@ import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 @DatabaseTable(tableName = DbSchemas.TopicFeedRelation.TABLE_NAME)
 public class TopicFeedRelation {
 
-	public static final String DEFAULT_QUERY = "";
+    public static final String DEFAULT_QUERY = "";
 
-	@DatabaseField(generatedId = true)
-	private int id;
+    @DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.TopicFeedRelation.FEED_TYPE)
-	private int topicFeedType;
+    @DatabaseField(columnName = DbSchemas.TopicFeedRelation.FEED_TYPE)
+    private int topicFeedType;
 
-	@DatabaseField(columnName = DbSchemas.TopicFeedRelation.QUERY)
-	private String query;
+    @DatabaseField(columnName = DbSchemas.TopicFeedRelation.QUERY)
+    private String query;
 
-	@DatabaseField(columnName = DbSchemas.TopicFeedRelation.TOPIC_HANDLE)
-	private String topicHandle;
+    @DatabaseField(columnName = DbSchemas.TopicFeedRelation.TOPIC_HANDLE)
+    private String topicHandle;
 
-	TopicFeedRelation() {  }
+    TopicFeedRelation() {  }
 
-	public TopicFeedRelation(String query, int topicFeedType, String topicHandle) {
-		this.query = query != null ? query : DEFAULT_QUERY;
-		this.topicFeedType = topicFeedType;
-		this.topicHandle = topicHandle;
-	}
+    public TopicFeedRelation(String query, int topicFeedType, String topicHandle) {
+        this.query = query != null ? query : DEFAULT_QUERY;
+        this.topicFeedType = topicFeedType;
+        this.topicHandle = topicHandle;
+    }
 
-	public String getQuery() {
-		return query;
-	}
+    public String getQuery() {
+        return query;
+    }
 
-	public int getTopicFeedType() {
-		return topicFeedType;
-	}
+    public int getTopicFeedType() {
+        return topicFeedType;
+    }
 
-	public String getTopicHandle() {
-		return topicHandle;
-	}
+    public String getTopicHandle() {
+        return topicHandle;
+    }
 }

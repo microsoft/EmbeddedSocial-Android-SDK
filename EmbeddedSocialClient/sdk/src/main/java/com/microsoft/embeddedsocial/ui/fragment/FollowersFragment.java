@@ -18,20 +18,20 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.UserRenderer;
  */
 public class FollowersFragment extends BaseFollowersFragment {
 
-	@Override
-	protected UserRenderer createRenderer() {
-		UserAccount userAccount = UserAccount.getInstance();
-		String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
-		if (userAccount.isCurrentUser(userHandle)) {
-			return new MyFollowersRenderer(this);
-		} else {
-			return new UserRenderer(this);
-		}
-	}
+    @Override
+    protected UserRenderer createRenderer() {
+        UserAccount userAccount = UserAccount.getInstance();
+        String userHandle = getActivity().getIntent().getStringExtra(IntentExtras.USER_HANDLE);
+        if (userAccount.isCurrentUser(userHandle)) {
+            return new MyFollowersRenderer(this);
+        } else {
+            return new UserRenderer(this);
+        }
+    }
 
-	@Override
-	protected Fetcher<UserCompactView> createFetcher() {
-		return FetchersFactory.createFollowersFetcher(getUserHandleArgument());
-	}
+    @Override
+    protected Fetcher<UserCompactView> createFetcher() {
+        return FetchersFactory.createFollowersFetcher(getUserHandleArgument());
+    }
 
 }

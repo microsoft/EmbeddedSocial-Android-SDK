@@ -5,8 +5,8 @@
   -->
 
 <shape
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:shape="oval"
-	>
-	<solid android:color="#20707070"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    >
+    <solid android:color="#20707070"/>
 </shape>

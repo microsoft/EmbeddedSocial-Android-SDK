@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.action;
 
 
-import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.actions.Action;
+import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
 
 /**
@@ -16,8 +16,8 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class ActionStartedEvent extends ActionEvent {
 
-	public ActionStartedEvent(Action action) {
-		super(action);
-	}
+    public ActionStartedEvent(Action action) {
+        super(action);
+    }
 
 }

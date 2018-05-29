@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchRequestWrapper;
 import com.microsoft.embeddedsocial.server.IActivityService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedRequest;
 import com.microsoft.embeddedsocial.server.model.activity.ActivityFeedResponse;
+
+import android.content.Context;
 
 import java.sql.SQLException;
 
@@ -20,42 +20,42 @@ import java.sql.SQLException;
  */
 public class ActivityServiceCachingWrapper implements IActivityService {
 
-	private final FollowingActivityFeedWrapper followingActivityFeedWrapper
-		= new FollowingActivityFeedWrapper();
+    private final FollowingActivityFeedWrapper followingActivityFeedWrapper
+        = new FollowingActivityFeedWrapper();
 
-	private final ActivityCache activityCache;
+    private final ActivityCache activityCache;
 
-	public ActivityServiceCachingWrapper(Context context) {
-		this.activityCache = new ActivityCache(context);
-	}
+    public ActivityServiceCachingWrapper(Context context) {
+        this.activityCache = new ActivityCache(context);
+    }
 
-	@Override
-	public ActivityFeedResponse getFollowingActivityFeed(ActivityFeedRequest request) throws NetworkRequestException {
-		return followingActivityFeedWrapper.getResponse(request);
-	}
+    @Override
+    public ActivityFeedResponse getFollowingActivityFeed(ActivityFeedRequest request) throws NetworkRequestException {
+        return followingActivityFeedWrapper.getResponse(request);
+    }
 
-	private class FollowingActivityFeedWrapper extends AbstractBatchRequestWrapper<ActivityFeedRequest, ActivityFeedResponse> {
+    private class FollowingActivityFeedWrapper extends AbstractBatchRequestWrapper<ActivityFeedRequest, ActivityFeedResponse> {
 
-		@Override
-		protected ActivityFeedResponse getNetworkResponse(ActivityFeedRequest request)
-			throws NetworkRequestException {
+        @Override
+        protected ActivityFeedResponse getNetworkResponse(ActivityFeedRequest request)
+            throws NetworkRequestException {
 
-			return request.send();
-		}
+            return request.send();
+        }
 
-		@Override
-		protected void storeResponse(ActivityFeedRequest request, ActivityFeedResponse response)
-			throws SQLException {
+        @Override
+        protected void storeResponse(ActivityFeedRequest request, ActivityFeedResponse response)
+            throws SQLException {
 
-			activityCache.storeActivityFeed(ActivityCache.ActivityFeedType.FOLLOWING_ACTIVITY,
-				response.getData(), isFirstDataRequest(request));
-		}
+            activityCache.storeActivityFeed(ActivityCache.ActivityFeedType.FOLLOWING_ACTIVITY,
+                response.getData(), isFirstDataRequest(request));
+        }
 
-		@Override
-		protected ActivityFeedResponse getCachedResponse(ActivityFeedRequest request)
-			throws SQLException {
+        @Override
+        protected ActivityFeedResponse getCachedResponse(ActivityFeedRequest request)
+            throws SQLException {
 
-			return activityCache.getActivityFeedResponse(ActivityCache.ActivityFeedType.FOLLOWING_ACTIVITY);
-		}
-	}
+            return activityCache.getActivityFeedResponse(ActivityCache.ActivityFeedType.FOLLOWING_ACTIVITY);
+        }
+    }
 }

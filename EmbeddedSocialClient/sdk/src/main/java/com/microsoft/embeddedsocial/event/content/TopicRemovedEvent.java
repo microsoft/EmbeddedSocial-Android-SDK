@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.content;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.data.model.RemoveContentData;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.data.model.RemoveContentData;
 
 /**
  * Result of remove comment.
@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class TopicRemovedEvent extends ContentRemovedEvent {
 
-	public TopicRemovedEvent(RemoveContentData data, boolean result) {
-		super(data, result);
-	}
+    public TopicRemovedEvent(RemoveContentData data, boolean result) {
+        super(data, result);
+    }
 }

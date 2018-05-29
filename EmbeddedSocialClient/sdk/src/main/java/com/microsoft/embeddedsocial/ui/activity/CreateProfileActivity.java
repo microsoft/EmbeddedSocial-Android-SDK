@@ -8,8 +8,6 @@ package com.microsoft.embeddedsocial.ui.activity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.CreateProfileFragment;
 
-import android.os.Bundle;
-
 /**
  * Activity for creating a user's profile.
  */

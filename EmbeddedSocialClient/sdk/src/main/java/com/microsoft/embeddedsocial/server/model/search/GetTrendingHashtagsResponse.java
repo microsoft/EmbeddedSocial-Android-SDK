@@ -12,20 +12,20 @@ import java.util.List;
 
 public class GetTrendingHashtagsResponse extends ListResponse<String> {
 
-	private List<String> hashtags;
+    private List<String> hashtags;
 
-	public GetTrendingHashtagsResponse(List<String> hashtags) {
-		this.hashtags = hashtags;
-	}
+    public GetTrendingHashtagsResponse(List<String> hashtags) {
+        this.hashtags = hashtags;
+    }
 
-	@Override
-	public List<String> getData() {
-		return hashtags != null ? hashtags : Collections.emptyList();
-	}
+    @Override
+    public List<String> getData() {
+        return hashtags != null ? hashtags : Collections.emptyList();
+    }
 
-	@Override
-	public String getContinuationKey() {
-		// The hashtags API does not support continuation tokens
-		return null;
-	}
+    @Override
+    public String getContinuationKey() {
+        // The hashtags API does not support continuation tokens
+        return null;
+    }
 }

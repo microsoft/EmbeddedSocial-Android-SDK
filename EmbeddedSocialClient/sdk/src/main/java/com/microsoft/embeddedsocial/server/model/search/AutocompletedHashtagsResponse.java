@@ -11,20 +11,20 @@ import java.util.List;
 
 public class AutocompletedHashtagsResponse extends ListResponse<String> {
 
-	private List<String> suggestions;
+    private List<String> suggestions;
 
-	public AutocompletedHashtagsResponse(List<String> suggestions) {
-		this.suggestions = suggestions;
-	}
+    public AutocompletedHashtagsResponse(List<String> suggestions) {
+        this.suggestions = suggestions;
+    }
 
-	@Override
-	public List<String> getData() {
-		return suggestions;
-	}
+    @Override
+    public List<String> getData() {
+        return suggestions;
+    }
 
-	@Override
-	public String getContinuationKey() {
-		// The hashtags API does not support continuation tokens
-		return null;
-	}
+    @Override
+    public String getContinuationKey() {
+        // The hashtags API does not support continuation tokens
+        return null;
+    }
 }

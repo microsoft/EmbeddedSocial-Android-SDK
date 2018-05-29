@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.server.model.image.AddImageRequest;
 
 public interface IImageService {
 
-	String addImage(AddImageRequest request)
-			throws NetworkRequestException;
+    String addImage(AddImageRequest request)
+            throws NetworkRequestException;
 
 }

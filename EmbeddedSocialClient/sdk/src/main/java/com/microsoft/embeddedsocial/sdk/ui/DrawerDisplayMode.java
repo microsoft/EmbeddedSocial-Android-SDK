@@ -9,6 +9,6 @@ package com.microsoft.embeddedsocial.sdk.ui;
  * Defines display mode of drawer menu.
  */
 public enum DrawerDisplayMode {
-	TABS,
-	SWITCHER
+    TABS,
+    SWITCHER
 }

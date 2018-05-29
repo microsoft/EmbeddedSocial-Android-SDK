@@ -7,15 +7,15 @@ package com.microsoft.embeddedsocial.social.exception;
 
 public class InvalidCredentialsException extends SocialNetworkException {
 
-	public InvalidCredentialsException(String detailMessage) {
-		super(detailMessage);
-	}
+    public InvalidCredentialsException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public InvalidCredentialsException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public InvalidCredentialsException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public InvalidCredentialsException(Throwable throwable) {
-		super(throwable);
-	}
+    public InvalidCredentialsException(Throwable throwable) {
+        super(throwable);
+    }
 }

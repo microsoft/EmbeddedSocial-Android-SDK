@@ -11,11 +11,11 @@ import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
 
 public class SearchRequest extends FeedUserRequest {
 
-	protected static final SearchOperations SEARCH = new SearchOperationsImpl(RETROFIT, CLIENT);
+    protected static final SearchOperations SEARCH = new SearchOperationsImpl(RETROFIT, CLIENT);
 
-	protected final String query;
+    protected final String query;
 
-	protected SearchRequest(String query) {
-		this.query = query;
-	}
+    protected SearchRequest(String query) {
+        this.query = query;
+    }
 }

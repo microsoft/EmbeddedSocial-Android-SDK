@@ -5,23 +5,21 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
-import android.os.Bundle;
-
-import com.microsoft.embeddedsocial.ui.fragment.LinkedAccountsFragment;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
+import com.microsoft.embeddedsocial.ui.fragment.LinkedAccountsFragment;
 
 /**
  * Activity showing the list of linked accounts.
  */
 public class LinkedAccountsActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new LinkedAccountsFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new LinkedAccountsFragment());
+    }
 
-	@Override
-	protected boolean isAuthorizationRequired() {
-		return true;
-	}
+    @Override
+    protected boolean isAuthorizationRequired() {
+        return true;
+    }
 }

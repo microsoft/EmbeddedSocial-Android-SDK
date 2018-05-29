@@ -17,14 +17,14 @@ import android.support.v4.app.Fragment;
  */
 @HandlingThread(ThreadType.MAIN)
 public class ViewCoverImageEvent extends BaseCommonBehaviorEvent {
-	private final TopicView topic;
+    private final TopicView topic;
 
-	public ViewCoverImageEvent(Fragment source, TopicView topic) {
-		super(source);
-		this.topic = topic;
-	}
+    public ViewCoverImageEvent(Fragment source, TopicView topic) {
+        super(source);
+        this.topic = topic;
+    }
 
-	public TopicView getTopic() {
-		return topic;
-	}
+    public TopicView getTopic() {
+        return topic;
+    }
 }

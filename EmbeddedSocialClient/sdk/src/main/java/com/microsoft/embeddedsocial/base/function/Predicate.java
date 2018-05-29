@@ -11,5 +11,5 @@ package com.microsoft.embeddedsocial.base.function;
  * @param <T> object type
  */
 public interface Predicate<T> {
-	boolean test(T object);
+    boolean test(T object);
 }

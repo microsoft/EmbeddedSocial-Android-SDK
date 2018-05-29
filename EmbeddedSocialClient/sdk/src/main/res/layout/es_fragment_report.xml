@@ -5,62 +5,62 @@
   -->
 
 <FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-	<LinearLayout
-		android:id="@+id/es_result_layout"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:padding="@dimen/es_padding_base"
-		android:orientation="vertical"
-		android:visibility="gone"
-		>
+    <LinearLayout
+        android:id="@+id/es_result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/es_padding_base"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			style="@style/EmbeddedSocialSdkGreenTextStyle"
-			android:paddingBottom="@dimen/es_padding_base"
-			android:text="@string/es_report_result_title"
-			/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/EmbeddedSocialSdkGreenTextStyle"
+            android:paddingBottom="@dimen/es_padding_base"
+            android:text="@string/es_report_result_title"
+            />
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="@dimen/es_text_body2"
-			android:text="@string/es_report_result_text"
-			/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/es_text_body2"
+            android:text="@string/es_report_result_text"
+            />
 
-	</LinearLayout>
+    </LinearLayout>
 
-	<LinearLayout
-		android:id="@+id/es_select_layout"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:orientation="vertical"
-		>
+    <LinearLayout
+        android:id="@+id/es_select_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-		<TextView
-			android:id="@+id/es_text_report_question"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="@dimen/es_padding_base"
-			style="@style/EmbeddedSocialSdkGreenTextStyle"
-			/>
+        <TextView
+            android:id="@+id/es_text_report_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/es_padding_base"
+            style="@style/EmbeddedSocialSdkGreenTextStyle"
+            />
 
-		<ListView
-			android:id="@+id/es_list_report_reason"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			/>
+        <ListView
+            android:id="@+id/es_list_report_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
-	</LinearLayout>
+    </LinearLayout>
 
-	<include layout="@layout/es_bottom_bar"
-			 android:layout_height="wrap_content"
-			 android:layout_width="match_parent"
-			 android:layout_gravity="bottom"/>
+    <include layout="@layout/es_bottom_bar"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:layout_gravity="bottom"/>
 </FrameLayout>

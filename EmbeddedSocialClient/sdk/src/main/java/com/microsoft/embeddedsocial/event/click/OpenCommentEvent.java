@@ -12,24 +12,24 @@ import android.support.v4.app.Fragment;
 
 public class OpenCommentEvent extends BaseCommonBehaviorEvent {
 
-	private final CommentView comment;
-	private final boolean jumpToEdit;
+    private final CommentView comment;
+    private final boolean jumpToEdit;
 
-	public OpenCommentEvent(Fragment source, CommentView comment) {
-		this(source, comment, false);
-	}
+    public OpenCommentEvent(Fragment source, CommentView comment) {
+        this(source, comment, false);
+    }
 
-	public OpenCommentEvent(Fragment source, CommentView comment, boolean jumpToEdit) {
-		super(source);
-		this.comment = comment;
-		this.jumpToEdit = jumpToEdit;
-	}
+    public OpenCommentEvent(Fragment source, CommentView comment, boolean jumpToEdit) {
+        super(source);
+        this.comment = comment;
+        this.jumpToEdit = jumpToEdit;
+    }
 
-	public CommentView getComment() {
-		return comment;
-	}
+    public CommentView getComment() {
+        return comment;
+    }
 
-	public boolean jumpToEdit() {
-		return jumpToEdit;
-	}
+    public boolean jumpToEdit() {
+        return jumpToEdit;
+    }
 }

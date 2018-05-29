@@ -6,30 +6,30 @@
 package com.microsoft.embeddedsocial.data.storage.syncadapter;
 
 import com.j256.ormlite.dao.Dao;
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
-import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 import com.microsoft.embeddedsocial.data.storage.model.EditedTopic;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.topics.UpdateTopicRequest;
+import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
  * Sync adapter for edited topics.
  */
 public class EditedTopicSyncAdapter extends AbstractAutoCleanupSyncAdapter<EditedTopic> {
 
-	public EditedTopicSyncAdapter(EditedTopic item, Dao<EditedTopic, ?> itemDao) {
-		super(item, itemDao);
-	}
+    public EditedTopicSyncAdapter(EditedTopic item, Dao<EditedTopic, ?> itemDao) {
+        super(item, itemDao);
+    }
 
-	@Override
-	protected void onSynchronize(EditedTopic item) throws NetworkRequestException,
-			SynchronizationException {
+    @Override
+    protected void onSynchronize(EditedTopic item) throws NetworkRequestException,
+            SynchronizationException {
 
-		UpdateTopicRequest request = new UpdateTopicRequest(
-			item.getTopicHandle(),
-			item.getTopicTitle(),
-			item.getTopicText(),
-			item.getTopicCategories()
-		);
-		getServiceProvider().getContentService().updateTopic(request);
-	}
+        UpdateTopicRequest request = new UpdateTopicRequest(
+            item.getTopicHandle(),
+            item.getTopicTitle(),
+            item.getTopicText(),
+            item.getTopicCategories()
+        );
+        getServiceProvider().getContentService().updateTopic(request);
+    }
 }

@@ -13,8 +13,8 @@ import com.microsoft.embeddedsocial.ui.fragment.DeleteAccountFragment;
  */
 public class DeleteAccountActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		setActivityContent(new DeleteAccountFragment());
-	}
+    @Override
+    protected void setupFragments() {
+        setActivityContent(new DeleteAccountFragment());
+    }
 }

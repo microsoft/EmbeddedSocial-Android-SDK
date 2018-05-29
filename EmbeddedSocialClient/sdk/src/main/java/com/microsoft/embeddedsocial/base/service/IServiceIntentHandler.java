@@ -5,9 +5,9 @@
 
 package com.microsoft.embeddedsocial.base.service;
 
-import android.content.Intent;
-
 import com.microsoft.embeddedsocial.base.IDisposable;
+
+import android.content.Intent;
 
 /**
  * Handles a specific type of intents.
@@ -15,10 +15,10 @@ import com.microsoft.embeddedsocial.base.IDisposable;
  */
 public interface IServiceIntentHandler<T extends Enum<T>> extends IDisposable {
 
-	/**
-	 * Processes the intent.
-	 * @param	action	the action
-	 * @param	intent	the intent to process
-	 */
-	void handleIntent(T action, Intent intent);
+    /**
+     * Processes the intent.
+     * @param	action	the action
+     * @param	intent	the intent to process
+     */
+    void handleIntent(T action, Intent intent);
 }

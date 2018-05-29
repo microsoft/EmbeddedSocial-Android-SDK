@@ -10,15 +10,15 @@ package com.microsoft.embeddedsocial.server;
  */
 public enum ServerConfig {
 
-	STAGING("http://sp-prod.cloudapp.net/api");
+    STAGING("http://sp-prod.cloudapp.net/api");
 
-	private final String server;
+    private final String server;
 
-	ServerConfig(String server) {
-		this.server = server;
-	}
+    ServerConfig(String server) {
+        this.server = server;
+    }
 
-	public String getServer() {
-		return server;
-	}
+    public String getServer() {
+        return server;
+    }
 }

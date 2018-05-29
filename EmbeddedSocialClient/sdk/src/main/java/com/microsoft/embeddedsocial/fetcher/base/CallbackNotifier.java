@@ -12,45 +12,45 @@ import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
  */
 class CallbackNotifier {
 
-	private Callback fetcherCallback;
+    private Callback fetcherCallback;
 
-	void setCallback(Callback callback) {
-		this.fetcherCallback = callback;
-	}
+    void setCallback(Callback callback) {
+        this.fetcherCallback = callback;
+    }
 
-	void notifyStateChanged(FetcherState state) {
-		postCallback(callback -> callback.onStateChanged(state));
-	}
+    void notifyStateChanged(FetcherState state) {
+        postCallback(callback -> callback.onStateChanged(state));
+    }
 
-	void notifyDataRemoved() {
-		postCallback(Callback::onDataRemoved);
-	}
+    void notifyDataRemoved() {
+        postCallback(Callback::onDataRemoved);
+    }
 
-	void notifyDataRequestSucceeded() {
-		postCallback(Callback::onDataRequestSucceeded);
-	}
+    void notifyDataRequestSucceeded() {
+        postCallback(Callback::onDataRequestSucceeded);
+    }
 
-	void notifyDataRequestFailed(Exception e) {
-		postCallback(callback -> callback.onDataRequestFailed(e));
-	}
+    void notifyDataRequestFailed(Exception e) {
+        postCallback(callback -> callback.onDataRequestFailed(e));
+    }
 
-	void notifyDataUpdated() {
-		postCallback(Callback::onDataUpdated);
-	}
+    void notifyDataUpdated() {
+        postCallback(Callback::onDataUpdated);
+    }
 
-	private void postCallback(CallbackMethod method) {
-		ThreadUtils.runOnMainThread(() -> {
-			if (fetcherCallback != null) {
-				method.call(fetcherCallback);
-			}
-		});
-	}
+    private void postCallback(CallbackMethod method) {
+        ThreadUtils.runOnMainThread(() -> {
+            if (fetcherCallback != null) {
+                method.call(fetcherCallback);
+            }
+        });
+    }
 
-	/**
-	 * Callback method.
-	 */
-	private interface CallbackMethod {
-		void call(Callback callback);
-	}
+    /**
+     * Callback method.
+     */
+    private interface CallbackMethod {
+        void call(Callback callback);
+    }
 
 }

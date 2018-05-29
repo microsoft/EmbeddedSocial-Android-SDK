@@ -16,35 +16,35 @@ import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 @DatabaseTable(tableName = DbSchemas.UserAccountBinding.TABLE_NAME)
 public class UserAccountBinding {
 
-	@DatabaseField(id = true)
-	private int id;
+    @DatabaseField(id = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.UserFeeds.USER_HANDLE)
-	private String userHandle;
+    @DatabaseField(columnName = DbSchemas.UserFeeds.USER_HANDLE)
+    private String userHandle;
 
-	@DatabaseField(columnName = DbSchemas.ThirdPartyAccount.ACCOUNT_HANDLE)
-	private String accountHandle;
+    @DatabaseField(columnName = DbSchemas.ThirdPartyAccount.ACCOUNT_HANDLE)
+    private String accountHandle;
 
-	/**
-	 * For ORM.
-	 */
-	UserAccountBinding() {  }
+    /**
+     * For ORM.
+     */
+    UserAccountBinding() {  }
 
-	/**
-	 * Creates an instance.
-	 * @param userHandle        user handle
-	 * @param accountHandle     account handle
-	 */
-	public UserAccountBinding(String userHandle, String accountHandle) {
-		this.accountHandle = accountHandle;
-		this.userHandle = userHandle;
-	}
+    /**
+     * Creates an instance.
+     * @param userHandle        user handle
+     * @param accountHandle     account handle
+     */
+    public UserAccountBinding(String userHandle, String accountHandle) {
+        this.accountHandle = accountHandle;
+        this.userHandle = userHandle;
+    }
 
-	public String getAccountHandle() {
-		return accountHandle;
-	}
+    public String getAccountHandle() {
+        return accountHandle;
+    }
 
-	public String getUserHandle() {
-		return userHandle;
-	}
+    public String getUserHandle() {
+        return userHandle;
+    }
 }

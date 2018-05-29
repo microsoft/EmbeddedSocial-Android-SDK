@@ -5,17 +5,17 @@
   -->
 
 <resources
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:ignore="ResourceName"
-	>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
 
-	<style name="EmbeddedSocialSdkSignInButtonsLayout">
-		<item name="android:layout_width">400dp</item>
-		<item name="android:layout_height">wrap_content</item>
-	</style>
+    <style name="EmbeddedSocialSdkSignInButtonsLayout">
+        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
-	<style name="EmbeddedSocialSdkDivider.List">
-		<item name="android:visibility">visible</item>
-	</style>
+    <style name="EmbeddedSocialSdkDivider.List">
+        <item name="android:visibility">visible</item>
+    </style>
 
 </resources>

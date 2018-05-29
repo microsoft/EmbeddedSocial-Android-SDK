@@ -14,10 +14,10 @@ import com.microsoft.embeddedsocial.autorest.TopicReportsOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.ContentType;
 import com.microsoft.embeddedsocial.autorest.models.PostReportRequest;
 import com.microsoft.embeddedsocial.autorest.models.Reason;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
+import com.microsoft.rest.ServiceException;
+import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 
@@ -25,55 +25,55 @@ import retrofit2.Response;
 
 public class ReportContentRequest extends UserRequest {
 
-	private static final TopicReportsOperations TOPIC_REPORT;
-	private static final CommentReportsOperations COMMENT_REPORT;
-	private static final ReplyReportsOperations REPLY_REPORT;
+    private static final TopicReportsOperations TOPIC_REPORT;
+    private static final CommentReportsOperations COMMENT_REPORT;
+    private static final ReplyReportsOperations REPLY_REPORT;
 
-	static {
-		TOPIC_REPORT = new TopicReportsOperationsImpl(RETROFIT, CLIENT);
-		COMMENT_REPORT = new CommentReportsOperationsImpl(RETROFIT, CLIENT);
-		REPLY_REPORT = new ReplyReportsOperationsImpl(RETROFIT, CLIENT);
-	}
+    static {
+        TOPIC_REPORT = new TopicReportsOperationsImpl(RETROFIT, CLIENT);
+        COMMENT_REPORT = new CommentReportsOperationsImpl(RETROFIT, CLIENT);
+        REPLY_REPORT = new ReplyReportsOperationsImpl(RETROFIT, CLIENT);
+    }
 
-	private PostReportRequest request;
-	private String contentHandle;
-	private ContentType contentType;
+    private PostReportRequest request;
+    private String contentHandle;
+    private ContentType contentType;
 
-	public ReportContentRequest(ContentType contentType, String contentHandle, Reason reason) {
-		if (contentType == null) {
-			throw new IllegalArgumentException("Content type cannot be null");
-		}
-		if (contentType == ContentType.UNKNOWN) {
-			throw new IllegalArgumentException("Content type cannot be unknown");
-		}
-		request = new PostReportRequest();
-		request.setReason(reason);
-		this.contentType = contentType;
-		this.contentHandle = contentHandle;
-	}
+    public ReportContentRequest(ContentType contentType, String contentHandle, Reason reason) {
+        if (contentType == null) {
+            throw new IllegalArgumentException("Content type cannot be null");
+        }
+        if (contentType == ContentType.UNKNOWN) {
+            throw new IllegalArgumentException("Content type cannot be unknown");
+        }
+        request = new PostReportRequest();
+        request.setReason(reason);
+        this.contentType = contentType;
+        this.contentHandle = contentHandle;
+    }
 
-	@Override
-	public Response send() throws NetworkRequestException {
-		ServiceResponse<Object> serviceResponse;
-		try {
-			switch (contentType) {
-				case TOPIC:
-					serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, authorization);
-					break;
-				case COMMENT:
-					serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, authorization);
-					break;
-				case REPLY:
-					serviceResponse = REPLY_REPORT.postReport(contentHandle, request, authorization);
-					break;
-				default:
-					throw new IllegalStateException("Unknown type for like");
-			}
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public Response send() throws NetworkRequestException {
+        ServiceResponse<Object> serviceResponse;
+        try {
+            switch (contentType) {
+                case TOPIC:
+                    serviceResponse = TOPIC_REPORT.postReport(contentHandle, request, authorization);
+                    break;
+                case COMMENT:
+                    serviceResponse = COMMENT_REPORT.postReport(contentHandle, request, authorization);
+                    break;
+                case REPLY:
+                    serviceResponse = REPLY_REPORT.postReport(contentHandle, request, authorization);
+                    break;
+                default:
+                    throw new IllegalStateException("Unknown type for like");
+            }
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return serviceResponse.getResponse();
-	}
+        return serviceResponse.getResponse();
+    }
 }

@@ -15,46 +15,46 @@ import com.microsoft.embeddedsocial.data.storage.DbSchemas;
 @DatabaseTable(tableName = DbSchemas.EditedTopic.TABLE_NAME)
 public class EditedTopic {
 
-	@DatabaseField(generatedId = true)
-	private int id;
+    @DatabaseField(generatedId = true)
+    private int id;
 
-	@DatabaseField(columnName = DbSchemas.Topics.TOPIC_HANDLE)
-	private String topicHandle;
+    @DatabaseField(columnName = DbSchemas.Topics.TOPIC_HANDLE)
+    private String topicHandle;
 
-	@DatabaseField(columnName = DbSchemas.Topics.TOPIC_TITLE)
-	private String topicTitle;
+    @DatabaseField(columnName = DbSchemas.Topics.TOPIC_TITLE)
+    private String topicTitle;
 
-	@DatabaseField(columnName = DbSchemas.Topics.TOPIC_TEXT)
-	private String topicText;
+    @DatabaseField(columnName = DbSchemas.Topics.TOPIC_TEXT)
+    private String topicText;
 
-	//TODO make database field
-	private String topicCategories;
+    //TODO make database field
+    private String topicCategories;
 
-	/**
-	 * For ORM.
-	 */
-	EditedTopic() {  }
+    /**
+     * For ORM.
+     */
+    EditedTopic() {  }
 
-	public EditedTopic(String topicHandle, String topicTitle, String topicText, String topicCategories) {
-		this.topicHandle = topicHandle;
-		this.topicTitle = topicTitle;
-		this.topicText = topicText;
-		this.topicCategories = topicCategories;
-	}
+    public EditedTopic(String topicHandle, String topicTitle, String topicText, String topicCategories) {
+        this.topicHandle = topicHandle;
+        this.topicTitle = topicTitle;
+        this.topicText = topicText;
+        this.topicCategories = topicCategories;
+    }
 
-	public String getTopicHandle() {
-		return topicHandle;
-	}
+    public String getTopicHandle() {
+        return topicHandle;
+    }
 
-	public String getTopicText() {
-		return topicText;
-	}
+    public String getTopicText() {
+        return topicText;
+    }
 
-	public String getTopicTitle() {
-		return topicTitle;
-	}
+    public String getTopicTitle() {
+        return topicTitle;
+    }
 
-	public String getTopicCategories() {
-		return topicCategories;
-	}
+    public String getTopicCategories() {
+        return topicCategories;
+    }
 }

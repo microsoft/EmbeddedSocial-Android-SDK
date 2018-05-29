@@ -25,46 +25,46 @@ import android.view.MenuItem;
  */
 public class TopicContextMenuClickListener extends ContextMenuClickListener {
 
-	private final TopicView topic;
-	private final UserActionProxy userActionProxy;
+    private final TopicView topic;
+    private final UserActionProxy userActionProxy;
 
-	public TopicContextMenuClickListener(Fragment fragment, TopicView topic) {
-		super(fragment, topic.getUser(), topic.getHandle());
-		this.topic = topic;
-		userActionProxy = new UserActionProxy(context);
-	}
+    public TopicContextMenuClickListener(Fragment fragment, TopicView topic) {
+        super(fragment, topic.getUser(), topic.getHandle());
+        this.topic = topic;
+        userActionProxy = new UserActionProxy(context);
+    }
 
-	@Override
-	public boolean onMenuItemClick(MenuItem item) {
-		if (super.onMenuItemClick(item)) {
-			return true;
-		}
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (super.onMenuItemClick(item)) {
+            return true;
+        }
 
-		int i = item.getItemId();
-		if (i == R.id.es_actionReportPost) {
-			ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.TOPIC);
-			return true;
-		} else if (i == R.id.es_actionRemove) {
-			ContentUpdateHelper.launchRemoveTopic(context, topic);
-			return true;
-		} else if (i == R.id.es_actionEdit) {
-			Intent intent = new Intent(context, EditPostActivity.class);
-			intent.putExtra(IntentExtras.TOPIC_EXTRA, topic);
-			context.startActivity(intent);
-			return true;
-		} else if (i == R.id.es_actionHideTopic) {
-			userActionProxy.hideTopic(topic.getHandle());
-			return true;
-		} else if (i == R.id.es_reportCustom) {
-			IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
-			try {
-				reportHandler.generateReport(context, topic);
-			} catch (NullPointerException e) {
-				DebugLog.logException(e);
-			}
-			return true;
-		} else {
-			return false;
-		}
-	}
+        int i = item.getItemId();
+        if (i == R.id.es_actionReportPost) {
+            ContentUpdateHelper.startContentReport(context, contentHandle, ContentType.TOPIC);
+            return true;
+        } else if (i == R.id.es_actionRemove) {
+            ContentUpdateHelper.launchRemoveTopic(context, topic);
+            return true;
+        } else if (i == R.id.es_actionEdit) {
+            Intent intent = new Intent(context, EditPostActivity.class);
+            intent.putExtra(IntentExtras.TOPIC_EXTRA, topic);
+            context.startActivity(intent);
+            return true;
+        } else if (i == R.id.es_actionHideTopic) {
+            userActionProxy.hideTopic(topic.getHandle());
+            return true;
+        } else if (i == R.id.es_reportCustom) {
+            IReportHandler reportHandler = GlobalObjectRegistry.getObject(IReportHandler.class);
+            try {
+                reportHandler.generateReport(context, topic);
+            } catch (NullPointerException e) {
+                DebugLog.logException(e);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

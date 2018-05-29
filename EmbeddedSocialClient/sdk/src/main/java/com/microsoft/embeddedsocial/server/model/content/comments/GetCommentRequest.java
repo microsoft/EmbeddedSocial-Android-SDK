@@ -5,8 +5,8 @@
 
 package com.microsoft.embeddedsocial.server.model.content.comments;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.models.CommentView;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 
@@ -14,20 +14,20 @@ import java.io.IOException;
 
 public class GetCommentRequest extends GenericCommentRequest {
 
-	public GetCommentRequest(String commentHandle) {
-		super(commentHandle);
-	}
+    public GetCommentRequest(String commentHandle) {
+        super(commentHandle);
+    }
 
-	@Override
-	public GetCommentResponse send() throws NetworkRequestException {
-		ServiceResponse<CommentView> serviceResponse;
-		try {
-			serviceResponse = COMMENTS.getComment(commentHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetCommentResponse send() throws NetworkRequestException {
+        ServiceResponse<CommentView> serviceResponse;
+        try {
+            serviceResponse = COMMENTS.getComment(commentHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new GetCommentResponse(new com.microsoft.embeddedsocial.server.model.view.CommentView(serviceResponse.getBody()));
-	}
+        return new GetCommentResponse(new com.microsoft.embeddedsocial.server.model.view.CommentView(serviceResponse.getBody()));
+    }
 }

@@ -8,7 +8,6 @@ package com.microsoft.embeddedsocial.sdk;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 
 public interface INavigationDrawerHandler {

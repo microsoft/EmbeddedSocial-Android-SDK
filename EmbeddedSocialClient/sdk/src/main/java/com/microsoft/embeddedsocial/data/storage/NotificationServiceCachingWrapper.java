@@ -5,9 +5,7 @@
 
 package com.microsoft.embeddedsocial.data.storage;
 
-import android.content.Context;
-import android.text.TextUtils;
-
+import com.microsoft.embeddedsocial.autorest.models.CountResponse;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.data.storage.request.wrapper.AbstractBatchRequestWrapper;
 import com.microsoft.embeddedsocial.server.INotificationService;
@@ -21,7 +19,9 @@ import com.microsoft.embeddedsocial.server.model.notification.UpdateNotification
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
-import com.microsoft.embeddedsocial.autorest.models.CountResponse;
+
+import android.content.Context;
+import android.text.TextUtils;
 
 import java.sql.SQLException;
 
@@ -32,117 +32,117 @@ import retrofit2.Response;
  */
 public class NotificationServiceCachingWrapper implements INotificationService {
 
-	private final GetNotificationFeedWrapper notificationFeedWrapper = new GetNotificationFeedWrapper();
-	private final Context context;
-	private final ActivityCache activityCache;
+    private final GetNotificationFeedWrapper notificationFeedWrapper = new GetNotificationFeedWrapper();
+    private final Context context;
+    private final ActivityCache activityCache;
 
-	/**
-	 * Creates an instance.
-	 * @param context           valid context
-	 */
-	public NotificationServiceCachingWrapper(Context context) {
-		this.context = context;
-		this.activityCache = new ActivityCache(context);
-	}
+    /**
+     * Creates an instance.
+     * @param context           valid context
+     */
+    public NotificationServiceCachingWrapper(Context context) {
+        this.context = context;
+        this.activityCache = new ActivityCache(context);
+    }
 
-	@Override
-	public CountResponse getNotificationCount(GetNotificationCountRequest request)
-		throws NetworkRequestException {
+    @Override
+    public CountResponse getNotificationCount(GetNotificationCountRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public GetNotificationFeedResponse getNotificationFeed(GetNotificationFeedRequest request)
-		throws NetworkRequestException {
+    @Override
+    public GetNotificationFeedResponse getNotificationFeed(GetNotificationFeedRequest request)
+        throws NetworkRequestException {
 
-		return notificationFeedWrapper.getResponse(request);
-	}
+        return notificationFeedWrapper.getResponse(request);
+    }
 
-	@Override
-	public Response registerPushNotification(RegisterPushNotificationRequest request)
-		throws NetworkRequestException {
+    @Override
+    public Response registerPushNotification(RegisterPushNotificationRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
-		throws NetworkRequestException {
+    @Override
+    public Response unregisterPushNotification(UnRegisterPushNotificationRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	@Override
-	public Response updateNotificationStatus(UpdateNotificationStatusRequest request)
-		throws NetworkRequestException {
+    @Override
+    public Response updateNotificationStatus(UpdateNotificationStatusRequest request)
+        throws NetworkRequestException {
 
-		return request.send();
-	}
+        return request.send();
+    }
 
-	private class GetNotificationFeedWrapper
-		extends AbstractBatchRequestWrapper<GetNotificationFeedRequest, GetNotificationFeedResponse> {
+    private class GetNotificationFeedWrapper
+        extends AbstractBatchRequestWrapper<GetNotificationFeedRequest, GetNotificationFeedResponse> {
 
-		@Override
-		protected GetNotificationFeedResponse getCachedResponse(GetNotificationFeedRequest request)
-			throws SQLException {
+        @Override
+        protected GetNotificationFeedResponse getCachedResponse(GetNotificationFeedRequest request)
+            throws SQLException {
 
-			return activityCache.getNotificationFeedResponse();
-		}
+            return activityCache.getNotificationFeedResponse();
+        }
 
-		@Override
-		protected GetNotificationFeedResponse getNetworkResponse(GetNotificationFeedRequest request)
-			throws NetworkRequestException {
+        @Override
+        protected GetNotificationFeedResponse getNetworkResponse(GetNotificationFeedRequest request)
+            throws NetworkRequestException {
 
-			GetNotificationFeedResponse response = request.send();
+            GetNotificationFeedResponse response = request.send();
 
-			for (ActivityView activityView : response.getData()) {
-				activityView.setUnread(activityCache.isActivityUnread(activityView.getHandle()));
-			}
+            for (ActivityView activityView : response.getData()) {
+                activityView.setUnread(activityCache.isActivityUnread(activityView.getHandle()));
+            }
 
-			if (isFirstDataRequest(request)) {
-				updateLastActivityHandle(response);
-				Preferences.getInstance().resetNotificationCount();
-			}
+            if (isFirstDataRequest(request)) {
+                updateLastActivityHandle(response);
+                Preferences.getInstance().resetNotificationCount();
+            }
 
-			return response;
-		}
+            return response;
+        }
 
-		private void updateLastActivityHandle(GetNotificationFeedResponse response) {
-			String deliveredActivityHandle = response.getDeliveredActivityHandle();
-			String latestHandle;
+        private void updateLastActivityHandle(GetNotificationFeedResponse response) {
+            String deliveredActivityHandle = response.getDeliveredActivityHandle();
+            String latestHandle;
 
-			if (!response.getData().isEmpty()) {
-				String firstItemHandle = response.getData().get(0).getHandle();
+            if (!response.getData().isEmpty()) {
+                String firstItemHandle = response.getData().get(0).getHandle();
 
-				if (!TextUtils.isEmpty(response.getDeliveredActivityHandle())) {
-					latestHandle = firstItemHandle.compareTo(deliveredActivityHandle) < 0
-						? firstItemHandle : deliveredActivityHandle;
-				} else {
-					latestHandle = firstItemHandle;
-				}
-			} else {
-				latestHandle = deliveredActivityHandle;
-			}
+                if (!TextUtils.isEmpty(response.getDeliveredActivityHandle())) {
+                    latestHandle = firstItemHandle.compareTo(deliveredActivityHandle) < 0
+                        ? firstItemHandle : deliveredActivityHandle;
+                } else {
+                    latestHandle = firstItemHandle;
+                }
+            } else {
+                latestHandle = deliveredActivityHandle;
+            }
 
-			if (activityCache.storeLastActivityHandle(latestHandle)) {
-				launchSync();
-			}
-		}
+            if (activityCache.storeLastActivityHandle(latestHandle)) {
+                launchSync();
+            }
+        }
 
-		@Override
-		protected void storeResponse(GetNotificationFeedRequest request, GetNotificationFeedResponse response)
-			throws SQLException {
+        @Override
+        protected void storeResponse(GetNotificationFeedRequest request, GetNotificationFeedResponse response)
+            throws SQLException {
 
-			activityCache.storeActivityFeed(
-				ActivityCache.ActivityFeedType.NOTIFICATIONS,
-				response.getData(),
-				isFirstDataRequest(request)
-			);
-		}
-	}
+            activityCache.storeActivityFeed(
+                ActivityCache.ActivityFeedType.NOTIFICATIONS,
+                response.getData(),
+                isFirstDataRequest(request)
+            );
+        }
+    }
 
-	private void launchSync() {
-		WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
-	}
+    private void launchSync() {
+        WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+    }
 }

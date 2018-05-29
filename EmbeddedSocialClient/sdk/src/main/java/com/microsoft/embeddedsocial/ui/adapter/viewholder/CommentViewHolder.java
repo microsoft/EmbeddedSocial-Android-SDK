@@ -30,146 +30,146 @@ import android.widget.TextView;
  * Init comment view layout.
  */
 public class CommentViewHolder extends UserHeaderViewHolder {
-	private final CommentButtonListener commentButtonListener;
+    private final CommentButtonListener commentButtonListener;
 
-	private FrameLayout coverButton;
-	private ImageViewContentLoader coverContentLoader;
-	private View commentRootView;
-	private TextView commentText;
+    private FrameLayout coverButton;
+    private ImageViewContentLoader coverContentLoader;
+    private View commentRootView;
+    private TextView commentText;
 
-	private LinearLayout commentLikesCountButton;
-	private LinearLayout commentRepliesCountButton;
-	private ImageView commentButton;
-	private ImageView likeButton;
-	private ViewGroup contentButton;
-	private ButtonStyleHelper buttonStyleHelper;
+    private LinearLayout commentLikesCountButton;
+    private LinearLayout commentRepliesCountButton;
+    private ImageView commentButton;
+    private ImageView likeButton;
+    private ViewGroup contentButton;
+    private ButtonStyleHelper buttonStyleHelper;
 
-	public static CommentViewHolder create(
-			Fragment fragment,
-			CommentButtonListener commentButtonListener,
-			ViewGroup parent,
-			HolderType holderType) {
-		View view;
-		if (holderType == HolderType.CONTENT) {
-			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_comment, parent, false);
-		} else {
-			view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_feed_comment, parent, false);
-		}
-		return new CommentViewHolder(fragment, commentButtonListener, view);
-	}
+    public static CommentViewHolder create(
+            Fragment fragment,
+            CommentButtonListener commentButtonListener,
+            ViewGroup parent,
+            HolderType holderType) {
+        View view;
+        if (holderType == HolderType.CONTENT) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_comment, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_feed_comment, parent, false);
+        }
+        return new CommentViewHolder(fragment, commentButtonListener, view);
+    }
 
-	public CommentViewHolder(Fragment fragment, CommentButtonListener commentButtonListener, View view) {
-		super(fragment, view);
-		this.commentRootView = view.findViewById(R.id.es_comment_root);
-		this.commentButtonListener = commentButtonListener;
-		this.buttonStyleHelper = new ButtonStyleHelper(view.getContext());
-		initViews(view);
-	}
+    public CommentViewHolder(Fragment fragment, CommentButtonListener commentButtonListener, View view) {
+        super(fragment, view);
+        this.commentRootView = view.findViewById(R.id.es_comment_root);
+        this.commentButtonListener = commentButtonListener;
+        this.buttonStyleHelper = new ButtonStyleHelper(view.getContext());
+        initViews(view);
+    }
 
-	public void renderItem(int position, CommentView comment) {
-		if (comment == null) {
-			return;
-		}
-		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
+    public void renderItem(int position, CommentView comment) {
+        if (comment == null) {
+            return;
+        }
+        renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
 
-		commentText.setText(comment.getCommentText());
+        commentText.setText(comment.getCommentText());
 
-		long totalLikes = comment.getTotalLikes();
-		TextView commentLikesCountButtonText = (TextView)commentLikesCountButton.findViewById(R.id.es_commentLikesCountButtonText);
-		commentLikesCountButtonText.setText(
-			commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
-					QuantityStringUtils.convertLongToInt(totalLikes),
-					totalLikes));
+        long totalLikes = comment.getTotalLikes();
+        TextView commentLikesCountButtonText = (TextView)commentLikesCountButton.findViewById(R.id.es_commentLikesCountButtonText);
+        commentLikesCountButtonText.setText(
+            commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
+                    QuantityStringUtils.convertLongToInt(totalLikes),
+                    totalLikes));
 
-		long totalReplies = comment.getTotalReplies();
-		TextView commentButtonText = (TextView)commentRepliesCountButton.findViewById(R.id.es_commentRepliesCountButtonText);
-		commentButtonText.setText(
-			commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_replies_pattern,
-					QuantityStringUtils.convertLongToInt(totalReplies),
-					totalReplies));
+        long totalReplies = comment.getTotalReplies();
+        TextView commentButtonText = (TextView)commentRepliesCountButton.findViewById(R.id.es_commentRepliesCountButtonText);
+        commentButtonText.setText(
+            commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_replies_pattern,
+                    QuantityStringUtils.convertLongToInt(totalReplies),
+                    totalReplies));
 
-		likeButton.setTag(R.id.es_keyHandle, comment.getHandle());
-		likeButton.setTag(R.id.es_keyIsAdd, !comment.isLikeStatus());
-		buttonStyleHelper.applyAccentColor(likeButton, comment.isLikeStatus());
+        likeButton.setTag(R.id.es_keyHandle, comment.getHandle());
+        likeButton.setTag(R.id.es_keyIsAdd, !comment.isLikeStatus());
+        buttonStyleHelper.applyAccentColor(likeButton, comment.isLikeStatus());
 
-		ViewUtils.setVisible(commentButton, !comment.isLocal());
-		ViewUtils.setVisible(likeButton, !comment.isLocal());
-		int actionViewsVisibility = comment.isLocal() ? View.INVISIBLE : View.VISIBLE;
-		commentLikesCountButton.setVisibility(actionViewsVisibility);
-		commentRepliesCountButton.setVisibility(actionViewsVisibility);
-		contentButton.setVisibility((comment.isLocal() || position == 0) ? View.GONE : View.VISIBLE);
-		contentButton.setOnClickListener(comment.isLocal() ? null : commentButtonListener::onClickContent);
+        ViewUtils.setVisible(commentButton, !comment.isLocal());
+        ViewUtils.setVisible(likeButton, !comment.isLocal());
+        int actionViewsVisibility = comment.isLocal() ? View.INVISIBLE : View.VISIBLE;
+        commentLikesCountButton.setVisibility(actionViewsVisibility);
+        commentRepliesCountButton.setVisibility(actionViewsVisibility);
+        contentButton.setVisibility((comment.isLocal() || position == 0) ? View.GONE : View.VISIBLE);
+        contentButton.setOnClickListener(comment.isLocal() ? null : commentButtonListener::onClickContent);
 
-		commentLikesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
-		commentRepliesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
-		commentRepliesCountButton.setTag(R.id.es_keyPosition, position);
-		commentRepliesCountButton.setTag(R.id.es_keyComment, comment);
-		commentButton.setTag(R.id.es_keyHandle, comment.getHandle());
-		commentButton.setTag(R.id.es_keyComment, comment);
-		contentButton.setTag(R.id.es_keyComment, comment);
+        commentLikesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
+        commentRepliesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
+        commentRepliesCountButton.setTag(R.id.es_keyPosition, position);
+        commentRepliesCountButton.setTag(R.id.es_keyComment, comment);
+        commentButton.setTag(R.id.es_keyHandle, comment.getHandle());
+        commentButton.setTag(R.id.es_keyComment, comment);
+        contentButton.setTag(R.id.es_keyComment, comment);
 
-		contextMenuButton.setTag(R.id.es_keyComment, comment);
+        contextMenuButton.setTag(R.id.es_keyComment, comment);
 
-		setCommentBackgroundColor(comment);
-		ContentUpdateHelper.setTopicCoverImage(coverContentLoader, comment.getImageLocation());
-		setupCoverButton(comment);
-	}
+        setCommentBackgroundColor(comment);
+        ContentUpdateHelper.setTopicCoverImage(coverContentLoader, comment.getImageLocation());
+        setupCoverButton(comment);
+    }
 
-	private void setCommentBackgroundColor(CommentView comment) {
-		@ColorInt int commentBackground = comment.isLocal()
-			? ThemeAttributes.getColor(getContext(), R.styleable.es_AppTheme_es_uploadingItemColor)
-			: ContextCompat.getColor(getContext(), R.color.es_comment_background);
-		commentRootView.setBackgroundColor(commentBackground);
-	}
+    private void setCommentBackgroundColor(CommentView comment) {
+        @ColorInt int commentBackground = comment.isLocal()
+            ? ThemeAttributes.getColor(getContext(), R.styleable.es_AppTheme_es_uploadingItemColor)
+            : ContextCompat.getColor(getContext(), R.color.es_comment_background);
+        commentRootView.setBackgroundColor(commentBackground);
+    }
 
-	public void renderSingleItem(CommentView comment) {
-		if (comment == null) {
-			return;
-		}
-		renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
-		contextMenuButton.setTag(R.id.es_keyComment, comment);
-		commentText.setText(comment.getCommentText());
+    public void renderSingleItem(CommentView comment) {
+        if (comment == null) {
+            return;
+        }
+        renderUserHeader(comment.getUser(), comment.getHandle(), comment.getElapsedSeconds());
+        contextMenuButton.setTag(R.id.es_keyComment, comment);
+        commentText.setText(comment.getCommentText());
 
-		long totalLikes = comment.getTotalLikes();
-		TextView commentLikesCountButtonText = (TextView)commentLikesCountButton.findViewById(R.id.es_commentLikesCountButtonText);
-		commentLikesCountButtonText.setText(
-				commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
-						QuantityStringUtils.convertLongToInt(totalLikes),
-						totalLikes));
-		commentLikesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
+        long totalLikes = comment.getTotalLikes();
+        TextView commentLikesCountButtonText = (TextView)commentLikesCountButton.findViewById(R.id.es_commentLikesCountButtonText);
+        commentLikesCountButtonText.setText(
+                commentLikesCountButton.getResources().getQuantityString(R.plurals.es_topic_likes_pattern,
+                        QuantityStringUtils.convertLongToInt(totalLikes),
+                        totalLikes));
+        commentLikesCountButton.setTag(R.id.es_keyHandle, comment.getHandle());
 
-		commentRepliesCountButton.setVisibility(View.GONE);
-		likeButton.setVisibility(View.GONE);
-		commentButton.setVisibility(View.GONE);
-	}
+        commentRepliesCountButton.setVisibility(View.GONE);
+        likeButton.setVisibility(View.GONE);
+        commentButton.setVisibility(View.GONE);
+    }
 
-	private void initViews(View view) {
-		setContextMenuClickListener(commentButtonListener::onClickContextMenu);
-		setHeaderClickable(true);
+    private void initViews(View view) {
+        setContextMenuClickListener(commentButtonListener::onClickContextMenu);
+        setHeaderClickable(true);
 
-		contentButton = (ViewGroup) view.findViewById(R.id.es_contentButton);
-		ImageView coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
-		coverContentLoader = new CoverLoader(coverImage);
+        contentButton = (ViewGroup) view.findViewById(R.id.es_contentButton);
+        ImageView coverImage = (ImageView) view.findViewById(R.id.es_coverImage);
+        coverContentLoader = new CoverLoader(coverImage);
 
-		commentText = (TextView) view.findViewById(R.id.es_commentText);
-		commentLikesCountButton = (LinearLayout) view.findViewById(R.id.es_commentLikesCountButton);
-		buttonStyleHelper.applyAccentColor(commentLikesCountButton, R.id.es_commentLikesCountButtonText, R.id.es_commentLikesCountButtonImage);
-		commentRepliesCountButton = (LinearLayout) view.findViewById(R.id.es_commentRepliesCountButton);
-		buttonStyleHelper.applyAccentColor(commentRepliesCountButton, R.id.es_commentRepliesCountButtonText, R.id.es_commentRepliesCountButtonImage);
-		commentButton = (ImageView) view.findViewById(R.id.es_commentButton);
-		likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
+        commentText = (TextView) view.findViewById(R.id.es_commentText);
+        commentLikesCountButton = (LinearLayout) view.findViewById(R.id.es_commentLikesCountButton);
+        buttonStyleHelper.applyAccentColor(commentLikesCountButton, R.id.es_commentLikesCountButtonText, R.id.es_commentLikesCountButtonImage);
+        commentRepliesCountButton = (LinearLayout) view.findViewById(R.id.es_commentRepliesCountButton);
+        buttonStyleHelper.applyAccentColor(commentRepliesCountButton, R.id.es_commentRepliesCountButtonText, R.id.es_commentRepliesCountButtonImage);
+        commentButton = (ImageView) view.findViewById(R.id.es_commentButton);
+        likeButton = (ImageView) view.findViewById(R.id.es_likeButton);
 
-		commentLikesCountButton.setOnClickListener(commentButtonListener::onClickLikesCount);
-		commentRepliesCountButton.setOnClickListener(commentButtonListener::onClickRepliesCount);
-		commentButton.setOnClickListener(commentButtonListener::onClickComment);
-		likeButton.setOnClickListener(commentButtonListener::onClickLike);
-	}
+        commentLikesCountButton.setOnClickListener(commentButtonListener::onClickLikesCount);
+        commentRepliesCountButton.setOnClickListener(commentButtonListener::onClickRepliesCount);
+        commentButton.setOnClickListener(commentButtonListener::onClickComment);
+        likeButton.setOnClickListener(commentButtonListener::onClickLike);
+    }
 
-	private void setupCoverButton(CommentView commentView) {
-		coverButton = (FrameLayout) commentRootView.findViewById(R.id.es_coverButton);
-		if (coverButton != null) {
-			coverButton.setOnClickListener((v) ->
-					commentButtonListener.onClickCover(commentView));
-		}
-	}
+    private void setupCoverButton(CommentView commentView) {
+        coverButton = (FrameLayout) commentRootView.findViewById(R.id.es_coverButton);
+        if (coverButton != null) {
+            coverButton.setOnClickListener((v) ->
+                    commentButtonListener.onClickCover(commentView));
+        }
+    }
 }

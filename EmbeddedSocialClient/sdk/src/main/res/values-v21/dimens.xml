@@ -5,9 +5,9 @@
   -->
 
 <resources>
-	<dimen name="es_padding_card_horizontal">3dp</dimen>
-	<dimen name="es_card_list_padding_hor">@dimen/es_padding_card_horizontal</dimen>
-	<dimen name="es_padding_card_vertical">@dimen/es_padding_small</dimen>
-	<dimen name="es_card_shadow_size">@dimen/es_padding_small</dimen>
-	<dimen name="es_card_shadow_space">@dimen/es_padding_small</dimen>
+    <dimen name="es_padding_card_horizontal">3dp</dimen>
+    <dimen name="es_card_list_padding_hor">@dimen/es_padding_card_horizontal</dimen>
+    <dimen name="es_padding_card_vertical">@dimen/es_padding_small</dimen>
+    <dimen name="es_card_shadow_size">@dimen/es_padding_small</dimen>
+    <dimen name="es_card_shadow_space">@dimen/es_padding_small</dimen>
 </resources>

@@ -13,44 +13,44 @@ import java.util.List;
  */
 class CompositeCallback extends Callback {
 
-	private final List<Callback> callbacks = new LinkedList<>();
+    private final List<Callback> callbacks = new LinkedList<>();
 
-	void addCallback(Callback callback) {
-		callbacks.add(callback);
-	}
+    void addCallback(Callback callback) {
+        callbacks.add(callback);
+    }
 
-	@Override
-	public void onDataRemoved() {
-		for (Callback callback : callbacks) {
-			callback.onDataRemoved();
-		}
-	}
+    @Override
+    public void onDataRemoved() {
+        for (Callback callback : callbacks) {
+            callback.onDataRemoved();
+        }
+    }
 
-	@Override
-	public void onDataRequestSucceeded() {
-		for (Callback callback : callbacks) {
-			callback.onDataRequestSucceeded();
-		}
-	}
+    @Override
+    public void onDataRequestSucceeded() {
+        for (Callback callback : callbacks) {
+            callback.onDataRequestSucceeded();
+        }
+    }
 
-	@Override
-	public void onDataRequestFailed(Exception e) {
-		for (Callback callback : callbacks) {
-			callback.onDataRequestFailed(e);
-		}
-	}
+    @Override
+    public void onDataRequestFailed(Exception e) {
+        for (Callback callback : callbacks) {
+            callback.onDataRequestFailed(e);
+        }
+    }
 
-	@Override
-	public void onStateChanged(FetcherState newState) {
-		for (Callback callback : callbacks) {
-			callback.onStateChanged(newState);
-		}
-	}
+    @Override
+    public void onStateChanged(FetcherState newState) {
+        for (Callback callback : callbacks) {
+            callback.onStateChanged(newState);
+        }
+    }
 
-	@Override
-	public void onDataUpdated() {
-		for (Callback callback : callbacks) {
-			callback.onDataUpdated();
-		}
-	}
+    @Override
+    public void onDataUpdated() {
+        for (Callback callback : callbacks) {
+            callback.onDataUpdated();
+        }
+    }
 }

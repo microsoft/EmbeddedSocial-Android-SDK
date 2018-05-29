@@ -16,9 +16,9 @@ import retrofit2.Response;
  */
 public interface IReportService {
 
-	Response reportContent(ReportContentRequest request)
-			throws NetworkRequestException;
+    Response reportContent(ReportContentRequest request)
+            throws NetworkRequestException;
 
-	Response reportUser(ReportUserRequest request)
-			throws NetworkRequestException;
+    Response reportUser(ReportUserRequest request)
+            throws NetworkRequestException;
 }

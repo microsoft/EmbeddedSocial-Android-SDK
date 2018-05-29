@@ -10,17 +10,17 @@ package com.microsoft.embeddedsocial.server.exception;
  */
 public class BadRequestException extends StatusException {
 
-	public static final int STATUS_CODE = 400;
+    public static final int STATUS_CODE = 400;
 
-	public BadRequestException(String message) {
-		super(STATUS_CODE, message);
-	}
+    public BadRequestException(String message) {
+        super(STATUS_CODE, message);
+    }
 
-	public BadRequestException(String message, Throwable cause) {
-		super(STATUS_CODE, message, cause);
-	}
+    public BadRequestException(String message, Throwable cause) {
+        super(STATUS_CODE, message, cause);
+    }
 
-	public BadRequestException(Throwable cause) {
-		super(STATUS_CODE, cause);
-	}
+    public BadRequestException(Throwable cause) {
+        super(STATUS_CODE, cause);
+    }
 }

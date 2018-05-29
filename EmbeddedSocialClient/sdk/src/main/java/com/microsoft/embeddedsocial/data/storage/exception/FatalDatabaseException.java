@@ -10,15 +10,15 @@ package com.microsoft.embeddedsocial.data.storage.exception;
  */
 public class FatalDatabaseException extends RuntimeException {
 
-	public FatalDatabaseException(String detailMessage) {
-		super(detailMessage);
-	}
+    public FatalDatabaseException(String detailMessage) {
+        super(detailMessage);
+    }
 
-	public FatalDatabaseException(String detailMessage, Throwable throwable) {
-		super(detailMessage, throwable);
-	}
+    public FatalDatabaseException(String detailMessage, Throwable throwable) {
+        super(detailMessage, throwable);
+    }
 
-	public FatalDatabaseException(Throwable throwable) {
-		super(throwable);
-	}
+    public FatalDatabaseException(Throwable throwable) {
+        super(throwable);
+    }
 }

@@ -6,8 +6,8 @@
 package com.microsoft.embeddedsocial.event.content;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
-import com.microsoft.embeddedsocial.data.model.LikeContentData;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
+import com.microsoft.embeddedsocial.data.model.LikeContentData;
 
 /**
  * Result of add like.
@@ -15,7 +15,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class LikeAddedEvent extends LikeEvent {
 
-	public LikeAddedEvent(LikeContentData data, boolean result) {
-		super(data, result);
-	}
+    public LikeAddedEvent(LikeContentData data, boolean result) {
+        super(data, result);
+    }
 }

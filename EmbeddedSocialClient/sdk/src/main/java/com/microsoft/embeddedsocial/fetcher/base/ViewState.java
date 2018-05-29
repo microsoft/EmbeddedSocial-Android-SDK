@@ -12,28 +12,28 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseContentFragment;
  */
 public enum ViewState {
 
-	/**
-	 * The data is empty.
-	 */
-	EMPTY,
+    /**
+     * The data is empty.
+     */
+    EMPTY,
 
-	/**
-	 * No data due to an error.
-	 */
-	ERROR,
+    /**
+     * No data due to an error.
+     */
+    ERROR,
 
-	/**
-	 * The first data page is loading.
-	 */
-	LOADING,
+    /**
+     * The first data page is loading.
+     */
+    LOADING,
 
-	/**
-	 * The data is being refreshing.
-	 */
-	REFRESHING,
+    /**
+     * The data is being refreshing.
+     */
+    REFRESHING,
 
-	/**
-	 * Data is ready to be displayed (no refresh operation is going on).
-	 */
-	DATA
+    /**
+     * Data is ready to be displayed (no refresh operation is going on).
+     */
+    DATA
 }

@@ -9,13 +9,13 @@ import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 
 public class GetReplyResponse {
 
-	private ReplyView reply;
+    private ReplyView reply;
 
-	public GetReplyResponse(ReplyView reply) {
-		this.reply = reply;
-	}
+    public GetReplyResponse(ReplyView reply) {
+        this.reply = reply;
+    }
 
-	public ReplyView getReply() {
-		return reply;
-	}
+    public ReplyView getReply() {
+        return reply;
+    }
 }

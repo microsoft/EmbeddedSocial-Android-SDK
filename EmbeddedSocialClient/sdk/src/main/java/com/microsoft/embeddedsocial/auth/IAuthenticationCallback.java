@@ -5,26 +5,26 @@
 
 package com.microsoft.embeddedsocial.auth;
 
-import android.support.annotation.UiThread;
-
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
+
+import android.support.annotation.UiThread;
 
 /**
  * Callback interface for authentication process.
  */
 public interface IAuthenticationCallback {
 
-	/**
-	 * Is called when 3rd party authentication succeeds.
-	 * @param account   user account data
-	 */
-	@UiThread
-	void onAuthenticationSuccess(SocialNetworkAccount account);
+    /**
+     * Is called when 3rd party authentication succeeds.
+     * @param account   user account data
+     */
+    @UiThread
+    void onAuthenticationSuccess(SocialNetworkAccount account);
 
-	/**
-	 * Is called when 3rd party authentication fails.
-	 * @param errorMessage  failure reason
-	 */
-	@UiThread
-	void onAuthenticationError(String errorMessage);
+    /**
+     * Is called when 3rd party authentication fails.
+     * @param errorMessage  failure reason
+     */
+    @UiThread
+    void onAuthenticationError(String errorMessage);
 }

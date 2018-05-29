@@ -13,9 +13,9 @@ import android.view.MenuInflater;
  */
 public class FeedViewMenuFragment extends FeedViewMenuListenerFragment {
 
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		getMenuModule().inflateMenu(menu, inflater);
-	}
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getMenuModule().inflateMenu(menu, inflater);
+    }
 
 }

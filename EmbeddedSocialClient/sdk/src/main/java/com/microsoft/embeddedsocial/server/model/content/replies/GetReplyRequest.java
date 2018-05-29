@@ -5,29 +5,29 @@
 
 package com.microsoft.embeddedsocial.server.model.content.replies;
 
-import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.autorest.models.ReplyView;
+import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.rest.ServiceException;
 import com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 
 public class GetReplyRequest extends GenericReplyRequest {
-	public GetReplyRequest(String replyHandle) {
-		super(replyHandle);
-	}
+    public GetReplyRequest(String replyHandle) {
+        super(replyHandle);
+    }
 
-	@Override
-	public GetReplyResponse send() throws NetworkRequestException {
-		ServiceResponse<ReplyView> serviceResponse;
-		try {
-			serviceResponse = REPLIES.getReply(replyHandle, authorization);
-		} catch (ServiceException|IOException e) {
-			throw new NetworkRequestException(e.getMessage());
-		}
-		checkResponseCode(serviceResponse);
+    @Override
+    public GetReplyResponse send() throws NetworkRequestException {
+        ServiceResponse<ReplyView> serviceResponse;
+        try {
+            serviceResponse = REPLIES.getReply(replyHandle, authorization);
+        } catch (ServiceException|IOException e) {
+            throw new NetworkRequestException(e.getMessage());
+        }
+        checkResponseCode(serviceResponse);
 
-		return new GetReplyResponse(
-				new com.microsoft.embeddedsocial.server.model.view.ReplyView(serviceResponse.getBody()));
-	}
+        return new GetReplyResponse(
+                new com.microsoft.embeddedsocial.server.model.view.ReplyView(serviceResponse.getBody()));
+    }
 }

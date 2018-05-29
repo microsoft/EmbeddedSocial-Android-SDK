@@ -12,13 +12,13 @@ import com.microsoft.embeddedsocial.base.event.AbstractEvent;
  */
 public class PushNotificationReceivedEvent extends AbstractEvent {
 
-	private final String text;
+    private final String text;
 
-	public PushNotificationReceivedEvent(String text) {
-		this.text = text;
-	}
+    public PushNotificationReceivedEvent(String text) {
+        this.text = text;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 }

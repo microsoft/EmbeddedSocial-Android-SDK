@@ -5,23 +5,23 @@
 
 package com.microsoft.embeddedsocial.pending;
 
-import android.content.Context;
-
 import com.microsoft.embeddedsocial.data.storage.UserActionProxy;
+
+import android.content.Context;
 
 /**
  * Pending "follow user" action.
  */
 public class PendingFollow implements PendingAction {
 
-	private final String userHandle;
+    private final String userHandle;
 
-	public PendingFollow(String userHandle) {
-		this.userHandle = userHandle;
-	}
+    public PendingFollow(String userHandle) {
+        this.userHandle = userHandle;
+    }
 
-	@Override
-	public void execute(Context context) {
-		new UserActionProxy(context).followUser(userHandle);
-	}
+    @Override
+    public void execute(Context context) {
+        new UserActionProxy(context).followUser(userHandle);
+    }
 }

@@ -9,7 +9,7 @@ package com.microsoft.embeddedsocial.server.model;
  * Types of mobile operating systems.
  */
 public enum OperatingSystemType {
-	ANDROID,
-	WINDOWS,
-	IOS
+    ANDROID,
+    WINDOWS,
+    IOS
 }

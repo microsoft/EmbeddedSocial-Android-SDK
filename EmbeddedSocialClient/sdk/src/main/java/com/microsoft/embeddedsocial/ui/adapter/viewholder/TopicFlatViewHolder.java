@@ -18,38 +18,38 @@ import android.widget.FrameLayout;
  * Init topic flat view layout.
  */
 public class TopicFlatViewHolder extends TopicViewHolder {
-	private View topDivider;
-	private View bottomDivider;
-	private FrameLayout contentButton;
-	private FrameLayout coverButton;
+    private View topDivider;
+    private View bottomDivider;
+    private FrameLayout contentButton;
+    private FrameLayout coverButton;
 
-	public static TopicFlatViewHolder create(Fragment fragment, TopicButtonsListener topicButtonsListener, ViewGroup parent) {
-		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_topic, parent, false);
-		return new TopicFlatViewHolder(fragment, topicButtonsListener, view);
-	}
+    public static TopicFlatViewHolder create(Fragment fragment, TopicButtonsListener topicButtonsListener, ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.es_layout_topic, parent, false);
+        return new TopicFlatViewHolder(fragment, topicButtonsListener, view);
+    }
 
-	protected TopicFlatViewHolder(Fragment fragment, TopicButtonsListener topicButtonsListener, View view) {
-		super(fragment, topicButtonsListener, view, true);
-		topDivider = view.findViewById(R.id.es_dividerLayoutTop);
-		bottomDivider = view.findViewById(R.id.es_dividerLayoutBottom);
-		contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
-		coverButton = (FrameLayout) view.findViewById(R.id.es_coverButton);
-		coverButton.setOnClickListener(topicButtonsListener::onClickCover);
-	}
+    protected TopicFlatViewHolder(Fragment fragment, TopicButtonsListener topicButtonsListener, View view) {
+        super(fragment, topicButtonsListener, view, true);
+        topDivider = view.findViewById(R.id.es_dividerLayoutTop);
+        bottomDivider = view.findViewById(R.id.es_dividerLayoutBottom);
+        contentButton = (FrameLayout) view.findViewById(R.id.es_contentButton);
+        coverButton = (FrameLayout) view.findViewById(R.id.es_coverButton);
+        coverButton.setOnClickListener(topicButtonsListener::onClickCover);
+    }
 
-	@Override
-	public void renderItem(int position, TopicView topic) {
-		if (topic == null) {
-			return;
-		}
-		super.renderItem(position, topic);
-		postCommentsCountButton.setTag(R.id.es_keyPosition, position);
-		topDivider.setVisibility(View.GONE);
-		bottomDivider.setVisibility(View.VISIBLE);
-		contentButton.setVisibility(View.GONE);
-		coverButton.setVisibility(View.VISIBLE);
-		postTitle.setSingleLine(false);
+    @Override
+    public void renderItem(int position, TopicView topic) {
+        if (topic == null) {
+            return;
+        }
+        super.renderItem(position, topic);
+        postCommentsCountButton.setTag(R.id.es_keyPosition, position);
+        topDivider.setVisibility(View.GONE);
+        bottomDivider.setVisibility(View.VISIBLE);
+        contentButton.setVisibility(View.GONE);
+        coverButton.setVisibility(View.VISIBLE);
+        postTitle.setSingleLine(false);
 
-		coverButton.setTag(R.id.es_keyTopic, topic);
-	}
+        coverButton.setTag(R.id.es_keyTopic, topic);
+    }
 }

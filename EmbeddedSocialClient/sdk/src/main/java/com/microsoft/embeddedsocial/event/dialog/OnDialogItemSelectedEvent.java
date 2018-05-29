@@ -14,21 +14,21 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class OnDialogItemSelectedEvent extends OnDialogButtonClickedEvent {
 
-	private final int which;
+    private final int which;
 
-	private final int textId;
+    private final int textId;
 
-	public OnDialogItemSelectedEvent(String dialogId, int which, int textId) {
-		super(dialogId);
-		this.which = which;
-		this.textId = textId;
-	}
+    public OnDialogItemSelectedEvent(String dialogId, int which, int textId) {
+        super(dialogId);
+        this.which = which;
+        this.textId = textId;
+    }
 
-	public int getTextId() {
-		return textId;
-	}
+    public int getTextId() {
+        return textId;
+    }
 
-	public int getWhich() {
-		return which;
-	}
+    public int getWhich() {
+        return which;
+    }
 }

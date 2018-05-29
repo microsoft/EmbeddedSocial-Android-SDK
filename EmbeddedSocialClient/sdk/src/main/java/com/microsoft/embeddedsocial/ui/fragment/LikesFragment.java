@@ -26,35 +26,35 @@ import android.view.View;
  */
 public class LikesFragment extends BaseUsersListFragment {
 
-	private String contentHandle;
-	private ContentType contentType;
+    private String contentHandle;
+    private ContentType contentType;
 
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		contentHandle = getActivity().getIntent().getStringExtra(IntentExtras.CONTENT_EXTRA);
-		contentType = ContentType.fromValue(getActivity().getIntent().getStringExtra(IntentExtras.CONTENT_TYPE));
-		if (contentType == null) {
-			throw new IllegalArgumentException("Invalid Content Type");
-		}
-		if (TextUtils.isEmpty(contentHandle)) {
-			finishActivity();
-		}
-	}
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        contentHandle = getActivity().getIntent().getStringExtra(IntentExtras.CONTENT_EXTRA);
+        contentType = ContentType.fromValue(getActivity().getIntent().getStringExtra(IntentExtras.CONTENT_TYPE));
+        if (contentType == null) {
+            throw new IllegalArgumentException("Invalid Content Type");
+        }
+        if (TextUtils.isEmpty(contentHandle)) {
+            finishActivity();
+        }
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		setEmptyDataMessage(R.string.es_message_no_likes);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setEmptyDataMessage(R.string.es_message_no_likes);
+    }
 
-	@Override
-	protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
-		return new UserRenderer(this);
-	}
+    @Override
+    protected Renderer<? super UserCompactView, ? extends UserListItemHolder> createRenderer() {
+        return new UserRenderer(this);
+    }
 
-	@Override
-	protected Fetcher<UserCompactView> createFetcher() {
-		return FetchersFactory.createLikeFeedFetcher(contentHandle, contentType);
-	}
+    @Override
+    protected Fetcher<UserCompactView> createFetcher() {
+        return FetchersFactory.createLikeFeedFetcher(contentHandle, contentType);
+    }
 }

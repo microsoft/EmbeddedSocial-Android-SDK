@@ -4,291 +4,291 @@
   -->
 
 <resources>
-	<string name="app_name">Embedded Social</string>
-	<string name="es_lib_name">Embedded Social SDK</string>
-	<string name="es_lib_title">Microsoft Embedded Social</string>
+    <string name="app_name">Embedded Social</string>
+    <string name="es_lib_name">Embedded Social SDK</string>
+    <string name="es_lib_title">Microsoft Embedded Social</string>
 
-	<string name="es_sign_in">Sign in</string>
+    <string name="es_sign_in">Sign in</string>
 
-	<string name="es_hint_first_name">First name</string>
-	<string name="es_hint_last_name">Last name</string>
-	<string name="es_hint_bio">Bio (optional)</string>
-	<string name="es_hint_title">Title (optional)</string>
-	<string name="es_hint_description">Description</string>
-	<string name="es_hint_add_comment">Type here to comment</string>
-	<string name="es_hint_add_reply">Type here to reply</string>
-	<string name="es_comment">Comment</string>
-	<string name="es_reply">Reply</string>
-	<string name="es_post">Post</string>
-	<string name="es_activity_feed">Activity feed</string>
-	<string name="es_screen_title_signin">@string/es_sign_in</string>
-	<string name="es_screen_title_add_post">Add post</string>
-	<string name="es_dialog_title_add_post">Add new post</string>
-	<string name="es_screen_title_edit_post">Edit post</string>
-	<string name="es_screen_title_topic">@string/es_post</string>
-	<string name="es_screen_title_comment">Comment</string>
-	<string name="es_screen_title_edit_profile">Edit profile</string>
-	<string name="es_screen_title_create_profile">Create profile</string>
-	<string name="es_screen_title_followers">Followers</string>
-	<string name="es_screen_title_following">@string/es_tab_title_following</string>
-	<string name="es_screen_title_likes">Likes</string>
-	<string name="es_screen_title_linked_accounts">@string/es_button_linked_accounts</string>
-	<string name="es_screen_title_activity">@string/es_activity_feed</string>
-	<string name="es_screen_title_follow_requests">Follow requests</string>
-	<string name="es_screen_title_display_comment">@string/es_comment</string>
-	<string name="es_screen_title_display_reply">@string/es_reply</string>
-	<string name="es_screen_title_my_pins">My pins</string>
-	<string name="es_screen_title_popular">@string/es_menu_popular</string>
-	<string name="es_screen_title_options">@string/es_navigation_options</string>
-	<string name="es_screen_title_privacy_policy">@string/es_button_privacy_policy</string>
-	<string name="es_screen_title_terms">@string/es_button_terms_and_conditions</string>
-	<string name="es_screen_title_delete_account">@string/es_button_delete_account</string>
-	<string name="es_tab_title_following">Following</string>
-	<string name="es_action_upload_photo">Upload photo</string>
-	<string name="es_account_info_header">Account information</string>
-	<string name="es_menu_new_photo">Take new photo</string>
-	<string name="es_menu_choose_photo">Choose existing photo</string>
-	<string name="es_menu_remove_photo">Remove photo</string>
-	<string name="es_menu_done">Done</string>
-	<string name="es_menu_list">List</string>
-	<string name="es_menu_gallery">Gallery</string>
-	<string name="es_menu_recent">@string/es_recent</string>
-	<string name="es_menu_popular">Popular</string>
-	<string name="es_menu_today">Today</string>
-	<string name="es_menu_week">This week</string>
-	<string name="es_menu_month">This month</string>
-	<string name="es_menu_all_time">All time</string>
-	<string name="es_menu_add_post">@string/es_screen_title_add_post</string>
-	<string name="es_menu_unfollow">@string/es_unfollow</string>
-	<string name="es_menu_follow">@string/es_follow</string>
-	<string name="es_menu_block_user">Block user</string>
-	<string name="es_menu_report_user">Report user</string>
-	<string name="es_menu_report_custom">Report problem</string>
-	<string name="es_menu_unblock_user">@string/es_button_unblock</string>
-	<string name="es_menu_report_post">Report post</string>
-	<string name="es_menu_remove_post">Remove post</string>
-	<string name="es_menu_edit_post">Edit post</string>
-	<string name="es_menu_remove_comment">Remove comment</string>
-	<string name="es_menu_report_comment">Report comment</string>
-	<string name="es_menu_remove_reply">Remove reply</string>
-	<string name="es_menu_report_reply">Report reply</string>
-	<string name="es_menu_hide_post">Hide post</string>
+    <string name="es_hint_first_name">First name</string>
+    <string name="es_hint_last_name">Last name</string>
+    <string name="es_hint_bio">Bio (optional)</string>
+    <string name="es_hint_title">Title (optional)</string>
+    <string name="es_hint_description">Description</string>
+    <string name="es_hint_add_comment">Type here to comment</string>
+    <string name="es_hint_add_reply">Type here to reply</string>
+    <string name="es_comment">Comment</string>
+    <string name="es_reply">Reply</string>
+    <string name="es_post">Post</string>
+    <string name="es_activity_feed">Activity feed</string>
+    <string name="es_screen_title_signin">@string/es_sign_in</string>
+    <string name="es_screen_title_add_post">Add post</string>
+    <string name="es_dialog_title_add_post">Add new post</string>
+    <string name="es_screen_title_edit_post">Edit post</string>
+    <string name="es_screen_title_topic">@string/es_post</string>
+    <string name="es_screen_title_comment">Comment</string>
+    <string name="es_screen_title_edit_profile">Edit profile</string>
+    <string name="es_screen_title_create_profile">Create profile</string>
+    <string name="es_screen_title_followers">Followers</string>
+    <string name="es_screen_title_following">@string/es_tab_title_following</string>
+    <string name="es_screen_title_likes">Likes</string>
+    <string name="es_screen_title_linked_accounts">@string/es_button_linked_accounts</string>
+    <string name="es_screen_title_activity">@string/es_activity_feed</string>
+    <string name="es_screen_title_follow_requests">Follow requests</string>
+    <string name="es_screen_title_display_comment">@string/es_comment</string>
+    <string name="es_screen_title_display_reply">@string/es_reply</string>
+    <string name="es_screen_title_my_pins">My pins</string>
+    <string name="es_screen_title_popular">@string/es_menu_popular</string>
+    <string name="es_screen_title_options">@string/es_navigation_options</string>
+    <string name="es_screen_title_privacy_policy">@string/es_button_privacy_policy</string>
+    <string name="es_screen_title_terms">@string/es_button_terms_and_conditions</string>
+    <string name="es_screen_title_delete_account">@string/es_button_delete_account</string>
+    <string name="es_tab_title_following">Following</string>
+    <string name="es_action_upload_photo">Upload photo</string>
+    <string name="es_account_info_header">Account information</string>
+    <string name="es_menu_new_photo">Take new photo</string>
+    <string name="es_menu_choose_photo">Choose existing photo</string>
+    <string name="es_menu_remove_photo">Remove photo</string>
+    <string name="es_menu_done">Done</string>
+    <string name="es_menu_list">List</string>
+    <string name="es_menu_gallery">Gallery</string>
+    <string name="es_menu_recent">@string/es_recent</string>
+    <string name="es_menu_popular">Popular</string>
+    <string name="es_menu_today">Today</string>
+    <string name="es_menu_week">This week</string>
+    <string name="es_menu_month">This month</string>
+    <string name="es_menu_all_time">All time</string>
+    <string name="es_menu_add_post">@string/es_screen_title_add_post</string>
+    <string name="es_menu_unfollow">@string/es_unfollow</string>
+    <string name="es_menu_follow">@string/es_follow</string>
+    <string name="es_menu_block_user">Block user</string>
+    <string name="es_menu_report_user">Report user</string>
+    <string name="es_menu_report_custom">Report problem</string>
+    <string name="es_menu_unblock_user">@string/es_button_unblock</string>
+    <string name="es_menu_report_post">Report post</string>
+    <string name="es_menu_remove_post">Remove post</string>
+    <string name="es_menu_edit_post">Edit post</string>
+    <string name="es_menu_remove_comment">Remove comment</string>
+    <string name="es_menu_report_comment">Report comment</string>
+    <string name="es_menu_remove_reply">Remove reply</string>
+    <string name="es_menu_report_reply">Report reply</string>
+    <string name="es_menu_hide_post">Hide post</string>
 
-	<string name="es_message_cant_complete_action">Can\'t complete this action</string>
-	<string name="es_message_field_cant_be_empty">This field is required</string>
-	<string name="es_message_correct_input">Please correct the errors in your profile</string>
-	<string name="es_add_picture_suggestion">Tap here to add a picture</string>
-	<string name="es_button_post_topic">@string/es_post</string>
-	<string name="es_message_enter_description">Please enter a description</string>
-	<string name="es_title_add_post_confirm_quit">Return to feed?</string>
-	<string name="es_message_add_post_confirm_quit">Going back to the feed will delete the content of this draft, are you sure you want to go back?</string>
-	<string name="es_option_add_post_leave">Leave post</string>
-	<string name="es_message_failed_to_publish_post">Failed to publish some of pending posts</string>
-	<string name="es_message_no_permission">Can\'t complete this action without having a corresponding permission</string>
+    <string name="es_message_cant_complete_action">Can\'t complete this action</string>
+    <string name="es_message_field_cant_be_empty">This field is required</string>
+    <string name="es_message_correct_input">Please correct the errors in your profile</string>
+    <string name="es_add_picture_suggestion">Tap here to add a picture</string>
+    <string name="es_button_post_topic">@string/es_post</string>
+    <string name="es_message_enter_description">Please enter a description</string>
+    <string name="es_title_add_post_confirm_quit">Return to feed?</string>
+    <string name="es_message_add_post_confirm_quit">Going back to the feed will delete the content of this draft, are you sure you want to go back?</string>
+    <string name="es_option_add_post_leave">Leave post</string>
+    <string name="es_message_failed_to_publish_post">Failed to publish some of pending posts</string>
+    <string name="es_message_no_permission">Can\'t complete this action without having a corresponding permission</string>
 
-	<string name="es_elapsed_time_seconds_pattern">%1$ds</string>
-	<string name="es_elapsed_time_minutes_pattern">%1$dm</string>
-	<string name="es_elapsed_time_hours_pattern">%1$dh</string>
-	<string name="es_elapsed_time_days_pattern">%1$dd</string>
-	<string name="es_elapsed_time_weeks_pattern">%1$dw</string>
+    <string name="es_elapsed_time_seconds_pattern">%1$ds</string>
+    <string name="es_elapsed_time_minutes_pattern">%1$dm</string>
+    <string name="es_elapsed_time_hours_pattern">%1$dh</string>
+    <string name="es_elapsed_time_days_pattern">%1$dd</string>
+    <string name="es_elapsed_time_weeks_pattern">%1$dw</string>
 
-	<plurals name="es_topic_likes_pattern">
-		<item quantity="one">%1$d like</item>
-		<item quantity="other">%1$d likes</item>
-	</plurals>
-	<plurals name="es_topic_comments_pattern">
-		<item quantity="one">%1$d comment</item>
-		<item quantity="other">%1$d comments</item>
-	</plurals>
-	<plurals name="es_topic_replies_pattern">
-		<item quantity="one">%1$d reply</item>
-		<item quantity="other">%1$d replies</item>
-	</plurals>
-	<string name="es_message_no_data">No content</string>
-	<string name="es_message_failed_to_load_data">Failed to load data</string>
-	<string name="es_message_no_search_data_pattern">No results found for \"%1$s\"</string>
-	<string name="es_message_failed_to_search_data">Failed to search data</string>
-	<string name="es_message_failed_to_load_comment">Can\'t load comment</string>
-	<string name="es_message_failed_to_load_reply">Can\'t load reply</string>
-	<string name="es_message_failed_to_refresh_topic">Topic does not exist or is not visible to the user</string>
-	<string name="es_button_open_topic">Open topic</string>
-	<string name="es_button_open_comment">Open comment</string>
+    <plurals name="es_topic_likes_pattern">
+        <item quantity="one">%1$d like</item>
+        <item quantity="other">%1$d likes</item>
+    </plurals>
+    <plurals name="es_topic_comments_pattern">
+        <item quantity="one">%1$d comment</item>
+        <item quantity="other">%1$d comments</item>
+    </plurals>
+    <plurals name="es_topic_replies_pattern">
+        <item quantity="one">%1$d reply</item>
+        <item quantity="other">%1$d replies</item>
+    </plurals>
+    <string name="es_message_no_data">No content</string>
+    <string name="es_message_failed_to_load_data">Failed to load data</string>
+    <string name="es_message_no_search_data_pattern">No results found for \"%1$s\"</string>
+    <string name="es_message_failed_to_search_data">Failed to search data</string>
+    <string name="es_message_failed_to_load_comment">Can\'t load comment</string>
+    <string name="es_message_failed_to_load_reply">Can\'t load reply</string>
+    <string name="es_message_failed_to_refresh_topic">Topic does not exist or is not visible to the user</string>
+    <string name="es_button_open_topic">Open topic</string>
+    <string name="es_button_open_comment">Open comment</string>
 
-	<string name="es_message_network_error">Network error</string>
-	<string name="es_button_edit_profile">Edit profile</string>
-	<plurals name="es_button_followers">
-		<item quantity="one">1 Follower</item>
-		<item quantity="other">%d Followers</item>
-	</plurals>
-	<string name="es_button_following">%1$d following</string>
-	<string name="es_following">Following</string>
-	<string name="es_load_more_retry_button">Loading failed. Tap here to retry.</string>
-	<string name="es_load_more_suggestion">Load more</string>
-	<string name="es_load_more_comments">View previous comments?</string>
-	<string name="es_load_more_replies">View previous replies?</string>
+    <string name="es_message_network_error">Network error</string>
+    <string name="es_button_edit_profile">Edit profile</string>
+    <plurals name="es_button_followers">
+        <item quantity="one">1 Follower</item>
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <string name="es_button_following">%1$d following</string>
+    <string name="es_following">Following</string>
+    <string name="es_load_more_retry_button">Loading failed. Tap here to retry.</string>
+    <string name="es_load_more_suggestion">Load more</string>
+    <string name="es_load_more_comments">View previous comments?</string>
+    <string name="es_load_more_replies">View previous replies?</string>
 
-	<string name="es_recent">Recent</string>
+    <string name="es_recent">Recent</string>
 
-	<string name="es_content_removed_reply">Reply removed</string>
-	<string name="es_content_removed_comment">Comment removed</string>
-	<string name="es_content_removed_topic">Post removed</string>
-	<string name="es_message_failed_to_remove_comment">Failed to remove comment</string>
-	<string name="es_message_failed_to_remove_reply">Failed to remove reply</string>
-	<string name="es_profile">Profile</string>
-	<string name="es_button_sign_out">Sign out</string>
-	<string name="es_button_sign_in">Sign in</string>
-	<string name="es_privacy_header">Privacy</string>
-	<string name="es_privacy_description">Only approved followers can see my posts &amp; comments</string>
-	<string name="es_account_header">Account</string>
-	<string name="es_applications_header">Applications</string>
+    <string name="es_content_removed_reply">Reply removed</string>
+    <string name="es_content_removed_comment">Comment removed</string>
+    <string name="es_content_removed_topic">Post removed</string>
+    <string name="es_message_failed_to_remove_comment">Failed to remove comment</string>
+    <string name="es_message_failed_to_remove_reply">Failed to remove reply</string>
+    <string name="es_profile">Profile</string>
+    <string name="es_button_sign_out">Sign out</string>
+    <string name="es_button_sign_in">Sign in</string>
+    <string name="es_privacy_header">Privacy</string>
+    <string name="es_privacy_description">Only approved followers can see my posts &amp; comments</string>
+    <string name="es_account_header">Account</string>
+    <string name="es_applications_header">Applications</string>
 
-	<string name="es_message_no_internet_connection">No internet connection</string>
-	<string name="es_message_facebook_login_cancel">Facebook login cancel</string>
-	<string name="es_message_facebook_error_pattern">Facebook error: %1$s.</string>
-	<string name="es_message_ms_live_error_pattern">Microsoft Live error: %1$s</string>
-	<string name="es_message_cant_get_profile">can\'t get profile</string>
-	<string name="es_message_cant_login">can\'t login</string>
-	<string name="es_blocked_users_header">Blocked users</string>
-	<string name="es_no_blocked_users">No blocked users</string>
+    <string name="es_message_no_internet_connection">No internet connection</string>
+    <string name="es_message_facebook_login_cancel">Facebook login cancel</string>
+    <string name="es_message_facebook_error_pattern">Facebook error: %1$s.</string>
+    <string name="es_message_ms_live_error_pattern">Microsoft Live error: %1$s</string>
+    <string name="es_message_cant_get_profile">can\'t get profile</string>
+    <string name="es_message_cant_login">can\'t login</string>
+    <string name="es_blocked_users_header">Blocked users</string>
+    <string name="es_no_blocked_users">No blocked users</string>
 
-	<string name="es_button_unblock">Unblock</string>
-	<string name="es_button_block">Block</string>
-	<string name="es_pending">Pending</string>
-	<string name="es_follow">Follow</string>
-	<string name="es_unfollow">Unfollow</string>
-	<string name="es_remove_follower">Remove</string>
-	<string name="es_removed_follower">Removed</string>
+    <string name="es_button_unblock">Unblock</string>
+    <string name="es_button_block">Block</string>
+    <string name="es_pending">Pending</string>
+    <string name="es_follow">Follow</string>
+    <string name="es_unfollow">Unfollow</string>
+    <string name="es_remove_follower">Remove</string>
+    <string name="es_removed_follower">Removed</string>
 
-	<string name="es_hint_search_topics">Search topics</string>
-	<string name="es_hint_search_people">Search people</string>
-	<string name="es_button_follow">@string/es_follow</string>
+    <string name="es_hint_search_topics">Search topics</string>
+    <string name="es_hint_search_people">Search people</string>
+    <string name="es_button_follow">@string/es_follow</string>
 
-	<string name="es_message_wait_until_account_created">Wait until account is created</string>
-	<string name="es_message_wait_until_account_updated">Wait until account is updated</string>
-	<string name="es_message_no_people">No people</string>
-	<string name="es_message_no_likes">No likes</string>
+    <string name="es_message_wait_until_account_created">Wait until account is created</string>
+    <string name="es_message_wait_until_account_updated">Wait until account is updated</string>
+    <string name="es_message_no_people">No people</string>
+    <string name="es_message_no_likes">No likes</string>
 
-	<string name="es_activity_you_following">%s started following you</string>
-	<string name="es_activity_you_mention_topic">%1$s mentioned you in a topic \"%2$s\"</string>
-	<string name="es_activity_you_mention_comment">%1$s mentioned you in a comment \"%2$s\"</string>
-	<string name="es_activity_you_mention_reply">%1$s mentioned you in a reply \"%2$s\"</string>
-	<string name="es_activity_you_like_topic">%1$s liked your topic \"%2$s\"</string>
-	<string name="es_activity_you_like_comment">%1$s liked your comment \"%2$s\"</string>
-	<string name="es_activity_you_like_reply">%1$s liked your reply \"%2$s\"</string>
-	<string name="es_activity_you_follow_request">%s sent you a follow request</string>
-	<string name="es_activity_you_child_peer_topic">%1$s added a new comment to topic \"%2$s\"</string>
-	<string name="es_activity_you_child_peer_comment">%1$s added a new reply to comment \"%2$s\"</string>
-	<string name="es_activity_you_child_topic">%1$s commented on your topic \"%2$s\"</string>
-	<string name="es_activity_you_child_comment">%1$s replied to your comment \"%2$s\"</string>
-	<string name="es_activity_you_follow_accepted">%s accepted your follow request</string>
-	<string name="es_activity_following_following">%1$s started following %2$s</string>
-	<string name="es_activity_following_mention_topic">%1$s mentioned %2$s in a topic \"%3$s\"</string>
-	<string name="es_activity_following_mention_comment">%1$s mentioned %2$ in a comment \"%3$s\"</string>
-	<string name="es_activity_following_mention_reply">%1$s mentioned %2$ in a reply \"%3$s\"</string>
-	<string name="es_activity_following_like_topic">%1$s liked topic \"%2$s\"</string>
-	<string name="es_activity_following_like_comment">%1$s liked comment \"%2$s\"</string>
-	<string name="es_activity_following_like_reply">%1$s liked reply \"%2$s\"</string>
-	<string name="es_activity_following_child_peer_topic">%1$s added a new comment to topic \"%2$s\"</string>
-	<string name="es_activity_following_child_peer_comment">%1$s added a new reply to comment \"%2$s\"</string>
-	<string name="es_activity_following_child_topic">%1$s commented on topic \"%2$s\"</string>
-	<string name="es_activity_following_child_comment">%1$s replied to comment \"%2$s\"</string>
+    <string name="es_activity_you_following">%s started following you</string>
+    <string name="es_activity_you_mention_topic">%1$s mentioned you in a topic \"%2$s\"</string>
+    <string name="es_activity_you_mention_comment">%1$s mentioned you in a comment \"%2$s\"</string>
+    <string name="es_activity_you_mention_reply">%1$s mentioned you in a reply \"%2$s\"</string>
+    <string name="es_activity_you_like_topic">%1$s liked your topic \"%2$s\"</string>
+    <string name="es_activity_you_like_comment">%1$s liked your comment \"%2$s\"</string>
+    <string name="es_activity_you_like_reply">%1$s liked your reply \"%2$s\"</string>
+    <string name="es_activity_you_follow_request">%s sent you a follow request</string>
+    <string name="es_activity_you_child_peer_topic">%1$s added a new comment to topic \"%2$s\"</string>
+    <string name="es_activity_you_child_peer_comment">%1$s added a new reply to comment \"%2$s\"</string>
+    <string name="es_activity_you_child_topic">%1$s commented on your topic \"%2$s\"</string>
+    <string name="es_activity_you_child_comment">%1$s replied to your comment \"%2$s\"</string>
+    <string name="es_activity_you_follow_accepted">%s accepted your follow request</string>
+    <string name="es_activity_following_following">%1$s started following %2$s</string>
+    <string name="es_activity_following_mention_topic">%1$s mentioned %2$s in a topic \"%3$s\"</string>
+    <string name="es_activity_following_mention_comment">%1$s mentioned %2$ in a comment \"%3$s\"</string>
+    <string name="es_activity_following_mention_reply">%1$s mentioned %2$ in a reply \"%3$s\"</string>
+    <string name="es_activity_following_like_topic">%1$s liked topic \"%2$s\"</string>
+    <string name="es_activity_following_like_comment">%1$s liked comment \"%2$s\"</string>
+    <string name="es_activity_following_like_reply">%1$s liked reply \"%2$s\"</string>
+    <string name="es_activity_following_child_peer_topic">%1$s added a new comment to topic \"%2$s\"</string>
+    <string name="es_activity_following_child_peer_comment">%1$s added a new reply to comment \"%2$s\"</string>
+    <string name="es_activity_following_child_topic">%1$s commented on topic \"%2$s\"</string>
+    <string name="es_activity_following_child_comment">%1$s replied to comment \"%2$s\"</string>
 
-	<string name="es_one_person">%s</string>
-	<string name="es_two_persons">%1$s and %2$s</string>
-	<string name="es_three_persons">%1$s, %2$s and 1 other person</string>
-	<string name="es_many_persons">%1$s, %2$s and %3$d other people </string>
+    <string name="es_one_person">%s</string>
+    <string name="es_two_persons">%1$s and %2$s</string>
+    <string name="es_three_persons">%1$s, %2$s and 1 other person</string>
+    <string name="es_many_persons">%1$s, %2$s and %3$d other people </string>
 
-	<string name="es_report_title">Report an issue</string>
-	<string name="es_report_user">Report %s</string>
-	<string name="es_report_question_post">post</string>
-	<string name="es_report_question_comment">comment</string>
-	<string name="es_report_question_reply">reply</string>
-	<string name="es_report_question_user">user</string>
-	<string name="es_report_question_pattern">What\'s the problem with this %1$s?</string>
-	<string-array name="es_report_reasons_array">
-		<item>Threats, cyberbullying, harassment</item>
-		<item>Child endangerment or exploitation</item>
-		<item>Offensive content</item>
-		<item>Virus/Spyware/Malware</item>
-		<item>Content infringement</item>
-		<item>Other</item>
-	</string-array>
-	<string name="es_report_result_title">Report submitted</string>
-	<string name="es_report_result_text">Thank you for reporting your concern to us. We review these submissions very carefully and will take appropriate steps to address this issue. Because of legal and privacy concerns, we may not provide you any additional updates about this submission. Thank you again for contacting us.</string>
-	<string name="es_title_follow_requests">New follow requests</string>
-	<string name="es_message_no_connection">You can still post while offline.</string>
-	<string name="es_message_slow_connection">Connection appears to be slow. Stand by.</string>
-	<string name="es_cancel">Cancel</string>
-	<string name="es_close">Close</string>
-	<string name="es_open_side_menu">Open side menu</string>
-	<string name="es_close_side_menu">Close side menu</string>
+    <string name="es_report_title">Report an issue</string>
+    <string name="es_report_user">Report %s</string>
+    <string name="es_report_question_post">post</string>
+    <string name="es_report_question_comment">comment</string>
+    <string name="es_report_question_reply">reply</string>
+    <string name="es_report_question_user">user</string>
+    <string name="es_report_question_pattern">What\'s the problem with this %1$s?</string>
+    <string-array name="es_report_reasons_array">
+        <item>Threats, cyberbullying, harassment</item>
+        <item>Child endangerment or exploitation</item>
+        <item>Offensive content</item>
+        <item>Virus/Spyware/Malware</item>
+        <item>Content infringement</item>
+        <item>Other</item>
+    </string-array>
+    <string name="es_report_result_title">Report submitted</string>
+    <string name="es_report_result_text">Thank you for reporting your concern to us. We review these submissions very carefully and will take appropriate steps to address this issue. Because of legal and privacy concerns, we may not provide you any additional updates about this submission. Thank you again for contacting us.</string>
+    <string name="es_title_follow_requests">New follow requests</string>
+    <string name="es_message_no_connection">You can still post while offline.</string>
+    <string name="es_message_slow_connection">Connection appears to be slow. Stand by.</string>
+    <string name="es_cancel">Cancel</string>
+    <string name="es_close">Close</string>
+    <string name="es_open_side_menu">Open side menu</string>
+    <string name="es_close_side_menu">Close side menu</string>
 
-	<string name="es_navigation_options">Options</string>
-	<string name="es_navigation_activity_feed">@string/es_activity_feed</string>
-	<string name="es_navigation_pins">My pins</string>
-	<string name="es_navigation_popular">Popular</string>
-	<string name="es_navigation_search">Search</string>
-	<string name="es_navigation_home">Home</string>
+    <string name="es_navigation_options">Options</string>
+    <string name="es_navigation_activity_feed">@string/es_activity_feed</string>
+    <string name="es_navigation_pins">My pins</string>
+    <string name="es_navigation_popular">Popular</string>
+    <string name="es_navigation_search">Search</string>
+    <string name="es_navigation_home">Home</string>
 
-	<string name="es_activity_feed_user">You</string>
-	<string name="es_activity_feed_following">Following</string>
-	<string name="es_message_private_user">This user is private</string>
-	<string name="es_sign_in_with">Sign in with:</string>
-	<string name="es_facebook">Sign in with Facebook</string>
-	<string name="es_twitter">Sign in with Twitter</string>
-	<string name="es_microsoft">Sign in with Microsoft</string>
-	<string name="es_google">Sign in with Google</string>
-	<string name="es_no_image">No image</string>
-	<string name="es_msg_couldnt_access_google_profile">Couldn\'t get access to Google profile</string>
-	<string name="es_msg_google_signin_failed">Sign-in with Google failed</string>
-	<string name="es_msg_general_signin_error">An error has occurred during sign-in</string>
-	<string name="es_msg_general_signin_cancelled">Sign-in attempt was cancelled</string>
-	<string name="es_msg_general_signin_success">Signing in</string>
-	<string name="es_msg_general_create_user_success">Creating account</string>
-	<string name="es_msg_general_create_user_error">An error has occurred during user creation</string>
-	<string name="es_msg_general_operation_error">An error occurred during this operation</string>
-	<string name="es_msg_general_signout_success">Signing out</string>
-	<string name="es_msg_general_account_deleted">Account deleted</string>
-	<string name="es_msg_general_search_history_deleted">Search history deleted</string>
+    <string name="es_activity_feed_user">You</string>
+    <string name="es_activity_feed_following">Following</string>
+    <string name="es_message_private_user">This user is private</string>
+    <string name="es_sign_in_with">Sign in with:</string>
+    <string name="es_facebook">Sign in with Facebook</string>
+    <string name="es_twitter">Sign in with Twitter</string>
+    <string name="es_microsoft">Sign in with Microsoft</string>
+    <string name="es_google">Sign in with Google</string>
+    <string name="es_no_image">No image</string>
+    <string name="es_msg_couldnt_access_google_profile">Couldn\'t get access to Google profile</string>
+    <string name="es_msg_google_signin_failed">Sign-in with Google failed</string>
+    <string name="es_msg_general_signin_error">An error has occurred during sign-in</string>
+    <string name="es_msg_general_signin_cancelled">Sign-in attempt was cancelled</string>
+    <string name="es_msg_general_signin_success">Signing in</string>
+    <string name="es_msg_general_create_user_success">Creating account</string>
+    <string name="es_msg_general_create_user_error">An error has occurred during user creation</string>
+    <string name="es_msg_general_operation_error">An error occurred during this operation</string>
+    <string name="es_msg_general_signout_success">Signing out</string>
+    <string name="es_msg_general_account_deleted">Account deleted</string>
+    <string name="es_msg_general_search_history_deleted">Search history deleted</string>
 
-	<string name="es_tab_topics">Topics</string>
-	<string name="es_tab_people">People</string>
-	<string name="es_trending_hashtags">Trending hashtags</string>
-	<string name="es_suggested_users">Suggested users</string>
-	<string name="es_muted_apps">Muted applications</string>
-	<string name="es_button_delete_account">Delete account</string>
-	<string name="es_button_delete_search_history">Delete search history</string>
-	<string name="es_button_linked_accounts">Linked accounts</string>
-	<string name="es_button_terms_and_conditions">Terms and conditions</string>
-	<string name="es_button_privacy_policy">Privacy policy</string>
-	<string name="es_header_about">About</string>
-	<string name="es_button_find_friends_other_apps">Find friends from other Embedded Social apps</string>
-	<string name="es_button_find_friends_facebook">Find Facebook friends</string>
-	<string name="es_button_find_friends_microsoft">Find Microsoft contacts</string>
-	<string name="es_button_find_friends_google_plus">Find Google+ friends</string>
-	<string name="es_header_follow">Follow people</string>
+    <string name="es_tab_topics">Topics</string>
+    <string name="es_tab_people">People</string>
+    <string name="es_trending_hashtags">Trending hashtags</string>
+    <string name="es_suggested_users">Suggested users</string>
+    <string name="es_muted_apps">Muted applications</string>
+    <string name="es_button_delete_account">Delete account</string>
+    <string name="es_button_delete_search_history">Delete search history</string>
+    <string name="es_button_linked_accounts">Linked accounts</string>
+    <string name="es_button_terms_and_conditions">Terms and conditions</string>
+    <string name="es_button_privacy_policy">Privacy policy</string>
+    <string name="es_header_about">About</string>
+    <string name="es_button_find_friends_other_apps">Find friends from other Embedded Social apps</string>
+    <string name="es_button_find_friends_facebook">Find Facebook friends</string>
+    <string name="es_button_find_friends_microsoft">Find Microsoft contacts</string>
+    <string name="es_button_find_friends_google_plus">Find Google+ friends</string>
+    <string name="es_header_follow">Follow people</string>
 
-	<string name="es_microsoft_agreement">By creating an Embedded Social account, I agree to the Microsoft</string>
-	<!-- TODO replace additional terms string in app to include app name -->
-	<string name="es_additional_app_terms">The application you are using may have additional terms.</string>
-	<string name="es_privacy_and_cookies_title">Privacy &amp; cookies</string>
-	<string name="es_terms_link_title">Terms of use</string>
-	<string name="es_privacy_policy_url">http://go.microsoft.com/fwlink/?LinkId=521839</string>
-	<string name="es_terms_url">http://go.microsoft.com/fwlink/?LinkID=206977</string>
-	<string name="es_delete_account_warning">This action will permanently delete your account and all associated information. The account deletion cannot be undone.\n\nDo you really want to do it?</string>
+    <string name="es_microsoft_agreement">By creating an Embedded Social account, I agree to the Microsoft</string>
+    <!-- TODO replace additional terms string in app to include app name -->
+    <string name="es_additional_app_terms">The application you are using may have additional terms.</string>
+    <string name="es_privacy_and_cookies_title">Privacy &amp; cookies</string>
+    <string name="es_terms_link_title">Terms of use</string>
+    <string name="es_privacy_policy_url">http://go.microsoft.com/fwlink/?LinkId=521839</string>
+    <string name="es_terms_url">http://go.microsoft.com/fwlink/?LinkID=206977</string>
+    <string name="es_delete_account_warning">This action will permanently delete your account and all associated information. The account deletion cannot be undone.\n\nDo you really want to do it?</string>
 
-	<string name="es_action_cover_photo">Cover photo</string>
-	<string name="es_description_cover_photo">Portrait view only</string>
-	<string name="es_delete">Delete</string>
+    <string name="es_action_cover_photo">Cover photo</string>
+    <string name="es_description_cover_photo">Portrait view only</string>
+    <string name="es_delete">Delete</string>
 
-	<string name="es_last_account_title">Inaccessible action</string>
-	<string name="es_last_account_text">You must have at least one account linked to your profile.</string>
-	<string name="es_account_link_conflict">Linked account already exists.</string>
-	<string name="es_account_link_error">Error when linking your account.</string>
-	<string name="es_account_unlink_error">Error when unlinking your account.</string>
+    <string name="es_last_account_title">Inaccessible action</string>
+    <string name="es_last_account_text">You must have at least one account linked to your profile.</string>
+    <string name="es_account_link_conflict">Linked account already exists.</string>
+    <string name="es_account_link_error">Error when linking your account.</string>
+    <string name="es_account_unlink_error">Error when unlinking your account.</string>
 
-	<string name="es_google_auth_response">com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE</string>
-	<string name="es_terms">By using Microsoft Embedded Social, you agree to the %1$s and %2$s.</string>
-	<string name="es_privacy_statement">Privacy Statement</string>
-	<string name="es_terms_of_use">Terms of Use</string>
+    <string name="es_google_auth_response">com.microsoft.embeddedsocial.HANDLE_AUTHORIZATION_RESPONSE</string>
+    <string name="es_terms">By using Microsoft Embedded Social, you agree to the %1$s and %2$s.</string>
+    <string name="es_privacy_statement">Privacy Statement</string>
+    <string name="es_terms_of_use">Terms of Use</string>
 </resources>

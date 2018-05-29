@@ -14,5 +14,5 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
  * @param <R> return value type
  */
 public interface ServerMethod<P, R> {
-	R call(P parameter) throws NetworkRequestException;
+    R call(P parameter) throws NetworkRequestException;
 }

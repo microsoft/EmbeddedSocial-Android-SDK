@@ -5,25 +5,25 @@
 
 package com.microsoft.embeddedsocial.server.model.account;
 
-import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.autorest.models.UserProfileView;
+import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 
 /**
  *
  */
 public class GetUserResponse {
 
-	private UserCompactView user;
+    private UserCompactView user;
 
-	public GetUserResponse(UserCompactView user) {
-		this.user = user;
-	}
+    public GetUserResponse(UserCompactView user) {
+        this.user = user;
+    }
 
-	public GetUserResponse(UserProfileView view) {
-		user = new UserCompactView(view);
-	}
+    public GetUserResponse(UserProfileView view) {
+        user = new UserCompactView(view);
+    }
 
-	public UserCompactView getUser() {
-		return user;
-	}
+    public UserCompactView getUser() {
+        return user;
+    }
 }

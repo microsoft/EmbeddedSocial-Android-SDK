@@ -21,17 +21,17 @@ import android.view.View;
  */
 public class BlockedUsersFragment extends BaseUsersListFragment {
 
-	protected BlockedUsersRenderer createRenderer() {
-		return new BlockedUsersRenderer(this);
-	}
+    protected BlockedUsersRenderer createRenderer() {
+        return new BlockedUsersRenderer(this);
+    }
 
-	protected Fetcher<UserCompactView> createFetcher() {
-		return FetchersFactory.createBlockedUsersFetcher();
-	}
+    protected Fetcher<UserCompactView> createFetcher() {
+        return FetchersFactory.createBlockedUsersFetcher();
+    }
 
-	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		setEmptyDataMessage(R.string.es_no_blocked_users);
-	}
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setEmptyDataMessage(R.string.es_no_blocked_users);
+    }
 }

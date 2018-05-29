@@ -6,9 +6,9 @@
 package com.microsoft.embeddedsocial.event.data;
 
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
+import com.microsoft.embeddedsocial.base.event.ThreadType;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.event.BaseUserEvent;
-import com.microsoft.embeddedsocial.base.event.ThreadType;
 
 
 /**
@@ -17,14 +17,14 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.MAIN)
 public class ProfileDataUpdatedEvent extends BaseUserEvent {
 
-	private final AccountData accountData;
+    private final AccountData accountData;
 
-	public ProfileDataUpdatedEvent(String userHandle, AccountData accountData) {
-		super(userHandle);
-		this.accountData = accountData;
-	}
+    public ProfileDataUpdatedEvent(String userHandle, AccountData accountData) {
+        super(userHandle);
+        this.accountData = accountData;
+    }
 
-	public AccountData getAccountData() {
-		return accountData;
-	}
+    public AccountData getAccountData() {
+        return accountData;
+    }
 }

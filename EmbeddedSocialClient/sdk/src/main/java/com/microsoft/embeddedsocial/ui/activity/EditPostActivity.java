@@ -13,10 +13,10 @@ import com.microsoft.embeddedsocial.ui.fragment.EditPostFragment;
  */
 public class EditPostActivity extends BaseActivity {
 
-	@Override
-	protected void setupFragments() {
-		EditPostFragment fragment = new EditPostFragment();
-		fragment.setArguments(getIntent().getExtras());
-		setActivityContent(fragment);
-	}
+    @Override
+    protected void setupFragments() {
+        EditPostFragment fragment = new EditPostFragment();
+        fragment.setArguments(getIntent().getExtras());
+        setActivityContent(fragment);
+    }
 }

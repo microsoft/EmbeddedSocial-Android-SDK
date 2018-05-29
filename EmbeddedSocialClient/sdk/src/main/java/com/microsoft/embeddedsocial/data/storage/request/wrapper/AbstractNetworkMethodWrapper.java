@@ -15,36 +15,36 @@ import com.microsoft.embeddedsocial.server.model.BaseRequest;
  * @param <Response>    type of server response
  */
 public abstract class AbstractNetworkMethodWrapper<Request extends BaseRequest, Response>
-	extends AbstractRequestWrapper<Request, Response> {
+    extends AbstractRequestWrapper<Request, Response> {
 
-	private final INetworkMethod<Request, Response> networkMethod;
+    private final INetworkMethod<Request, Response> networkMethod;
 
-	/**
-	 * Base constructor.
-	 * @param networkMethod     network method that should be called to obtain server response
-	 */
-	protected AbstractNetworkMethodWrapper(INetworkMethod<Request, Response> networkMethod) {
-		this.networkMethod = networkMethod;
-	}
+    /**
+     * Base constructor.
+     * @param networkMethod     network method that should be called to obtain server response
+     */
+    protected AbstractNetworkMethodWrapper(INetworkMethod<Request, Response> networkMethod) {
+        this.networkMethod = networkMethod;
+    }
 
-	@Override
-	protected final Response getNetworkResponse(Request request) throws NetworkRequestException {
-		return networkMethod.getNetworkResponse(request);
-	}
+    @Override
+    protected final Response getNetworkResponse(Request request) throws NetworkRequestException {
+        return networkMethod.getNetworkResponse(request);
+    }
 
-	/**
-	 * Represents a network call that should be made to obtain response.
-	 * @param <Request>     type of client request
-	 * @param <Response>    type of server response
-	 */
-	public interface INetworkMethod<Request, Response> {
+    /**
+     * Represents a network call that should be made to obtain response.
+     * @param <Request>     type of client request
+     * @param <Response>    type of server response
+     */
+    public interface INetworkMethod<Request, Response> {
 
-		/**
-		 * Is called to obtain response from the server.
-		 * @param   request   client request
-		 * @return  server response
-		 * @throws NetworkRequestException  if network call fails.
-		 */
-		Response getNetworkResponse(Request request) throws NetworkRequestException;
-	}
+        /**
+         * Is called to obtain response from the server.
+         * @param   request   client request
+         * @return  server response
+         * @throws NetworkRequestException  if network call fails.
+         */
+        Response getNetworkResponse(Request request) throws NetworkRequestException;
+    }
 }

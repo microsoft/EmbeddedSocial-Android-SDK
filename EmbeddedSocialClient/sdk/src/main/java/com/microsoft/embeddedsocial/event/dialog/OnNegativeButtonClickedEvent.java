@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 @HandlingThread(ThreadType.CALLING_MAIN)
 public class OnNegativeButtonClickedEvent extends OnDialogButtonClickedEvent {
 
-	public OnNegativeButtonClickedEvent(String dialogId) {
-		super(dialogId);
-	}
+    public OnNegativeButtonClickedEvent(String dialogId) {
+        super(dialogId);
+    }
 }

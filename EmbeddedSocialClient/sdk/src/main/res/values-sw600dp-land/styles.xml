@@ -5,13 +5,13 @@
   -->
 
 <resources
-	xmlns:tools="http://schemas.android.com/tools"
-	tools:ignore="ResourceName"
-	>
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName"
+    >
 
-	<style name="EmbeddedSocialSdkThemeOverlayTopic">
-		<item name="es_baseContentLayout">@layout/es_topic_content_tablet</item>
-		<item name="es_baseContentViewId">@id/es_contentView</item>
-	</style>
+    <style name="EmbeddedSocialSdkThemeOverlayTopic">
+        <item name="es_baseContentLayout">@layout/es_topic_content_tablet</item>
+        <item name="es_baseContentViewId">@id/es_contentView</item>
+    </style>
 
 </resources>

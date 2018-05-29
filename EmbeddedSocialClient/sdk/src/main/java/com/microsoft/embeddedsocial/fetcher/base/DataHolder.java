@@ -19,63 +19,63 @@ import java.util.List;
  */
 class DataHolder<T> {
 
-	private final List<T> data = new ArrayList<>();
-	private final List<T> unmodifiableDataLink = Collections.unmodifiableList(data);
-	private final CallbackNotifier callbackNotifier;
+    private final List<T> data = new ArrayList<>();
+    private final List<T> unmodifiableDataLink = Collections.unmodifiableList(data);
+    private final CallbackNotifier callbackNotifier;
 
-	DataHolder(CallbackNotifier callbackNotifier) {
-		this.callbackNotifier = callbackNotifier;
-	}
+    DataHolder(CallbackNotifier callbackNotifier) {
+        this.callbackNotifier = callbackNotifier;
+    }
 
-	int size() {
-		return data.size();
-	}
+    int size() {
+        return data.size();
+    }
 
-	List<T> getAll() {
-		return unmodifiableDataLink;
-	}
+    List<T> getAll() {
+        return unmodifiableDataLink;
+    }
 
-	boolean isEmpty() {
-		return data.isEmpty();
-	}
+    boolean isEmpty() {
+        return data.isEmpty();
+    }
 
-	boolean removeAllMatches(Predicate<? super T> predicate) {
-		boolean dataChanged = false;
-		Iterator<? extends T> iterator = data.iterator();
-		while (iterator.hasNext()) {
-			if (predicate.test(iterator.next())) {
-				iterator.remove();
-				dataChanged = true;
-			}
-		}
-		if (dataChanged) {
-			callbackNotifier.notifyDataRemoved();
-		}
-		return dataChanged;
-	}
+    boolean removeAllMatches(Predicate<? super T> predicate) {
+        boolean dataChanged = false;
+        Iterator<? extends T> iterator = data.iterator();
+        while (iterator.hasNext()) {
+            if (predicate.test(iterator.next())) {
+                iterator.remove();
+                dataChanged = true;
+            }
+        }
+        if (dataChanged) {
+            callbackNotifier.notifyDataRemoved();
+        }
+        return dataChanged;
+    }
 
-	int removeFirstMatch(Predicate<? super T> predicate) {
-		for (int i = 0; i < data.size(); i++) {
-			if (predicate.test(data.get(i))) {
-				data.remove(i);
-				callbackNotifier.notifyDataRemoved();
-				return i;
-			}
-		}
-		return -1;
-	}
+    int removeFirstMatch(Predicate<? super T> predicate) {
+        for (int i = 0; i < data.size(); i++) {
+            if (predicate.test(data.get(i))) {
+                data.remove(i);
+                callbackNotifier.notifyDataRemoved();
+                return i;
+            }
+        }
+        return -1;
+    }
 
-	void insertItem(T item, int position) {
-		data.add(position, item);
-		callbackNotifier.notifyDataUpdated();
-	}
+    void insertItem(T item, int position) {
+        data.add(position, item);
+        callbackNotifier.notifyDataUpdated();
+    }
 
-	void add(List<T> newData) {
-		data.addAll(newData);
-	}
+    void add(List<T> newData) {
+        data.addAll(newData);
+    }
 
-	void replaceData(List<T> newData) {
-		data.clear();
-		data.addAll(newData);
-	}
+    void replaceData(List<T> newData) {
+        data.clear();
+        data.addAll(newData);
+    }
 }

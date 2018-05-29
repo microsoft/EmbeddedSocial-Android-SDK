@@ -14,13 +14,13 @@ import com.microsoft.embeddedsocial.base.event.AbstractEvent;
  */
 abstract class ActionEvent extends AbstractEvent {
 
-	private final Action action;
+    private final Action action;
 
-	ActionEvent(Action action) {
-		this.action = action;
-	}
+    ActionEvent(Action action) {
+        this.action = action;
+    }
 
-	public Action getAction() {
-		return action;
-	}
+    public Action getAction() {
+        return action;
+    }
 }

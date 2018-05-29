@@ -12,21 +12,21 @@ import java.util.List;
  */
 public class PartiallyLoadedDataException extends Exception {
 
-	private final List<?> loadedData;
-	private final Exception cause;
+    private final List<?> loadedData;
+    private final Exception cause;
 
-	public PartiallyLoadedDataException(List<?> loadedData, Exception cause) {
-		this.loadedData = loadedData;
-		this.cause = cause;
-	}
+    public PartiallyLoadedDataException(List<?> loadedData, Exception cause) {
+        this.loadedData = loadedData;
+        this.cause = cause;
+    }
 
-	public <T> List<T> getLoadedData() {
-		//noinspection unchecked
-		return (List<T>) loadedData;
-	}
+    public <T> List<T> getLoadedData() {
+        //noinspection unchecked
+        return (List<T>) loadedData;
+    }
 
-	@Override
-	public Exception getCause() {
-		return cause;
-	}
+    @Override
+    public Exception getCause() {
+        return cause;
+    }
 }

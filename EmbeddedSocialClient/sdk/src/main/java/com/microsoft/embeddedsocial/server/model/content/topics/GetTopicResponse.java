@@ -9,13 +9,13 @@ import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
 public class GetTopicResponse {
 
-	private TopicView topic;
+    private TopicView topic;
 
-	public GetTopicResponse(TopicView topic) {
-		this.topic = topic;
-	}
+    public GetTopicResponse(TopicView topic) {
+        this.topic = topic;
+    }
 
-	public TopicView getTopic() {
-		return topic;
-	}
+    public TopicView getTopic() {
+        return topic;
+    }
 }

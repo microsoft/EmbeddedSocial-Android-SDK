@@ -11,5 +11,5 @@ package com.microsoft.embeddedsocial.base.function;
  * @param <T> object type
  */
 public interface Producer<T> {
-	T createNew();
+    T createNew();
 }

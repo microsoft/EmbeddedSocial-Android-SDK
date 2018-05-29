@@ -5,17 +5,17 @@
   -->
 
 <RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
 
-	<android.widget.Space
-		android:id="@+id/es_leftBorder"
-		android:layout_width="@dimen/es_padding_xlarge"
-		android:layout_height="@dimen/es_user_icon_size"
-		/>
+    <android.widget.Space
+        android:id="@+id/es_leftBorder"
+        android:layout_width="@dimen/es_padding_xlarge"
+        android:layout_height="@dimen/es_user_icon_size"
+        />
 
-	<include layout="@layout/es_view_topic"/>
+    <include layout="@layout/es_view_topic"/>
 
 </RelativeLayout>

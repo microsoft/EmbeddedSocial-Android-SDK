@@ -6,16 +6,17 @@
 package com.microsoft.embeddedsocial.service;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
+
 import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
 
 /**
  * Listens to InstanceID API callbacks.
  */
 public class GcmInstanceIdListenerService extends InstanceIDListenerService {
-	@Override
-	public void onTokenRefresh() {
-		super.onTokenRefresh();
-		GcmTokenHolder.create(this).resetToken();
-		WorkerService.getLauncher(this).launchService(ServiceAction.GCM_REGISTER);
-	}
+    @Override
+    public void onTokenRefresh() {
+        super.onTokenRefresh();
+        GcmTokenHolder.create(this).resetToken();
+        WorkerService.getLauncher(this).launchService(ServiceAction.GCM_REGISTER);
+    }
 }
