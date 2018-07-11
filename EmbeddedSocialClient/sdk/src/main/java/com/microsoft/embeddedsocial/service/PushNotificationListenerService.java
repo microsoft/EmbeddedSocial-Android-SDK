@@ -14,7 +14,7 @@ import com.microsoft.embeddedsocial.event.sync.PushNotificationReceivedEvent;
 import java.util.Map;
 
 /**
- * Is used to receive GCM push notifications.
+ * Is used to receive FCM push notifications.
  */
 public class PushNotificationListenerService extends FirebaseMessagingService {
     private static final String EMBEDDED_SOCIAL_PUBLISHER = "EmbeddedSocial";

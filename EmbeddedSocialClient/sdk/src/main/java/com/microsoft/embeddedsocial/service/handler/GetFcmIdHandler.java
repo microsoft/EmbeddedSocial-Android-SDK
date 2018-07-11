@@ -12,7 +12,7 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
-import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
+import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
 
@@ -23,14 +23,14 @@ import android.support.annotation.NonNull;
 /**
  * Registers the app with Firebase Cloud Messaging framework.
  */
-public class GetGcmIdHandler implements IServiceIntentHandler<ServiceAction> {
+public class GetFcmIdHandler implements IServiceIntentHandler<ServiceAction> {
 
     private final Context context;
-    private final GcmTokenHolder tokenHolder;
+    private final FcmTokenHolder tokenHolder;
 
-    public GetGcmIdHandler(Context context) {
+    public GetFcmIdHandler(Context context) {
         this.context = context;
-        this.tokenHolder = GcmTokenHolder.create(context);
+        this.tokenHolder = FcmTokenHolder.create(context);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class GetGcmIdHandler implements IServiceIntentHandler<ServiceAction> {
             instanceId.getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {
-                    GcmTokenHolder.create(context).storeToken(instanceIdResult.getToken());
+                    FcmTokenHolder.create(context).storeToken(instanceIdResult.getToken());
                     DebugLog.i("FCM token obtained successfully");
 
                     WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);

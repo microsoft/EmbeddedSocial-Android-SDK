@@ -7,16 +7,16 @@ package com.microsoft.embeddedsocial.service;
 
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
-import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
+import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
 
 /**
  * Listens to InstanceID API callbacks.
  */
-public class GcmInstanceIdListenerService extends FirebaseInstanceIdService {
+public class FcmInstanceIdListenerService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();
-        GcmTokenHolder.create(this).resetToken();
-        WorkerService.getLauncher(this).launchService(ServiceAction.GCM_REGISTER);
+        FcmTokenHolder.create(this).resetToken();
+        WorkerService.getLauncher(this).launchService(ServiceAction.FCM_REGISTER);
     }
 }

@@ -264,7 +264,7 @@
         </service>
 
         <service
-                android:name="com.microsoft.embeddedsocial.service.GcmInstanceIdListenerService">
+                android:name="com.microsoft.embeddedsocial.service.FcmInstanceIdListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

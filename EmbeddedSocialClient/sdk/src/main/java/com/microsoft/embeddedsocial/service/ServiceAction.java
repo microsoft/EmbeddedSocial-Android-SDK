@@ -16,7 +16,7 @@ public enum ServiceAction {
 
     DELETE_SEARCH_HISTORY,
 
-    GCM_REGISTER,
+    FCM_REGISTER,
 
     GET_COMMENT,
 
