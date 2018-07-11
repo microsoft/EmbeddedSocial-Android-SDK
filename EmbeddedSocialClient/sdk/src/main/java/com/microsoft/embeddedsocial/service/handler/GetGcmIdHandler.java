@@ -5,23 +5,23 @@
 
 package com.microsoft.embeddedsocial.service.handler;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
-import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
 
 import android.content.Context;
 import android.content.Intent;
-
-import java.io.IOException;
+import android.support.annotation.NonNull;
 
 /**
- * Registers the app with Google Cloud Messaging framework.
+ * Registers the app with Firebase Cloud Messaging framework.
  */
 public class GetGcmIdHandler implements IServiceIntentHandler<ServiceAction> {
 
@@ -36,21 +36,23 @@ public class GetGcmIdHandler implements IServiceIntentHandler<ServiceAction> {
     @Override
     public void handleIntent(ServiceAction action, Intent intent) {
         if (!tokenHolder.hasValidToken()) {
-            DebugLog.i("obtaining new GCM token");
-            InstanceID instanceID = InstanceID.getInstance(context);
-            try {
-                String token = instanceID.getToken(
-                    context.getString(R.string.gcm_defaultSenderId),
-                    GoogleCloudMessaging.INSTANCE_ID_SCOPE,
-                    null
-                );
-                GcmTokenHolder.create(context).storeToken(token);
-                DebugLog.i("GCM token obtained successfully");
-            } catch (IOException e) {
-                DebugLog.logException(e);
-            }
+            DebugLog.i("obtaining new FCM token");
+            FirebaseInstanceId instanceId = FirebaseInstanceId.getInstance();
+            instanceId.getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                @Override
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    GcmTokenHolder.create(context).storeToken(instanceIdResult.getToken());
+                    DebugLog.i("FCM token obtained successfully");
+
+                    WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    DebugLog.logException(e);
+                }
+            });
         }
-        WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
     }
 
     @Override
