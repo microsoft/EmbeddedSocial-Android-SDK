@@ -11,7 +11,7 @@ import com.microsoft.embeddedsocial.data.storage.ActivityCache;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.data.storage.UserActionCache;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
-import com.microsoft.embeddedsocial.gcm.GcmTokenHolder;
+import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
 import com.microsoft.embeddedsocial.server.sync.DataSynchronizer;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 
@@ -47,8 +47,8 @@ public class SynchronizationHandler implements IServiceIntentHandler<ServiceActi
             "user relations");
         synchronizer.registerSyncProducer(userActionCache::getPendingContentRemovalActions,
             "removals");
-        synchronizer.registerSyncProducer(GcmTokenHolder.create(context)::getTokenSyncOperations,
-            "gcm");
+        synchronizer.registerSyncProducer(FcmTokenHolder.create(context)::getTokenSyncOperations,
+            "fcm");
     }
 
     @Override

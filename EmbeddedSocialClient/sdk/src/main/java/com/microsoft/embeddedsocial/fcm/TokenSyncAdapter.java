@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.gcm;
+package com.microsoft.embeddedsocial.fcm;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -16,14 +16,14 @@ import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 import com.microsoft.embeddedsocial.server.sync.exception.SynchronizationException;
 
 /**
- * Is used to register GCM token on Embedded Social server.
+ * Is used to register FCM token on Embedded Social server.
  */
 class TokenSyncAdapter implements ISynchronizable {
 
-    private final GcmTokenHolder tokenHolder;
+    private final FcmTokenHolder tokenHolder;
     private boolean launched;
 
-    TokenSyncAdapter(GcmTokenHolder tokenHolder) {
+    TokenSyncAdapter(FcmTokenHolder tokenHolder) {
         this.tokenHolder = tokenHolder;
     }
 
@@ -52,10 +52,10 @@ class TokenSyncAdapter implements ISynchronizable {
         boolean result = true;
 
         if (tokenHolder.isTokenSynchronized()) {
-            DebugLog.w("GCM token has already been synchronized");
+            DebugLog.w("FCM token has already been synchronized");
             result = false;
         } else if (!tokenHolder.hasValidToken()) {
-            DebugLog.w("GCM token is not valid");
+            DebugLog.w("FCM token is not valid");
             result = false;
         } else if (!UserAccount.getInstance().isSignedIn()) {
             throw new SynchronizationException("User is not signed in");

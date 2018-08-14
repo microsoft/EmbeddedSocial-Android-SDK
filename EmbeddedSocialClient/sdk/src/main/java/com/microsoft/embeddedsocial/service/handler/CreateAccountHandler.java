@@ -89,7 +89,7 @@ public class CreateAccountHandler extends ActionHandler {
         if (!action.isCompleted()) {
             int messageId = R.string.es_msg_general_create_user_success;
             UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
+            WorkerService.getLauncher(context).launchService(ServiceAction.FCM_REGISTER);
         }
     }
 

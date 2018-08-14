@@ -12,7 +12,7 @@ import com.microsoft.embeddedsocial.service.handler.CreateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.DeleteAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.DeleteSearchHistoryHandler;
 import com.microsoft.embeddedsocial.service.handler.GetCommentHandler;
-import com.microsoft.embeddedsocial.service.handler.GetGcmIdHandler;
+import com.microsoft.embeddedsocial.service.handler.GetFcmIdHandler;
 import com.microsoft.embeddedsocial.service.handler.GetReplyHandler;
 import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.RemoveFollowerHandler;
@@ -46,7 +46,7 @@ public class IntentProcessorFactory {
         processor.registerIntentHandler(ServiceAction.SYNC_DATA, new SynchronizationHandler(context));
         processor.registerIntentHandler(ServiceAction.CREATE_ACCOUNT, new CreateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));
-        processor.registerIntentHandler(ServiceAction.GCM_REGISTER, new GetGcmIdHandler(context));
+        processor.registerIntentHandler(ServiceAction.FCM_REGISTER, new GetFcmIdHandler(context));
         processor.registerIntentHandler(ServiceAction.BACKGROUND_INIT, new BackgroundInitializationHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_NOTIFICATION_COUNT, new UpdateNotificationCountHandler());
         processor.registerIntentHandler(ServiceAction.GET_COMMENT, new GetCommentHandler());

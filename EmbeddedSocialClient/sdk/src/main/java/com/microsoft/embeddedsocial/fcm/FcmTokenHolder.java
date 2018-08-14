@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.gcm;
+package com.microsoft.embeddedsocial.fcm;
 
 import com.google.gson.Gson;
 
@@ -17,30 +17,30 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Holds GCM token along with its state (such as synced/unsynced, etc.)
+ * Holds FCM token along with its state (such as synced/unsynced, etc.)
  */
-public class GcmTokenHolder {
+public class FcmTokenHolder {
 
-    private static final String PREFERENCES_NAME = "gcm_token";
+    private static final String PREFERENCES_NAME = "fcm_token";
     private static final String DATA_KEY = "token_state";
 
     private final SharedPreferences dataStorage;
 
-    private GcmTokenHolder(Context context) {
+    private FcmTokenHolder(Context context) {
         dataStorage = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
     /**
      * Creates a new instance of token holder attached to the given context.
      * @param   context   valid context
-     * @return  {@linkplain GcmTokenHolder} instance.
+     * @return  {@linkplain FcmTokenHolder} instance.
      */
-    public static GcmTokenHolder create(Context context) {
-        return new GcmTokenHolder(context);
+    public static FcmTokenHolder create(Context context) {
+        return new FcmTokenHolder(context);
     }
 
     /**
-     * Stores GCM token.
+     * Stores FCM token.
      * @param token the token to store
      */
     public void storeToken(String token) {
@@ -86,7 +86,7 @@ public class GcmTokenHolder {
     }
 
     /**
-     * Marks GCM token as synchronized.
+     * Marks FCM token as synchronized.
      */
     public void markTokenSynchronized() {
         TokenState state = readTokenState();
@@ -105,15 +105,15 @@ public class GcmTokenHolder {
     }
 
     /**
-     * Gets GCM token.
-     * @return  GCM token or null if it wasn't stored previously.
+     * Gets FCM token.
+     * @return  FCM token or null if it wasn't stored previously.
      */
     public String getToken() {
         return readTokenState().token;
     }
 
     /**
-     * Resets current GCM token.
+     * Resets current FCM token.
      */
     public void resetToken() {
         storeTokenState(new TokenState());

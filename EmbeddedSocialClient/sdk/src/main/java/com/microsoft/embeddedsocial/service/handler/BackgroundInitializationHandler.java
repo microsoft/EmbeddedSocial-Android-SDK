@@ -22,7 +22,7 @@ public class BackgroundInitializationHandler implements IServiceIntentHandler<Se
 
     @Override
     public void handleIntent(ServiceAction action, Intent intent) {
-        WorkerService.getLauncher(context).launchService(ServiceAction.GCM_REGISTER);
+        WorkerService.getLauncher(context).launchService(ServiceAction.FCM_REGISTER);
     }
 
     @Override
