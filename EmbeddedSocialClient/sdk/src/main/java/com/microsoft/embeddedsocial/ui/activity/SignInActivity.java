@@ -5,6 +5,7 @@
 
 package com.microsoft.embeddedsocial.ui.activity;
 
+import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.base.utils.thread.ThreadUtils;
@@ -47,7 +48,6 @@ public class SignInActivity extends BaseActivity {
         super.onResume();
         // XXX: keyboard is closed in a handler because of bugs on HTC devices
         ThreadUtils.getMainThreadHandler().post(() -> ViewUtils.hideKeyboard(this));
-        checkIntent(getIntent());
     }
 
     @Override
@@ -61,9 +61,10 @@ public class SignInActivity extends BaseActivity {
             String action = intent.getAction();
             if (action != null && action.equals(getString(R.string.es_google_auth_response))) {
                 signInFragment.setIsGettingThirdPartyCredentials(true);
-                GoogleAppAuthAuthenticator authenticator = signInFragment.createGoogleAuthenticator();
-                signInFragment.setAuthenticator(authenticator);
-                authenticator.handleAuthorizationResponse(intent);
+                AbstractAuthenticator authenticator = signInFragment.getAuthenticator();
+                if (authenticator instanceof GoogleAppAuthAuthenticator) {
+                    ((GoogleAppAuthAuthenticator)authenticator).handleAuthorizationResponse(intent);
+                }
             }
         }
     }
