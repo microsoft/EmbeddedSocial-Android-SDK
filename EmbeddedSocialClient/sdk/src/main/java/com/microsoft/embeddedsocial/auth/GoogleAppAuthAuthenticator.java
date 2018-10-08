@@ -101,6 +101,7 @@ public class GoogleAppAuthAuthenticator extends AbstractAuthenticator {
         String action = context.getString(R.string.es_google_auth_response);
         Intent intent = new Intent(action);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         return PendingIntent.getActivity(context, request.hashCode(), intent, 0);
     }
 

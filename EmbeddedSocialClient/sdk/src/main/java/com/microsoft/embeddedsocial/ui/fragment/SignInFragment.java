@@ -229,8 +229,8 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
                 GoogleAppAuthAuthenticator.AuthenticationMode.SIGN_IN_ONLY);
     }
 
-    public void setAuthenticator(AbstractAuthenticator authenticator) {
-        this.authenticator = authenticator;
+    public AbstractAuthenticator getAuthenticator() {
+        return authenticator;
     }
 
     @Override
