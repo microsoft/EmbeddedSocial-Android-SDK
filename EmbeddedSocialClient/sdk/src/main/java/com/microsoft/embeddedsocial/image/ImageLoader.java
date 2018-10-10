@@ -61,7 +61,7 @@ public final class ImageLoader {
     }
 
     public static void load(ImageView imageView, String uri) {
-        performAction(() -> picasso.load(uri).into(imageView));
+        performAction(() -> picasso.load(uri).placeholder(R.drawable.placeholder).into(imageView));
     }
 
 
@@ -69,14 +69,14 @@ public final class ImageLoader {
      * Loads an image into the target. You must keep a reference to the target, otherwise the image can be not loaded.
      */
     public static void load(Target target, String uri, int width) {
-        performAction(() -> picasso.load(uri).resize(width, 0).onlyScaleDown().into(target));
+        performAction(() -> picasso.load(uri).placeholder(R.drawable.placeholder).resize(width, 0).onlyScaleDown().into(target));
     }
 
     /**
      * Loads an image into the target. You must keep a reference to the target, otherwise the image can be not loaded.
      */
     public static void load(Target target, String uri) {
-        performAction(() -> picasso.load(uri).into(target));
+        performAction(() -> picasso.load(uri).placeholder(R.drawable.placeholder).into(target));
     }
 
 
@@ -92,7 +92,7 @@ public final class ImageLoader {
     }
 
     public static void cancel(ImageView imageView) {
-        performAction(() -> picasso.cancelRequest(imageView));
+        performAction(() -> picasso.placeholder(R.drawable.placeholder).cancelRequest(imageView));
     }
 
     public static void cancel(Target target) {
