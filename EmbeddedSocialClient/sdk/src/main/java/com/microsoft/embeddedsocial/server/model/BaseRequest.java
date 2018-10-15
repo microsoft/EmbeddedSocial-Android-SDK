@@ -134,7 +134,7 @@ public class BaseRequest {
 
     protected void checkResponseCode(ServiceResponse serviceResponse) throws NetworkRequestException {
         Response response = serviceResponse.getResponse();
-        if (!response.isSuccess()) {
+        if (!response.isSuccessful()) {
             throw NetworkRequestException.generateException(response.code(), response.message());
         }
     }
