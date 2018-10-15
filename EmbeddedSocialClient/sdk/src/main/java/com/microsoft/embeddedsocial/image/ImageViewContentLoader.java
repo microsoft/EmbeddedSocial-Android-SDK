@@ -82,7 +82,7 @@ public abstract class ImageViewContentLoader {
         }
 
         @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
+        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
             FAILED_DOWNLOADS.put(uri, true);
             ImageViewContentLoader.this.onBitmapFailed();
         }
