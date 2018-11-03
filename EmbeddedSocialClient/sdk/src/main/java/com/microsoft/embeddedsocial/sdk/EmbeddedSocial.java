@@ -27,6 +27,7 @@ import com.microsoft.embeddedsocial.server.RequestInfoProvider;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
 import com.microsoft.embeddedsocial.ui.activity.HomeActivity;
@@ -77,7 +78,7 @@ public final class EmbeddedSocial {
      * @param configResId   resource id of the JSON configuration file for the SDK
      */
     public static void init(Application application, @RawRes int configResId) {
-        init(application, configResId, null);
+        init(application, configResId, null, null);
     }
 
     /**
@@ -85,8 +86,9 @@ public final class EmbeddedSocial {
      * @param application   the application instance
      * @param configResId   resource id of the JSON configuration file for the SDK
      * @param appKey        application key
+     * @param telemetryToken token used for telemetry or null if no telemetry is gathered
      */
-    public static void init(Application application, @RawRes int configResId, String appKey) {
+    public static void init(Application application, @RawRes int configResId, String appKey, @Nullable String telemetryToken) {
         if (BuildConfig.DEBUG) {
             initLogging(application);
         }
@@ -100,6 +102,10 @@ public final class EmbeddedSocial {
         GlobalObjectRegistry.addObject(options);
         initGlobalObjects(application, options);
         WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
+        if (telemetryToken != null) {
+            options.setTelemetryToken(telemetryToken);
+            Telemetry.setAnalyticsSolution(application, telemetryToken);
+        }
         // TODO: Added to main activity access token tracking
         // https://developers.facebook.com/docs/facebook-login/android/v2.2#access_profile
     }

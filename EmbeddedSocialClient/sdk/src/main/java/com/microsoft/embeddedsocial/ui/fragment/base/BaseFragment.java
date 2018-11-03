@@ -13,6 +13,8 @@ import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
 import com.microsoft.embeddedsocial.event.action.ActionStartedEvent;
 import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.telemetry.Event;
+import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
@@ -89,6 +91,12 @@ public abstract class BaseFragment extends Fragment {
         setRetainInstance(true);
         eventListeners.add(this);
         eventListeners.add(actionEventListener);
+
+        if (Telemetry.isTelemetryEnabled()) {
+            Event fragmentCreate = Telemetry.newEvent("FragmentCreate");
+            fragmentCreate.addParam("fragment", getClass().getSimpleName());
+            fragmentCreate.log();
+        }
     }
 
     @Override

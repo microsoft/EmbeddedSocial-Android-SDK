@@ -116,6 +116,14 @@ public final class Options {
 
     public boolean userRelationsEnabled() { return application.userRelationsEnabled; }
 
+    public String getTelemetryToken() {
+        return application.telemetryToken;
+    }
+
+    public void setTelemetryToken(String telemetryToken) {
+        application.telemetryToken = telemetryToken;
+    }
+
     public List<String> disableNavigationDrawerForActivities() {
         return application.disableNavigationDrawerForActivities;
     }
@@ -155,6 +163,7 @@ public final class Options {
 
         private String serverUrl = null;
         private String appKey = null;
+        private String telemetryToken = null;
         private boolean searchEnabled = true;
         private boolean showGalleryView = true;
         private boolean userTopicsEnabled = true;

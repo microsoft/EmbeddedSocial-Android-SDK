@@ -4,8 +4,12 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.microsoft.embeddedsocial.sdk"
-    >
+>
+
+    <uses-sdk tools:overrideLibrary="com.microsoft.appcenter,
+            com.microsoft.appcenter.analytics"/>
 
     <application>
 
