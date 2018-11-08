@@ -8,8 +8,8 @@
 
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
@@ -24,10 +24,10 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         maven {
             // for android support version 26
             url "https://maven.google.com"
         }
+        jcenter()
     }
 }
