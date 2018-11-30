@@ -82,7 +82,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.2'
-    compile 'com.google.android.gms:play-services-auth:11.8.0'
+    compile 'com.google.android.gms:play-services-auth:16.0.1'
     compile 'com.google.firebase:firebase-core:16.0.1'
     compile "com.google.firebase:firebase-messaging:17.1.0"
     compile 'net.openid:appauth:0.3.0'
@@ -127,7 +127,7 @@ clearOutputFolder()
 
 def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
-def versionNum = '0.7.1'
+def versionNum = '0.7.2'
 group = "com.acrowntest.test"
 version = versionNum
 
