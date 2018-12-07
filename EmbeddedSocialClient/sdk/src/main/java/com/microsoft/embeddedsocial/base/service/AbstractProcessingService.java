@@ -21,7 +21,7 @@ public abstract class AbstractProcessingService extends Service {
     private final IQueueStateListener queueStateListener = new QueueStateListenerDelegate();
     private IServiceIntentProcessor intentProcessor;
     private int lastStartId;
-    
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -62,7 +62,7 @@ public abstract class AbstractProcessingService extends Service {
             DebugLog.e("received invalid intent (null intent or null action)");
         }
         
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     @Override
