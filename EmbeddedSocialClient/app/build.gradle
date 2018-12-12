@@ -72,7 +72,7 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
+        variant.outputs.all { output ->
             output.outputFileName = new File("EmbeddedSocial_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
         }
     }

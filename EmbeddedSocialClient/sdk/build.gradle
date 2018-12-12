@@ -26,7 +26,7 @@ android {
             storeFile file('debug.keystore')
         }
     }
-    publishNonDefault true
+
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     resourcePrefix 'es_'
@@ -72,7 +72,7 @@ android {
         }
     }
     libraryVariants.all { variant ->
-        variant.outputs.each { output ->
+        variant.outputs.all { output ->
             output.outputFileName = new File("EmbeddedSocial_SDK_$variant.buildType.name" + '.aar')
         }
     }
@@ -126,7 +126,7 @@ clearOutputFolder()
 
 def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
-def versionNum = '0.7.3.0.3'
+def versionNum = '0.7.3'
 group = "com.acrowntest.test"
 version = versionNum
 
