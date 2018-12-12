@@ -6,6 +6,7 @@
 package com.microsoft.embeddedsocial.base;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Map with limited size.
@@ -23,7 +24,7 @@ public class LimitedSizeHashMap<K, V> extends LinkedHashMap<K, V> {
     }
 
     @Override
-    protected boolean removeEldestEntry(Entry<K, V> eldest) {
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
         return size() > maxSize;
     }
 }

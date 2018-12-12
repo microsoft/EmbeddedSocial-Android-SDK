@@ -11,7 +11,6 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 
-apply plugin: 'me.tatarka.retrolambda'
 //apply plugin: 'com.google.gms.google-services'
 
 repositories {
@@ -22,8 +21,8 @@ repositories {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     lintOptions {
         abortOnError false
@@ -37,7 +36,7 @@ android {
     defaultConfig {
         applicationId "com.microsoft.embeddedsocial"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionName computeVersionName()
         multiDexEnabled true
         signingConfig signingConfigs.debug
@@ -57,21 +56,24 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            versionNameSuffix "d"
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.develop
         }
-        debug {
-            versionNameSuffix "d"
-            signingConfig signingConfigs.debug
-        }
+        debugStandalone {}
+        releaseStandalone {}
     }
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            output.outputFile = new File((File) outputFolder, "EmbeddedSocial_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
+            output.outputFileName = new File("EmbeddedSocial_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
         }
     }
 
@@ -83,15 +85,10 @@ android {
     }
 }
 
-retrolambda {
-    jvmArgs '-noverify'
-}
-
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    releaseCompile project(path: ':sdk', configuration: 'releaseStandalone')
-    debugCompile project(path: ':sdk', configuration: 'debugStandalone')
-    compile 'com.android.support:multidex:1.0.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':sdk')
+    implementation 'com.android.support:multidex:1.0.1'
 }
 
 def getBuildNumber() {
