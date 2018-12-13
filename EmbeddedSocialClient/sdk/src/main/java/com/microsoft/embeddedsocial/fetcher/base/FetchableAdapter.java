@@ -9,8 +9,9 @@ import com.microsoft.embeddedsocial.base.function.Predicate;
 import com.microsoft.embeddedsocial.sdk.R;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 /**
  * Base adapter for {@link FetchableRecyclerView}. It's an adapter responsible for its data loading itself.

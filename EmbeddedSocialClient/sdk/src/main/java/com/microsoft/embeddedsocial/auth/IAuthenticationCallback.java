@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.auth;
 
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
-import android.support.annotation.UiThread;
+import androidx.annotation.UiThread;
 
 /**
  * Callback interface for authentication process.

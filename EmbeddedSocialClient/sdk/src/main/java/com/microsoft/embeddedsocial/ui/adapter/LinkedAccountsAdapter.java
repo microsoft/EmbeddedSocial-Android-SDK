@@ -13,13 +13,14 @@ import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.server.model.view.UserAccountView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.LinkedAccountViewHolder;
 
-import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.widget.SwitchCompat;
 
 /**
  * Adapter for the linked accounts screen.

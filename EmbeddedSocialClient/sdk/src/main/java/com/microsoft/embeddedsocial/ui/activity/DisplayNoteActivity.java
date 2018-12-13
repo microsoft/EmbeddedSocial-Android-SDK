@@ -12,7 +12,8 @@ import com.microsoft.embeddedsocial.ui.fragment.DisplayCommentFragment;
 import com.microsoft.embeddedsocial.ui.fragment.DisplayReplyFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Activity to display a single comment or reply.

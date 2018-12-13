@@ -11,7 +11,8 @@ import com.microsoft.embeddedsocial.sdk.ui.DrawerDisplayMode;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+
+import androidx.multidex.MultiDex;
 
 public class NavigationDrawerApplication extends Application {
 

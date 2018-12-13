@@ -10,7 +10,7 @@ import com.microsoft.embeddedsocial.base.event.ThreadType;
 import com.microsoft.embeddedsocial.event.BaseCommonBehaviorEvent;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Open selected topic.

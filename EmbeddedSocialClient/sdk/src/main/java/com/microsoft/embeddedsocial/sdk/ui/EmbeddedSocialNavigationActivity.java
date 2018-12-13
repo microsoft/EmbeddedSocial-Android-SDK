@@ -12,10 +12,11 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.squareup.otto.Subscribe;
 
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 public abstract class EmbeddedSocialNavigationActivity extends EmbeddedSocialActivity implements IDrawerState {
     protected static final String DISPLAY_MENU_EXTRA = "DISPLAY_MENU_EXTRA";

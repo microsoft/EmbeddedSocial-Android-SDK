@@ -11,7 +11,8 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.ReportFragment;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+
+import androidx.appcompat.app.ActionBar;
 
 /**
  * Activity for reporting content or user.

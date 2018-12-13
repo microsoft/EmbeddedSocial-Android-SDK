@@ -16,7 +16,7 @@
     android:paddingBottom="@dimen/es_card_list_padding_ver"
     >
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         style="@style/EmbeddedSocialSdkCardViewStyle"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -97,5 +97,5 @@
         </FrameLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

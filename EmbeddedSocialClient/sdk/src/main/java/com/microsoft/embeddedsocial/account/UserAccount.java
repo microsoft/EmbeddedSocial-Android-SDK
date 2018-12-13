@@ -32,9 +32,10 @@ import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationManagerCompat;
 import android.text.TextUtils;
+
+import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.Fragment;
 
 /**
  * Manages functionality related to user account.

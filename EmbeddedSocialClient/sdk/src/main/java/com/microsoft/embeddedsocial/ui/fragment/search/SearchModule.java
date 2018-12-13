@@ -16,8 +16,9 @@ import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.squareup.otto.Subscribe;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Encapsulates the behavior of search fragments.

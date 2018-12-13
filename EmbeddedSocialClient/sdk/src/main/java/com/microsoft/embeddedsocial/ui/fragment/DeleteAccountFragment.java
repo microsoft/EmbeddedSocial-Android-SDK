@@ -14,10 +14,11 @@ import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Fragment for deleting an account.

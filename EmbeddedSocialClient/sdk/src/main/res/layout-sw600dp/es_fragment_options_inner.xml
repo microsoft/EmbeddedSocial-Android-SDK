@@ -22,7 +22,7 @@
         android:paddingTop="@dimen/es_padding_large"
         >
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/es_padding_base"
@@ -69,7 +69,7 @@
 
             </TableLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:id="@+id/es_optionsSignedIn"
@@ -79,7 +79,7 @@
             android:visibility="gone">
             >
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/es_padding_base"
@@ -162,9 +162,9 @@
 
                 </TableLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/es_padding_base"
@@ -247,7 +247,7 @@
 
                 </TableLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
         <LinearLayout
@@ -258,7 +258,7 @@
             android:visibility="visible">
             >
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/es_padding_base"
@@ -299,11 +299,11 @@
                             />
                     </TableRow>
                 </TableLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/es_padding_base"
@@ -352,9 +352,9 @@
 
             </TableLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/es_padding_large"
@@ -391,7 +391,7 @@
                         android:text="Use staggered grid layout manager"
                         />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/es_layoutSwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -399,7 +399,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

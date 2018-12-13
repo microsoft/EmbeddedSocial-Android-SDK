@@ -8,7 +8,7 @@ package com.microsoft.embeddedsocial.event.click;
 import com.microsoft.embeddedsocial.event.BaseCommonBehaviorEvent;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 public class OpenCommentEvent extends BaseCommonBehaviorEvent {
 

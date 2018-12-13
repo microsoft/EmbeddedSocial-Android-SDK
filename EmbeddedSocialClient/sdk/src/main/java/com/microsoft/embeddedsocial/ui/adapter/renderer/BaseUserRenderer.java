@@ -14,9 +14,10 @@ import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.ProfileOpenHelper;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Base implementation of renderer for user list item.

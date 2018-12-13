@@ -6,8 +6,9 @@
 package com.microsoft.embeddedsocial.ui.util;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Adds padding for the top and bottom items in RecyclerView.

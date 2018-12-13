@@ -10,8 +10,9 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 
-import android.support.v4.app.Fragment;
 import android.view.MenuItem;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Menu listener for the reply layout

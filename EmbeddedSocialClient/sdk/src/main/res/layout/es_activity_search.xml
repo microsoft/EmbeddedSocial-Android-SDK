@@ -12,7 +12,7 @@
     >
     <!-- Toolbar will be placed here for apps that want the navdrawer placed below the toolbar -->
 
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/es_drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +25,7 @@
             android:orientation="vertical"
             >
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/es_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -33,13 +33,13 @@
                 style="?attr/es_toolbarStyle"
                 >
 
-                <android.support.v7.widget.SearchView
+                <androidx.appcompat.widget.SearchView
                     android:id="@+id/es_searchView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
 
-            </android.support.v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -74,5 +74,5 @@
             android:layout_gravity="start"
             android:background="@color/es_drawer_background"/>
 
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

@@ -15,9 +15,6 @@ import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
 import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +22,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 
 /**
  * Init topic view layout.

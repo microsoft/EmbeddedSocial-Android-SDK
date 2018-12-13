@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.sdk;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Factory interface to generate menu drawer fragments for use in Embedded Social navigation menu.

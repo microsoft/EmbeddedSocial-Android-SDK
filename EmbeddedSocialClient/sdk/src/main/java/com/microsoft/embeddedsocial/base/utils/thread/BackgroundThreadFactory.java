@@ -5,10 +5,10 @@
 
 package com.microsoft.embeddedsocial.base.utils.thread;
 
-import android.support.annotation.NonNull;
-
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import androidx.annotation.NonNull;
 
 /**
  * Implementation of {@link java.util.concurrent.ThreadFactory} that allows to specify priority of

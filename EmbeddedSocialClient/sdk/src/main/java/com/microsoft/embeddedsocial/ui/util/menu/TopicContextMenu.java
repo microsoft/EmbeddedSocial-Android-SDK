@@ -15,11 +15,12 @@ import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.TopicRenderOptions;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
 import android.view.Menu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
 
 /**
  * Contains common methods for topic context menus.

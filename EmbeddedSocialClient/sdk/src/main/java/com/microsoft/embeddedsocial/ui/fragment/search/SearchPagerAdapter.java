@@ -11,10 +11,12 @@ import com.microsoft.embeddedsocial.ui.activity.SearchActivity;
 import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
- * {@link android.support.v4.view.PagerAdapter} implementation for {@link SearchActivity}.
+ * {@link PagerAdapter} implementation for {@link SearchActivity}.
  */
 public class SearchPagerAdapter extends SimplePagerAdapter {
 

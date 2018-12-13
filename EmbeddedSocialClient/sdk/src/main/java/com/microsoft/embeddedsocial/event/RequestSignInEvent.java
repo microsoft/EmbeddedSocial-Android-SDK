@@ -9,7 +9,7 @@ import com.microsoft.embeddedsocial.account.AuthorizationCause;
 import com.microsoft.embeddedsocial.base.event.HandlingThread;
 import com.microsoft.embeddedsocial.base.event.ThreadType;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Event indicated that sign-in is required.

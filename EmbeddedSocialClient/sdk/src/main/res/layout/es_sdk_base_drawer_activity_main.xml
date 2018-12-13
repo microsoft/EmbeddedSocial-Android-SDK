@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   -->
 
-<android.support.v4.widget.DrawerLayout
+<androidx.drawerlayout.widget.DrawerLayout
     android:id="@+id/es_drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -22,4 +22,4 @@
         android:layout_gravity="start"
         android:background="@color/es_drawer_background"/>
 
-</android.support.v4.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

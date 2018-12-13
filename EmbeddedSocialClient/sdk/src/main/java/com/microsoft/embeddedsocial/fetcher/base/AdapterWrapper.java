@@ -9,18 +9,19 @@ import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
 
-import android.support.annotation.StringRes;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.StringRes;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * Wraps a {@link FetchableAdapter} and adds service items (progress indicator, error message etc.).

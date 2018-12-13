@@ -5,6 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.fetcher.base.Callback;
@@ -22,16 +24,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
 
 /**
  * Base class for fragments loading and displaying data. It contains a RecyclerView to show data, empty data message view,

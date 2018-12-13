@@ -11,13 +11,14 @@ import com.microsoft.embeddedsocial.ui.adapter.QuantityStringUtils;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
 import com.microsoft.embeddedsocial.ui.util.ButtonStyleHelper;
 
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Init reply view layout.

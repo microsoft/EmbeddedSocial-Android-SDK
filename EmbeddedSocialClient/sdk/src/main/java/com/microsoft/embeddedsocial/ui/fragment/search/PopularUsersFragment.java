@@ -15,8 +15,9 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
 import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Shows popular users.

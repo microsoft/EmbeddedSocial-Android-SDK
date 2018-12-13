@@ -17,11 +17,12 @@ import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.menu.TopicContextMenu;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Renders a topic as CardView.

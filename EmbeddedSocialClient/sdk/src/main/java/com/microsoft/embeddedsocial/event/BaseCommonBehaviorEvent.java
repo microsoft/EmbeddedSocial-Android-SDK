@@ -7,7 +7,7 @@ package com.microsoft.embeddedsocial.event;
 
 import com.microsoft.embeddedsocial.base.event.AbstractEvent;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Base class for events posted by a variety of fragments.

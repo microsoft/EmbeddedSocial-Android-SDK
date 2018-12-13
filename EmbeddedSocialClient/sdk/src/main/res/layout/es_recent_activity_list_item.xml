@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License. See LICENSE in the project root for license information.
   -->
 
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     style="@style/EmbeddedSocialSdkCardViewStyle"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -86,4 +86,4 @@
 
 
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

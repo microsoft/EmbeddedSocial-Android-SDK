@@ -11,7 +11,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
-import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
@@ -21,10 +20,11 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Implements Facebook authentication process.
@@ -45,7 +45,6 @@ public class FacebookAuthenticator extends AbstractAuthenticator {
     @Override
     protected void onAuthenticationStarted() throws AuthenticationException {
         LoginManager.getInstance().registerCallback(facebookCallbackManager, generalFacebookCallback);
-        LoginManager.getInstance().setLoginBehavior(LoginBehavior.SUPPRESS_SSO);
         LoginManager.getInstance().logInWithReadPermissions(
             getFragment(),
             authMode.getPermissions()

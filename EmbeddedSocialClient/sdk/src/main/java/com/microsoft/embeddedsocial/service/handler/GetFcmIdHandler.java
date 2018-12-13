@@ -18,7 +18,8 @@ import com.microsoft.embeddedsocial.service.WorkerService;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Registers the app with Firebase Cloud Messaging framework.

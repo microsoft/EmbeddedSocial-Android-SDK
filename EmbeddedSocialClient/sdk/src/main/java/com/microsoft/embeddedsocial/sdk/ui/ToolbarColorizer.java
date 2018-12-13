@@ -5,7 +5,7 @@
 
 package com.microsoft.embeddedsocial.sdk.ui;
 
-import android.support.annotation.ColorRes;
+import androidx.annotation.ColorRes;
 
 /**
  * Interface to set toolbar colors in SDK activities

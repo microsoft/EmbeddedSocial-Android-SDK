@@ -24,10 +24,10 @@ import com.microsoft.embeddedsocial.server.model.content.topics.GetTopicResponse
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * Fetches data for the topic with comments page.

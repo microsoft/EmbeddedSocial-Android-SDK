@@ -16,12 +16,13 @@ import com.squareup.otto.Subscribe;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.StringRes;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.app.TaskStackBuilder;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import androidx.annotation.StringRes;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 
 /**
  * Controls notifications shown by the application.

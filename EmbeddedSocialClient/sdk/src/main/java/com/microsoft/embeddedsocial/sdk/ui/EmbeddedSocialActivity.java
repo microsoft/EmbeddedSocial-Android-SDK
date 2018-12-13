@@ -6,7 +6,8 @@
 package com.microsoft.embeddedsocial.sdk.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EmbeddedSocialActivity extends AppCompatActivity {
     public final Bundle getHostAppExtras() {

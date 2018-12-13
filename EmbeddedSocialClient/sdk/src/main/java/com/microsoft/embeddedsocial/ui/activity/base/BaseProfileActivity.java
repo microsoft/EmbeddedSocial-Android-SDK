@@ -9,7 +9,7 @@ import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.event.data.ProfileDataUpdatedEvent;
 import com.squareup.otto.Subscribe;
 
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 
 /**
  * Base class for activities showing a profile.

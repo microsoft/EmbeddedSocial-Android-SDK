@@ -8,11 +8,12 @@ package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
 
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Init topic flat view layout.

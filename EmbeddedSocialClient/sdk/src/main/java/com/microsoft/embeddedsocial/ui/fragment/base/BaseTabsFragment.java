@@ -13,11 +13,12 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.FeedViewMenuFragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Base class for fragments with embedded swipe views using tabs as headers

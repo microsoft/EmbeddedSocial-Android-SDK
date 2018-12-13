@@ -7,8 +7,8 @@ package com.microsoft.embeddedsocial.ui.fragment.base;
 
 import com.microsoft.embeddedsocial.fetcher.base.FetchableAdapter;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * {@link BaseContentFragment} with a {@link LinearLayoutManager} set as layout manager.

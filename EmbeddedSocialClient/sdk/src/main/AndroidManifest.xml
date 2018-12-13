@@ -243,6 +243,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             />
         <activity
+            tools:replace="android:theme"
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/es_lib_name"
