@@ -25,9 +25,10 @@ import com.microsoft.embeddedsocial.ui.util.menu.UserContextMenuHelper;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.view.View;
+
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
 
 /**
  * Clock listener for all comment buttons.

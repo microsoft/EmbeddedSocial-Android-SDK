@@ -11,7 +11,8 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseProfileActivity;
 import com.microsoft.embeddedsocial.ui.fragment.MyProfileFragment;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+
+import androidx.appcompat.app.ActionBar;
 
 /**
  * Activity shoving current user's feeds.

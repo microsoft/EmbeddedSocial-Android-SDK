@@ -13,11 +13,11 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import androidx.annotation.Nullable;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**

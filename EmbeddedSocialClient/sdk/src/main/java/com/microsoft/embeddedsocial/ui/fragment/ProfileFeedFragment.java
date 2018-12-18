@@ -18,7 +18,8 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseFeedFragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Shows user's feed.

@@ -11,7 +11,7 @@
         android:orientation="vertical"
 >
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/es_toolbar"
         style="?attr/es_toolbarStyle"
         android:background="@color/es_toolbar_background"

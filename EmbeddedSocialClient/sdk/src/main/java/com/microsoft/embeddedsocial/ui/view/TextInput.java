@@ -5,11 +5,12 @@
 
 package com.microsoft.embeddedsocial.ui.view;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 
 import android.content.Context;
-import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;

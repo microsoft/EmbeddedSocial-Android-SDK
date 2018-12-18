@@ -7,8 +7,9 @@ package com.microsoft.embeddedsocial.ui.adapter.viewholder;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Base view holder.

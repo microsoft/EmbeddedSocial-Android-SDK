@@ -34,7 +34,6 @@ import com.squareup.otto.Subscribe;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +41,8 @@ import android.widget.Toast;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Fragment to create profile.

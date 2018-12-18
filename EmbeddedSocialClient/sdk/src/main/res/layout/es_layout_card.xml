@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     >
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/es_card_root_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,5 +33,5 @@
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>

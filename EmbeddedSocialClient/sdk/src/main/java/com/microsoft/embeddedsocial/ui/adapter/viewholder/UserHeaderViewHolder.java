@@ -22,11 +22,12 @@ import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.TimeUtils;
 
 import android.content.res.Resources;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * ViewHolder part with user info layout

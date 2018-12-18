@@ -8,7 +8,7 @@ package com.microsoft.navigationdrawerstudio;
 
 import com.microsoft.embeddedsocial.sdk.INavigationDrawerFactory;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Create navigation menu to inflate to the Social+ SDK.

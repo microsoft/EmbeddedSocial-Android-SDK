@@ -10,7 +10,8 @@ import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.fragment.FollowingFeedFragment;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
+
+import androidx.appcompat.app.ActionBar;
 
 /**
  * Activity to show feeds and profile.

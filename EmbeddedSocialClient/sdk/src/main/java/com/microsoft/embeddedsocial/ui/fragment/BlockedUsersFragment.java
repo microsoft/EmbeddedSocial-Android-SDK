@@ -13,8 +13,9 @@ import com.microsoft.embeddedsocial.ui.adapter.renderer.BlockedUsersRenderer;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseUsersListFragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Shows the list of blocked users.

@@ -29,7 +29,6 @@ import com.microsoft.embeddedsocial.server.sync.ISynchronizable;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +36,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Stores user-created posts for uploading to the server.

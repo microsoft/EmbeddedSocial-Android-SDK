@@ -17,10 +17,11 @@ import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
 
 import android.graphics.PorterDuff;
-import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * Adds gallery/list switch to the options menu.

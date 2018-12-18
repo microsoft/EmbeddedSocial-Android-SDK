@@ -11,8 +11,8 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseTabsFragment;
 import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * Fragment showing the popular feeds displayed as tabbed views

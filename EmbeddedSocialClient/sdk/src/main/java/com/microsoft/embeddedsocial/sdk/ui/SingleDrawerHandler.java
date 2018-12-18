@@ -7,10 +7,11 @@ package com.microsoft.embeddedsocial.sdk.ui;
 
 import com.microsoft.embeddedsocial.ui.fragment.NavigationFragment;
 
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 public class SingleDrawerHandler extends DrawerHandler {
     public SingleDrawerHandler(@NonNull AppCompatActivity activity) {

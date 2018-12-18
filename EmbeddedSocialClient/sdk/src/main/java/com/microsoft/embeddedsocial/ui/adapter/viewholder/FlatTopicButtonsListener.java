@@ -16,9 +16,10 @@ import com.microsoft.embeddedsocial.server.model.view.TopicView;
 import com.microsoft.embeddedsocial.ui.util.ContentUpdateHelper;
 import com.microsoft.embeddedsocial.ui.util.menu.TopicContextMenu;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
 import android.view.View;
+
+import androidx.appcompat.widget.PopupMenu;
+import androidx.fragment.app.Fragment;
 
 /**
  * Click listener for all buttons in the single topic

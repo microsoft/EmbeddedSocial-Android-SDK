@@ -26,10 +26,11 @@ import com.microsoft.live.LiveStatus;
 
 import android.content.Context;
 import android.os.ConditionVariable;
-import android.support.v4.app.Fragment;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Implements Microsoft Live authentication process.

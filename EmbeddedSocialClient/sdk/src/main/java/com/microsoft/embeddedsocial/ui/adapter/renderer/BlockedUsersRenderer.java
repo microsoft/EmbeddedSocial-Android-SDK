@@ -10,8 +10,9 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 
-import android.support.v4.app.Fragment;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Renders blocked users.

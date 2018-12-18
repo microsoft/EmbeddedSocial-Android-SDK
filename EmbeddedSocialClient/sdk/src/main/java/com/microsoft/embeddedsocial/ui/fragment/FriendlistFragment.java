@@ -30,7 +30,8 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ConditionVariable;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 /**
  * Search users from social networks.

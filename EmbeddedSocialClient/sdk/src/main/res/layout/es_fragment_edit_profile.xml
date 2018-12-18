@@ -184,7 +184,7 @@
                         android:text="@string/es_privacy_description"
                         />
 
-                    <android.support.v7.widget.SwitchCompat
+                    <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/es_privacySwitch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

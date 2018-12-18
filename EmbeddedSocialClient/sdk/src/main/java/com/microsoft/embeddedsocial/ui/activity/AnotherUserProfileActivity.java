@@ -12,7 +12,8 @@ import com.microsoft.embeddedsocial.ui.fragment.AnotherUserProfileFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+
+import androidx.appcompat.app.ActionBar;
 
 /**
  * Shows another user's profile.

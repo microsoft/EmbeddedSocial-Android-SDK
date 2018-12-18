@@ -12,8 +12,9 @@ import com.microsoft.embeddedsocial.server.model.view.ActivityView;
 import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.Nullable;
 
 /**
  * Base class for fragments showing an activity feed.

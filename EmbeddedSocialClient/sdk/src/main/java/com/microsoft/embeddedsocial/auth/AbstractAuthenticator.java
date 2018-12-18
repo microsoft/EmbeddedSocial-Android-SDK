@@ -12,7 +12,8 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Base class for all authenticators allowing to use 3rd party accounts to log in to Embedded Social.

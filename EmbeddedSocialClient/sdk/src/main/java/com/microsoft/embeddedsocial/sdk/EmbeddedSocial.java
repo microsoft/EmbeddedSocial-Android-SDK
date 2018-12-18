@@ -51,16 +51,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.HashMap;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
 /**
  * Embedded Social SDK facade.
@@ -154,8 +155,10 @@ public final class EmbeddedSocial {
         NetworkAvailability networkAccessibility = new NetworkAvailability();
         networkAccessibility.startMonitoring(context);
         GlobalObjectRegistry.addObject(networkAccessibility);
-        FacebookSdk.sdkInitialize(context);
-        FacebookSdk.setApplicationId(options.getFacebookApplicationId());
+        if (options.isFacebookLoginEnabled()) {
+            FacebookSdk.setApplicationId(options.getFacebookApplicationId());
+            FacebookSdk.sdkInitialize(context);
+        }
     }
 
     /**

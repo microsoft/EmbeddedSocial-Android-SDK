@@ -20,11 +20,12 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Implements Twitter authentication process using web views.

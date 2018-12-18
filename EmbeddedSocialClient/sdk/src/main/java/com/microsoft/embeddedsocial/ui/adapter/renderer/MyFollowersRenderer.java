@@ -14,9 +14,10 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Renders my followers with context menu.

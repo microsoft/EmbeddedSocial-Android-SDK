@@ -19,9 +19,9 @@ import com.microsoft.embeddedsocial.ui.fragment.base.BaseFeedFragment;
 import com.microsoft.embeddedsocial.ui.fragment.base.Module;
 import com.squareup.otto.Subscribe;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * Common behavior for fragments showing topic feeds.

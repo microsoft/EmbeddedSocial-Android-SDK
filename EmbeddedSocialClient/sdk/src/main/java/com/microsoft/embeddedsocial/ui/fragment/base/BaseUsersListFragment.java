@@ -14,9 +14,10 @@ import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 import com.microsoft.embeddedsocial.ui.util.VerticalPaddingDecoration;
 
 import android.os.Bundle;
-import android.support.annotation.DimenRes;
-import android.support.annotation.Nullable;
 import android.view.View;
+
+import androidx.annotation.DimenRes;
+import androidx.annotation.Nullable;
 
 /**
  * Base class for fragments showing users list.

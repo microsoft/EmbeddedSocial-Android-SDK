@@ -11,11 +11,12 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.adapter.renderer.Renderer;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.SingleViewHolder;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 /**
  * <p>Simple {@link FetchableAdapter}'s extension showing a simple list of items (optionally with a header)

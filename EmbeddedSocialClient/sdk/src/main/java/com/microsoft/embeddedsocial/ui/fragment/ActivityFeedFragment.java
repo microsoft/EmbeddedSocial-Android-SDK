@@ -11,7 +11,7 @@ import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseTabsFragment;
 import com.microsoft.embeddedsocial.ui.util.SimplePagerAdapter;
 
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
  * Fragment showing recent activity feeds displayed as tabbed views

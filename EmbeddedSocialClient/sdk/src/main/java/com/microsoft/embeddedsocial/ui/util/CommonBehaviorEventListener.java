@@ -18,7 +18,8 @@ import com.squareup.otto.Subscribe;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Event listener for common actions in the SDK

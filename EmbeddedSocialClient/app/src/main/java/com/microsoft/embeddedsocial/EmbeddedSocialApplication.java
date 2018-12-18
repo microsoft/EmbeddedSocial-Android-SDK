@@ -11,9 +11,10 @@ import com.microsoft.embeddedsocial.sdk.EmbeddedSocial;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.multidex.MultiDex;
 
 import java.lang.Thread.UncaughtExceptionHandler;
+
+import androidx.multidex.MultiDex;
 
 /**
  * Application class for the project.

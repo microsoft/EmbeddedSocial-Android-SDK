@@ -12,7 +12,7 @@
     >
     <!-- Toolbar will be placed here for apps that want the navdrawer placed below the toolbar -->
 
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/es_drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,5 +29,5 @@
             android:layout_gravity="start"
             android:background="@color/es_drawer_background"/>
 
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

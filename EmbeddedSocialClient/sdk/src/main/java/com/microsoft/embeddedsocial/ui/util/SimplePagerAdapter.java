@@ -8,13 +8,15 @@ package com.microsoft.embeddedsocial.ui.util;
 import com.microsoft.embeddedsocial.base.function.Producer;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 /**
- * Simple implementation of {@link android.support.v4.view.PagerAdapter}.
+ * Simple implementation of {@link PagerAdapter}.
  */
 public class SimplePagerAdapter extends FragmentPagerAdapter {
 
