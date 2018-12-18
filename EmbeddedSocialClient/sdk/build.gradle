@@ -11,7 +11,7 @@ buildscript {
 
 apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 //apply plugin: 'com.google.gms.google-services' // applied at bottom of file to avoid dependency collisions
 
 repositories {
@@ -85,8 +85,8 @@ dependencies {
     api 'com.squareup.picasso:picasso:2.5.2'
     api 'com.fasterxml.jackson.core:jackson-annotations:2.6.2'
     api 'com.google.android.gms:play-services-auth:16.0.1'
-    api 'com.google.firebase:firebase-core:16.0.1'
-    api "com.google.firebase:firebase-messaging:17.1.0"
+    api 'com.google.firebase:firebase-core:16.0.6'
+    api "com.google.firebase:firebase-messaging:17.3.4"
     api 'net.openid:appauth:0.3.0'
     api 'com.squareup:otto:1.3.6'
     api 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
@@ -129,41 +129,7 @@ def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
 def versionNum = '0.7.3'
 group = "com.acrowntest.test"
 version = versionNum
-
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                groupId "com.acrowntest.test"
-                artifactId 'sdk'
-
-                name = 'sdk'
-                description = 'test library'
-                url siteUrl
-
-                licenses {
-                    license {
-                        name 'MIT'
-                        url 'https://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'acrown-msft'
-                        name 'Alex Crown'
-                        email 'acrown@microsoft.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
+def description = 'Embedded Social Android SDK version ' + versionNum
 
 //task sourcesJar(type: Jar) {
 //    from android.sourceSets.main.java.srcDirs
@@ -190,10 +156,56 @@ install {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
+def pomConfig = {
+    licenses {
+        license {
+            name 'MIT'
+            url 'https://opensource.org/licenses/MIT'
+        }
+    }
+    developers {
+        developer {
+            id 'acrown-msft'
+            name 'Alex Crown'
+            email 'acrown@microsoft.com'
+        }
+    }
+    scm {
+        connection gitUrl
+        developerConnection gitUrl
+        url siteUrl
+    }
+}
+
+publishing {
+    publications {
+        sdk(MavenPublication) {
+            artifact bundleReleaseAar
+
+            pom.withXml {
+                def root = asNode()
+                def dependenciesNode = root.appendNode('dependencies')
+                // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
+                configurations.implementation.allDependencies.each {
+                    // Ensure dependencies such as fileTree are not included.
+                    if (it.name != 'unspecified') {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                    }
+                }
+                root.appendNode('description', description)
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
 bintray {
     user = properties.getProperty('bintray.user')
     key = properties.getProperty('bintray.apikey')
-    configurations = ['archives']
+    publications = ['sdk']
     pkg {
         repo = 'test'
         name = 'sdk'
