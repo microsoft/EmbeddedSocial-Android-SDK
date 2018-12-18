@@ -97,7 +97,7 @@ dependencies {
     api 'androidx.annotation:annotation:1.0.0'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'com.google.android.material:material:1.0.0'
-    api 'de.hdodenhof:circleimageview:1.2.2'
+    api 'de.hdodenhof:circleimageview:2.2.0'
     api 'com.facebook.android:facebook-android-sdk:4.39.0'
     api 'com.j256.ormlite:ormlite-android:4.48'
     api 'com.floreysoft:jmte:3.1.1'
