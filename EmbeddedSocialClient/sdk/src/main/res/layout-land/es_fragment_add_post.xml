@@ -41,7 +41,7 @@
                     android:layout_width="@dimen/es_user_icon_size"
                     android:layout_height="@dimen/es_user_icon_size"
                     android:background="?attr/es_photoPlaceholder"
-                    app:border_width="0px"
+                    app:civ_border_width="0px"
                     />
 
                 <TextView
