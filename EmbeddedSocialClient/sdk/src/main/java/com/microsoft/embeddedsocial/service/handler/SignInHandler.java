@@ -25,13 +25,16 @@ import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import com.microsoft.embeddedsocial.server.model.auth.CreateSessionRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.GetFcmIdWorker;
 import com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Sends sign-in requests.
@@ -103,7 +106,8 @@ public class SignInHandler extends ActionHandler {
         if (!action.isCompleted()) {
             int messageId = R.string.es_msg_general_signin_success;
             UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            WorkerService.getLauncher(context).launchService(ServiceAction.FCM_REGISTER);
+            OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+            WorkManager.getInstance().enqueue(fcmRegister);
         }
     }
 

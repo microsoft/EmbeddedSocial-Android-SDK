@@ -11,8 +11,7 @@ import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.SynchronizationWorker;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseEditPostFragment;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.util.FitWidthSizeSpec;
@@ -28,6 +27,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment for adding a new post.
@@ -140,7 +141,8 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
     @Override
     protected void onFinishedEditing() {
         postStorage.storePost(getTitle(), getDescription(), imageUri, PublisherType.USER);
-        WorkerService.getLauncher(getContext()).launchService(ServiceAction.SYNC_DATA);
+        OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
+        WorkManager.getInstance().enqueue(backgroundInit);
         finishActivity();
     }
 

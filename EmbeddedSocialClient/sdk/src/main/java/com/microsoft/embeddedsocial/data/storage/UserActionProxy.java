@@ -30,12 +30,14 @@ import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.server.model.view.TopicView;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.SynchronizationWorker;
 
 import android.content.Context;
 
 import java.sql.SQLException;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Is used as a facade class allowing to perform user actions such as likes/pins/etc.
@@ -77,7 +79,8 @@ public class UserActionProxy {
     }
 
     private void launchSync() {
-        WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+        OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
+        WorkManager.getInstance().enqueue(backgroundInit);
     }
 
     /**

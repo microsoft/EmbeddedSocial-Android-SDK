@@ -25,7 +25,7 @@ import com.microsoft.embeddedsocial.server.model.account.GetUserAccountResponse;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.GetFcmIdWorker;
 
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +33,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import java.io.IOException;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Sends a create account request to the server.
@@ -89,7 +92,8 @@ public class CreateAccountHandler extends ActionHandler {
         if (!action.isCompleted()) {
             int messageId = R.string.es_msg_general_create_user_success;
             UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            WorkerService.getLauncher(context).launchService(ServiceAction.FCM_REGISTER);
+            OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+            WorkManager.getInstance().enqueue(fcmRegister);
         }
     }
 

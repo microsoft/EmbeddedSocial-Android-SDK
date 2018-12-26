@@ -7,17 +7,14 @@ package com.microsoft.embeddedsocial.service;
 
 import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.IntentProcessor;
-import com.microsoft.embeddedsocial.service.handler.BackgroundInitializationHandler;
 import com.microsoft.embeddedsocial.service.handler.CreateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.DeleteAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.GetCommentHandler;
-import com.microsoft.embeddedsocial.service.handler.GetFcmIdHandler;
 import com.microsoft.embeddedsocial.service.handler.GetReplyHandler;
 import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.RemoveFollowerHandler;
 import com.microsoft.embeddedsocial.service.handler.SignInHandler;
 import com.microsoft.embeddedsocial.service.handler.SignOutHandler;
-import com.microsoft.embeddedsocial.service.handler.SynchronizationHandler;
 import com.microsoft.embeddedsocial.service.handler.UnlinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UpdateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UpdateNotificationCountHandler;
@@ -42,11 +39,8 @@ public class IntentProcessorFactory {
 
         processor.registerIntentHandler(ServiceAction.SIGN_IN, new SignInHandler(context));
         processor.registerIntentHandler(ServiceAction.SIGN_OUT, new SignOutHandler(context));
-        processor.registerIntentHandler(ServiceAction.SYNC_DATA, new SynchronizationHandler(context));
         processor.registerIntentHandler(ServiceAction.CREATE_ACCOUNT, new CreateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));
-        processor.registerIntentHandler(ServiceAction.FCM_REGISTER, new GetFcmIdHandler(context));
-        processor.registerIntentHandler(ServiceAction.BACKGROUND_INIT, new BackgroundInitializationHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_NOTIFICATION_COUNT, new UpdateNotificationCountHandler());
         processor.registerIntentHandler(ServiceAction.GET_COMMENT, new GetCommentHandler());
         processor.registerIntentHandler(ServiceAction.GET_REPLY, new GetReplyHandler());

@@ -10,11 +10,7 @@ package com.microsoft.embeddedsocial.service;
  */
 public enum ServiceAction {
 
-    BACKGROUND_INIT,
-
     DELETE_ACCOUNT,
-
-    FCM_REGISTER,
 
     GET_COMMENT,
 
@@ -23,8 +19,6 @@ public enum ServiceAction {
     SIGN_IN,
 
     SIGN_OUT,
-
-    SYNC_DATA,
 
     CREATE_ACCOUNT,
 

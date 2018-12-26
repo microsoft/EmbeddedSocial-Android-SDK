@@ -3,9 +3,8 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
-import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.storage.ActivityCache;
 import com.microsoft.embeddedsocial.data.storage.PostStorage;
@@ -13,24 +12,20 @@ import com.microsoft.embeddedsocial.data.storage.UserActionCache;
 import com.microsoft.embeddedsocial.data.storage.UserCache;
 import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
 import com.microsoft.embeddedsocial.server.sync.DataSynchronizer;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
 import android.content.Context;
-import android.content.Intent;
 
-/**
- * Uploads all available data to the server.
- */
-public class SynchronizationHandler implements IServiceIntentHandler<ServiceAction> {
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
+public class SynchronizationWorker extends Worker {
 
     public static final String PENDING_POST_SYNC_NAME = "posts";
-
     private final DataSynchronizer synchronizer = new DataSynchronizer();
 
-    /**
-     * Creates an instance.
-     */
-    public SynchronizationHandler(Context context) {
+
+    public SynchronizationWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
         UserActionCache userActionCache = new UserActionCache();
         PostStorage postStorage = new PostStorage(context);
         synchronizer.registerSyncProducer(postStorage::getPendingPosts, PENDING_POST_SYNC_NAME);
@@ -40,26 +35,25 @@ public class SynchronizationHandler implements IServiceIntentHandler<ServiceActi
         synchronizer.registerSyncProducer(userActionCache::getPendingPinActions, "pins");
         synchronizer.registerSyncProducer(userActionCache::getPendingHideTopicActions, "hidden topics");
         synchronizer.registerSyncProducer(userActionCache::getPendingReportContentActions,
-            "reported content");
+                "reported content");
         synchronizer.registerSyncProducer(new ActivityCache(context)::getActivityHandleSyncActions,
-            "notification updates");
+                "notification updates");
         synchronizer.registerSyncProducer(new UserCache()::getPendingUserRelationOperations,
-            "user relations");
+                "user relations");
         synchronizer.registerSyncProducer(userActionCache::getPendingContentRemovalActions,
-            "removals");
+                "removals");
         synchronizer.registerSyncProducer(FcmTokenHolder.create(context)::getTokenSyncOperations,
-            "fcm");
+                "fcm");
     }
 
     @Override
-    public void handleIntent(ServiceAction action, Intent intent) {
+    public Result doWork() {
         // currently this should be synchronized in app scope
-        synchronized (SynchronizationHandler.class) {
+        synchronized (SynchronizationWorker.class) {
             boolean synced = synchronizer.synchronize();
             DebugLog.i(synced ? "sync succeeded" : "sync failed");
         }
-    }
 
-    @Override
-    public void dispose() {  }
+        return Result.success();
+    }
 }
