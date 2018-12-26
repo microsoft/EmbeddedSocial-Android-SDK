@@ -14,8 +14,7 @@ import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.DeleteSearchHistoryWorker;
 import com.microsoft.embeddedsocial.ui.activity.DeleteAccountActivity;
 import com.microsoft.embeddedsocial.ui.activity.FriendlistActivity;
 import com.microsoft.embeddedsocial.ui.activity.LinkedAccountsActivity;
@@ -34,6 +33,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Settings fragment.
@@ -123,7 +124,8 @@ public class OptionsFragment extends BaseFragment {
     }
 
     private void deleteSearchHistory() {
-        WorkerService.getLauncher(getContext()).launchService(ServiceAction.DELETE_SEARCH_HISTORY);
+        OneTimeWorkRequest deleteSearchHistoryWork = new OneTimeWorkRequest.Builder(DeleteSearchHistoryWorker.class).build();
+        WorkManager.getInstance().enqueue(deleteSearchHistoryWork);
         showToast(R.string.es_msg_general_search_history_deleted);
     }
 }

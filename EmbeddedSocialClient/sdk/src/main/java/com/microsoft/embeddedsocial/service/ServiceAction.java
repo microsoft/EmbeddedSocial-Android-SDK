@@ -14,8 +14,6 @@ public enum ServiceAction {
 
     DELETE_ACCOUNT,
 
-    DELETE_SEARCH_HISTORY,
-
     FCM_REGISTER,
 
     GET_COMMENT,
