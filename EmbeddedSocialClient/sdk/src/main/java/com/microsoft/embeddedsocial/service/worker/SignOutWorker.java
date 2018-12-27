@@ -3,9 +3,8 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
@@ -13,28 +12,30 @@ import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.IAuthenticationService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.webkit.CookieManager;
 
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 /**
- * Performs sign-out.
+ * Performs the sign out operation
  */
-public class SignOutHandler extends ActionHandler {
+public class SignOutWorker extends Worker {
+    public static final String AUTHORIZATION = "authorization";
 
-    private final Context context;
+    Context context;
 
-    public SignOutHandler(Context context) {
+    public SignOutWorker(Context context, WorkerParameters workerParams) {
+        super(context, workerParams);
         this.context = context;
     }
 
     @Override
-    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-        String authorization = intent.getStringExtra(IntentExtras.AUTHORIZATION);
+    public Result doWork() {
+        String authorization = getInputData().getString(AUTHORIZATION);
         IAuthenticationService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAuthenticationService();
         try {
             SignOutRequest request = new SignOutRequest(authorization);
@@ -45,6 +46,7 @@ public class SignOutHandler extends ActionHandler {
         }
         MicrosoftLiveAuthenticator.signOut(context);
         clearCookies();
+        return Result.success();
     }
 
     private void clearCookies() {

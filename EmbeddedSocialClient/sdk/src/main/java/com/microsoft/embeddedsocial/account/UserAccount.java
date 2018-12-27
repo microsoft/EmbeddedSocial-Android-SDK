@@ -7,7 +7,6 @@ package com.microsoft.embeddedsocial.account;
 
 import com.facebook.login.LoginManager;
 import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -30,6 +29,7 @@ import com.microsoft.embeddedsocial.pending.PendingBlock;
 import com.microsoft.embeddedsocial.pending.PendingFollow;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.service.worker.SignInWorker;
+import com.microsoft.embeddedsocial.service.worker.SignOutWorker;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
@@ -153,7 +153,13 @@ public class UserAccount {
      * Clears all the data associated with the current user (except the data in the database) and launch the request to the server to sign-out.
      */
     public void signOut() {
-        ActionsLauncher.signOut(context, Preferences.getInstance().getAuthorizationToken());
+        Data inputData = new Data.Builder()
+                .putString(SignOutWorker.AUTHORIZATION, Preferences.getInstance().getAuthorizationToken())
+                .build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SignOutWorker.class)
+                .setInputData(inputData).build();
+        WorkManager.getInstance().enqueue(workRequest);
+
         AccountDataStorage.clear(context);
         Preferences.getInstance().setUserHandle(null);
         Preferences.getInstance().setAuthorizationToken(null);

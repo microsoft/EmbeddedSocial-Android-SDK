@@ -16,8 +16,6 @@ public enum ServiceAction {
 
     GET_REPLY,
 
-    SIGN_OUT,
-
     CREATE_ACCOUNT,
 
     UPDATE_ACCOUNT,

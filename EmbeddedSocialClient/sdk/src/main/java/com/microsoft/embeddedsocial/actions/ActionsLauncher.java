@@ -35,12 +35,6 @@ public final class ActionsLauncher {
                 .launch(context, ServiceAction.GET_REPLY);
     }
 
-    public static Action signOut(Context context, String authorization) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.SIGN_OUT)
-                .setAuthorization(authorization)
-                .launch(context, ServiceAction.SIGN_OUT);
-    }
-
     public static Action createAccount(Context context, CreateAccountData createAccountData) {
         return ActionIntentBuilder.forActionWithTag(Action.Tags.CREATE_ACCOUNT)
                 .setCreateAccountData(createAccountData)
