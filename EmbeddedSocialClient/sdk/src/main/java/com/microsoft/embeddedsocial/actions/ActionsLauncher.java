@@ -23,12 +23,6 @@ public final class ActionsLauncher {
     private ActionsLauncher() {
     }
 
-    public static Action getReply(Context context, String replyHandle) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.GET_REPLY)
-                .setReplyHandle(replyHandle)
-                .launch(context, ServiceAction.GET_REPLY);
-    }
-
     public static Action createAccount(Context context, CreateAccountData createAccountData) {
         return ActionIntentBuilder.forActionWithTag(Action.Tags.CREATE_ACCOUNT)
                 .setCreateAccountData(createAccountData)

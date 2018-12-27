@@ -3,9 +3,8 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
@@ -15,21 +14,28 @@ import com.microsoft.embeddedsocial.server.IContentService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyRequest;
 import com.microsoft.embeddedsocial.server.model.content.replies.GetReplyResponse;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
-import android.content.Intent;
+import android.content.Context;
+
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 /**
- * Get single reply.
+ * Fetches a reply from the server
  */
-public class GetReplyHandler extends ActionHandler {
+public class GetReplyWorker extends Worker {
+    public static final String REPLY_HANDLE = "replyHandle";
+
+    public GetReplyWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
+    }
+
     @Override
-    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
+    public Result doWork() {
         IContentService contentService
                 = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getContentService();
 
-        final String replyHandle = intent.getExtras().getString(IntentExtras.REPLY_HANDLE);
+        final String replyHandle = getInputData().getString(REPLY_HANDLE);
 
         try {
             final GetReplyRequest request = new GetReplyRequest(replyHandle);
@@ -37,8 +43,10 @@ public class GetReplyHandler extends ActionHandler {
             EventBus.post(new GetReplyEvent(response.getReply(), response.getReply() != null));
         } catch (NetworkRequestException e) {
             DebugLog.logException(e);
-            action.fail(e.getMessage());
             EventBus.post(new GetReplyEvent(null, false));
+            return Result.failure();
         }
+
+        return Result.success();
     }
 }
