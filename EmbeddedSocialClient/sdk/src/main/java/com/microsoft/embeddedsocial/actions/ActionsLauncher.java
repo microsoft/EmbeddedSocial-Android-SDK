@@ -23,12 +23,6 @@ public final class ActionsLauncher {
     private ActionsLauncher() {
     }
 
-    public static Action getComment(Context context, String commentHandle) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.GET_COMMENT)
-                .setCommentHandle(commentHandle)
-                .launch(context, ServiceAction.GET_COMMENT);
-    }
-
     public static Action getReply(Context context, String replyHandle) {
         return ActionIntentBuilder.forActionWithTag(Action.Tags.GET_REPLY)
                 .setReplyHandle(replyHandle)

@@ -12,8 +12,6 @@ public enum ServiceAction {
 
     DELETE_ACCOUNT,
 
-    GET_COMMENT,
-
     GET_REPLY,
 
     CREATE_ACCOUNT,

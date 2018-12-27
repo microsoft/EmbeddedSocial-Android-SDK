@@ -9,7 +9,6 @@ import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.IntentProcessor;
 import com.microsoft.embeddedsocial.service.handler.CreateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.DeleteAccountHandler;
-import com.microsoft.embeddedsocial.service.handler.GetCommentHandler;
 import com.microsoft.embeddedsocial.service.handler.GetReplyHandler;
 import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UnlinkUserThirdPartyAccountHandler;
@@ -37,7 +36,6 @@ public class IntentProcessorFactory {
         processor.registerIntentHandler(ServiceAction.CREATE_ACCOUNT, new CreateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_NOTIFICATION_COUNT, new UpdateNotificationCountHandler());
-        processor.registerIntentHandler(ServiceAction.GET_COMMENT, new GetCommentHandler());
         processor.registerIntentHandler(ServiceAction.GET_REPLY, new GetReplyHandler());
         processor.registerIntentHandler(ServiceAction.DELETE_ACCOUNT, new DeleteAccountHandler());
         processor.registerIntentHandler(ServiceAction.LINK_USER_THIRD_PARTY_ACCOUNT, new LinkUserThirdPartyAccountHandler());
