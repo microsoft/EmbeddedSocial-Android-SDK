@@ -13,7 +13,6 @@ import com.microsoft.embeddedsocial.service.handler.GetCommentHandler;
 import com.microsoft.embeddedsocial.service.handler.GetReplyHandler;
 import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.RemoveFollowerHandler;
-import com.microsoft.embeddedsocial.service.handler.SignInHandler;
 import com.microsoft.embeddedsocial.service.handler.SignOutHandler;
 import com.microsoft.embeddedsocial.service.handler.UnlinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UpdateAccountHandler;
@@ -37,7 +36,6 @@ public class IntentProcessorFactory {
     IServiceIntentProcessor createIntentProcessor() {
         IntentProcessor<ServiceAction> processor = new IntentProcessor<>(context, ServiceAction.class, WORKER_THREADS);
 
-        processor.registerIntentHandler(ServiceAction.SIGN_IN, new SignInHandler(context));
         processor.registerIntentHandler(ServiceAction.SIGN_OUT, new SignOutHandler(context));
         processor.registerIntentHandler(ServiceAction.CREATE_ACCOUNT, new CreateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));

@@ -23,12 +23,6 @@ public final class ActionsLauncher {
     private ActionsLauncher() {
     }
 
-    public static Action signInUsingThirdParty(Context context, SocialNetworkAccount thirdPartyAccount) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.SIGN_IN)
-                .setThirdPartyAccount(thirdPartyAccount)
-                .launch(context, ServiceAction.SIGN_IN);
-    }
-
     public static Action getComment(Context context, String commentHandle) {
         return ActionIntentBuilder.forActionWithTag(Action.Tags.GET_COMMENT)
                 .setCommentHandle(commentHandle)

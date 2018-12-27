@@ -13,6 +13,7 @@ import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.storage.DatabaseHelper;
@@ -28,14 +29,23 @@ import com.microsoft.embeddedsocial.pending.PendingAction;
 import com.microsoft.embeddedsocial.pending.PendingBlock;
 import com.microsoft.embeddedsocial.pending.PendingFollow;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.service.worker.SignInWorker;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Context;
 import android.text.TextUtils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.Operation;
+import androidx.work.WorkManager;
 
 /**
  * Manages functionality related to user account.
@@ -58,8 +68,23 @@ public class UserAccount {
     /**
      * Launches sign-in process via third party account.
      */
-    public Action signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
-        return ActionsLauncher.signInUsingThirdParty(context, thirdPartyAccount);
+    public Operation signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
+        String serializedData = null;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try {
+            ObjectOutputStream os = new ObjectOutputStream(bos);
+            os.writeObject(thirdPartyAccount);
+            serializedData = android.util.Base64.encodeToString(bos.toByteArray(), android.util.Base64.DEFAULT);
+            os.close();
+        } catch (IOException e) {
+            DebugLog.logException(e);
+        }
+
+        Data inputData = new Data.Builder()
+                .putString(SignInWorker.SOCIAL_NETWORK_ACCOUNT, serializedData).build();
+        OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(SignInWorker.class)
+                .setInputData(inputData).addTag(SignInWorker.TAG).build();
+        return WorkManager.getInstance().enqueue(fcmRegister);
     }
 
     /**

@@ -10,11 +10,14 @@ import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Model for social network data
  */
-public class SocialNetworkAccount implements Parcelable {
+public class SocialNetworkAccount implements Parcelable, Serializable {
 
+    private static final long serialVersionUID = -113535768434512586L;
     private final IdentityProvider identityProvider;
     private final String thirdPartyAccountHandle;
     private String thirdPartyAccessToken;
