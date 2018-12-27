@@ -57,12 +57,6 @@ public final class ActionsLauncher {
         return ActionIntentBuilder.forActionWithTag(Action.Tags.DELETE_ACCOUNT).launch(context, ServiceAction.DELETE_ACCOUNT);
     }
 
-    public static Action removeFollower(Context context, String userHandle) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.REMOVE_FOLLOWER)
-                .setUserHandle(userHandle)
-                .launch(context, ServiceAction.REMOVE_FOLLOWER);
-    }
-
     private static Action createAndStartAction(String tag) {
         Action action = new Action(tag);
         action.start();
