@@ -82,9 +82,9 @@ public class UserAccount {
 
         Data inputData = new Data.Builder()
                 .putString(SignInWorker.SOCIAL_NETWORK_ACCOUNT, serializedData).build();
-        OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(SignInWorker.class)
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SignInWorker.class)
                 .setInputData(inputData).addTag(SignInWorker.TAG).build();
-        return WorkManager.getInstance().enqueue(fcmRegister);
+        return WorkManager.getInstance().enqueue(workRequest);
     }
 
     /**

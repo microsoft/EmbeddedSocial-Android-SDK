@@ -20,8 +20,8 @@ public class BackgroundInitializationWorker extends Worker {
 
     @Override
     public Result doWork() {
-        OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
-        WorkManager.getInstance().enqueue(fcmRegister);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
 
         return Result.success();
     }

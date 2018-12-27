@@ -141,8 +141,8 @@ public class AddPostFragment extends BaseEditPostFragment implements OnClickList
     @Override
     protected void onFinishedEditing() {
         postStorage.storePost(getTitle(), getDescription(), imageUri, PublisherType.USER);
-        OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
-        WorkManager.getInstance().enqueue(backgroundInit);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
         finishActivity();
     }
 

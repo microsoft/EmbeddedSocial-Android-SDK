@@ -92,8 +92,8 @@ public class CreateAccountHandler extends ActionHandler {
         if (!action.isCompleted()) {
             int messageId = R.string.es_msg_general_create_user_success;
             UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
-            WorkManager.getInstance().enqueue(fcmRegister);
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+            WorkManager.getInstance().enqueue(workRequest);
         }
     }
 

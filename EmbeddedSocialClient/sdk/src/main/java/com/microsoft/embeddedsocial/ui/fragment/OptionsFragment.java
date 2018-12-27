@@ -124,8 +124,8 @@ public class OptionsFragment extends BaseFragment {
     }
 
     private void deleteSearchHistory() {
-        OneTimeWorkRequest deleteSearchHistoryWork = new OneTimeWorkRequest.Builder(DeleteSearchHistoryWorker.class).build();
-        WorkManager.getInstance().enqueue(deleteSearchHistoryWork);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DeleteSearchHistoryWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
         showToast(R.string.es_msg_general_search_history_deleted);
     }
 }

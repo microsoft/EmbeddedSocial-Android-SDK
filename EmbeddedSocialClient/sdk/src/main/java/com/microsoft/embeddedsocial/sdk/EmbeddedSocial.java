@@ -103,8 +103,8 @@ public final class EmbeddedSocial {
         options.verify();
         GlobalObjectRegistry.addObject(options);
         initGlobalObjects(application, options);
-        OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(BackgroundInitializationWorker.class).build();
-        WorkManager.getInstance().enqueue(backgroundInit);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(BackgroundInitializationWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
         if (telemetryToken != null) {
             options.setTelemetryToken(telemetryToken);
             Telemetry.setAnalyticsSolution(application, telemetryToken);

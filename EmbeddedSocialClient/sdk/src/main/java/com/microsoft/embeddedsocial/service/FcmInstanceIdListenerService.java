@@ -21,7 +21,7 @@ public class FcmInstanceIdListenerService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         super.onTokenRefresh();
         FcmTokenHolder.create(this).resetToken();
-        OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
-        WorkManager.getInstance().enqueue(fcmRegister);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
     }
 }

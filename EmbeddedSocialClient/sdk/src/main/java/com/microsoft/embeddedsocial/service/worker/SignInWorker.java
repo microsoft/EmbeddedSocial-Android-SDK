@@ -118,7 +118,7 @@ public class SignInWorker extends Worker {
         AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
         int messageId = R.string.es_msg_general_signin_success;
         UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-        OneTimeWorkRequest fcmRegister = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
-        WorkManager.getInstance().enqueue(fcmRegister);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
     }
 }
