@@ -17,14 +17,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.Operation;
+import androidx.work.WorkInfo;
+import androidx.work.WorkInfo.State;
 import androidx.work.WorkManager;
 
-import static androidx.work.Operation.SUCCESS;
+import static androidx.work.WorkInfo.State.SUCCEEDED;
 
 /**
  * Renders my followers with context menu.
@@ -57,17 +58,17 @@ public class MyFollowersRenderer extends UserRenderer {
                     .putString(RemoveFollowerWorker.USER_HANDLE, otherUser.getHandle()).build();
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(RemoveFollowerWorker.class)
                     .setInputData(inputData).build();
-            Operation operation = WorkManager.getInstance().enqueue(workRequest);
-            operation.getState().observe(ProcessLifecycleOwner.get(), new Observer<Operation.State>() {
-                @Override
-                public void onChanged(Operation.State state) {
-                    if (SUCCESS.equals(state)) {
-                        // redraw the button
-                        button.setText(R.string.es_removed_follower);
-                        getStyleHelper().applyRedCompletedStyle(button);
-                        // decrement local followers count
-                        currUser.setFollowersCount(Math.max(0, currUser.getFollowersCount() - 1));
-                    }
+            WorkManager.getInstance().enqueue(workRequest);
+
+            LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.getId());
+            liveData.observe(ProcessLifecycleOwner.get(), workInfo -> {
+                State state = workInfo.getState();
+                if (state.equals(SUCCEEDED)) {
+                    // redraw the button
+                    button.setText(R.string.es_removed_follower);
+                    getStyleHelper().applyRedCompletedStyle(button);
+                    // decrement local followers count
+                    currUser.setFollowersCount(Math.max(0, currUser.getFollowersCount() - 1));
                 }
             });
         });
