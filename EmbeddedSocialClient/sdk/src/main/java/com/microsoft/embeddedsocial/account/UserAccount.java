@@ -8,6 +8,7 @@ package com.microsoft.embeddedsocial.account;
 import com.facebook.login.LoginManager;
 import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
+import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -34,7 +35,9 @@ import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
+import android.webkit.CookieManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -160,6 +163,15 @@ public class UserAccount {
                 .setInputData(inputData).build();
         WorkManager.getInstance().enqueue(workRequest);
 
+        signOutOfDevice();
+    }
+
+    /**
+     * Clears all the data associated with the current user (except the data in the database)
+     */
+    public void signOutOfDevice() {
+        MicrosoftLiveAuthenticator.signOut(context);
+        clearCookies();
         AccountDataStorage.clear(context);
         Preferences.getInstance().setUserHandle(null);
         Preferences.getInstance().setAuthorizationToken(null);
@@ -170,6 +182,19 @@ public class UserAccount {
         NotificationManagerCompat.from(context).cancelAll();
         LoginManager.getInstance().logOut();
         SocialNetworkTokens.clearAll();
+    }
+
+    /**
+     * Removes all cookies
+     */
+    private void clearCookies() {
+        CookieManager cookieManager = CookieManager.getInstance();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.removeAllCookies(null);
+        } else {
+            //noinspection deprecation
+            cookieManager.removeAllCookie();
+        }
     }
 
     /**

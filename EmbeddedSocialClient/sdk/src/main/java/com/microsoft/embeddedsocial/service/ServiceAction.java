@@ -10,8 +10,6 @@ package com.microsoft.embeddedsocial.service;
  */
 public enum ServiceAction {
 
-    DELETE_ACCOUNT,
-
     CREATE_ACCOUNT,
 
     UPDATE_ACCOUNT,

@@ -6,47 +6,29 @@
 package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionTagFilter;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
+import com.microsoft.embeddedsocial.service.worker.DeleteAccountWorker;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.List;
-
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkInfo.State;
+import androidx.work.WorkManager;
+
+import static androidx.work.WorkInfo.State.CANCELLED;
+import static androidx.work.WorkInfo.State.FAILED;
+import static androidx.work.WorkInfo.State.SUCCEEDED;
 
 /**
  * Fragment for deleting an account.
  */
 public class DeleteAccountFragment extends BaseFragmentWithProgress {
-
-    public DeleteAccountFragment() {
-        addActionListener(new ActionTagFilter(Action.Tags.DELETE_ACCOUNT), new ActionListener() {
-            @Override
-            protected void onActionSucceeded(Action action) {
-                onAccountDeleted();
-            }
-
-            @Override
-            protected void onActionFailed(Action action, String error) {
-                onError();
-            }
-
-            @Override
-            protected void onActionsCompletionMissed(List<Action> completedActions, List<Action> succeededActions, List<Action> failedActions) {
-                if (!succeededActions.isEmpty()) {
-                    onAccountDeleted();
-                } else if (!failedActions.isEmpty()) {
-                    onError();
-                }
-            }
-        });
-    }
 
     @Override
     protected int getContentLayoutId() {
@@ -59,7 +41,20 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
         setOnClickListener(view, R.id.es_cancelButton, v -> finishActivity());
         setOnClickListener(view, R.id.es_deleteButton, v -> {
             setProgressVisible(true);
-            ActionsLauncher.deleteAccount(v.getContext());
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DeleteAccountWorker.class)
+                    .build();
+            WorkManager.getInstance().enqueue(workRequest);
+            LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.getId());
+            liveData.observe(this, workInfo -> {
+                State state = workInfo.getState();
+                if (state.isFinished()) {
+                    if (state.equals(SUCCEEDED)) {
+                        getActivity().runOnUiThread(() -> onAccountDeleted());
+                    } else if (state.equals(FAILED) || state.equals(CANCELLED)) {
+                        getActivity().runOnUiThread(() -> onError());
+                    }
+                }
+            });
         });
     }
 

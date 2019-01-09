@@ -35,10 +35,6 @@ public final class ActionsLauncher {
                 .launch(context, ServiceAction.UPDATE_ACCOUNT);
     }
 
-    public static Action deleteAccount(Context context) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.DELETE_ACCOUNT).launch(context, ServiceAction.DELETE_ACCOUNT);
-    }
-
     private static Action createAndStartAction(String tag) {
         Action action = new Action(tag);
         action.start();

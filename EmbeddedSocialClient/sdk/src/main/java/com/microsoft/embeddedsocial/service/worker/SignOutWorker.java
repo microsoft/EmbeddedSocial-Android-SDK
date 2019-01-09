@@ -5,7 +5,6 @@
 
 package com.microsoft.embeddedsocial.service.worker;
 
-import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
@@ -14,8 +13,6 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.auth.SignOutRequest;
 
 import android.content.Context;
-import android.os.Build;
-import android.webkit.CookieManager;
 
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
@@ -44,18 +41,7 @@ public class SignOutWorker extends Worker {
             // ignore server errors
             DebugLog.logException(e);
         }
-        MicrosoftLiveAuthenticator.signOut(context);
-        clearCookies();
-        return Result.success();
-    }
 
-    private void clearCookies() {
-        CookieManager cookieManager = CookieManager.getInstance();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            cookieManager.removeAllCookies(null);
-        } else {
-            //noinspection deprecation
-            cookieManager.removeAllCookie();
-        }
+        return Result.success();
     }
 }
