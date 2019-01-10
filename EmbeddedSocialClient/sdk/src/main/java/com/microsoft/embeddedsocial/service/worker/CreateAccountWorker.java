@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.service.worker;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AccountData;
@@ -25,6 +24,7 @@ import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import android.content.Context;
 import android.net.Uri;
 
+import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
@@ -96,7 +96,13 @@ public class CreateAccountWorker extends Worker {
         if (photoUri != null) {
             AccountDataDifference difference = new AccountDataDifference();
             difference.setNewPhoto(photoUri);
-            ActionsLauncher.updateAccount(context, difference);
+
+            Data inputData = new Data.Builder()
+                    .putString(UpdateAccountWorker.ACCOUNT_DATA_DIFFERENCE,
+                            WorkerSerializationHelper.serialize(difference)).build();
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UpdateAccountWorker.class)
+                    .setInputData(inputData).build();
+            WorkManager.getInstance().enqueue(workRequest);
         }
     }
 }

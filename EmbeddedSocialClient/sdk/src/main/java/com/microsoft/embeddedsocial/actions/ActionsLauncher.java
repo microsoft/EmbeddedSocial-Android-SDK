@@ -23,12 +23,6 @@ public final class ActionsLauncher {
     private ActionsLauncher() {
     }
 
-    public static Action updateAccount(Context context, AccountDataDifference difference) {
-        return ActionIntentBuilder.forActionWithTag(Action.Tags.UPDATE_ACCOUNT)
-                .setAccountDataDifference(difference)
-                .launch(context, ServiceAction.UPDATE_ACCOUNT);
-    }
-
     private static Action createAndStartAction(String tag) {
         Action action = new Action(tag);
         action.start();

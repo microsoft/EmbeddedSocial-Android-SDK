@@ -7,8 +7,6 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionTagFilter;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
@@ -23,7 +21,8 @@ import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
+import com.microsoft.embeddedsocial.service.worker.UpdateAccountWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerSerializationHelper;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
@@ -46,6 +45,15 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.lifecycle.LiveData;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+
+import static androidx.work.WorkInfo.State.CANCELLED;
+import static androidx.work.WorkInfo.State.FAILED;
+import static androidx.work.WorkInfo.State.SUCCEEDED;
 
 /**
  * Fragment to edit profile.
@@ -82,26 +90,6 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
         photoProvider = new PhotoProviderModule(this, new SelectProfilePhotoConsumer());
 
         addModule(photoProvider);
-        addActionListener(new ActionTagFilter(Action.Tags.UPDATE_ACCOUNT), new ActionListener() {
-            @Override
-            protected void onActionFailed(Action action, String error) {
-                onUpdateFailed();
-            }
-
-            @Override
-            protected void onActionSucceeded(Action action) {
-                onUpdateSucceeded();
-            }
-
-            @Override
-            protected void onActionsCompletionMissed(List<Action> completedActions, List<Action> succeededActions, List<Action> failedActions) {
-                if (!succeededActions.isEmpty()) {
-                    onUpdateSucceeded();
-                } else if (!failedActions.isEmpty()) {
-                    onUpdateFailed();
-                }
-            }
-        });
     }
 
     @Override
@@ -146,7 +134,25 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
                 finishActivity();
             } else {
                 setProgressVisible(true);
-                ActionsLauncher.updateAccount(getContext(), difference);
+
+                Data inputData = new Data.Builder()
+                        .putString(UpdateAccountWorker.ACCOUNT_DATA_DIFFERENCE,
+                                WorkerSerializationHelper.serialize(difference)).build();
+                OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UpdateAccountWorker.class)
+                        .setInputData(inputData).build();
+                WorkManager.getInstance().enqueue(workRequest);
+
+                LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.getId());
+                liveData.observe(this, workInfo -> {
+                    WorkInfo.State state = workInfo.getState();
+                    if (state.isFinished()) {
+                        if (state.equals(SUCCEEDED)) {
+                            getActivity().runOnUiThread(() -> onUpdateSucceeded());
+                        } else if (state.equals(FAILED) || state.equals(CANCELLED)) {
+                            getActivity().runOnUiThread(() -> onUpdateFailed());
+                        }
+                    }
+                });
             }
         }
     }

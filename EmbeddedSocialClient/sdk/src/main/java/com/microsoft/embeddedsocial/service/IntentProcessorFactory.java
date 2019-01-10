@@ -9,7 +9,6 @@ import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.IntentProcessor;
 import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UnlinkUserThirdPartyAccountHandler;
-import com.microsoft.embeddedsocial.service.handler.UpdateAccountHandler;
 import com.microsoft.embeddedsocial.service.handler.UpdateNotificationCountHandler;
 
 import android.content.Context;
@@ -30,7 +29,6 @@ public class IntentProcessorFactory {
     IServiceIntentProcessor createIntentProcessor() {
         IntentProcessor<ServiceAction> processor = new IntentProcessor<>(context, ServiceAction.class, WORKER_THREADS);
 
-        processor.registerIntentHandler(ServiceAction.UPDATE_ACCOUNT, new UpdateAccountHandler(context));
         processor.registerIntentHandler(ServiceAction.UPDATE_NOTIFICATION_COUNT, new UpdateNotificationCountHandler());
         processor.registerIntentHandler(ServiceAction.LINK_USER_THIRD_PARTY_ACCOUNT, new LinkUserThirdPartyAccountHandler());
         processor.registerIntentHandler(ServiceAction.UNLINK_USER_THIRD_PARTY_ACCOUNT, new UnlinkUserThirdPartyAccountHandler());

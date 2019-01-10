@@ -3,10 +3,9 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.autorest.models.ImageType;
 import com.microsoft.embeddedsocial.autorest.models.Visibility;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -20,43 +19,44 @@ import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPhotoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserPublicAccountInfoRequest;
 import com.microsoft.embeddedsocial.server.model.account.UpdateUserVisibilityRequest;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 
 import java.io.IOException;
 
-/**
- * Updates account.
- */
-public class UpdateAccountHandler extends ActionHandler {
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
+public class UpdateAccountWorker extends Worker {
+    public static final String ACCOUNT_DATA_DIFFERENCE = "accountDataDifference";
 
     private final Context context;
     private final IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
 
-    public UpdateAccountHandler(Context context) {
+    public UpdateAccountWorker(Context context, WorkerParameters workerParams) {
+        super(context, workerParams);
         this.context = context;
     }
 
     @Override
-    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-        Bundle extras = intent.getExtras();
-        AccountDataDifference difference = extras.getParcelable(IntentExtras.ACCOUNT_DATA_DIFFERENCE);
+    public Result doWork() {
+        String serializedData = getInputData().getString(ACCOUNT_DATA_DIFFERENCE);
+        AccountDataDifference difference = WorkerSerializationHelper.deserialize(serializedData);
         AccountData accountData = UserAccount.getInstance().getAccountDetails();
+
         try {
             updatePhotoIfNeeded(difference, accountData);
             updatePublicInfoIfNeeded(difference, accountData);
             updatePrivacyIfNeeded(difference, accountData);
         } catch (IOException | NetworkRequestException e) {
             DebugLog.logException(e);
-            action.fail();
+            return Result.failure();
         } finally {
             UserAccount.getInstance().updateAccountDetails(accountData);
         }
+
+        return Result.success();
     }
 
     private void updatePrivacyIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
@@ -70,9 +70,9 @@ public class UpdateAccountHandler extends ActionHandler {
     private void updatePublicInfoIfNeeded(AccountDataDifference difference, AccountData accountData) throws NetworkRequestException {
         if (difference.isPublicInfoChanged()) {
             server.updateUserPublicAccountInfo(new UpdateUserPublicAccountInfoRequest(
-                difference.getFirstName(),
-                difference.getLastName(),
-                difference.getBio()));
+                    difference.getFirstName(),
+                    difference.getLastName(),
+                    difference.getBio()));
             accountData.setFirstName(difference.getFirstName());
             accountData.setLastName(difference.getLastName());
             accountData.setBio(difference.getBio());
@@ -87,5 +87,4 @@ public class UpdateAccountHandler extends ActionHandler {
             accountData.setUserPhotoUrl(photoUrl);
         }
     }
-
 }

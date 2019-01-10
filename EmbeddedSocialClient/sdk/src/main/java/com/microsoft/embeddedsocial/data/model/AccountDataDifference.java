@@ -7,16 +7,19 @@ package com.microsoft.embeddedsocial.data.model;
 
 import android.net.Uri;
 import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 
 /**
  * Encapsulates changes in account data. Used to track changes during account editing.
  */
-public final class AccountDataDifference implements android.os.Parcelable {
+public final class AccountDataDifference implements Parcelable, Serializable {
 
     private boolean photoUriChanged = false;
     private boolean coverUriChanged = false;
-    private Uri photoUri;
-    private Uri coverUri;
+    private String photoUri;
+    private String coverUri;
 
     private boolean publicInfoChanged = false;
     private String firstName;
@@ -32,8 +35,8 @@ public final class AccountDataDifference implements android.os.Parcelable {
     private AccountDataDifference(Parcel in) {
         this.photoUriChanged = in.readByte() != 0;
         this.coverUriChanged = in.readByte() != 0;
-        this.photoUri = in.readParcelable(Uri.class.getClassLoader());
-        this.coverUri = in.readParcelable(Uri.class.getClassLoader());
+        this.photoUri = in.readString();
+        this.coverUri = in.readString();
         this.publicInfoChanged = in.readByte() != 0;
         this.firstName = in.readString();
         this.lastName = in.readString();
@@ -54,12 +57,12 @@ public final class AccountDataDifference implements android.os.Parcelable {
      * @param newPhotoUri local Uri to the new photo (may be null)
      */
     public void setNewPhoto(Uri newPhotoUri) {
-        photoUri = newPhotoUri;
+        photoUri = newPhotoUri == null ? null : newPhotoUri.toString();
         photoUriChanged = true;
     }
 
     public void setNewCover(Uri newCoverUri) {
-        coverUri = newCoverUri;
+        coverUri = newCoverUri == null ? null : newCoverUri.toString();
         coverUriChanged = true;
     }
 
@@ -98,11 +101,19 @@ public final class AccountDataDifference implements android.os.Parcelable {
     }
 
     public Uri getPhotoUri() {
-        return photoUri;
+        if (photoUri == null) {
+            return null;
+        }
+
+        return Uri.parse(photoUri);
     }
 
     public Uri getCoverUri() {
-        return coverUri;
+        if (coverUri == null) {
+            return null;
+        }
+
+        return Uri.parse(coverUri);
     }
 
     /**
@@ -142,8 +153,8 @@ public final class AccountDataDifference implements android.os.Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(photoUriChanged ? (byte) 1 : (byte) 0);
         dest.writeByte(coverUriChanged ? (byte) 1 : (byte) 0);
-        dest.writeParcelable(this.photoUri, 0);
-        dest.writeParcelable(this.coverUri, 0);
+        dest.writeString(this.photoUri);
+        dest.writeString(this.coverUri);
         dest.writeByte(publicInfoChanged ? (byte) 1 : (byte) 0);
         dest.writeString(this.firstName);
         dest.writeString(this.lastName);
