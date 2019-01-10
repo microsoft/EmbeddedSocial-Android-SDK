@@ -7,10 +7,10 @@ package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
 import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
+import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.data.model.CreateAccountData;
 import com.microsoft.embeddedsocial.event.signin.CreateUserFailedEvent;
@@ -22,6 +22,7 @@ import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.worker.CreateAccountWorker;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
@@ -39,10 +40,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment to create profile.
@@ -125,7 +132,23 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                     .build();
 
             thirdPartyAccount.clearTokens();
-            ActionsLauncher.createAccount(getContext(), createAccountData);
+
+            String serializedData = null;
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            try {
+                ObjectOutputStream os = new ObjectOutputStream(bos);
+                os.writeObject(createAccountData);
+                serializedData = android.util.Base64.encodeToString(bos.toByteArray(), android.util.Base64.DEFAULT);
+                os.close();
+            } catch (IOException e) {
+                DebugLog.logException(e);
+            }
+
+            Data inputData = new Data.Builder()
+                    .putString(CreateAccountWorker.CREATE_ACCOUNT_DATA, serializedData).build();
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(CreateAccountWorker.class)
+                    .setInputData(inputData).build();
+            WorkManager.getInstance().enqueue(workRequest);
         }
     }
 

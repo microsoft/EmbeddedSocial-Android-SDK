@@ -10,8 +10,6 @@ package com.microsoft.embeddedsocial.service;
  */
 public enum ServiceAction {
 
-    CREATE_ACCOUNT,
-
     UPDATE_ACCOUNT,
 
     UPDATE_NOTIFICATION_COUNT,

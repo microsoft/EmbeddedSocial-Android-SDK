@@ -3,10 +3,9 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
@@ -16,101 +15,97 @@ import com.microsoft.embeddedsocial.data.model.CreateAccountData;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.IAccountService;
-import com.microsoft.embeddedsocial.server.IAuthenticationService;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
 import com.microsoft.embeddedsocial.server.model.account.CreateUserRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountRequest;
 import com.microsoft.embeddedsocial.server.model.account.GetUserAccountResponse;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.worker.GetFcmIdWorker;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+import android.util.Base64;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
-/**
- * Sends a create account request to the server.
- */
-public class CreateAccountHandler extends ActionHandler {
+public class CreateAccountWorker extends Worker {
+    public static final String CREATE_ACCOUNT_DATA = "createAccountData";
+
+    private final Context context;
 
     private final IAccountService accountService = GlobalObjectRegistry
             .getObject(EmbeddedSocialServiceProvider.class)
             .getAccountService();
 
-    private final IAuthenticationService authenticationService = GlobalObjectRegistry
-            .getObject(EmbeddedSocialServiceProvider.class)
-            .getAuthenticationService();
-
-    private final Context context;
-
-    public CreateAccountHandler(Context context) {
+    public CreateAccountWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
         this.context = context;
     }
 
     @Override
-    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-        Bundle extras = intent.getExtras();
-        CreateAccountData createAccountData = extras.getParcelable(IntentExtras.CREATE_ACCOUNT_DATA);
+    public Result doWork() {
+        String serializedAccountData = getInputData().getString(CREATE_ACCOUNT_DATA);
+        if (serializedAccountData == null) {
+            return Result.failure();
+        }
 
-        CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
-                .setFirstName(createAccountData.getFirstName())
-                .setLastName(createAccountData.getLastName())
-                .setBio(createAccountData.getBio())
-                .setIdentityProvider(createAccountData.getIdentityProvider())
-                .setAccessToken(createAccountData.getThirdPartyAccessToken())
-                .setRequestToken(createAccountData.getThirdPartyRequestToken())
-                .build();
+        InputStream inputStream = new ByteArrayInputStream(
+                Base64.decode(serializedAccountData, Base64.DEFAULT));
+
         try {
-            AuthenticationResponse createUserResponse = accountService.createUser(createUserRequest);
-            handleSuccessfulResult(action, createUserResponse);
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            CreateAccountData createAccountData = (CreateAccountData) objectInputStream.readObject();
 
+            CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
+                    .setFirstName(createAccountData.getFirstName())
+                    .setLastName(createAccountData.getLastName())
+                    .setBio(createAccountData.getBio())
+                    .setIdentityProvider(createAccountData.getIdentityProvider())
+                    .setAccessToken(createAccountData.getThirdPartyAccessToken())
+                    .setRequestToken(createAccountData.getThirdPartyRequestToken())
+                    .build();
+
+            AuthenticationResponse createUserResponse = accountService.createUser(createUserRequest);
+            handleSuccessfulResult(createUserResponse);
             uploadPhoto(createAccountData.getPhotoUri());
-        } catch (IOException | NetworkRequestException e) {
+        } catch (ClassNotFoundException|IOException|NetworkRequestException e) {
             DebugLog.logException(e);
             UserAccount.getInstance().onCreateUserFailed();
-            action.fail();
+            return Result.failure();
         }
+
+        return Result.success();
     }
 
-    private void handleSuccessfulResult(Action action, AuthenticationResponse response)
-            throws NetworkRequestException {
-
+    private void handleSuccessfulResult(AuthenticationResponse response) throws NetworkRequestException {
         String userHandle = response.getUserHandle();
         String sessionToken = UserRequest.createSessionAuthorization(response.getSessionToken());
         GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
         GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
         AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
-        if (!action.isCompleted()) {
-            int messageId = R.string.es_msg_general_create_user_success;
-            UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
-            WorkManager.getInstance().enqueue(workRequest);
-        }
+        int messageId = R.string.es_msg_general_create_user_success;
+        UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
     }
 
     /**
      * Uploads the profile photo
      */
-    private void uploadPhoto(Uri photoUri) throws IOException, NetworkRequestException {
+    private void uploadPhoto(Uri photoUri) {
         // TODO this is a separate call which could fail and leave the wrong public access
         if (photoUri != null) {
             AccountDataDifference difference = new AccountDataDifference();
             difference.setNewPhoto(photoUri);
             ActionsLauncher.updateAccount(context, difference);
         }
-    }
-
-    @Override
-    public void dispose() {
-
     }
 }
