@@ -29,11 +29,6 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Base64;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -65,45 +60,43 @@ public class SignInWorker extends Worker {
     @Override
     public Result doWork() {
         String serializedNetworkAccount = getInputData().getString(SOCIAL_NETWORK_ACCOUNT);
+        SocialNetworkAccount socialNetworkAccount = WorkerSerializationHelper.deserialize(serializedNetworkAccount);
+
         if (serializedNetworkAccount == null) {
+            UserAccount.getInstance().onSignInWithThirdPartyFailed();
             return Result.failure();
         }
-        InputStream inputStream = new ByteArrayInputStream(
-                Base64.decode(serializedNetworkAccount, Base64.DEFAULT));
+
+        CreateSessionRequest signInWithThirdPartyRequest = new CreateSessionRequest(
+                socialNetworkAccount.getAccountType(),
+                socialNetworkAccount.getThirdPartyAccessToken(),
+                socialNetworkAccount.getThirdPartyRequestToken());
+
         try {
-            ObjectInputStream objectStream = new ObjectInputStream(inputStream);
-            SocialNetworkAccount socialNetworkAccount = (SocialNetworkAccount)objectStream.readObject();
-            CreateSessionRequest signInWithThirdPartyRequest = new CreateSessionRequest(
-                    socialNetworkAccount.getAccountType(),
-                    socialNetworkAccount.getThirdPartyAccessToken(),
-                    socialNetworkAccount.getThirdPartyRequestToken());
+            String authorization = signInWithThirdPartyRequest.getAuthorization();
+            GetMyProfileRequest getMyProfileRequest = new GetMyProfileRequest(authorization);
 
-            try {
-                String authorization = signInWithThirdPartyRequest.getAuthorization();
-                GetMyProfileRequest getMyProfileRequest = new GetMyProfileRequest(authorization);
+            // Determine the user's user handle
+            GetUserProfileResponse getUserProfileResponse = getMyProfileRequest.send();
 
-                // Determine the user's user handle
-                GetUserProfileResponse getUserProfileResponse = getMyProfileRequest.send();
-
-                // set the user handle and attempt sign in
-                signInWithThirdPartyRequest.setRequestUserHandle(getUserProfileResponse.getUser().getHandle());
-                AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
-                handleSuccessfulResult(signInResponse);
-            } catch (NotFoundException e) {
-                // User handle not found; create an account
-                Intent i = new Intent(context, CreateProfileActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Bundle extras = new Bundle();
-                extras.putParcelable(IntentExtras.THIRD_PARTY_ACCOUNT, socialNetworkAccount);
-                i.putExtras(extras);
-                context.startActivity(i);
-            } finally {
-                socialNetworkAccount.clearTokens();
-            }
-        } catch (Exception e) {
+            // set the user handle and attempt sign in
+            signInWithThirdPartyRequest.setRequestUserHandle(getUserProfileResponse.getUser().getHandle());
+            AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
+            handleSuccessfulResult(signInResponse);
+        } catch (NotFoundException e) {
+            // User handle not found; create an account
+            Intent i = new Intent(context, CreateProfileActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Bundle extras = new Bundle();
+            extras.putParcelable(IntentExtras.THIRD_PARTY_ACCOUNT, socialNetworkAccount);
+            i.putExtras(extras);
+            context.startActivity(i);
+        } catch (NetworkRequestException e) {
             DebugLog.logException(e);
             UserAccount.getInstance().onSignInWithThirdPartyFailed();
             return Result.failure();
+        } finally {
+            socialNetworkAccount.clearTokens();
         }
 
         return Result.success();

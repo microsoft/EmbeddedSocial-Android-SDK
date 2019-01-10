@@ -24,12 +24,6 @@ import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Base64;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -53,17 +47,14 @@ public class CreateAccountWorker extends Worker {
     @Override
     public Result doWork() {
         String serializedAccountData = getInputData().getString(CREATE_ACCOUNT_DATA);
+        CreateAccountData createAccountData = WorkerSerializationHelper.deserialize(serializedAccountData);
+
         if (serializedAccountData == null) {
+            UserAccount.getInstance().onCreateUserFailed();
             return Result.failure();
         }
 
-        InputStream inputStream = new ByteArrayInputStream(
-                Base64.decode(serializedAccountData, Base64.DEFAULT));
-
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-            CreateAccountData createAccountData = (CreateAccountData) objectInputStream.readObject();
-
             CreateUserRequest createUserRequest = new CreateUserRequest.Builder()
                     .setFirstName(createAccountData.getFirstName())
                     .setLastName(createAccountData.getLastName())
@@ -76,7 +67,7 @@ public class CreateAccountWorker extends Worker {
             AuthenticationResponse createUserResponse = accountService.createUser(createUserRequest);
             handleSuccessfulResult(createUserResponse);
             uploadPhoto(createAccountData.getPhotoUri());
-        } catch (ClassNotFoundException|IOException|NetworkRequestException e) {
+        } catch (NetworkRequestException e) {
             DebugLog.logException(e);
             UserAccount.getInstance().onCreateUserFailed();
             return Result.failure();
