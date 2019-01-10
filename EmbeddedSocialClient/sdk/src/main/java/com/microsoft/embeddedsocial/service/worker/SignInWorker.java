@@ -29,6 +29,7 @@ import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -68,7 +69,7 @@ public class SignInWorker extends Worker {
             return Result.failure();
         }
         InputStream inputStream = new ByteArrayInputStream(
-                android.util.Base64.decode(serializedNetworkAccount, android.util.Base64.DEFAULT));
+                Base64.decode(serializedNetworkAccount, Base64.DEFAULT));
         try {
             ObjectInputStream objectStream = new ObjectInputStream(inputStream);
             SocialNetworkAccount socialNetworkAccount = (SocialNetworkAccount)objectStream.readObject();
