@@ -54,11 +54,19 @@ public class CreateAccountData implements Parcelable, Serializable {
     }
 
     public Uri getPhotoUri() {
+        if (photoUri == null) {
+            return null;
+        }
+
         return Uri.parse(photoUri);
     }
 
     public void setPhotoUri(Uri photoUri) {
-        this.photoUri = photoUri.toString();
+        if (photoUri == null) {
+            this.photoUri = null;
+        } else {
+            this.photoUri = photoUri.toString();
+        }
     }
 
     public IdentityProvider getIdentityProvider() {
@@ -94,7 +102,7 @@ public class CreateAccountData implements Parcelable, Serializable {
         this.firstName = in.readString();
         this.lastName = in.readString();
         this.bio = in.readString();
-        this.photoUri = in.readParcelable(Uri.class.getClassLoader());
+        this.photoUri = in.readString();
         this.identityProvider = IdentityProvider.fromValue(in.readString());
         this.thirdPartyAccessToken = in.readString();
         this.thirdPartyRequestToken = in.readString();
