@@ -47,7 +47,7 @@ public class CreateAccountWorker extends Worker {
     @Override
     public Result doWork() {
         String serializedAccountData = getInputData().getString(CREATE_ACCOUNT_DATA);
-        CreateAccountData createAccountData = WorkerSerializationHelper.deserialize(serializedAccountData);
+        CreateAccountData createAccountData = WorkerHelper.deserialize(serializedAccountData);
 
         if (serializedAccountData == null) {
             UserAccount.getInstance().onCreateUserFailed();
@@ -99,7 +99,7 @@ public class CreateAccountWorker extends Worker {
 
             Data inputData = new Data.Builder()
                     .putString(UpdateAccountWorker.ACCOUNT_DATA_DIFFERENCE,
-                            WorkerSerializationHelper.serialize(difference)).build();
+                            WorkerHelper.serialize(difference)).build();
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UpdateAccountWorker.class)
                     .setInputData(inputData).build();
             WorkManager.getInstance().enqueue(workRequest);

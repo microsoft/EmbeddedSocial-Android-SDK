@@ -16,8 +16,21 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.UUID;
 
-public class WorkerSerializationHelper {
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+
+import static androidx.work.WorkInfo.State.CANCELLED;
+import static androidx.work.WorkInfo.State.FAILED;
+import static androidx.work.WorkInfo.State.SUCCEEDED;
+
+/**
+ * Implements utility functions to aid in setting up and handling androidx
+ */
+public class WorkerHelper {
 
     /**
      * Serialize the given Object to a String
@@ -60,5 +73,33 @@ public class WorkerSerializationHelper {
         }
 
         return data;
+    }
+
+    /**
+     * Handle the result of a completed work request
+     * @param lifecycleOwner the lifecycle owner used to observe the work request
+     * @param workerId ID of the work request
+     * @param handler ResultHandler to invoke upon work completion
+     */
+    public static void handleResult(LifecycleOwner lifecycleOwner, UUID workerId, ResultHandler handler) {
+        LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workerId);
+        liveData.observe(lifecycleOwner, workInfo -> {
+            WorkInfo.State state = workInfo.getState();
+            if (state.isFinished()) {
+                if (state.equals(SUCCEEDED)) {
+                    handler.onSuccess();
+                } else if (state.equals(FAILED) || state.equals(CANCELLED)) {
+                    handler.onFailure();
+                }
+            }
+        });
+    }
+
+    /**
+     * Defines functions to run upon success or failure of a single work request
+     */
+    public interface ResultHandler {
+        void onSuccess();
+        void onFailure();
     }
 }

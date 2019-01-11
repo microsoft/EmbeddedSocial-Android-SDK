@@ -9,21 +9,15 @@ import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.worker.DeleteAccountWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.LiveData;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkInfo.State;
 import androidx.work.WorkManager;
-
-import static androidx.work.WorkInfo.State.CANCELLED;
-import static androidx.work.WorkInfo.State.FAILED;
-import static androidx.work.WorkInfo.State.SUCCEEDED;
 
 /**
  * Fragment for deleting an account.
@@ -44,15 +38,15 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DeleteAccountWorker.class)
                     .build();
             WorkManager.getInstance().enqueue(workRequest);
-            LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.getId());
-            liveData.observe(this, workInfo -> {
-                State state = workInfo.getState();
-                if (state.isFinished()) {
-                    if (state.equals(SUCCEEDED)) {
-                        getActivity().runOnUiThread(() -> onAccountDeleted());
-                    } else if (state.equals(FAILED) || state.equals(CANCELLED)) {
-                        getActivity().runOnUiThread(() -> onError());
-                    }
+            WorkerHelper.handleResult(this, workRequest.getId(), new WorkerHelper.ResultHandler() {
+                @Override
+                public void onSuccess() {
+                    getActivity().runOnUiThread(() -> onAccountDeleted());
+                }
+
+                @Override
+                public void onFailure() {
+                    getActivity().runOnUiThread(() -> onError());
                 }
             });
         });

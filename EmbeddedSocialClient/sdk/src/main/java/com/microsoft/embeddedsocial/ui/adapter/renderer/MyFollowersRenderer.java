@@ -11,21 +11,17 @@ import com.microsoft.embeddedsocial.data.model.AccountData;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.service.worker.RemoveFollowerWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.UserListItemHolder;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkInfo;
-import androidx.work.WorkInfo.State;
 import androidx.work.WorkManager;
-
-import static androidx.work.WorkInfo.State.SUCCEEDED;
 
 /**
  * Renders my followers with context menu.
@@ -60,16 +56,18 @@ public class MyFollowersRenderer extends UserRenderer {
                     .setInputData(inputData).build();
             WorkManager.getInstance().enqueue(workRequest);
 
-            LiveData<WorkInfo> liveData = WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.getId());
-            liveData.observe(ProcessLifecycleOwner.get(), workInfo -> {
-                State state = workInfo.getState();
-                if (state.equals(SUCCEEDED)) {
+            WorkerHelper.handleResult(ProcessLifecycleOwner.get(), workRequest.getId(), new WorkerHelper.ResultHandler() {
+                @Override
+                public void onSuccess() {
                     // redraw the button
                     button.setText(R.string.es_removed_follower);
                     getStyleHelper().applyRedCompletedStyle(button);
                     // decrement local followers count
                     currUser.setFollowersCount(Math.max(0, currUser.getFollowersCount() - 1));
                 }
+
+                @Override
+                public void onFailure() { }
             });
         });
         button.setText(R.string.es_remove_follower);

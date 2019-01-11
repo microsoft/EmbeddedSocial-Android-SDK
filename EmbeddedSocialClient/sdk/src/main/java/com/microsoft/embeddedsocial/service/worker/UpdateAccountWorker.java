@@ -42,7 +42,7 @@ public class UpdateAccountWorker extends Worker {
     @Override
     public Result doWork() {
         String serializedData = getInputData().getString(ACCOUNT_DATA_DIFFERENCE);
-        AccountDataDifference difference = WorkerSerializationHelper.deserialize(serializedData);
+        AccountDataDifference difference = WorkerHelper.deserialize(serializedData);
         AccountData accountData = UserAccount.getInstance().getAccountDetails();
 
         try {

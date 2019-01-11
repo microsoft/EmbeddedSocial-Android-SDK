@@ -30,7 +30,7 @@ import com.microsoft.embeddedsocial.pending.PendingFollow;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
 import com.microsoft.embeddedsocial.service.worker.SignInWorker;
 import com.microsoft.embeddedsocial.service.worker.SignOutWorker;
-import com.microsoft.embeddedsocial.service.worker.WorkerSerializationHelper;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
@@ -70,7 +70,7 @@ public class UserAccount {
     public Operation signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
         Data inputData = new Data.Builder()
                 .putString(SignInWorker.SOCIAL_NETWORK_ACCOUNT,
-                        WorkerSerializationHelper.serialize(thirdPartyAccount)).build();
+                        WorkerHelper.serialize(thirdPartyAccount)).build();
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SignInWorker.class)
                 .setInputData(inputData).addTag(SignInWorker.TAG).build();
         return WorkManager.getInstance().enqueue(workRequest);

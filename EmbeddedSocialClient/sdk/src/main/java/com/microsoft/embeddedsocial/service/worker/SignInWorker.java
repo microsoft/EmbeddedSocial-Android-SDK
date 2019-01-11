@@ -60,7 +60,7 @@ public class SignInWorker extends Worker {
     @Override
     public Result doWork() {
         String serializedNetworkAccount = getInputData().getString(SOCIAL_NETWORK_ACCOUNT);
-        SocialNetworkAccount socialNetworkAccount = WorkerSerializationHelper.deserialize(serializedNetworkAccount);
+        SocialNetworkAccount socialNetworkAccount = WorkerHelper.deserialize(serializedNetworkAccount);
 
         if (serializedNetworkAccount == null) {
             UserAccount.getInstance().onSignInWithThirdPartyFailed();

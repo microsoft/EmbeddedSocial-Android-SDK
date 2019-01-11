@@ -22,7 +22,7 @@ import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.worker.CreateAccountWorker;
-import com.microsoft.embeddedsocial.service.worker.WorkerSerializationHelper;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
@@ -132,7 +132,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
 
             Data inputData = new Data.Builder()
                     .putString(CreateAccountWorker.CREATE_ACCOUNT_DATA,
-                            WorkerSerializationHelper.serialize(createAccountData)).build();
+                            WorkerHelper.serialize(createAccountData)).build();
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(CreateAccountWorker.class)
                     .setInputData(inputData).build();
             WorkManager.getInstance().enqueue(workRequest);
