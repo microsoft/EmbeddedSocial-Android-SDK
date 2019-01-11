@@ -12,6 +12,9 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+/**
+ * Initializes the SDK for use
+ */
 public class BackgroundInitializationWorker extends Worker {
 
     public BackgroundInitializationWorker(Context context, WorkerParameters workerParameters) {

@@ -30,6 +30,9 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+/**
+ * Sends a create account request to the server and updates the account's profile image if necessary
+ */
 public class CreateAccountWorker extends Worker {
     public static final String CREATE_ACCOUNT_DATA = "createAccountData";
 

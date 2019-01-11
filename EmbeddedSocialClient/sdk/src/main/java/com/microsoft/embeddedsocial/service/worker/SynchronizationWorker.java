@@ -18,6 +18,9 @@ import android.content.Context;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+/**
+ * Synchronizes local data with the server
+ */
 public class SynchronizationWorker extends Worker {
 
     public static final String PENDING_POST_SYNC_NAME = "posts";

@@ -12,6 +12,9 @@ import android.content.Context;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+/**
+ * Deletes search history from the device
+ */
 public class DeleteSearchHistoryWorker extends Worker {
 
     public DeleteSearchHistoryWorker(Context context, WorkerParameters workerParameters) {

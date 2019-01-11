@@ -21,6 +21,9 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+/**
+ * Gets FCM tokens and stores them
+ */
 public class GetFcmIdWorker extends Worker {
 
     private final Context context;
