@@ -7,7 +7,6 @@ package com.microsoft.embeddedsocial.service;
 
 import com.microsoft.embeddedsocial.base.service.IServiceIntentProcessor;
 import com.microsoft.embeddedsocial.base.service.IntentProcessor;
-import com.microsoft.embeddedsocial.service.handler.LinkUserThirdPartyAccountHandler;
 
 import android.content.Context;
 
@@ -26,8 +25,6 @@ public class IntentProcessorFactory {
 
     IServiceIntentProcessor createIntentProcessor() {
         IntentProcessor<ServiceAction> processor = new IntentProcessor<>(context, ServiceAction.class, WORKER_THREADS);
-
-        processor.registerIntentHandler(ServiceAction.LINK_USER_THIRD_PARTY_ACCOUNT, new LinkUserThirdPartyAccountHandler());
 
         return processor;
     }

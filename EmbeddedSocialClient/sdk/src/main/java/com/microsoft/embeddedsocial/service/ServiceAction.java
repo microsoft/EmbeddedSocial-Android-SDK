@@ -10,9 +10,4 @@ package com.microsoft.embeddedsocial.service;
  */
 public enum ServiceAction {
 
-    UPDATE_NOTIFICATION_COUNT,
-
-    LINK_USER_THIRD_PARTY_ACCOUNT,
-
-    UNLINK_USER_THIRD_PARTY_ACCOUNT
 }

@@ -21,7 +21,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 /**
- * Sends a unlink user third party account request to the server.
+ * Sends an unlink user third party account request to the server.
  */
 public class UnlinkUserThirdPartyAccountWorker extends Worker {
     public static final String IDENTITY_PROVIDER = "identityProvider";
