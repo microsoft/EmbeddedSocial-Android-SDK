@@ -24,6 +24,7 @@ import com.microsoft.embeddedsocial.server.model.view.ThirdPartyAccountView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
 import com.microsoft.embeddedsocial.service.ServiceAction;
 import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.UnlinkUserThirdPartyAccountWorker;
 import com.microsoft.embeddedsocial.ui.adapter.LinkedAccountsAdapter;
 import com.microsoft.embeddedsocial.ui.dialog.AlertDialogFragment;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseListContentFragment;
@@ -36,6 +37,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Screen with linked accounts state.
@@ -103,9 +108,12 @@ public class LinkedAccountsFragment extends BaseListContentFragment<LinkedAccoun
                 .show(getActivity(), null);
             getAdapter().notifyDataSetChanged();
         } else {
-            Bundle extras = new Bundle();
-            extras.putString(IntentExtras.IDENTITY_PROVIDER, identityProvider.toValue());
-            WorkerService.getLauncher(getContext()).launchService(ServiceAction.UNLINK_USER_THIRD_PARTY_ACCOUNT, extras);
+            Data inputData = new Data.Builder()
+                    .putString(UnlinkUserThirdPartyAccountWorker.IDENTITY_PROVIDER,
+                            identityProvider.toValue()).build();
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UnlinkUserThirdPartyAccountWorker.class)
+                    .setInputData(inputData).build();
+            WorkManager.getInstance().enqueue(workRequest);
         }
     }
 
