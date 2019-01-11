@@ -6,14 +6,15 @@
 package com.microsoft.embeddedsocial.ui.util;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.UpdateNotificationCountWorker;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Periodically updates notification count.
@@ -24,12 +25,10 @@ public class NotificationCountChecker {
 
     private static long lastUpdateTime;
 
-    private final Context context;
     private final Handler handler;
     private Runnable updateTask = this::updateNotificationCount;
 
-    public NotificationCountChecker(Context context) {
-        this.context = context;
+    public NotificationCountChecker() {
         handler = new Handler(Looper.getMainLooper());
     }
 
@@ -50,7 +49,9 @@ public class NotificationCountChecker {
 
     private void updateNotificationCount() {
         lastUpdateTime = SystemClock.elapsedRealtime();
-        WorkerService.getLauncher(context).launchService(ServiceAction.UPDATE_NOTIFICATION_COUNT);
+        OneTimeWorkRequest workRequest =
+                new OneTimeWorkRequest.Builder(UpdateNotificationCountWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
         handler.postDelayed(updateTask, PERIOD);
     }
 
