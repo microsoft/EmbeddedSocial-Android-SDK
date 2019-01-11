@@ -5,8 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.worker.DeleteAccountWorker;
 import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
@@ -36,6 +34,7 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
         setOnClickListener(view, R.id.es_deleteButton, v -> {
             setProgressVisible(true);
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DeleteAccountWorker.class)
+                    .addTag(DeleteAccountWorker.TAG)
                     .build();
             WorkManager.getInstance().enqueue(workRequest);
             WorkerHelper.handleResult(this, workRequest.getId(), new WorkerHelper.ResultHandler() {
@@ -55,7 +54,7 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
     @Override
     public void onResume() {
         super.onResume();
-        setProgressVisible(OngoingActions.hasActionsWithTag(Action.Tags.DELETE_ACCOUNT));
+        setProgressVisible(WorkerHelper.isOngoing(DeleteAccountWorker.TAG));
     }
 
     private void onAccountDeleted() {

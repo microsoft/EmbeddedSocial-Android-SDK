@@ -22,6 +22,7 @@ import androidx.work.WorkerParameters;
  * Sends a delete account request to the server
  */
 public class DeleteAccountWorker extends Worker {
+    public static String TAG = "deleteAccountWorker";
 
     public DeleteAccountWorker(Context context, WorkerParameters workerParameters) {
         super(context, workerParameters);

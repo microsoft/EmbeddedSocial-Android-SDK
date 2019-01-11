@@ -30,6 +30,7 @@ import androidx.work.WorkerParameters;
 
 public class UpdateAccountWorker extends Worker {
     public static final String ACCOUNT_DATA_DIFFERENCE = "accountDataDifference";
+    public static final String TAG = "updateAccountWorker";
 
     private final Context context;
     private final IAccountService server = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();

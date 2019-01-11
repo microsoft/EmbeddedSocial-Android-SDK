@@ -6,8 +6,6 @@
 package com.microsoft.embeddedsocial.account;
 
 import com.facebook.login.LoginManager;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
@@ -121,7 +119,7 @@ public class UserAccount {
      * Whether sign-in is in progress now.
      */
     public boolean isSigningIn() {
-        return OngoingActions.hasActionsWithTag(Action.Tags.SIGN_IN);
+        return WorkerHelper.isOngoing(SignInWorker.TAG);
     }
 
     /**

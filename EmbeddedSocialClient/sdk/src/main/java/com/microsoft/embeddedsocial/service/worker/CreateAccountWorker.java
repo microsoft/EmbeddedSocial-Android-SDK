@@ -35,6 +35,7 @@ import androidx.work.WorkerParameters;
  */
 public class CreateAccountWorker extends Worker {
     public static final String CREATE_ACCOUNT_DATA = "createAccountData";
+    public static final String TAG = "createAccountWorker";
 
     private final Context context;
 

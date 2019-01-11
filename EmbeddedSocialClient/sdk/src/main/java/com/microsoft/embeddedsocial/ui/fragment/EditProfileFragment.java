@@ -6,8 +6,6 @@
 package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ObjectUtils;
@@ -133,7 +131,9 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
                         .putString(UpdateAccountWorker.ACCOUNT_DATA_DIFFERENCE,
                                 WorkerHelper.serialize(difference)).build();
                 OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(UpdateAccountWorker.class)
-                        .setInputData(inputData).build();
+                        .setInputData(inputData)
+                        .addTag(UpdateAccountWorker.TAG)
+                        .build();
                 WorkManager.getInstance().enqueue(workRequest);
 
                 WorkerHelper.handleResult(this, workRequest.getId(), new WorkerHelper.ResultHandler() {
@@ -279,7 +279,7 @@ public class EditProfileFragment extends BaseFragmentWithProgress {
     @Override
     public boolean onBackPressed() {
         hideKeyboard();
-        if (OngoingActions.hasActionsWithTag(Action.Tags.UPDATE_ACCOUNT)) {
+        if (WorkerHelper.isOngoing(UpdateAccountWorker.TAG)) {
             showToast(R.string.es_message_wait_until_account_updated);
             return false;
         }

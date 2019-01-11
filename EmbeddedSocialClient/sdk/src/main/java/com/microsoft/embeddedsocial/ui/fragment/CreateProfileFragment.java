@@ -6,8 +6,6 @@
 package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
@@ -134,7 +132,9 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                     .putString(CreateAccountWorker.CREATE_ACCOUNT_DATA,
                             WorkerHelper.serialize(createAccountData)).build();
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(CreateAccountWorker.class)
-                    .setInputData(inputData).build();
+                    .setInputData(inputData)
+                    .addTag(CreateAccountWorker.TAG)
+                    .build();
             WorkManager.getInstance().enqueue(workRequest);
         }
     }
@@ -241,7 +241,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     @Override
     public boolean onBackPressed() {
         hideKeyboard();
-        if (OngoingActions.hasActionsWithTag(Action.Tags.UPDATE_ACCOUNT)) {
+        if (WorkerHelper.isOngoing(CreateAccountWorker.TAG)) {
             showToast(R.string.es_message_wait_until_account_created);
             return false;
         }

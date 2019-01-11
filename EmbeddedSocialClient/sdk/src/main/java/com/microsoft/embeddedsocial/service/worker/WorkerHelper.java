@@ -5,6 +5,8 @@
 
 package com.microsoft.embeddedsocial.service.worker;
 
+import com.google.common.util.concurrent.ListenableFuture;
+
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 
 import android.util.Base64;
@@ -16,7 +18,9 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -73,6 +77,22 @@ public class WorkerHelper {
         }
 
         return data;
+    }
+
+    public static boolean isOngoing(String tag) {
+        ListenableFuture<List<WorkInfo>> workInfoListenableFutureList =
+                WorkManager.getInstance().getWorkInfosByTag(tag);
+        try {
+            List<WorkInfo> workInfoList = workInfoListenableFutureList.get();
+            boolean running = false;
+            for (WorkInfo workInfo : workInfoList) {
+                running = running || !workInfo.getState().isFinished();
+            }
+            return running;
+        } catch (InterruptedException|ExecutionException e) {
+            return false;
+        }
+
     }
 
     /**
