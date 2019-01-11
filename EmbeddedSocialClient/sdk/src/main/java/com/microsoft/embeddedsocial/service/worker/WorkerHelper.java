@@ -79,6 +79,11 @@ public class WorkerHelper {
         return data;
     }
 
+    /**
+     * Determines if any workers matching the given tag are enqueued or running
+     * @param tag Tag to match with active workers
+     * @return true if any workers matching the tag are enqueued or running; false otherwise
+     */
     public static boolean isOngoing(String tag) {
         ListenableFuture<List<WorkInfo>> workInfoListenableFutureList =
                 WorkManager.getInstance().getWorkInfosByTag(tag);
