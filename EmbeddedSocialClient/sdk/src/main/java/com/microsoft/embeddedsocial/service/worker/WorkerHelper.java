@@ -35,7 +35,6 @@ import static androidx.work.WorkInfo.State.SUCCEEDED;
  * Implements utility functions to aid in setting up and handling androidx
  */
 public class WorkerHelper {
-
     /**
      * Serialize the given Object to a String
      * @param data data to serialize

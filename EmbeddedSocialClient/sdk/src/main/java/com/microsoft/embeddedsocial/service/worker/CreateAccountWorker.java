@@ -37,15 +37,12 @@ public class CreateAccountWorker extends Worker {
     public static final String CREATE_ACCOUNT_DATA = "createAccountData";
     public static final String TAG = "createAccountWorker";
 
-    private final Context context;
-
     private final IAccountService accountService = GlobalObjectRegistry
             .getObject(EmbeddedSocialServiceProvider.class)
             .getAccountService();
 
     public CreateAccountWorker(Context context, WorkerParameters workerParameters) {
         super(context, workerParameters);
-        this.context = context;
     }
 
     @Override
