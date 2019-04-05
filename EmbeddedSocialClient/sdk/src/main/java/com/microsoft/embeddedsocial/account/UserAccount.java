@@ -6,9 +6,7 @@
 package com.microsoft.embeddedsocial.account;
 
 import com.facebook.login.LoginManager;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
+import com.microsoft.embeddedsocial.auth.MicrosoftLiveAuthenticator;
 import com.microsoft.embeddedsocial.auth.SocialNetworkTokens;
 import com.microsoft.embeddedsocial.autorest.models.FollowerStatus;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
@@ -28,14 +26,23 @@ import com.microsoft.embeddedsocial.pending.PendingAction;
 import com.microsoft.embeddedsocial.pending.PendingBlock;
 import com.microsoft.embeddedsocial.pending.PendingFollow;
 import com.microsoft.embeddedsocial.server.model.view.UserCompactView;
+import com.microsoft.embeddedsocial.service.worker.SignInWorker;
+import com.microsoft.embeddedsocial.service.worker.SignOutWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.util.NotificationCountChecker;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
+import android.webkit.CookieManager;
 
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.Operation;
+import androidx.work.WorkManager;
 
 /**
  * Manages functionality related to user account.
@@ -58,8 +65,13 @@ public class UserAccount {
     /**
      * Launches sign-in process via third party account.
      */
-    public Action signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
-        return ActionsLauncher.signInUsingThirdParty(context, thirdPartyAccount);
+    public Operation signInUsingThirdParty(SocialNetworkAccount thirdPartyAccount) {
+        Data inputData = new Data.Builder()
+                .putString(SignInWorker.SOCIAL_NETWORK_ACCOUNT,
+                        WorkerHelper.serialize(thirdPartyAccount)).build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SignInWorker.class)
+                .setInputData(inputData).addTag(SignInWorker.TAG).build();
+        return WorkManager.getInstance().enqueue(workRequest);
     }
 
     /**
@@ -107,7 +119,7 @@ public class UserAccount {
      * Whether sign-in is in progress now.
      */
     public boolean isSigningIn() {
-        return OngoingActions.hasActionsWithTag(Action.Tags.SIGN_IN);
+        return WorkerHelper.isOngoing(SignInWorker.TAG);
     }
 
     /**
@@ -128,7 +140,22 @@ public class UserAccount {
      * Clears all the data associated with the current user (except the data in the database) and launch the request to the server to sign-out.
      */
     public void signOut() {
-        ActionsLauncher.signOut(context, Preferences.getInstance().getAuthorizationToken());
+        Data inputData = new Data.Builder()
+                .putString(SignOutWorker.AUTHORIZATION, Preferences.getInstance().getAuthorizationToken())
+                .build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(SignOutWorker.class)
+                .setInputData(inputData).build();
+        WorkManager.getInstance().enqueue(workRequest);
+
+        signOutOfDevice();
+    }
+
+    /**
+     * Clears all the data associated with the current user (except the data in the database)
+     */
+    public void signOutOfDevice() {
+        MicrosoftLiveAuthenticator.signOut(context);
+        clearCookies();
         AccountDataStorage.clear(context);
         Preferences.getInstance().setUserHandle(null);
         Preferences.getInstance().setAuthorizationToken(null);
@@ -139,6 +166,19 @@ public class UserAccount {
         NotificationManagerCompat.from(context).cancelAll();
         LoginManager.getInstance().logOut();
         SocialNetworkTokens.clearAll();
+    }
+
+    /**
+     * Removes all cookies
+     */
+    private void clearCookies() {
+        CookieManager cookieManager = CookieManager.getInstance();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cookieManager.removeAllCookies(null);
+        } else {
+            //noinspection deprecation
+            cookieManager.removeAllCookie();
+        }
     }
 
     /**

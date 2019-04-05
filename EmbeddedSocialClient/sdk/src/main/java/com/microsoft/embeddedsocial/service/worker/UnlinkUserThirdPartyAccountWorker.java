@@ -3,30 +3,37 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
 import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.event.EventBus;
-import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.LinkUserThirdPartyAccountEvent;
 import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.IAccountService;
 import com.microsoft.embeddedsocial.server.exception.StatusException;
 import com.microsoft.embeddedsocial.server.model.account.UnlinkUserThirdPartyAccountRequest;
-import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
 
-import android.content.Intent;
+import android.content.Context;
+
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 /**
- * Sends a unlink user third party account request to the server.
+ * Sends an unlink user third party account request to the server.
  */
-public class UnlinkUserThirdPartyAccountHandler implements IServiceIntentHandler<ServiceAction> {
+public class UnlinkUserThirdPartyAccountWorker extends Worker {
+    public static final String IDENTITY_PROVIDER = "identityProvider";
+
+    public UnlinkUserThirdPartyAccountWorker(Context context, WorkerParameters workerParams) {
+        super(context, workerParams);
+    }
+
     @Override
-    public void handleIntent(ServiceAction action, Intent intent) {
-        final IdentityProvider accountType = IdentityProvider.fromValue(intent.getExtras().getString(IntentExtras.IDENTITY_PROVIDER));
+    public Result doWork() {
+        final IdentityProvider accountType =
+                IdentityProvider.fromValue(getInputData().getString(IDENTITY_PROVIDER));
 
         IAccountService accountService = GlobalObjectRegistry.getObject(EmbeddedSocialServiceProvider.class).getAccountService();
         UnlinkUserThirdPartyAccountRequest unlinkUserThirdPartyAccountRequest
@@ -35,21 +42,20 @@ public class UnlinkUserThirdPartyAccountHandler implements IServiceIntentHandler
         try {
             accountService.unlinkUserThirdPartyAccount(unlinkUserThirdPartyAccountRequest);
             EventBus.post(LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType));
+            return Result.success();
         } catch (Exception e) {
             DebugLog.logException(e);
             LinkUserThirdPartyAccountEvent event;
+            // Notify the handler that the request failed
             if (e instanceof StatusException) {
                 event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage(),
-                        ((StatusException)e).getStatusCode());
+                        ((StatusException) e).getStatusCode());
             } else {
                 event = LinkUserThirdPartyAccountEvent.createUnlinkEvent(accountType, e.getMessage());
             }
+
             EventBus.post(event);
+            return Result.failure();
         }
-    }
-
-    @Override
-    public void dispose() {
-
     }
 }

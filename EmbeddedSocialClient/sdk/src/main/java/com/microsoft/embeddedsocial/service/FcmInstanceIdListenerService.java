@@ -8,6 +8,10 @@ package com.microsoft.embeddedsocial.service;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
+import com.microsoft.embeddedsocial.service.worker.GetFcmIdWorker;
+
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Listens to InstanceID API callbacks.
@@ -17,6 +21,7 @@ public class FcmInstanceIdListenerService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         super.onTokenRefresh();
         FcmTokenHolder.create(this).resetToken();
-        WorkerService.getLauncher(this).launchService(ServiceAction.FCM_REGISTER);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
     }
 }

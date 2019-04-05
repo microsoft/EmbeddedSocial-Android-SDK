@@ -6,7 +6,6 @@
 package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.auth.AbstractAuthenticator;
 import com.microsoft.embeddedsocial.auth.FacebookAuthenticator;
 import com.microsoft.embeddedsocial.auth.GoogleAppAuthAuthenticator;
@@ -20,6 +19,7 @@ import com.microsoft.embeddedsocial.event.signin.SignInWithThirdPartyFailedEvent
 import com.microsoft.embeddedsocial.event.signin.UserSignedInEvent;
 import com.microsoft.embeddedsocial.sdk.Options;
 import com.microsoft.embeddedsocial.sdk.R;
+import com.microsoft.embeddedsocial.service.worker.SignInWorker;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragment;
 import com.microsoft.embeddedsocial.ui.fragment.module.SlowConnectionMessageModule;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
@@ -40,6 +40,8 @@ import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
+import androidx.work.Operation;
+import androidx.work.WorkManager;
 
 /**
  * Sign-in fragment.
@@ -53,14 +55,14 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
     private AbstractAuthenticator authenticator;
     private boolean isGettingThirdPartyCredentials;
 
-    private Action signInAction;
+    private Operation signInOperation;
     private final SlowConnectionMessageModule slowConnectionMessageModule = new SlowConnectionMessageModule(
         this,
         R.string.es_cancel,
         SIGN_IN_TIMEOUT,
         () -> {
-            if (signInAction != null) {
-                signInAction.fail();
+            if (signInOperation != null && !signInOperation.getResult().isDone()) {
+                WorkManager.getInstance().cancelAllWorkByTag(SignInWorker.TAG);
                 setProgressVisible(false);
             }
         }
@@ -239,7 +241,7 @@ public class SignInFragment extends BaseFragment implements IAuthenticationCallb
         clearAuthenticator();
         ThreadUtils.runOnMainThread(() -> {
             onSignInStarted();
-            signInAction = UserAccount.getInstance().signInUsingThirdParty(account);
+            signInOperation = UserAccount.getInstance().signInUsingThirdParty(account);
         });
     }
 

@@ -11,14 +11,18 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Information needed to create an account.
  */
-public class CreateAccountData implements Parcelable {
+public class CreateAccountData implements Parcelable, Serializable {
+
+    private static final long serialVersionUID = 6172725706417779546L;
     private String firstName;
     private String lastName;
     private String bio;
-    private Uri photoUri;
+    private String photoUri;
     private IdentityProvider identityProvider;
     private String thirdPartyAccessToken;
     private String thirdPartyRequestToken;
@@ -50,11 +54,19 @@ public class CreateAccountData implements Parcelable {
     }
 
     public Uri getPhotoUri() {
-        return photoUri;
+        if (photoUri == null) {
+            return null;
+        }
+
+        return Uri.parse(photoUri);
     }
 
     public void setPhotoUri(Uri photoUri) {
-        this.photoUri = photoUri;
+        if (photoUri == null) {
+            this.photoUri = null;
+        } else {
+            this.photoUri = photoUri.toString();
+        }
     }
 
     public IdentityProvider getIdentityProvider() {
@@ -90,7 +102,7 @@ public class CreateAccountData implements Parcelable {
         this.firstName = in.readString();
         this.lastName = in.readString();
         this.bio = in.readString();
-        this.photoUri = in.readParcelable(Uri.class.getClassLoader());
+        this.photoUri = in.readString();
         this.identityProvider = IdentityProvider.fromValue(in.readString());
         this.thirdPartyAccessToken = in.readString();
         this.thirdPartyRequestToken = in.readString();
@@ -101,7 +113,7 @@ public class CreateAccountData implements Parcelable {
         dest.writeString(this.firstName);
         dest.writeString(this.lastName);
         dest.writeString(this.bio);
-        dest.writeParcelable(this.photoUri, 0);
+        dest.writeString(this.photoUri);
         dest.writeString(this.identityProvider.toValue());
         dest.writeString(this.thirdPartyAccessToken);
         dest.writeString(this.thirdPartyRequestToken);

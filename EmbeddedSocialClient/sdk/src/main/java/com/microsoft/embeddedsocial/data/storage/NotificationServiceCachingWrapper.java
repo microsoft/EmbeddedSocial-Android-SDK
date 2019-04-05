@@ -17,14 +17,15 @@ import com.microsoft.embeddedsocial.server.model.notification.RegisterPushNotifi
 import com.microsoft.embeddedsocial.server.model.notification.UnRegisterPushNotificationRequest;
 import com.microsoft.embeddedsocial.server.model.notification.UpdateNotificationStatusRequest;
 import com.microsoft.embeddedsocial.server.model.view.ActivityView;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.SynchronizationWorker;
 
 import android.content.Context;
 import android.text.TextUtils;
 
 import java.sql.SQLException;
 
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 import retrofit2.Response;
 
 /**
@@ -143,6 +144,7 @@ public class NotificationServiceCachingWrapper implements INotificationService {
     }
 
     private void launchSync() {
-        WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+        OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
+        WorkManager.getInstance().enqueue(backgroundInit);
     }
 }

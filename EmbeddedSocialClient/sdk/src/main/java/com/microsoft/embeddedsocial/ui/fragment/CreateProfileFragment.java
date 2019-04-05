@@ -6,9 +6,6 @@
 package com.microsoft.embeddedsocial.ui.fragment;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.base.utils.BitmapUtils;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
 import com.microsoft.embeddedsocial.data.model.AccountData;
@@ -22,6 +19,8 @@ import com.microsoft.embeddedsocial.image.ImageViewContentLoader;
 import com.microsoft.embeddedsocial.image.UserPhotoLoader;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.worker.CreateAccountWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 import com.microsoft.embeddedsocial.ui.fragment.module.PhotoProviderModule;
 import com.microsoft.embeddedsocial.ui.theme.ThemeAttributes;
@@ -43,6 +42,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment to create profile.
@@ -125,7 +127,15 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
                     .build();
 
             thirdPartyAccount.clearTokens();
-            ActionsLauncher.createAccount(getContext(), createAccountData);
+
+            Data inputData = new Data.Builder()
+                    .putString(CreateAccountWorker.CREATE_ACCOUNT_DATA,
+                            WorkerHelper.serialize(createAccountData)).build();
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(CreateAccountWorker.class)
+                    .setInputData(inputData)
+                    .addTag(CreateAccountWorker.TAG)
+                    .build();
+            WorkManager.getInstance().enqueue(workRequest);
         }
     }
 
@@ -231,7 +241,7 @@ public class CreateProfileFragment extends BaseFragmentWithProgress {
     @Override
     public boolean onBackPressed() {
         hideKeyboard();
-        if (OngoingActions.hasActionsWithTag(Action.Tags.UPDATE_ACCOUNT)) {
+        if (WorkerHelper.isOngoing(CreateAccountWorker.TAG)) {
             showToast(R.string.es_message_wait_until_account_created);
             return false;
         }

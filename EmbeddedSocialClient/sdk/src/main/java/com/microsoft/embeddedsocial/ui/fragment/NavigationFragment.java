@@ -76,7 +76,7 @@ public class NavigationFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        notificationCountChecker = new NotificationCountChecker(getContext());
+        notificationCountChecker = new NotificationCountChecker();
         activeItemId = getArguments().getInt(CURRENT_ITEM_EXTRA);
         isShowProfile = getArguments().getBoolean(SHOW_PROFILE_EXTRA);
     }

@@ -3,10 +3,9 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
 import com.microsoft.embeddedsocial.account.UserAccount;
-import com.microsoft.embeddedsocial.actions.Action;
 import com.microsoft.embeddedsocial.base.GlobalObjectRegistry;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.data.model.AccountData;
@@ -24,8 +23,6 @@ import com.microsoft.embeddedsocial.server.model.account.GetUserProfileResponse;
 import com.microsoft.embeddedsocial.server.model.auth.AuthenticationResponse;
 import com.microsoft.embeddedsocial.server.model.auth.CreateSessionRequest;
 import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
 import com.microsoft.embeddedsocial.ui.activity.CreateProfileActivity;
 import com.microsoft.embeddedsocial.ui.util.SocialNetworkAccount;
 
@@ -33,10 +30,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 /**
- * Sends sign-in requests.
+ * Sends sign in requests.  Launches the create user page if necessary.
  */
-public class SignInHandler extends ActionHandler {
+public class SignInWorker extends Worker {
+    public static final String SOCIAL_NETWORK_ACCOUNT = "thirdPartyAccount";
+    public static final String TAG = "signInWorker";
+
+    private final Context context;
 
     private final IAccountService accountService = GlobalObjectRegistry
             .getObject(EmbeddedSocialServiceProvider.class)
@@ -46,53 +52,57 @@ public class SignInHandler extends ActionHandler {
             .getObject(EmbeddedSocialServiceProvider.class)
             .getAuthenticationService();
 
-    private final Context context;
-
-    public SignInHandler(Context context) {
+    public SignInWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
         this.context = context;
     }
 
     @Override
-    protected void handleAction(Action action, ServiceAction serviceAction, Intent intent) {
-        signinWithThirdParty(action, intent.getParcelableExtra(IntentExtras.THIRD_PARTY_ACCOUNT));
-        intent.removeExtra(IntentExtras.SOCIAL_NETWORK_ACCOUNT);
-    }
+    public Result doWork() {
+        String serializedNetworkAccount = getInputData().getString(SOCIAL_NETWORK_ACCOUNT);
+        SocialNetworkAccount socialNetworkAccount = WorkerHelper.deserialize(serializedNetworkAccount);
 
-    private void signinWithThirdParty(Action action, SocialNetworkAccount thirdPartyAccount) {
+        if (serializedNetworkAccount == null) {
+            UserAccount.getInstance().onSignInWithThirdPartyFailed();
+            return Result.failure();
+        }
+
         CreateSessionRequest signInWithThirdPartyRequest = new CreateSessionRequest(
-                thirdPartyAccount.getAccountType(),
-                thirdPartyAccount.getThirdPartyAccessToken(),
-                thirdPartyAccount.getThirdPartyRequestToken());
-
-
-        String authorization = signInWithThirdPartyRequest.getAuthorization();
-        GetMyProfileRequest getMyProfileRequest = new GetMyProfileRequest(authorization);
+                socialNetworkAccount.getAccountType(),
+                socialNetworkAccount.getThirdPartyAccessToken(),
+                socialNetworkAccount.getThirdPartyRequestToken());
 
         try {
+            String authorization = signInWithThirdPartyRequest.getAuthorization();
+            GetMyProfileRequest getMyProfileRequest = new GetMyProfileRequest(authorization);
+
             // Determine the user's user handle
             GetUserProfileResponse getUserProfileResponse = getMyProfileRequest.send();
 
             // set the user handle and attempt sign in
             signInWithThirdPartyRequest.setRequestUserHandle(getUserProfileResponse.getUser().getHandle());
             AuthenticationResponse signInResponse = authenticationService.signInWithThirdParty(signInWithThirdPartyRequest);
-            handleSuccessfulResult(action, signInResponse);
+            handleSuccessfulResult(signInResponse);
         } catch (NotFoundException e) {
             // User handle not found; create an account
             Intent i = new Intent(context, CreateProfileActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             Bundle extras = new Bundle();
-            extras.putParcelable(IntentExtras.THIRD_PARTY_ACCOUNT, thirdPartyAccount);
+            extras.putParcelable(IntentExtras.THIRD_PARTY_ACCOUNT, socialNetworkAccount);
             i.putExtras(extras);
             context.startActivity(i);
-        } catch (Exception e) {
+        } catch (NetworkRequestException e) {
             DebugLog.logException(e);
             UserAccount.getInstance().onSignInWithThirdPartyFailed();
+            return Result.failure();
         } finally {
-            thirdPartyAccount.clearTokens();
+            socialNetworkAccount.clearTokens();
         }
+
+        return Result.success();
     }
 
-    private void handleSuccessfulResult(Action action, AuthenticationResponse response)
+    private void handleSuccessfulResult(AuthenticationResponse response)
             throws NetworkRequestException {
 
         String userHandle = response.getUserHandle();
@@ -100,15 +110,9 @@ public class SignInHandler extends ActionHandler {
         GetUserAccountRequest getUserRequest = new GetUserAccountRequest(sessionToken);
         GetUserAccountResponse userAccount = accountService.getUserAccount(getUserRequest);
         AccountData accountData = AccountData.fromServerResponse(userAccount.getUser());
-        if (!action.isCompleted()) {
-            int messageId = R.string.es_msg_general_signin_success;
-            UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
-            WorkerService.getLauncher(context).launchService(ServiceAction.FCM_REGISTER);
-        }
-    }
-
-    @Override
-    public void dispose() {
-
+        int messageId = R.string.es_msg_general_signin_success;
+        UserAccount.getInstance().onSignedIn(userHandle, sessionToken, accountData, messageId);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetFcmIdWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
     }
 }

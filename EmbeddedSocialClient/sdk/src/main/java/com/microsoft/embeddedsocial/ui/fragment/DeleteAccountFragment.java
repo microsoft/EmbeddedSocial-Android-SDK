@@ -5,48 +5,22 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionTagFilter;
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
-import com.microsoft.embeddedsocial.actions.OngoingActions;
 import com.microsoft.embeddedsocial.sdk.R;
-import com.microsoft.embeddedsocial.ui.fragment.base.ActionListener;
+import com.microsoft.embeddedsocial.service.worker.DeleteAccountWorker;
+import com.microsoft.embeddedsocial.service.worker.WorkerHelper;
 import com.microsoft.embeddedsocial.ui.fragment.base.BaseFragmentWithProgress;
 
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.List;
-
 import androidx.annotation.Nullable;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment for deleting an account.
  */
 public class DeleteAccountFragment extends BaseFragmentWithProgress {
-
-    public DeleteAccountFragment() {
-        addActionListener(new ActionTagFilter(Action.Tags.DELETE_ACCOUNT), new ActionListener() {
-            @Override
-            protected void onActionSucceeded(Action action) {
-                onAccountDeleted();
-            }
-
-            @Override
-            protected void onActionFailed(Action action, String error) {
-                onError();
-            }
-
-            @Override
-            protected void onActionsCompletionMissed(List<Action> completedActions, List<Action> succeededActions, List<Action> failedActions) {
-                if (!succeededActions.isEmpty()) {
-                    onAccountDeleted();
-                } else if (!failedActions.isEmpty()) {
-                    onError();
-                }
-            }
-        });
-    }
 
     @Override
     protected int getContentLayoutId() {
@@ -59,14 +33,28 @@ public class DeleteAccountFragment extends BaseFragmentWithProgress {
         setOnClickListener(view, R.id.es_cancelButton, v -> finishActivity());
         setOnClickListener(view, R.id.es_deleteButton, v -> {
             setProgressVisible(true);
-            ActionsLauncher.deleteAccount(v.getContext());
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DeleteAccountWorker.class)
+                    .addTag(DeleteAccountWorker.TAG)
+                    .build();
+            WorkManager.getInstance().enqueue(workRequest);
+            WorkerHelper.handleResult(this, workRequest.getId(), new WorkerHelper.ResultHandler() {
+                @Override
+                public void onSuccess() {
+                    getActivity().runOnUiThread(() -> onAccountDeleted());
+                }
+
+                @Override
+                public void onFailure() {
+                    getActivity().runOnUiThread(() -> onError());
+                }
+            });
         });
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        setProgressVisible(OngoingActions.hasActionsWithTag(Action.Tags.DELETE_ACCOUNT));
+        setProgressVisible(WorkerHelper.isOngoing(DeleteAccountWorker.TAG));
     }
 
     private void onAccountDeleted() {

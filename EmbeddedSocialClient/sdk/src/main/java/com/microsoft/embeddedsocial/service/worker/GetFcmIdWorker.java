@@ -3,39 +3,39 @@
  * Licensed under the MIT License. See LICENSE in the project root for license information.
  */
 
-package com.microsoft.embeddedsocial.service.handler;
+package com.microsoft.embeddedsocial.service.worker;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import com.microsoft.embeddedsocial.base.service.IServiceIntentHandler;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.fcm.FcmTokenHolder;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
 
 import android.content.Context;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 /**
- * Registers the app with Firebase Cloud Messaging framework.
+ * Gets FCM tokens and stores them
  */
-public class GetFcmIdHandler implements IServiceIntentHandler<ServiceAction> {
-
+public class GetFcmIdWorker extends Worker {
     private final Context context;
     private final FcmTokenHolder tokenHolder;
 
-    public GetFcmIdHandler(Context context) {
+    public GetFcmIdWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
         this.context = context;
         this.tokenHolder = FcmTokenHolder.create(context);
     }
 
     @Override
-    public void handleIntent(ServiceAction action, Intent intent) {
+    public Result doWork() {
         if (!tokenHolder.hasValidToken()) {
             DebugLog.i("obtaining new FCM token");
             FirebaseInstanceId instanceId = FirebaseInstanceId.getInstance();
@@ -45,7 +45,8 @@ public class GetFcmIdHandler implements IServiceIntentHandler<ServiceAction> {
                     FcmTokenHolder.create(context).storeToken(instanceIdResult.getToken());
                     DebugLog.i("FCM token obtained successfully");
 
-                    WorkerService.getLauncher(context).launchService(ServiceAction.SYNC_DATA);
+                    OneTimeWorkRequest backgroundInit = new OneTimeWorkRequest.Builder(SynchronizationWorker.class).build();
+                    WorkManager.getInstance().enqueue(backgroundInit);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -54,9 +55,7 @@ public class GetFcmIdHandler implements IServiceIntentHandler<ServiceAction> {
                 }
             });
         }
-    }
 
-    @Override
-    public void dispose() {
+        return Result.success();
     }
 }

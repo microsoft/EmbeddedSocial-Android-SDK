@@ -5,7 +5,6 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.content.CommentRemovedEvent;
 import com.microsoft.embeddedsocial.event.content.GetCommentEvent;
@@ -14,6 +13,7 @@ import com.microsoft.embeddedsocial.fetcher.base.ViewStateListener;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.CommentView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.worker.GetCommentWorker;
 import com.microsoft.embeddedsocial.ui.activity.TopicActivity;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentButtonListener;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.CommentViewHolder;
@@ -28,6 +28,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment to display single comment.
@@ -62,7 +65,14 @@ public class DisplayCommentFragment extends BaseFragment implements ViewStateLis
         initView(view);
 
         final String commentHandle = arguments.getString(IntentExtras.COMMENT_HANDLE);
-        ActionsLauncher.getComment(getActivity(), commentHandle);
+
+        Data inputData = new Data.Builder()
+                .putString(GetCommentWorker.COMMENT_HANDLE, commentHandle)
+                .build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetCommentWorker.class)
+                .setInputData(inputData).build();
+        WorkManager.getInstance().enqueue(workRequest);
+
         displayLoadView();
     }
 

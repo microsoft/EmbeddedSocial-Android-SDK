@@ -5,13 +5,13 @@
 
 package com.microsoft.embeddedsocial.ui.fragment;
 
-import com.microsoft.embeddedsocial.actions.ActionsLauncher;
 import com.microsoft.embeddedsocial.base.utils.debug.DebugLog;
 import com.microsoft.embeddedsocial.event.content.GetReplyEvent;
 import com.microsoft.embeddedsocial.event.content.ReplyRemovedEvent;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.server.model.view.ReplyView;
 import com.microsoft.embeddedsocial.service.IntentExtras;
+import com.microsoft.embeddedsocial.service.worker.GetReplyWorker;
 import com.microsoft.embeddedsocial.ui.activity.DisplayNoteActivity;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyButtonListener;
 import com.microsoft.embeddedsocial.ui.adapter.viewholder.ReplyViewHolder;
@@ -26,6 +26,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Fragment to display single reply.
@@ -60,7 +63,14 @@ public class DisplayReplyFragment extends BaseFragment {
         initView(view);
 
         final String replyHandle = arguments.getString(IntentExtras.REPLY_HANDLE);
-        ActionsLauncher.getReply(getActivity(), replyHandle);
+
+        Data inputData = new Data.Builder()
+                .putString(GetReplyWorker.REPLY_HANDLE, replyHandle)
+                .build();
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(GetReplyWorker.class)
+                .setInputData(inputData).build();
+        WorkManager.getInstance().enqueue(workRequest);
+
         displayLoadView();
     }
 

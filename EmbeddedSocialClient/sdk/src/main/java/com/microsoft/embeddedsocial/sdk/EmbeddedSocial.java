@@ -25,8 +25,7 @@ import com.microsoft.embeddedsocial.server.EmbeddedSocialServiceProvider;
 import com.microsoft.embeddedsocial.server.NetworkAvailability;
 import com.microsoft.embeddedsocial.server.RequestInfoProvider;
 import com.microsoft.embeddedsocial.service.IntentExtras;
-import com.microsoft.embeddedsocial.service.ServiceAction;
-import com.microsoft.embeddedsocial.service.WorkerService;
+import com.microsoft.embeddedsocial.service.worker.BackgroundInitializationWorker;
 import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.activity.ActivityFeedActivity;
 import com.microsoft.embeddedsocial.ui.activity.AddPostActivity;
@@ -62,6 +61,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 /**
  * Embedded Social SDK facade.
@@ -102,7 +103,8 @@ public final class EmbeddedSocial {
         options.verify();
         GlobalObjectRegistry.addObject(options);
         initGlobalObjects(application, options);
-        WorkerService.getLauncher(application).launchService(ServiceAction.BACKGROUND_INIT);
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(BackgroundInitializationWorker.class).build();
+        WorkManager.getInstance().enqueue(workRequest);
         if (telemetryToken != null) {
             options.setTelemetryToken(telemetryToken);
             Telemetry.setAnalyticsSolution(application, telemetryToken);

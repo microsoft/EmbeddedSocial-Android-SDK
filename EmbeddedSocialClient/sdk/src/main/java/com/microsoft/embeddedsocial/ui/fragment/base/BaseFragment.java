@@ -5,12 +5,8 @@
 
 package com.microsoft.embeddedsocial.ui.fragment.base;
 
-import com.microsoft.embeddedsocial.actions.Action;
-import com.microsoft.embeddedsocial.actions.ActionFilter;
 import com.microsoft.embeddedsocial.base.event.EventBus;
 import com.microsoft.embeddedsocial.base.utils.ViewUtils;
-import com.microsoft.embeddedsocial.event.action.ActionCompletedEvent;
-import com.microsoft.embeddedsocial.event.action.ActionStartedEvent;
 import com.microsoft.embeddedsocial.sdk.BuildConfig;
 import com.microsoft.embeddedsocial.sdk.R;
 import com.microsoft.embeddedsocial.telemetry.Event;
@@ -18,13 +14,11 @@ import com.microsoft.embeddedsocial.telemetry.Telemetry;
 import com.microsoft.embeddedsocial.ui.activity.PopularActivity;
 import com.microsoft.embeddedsocial.ui.activity.base.BaseActivity;
 import com.microsoft.embeddedsocial.ui.util.CommonBehaviorEventListener;
-import com.squareup.otto.Subscribe;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,43 +49,13 @@ public abstract class BaseFragment extends Fragment {
 
     private final List<Module> modules = new LinkedList<>();
 
-    private final List<Pair<ActionFilter, ActionListener>> actionListeners = new LinkedList<>();
     private final List<Object> eventListeners = new LinkedList<>();
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private final Object actionEventListener = new Object() {
-
-        @Subscribe
-        public void onActionStartedEvent(ActionStartedEvent event) {
-            Action action = event.getAction();
-            for (Pair<ActionFilter, ActionListener> pair : actionListeners) {
-                ActionFilter actionFilter = pair.first;
-                if (actionFilter.filter(action)) {
-                    ActionListener actionListener = pair.second;
-                    actionListener.notifyActionStarted(action);
-                }
-            }
-        }
-
-        @Subscribe
-        public void onActionCompletedEvent(ActionCompletedEvent event) {
-            Action action = event.getAction();
-            for (Pair<ActionFilter, ActionListener> pair : actionListeners) {
-                ActionFilter actionFilter = pair.first;
-                if (actionFilter.filter(action)) {
-                    ActionListener actionListener = pair.second;
-                    actionListener.notifyActionCompleted(action);
-                }
-            }
-        }
-
-    };
 
     protected BaseFragment() {
         addThemeToMerge(R.style.EmbeddedSocialSdkThemeOverlayBaseFragment);
         setRetainInstance(true);
         eventListeners.add(this);
-        eventListeners.add(actionEventListener);
 
         if (Telemetry.isTelemetryEnabled()) {
             Event fragmentCreate = Telemetry.newEvent("FragmentCreate");
@@ -112,10 +76,6 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void addModule(Module module) {
         modules.add(module);
-    }
-
-    protected void addActionListener(ActionFilter filter, ActionListener listener) {
-        actionListeners.add(new Pair<>(filter, listener));
     }
 
     /**
@@ -248,9 +208,6 @@ public abstract class BaseFragment extends Fragment {
         super.onResume();
         for (Module module : modules) {
             module.onResume();
-        }
-        for (Pair<ActionFilter, ActionListener> actionListener : actionListeners) {
-            actionListener.second.notifyOnResume();
         }
         for (Object eventListener : eventListeners) {
             EventBus.register(eventListener);
