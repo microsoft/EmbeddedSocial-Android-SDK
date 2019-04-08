@@ -131,7 +131,7 @@ clearOutputFolder()
 
 def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
 def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
-def versionNum = '0.7.4'
+def versionNum = '0.7.5'
 group = "com.acrowntest.test"
 version = versionNum
 def description = 'Embedded Social Android SDK version ' + versionNum
