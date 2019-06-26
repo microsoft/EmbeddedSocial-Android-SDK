@@ -28,6 +28,9 @@ allprojects {
             // for android support version 26
             url "https://maven.google.com"
         }
+        maven {
+            url "http://dl.bintray.com/acrowntest/ES_SDK"
+        }
         jcenter()
     }
 }

@@ -10,8 +10,8 @@ import com.microsoft.embeddedsocial.autorest.BuildsOperationsImpl;
 import com.microsoft.embeddedsocial.autorest.models.BuildsCurrentResponse;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.UserRequest;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
+import es_private.com.microsoft.rest.ServiceException;
+import es_private.com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 

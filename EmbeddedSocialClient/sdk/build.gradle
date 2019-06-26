@@ -14,12 +14,12 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 //apply plugin: 'com.google.gms.google-services' // applied at bottom of file to avoid dependency collisions
 
-repositories {
-    jcenter()
-    maven {
-        url "http://dl.bintray.com/acrowntest/test"
-    }
-}
+def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
+def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
+def versionNum = '0.7.6'
+group = "com.acrowntest.ES_SDK"
+def description = 'Embedded Social Android SDK version ' + versionNum
+
 android {
     signingConfigs {
         debug {
@@ -108,7 +108,8 @@ dependencies {
     api 'com.floreysoft:jmte:3.1.1'
     api 'com.github.chrisbanes.photoview:library:1.2.3'
     api 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
-    api 'com.acrowntest.test:autorest:0.7.3'
+    implementation 'com.acrowntest.ES_SDK:autorest:0.7.5'
+    api 'com.google.guava:guava:23.0'
     api 'org.jetbrains:annotations:15.0'
     api 'com.microsoft.appcenter:appcenter-analytics:1.9.0'
 }
@@ -127,14 +128,6 @@ def clearOutputFolder() {
 }
 
 clearOutputFolder()
-
-
-def siteUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK'
-def gitUrl = 'https://github.com/Microsoft/EmbeddedSocial-Android-SDK.git'
-def versionNum = '0.7.5'
-group = "com.acrowntest.test"
-version = versionNum
-def description = 'Embedded Social Android SDK version ' + versionNum
 
 //task sourcesJar(type: Jar) {
 //    from android.sourceSets.main.java.srcDirs
@@ -186,7 +179,9 @@ publishing {
     publications {
         sdk(MavenPublication) {
             artifact bundleReleaseAar
-
+            groupId group
+            artifactId 'sdk'
+            version versionNum
             pom.withXml {
                 def root = asNode()
                 def dependenciesNode = root.appendNode('dependencies')
@@ -212,7 +207,7 @@ bintray {
     key = properties.getProperty('bintray.apikey')
     publications = ['sdk']
     pkg {
-        repo = 'test'
+        repo = 'ES_SDK'
         name = 'sdk'
         userOrg = 'acrowntest'
         licenses = ['MIT']
@@ -220,10 +215,10 @@ bintray {
         publish = true
         version {
             name = versionNum
-            desc = 'TestLib ' + versionNum
+            desc = 'ES Android SDK ' + versionNum
             released = new Date()
             vcsTag = versionNum
-            attributes = ['gradle-plugin': 'com.acrowntest.test:sdk']
+            attributes = ['gradle-plugin': 'com.acrowntest.ES_SDK:sdk']
             gpg {
                 sign = true
             }

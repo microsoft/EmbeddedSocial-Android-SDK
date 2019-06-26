@@ -13,13 +13,6 @@ apply plugin: 'com.android.application'
 
 //apply plugin: 'com.google.gms.google-services'
 
-repositories {
-    jcenter()
-    maven {
-        url "http://dl.bintray.com/acrowntest/test"
-    }
-}
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
