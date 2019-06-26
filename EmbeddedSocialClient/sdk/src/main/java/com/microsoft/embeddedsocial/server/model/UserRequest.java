@@ -36,7 +36,7 @@ import com.microsoft.embeddedsocial.autorest.models.IdentityProvider;
 import com.microsoft.embeddedsocial.data.Preferences;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.exception.UnauthorizedException;
-import com.microsoft.rest.ServiceResponse;
+import es_private.com.microsoft.rest.ServiceResponse;
 
 public class UserRequest extends BaseRequest {
     public static final String ANONYMOUS = "Anon AK=%s";

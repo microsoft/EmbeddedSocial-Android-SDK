@@ -12,13 +12,6 @@ buildscript {
 
 apply plugin: 'com.android.application'
 
-repositories {
-    jcenter()
-    maven {
-        url "http://dl.bintray.com/acrowntest/test"
-    }
-}
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'

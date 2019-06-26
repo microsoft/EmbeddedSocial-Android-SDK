@@ -8,8 +8,8 @@ package com.microsoft.embeddedsocial.server.model.notification;
 import com.microsoft.embeddedsocial.autorest.models.FeedResponseActivityView;
 import com.microsoft.embeddedsocial.server.exception.NetworkRequestException;
 import com.microsoft.embeddedsocial.server.model.FeedUserRequest;
-import com.microsoft.rest.ServiceException;
-import com.microsoft.rest.ServiceResponse;
+import es_private.com.microsoft.rest.ServiceException;
+import es_private.com.microsoft.rest.ServiceResponse;
 
 import java.io.IOException;
 
