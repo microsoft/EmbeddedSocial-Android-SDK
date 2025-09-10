@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License. See LICENSE in the project root for license information.
+  ~
+  -->
+
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.DeleteAccountActivity"/>
+      <point      
+        x = "1340"      
+        y = "1916"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.BlockedUsersActivity"/>
+      <point      
+        x = "550"      
+        y = "1530"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.TopicActivity"/>
+      <point      
+        x = "600"      
+        y = "1580"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.CommentActivity"/>
+      <point      
+        x = "650"      
+        y = "1630"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.SearchActivity"/>
+      <point      
+        x = "500"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.microsoft.socialplus.ui.activity.SearchActivity"/>
+      <point      
+        x = "1768"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.EditProfileActivity"/>
+      <point      
+        x = "700"      
+        y = "1680"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.PopularActivity"/>
+      <point      
+        x = "750"      
+        y = "1730"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.GateActivity"/>
+      <point      
+        x = "800"      
+        y = "1780"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.RecentActivityActivity"/>
+      <point      
+        x = "850"      
+        y = "1830"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.AnotherUserProfileActivity"/>
+      <point      
+        x = "900"      
+        y = "1880"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.FriendlistActivity"/>
+      <point      
+        x = "950"      
+        y = "1930"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.ReportActivity"/>
+      <point      
+        x = "1000"      
+        y = "1980"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.DisplayNoteActivity"/>
+      <point      
+        x = "1050"      
+        y = "2030"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.EditPostActivity"/>
+      <point      
+        x = "1100"      
+        y = "2080"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.MyProfileActivity"/>
+      <point      
+        x = "1150"      
+        y = "2130"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.WebAuthenticationActivity"/>
+      <point      
+        x = "1200"      
+        y = "2180"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.PrivacyPolicyActivity"/>
+      <point      
+        x = "1250"      
+        y = "2230"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.TermsAndConditionsActivity"/>
+      <point      
+        x = "1300"      
+        y = "2280"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.AddPostActivity"/>
+      <point      
+        x = "1350"      
+        y = "2330"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.OptionsActivity"/>
+      <point      
+        x = "1400"      
+        y = "2380"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.HomeActivity"/>
+      <point      
+        x = "1450"      
+        y = "2430"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.SignInActivity"/>
+      <point      
+        x = "1092"      
+        y = "2252"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.facebook.FacebookActivity"/>
+      <point      
+        x = "1550"      
+        y = "2530"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.LikesActivity"/>
+      <point      
+        x = "1600"      
+        y = "2580"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.LinkedAccountsActivity"/>
+      <point      
+        x = "1650"      
+        y = "2630"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.PinsActivity"/>
+      <point      
+        x = "1700"      
+        y = "2680"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.FollowingActivity"/>
+      <point      
+        x = "1750"      
+        y = "2730"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.ViewImageActivity"/>
+      <point      
+        x = "1800"      
+        y = "2780"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.FollowersActivity"/>
+      <point      
+        x = "1588"      
+        y = "2924"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.microsoft.socialplus.ui.activity.FollowRequestsActivity"/>
+      <point      
+        x = "1900"      
+        y = "2880"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>

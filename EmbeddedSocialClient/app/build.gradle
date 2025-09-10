@@ -1,0 +1,114 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See LICENSE in the project root for license information.
+ *
+ */
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+}
+apply plugin: 'com.android.application'
+
+//apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId "com.microsoft.embeddedsocial"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionName computeVersionName()
+        multiDexEnabled true
+        signingConfig signingConfigs.debug
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+        }
+        develop.initWith(signingConfigs.debug)
+        develop {
+            storeFile file('debug.keystore')
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            versionNameSuffix "d"
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.develop
+        }
+        debugStandalone {}
+        releaseStandalone {}
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            output.outputFileName = new File("EmbeddedSocial_v" + computeVersionName() + "_$variant.buildType.name" + '.apk')
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE'
+        pickFirst 'META-INF/LICENSE.txt'
+        pickFirst 'META-INF/NOTICE'
+        pickFirst 'META-INF/NOTICE.txt'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':sdk')
+    implementation 'androidx.multidex:multidex:2.0.0'
+}
+
+def getBuildNumber() {
+    System.env.BUILD_NUMBER == null ? '0' : System.env.BUILD_NUMBER
+}
+
+def computeVersionName() {
+    return "${buildVersion}.${getBuildNumber()}"
+}
+
+def computeVersionCode() {
+    return buildVersionCode.toInteger()
+}
+
+ext {
+    outputFolder = new File((File) project.getProjectDir(), "apk")
+}
+
+def clearOutputFolder() {
+    File[] files = outputFolder.listFiles()
+    if (files != null) {
+        for (File file : files) {
+            file.delete()
+        }
+    }
+}
+
+clearOutputFolder()
+
+apply plugin: 'com.google.gms.google-services'
